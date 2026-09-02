@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meeting-qa-chunking"
+version = "0.1.0"
+description = "Small, reproducible meeting-QA chunking experiments"
+requires-python = ">=3.11"
+dependencies = [
+    "accelerate==1.14.0",
+    "bert-score==0.3.13",
+    "bitsandbytes==0.50.2",
+    "rouge-score==0.1.2",
+    "sentence-transformers==5.7.0",
+    "transformers==5.15.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["meeting_qa_chunking*"]
+
+[tool.setuptools.package-data]
+meeting_qa_chunking = ["prompts/*.txt"]

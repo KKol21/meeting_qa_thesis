@@ -1,0 +1,30 @@
+[run]
+name = "smoke"
+output_root = "runs/ablations/smoke"
+meetings = ["Bed002"]
+run_segmentation = true
+run_evaluation = true
+
+[retrieval]
+fixed_chunk_words = 256
+evidence_budgets = [512, 1024]
+
+[[answers]]
+name = "oracle-7b"
+source = "oracle"
+model = "qwen2.5-7b"
+
+[[answers]]
+name = "oracle-14b"
+source = "oracle"
+model = "qwen2.5-14b"
+
+[[answers]]
+name = "oracle-32b-bnb4"
+source = "oracle"
+model = "qwen2.5-32b-bnb4"
+
+[[answers]]
+name = "retrieval-14b"
+source = "retrieval"
+model = "qwen2.5-14b"

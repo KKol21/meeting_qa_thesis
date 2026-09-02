@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>Slurm Workload Manager - sacct</title>
+	<link rel="canonical" href="https://slurm.schedmd.com/sacct.html" />
+
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link rel="stylesheet" type="text/css" href="fonts.css">
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="slurm.css">
+
+	<script src="jquery.min.js"></script>
+	<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery('.menu-trigger').bind('click touchstart', function() {
+			jQuery(this).find('.menu-trigger__lines').toggleClass('menu-trigger__lines--closed');
+			jQuery(this).parents('.site-header').find('.site-nav').toggleClass('site-nav--active');
+
+			return false;
+		});
+	});
+	</script>
+	<script async src="https://cse.google.com/cse.js?cx=011890816164765777536:jvrtxrd3f0w"></script>
+</head>
+
+<body>
+
+<div class="container container--main">
+
+	<header class="site-header" role="banner">
+
+		<div class="site-masthead">
+			<h1 class="site-masthead__title site-masthead__title--slurm">
+				<a href="/" rel="home">
+					<span class="slurm-logo">Slurm Workload Manager</span>
+				</a>
+			</h1>
+			<div class="site-masthead__title">
+				<a href="https://www.schedmd.com/" rel="home">
+					<span class="site-logo">SchedMD</span>
+				</a>
+			</div>
+
+			<button class="site-masthead__trigger menu-trigger" type="button" role="button" aria-label="Toggle Navigation"><span class="menu-trigger__lines"></span></button>
+		</div>
+
+
+		<nav class="site-nav" role="navigation">
+			<h2 class="site-nav__title">Navigation</h2>
+
+			<div class="slurm-title">
+				<div class="slurm-logo"><a href="/">Slurm Workload Manager</a></div>
+				<div class="slurm-title__version">Version 26.05</div>
+			</div>
+
+			<ul class="site-nav__menu site-menu menu">
+				<li class="site-menu__item">
+				        <div>About</div>
+					<ul>
+						<li><a href="overview.html">Overview</a></li>
+						<li><a href="release_notes.html">Release Notes</a></li>
+					</ul>
+				</li>
+				<li class="site-menu__item">
+					<div>Using</div>
+					<ul>
+						<li><a href="documentation.html">Documentation</a></li>
+						<li><a href="faq.html">FAQ</a></li>
+						<li><a href="publications.html">Publications</a></li>
+					</ul>
+				</li>
+				<li class="site-menu__item">
+					<div>Installing</div>
+					<ul>
+						<li><a href="https://www.schedmd.com/download-slurm/">Download</a></li>
+						<li><a href="related_software.html">Related Software</a></li>
+						<li><a href="quickstart_admin.html">Installation Guide</a></li>
+					</ul>
+				</li>
+				<li class="site-menu__item">
+					<div>Getting Help</div>
+					<ul>
+						<li><a href="mail.html">Mailing Lists</a></li>
+						<li><a href="https://www.schedmd.com/slurm-support/our-services/">Support and Training</a></li>
+						<li><a href="troubleshoot.html">Troubleshooting</a></li>
+					</ul>
+				</li>
+			</ul>
+
+		</nav>
+
+	</header>
+
+	<div class="content" role="main">
+		<section class="slurm-search">
+			<div class="container" id="cse">
+				<gcse:search></gcse:search>
+			</div>
+		</section>
+
+		<div class="section">
+			<div class="container">
+
+<H1>sacct</H1>
+Section: Slurm Commands (1)<BR>Updated: Slurm Commands<BR><A HREF="#index">Index</A>
+
+<P>
+<A NAME="lbAB">&nbsp;</A>
+<h2>NAME<a class="slurm_link" id="SECTION_NAME" href="#SECTION_NAME"></a></h2>
+sacct - displays accounting data for all jobs and job steps in the
+Slurm job accounting log or Slurm database
+<P>
+<A NAME="lbAC">&nbsp;</A>
+<h2>SYNOPSIS<a class="slurm_link" id="SECTION_SYNOPSIS" href="#SECTION_SYNOPSIS"></a></h2>
+<B>sacct</B> [<I>OPTIONS</I>...]
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<h2>DESCRIPTION<a class="slurm_link" id="SECTION_DESCRIPTION" href="#SECTION_DESCRIPTION"></a></h2>
+<P>
+
+Accounting information for jobs invoked with Slurm are either logged
+in the job accounting log file or saved to the Slurm database, as
+configured with the AccountingStorageType parameter.
+<P>
+
+The <B>sacct</B> command displays job accounting data stored in the job
+accounting log file or Slurm database in a variety of forms for your
+analysis. The <B>sacct</B> command displays information on jobs, job
+steps, status, and exitcodes by default. You can tailor the output
+with the use of the <B>--format=</B> option to specify the fields to
+be shown.
+<P>
+
+Job records consist of a primary entry for the job as a whole as well as
+entries for job steps. The Job Launch page has a more detailed description
+of each type of job step.
+&lt;<A HREF="https://slurm.schedmd.com/job_launch.html#job_record">https://slurm.schedmd.com/job_launch.html#job_record</A>&gt;
+<P>
+
+For the root user, the <B>sacct</B> command displays job accounting
+data for all users, although there are options to filter the output to
+report only the jobs from a specified user or group.
+<P>
+
+For the non-root user, the <B>sacct</B> command limits the display of
+job accounting data to jobs that were launched with their own user
+identifier (UID) by default. Data for other users can be displayed
+with the <B>--allusers</B>, <B>--user</B>, or <B>--uid</B> options.
+<P>
+
+Elapsed time fields are presented as
+[days-]hours:minutes:seconds[.microseconds]. Only 'CPU' fields will
+ever have microseconds.
+<P>
+<B>NOTE</B>: If designated, the slurmdbd.conf option PrivateData may further
+restrict the accounting data visible to users which are not
+SlurmUser, root, or a user with AdminLevel=Admin. See the
+slurmdbd.conf man page for additional details on restricting
+access to accounting data.
+<P>
+<B>NOTE</B>: The contents of Slurm's database are maintained in lower case.
+This may result in some <B>sacct</B> output differing from that of other Slurm
+commands.
+<P>
+<B>NOTE</B>: Much of the data reported by <B>sacct</B> has been generated by
+the <I>wait3()</I> and <I>getrusage()</I> system calls. Some systems
+gather and report incomplete information for these calls;
+<B>sacct</B> reports values of 0 for this missing data. See your systems
+<I>getrusage (3)</I> man page for information about which data are
+actually available on your system.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<h2>OPTIONS<a class="slurm_link" id="SECTION_OPTIONS" href="#SECTION_OPTIONS"></a></h2>
+<P>
+<DL COMPACT>
+<dt><B>-A</B>, <B>--accounts</B>=&lt;<I>account_list</I>&gt;<a class="slurm_link" id="OPT_accounts" href="#OPT_accounts"></a></dt><dd>Displays jobs when a comma separated list of accounts are given as the
+argument.
+<DT><DD>
+<P>
+<dt><B>--array</B><a class="slurm_link" id="OPT_array" href="#OPT_array"></a></dt><dd>Expand job arrays. Display all array tasks on separate lines instead of
+displaying groups of array tasks on single lines.
+<DT><DD>
+<P>
+<dt><B>-L</B>, <B>--allclusters</B><a class="slurm_link" id="OPT_allclusters" href="#OPT_allclusters"></a></dt><dd>Display jobs ran on all clusters. By default, only jobs ran on the
+cluster from where <B>sacct</B> is called are displayed.
+<DT><DD>
+<P>
+<dt><B>-X</B>, <B>--allocations</B><a class="slurm_link" id="OPT_allocations" href="#OPT_allocations"></a></dt><dd>Only show statistics relevant to the job allocation itself, not taking steps
+into consideration.
+<P>
+<B>NOTE</B>: Without including steps, utilization statistics for job
+allocation(s) will be reported as zero.
+<DT><DD>
+<P>
+<dt><B>-a</B>, <B>--allusers</B><a class="slurm_link" id="OPT_allusers" href="#OPT_allusers"></a></dt><dd>Displays all users' jobs when run by user root or if <B>PrivateData</B> is not
+configured to <B>jobs</B>.
+Otherwise display the current user's jobs
+<DT><DD>
+<P>
+<dt><B>-x</B>, <B>--associations</B>=&lt;<I>assoc_list</I>&gt;<a class="slurm_link" id="OPT_associations" href="#OPT_associations"></a></dt><dd>Displays the statistics only for the jobs running under the
+association ids specified by the <B>assoc_list</B> operand, which is a
+comma-separated list of association ids. Space characters are not
+allowed in the <B>assoc_list</B>. Default is all associations.
+<DT><DD>
+<P>
+<dt><B>-B</B>, <B>--batch-script</B><a class="slurm_link" id="OPT_batch-script" href="#OPT_batch-script"></a></dt><dd>This option will print the batch script of job if the job used one. If the job
+didn't have a script 'NONE' is output.
+<BR>
+
+<B>NOTE</B>: AccountingStoreFlags=job_script is required for this.
+<BR>
+
+<B>NOTE</B>: Requesting specific job(s) with '-j' is required for this.
+<DT><DD>
+<P>
+<dt><B>-b</B>, <B>--brief</B><a class="slurm_link" id="OPT_brief" href="#OPT_brief"></a></dt><dd>Displays a brief listing consisting of JobID, State, and ExitCode.
+<DT><DD>
+<P>
+<dt><B>-M</B>, <B>--clusters</B>=&lt;<I>cluster_list</I>&gt;<a class="slurm_link" id="OPT_clusters" href="#OPT_clusters"></a></dt><dd>Displays the statistics only for the jobs started on the clusters
+specified by the <I>cluster_list</I> operand, which is a
+comma-separated list of clusters. Space characters are not allowed
+in the <I>cluster_list</I>.
+A value of '<I>all</I>' will query to run on all clusters.
+The default is current cluster you are executing the <B>sacct</B> command on or
+all clusters in the federation when executed on a federated cluster.
+This option implicitly sets the <B>--local</B> option.
+<DT><DD>
+<P>
+<dt><B>-c</B>, <B>--completion</B><a class="slurm_link" id="OPT_completion" href="#OPT_completion"></a></dt><dd>Use job completion data instead of job accounting. The <B>JobCompType</B>
+parameter in the slurm.conf file must be defined to a non-none option.
+Does not support federated cluster information (local data only).
+<DT><DD>
+<P>
+<dt><B>-C</B>, <B>--constraints</B>=&lt;<I>constraint_list</I>&gt;<a class="slurm_link" id="OPT_constraints" href="#OPT_constraints"></a></dt><dd>Comma separated list to filter jobs based on what constraints/features the job
+requested. Multiple options will be treated as 'and' not 'or', so the job would
+need all constraints specified to be returned not one or the other.
+<DT><DD>
+<P>
+<dt><B>--delimiter</B>=&lt;<I>characters</I>&gt;<a class="slurm_link" id="OPT_delimiter" href="#OPT_delimiter"></a></dt><dd>ASCII characters used to separate the fields when specifying
+the <B>-p</B> or <B>-P</B> options. The default delimiter
+is a '|'. This option is ignored if <B>-p</B> or <B>-P</B> options
+are not specified.
+<DT><DD>
+<P>
+<dt><B>-D</B>, <B>--duplicates</B><a class="slurm_link" id="OPT_duplicates" href="#OPT_duplicates"></a></dt><dd>Allow multiple job records for the same job ID or SLUID to be shown. By default,
+if multiple job records for the same job ID or SLUID match the request, only the
+most recent one will be shown. Duplicate records can result from requeues,
+federation, resizes or from jobs reaching the <B>MaxJobId</B> value and
+resetting. Such records can be distinguished by the <B>Submit</B> time stamp,
+by the <B>OriginalSLUID</B> or by the <B>SLUID</B> fields.
+<DT><DD>
+<P>
+<dt><B>-E</B>, <B>--endtime</B>=&lt;<I>end_time</I>&gt;<a class="slurm_link" id="OPT_endtime" href="#OPT_endtime"></a></dt><dd>Select jobs in any state before the specified time. If states are
+given with the -s option return jobs in this state before this period.
+See the <B>DEFAULT TIME WINDOW</B> section (below) for details about how the
+default values for --starttime and --endtime are determined.
+<P>
+Valid time formats are:
+<BR>
+
+HH:MM[:SS][AM|PM]
+<BR>
+
+MMDD[YY][-HH:MM[:SS]]
+<BR>
+
+MM.DD[.YY][-HH:MM[:SS]]
+<BR>
+
+MM/DD[/YY][-HH:MM[:SS]]
+<BR>
+
+YYYY-MM-DD[THH:MM[:SS]]
+<BR>
+
+today, midnight, noon, elevenses (11 AM), fika (3 PM), teatime (4 PM)
+<BR>
+
+now[{+|-}<I>count</I>[seconds(default)|minutes|hours|days|weeks]]
+<DT><DD>
+<P>
+<dt><B>--env-vars</B><a class="slurm_link" id="OPT_env-vars" href="#OPT_env-vars"></a></dt><dd>This option will print the running environment of a batch job, otherwise 'NONE'
+is output.
+<BR>
+
+<B>NOTE</B>: AccountingStoreFlags=job_env is required for this.
+<BR>
+
+<B>NOTE</B>: Requesting specific job(s) with '-j' is required for this.
+<DT><DD>
+<P>
+<dt><B>--expand-patterns</B><a class="slurm_link" id="OPT_expand-patterns" href="#OPT_expand-patterns"></a></dt><dd>Expand any filename patterns from in <B>StdOut</B>, <B>StdErr</B> and <B>StdIn</B>.
+Fields that map to a range of values will use the first value of the range. For
+example &quot;%t&quot; for task id will be replaced by &quot;0&quot;.
+<DT><DD>
+<P>
+<dt><B>--federation</B><a class="slurm_link" id="OPT_federation" href="#OPT_federation"></a></dt><dd>Show jobs from the federation if a member of one.
+<DT><DD>
+<P>
+<dt><B>-f</B>, <B>--file</B>=&lt;<I>file</I>&gt;<a class="slurm_link" id="OPT_file" href="#OPT_file"></a></dt><dd>Causes the <B>sacct</B> command to read job accounting data from the
+named <I>file</I> instead of the current Slurm job accounting log
+file. Only applicable when running the jobcomp/filetxt plugin. Setting this flag
+implicitly enables the -c flag.
+<DT><DD>
+<P>
+<dt><B>-F</B>, <B>--flags</B>=&lt;<I>flag_list</I>&gt;<a class="slurm_link" id="OPT_flags" href="#OPT_flags"></a></dt><dd>Comma separated list to filter jobs based on what various ways the jobs were
+handled. Current flags are SchedSubmit, SchedMain, SchedBackfill and
+StartReceived. SchedSubmit, SchedMain, SchedBackfill describe the scheduler
+that started the job.
+<DT><DD>
+<P>
+<dt><B>-o</B>, <B>--format</B><a class="slurm_link" id="OPT_format" href="#OPT_format"></a></dt><dd>Comma separated list of fields. (use &quot;--helpformat&quot; for a list of
+available fields).
+<P>
+<B>NOTE</B>: When using the format option for listing various fields you can put
+a %NUMBER afterwards to specify how many characters should be printed.
+<P>
+e.g. format=name%30 will print 30 characters of field name right
+justified. A %-30 will print 30 characters left justified.
+<P>
+When set, the SACCT_FORMAT environment variable will override the
+default format. For example:
+<P>
+SACCT_FORMAT=&quot;jobid,user,account,cluster&quot;
+<DT><DD>
+<P>
+<dt><B>-g</B>, <B>--gid</B>=, <B>--group</B>=&lt;<I>gid_or_group_list</I>&gt;<a class="slurm_link" id="OPT_gid" href="#OPT_gid"></a></dt><dd>Displays the statistics only for the jobs started with the GID
+or the GROUP specified by the <I>gid_list</I> or the <I>group_list</I> operand,
+which is a comma-separated list. Space characters are not allowed.
+Default is no restrictions.
+<DT><DD>
+<P>
+<dt><B>-h</B>, <B>--help</B><a class="slurm_link" id="OPT_help" href="#OPT_help"></a></dt><dd>Displays a general help message.
+<DT><DD>
+<P>
+<dt><B>-e</B>, <B>--helpformat</B><a class="slurm_link" id="OPT_helpformat" href="#OPT_helpformat"></a></dt><dd>Print a list of fields that can be specified with the <B>--format</B> option.
+<DT><DD>
+<P>
+<DL COMPACT><DT><DD>
+<P>
+
+<PRE>
+<B>Fields available:
+
+Account             AdminComment        AllocCPUS           AllocNodes
+AllocTRES           AssocID             AveCPU              AveCPUFreq
+AveDiskRead         AveDiskWrite        AvePages            AveRSS
+AveVMSize           BlockID             Cluster             Comment
+Constraints         ConsumedEnergy      ConsumedEnergyRaw   Container
+CPUTime             CPUTimeRAW          DBIndex             DerivedExitCode
+Elapsed             ElapsedRaw          Eligible            End
+Exclusive           ExitCode            Extra               FailedNode
+Flags               GID                 Group               JobID
+JobIDRaw            JobName             Layout              Licenses
+MaxDiskRead         MaxDiskReadNode     MaxDiskReadTask     MaxDiskWrite
+MaxDiskWriteNode    MaxDiskWriteTask    MaxPages            MaxPagesNode
+MaxPagesTask        MaxRSS              MaxRSSNode          MaxRSSTask
+MaxVMSize           MaxVMSizeNode       MaxVMSizeTask       McsLabel
+MinCPU              MinCPUNode          MinCPUTask          NCPUS
+NNodes              NodeList            NTasks              OriginalSLUID
+OverSubscribe       Partition           Planned             PlannedCPU
+PlannedCPURAW       Priority            QOS                 QOSRAW
+QOSREQ              Reason              ReqCPUFreq          ReqCPUFreqGov
+ReqCPUFreqMax       ReqCPUFreqMin       ReqCPUS             ReqMem
+ReqNodes            ReqReservation      ReqTRES             Reservation
+ReservationId       Restarts            SegmentSize         SLUID
+Start               State               StdErr              StdIn
+StdOut              Submit              SubmitLine          Suspended
+SystemComment       SystemCPU           Timelimit           TimelimitRaw
+TotalCPU            TRESUsageInAve      TRESUsageInMax      TRESUsageInMaxNode
+TRESUsageInMaxTask  TRESUsageInMin      TRESUsageInMinNode  TRESUsageInMinTask
+TRESUsageInTot      TRESUsageOutAve     TRESUsageOutMax     TRESUsageOutMaxNode
+TRESUsageOutMaxTask TRESUsageOutMin     TRESUsageOutMinNode TRESUsageOutMinTask
+TRESUsageOutTot     UID                 User                UserCPU
+WCKey               WCKeyID             WorkDir
+</B></PRE>
+
+</DL>
+
+<P>
+<B>NOTE</B>: When using with Ave[RSS|VM]Size or their values in
+TRESUsageIn[Ave|Tot]. They represent the average/total of the highest
+watermarks over all ranks in the step. When using sstat they represent the
+average/total at the moment the command was run.
+<P>
+<B>NOTE</B>: TRESUsage*Min* values represent the lowest highwater mark in the
+step.
+<P>
+<B>NOTE</B>: Availability of metrics rely on the <B>jobacct_gather</B> plugin
+used. For example the jobacct_gather/cgroup in combination with cgroup/v2 does
+not provide Virtual Memory metrics due to limitations in the kernel cgroups
+interfaces and will show a 0 for the related fields.
+<P>
+The section titled &quot;Job Accounting Fields&quot; describes these fields.
+<DT><DD>
+<P>
+<dt><B>-j</B>, <B>--jobs</B>=&lt;<I>job</I>[.<I>step</I>]&gt;<a class="slurm_link" id="OPT_jobs" href="#OPT_jobs"></a></dt><dd>Displays information about the specified <I>job</I>[.<I>step</I>] or list of
+<I>job</I>[.<I>step</I>]s.
+<P>
+The <I>job</I>[.<I>step</I>]
+parameter is a comma-separated list of jobs.
+Space characters are not permitted in this list.
+<BR>
+
+<B>NOTE</B>: A step id of 'batch' will display the information about the
+batch step.
+<BR>
+
+By default sacct shows only jobs with Eligible time, but with this
+option the non-eligible will be also shown.
+<BR>
+
+<B>NOTE</B>: If --state is also specified, as non-eligible are not PD,
+then non-eligible jobs will not be displayed.
+See the <B>DEFAULT TIME WINDOW</B> section (below) for details about how this
+option changes the default values for --starttime and --endtime.
+<DT><DD>
+<P>
+<dt><B>--json</B>, <B>--json</B>=<I>list</I>, <B>--json</B>=&lt;<I>data_parser</I>&gt;<a class="slurm_link" id="OPT_json" href="#OPT_json"></a></dt><dd>Dump job information as JSON using the default data_parser plugin or explicit
+data_parser with parameters. Sorting and formatting arguments will be ignored.
+<DT><DD>
+<P>
+<dt><B>--local</B><a class="slurm_link" id="OPT_local" href="#OPT_local"></a></dt><dd>Show only jobs local to this cluster. Ignore other clusters in this federation
+(if any). Overrides --federation.
+<DT><DD>
+<P>
+<dt><B>-l</B>, <B>--long</B><a class="slurm_link" id="OPT_long" href="#OPT_long"></a></dt><dd>Equivalent to specifying:
+<P>
+
+--format=jobid,jobidraw,jobname,partition,maxvmsize,maxvmsizenode,
+maxvmsizetask,avevmsize,maxrss,maxrssnode,maxrsstask,averss,maxpages,
+maxpagesnode,maxpagestask,avepages,mincpu,mincpunode,mincputask,avecpu,ntasks,
+alloccpus,elapsed,state,exitcode,avecpufreq,reqcpufreqmin,reqcpufreqmax,
+reqcpufreqgov,reqmem,consumedenergy,maxdiskread,maxdiskreadnode,maxdiskreadtask,
+avediskread,maxdiskwrite,maxdiskwritenode,maxdiskwritetask,avediskwrite,
+reqtres,alloctres,tresusageinave,tresusageinmax,
+tresusageinmaxn,tresusageinmaxt,tresusageinmin,tresusageinminn,tresusageinmint,
+tresusageintot,tresusageoutmax,tresusageoutmaxn,
+tresusageoutmaxt,tresusageoutave,tresusageouttot
+
+<DT><DD>
+<P>
+<dt><B>--name</B>=&lt;<I>jobname_list</I>&gt;<a class="slurm_link" id="OPT_name" href="#OPT_name"></a></dt><dd>Display jobs that have any of these name(s).
+<DT><DD>
+<P>
+<dt><B>-i</B>, <B>--nnodes</B>=&lt;<I>min</I>[-<I>max</I>]&gt;<a class="slurm_link" id="OPT_nnodes" href="#OPT_nnodes"></a></dt><dd>Return jobs that ran on the specified number of nodes.
+<DT><DD>
+<P>
+<dt><B>-I</B>, <B>--ncpus</B>=&lt;<I>min</I>[-<I>max</I>]&gt;<a class="slurm_link" id="OPT_ncpus" href="#OPT_ncpus"></a></dt><dd>Return jobs that ran on the specified number of cpus.
+<DT><DD>
+<P>
+<dt><B>--noconvert</B><a class="slurm_link" id="OPT_noconvert" href="#OPT_noconvert"></a></dt><dd>Don't convert units from their original type (e.g. 2048M won't be converted to
+2G).
+<DT><DD>
+<P>
+<dt><B>-N</B>, <B>--nodelist</B>=&lt;<I>node_list</I>&gt;<a class="slurm_link" id="OPT_nodelist" href="#OPT_nodelist"></a></dt><dd>Display jobs that ran on any of these node(s). <I>node_list</I> can be
+a ranged string.
+<P>
+<B>NOTE</B>: This is not reliable when nodes are added or removed to Slurm
+while jobs are running. Only jobs that started in the specified time range
+(-S, -E) will be returned.
+<DT><DD>
+<P>
+<dt><B>-n</B>, <B>--noheader</B><a class="slurm_link" id="OPT_noheader" href="#OPT_noheader"></a></dt><dd>No heading will be added to the output. The default action is to
+display a header.
+<DT><DD>
+<P>
+<dt><B>-p</B>, <B>--parsable</B><a class="slurm_link" id="OPT_parsable" href="#OPT_parsable"></a></dt><dd>Output will be '|' delimited with a '|' at the end. See also the
+<B>--delimiter</B> option.
+<DT><DD>
+<P>
+<dt><B>-P</B>, <B>--parsable2</B><a class="slurm_link" id="OPT_parsable2" href="#OPT_parsable2"></a></dt><dd>Output will be '|' delimited without a '|' at the end. See also the
+<B>--delimiter</B> option.
+<DT><DD>
+<P>
+<dt><B>-r</B>, <B>--partition</B><a class="slurm_link" id="OPT_partition" href="#OPT_partition"></a></dt><dd>Comma separated list of partitions to select jobs and job steps
+from. The default is all partitions.
+<DT><DD>
+<P>
+<dt><B>-q</B>, <B>--qos</B><a class="slurm_link" id="OPT_qos" href="#OPT_qos"></a></dt><dd>Only send data about jobs using these qos. Default is all.
+<DT><DD>
+<P>
+<dt><B>-R</B>, <B>--reason</B>=&lt;<I>reason_list</I>&gt;<a class="slurm_link" id="OPT_reason" href="#OPT_reason"></a></dt><dd>Comma separated list to filter jobs based on what reason the job wasn't
+scheduled outside resources/priority.
+<DT><DD>
+<P>
+<dt><B>-S</B>, <B>--starttime</B><a class="slurm_link" id="OPT_starttime" href="#OPT_starttime"></a></dt><dd>Select jobs in any state after the specified time. Default is 00:00:00
+of the
+current day, unless the '-s' or '-j' options are used. If the '-s' option is
+used, then the default is 'now'. If states are given with the '-s' option then
+only jobs in this state at this time will be returned. If the '-j' option is
+used, then the default time is Unix Epoch 0. See the <B>DEFAULT TIME WINDOW</B>
+section (below) for details about how default values for --starttime and
+--endtime are determined.
+<P>
+Valid time formats are:
+<BR>
+
+HH:MM[:SS][AM|PM]
+<BR>
+
+MMDD[YY][-HH:MM[:SS]]
+<BR>
+
+MM.DD[.YY][-HH:MM[:SS]]
+<BR>
+
+MM/DD[/YY][-HH:MM[:SS]]
+<BR>
+
+YYYY-MM-DD[THH:MM[:SS]]
+<BR>
+
+today, midnight, noon, elevenses (11 AM), fika (3 PM), teatime (4 PM)
+<BR>
+
+now[{+|-}<I>count</I>[seconds(default)|minutes|hours|days|weeks]]
+<DT><DD>
+<P>
+<dt><B>-s</B>, <B>--state</B>=&lt;<I>state_list</I>&gt;<a class="slurm_link" id="OPT_state" href="#OPT_state"></a></dt><dd>Selects jobs based on their state during the time period given.
+Unless otherwise specified, the start and end time will be the
+current time when the <B>--state</B> option is specified and
+only currently running jobs can be displayed.
+A start and/or end time must be specified to view information about
+jobs not currently running.
+See the <B>JOB STATE CODES</B> section below for a list of state designators.
+Multiple state names may be specified using comma separators. Either the short
+or long form of the state name may be used (e.g. <B>CA</B> or <B>CANCELLED</B>)
+and the name is case insensitive (i.e. ca and <B>CA</B> both work).
+<P>
+<B>NOTE</B>: Note for a job to be selected in the PENDING state it must have
+&quot;EligibleTime&quot; in the requested time interval or different from &quot;Unknown&quot;. The
+&quot;EligibleTime&quot; is displayed by the &quot;scontrol show job&quot; command. For example
+jobs submitted with the &quot;--hold&quot; option will have &quot;EligibleTime=Unknown&quot; as
+they are pending indefinitely.
+<P>
+<B>NOTE</B>: When specifying states and no start time is given the default
+start time is 'now'. This is only when -j is not used. If -j is used the
+start time will default to 'Epoch'. In both cases if no end time is given it
+will default to 'now'. See the <B>DEFAULT TIME WINDOW</B> section (below) for
+details about how this option changes the default values for --starttime
+and --endtime.
+<DT><DD>
+<P>
+<dt><B>-K</B>, <B>--timelimit-max</B><a class="slurm_link" id="OPT_timelimit-max" href="#OPT_timelimit-max"></a></dt><dd>Ignored by itself, but if timelimit_min is set this will be the
+maximum timelimit of the range. Default is no restriction.
+<DT><DD>
+<P>
+<dt><B>-k</B>, <B>--timelimit-min</B><a class="slurm_link" id="OPT_timelimit-min" href="#OPT_timelimit-min"></a></dt><dd>Only send data about jobs with this timelimit. If used with
+timelimit_max this will be the minimum timelimit of the range.
+Default is no restriction.
+<DT><DD>
+<P>
+<dt><B>-T</B>, <B>--truncate</B><a class="slurm_link" id="OPT_truncate" href="#OPT_truncate"></a></dt><dd>Truncate time. So if a job started before --starttime the start time
+would be truncated to --starttime. The same for end time and --endtime.
+<DT><DD>
+<P>
+<dt><B>-u, --uid</B>=, <B>--user</B>=&lt;<I>uid_or_user_list</I>&gt;<a class="slurm_link" id="OPT_uid" href="#OPT_uid"></a></dt><dd>Use this comma separated list of UIDs or user names to select jobs to
+display. By default, the running user's UID is used.
+<DT><DD>
+<P>
+<dt><B>--units</B>=[<B>KMGTP</B>]<a class="slurm_link" id="OPT_units" href="#OPT_units"></a></dt><dd>Display values in specified unit type. Takes precedence over <B>--noconvert</B>
+option.
+<DT><DD>
+<P>
+<dt><B>--usage</B><a class="slurm_link" id="OPT_usage" href="#OPT_usage"></a></dt><dd>Display a command usage summary.
+<DT><DD>
+<P>
+<dt><B>--use-local-uid</B><a class="slurm_link" id="OPT_use-local-uid" href="#OPT_use-local-uid"></a></dt><dd>When displaying UID, sacct uses the UID stored in Slurm's accounting database
+by default. Use this command to make Slurm use a system call to get the UID
+from the username. This option may be useful in an environment with multiple
+clusters and one database where the UIDs aren't the same on all clusters.
+<DT><DD>
+<P>
+<dt><B>-v</B>, <B>--verbose</B><a class="slurm_link" id="OPT_verbose" href="#OPT_verbose"></a></dt><dd>Primarily for debugging purposes, report the state of various
+variables during processing.
+<DT><DD>
+<P>
+<dt><B>-V, --version</B><a class="slurm_link" id="OPT_version" href="#OPT_version"></a></dt><dd>Print version.
+<DT><DD>
+<P>
+<dt><B>-W</B>, <B>--wckeys</B>=&lt;<I>wckey_list</I>&gt;<a class="slurm_link" id="OPT_wckeys" href="#OPT_wckeys"></a></dt><dd>Displays the statistics only for the jobs started on the wckeys
+specified by the <I>wckey_list</I> operand, which is a comma-separated
+list of wckey names. Space characters are not allowed in the
+<I>wckey_list</I>. Default is all wckeys.
+<DT><DD>
+<P>
+<dt><B>--whole-hetjob</B>[=yes|no]<a class="slurm_link" id="OPT_whole-hetjob" href="#OPT_whole-hetjob"></a></dt><dd>When querying and filtering heterogeneous jobs with <B>--jobs</B>, Slurm will
+default to retrieving information about all the components of the job if the
+het_job_id (leader id) is selected. If a non-leader heterogeneous job component
+id is selected then only that component is retrieved by default. This behavior
+can be changed by using this option. If set to 'yes' (or no argument), then
+information about all the components will be retrieved no matter which component
+is selected in the job filter. If set to 'no' then only the selected
+heterogeneous job component(s) will be retrieved, even when selecting the
+leader.
+<DT><DD>
+<P>
+<dt><B>--yaml</B>, <B>--yaml</B>=<I>list</I>, <B>--yaml</B>=&lt;<I>data_parser</I>&gt;<a class="slurm_link" id="OPT_yaml" href="#OPT_yaml"></a></dt><dd>Dump job information as YAML using the default data_parser plugin or explicit
+data_parser with parameters. Sorting and formatting arguments will be ignored.
+<DT><DD>
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<h3>Job Accounting Fields<a class="slurm_link" id="SECTION_Job-Accounting-Fields" href="#SECTION_Job-Accounting-Fields"></a></h3>
+Descriptions of each field option can be found below.
+Note that the Ave*, Max* and Min* accounting fields look at the values for
+all the tasks of each step in a job and return the average, maximum or minimum
+values of the task for that job step. For example, for MaxRSS, the returned
+value is the maximum memory consumption seen by one of the tasks of the step,
+and MaxRSSTask shows which task it is.
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<dt><B>ALL</B><a class="slurm_link" id="OPT_ALL" href="#OPT_ALL"></a></dt><dd>Print all fields listed below.
+<DT><DD>
+<P>
+<dt><B>Account</B><a class="slurm_link" id="OPT_Account" href="#OPT_Account"></a></dt><dd>Account the job ran under.
+<DT><DD>
+<P>
+<dt><B>AdminComment</B><a class="slurm_link" id="OPT_AdminComment" href="#OPT_AdminComment"></a></dt><dd>A comment string on a job that must be set by an administrator, the SlurmUser
+or root.
+<DT><DD>
+<P>
+<dt><B>AllocCPUs</B><a class="slurm_link" id="OPT_AllocCPUs" href="#OPT_AllocCPUs"></a></dt><dd>Count of allocated CPUs. Equivalent to <B>NCPUS</B>.
+<DT><DD>
+<P>
+<dt><B>AllocNodes</B><a class="slurm_link" id="OPT_AllocNodes" href="#OPT_AllocNodes"></a></dt><dd>Number of nodes allocated to the job/step.  0 if the job is pending.
+<DT><DD>
+<P>
+<dt><B>AllocTres</B><a class="slurm_link" id="OPT_AllocTres" href="#OPT_AllocTres"></a></dt><dd>Trackable resources. These are the resources allocated to the job/step
+after the job started running. For pending jobs this should be blank.
+For more details see AccountingStorageTRES in slurm.conf.
+<P>
+<B>NOTE</B>: When a generic resource is configured with the no_consume flag,
+the allocation will be printed with a zero.
+<DT><DD>
+<P>
+<dt><B>AssocID</B><a class="slurm_link" id="OPT_AssocID" href="#OPT_AssocID"></a></dt><dd>Reference to the association of user, account and cluster.
+<DT><DD>
+<P>
+<dt><B>AveCPU</B><a class="slurm_link" id="OPT_AveCPU" href="#OPT_AveCPU"></a></dt><dd>Average (system + user) CPU time of all tasks in job.
+<DT><DD>
+<P>
+<dt><B>AveCPUFreq</B><a class="slurm_link" id="OPT_AveCPUFreq" href="#OPT_AveCPUFreq"></a></dt><dd>Average weighted CPU frequency of all tasks in job, in kHz.
+<DT><DD>
+<P>
+<dt><B>AveDiskRead</B><a class="slurm_link" id="OPT_AveDiskRead" href="#OPT_AveDiskRead"></a></dt><dd>Average number of bytes read by all tasks in job.
+<DT><DD>
+<P>
+<dt><B>AveDiskWrite</B><a class="slurm_link" id="OPT_AveDiskWrite" href="#OPT_AveDiskWrite"></a></dt><dd>Average number of bytes written by all tasks in job.
+<DT><DD>
+<P>
+<dt><B>AvePages</B><a class="slurm_link" id="OPT_AvePages" href="#OPT_AvePages"></a></dt><dd>Average number of page faults of all tasks in job.
+<DT><DD>
+<P>
+<dt><B>AveRSS</B><a class="slurm_link" id="OPT_AveRSS" href="#OPT_AveRSS"></a></dt><dd>Average resident set size of all tasks in job.
+<DT><DD>
+<P>
+<dt><B>AveVMSize</B><a class="slurm_link" id="OPT_AveVMSize" href="#OPT_AveVMSize"></a></dt><dd>Average Virtual Memory size of all tasks in job.
+<DT><DD>
+<P>
+<dt><B>BlockID</B><a class="slurm_link" id="OPT_BlockID" href="#OPT_BlockID"></a></dt><dd>The name of the block to be used (used with Blue Gene systems).
+<DT><DD>
+<P>
+<dt><B>Cluster</B><a class="slurm_link" id="OPT_Cluster" href="#OPT_Cluster"></a></dt><dd>Cluster name.
+<DT><DD>
+<P>
+<dt><B>Comment</B><a class="slurm_link" id="OPT_Comment" href="#OPT_Comment"></a></dt><dd>The job's comment string when the AccountingStoreFlags parameter
+in the slurm.conf file contains 'job_comment'. The Comment
+string can be modified by invoking <B>sacctmgr modify job</B> or the
+specialized <B>sjobexitmod</B> command.
+<DT><DD>
+<P>
+<dt><B>Constraints</B><a class="slurm_link" id="OPT_Constraints" href="#OPT_Constraints"></a></dt><dd>Feature(s) the job requested as a constraint.
+<DT><DD>
+<P>
+<dt><B>ConsumedEnergy</B><a class="slurm_link" id="OPT_ConsumedEnergy" href="#OPT_ConsumedEnergy"></a></dt><dd>Total energy consumed by all tasks in a job, in joules.
+Value may include a unit prefix (K,M,G,T,P).
+Note: Only in the case of an exclusive job allocation does this value
+reflect the job's real energy consumption.
+<DT><DD>
+<P>
+<dt><B>ConsumedEnergyRaw</B><a class="slurm_link" id="OPT_ConsumedEnergyRaw" href="#OPT_ConsumedEnergyRaw"></a></dt><dd>Total energy consumed by all tasks in a job, in joules.
+Note: Only in the case of an exclusive job allocation does this value
+reflect the job's real energy consumption.
+<DT><DD>
+<P>
+<dt><B>Container</B><a class="slurm_link" id="OPT_Container" href="#OPT_Container"></a></dt><dd>Path to OCI Container Bundle requested.
+<DT><DD>
+<P>
+<dt><B>CPUTime</B><a class="slurm_link" id="OPT_CPUTime" href="#OPT_CPUTime"></a></dt><dd>Time used (Elapsed time * CPU count) by a job or step in HH:MM:SS format.
+<DT><DD>
+<P>
+<dt><B>CPUTimeRAW</B><a class="slurm_link" id="OPT_CPUTimeRAW" href="#OPT_CPUTimeRAW"></a></dt><dd>Time used (Elapsed time * CPU count) by a job or step in cpu-seconds.
+<DT><DD>
+<P>
+<dt><B>DBIndex</B><a class="slurm_link" id="OPT_DBIndex" href="#OPT_DBIndex"></a></dt><dd>Unique database index for entries in the job table.
+<DT><DD>
+<P>
+<dt><B>DerivedExitCode</B><a class="slurm_link" id="OPT_DerivedExitCode" href="#OPT_DerivedExitCode"></a></dt><dd>The highest exit code returned by the job's job steps (srun
+invocations). Following the colon is the signal that caused the
+process to terminate if it was terminated by a signal. The
+DerivedExitCode can be modified by invoking <B>sacctmgr modify job</B>
+or the specialized <B>sjobexitmod</B> command.
+<DT><DD>
+<P>
+<dt><B>Elapsed</B><a class="slurm_link" id="OPT_Elapsed" href="#OPT_Elapsed"></a></dt><dd>The job's elapsed time.
+<P>
+The format of this field's output is as follows:
+<DT><DD>
+<DL COMPACT><DT><DD>
+
+<DL COMPACT>
+<DT>
+<I>[DD-[HH:]]MM:SS</I>
+
+</DL>
+</DL>
+
+<DT><DD>
+<DD>as defined by the following:
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<dt><I>DD</I><a class="slurm_link" id="OPT_DD" href="#OPT_DD"></a></dt><dd>days
+<DT><DD>
+<P>
+<dt><I>hh</I><a class="slurm_link" id="OPT_hh" href="#OPT_hh"></a></dt><dd>hours
+<DT><DD>
+<P>
+<dt><I>mm</I><a class="slurm_link" id="OPT_mm" href="#OPT_mm"></a></dt><dd>minutes
+<DT><DD>
+<P>
+<dt><I>ss</I><a class="slurm_link" id="OPT_ss" href="#OPT_ss"></a></dt><dd>seconds
+</DL>
+</DL>
+
+<DT><DD>
+<P>
+<dt><B>ElapsedRaw</B><a class="slurm_link" id="OPT_ElapsedRaw" href="#OPT_ElapsedRaw"></a></dt><dd>The job's elapsed time in seconds.
+<DT><DD>
+<P>
+<dt><B>Eligible</B><a class="slurm_link" id="OPT_Eligible" href="#OPT_Eligible"></a></dt><dd>When the job became eligible to run. In the same format as <B>End</B>.
+<DT><DD>
+<P>
+<dt><B>End</B><a class="slurm_link" id="OPT_End" href="#OPT_End"></a></dt><dd>Termination time of the job. The output is of the format YYYY-MM-DDTHH:MM:SS,
+unless changed through the SLURM_TIME_FORMAT environment variable.
+<DT><DD>
+<P>
+<dt><B>Exclusive</B><a class="slurm_link" id="OPT_Exclusive" href="#OPT_Exclusive"></a></dt><dd>Indicates whether the job has exclusive access to its allocated resources.
+<DT><DD>
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<dt><B>NO</B><a class="slurm_link" id="OPT_NO" href="#OPT_NO"></a></dt><dd>
+<DD>
+The job does not require exclusive access to its allocated resources.
+<DT><DD>
+<P>
+<dt><B>NODE</B><a class="slurm_link" id="OPT_NODE" href="#OPT_NODE"></a></dt><dd>
+<DD>
+The job is allocated all CPUs and GRES on all nodes in the allocation and
+cannot share nodes with other jobs. This corresponds to the
+<B>--exclusive</B> option.
+<DT><DD>
+<P>
+<dt><B>USER</B><a class="slurm_link" id="OPT_USER" href="#OPT_USER"></a></dt><dd>
+<DD>
+The job cannot share nodes with other jobs unless they are from the
+same user. This corresponds to the <B>--exclusive=user</B> option.
+<DT><DD>
+<P>
+<dt><B>MCS</B><a class="slurm_link" id="OPT_MCS" href="#OPT_MCS"></a></dt><dd>
+<DD>
+The job cannot share nodes with other jobs unless they are using the same
+MCS label. This corresponds to the <B>--exclusive=mcs</B> option.
+<DT><DD>
+<P>
+<dt><B>TOPO</B><a class="slurm_link" id="OPT_TOPO" href="#OPT_TOPO"></a></dt><dd>
+<DD>
+The job cannot share a topology segment with other jobs. This corresponds
+to the <B>--exclusive=topo</B> option.
+</DL>
+</DL>
+
+<DT><DD>
+<P>
+<B>NOTE</B>: Partition and Global parameters can set this despite job requests
+otherwise.
+<DT><DD>
+<P>
+<dt><B>ExitCode</B><a class="slurm_link" id="OPT_ExitCode" href="#OPT_ExitCode"></a></dt><dd>The exit code returned by the job script or salloc, typically as set
+by the exit() function. Following the colon is the signal that caused
+the process to terminate if it was terminated by a signal.
+<DT><DD>
+<P>
+<dt><B>Extra</B><a class="slurm_link" id="OPT_Extra" href="#OPT_Extra"></a></dt><dd>The job's extra string when the AccountingStoreFlags parameter in the slurm.conf
+file contains 'job_extra'. The Extra string can be modified by invoking
+<B>sacctmgr modify job</B> command.
+<DT><DD>
+<P>
+<dt><B>FailedNode</B><a class="slurm_link" id="OPT_FailedNode" href="#OPT_FailedNode"></a></dt><dd>The name of the node whose failure caused the job to be killed.
+<DT><DD>
+<P>
+<dt><B>Flags</B><a class="slurm_link" id="OPT_Flags" href="#OPT_Flags"></a></dt><dd>Job flags. Current flags are SchedSubmit, SchedMain, SchedBackfill.
+<DT><DD>
+<P>
+<dt><B>GID</B><a class="slurm_link" id="OPT_GID" href="#OPT_GID"></a></dt><dd>The group identifier of the user who ran the job.
+<DT><DD>
+<P>
+<dt><B>Group</B><a class="slurm_link" id="OPT_Group" href="#OPT_Group"></a></dt><dd>The group name of the user who ran the job.
+<DT><DD>
+<P>
+<dt><B>JobID</B><a class="slurm_link" id="OPT_JobID" href="#OPT_JobID"></a></dt><dd>The identification number of the job or job step.
+<DT><DD>
+<P>
+Regular jobs are in the form:
+<DT><DD>
+<P>
+<I>JobID[.JobStep]</I>
+<P>
+Array jobs are in the form:
+<DT><DD>
+<P>
+<I>ArrayJobID_ArrayTaskID</I>
+<P>
+Heterogeneous jobs are in the form:
+<DT><DD>
+<P>
+<I>HetJobID+HetJobOffset</I>
+<P>
+When printing job arrays, performance of the command can be measurably improved
+for systems with large numbers of jobs when a single job ID is specified. By
+default, this field size will be limited to 64 bytes. Use the environment
+variable SLURM_BITSTR_LEN to specify larger field sizes.
+<DT><DD>
+<P>
+<dt><B>JobIDRaw</B><a class="slurm_link" id="OPT_JobIDRaw" href="#OPT_JobIDRaw"></a></dt><dd>The identification number of the job or job step. Prints the JobID in the
+form <I>JobID[.JobStep]</I> for regular, heterogeneous and array jobs.
+<DT><DD>
+<P>
+<dt><B>JobName</B><a class="slurm_link" id="OPT_JobName" href="#OPT_JobName"></a></dt><dd>The name of the job or job step. The <B>slurm_accounting.log</B> file
+is a space delimited file. Because of this if a space is used in the
+jobname an underscore is substituted for the space before the record
+is written to the accounting file. So when the jobname is displayed
+by <B>sacct</B> the jobname that had a space in it will now have an underscore
+in place of the space.
+<DT><DD>
+<P>
+<dt><B>Layout</B><a class="slurm_link" id="OPT_Layout" href="#OPT_Layout"></a></dt><dd>What the layout of a step was when it was running. This can be used
+to give you an idea of which node ran which rank in your job.
+<DT><DD>
+<P>
+<dt><B>MaxDiskRead</B><a class="slurm_link" id="OPT_MaxDiskRead" href="#OPT_MaxDiskRead"></a></dt><dd>Maximum number of bytes read by all tasks in job.
+<DT><DD>
+<P>
+<dt><B>MaxDiskReadNode</B><a class="slurm_link" id="OPT_MaxDiskReadNode" href="#OPT_MaxDiskReadNode"></a></dt><dd>The node on which the maxdiskread occurred.
+<DT><DD>
+<P>
+<dt><B>MaxDiskReadTask</B><a class="slurm_link" id="OPT_MaxDiskReadTask" href="#OPT_MaxDiskReadTask"></a></dt><dd>The task ID where the maxdiskread occurred.
+<DT><DD>
+<P>
+<dt><B>MaxDiskWrite</B><a class="slurm_link" id="OPT_MaxDiskWrite" href="#OPT_MaxDiskWrite"></a></dt><dd>Maximum number of bytes written by all tasks in job.
+<DT><DD>
+<P>
+<dt><B>MaxDiskWriteNode</B><a class="slurm_link" id="OPT_MaxDiskWriteNode" href="#OPT_MaxDiskWriteNode"></a></dt><dd>The node on which the maxdiskwrite occurred.
+<DT><DD>
+<P>
+<dt><B>MaxDiskWriteTask</B><a class="slurm_link" id="OPT_MaxDiskWriteTask" href="#OPT_MaxDiskWriteTask"></a></dt><dd>The task ID where the maxdiskwrite occurred.
+<DT><DD>
+<P>
+<dt><B>MaxPages</B><a class="slurm_link" id="OPT_MaxPages" href="#OPT_MaxPages"></a></dt><dd>Maximum number of page faults of all tasks in job.
+<DT><DD>
+<P>
+<dt><B>MaxPagesNode</B><a class="slurm_link" id="OPT_MaxPagesNode" href="#OPT_MaxPagesNode"></a></dt><dd>The node on which the maxpages occurred.
+<DT><DD>
+<P>
+<dt><B>MaxPagesTask</B><a class="slurm_link" id="OPT_MaxPagesTask" href="#OPT_MaxPagesTask"></a></dt><dd>The task ID where the maxpages occurred.
+<DT><DD>
+<P>
+<dt><B>MaxRSS</B><a class="slurm_link" id="OPT_MaxRSS" href="#OPT_MaxRSS"></a></dt><dd>Maximum resident set size of all tasks in job.
+<DT><DD>
+<P>
+<dt><B>MaxRSSNode</B><a class="slurm_link" id="OPT_MaxRSSNode" href="#OPT_MaxRSSNode"></a></dt><dd>The node on which the maxrss occurred.
+<DT><DD>
+<P>
+<dt><B>MaxRSSTask</B><a class="slurm_link" id="OPT_MaxRSSTask" href="#OPT_MaxRSSTask"></a></dt><dd>The task ID where the maxrss occurred.
+<DT><DD>
+<P>
+<dt><B>MaxVMSize</B><a class="slurm_link" id="OPT_MaxVMSize" href="#OPT_MaxVMSize"></a></dt><dd>Maximum Virtual Memory size of all tasks in job.
+<DT><DD>
+<P>
+<dt><B>MaxVMSizeNode</B><a class="slurm_link" id="OPT_MaxVMSizeNode" href="#OPT_MaxVMSizeNode"></a></dt><dd>The node on which the maxvmsize occurred.
+<DT><DD>
+<P>
+<dt><B>MaxVMSizeTask</B><a class="slurm_link" id="OPT_MaxVMSizeTask" href="#OPT_MaxVMSizeTask"></a></dt><dd>The task ID where the maxvmsize occurred.
+<DT><DD>
+<P>
+<dt><B>MCSLabel</B><a class="slurm_link" id="OPT_MCSLabel" href="#OPT_MCSLabel"></a></dt><dd>Multi-Category Security (MCS) label associated with the job.
+Added to a job when the MCSPlugin is enabled in the slurm.conf.
+<DT><DD>
+<P>
+<dt><B>MinCPU</B><a class="slurm_link" id="OPT_MinCPU" href="#OPT_MinCPU"></a></dt><dd>Minimum (system + user) CPU time of all tasks in job.
+<DT><DD>
+<P>
+<dt><B>MinCPUNode</B><a class="slurm_link" id="OPT_MinCPUNode" href="#OPT_MinCPUNode"></a></dt><dd>The node on which the mincpu occurred.
+<DT><DD>
+<P>
+<dt><B>MinCPUTask</B><a class="slurm_link" id="OPT_MinCPUTask" href="#OPT_MinCPUTask"></a></dt><dd>The task ID where the mincpu occurred.
+<DT><DD>
+<P>
+<dt><B>NCPUS</B><a class="slurm_link" id="OPT_NCPUS" href="#OPT_NCPUS"></a></dt><dd>Total number of CPUs allocated to the job. Equivalent to <B>AllocCPUS</B>.
+<DT><DD>
+<P>
+<dt><B>NNodes</B><a class="slurm_link" id="OPT_NNodes" href="#OPT_NNodes"></a></dt><dd>Number of nodes in a job or step. If the job is running, or ran, this count
+will be the number allocated, else the number will be the number requested.
+<DT><DD>
+<P>
+<dt><B>NodeList</B><a class="slurm_link" id="OPT_NodeList" href="#OPT_NodeList"></a></dt><dd>List of nodes in job/step.
+<DT><DD>
+<P>
+<dt><B>NTasks</B><a class="slurm_link" id="OPT_NTasks" href="#OPT_NTasks"></a></dt><dd>Total number of tasks in a job or step.
+<DT><DD>
+<P>
+<dt><B>OriginalSLUID</B><a class="slurm_link" id="OPT_OriginalSLUID" href="#OPT_OriginalSLUID"></a></dt><dd>The SLUID assigned when the job was first submitted. Remains constant during
+the entire life of the job even if it has been resized. It changes if the job is
+requeued or restarted. It can be used to correlate runs of jobs which have been
+resized. This is the SLUID used by command tools during the runtime of the job.
+<DT><DD>
+<P>
+<dt><B>OverSubscribe</B><a class="slurm_link" id="OPT_OverSubscribe" href="#OPT_OverSubscribe"></a></dt><dd>Indicates whether the job can oversubscribe resources with other jobs.
+<DT><DD>
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<dt><B>NO</B><a class="slurm_link" id="OPT_NO_1" href="#OPT_NO_1"></a></dt><dd>
+<DD>
+The job cannot oversubscribe resources with other jobs.
+<DT><DD>
+<P>
+<dt><B>YES</B><a class="slurm_link" id="OPT_YES" href="#OPT_YES"></a></dt><dd>
+<DD>
+The user requested that the job be able to oversubscribe resources with
+other jobs. This corresponds to the <B>--oversubscribe</B> option.
+<DT><DD>
+<P>
+<dt><B>OK</B><a class="slurm_link" id="OPT_OK" href="#OPT_OK"></a></dt><dd>
+<DD>
+The partition allows oversubscribing resources with other jobs.
+</DL>
+</DL>
+
+<DT><DD>
+<P>
+<B>NOTE</B>: Partition and Global parameters can set this despite job requests
+otherwise.
+<DT><DD>
+<P>
+<dt><B>Partition</B><a class="slurm_link" id="OPT_Partition" href="#OPT_Partition"></a></dt><dd>Identifies the partition on which the job ran.
+<DT><DD>
+<P>
+<dt><B>Planned</B><a class="slurm_link" id="OPT_Planned" href="#OPT_Planned"></a></dt><dd>How much wall clock time was used as planned time for this job. This is
+derived from how long a job was waiting from eligible time to when it started or
+was cancelled. Format is the same as <B>Elapsed</B>.
+<DT><DD>
+<P>
+<dt><B>PlannedCPU</B><a class="slurm_link" id="OPT_PlannedCPU" href="#OPT_PlannedCPU"></a></dt><dd>How many CPU seconds were used as planned time for this job. Format is
+the same as <B>Elapsed</B>.
+<DT><DD>
+<P>
+<dt><B>PlannedCPURAW</B><a class="slurm_link" id="OPT_PlannedCPURAW" href="#OPT_PlannedCPURAW"></a></dt><dd>How many CPU seconds were used as planned time for this job. Format is
+in processor seconds.
+<DT><DD>
+<P>
+<dt><B>Priority</B><a class="slurm_link" id="OPT_Priority" href="#OPT_Priority"></a></dt><dd>Slurm priority.
+<DT><DD>
+<P>
+<dt><B>QOS</B><a class="slurm_link" id="OPT_QOS" href="#OPT_QOS"></a></dt><dd>Name of Quality of Service.
+<DT><DD>
+<P>
+<dt><B>QOSRAW</B><a class="slurm_link" id="OPT_QOSRAW" href="#OPT_QOSRAW"></a></dt><dd>Numeric id of Quality of Service.
+<DT><DD>
+<P>
+<dt><B>QOSREQ</B><a class="slurm_link" id="OPT_QOSREQ" href="#OPT_QOSREQ"></a></dt><dd>List of Quality of Services requested by the job.
+<DT><DD>
+<P>
+<dt><B>Reason</B><a class="slurm_link" id="OPT_Reason" href="#OPT_Reason"></a></dt><dd>The last reason a job was blocked from running for something other than
+Priority or Resources. This will be saved in the database even if the job
+ran to completion.
+<DT><DD>
+<P>
+<dt><B>ReqCPUFreq</B><a class="slurm_link" id="OPT_ReqCPUFreq" href="#OPT_ReqCPUFreq"></a></dt><dd>Requested CPU frequency for the step, in kHz.
+Note: This value applies only to a job step. No value is reported for the job.
+<DT><DD>
+<P>
+<dt><B>ReqCPUFreqGov</B><a class="slurm_link" id="OPT_ReqCPUFreqGov" href="#OPT_ReqCPUFreqGov"></a></dt><dd>Requested CPU frequency governor for the step, in kHz.
+Note: This value applies only to a job step. No value is reported for the job.
+<DT><DD>
+<P>
+<dt><B>ReqCPUFreqMax</B><a class="slurm_link" id="OPT_ReqCPUFreqMax" href="#OPT_ReqCPUFreqMax"></a></dt><dd>Maximum requested CPU frequency for the step, in kHz.
+Note: This value applies only to a job step. No value is reported for the job.
+<DT><DD>
+<P>
+<dt><B>ReqCPUFreqMin</B><a class="slurm_link" id="OPT_ReqCPUFreqMin" href="#OPT_ReqCPUFreqMin"></a></dt><dd>Minimum requested CPU frequency for the step, in kHz.
+Note: This value applies only to a job step. No value is reported for the job.
+<DT><DD>
+<P>
+<dt><B>ReqCPUS</B><a class="slurm_link" id="OPT_ReqCPUS" href="#OPT_ReqCPUS"></a></dt><dd>Number of requested CPUs.
+<DT><DD>
+<P>
+<dt><B>ReqMem</B><a class="slurm_link" id="OPT_ReqMem" href="#OPT_ReqMem"></a></dt><dd>Minimum required memory for the job. It may have a letter appended to it
+indicating units (M for megabytes, G for gigabytes, etc.).
+Note: This value is only from the job allocation, not the step.
+<DT><DD>
+<P>
+<dt><B>ReqNodes</B><a class="slurm_link" id="OPT_ReqNodes" href="#OPT_ReqNodes"></a></dt><dd>Requested minimum Node count for the job/step.
+<DT><DD>
+<P>
+<dt><B>ReqTres</B><a class="slurm_link" id="OPT_ReqTres" href="#OPT_ReqTres"></a></dt><dd>Trackable resources. These are the minimum resource counts requested by the
+job/step at submission time.
+For more details see AccountingStorageTRES in slurm.conf.
+<DT><DD>
+<P>
+<dt><B>ReqReservation</B><a class="slurm_link" id="OPT_ReqReservation" href="#OPT_ReqReservation"></a></dt><dd>Comma separated list of reservation names requested by the job.
+<DT><DD>
+<P>
+<dt><B>Reservation</B><a class="slurm_link" id="OPT_Reservation" href="#OPT_Reservation"></a></dt><dd>Reservation Name.
+<DT><DD>
+<P>
+<dt><B>ReservationId</B><a class="slurm_link" id="OPT_ReservationId" href="#OPT_ReservationId"></a></dt><dd>Reservation Id.
+<DT><DD>
+<P>
+<dt><B>Restarts</B><a class="slurm_link" id="OPT_Restarts" href="#OPT_Restarts"></a></dt><dd>How many times this job has been requeued/restarted.
+<DT><DD>
+<P>
+<dt><B>SegmentSize</B><a class="slurm_link" id="OPT_SegmentSize" href="#OPT_SegmentSize"></a></dt><dd>When a block topology is used, this is the size of the segments that will be
+used to create the job allocation.
+<DT><DD>
+<P>
+<dt><B>SLUID</B><a class="slurm_link" id="OPT_SLUID" href="#OPT_SLUID"></a></dt><dd>A unique identifier for a specific run of a job. Unlike a job ID, the SLUID
+changes each time a job is requeued/restarted/resized, allowing different runs
+of the same job to be distinguished. Previous runs of the job can be shown with
+the <B>-D</B>/<B>--duplicates</B> option. SLUIDs are globally unique across the
+accounting system.
+<DT><DD>
+<P>
+<dt><B>Start</B><a class="slurm_link" id="OPT_Start" href="#OPT_Start"></a></dt><dd>Initiation time of the job. In the same format as <B>End</B>.
+<DT><DD>
+<P>
+<dt><B>State</B><a class="slurm_link" id="OPT_State" href="#OPT_State"></a></dt><dd>Displays the job status, or state.
+See the <B>JOB STATE CODES</B> section below for a list of possible states.
+<P>
+If more information is available on the job state
+than will fit into the current field width (for example, the UID that CANCELLED
+a job) the state will be followed by a &quot;+&quot;. You can increase the size of
+the displayed state using the &quot;%NUMBER&quot; format modifier described earlier.
+<P>
+<B>NOTE</B>: The RUNNING state will return suspended jobs as well. In order
+to print suspended jobs you must request SUSPENDED at a different call
+from RUNNING.
+<P>
+<B>NOTE</B>: The RUNNING state will return any jobs completed (cancelled or
+otherwise) in the time period requested as the job was also RUNNING during that
+time. If you are only looking for jobs that finished, please choose the
+appropriate state(s) without the RUNNING state.
+<DT><DD>
+<P>
+<dt><B>StdErr</B><a class="slurm_link" id="OPT_StdErr" href="#OPT_StdErr"></a></dt><dd>Display the &quot;<I>filename pattern</I>&quot; for stderr redirection specified in a
+job or in job steps. Path wildcards will not be substituted and will be
+shown as defined in the original batch submission.
+<DT><DD>
+<P>
+<dt><B>StdIn</B><a class="slurm_link" id="OPT_StdIn" href="#OPT_StdIn"></a></dt><dd>Display the &quot;<I>filename pattern</I>&quot; for stdin redirection specified in a
+job or in job steps. Path wildcards will not be substituted and will be
+shown as defined in the original batch submission.
+<DT><DD>
+<P>
+<dt><B>StdOut</B><a class="slurm_link" id="OPT_StdOut" href="#OPT_StdOut"></a></dt><dd>Display the &quot;<I>filename pattern</I>&quot; for stdout redirection specified in a
+job or in job steps. Path wildcards will not be substituted and will be
+shown as defined in the original batch submission.
+<DT><DD>
+<P>
+<dt><B>Submit</B><a class="slurm_link" id="OPT_Submit" href="#OPT_Submit"></a></dt><dd>The time the job was submitted. In the same format as <B>End</B>.
+<P>
+<B>NOTE</B>: If a job is requeued, the submit time is reset. To obtain the
+original submit time it is necessary to use the <B>-D</B>/<B>--duplicates</B>
+option to display all duplicate entries for a job.
+<DT><DD>
+<P>
+<dt><B>SubmitLine</B><a class="slurm_link" id="OPT_SubmitLine" href="#OPT_SubmitLine"></a></dt><dd>The full command issued to submit the job.
+<DT><DD>
+<P>
+<dt><B>Suspended</B><a class="slurm_link" id="OPT_Suspended" href="#OPT_Suspended"></a></dt><dd>The amount of time a job or job step was suspended. Format is the same
+as <I>Elapsed</I>.
+<DT><DD>
+<P>
+<dt><B>SystemComment</B><a class="slurm_link" id="OPT_SystemComment" href="#OPT_SystemComment"></a></dt><dd>The job's comment string that is typically set by a plugin.
+Can only be modified by a Slurm administrator.
+<DT><DD>
+<P>
+<dt><B>SystemCPU</B><a class="slurm_link" id="OPT_SystemCPU" href="#OPT_SystemCPU"></a></dt><dd>The amount of system CPU time used by the job or job step. Format
+is the same as <B>Elapsed</B>.
+<P>
+<B>NOTE</B>: See the note for TotalCPU for information about how canceled jobs
+are handled.
+<DT><DD>
+<P>
+<dt><B>Timelimit</B><a class="slurm_link" id="OPT_Timelimit" href="#OPT_Timelimit"></a></dt><dd>What the timelimit was/is for the job or job step. Format is the same as
+<B>Elapsed</B>, but two additional special values can be displayed:
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<dt><B>Partition_limit</B><a class="slurm_link" id="OPT_Partition_limit" href="#OPT_Partition_limit"></a></dt><dd>Indicates that the job did not have its time limit set and was not yet
+subjected to a partition MaxTime (i.e. job is pending). You can define the
+<B>DefaultTime</B> on the partition to avoid seeing this value.
+<DT><DD>
+<dt><B>UNLIMITED</B><a class="slurm_link" id="OPT_UNLIMITED" href="#OPT_UNLIMITED"></a></dt><dd>Indicates the job did not have a time limit defined.
+</DL>
+</DL>
+
+<DT><DD>
+<P>
+<dt><B>TimelimitRaw</B><a class="slurm_link" id="OPT_TimelimitRaw" href="#OPT_TimelimitRaw"></a></dt><dd>What the timelimit was/is for the job or job step. Format is in number of
+minutes. <B>NOTE</B>: See <B>TimeLimit</B> description.
+<DT><DD>
+<P>
+<dt><B>TotalCPU</B><a class="slurm_link" id="OPT_TotalCPU" href="#OPT_TotalCPU"></a></dt><dd>The sum of the SystemCPU and UserCPU time used by the job or job step.
+The total CPU time of the job may exceed the job's elapsed time for
+jobs that include multiple job steps. Format is the same as <B>Elapsed</B>.
+<P>
+<B>NOTE</B>: For the steps interrupted by signal (e.g. scancel, job timeout)
+TotalCPU provides a measure of the task's parent process and may not include
+CPU time of child processes.
+This is a result of <B>wait3</B> resource usage (<B>getrusage</B>) internals.
+For processes completing in regular way all the descendant processes (forks and
+execs) resources are included. However, if the processes are killed the result
+may differ between proctrack plugins and end-user applications.
+<DT><DD>
+<P>
+<dt><B>TresUsageInAve</B><a class="slurm_link" id="OPT_TresUsageInAve" href="#OPT_TresUsageInAve"></a></dt><dd>Tres average usage in by all tasks in job.
+<B>NOTE</B>: If corresponding TresUsageInMaxTask is -1 the metric is node
+centric instead of task.
+<DT><DD>
+<P>
+<dt><B>TresUsageInMax</B><a class="slurm_link" id="OPT_TresUsageInMax" href="#OPT_TresUsageInMax"></a></dt><dd>Tres maximum usage in by all tasks in job.
+<B>NOTE</B>: If corresponding TresUsageInMaxTask is -1 the metric is node
+centric instead of task.
+<DT><DD>
+<P>
+<dt><B>TresUsageInMaxNode</B><a class="slurm_link" id="OPT_TresUsageInMaxNode" href="#OPT_TresUsageInMaxNode"></a></dt><dd>Node for which each maximum TRES usage out occurred.
+<DT><DD>
+<P>
+<dt><B>TresUsageInMaxTask</B><a class="slurm_link" id="OPT_TresUsageInMaxTask" href="#OPT_TresUsageInMaxTask"></a></dt><dd>Task for which each maximum TRES usage out occurred.
+<DT><DD>
+<P>
+<dt><B>TresUsageInMin</B><a class="slurm_link" id="OPT_TresUsageInMin" href="#OPT_TresUsageInMin"></a></dt><dd>Tres minimum usage in by all tasks in job.
+<B>NOTE</B>: If corresponding TresUsageInMinTask is -1 the metric is node
+centric instead of task.
+<DT><DD>
+<P>
+<dt><B>TresUsageInMinNode</B><a class="slurm_link" id="OPT_TresUsageInMinNode" href="#OPT_TresUsageInMinNode"></a></dt><dd>Node for which each minimum TRES usage out occurred.
+<DT><DD>
+<P>
+<dt><B>TresUsageInMinTask</B><a class="slurm_link" id="OPT_TresUsageInMinTask" href="#OPT_TresUsageInMinTask"></a></dt><dd>Task for which each minimum TRES usage out occurred.
+<DT><DD>
+<P>
+<dt><B>TresUsageInTot</B><a class="slurm_link" id="OPT_TresUsageInTot" href="#OPT_TresUsageInTot"></a></dt><dd>Tres total usage in by all tasks in job.
+<DT><DD>
+<P>
+<dt><B>TresUsageOutAve</B><a class="slurm_link" id="OPT_TresUsageOutAve" href="#OPT_TresUsageOutAve"></a></dt><dd>Tres average usage out by all tasks in job.
+<B>NOTE</B>: If corresponding TresUsageOutMaxTask is -1 the metric is node
+centric instead of task.
+<DT><DD>
+<P>
+<dt><B>TresUsageOutMax</B><a class="slurm_link" id="OPT_TresUsageOutMax" href="#OPT_TresUsageOutMax"></a></dt><dd>Tres maximum usage out by all tasks in job.
+<B>NOTE</B>: If corresponding TresUsageOutMaxTask is -1 the metric is node
+centric instead of task.
+<DT><DD>
+<P>
+<dt><B>TresUsageOutMaxNode</B><a class="slurm_link" id="OPT_TresUsageOutMaxNode" href="#OPT_TresUsageOutMaxNode"></a></dt><dd>Node for which each maximum TRES usage out occurred.
+<DT><DD>
+<P>
+<dt><B>TresUsageOutMaxTask</B><a class="slurm_link" id="OPT_TresUsageOutMaxTask" href="#OPT_TresUsageOutMaxTask"></a></dt><dd>Task for which each maximum TRES usage out occurred.
+<DT><DD>
+<P>
+<dt><B>TresUsageOutMin</B><a class="slurm_link" id="OPT_TresUsageOutMin" href="#OPT_TresUsageOutMin"></a></dt><dd>Tres minimum usage out by all tasks in job.
+<DT><DD>
+<P>
+<dt><B>TresUsageOutMinNode</B><a class="slurm_link" id="OPT_TresUsageOutMinNode" href="#OPT_TresUsageOutMinNode"></a></dt><dd>Node for which each minimum TRES usage out occurred.
+<DT><DD>
+<P>
+<dt><B>TresUsageOutMinTask</B><a class="slurm_link" id="OPT_TresUsageOutMinTask" href="#OPT_TresUsageOutMinTask"></a></dt><dd>Task for which each minimum TRES usage out occurred.
+<DT><DD>
+<P>
+<dt><B>TresUsageOutTot</B><a class="slurm_link" id="OPT_TresUsageOutTot" href="#OPT_TresUsageOutTot"></a></dt><dd>Tres total usage out by all tasks in job.
+<DT><DD>
+<P>
+<dt><B>UID</B><a class="slurm_link" id="OPT_UID" href="#OPT_UID"></a></dt><dd>The user identifier of the user who ran the job.
+<DT><DD>
+<P>
+<dt><B>User</B><a class="slurm_link" id="OPT_User" href="#OPT_User"></a></dt><dd>The user name of the user who ran the job.
+<DT><DD>
+<P>
+<dt><B>UserCPU</B><a class="slurm_link" id="OPT_UserCPU" href="#OPT_UserCPU"></a></dt><dd>The amount of user CPU time used by the job or job step. Format is the same as
+<B>Elapsed</B>.
+<P>
+<B>NOTE</B>: See the note for TotalCPU for information about how canceled jobs
+are handled.
+<DT><DD>
+<P>
+<dt><B>WCKey</B><a class="slurm_link" id="OPT_WCKey" href="#OPT_WCKey"></a></dt><dd>Workload  Characterization  Key.   Arbitrary  string for grouping orthogonal accounts together.
+<DT><DD>
+<P>
+<dt><B>WCKeyID</B><a class="slurm_link" id="OPT_WCKeyID" href="#OPT_WCKeyID"></a></dt><dd>Reference to the wckey.
+<DT><DD>
+<P>
+<dt><B>WorkDir</B><a class="slurm_link" id="OPT_WorkDir" href="#OPT_WorkDir"></a></dt><dd>The directory used by the job to execute commands.
+<DT><DD>
+<P>
+</DL>
+</DL>
+<A NAME="lbAG">&nbsp;</A>
+<h2>JOB STATE CODES<a class="slurm_link" id="SECTION_JOB-STATE-CODES" href="#SECTION_JOB-STATE-CODES"></a></h2>
+The following states are recognized by sacct. A full list of possible states
+is available at &lt;<A HREF="https://slurm.schedmd.com/job_state_codes.html">https://slurm.schedmd.com/job_state_codes.html</A>&gt;.
+<P>
+<DL COMPACT>
+<dt><B>BF  BOOT_FAIL</B><a class="slurm_link" id="OPT_BF--BOOT_FAIL" href="#OPT_BF--BOOT_FAIL"></a></dt><dd>Job terminated due to launch failure, typically due to a hardware failure
+(e.g. unable to boot the node or block and the job can not be requeued).
+<DT><DD>
+<P>
+<dt><B>CA  CANCELLED</B><a class="slurm_link" id="OPT_CA--CANCELLED" href="#OPT_CA--CANCELLED"></a></dt><dd>Job was explicitly cancelled by the user or system administrator.
+The job may or may not have been initiated.
+<DT><DD>
+<P>
+<dt><B>CD  COMPLETED</B><a class="slurm_link" id="OPT_CD--COMPLETED" href="#OPT_CD--COMPLETED"></a></dt><dd>Job has terminated all processes on all nodes with an exit code of zero.
+<DT><DD>
+<P>
+<dt><B>DL  DEADLINE</B><a class="slurm_link" id="OPT_DL--DEADLINE" href="#OPT_DL--DEADLINE"></a></dt><dd>Job terminated on deadline.
+<DT><DD>
+<P>
+<dt><B>F   FAILED</B><a class="slurm_link" id="OPT_F---FAILED" href="#OPT_F---FAILED"></a></dt><dd>Job terminated with non-zero exit code or other failure condition.
+<DT><DD>
+<P>
+<dt><B>NF  NODE_FAIL</B><a class="slurm_link" id="OPT_NF--NODE_FAIL" href="#OPT_NF--NODE_FAIL"></a></dt><dd>Job terminated due to failure of one or more allocated nodes.
+<DT><DD>
+<P>
+<dt><B>OOM OUT_OF_MEMORY</B><a class="slurm_link" id="OPT_OOM-OUT_OF_MEMORY" href="#OPT_OOM-OUT_OF_MEMORY"></a></dt><dd>Job experienced out of memory error.
+<DT><DD>
+<P>
+<dt><B>PD  PENDING</B><a class="slurm_link" id="OPT_PD--PENDING" href="#OPT_PD--PENDING"></a></dt><dd>Job is awaiting resource allocation.
+<DT><DD>
+<P>
+<dt><B>PR  PREEMPTED</B><a class="slurm_link" id="OPT_PR--PREEMPTED" href="#OPT_PR--PREEMPTED"></a></dt><dd>Job terminated due to preemption.
+<DT><DD>
+<P>
+<dt><B>R   RUNNING</B><a class="slurm_link" id="OPT_R---RUNNING" href="#OPT_R---RUNNING"></a></dt><dd>Job currently has an allocation.
+<DT><DD>
+<P>
+<dt><B>RQ  REQUEUED</B><a class="slurm_link" id="OPT_RQ--REQUEUED" href="#OPT_RQ--REQUEUED"></a></dt><dd>Job was requeued.
+<DT><DD>
+<P>
+<dt><B>RS  RESIZING</B><a class="slurm_link" id="OPT_RS--RESIZING" href="#OPT_RS--RESIZING"></a></dt><dd>Job is about to change size.
+<DT><DD>
+<P>
+<dt><B>RV  REVOKED</B><a class="slurm_link" id="OPT_RV--REVOKED" href="#OPT_RV--REVOKED"></a></dt><dd>Sibling was removed from cluster due to other cluster starting the job.
+<DT><DD>
+<P>
+<dt><B>S   SUSPENDED</B><a class="slurm_link" id="OPT_S---SUSPENDED" href="#OPT_S---SUSPENDED"></a></dt><dd>Job has an allocation, but execution has been suspended and CPUs have been
+released for other jobs.
+<DT><DD>
+<P>
+<dt><B>TO  TIMEOUT</B><a class="slurm_link" id="OPT_TO--TIMEOUT" href="#OPT_TO--TIMEOUT"></a></dt><dd>Job terminated upon reaching its time limit.
+<DT><DD>
+<P>
+</DL>
+<A NAME="lbAH">&nbsp;</A>
+<h2>DEFAULT TIME WINDOW<a class="slurm_link" id="SECTION_DEFAULT-TIME-WINDOW" href="#SECTION_DEFAULT-TIME-WINDOW"></a></h2>
+<P>
+
+The options --starttime and --endtime define the time window between
+which <B>sacct</B> is going to search. For historical and practical
+reasons their default values (i.e. the default time window)
+depends on other options: --jobs and --state.
+<P>
+Depending on if --jobs and/or --state are specified, the default
+values of <B>--starttime</B>  and <B>--endtime</B> options are:
+<P>
+<P>
+
+WITHOUT EITHER <B>--jobs</B> NOR <B>--state</B> specified:
+<BR>
+
+<B>--starttime</B> defaults to Midnight.
+<BR>
+
+<B>--endtime</B> defaults to Now.
+<P>
+<P>
+
+WITH <B>--jobs</B> AND WITHOUT <B>--state</B> specified:
+<BR>
+
+<B>--starttime</B> defaults to Epoch 0.
+<BR>
+
+<B>--endtime</B> defaults to Now.
+<P>
+<P>
+
+WITHOUT <B>--jobs</B> AND WITH <B>--state</B> specified:
+<BR>
+
+<B>--starttime</B> defaults to Now.
+<BR>
+
+<B>--endtime</B> defaults to --starttime and to Now if --starttime is not specified.
+<P>
+<P>
+
+WITH BOTH <B>--jobs</B> AND <B>--state</B> specified:
+<BR>
+
+<B>--starttime</B> defaults to Epoch 0.
+<BR>
+
+<B>--endtime</B> defaults to --starttime or to Now if --starttime is not specified.
+<P>
+<P>
+
+<B>NOTE</B>: With <B>-v/--verbose</B> a message about the actual time
+window in use is shown.
+<P>
+<A NAME="lbAI">&nbsp;</A>
+<h2>PERFORMANCE<a class="slurm_link" id="SECTION_PERFORMANCE" href="#SECTION_PERFORMANCE"></a></h2>
+<P>
+
+Executing <B>sacct</B> sends a remote procedure call to <B>slurmdbd</B>. If
+enough calls from <B>sacct</B> or other Slurm client commands that send remote
+procedure calls to the <B>slurmdbd</B> daemon come in at once, it can result in a
+degradation of performance of the <B>slurmdbd</B> daemon, possibly resulting in a
+denial of service.
+<P>
+
+Do not run <B>sacct</B> or other Slurm client commands that send remote procedure
+calls to <B>slurmdbd</B> from loops in shell scripts or other programs. Ensure
+that programs limit calls to <B>sacct</B> to the minimum necessary for the
+information you are trying to gather.
+<P>
+<A NAME="lbAJ">&nbsp;</A>
+<h2>ENVIRONMENT VARIABLES<a class="slurm_link" id="SECTION_ENVIRONMENT-VARIABLES" href="#SECTION_ENVIRONMENT-VARIABLES"></a></h2>
+<P>
+
+Some <B>sacct</B> options may
+be set via environment variables. These environment variables,
+along with their corresponding options, are listed below. (Note:
+Command line options will always override these settings.)
+<P>
+<DL COMPACT>
+<dt><B>SACCT_FEDERATION</B><a class="slurm_link" id="OPT_SACCT_FEDERATION" href="#OPT_SACCT_FEDERATION"></a></dt><dd>Same as <B>--federation</B>
+<DT><DD>
+<P>
+<dt><B>SACCT_FORMAT</B><a class="slurm_link" id="OPT_SACCT_FORMAT" href="#OPT_SACCT_FORMAT"></a></dt><dd>Allows you to define the columns to display in the output.
+Same as <B>--format</B>
+<DT><DD>
+<P>
+<dt><B>SACCT_LOCAL</B><a class="slurm_link" id="OPT_SACCT_LOCAL" href="#OPT_SACCT_LOCAL"></a></dt><dd>Same as <B>--local</B>
+<DT><DD>
+<P>
+<dt><B>SLURM_BITSTR_LEN</B><a class="slurm_link" id="OPT_SLURM_BITSTR_LEN" href="#OPT_SLURM_BITSTR_LEN"></a></dt><dd>Specifies the string length to be used for holding a job array's task ID
+expression. The default value is 64 bytes. A value of 0 will print the full
+expression with any length required. Larger values may adversely impact the
+application performance.
+<DT><DD>
+<P>
+<dt><B>SLURM_CONF</B><a class="slurm_link" id="OPT_SLURM_CONF" href="#OPT_SLURM_CONF"></a></dt><dd>The location of the Slurm configuration file.
+<DT><DD>
+<P>
+<dt><B>SLURM_DEBUG_FLAGS</B><a class="slurm_link" id="OPT_SLURM_DEBUG_FLAGS" href="#OPT_SLURM_DEBUG_FLAGS"></a></dt><dd>Specify debug flags for sacct to use. See DebugFlags in the
+<B><A HREF="slurm.conf.html">slurm.conf</A></B>(5) man page for a full list of flags. The environment
+variable takes precedence over the setting in the slurm.conf.
+<DT><DD>
+<P>
+<dt><B>SLURM_JSON</B><a class="slurm_link" id="OPT_SLURM_JSON" href="#OPT_SLURM_JSON"></a></dt><dd>Control JSON serialization:
+<DT><DD>
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<dt><B>compact</B><a class="slurm_link" id="OPT_compact" href="#OPT_compact"></a></dt><dd>Output JSON as compact as possible.
+<DT><DD>
+<P>
+<dt><B>pretty</B><a class="slurm_link" id="OPT_pretty" href="#OPT_pretty"></a></dt><dd>Output JSON in pretty format to make it more readable.
+<DT><DD>
+</DL>
+</DL>
+
+<P>
+<dt><B>SLURM_TIME_FORMAT</B><a class="slurm_link" id="OPT_SLURM_TIME_FORMAT" href="#OPT_SLURM_TIME_FORMAT"></a></dt><dd>Specify the format used to report time stamps. A value of <I>standard</I>, the
+default value, generates output in the form &quot;year-month-dateThour:minute:second&quot;.
+A value of <I>relative</I> returns only &quot;hour:minute:second&quot; if the current day.
+For other dates in the current year it prints the &quot;hour:minute&quot; preceded by
+&quot;Tomorr&quot; (tomorrow), &quot;Ystday&quot; (yesterday), the name of the day for the coming
+week (e.g. &quot;Mon&quot;, &quot;Tue&quot;, etc.), otherwise the date (e.g. &quot;25 Apr&quot;).
+For other years it returns a date month and year without a time (e.g.
+&quot;6 Jun 2012&quot;). All of the time stamps use a 24 hour format.
+<P>
+A valid strftime() format can also be specified. For example, a value of
+&quot;%a %T&quot; will report the day of the week and a time stamp (e.g. &quot;Mon 12:34:56&quot;).
+<DT><DD>
+<P>
+<dt><B>SLURM_YAML</B><a class="slurm_link" id="OPT_SLURM_YAML" href="#OPT_SLURM_YAML"></a></dt><dd>Control YAML serialization:
+<DT><DD>
+<DL COMPACT><DT><DD>
+<DL COMPACT>
+<dt><B>compact</B> Output YAML as compact as possible.<a class="slurm_link" id="OPT_compact_1" href="#OPT_compact_1"></a></dt><dd><DT><DD>
+<P>
+<dt><B>pretty</B> Output YAML in pretty format to make it more readable.<a class="slurm_link" id="OPT_pretty_1" href="#OPT_pretty_1"></a></dt><dd></DL>
+</DL>
+
+<DT><DD>
+<P>
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<h2>EXAMPLES<a class="slurm_link" id="SECTION_EXAMPLES" href="#SECTION_EXAMPLES"></a></h2>
+This example illustrates the default invocation of the <B>sacct</B>
+command:
+<DL COMPACT><DT><DD>
+<P>
+
+<PRE>
+<B># sacct
+Jobid      Jobname    Partition    Account AllocCPUS State     ExitCode
+---------- ---------- ---------- ---------- ---------- ---------- --------
+2          script01   srun       acct1               1 RUNNING           0
+3          script02   srun       acct1               1 RUNNING           0
+4          endscript  srun       acct1               1 RUNNING           0
+4.0                   srun       acct1               1 COMPLETED         0
+
+</B></PRE>
+
+</DL>
+
+<P>
+
+This example shows the same job accounting information with the
+<B>brief</B> option.
+<DL COMPACT><DT><DD>
+<P>
+
+<PRE>
+<B># sacct --brief
+     Jobid     State  ExitCode
+---------- ---------- --------
+2          RUNNING           0
+3          RUNNING           0
+4          RUNNING           0
+4.0        COMPLETED         0
+</B></PRE>
+
+</DL>
+
+<P>
+
+<DL COMPACT><DT><DD>
+<P>
+
+<PRE>
+<B># sacct --allocations
+Jobid      Jobname    Partition Account    AllocCPUS  State     ExitCode
+---------- ---------- ---------- ---------- ------- ---------- --------
+3          sja_init   andy       acct1            1 COMPLETED         0
+4          sjaload    andy       acct1            2 COMPLETED         0
+5          sja_scr1   andy       acct1            1 COMPLETED         0
+6          sja_scr2   andy       acct1           18 COMPLETED         2
+7          sja_scr3   andy       acct1           18 COMPLETED         0
+8          sja_scr5   andy       acct1            2 COMPLETED         0
+9          sja_scr7   andy       acct1           90 COMPLETED         1
+10         endscript  andy       acct1          186 COMPLETED         0
+
+</B></PRE>
+
+</DL>
+
+<P>
+
+This example demonstrates the ability to customize the output of the
+<B>sacct</B> command. The fields are displayed in the order designated
+on the command line.
+<DL COMPACT><DT><DD>
+<P>
+
+<PRE>
+<B># sacct --format=jobid,elapsed,ncpus,ntasks,state
+     Jobid    Elapsed      Ncpus   Ntasks     State
+---------- ---------- ---------- -------- ----------
+3            00:01:30          2        1 COMPLETED
+3.0          00:01:30          2        1 COMPLETED
+4            00:00:00          2        2 COMPLETED
+4.0          00:00:01          2        2 COMPLETED
+5            00:01:23          2        1 COMPLETED
+5.0          00:01:31          2        1 COMPLETED
+
+</B></PRE>
+
+</DL>
+
+<P>
+
+This example demonstrates the use of the -T (--truncate) option when
+used with -S (--starttime) and -E (--endtime). When the -T option is
+used, the start time of the job will be the specified
+-S value if the job was started before the specified time, otherwise
+the time will be the job's start time. The end time will be the specified -E
+option if the job ends after the specified time, otherwise it will be
+the jobs end time.
+<P>
+Without -T (normal operation) sacct output would be like this.
+<DL COMPACT><DT><DD>
+<P>
+
+<PRE>
+<B># sacct -S2014-07-03-11:40 -E2014-07-03-12:00 -X -ojobid,start,end,state
+    JobID                 Start                  End        State
+--------- --------------------- -------------------- ------------
+2         2014-07-03T11:33:16   2014-07-03T11:59:01   COMPLETED
+3         2014-07-03T11:35:21   Unknown               RUNNING
+4         2014-07-03T11:35:21   2014-07-03T11:45:21   COMPLETED
+5         2014-07-03T11:41:01   Unknown               RUNNING
+</B></PRE>
+
+</DL>
+
+<P>
+
+By adding the -T option the job's start and end times are truncated
+to reflect only the time requested. If a job started after the start
+time requested or finished before the end time requested those times
+are not altered. The -T option
+is useful when determining exact run times during any given period.
+<DL COMPACT><DT><DD>
+<P>
+
+<PRE>
+<B># sacct -T -S2014-07-03-11:40 -E2014-07-03-12:00 -X -ojobid,jobname,user,start,end,state
+    JobID                 Start                  End        State
+--------- --------------------- -------------------- ------------
+2         2014-07-03T11:40:00   2014-07-03T11:59:01   COMPLETED
+3         2014-07-03T11:40:00   2014-07-03T12:00:00   RUNNING
+4         2014-07-03T11:40:00   2014-07-03T11:45:21   COMPLETED
+5         2014-07-03T11:41:01   2014-07-03T12:00:00   RUNNING
+
+</B></PRE>
+
+</DL>
+
+<P>
+
+<B>NOTE</B>: If no <B>-s</B> (<B>--state</B>) option is given sacct will
+display eligible jobs during the specified period of time, otherwise it
+will return jobs that were in the state requested during that period of
+time.
+<P>
+This example demonstrates the differences running sacct with and without
+the <B>--state</B> flag for the same time period. Without the
+<B>--state</B> option, all eligible jobs in that time period are shown.
+<DL COMPACT><DT><DD>
+<P>
+
+<PRE>
+<B># sacct -S11:20:00 -E11:25:00 -X -ojobid,start,end,state
+       JobID               Start                 End      State
+------------ ------------------- ------------------- ----------
+2955                    11:15:12            11:20:12  COMPLETED
+2956                    11:20:13            11:25:13  COMPLETED
+</B></PRE>
+
+</DL>
+
+<P>
+
+With the <B>--state=pending</B> option, only job 2956 will be shown because
+it had a dependency on 2955 and was still PENDING from 11:20:00 until it
+started at 11:21:13. Note that even though we requested PENDING jobs, the
+State shows as COMPLETED because that is the current State of the job.
+<DL COMPACT><DT><DD>
+<P>
+
+<PRE>
+<B># sacct --state=pending -S11:20:00 -E11:25:00 -X -ojobid,start,end,state
+       JobID               Start                 End      State
+------------ ------------------- ------------------- ----------
+2956                    11:20:13            11:25:13  COMPLETED
+</B></PRE>
+
+</DL>
+
+<P>
+<A NAME="lbAL">&nbsp;</A>
+<h2>COPYING<a class="slurm_link" id="SECTION_COPYING" href="#SECTION_COPYING"></a></h2>
+Copyright (C) 2005-2007 Copyright Hewlett-Packard Development Company L.P.
+<BR>
+
+Copyright (C) 2008-2010 Lawrence Livermore National Security.
+Produced at Lawrence Livermore National Laboratory (cf, DISCLAIMER).
+<BR>
+
+Copyright (C) 2010-2022 SchedMD LLC.
+<P>
+
+This file is part of Slurm, a resource management program.
+For details, see &lt;<A HREF="https://slurm.schedmd.com/">https://slurm.schedmd.com/</A>&gt;.
+<P>
+
+Slurm is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 2 of the License, or (at your option)
+any later version.
+<P>
+
+Slurm is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+details.
+<P>
+<A NAME="lbAM">&nbsp;</A>
+<h2>FILES<a class="slurm_link" id="SECTION_FILES" href="#SECTION_FILES"></a></h2>
+<DL COMPACT>
+<dt><B>/etc/slurm.conf</B><a class="slurm_link" id="OPT_/etc/slurm.conf" href="#OPT_/etc/slurm.conf"></a></dt><dd>Entries to this file enable job accounting and
+designate the job accounting log file that collects system job accounting.
+<DT><DD>
+<P>
+<dt><B>/var/log/slurm_accounting.log</B><a class="slurm_link" id="OPT_/var/log/slurm_accounting.log" href="#OPT_/var/log/slurm_accounting.log"></a></dt><dd>The default job accounting log file.
+By default, this file is set to read and write permission for root only.
+<P>
+</DL>
+<A NAME="lbAN">&nbsp;</A>
+<h2>SEE ALSO<a class="slurm_link" id="SECTION_SEE-ALSO" href="#SECTION_SEE-ALSO"></a></h2>
+<B><A HREF="sstat.html">sstat</A></B>(1), <B>ps</B> (1), <B><A HREF="srun.html">srun</A></B>(1), <B><A HREF="squeue.html">squeue</A></B>(1),
+<B>getrusage</B> (2), <B>time</B> (2)
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">OPTIONS</A><DD>
+<DL>
+<DT><A HREF="#lbAF">Job Accounting Fields</A><DD>
+</DL>
+<DT><A HREF="#lbAG">JOB STATE CODES</A><DD>
+<DT><A HREF="#lbAH">DEFAULT TIME WINDOW</A><DD>
+<DT><A HREF="#lbAI">PERFORMANCE</A><DD>
+<DT><A HREF="#lbAJ">ENVIRONMENT VARIABLES</A><DD>
+<DT><A HREF="#lbAK">EXAMPLES</A><DD>
+<DT><A HREF="#lbAL">COPYING</A><DD>
+<DT><A HREF="#lbAM">FILES</A><DD>
+<DT><A HREF="#lbAN">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<i>man2html</i> using the manual pages.<BR>
+Time: 19:15:05 GMT, August 13, 2026
+			</div> <!-- END .container -->
+		</div> <!-- END .section -->
+	</div> <!-- END .content -->
+</div> <!-- END .main -->
+
+</body>
+</html>
