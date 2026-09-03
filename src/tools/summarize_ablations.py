@@ -4,29 +4,45 @@ import argparse
 import json
 from pathlib import Path
 
-from meeting_qa_chunking.experiment import EXPERIMENT_VERSION, write_json
+from meeting_qa_chunking.artifacts import (
+    EXPERIMENT_VERSION,
+    sha256_file,
+    write_json,
+)
+from meeting_qa_chunking.config import load_run_config
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--root", type=Path, required=True)
+    parser.add_argument("--preset", type=Path, required=True)
     args = parser.parse_args()
 
-    output_path = args.root / "summary.json"
+    run = load_run_config(args.preset)
+    output_path = run.output_root / "summary.json"
+    paths = {"retrieval": run.retrieval_dir / "summary.json"}
+    paths.update(
+        {
+            f"answers/{stage.name}": run.answers_dir / stage.name / "summary.json"
+            for stage in run.answers
+        }
+    )
+    if run.run_evaluation:
+        paths["evaluation"] = run.evaluation_dir / "summary.json"
+
     summaries = {}
-    for path in sorted(args.root.rglob("summary.json")):
-        if path == output_path:
-            continue
-        name = path.parent.relative_to(args.root).as_posix()
+    hashes = {}
+    for name, path in paths.items():
+        if not path.exists():
+            raise FileNotFoundError(path)
         summaries[name] = json.loads(path.read_text(encoding="utf-8"))
-    if not summaries:
-        raise ValueError(f"No stage summaries found under {args.root}")
+        hashes[name] = sha256_file(path)
 
     write_json(
         output_path,
         {
             "experiment_version": EXPERIMENT_VERSION,
             "stages": summaries,
+            "summary_hashes": hashes,
         },
     )
     print(f"Combined summary: {output_path}")

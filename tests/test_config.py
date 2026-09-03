@@ -17,10 +17,10 @@ from meeting_qa_chunking.config import (
 
 
 class ConfigTest(unittest.TestCase):
-    def test_condition_names_preserve_the_existing_result_keys(self) -> None:
+    def test_condition_names_cover_all_three_chunkers(self) -> None:
         conditions = retrieval_conditions([512, 1024])
-        self.assertEqual(len(conditions), 12)
-        self.assertEqual(conditions[0].name, "fixed__dense__w512")
+        self.assertEqual(len(conditions), 18)
+        self.assertEqual(conditions[0].name, "turn_packed__dense__w512")
         self.assertEqual(conditions[-1].name, "lumber__hybrid__w1024")
 
     def test_loads_smoke_preset(self) -> None:
@@ -29,6 +29,11 @@ class ConfigTest(unittest.TestCase):
         )
         self.assertEqual(config.meeting_ids(REPOSITORY_ROOT), ["Bed002"])
         self.assertEqual(config.output_root, Path("runs/ablations/smoke"))
+        self.assertEqual(config.retrieval.evidence_order, "chronological")
+        self.assertEqual(config.retrieval.turn_packed_max_words, 256)
+        self.assertEqual(config.retrieval.word_packed_max_words, 256)
+        self.assertEqual(config.segmentation.max_new_tokens, 32)
+        self.assertEqual(config.segmentation.temperature, 0.0)
         self.assertEqual(len(config.answers), 4)
         self.assertTrue(config.answers[2].model.prequantized)
 

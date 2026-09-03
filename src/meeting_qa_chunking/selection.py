@@ -1,11 +1,7 @@
-"""Deterministic meeting selection for the ablation runs."""
+"""Deterministic meeting selection for experiment presets."""
 
 import random
-import json
 from pathlib import Path
-
-
-EXPERIMENT_VERSION = 1
 
 
 def select_meeting_paths(
@@ -26,14 +22,3 @@ def select_meeting_paths(
     selected = sorted(paths.values(), key=lambda path: path.name)
     random.Random(seed).shuffle(selected)
     return selected[:count]
-
-
-def write_json(path: Path, value: object) -> None:
-    """Atomically write an experiment result."""
-
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary_path = path.with_suffix(".tmp")
-    temporary_path.write_text(
-        json.dumps(value, indent=2, ensure_ascii=False), encoding="utf-8"
-    )
-    temporary_path.replace(path)

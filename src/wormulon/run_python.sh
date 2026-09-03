@@ -45,7 +45,7 @@ if [[ "$1" == "src/stages/ablation_evaluate.py" ]] && \
 fi
 
 if [[ "$1" == "src/stages/ablation_evaluate.py" || \
-      " $* " == *" --prequantized "* ]] && \
+      "$1" == "src/stages/ablation_answer.py" ]] && \
     ! "$env_dir/bin/python" -c \
         "from importlib.metadata import version; assert version('accelerate') == '1.14.0'; assert version('bitsandbytes') == '0.50.2'" \
         2>/dev/null; then

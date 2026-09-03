@@ -6,17 +6,16 @@ here when returning to the code after a break. The short version is:
 ```text
 QMSum JSON
     |
-    +--> fixed chunks -------------------+
-    |                                    |
-    +--> local Lumber segmentation ------+--> retrieval --> evidence --> answers
-                                                |                        |
-                                                +--> retrieval metrics   +--> ROUGE
-                                                                         +--> BERTScore
-                                                                         +--> LLM judge
+    +--> turn-packed chunks -------------+
+    +--> word-packed chunks -------------+--> retrieval --> evidence --> answers
+    +--> local Lumber segmentation ------+       |                        |
+                                                 +--> retrieval metrics   +--> ROUGE
+                                                                          +--> BERTScore
+                                                                          +--> LLM judge
 ```
 
 The experiment asks whether semantic chunks improve retrieval and downstream
-meeting-question answering compared with simple fixed-size chunks.
+meeting-question answering compared with two non-semantic baselines.
 
 ## Where things live
 
@@ -32,18 +31,17 @@ docs/vendor/              selected third-party documentation for offline use
 data/raw/qmsum/            local QMSum JSON (not uploaded wholesale)
 runs/                      generated/fetched artifacts
 .cache/                    reusable model responses and embeddings
-archive/                   old approaches kept out of the active path
 ```
 
 The four files in `src/stages/` are entry points. Most logic that is worth
 testing or reusing lives in `src/meeting_qa_chunking/`. The three files in
 `src/tools/` consume saved JSON and do not run the experimental models.
 
-The TOML files are compact, typed records of the intended smoke/full presets
-and are exercised by tests. The current Slurm jobs remain deliberately
-explicit: their command lines are what actually execute the run. If a model or
-condition changes, update the shared `config.py`, the matching TOML record, and
-the relevant Slurm call together.
+The TOML file is the executable experiment definition. It selects meetings,
+models, chunkers, retrieval parameters, generation settings, evaluation
+settings, and output paths. `meeting_qa_chunking.run_preset` expands it into
+separate stage processes. Model tags resolve to pinned repositories and
+revisions in `config.py`; Slurm contains no experiment parameters.
 
 ## Stage 1: semantic segmentation
 
@@ -63,8 +61,9 @@ Entry point: `src/stages/ablation_segment.py`
    the process repeats.
 
 An invalid response is retried once with the same task plus an explicit list
-of valid IDs. The output `runs/lumber/qmsum/<meeting>.json` stores inclusive
-turn ranges and raw model decisions. Existing files are validated and reused,
+of valid IDs. The run-scoped `segmentation/<meeting>.json` stores inclusive
+turn ranges and raw model decisions. Boundary generation is greedy with at
+most 32 new tokens. Existing files are fingerprinted, validated, and reused,
 so rerunning is resumable at meeting level. Model responses are also cached in
 `.cache/lumber/` by model, revision, generation settings, and full prompt.
 
@@ -75,10 +74,16 @@ size of the final semantic chunks and not the retrieval evidence budget.
 
 Entry point: `src/stages/ablation_retrieval.py`
 
-For every meeting it constructs two complete, non-overlapping views:
+For every meeting it constructs three complete, non-overlapping views:
 
-- `fixed`: greedily packs complete turns up to 256 words;
+- `turn_packed`: greedily packs complete turns under a soft 256-word limit;
+- `word_packed`: enforces a hard 256-content-word limit, splitting long turns
+  and repeating the turn ID and speaker label on each continuation;
 - `lumber`: reconstructs the saved semantic turn ranges from stage 1.
+
+Speaker labels and turn IDs are not charged to either content-word limit. The
+word-packed baseline stores original word offsets so two fragments from the
+same long turn are not accidentally deduplicated.
 
 For each question, every chunk view is ranked three ways:
 
@@ -88,13 +93,17 @@ For each question, every chunk view is ranked three ways:
   `retrieval.py` (`k1=1.5`, `b=0.75`);
 - `hybrid`: reciprocal-rank fusion of dense and BM25 ranks (`k=60`).
 
-Ranked chunks are selected under 512- and 1024-word budgets. Selection keeps
-whole turns until the last available space, then clips the final turn if
-necessary. This gives 2 chunkers x 3 retrievers x 2 budgets = 12 conditions.
+Ranked chunks are selected under 512- and 1024-word budgets. The chosen content
+is then rendered in chronological transcript order for dialogue coherence.
+Selection may clip the last fragment. This gives 3 chunkers x 3 retrievers x
+2 budgets = 18 conditions.
 
-The saved per-question metrics are evidence precision, evidence recall, rank
-of the first gold-overlapping chunk, and reciprocal rank. Gold relevance is
-defined by QMSum's annotated inclusive turn ranges. Chunk embeddings live in
+The primary retrieval metrics are evidence precision and recall at equal word
+budgets. First-overlap reciprocal rank is retained as a diagnostic but not
+used for winner claims because larger chunks are more likely to overlap a gold
+turn. Gold relevance is defined by QMSum's annotated inclusive turn ranges.
+Consequently, any selected fragment of a gold-labelled turn counts as relevant.
+Chunk embeddings live in
 `.cache/embeddings/`; the question embedding is recomputed for each ranking
 call.
 
@@ -112,10 +121,11 @@ There are two evidence sources:
   pipeline.
 
 The Slurm ablation currently runs oracle evidence with Qwen2.5 7B, 14B, and a
-prequantized 4-bit 32B checkpoint. Qwen2.5-14B answers all 12 retrieved-evidence
-conditions. Every model revision is pinned; see `config.py` and the Slurm file.
+prequantized 4-bit 32B checkpoint. Qwen2.5-14B answers all 18 retrieved-evidence
+conditions. Every model revision is pinned in `config.py`; the preset chooses
+model tags.
 
-`pipeline.py` prepares evidence, `answering.py` combines it with the question,
+`evidence_preparation.py` prepares evidence, `answering.py` combines it with the question,
 and `local_model.py` applies the model's chat template and greedy generation.
 The actual instruction is in `prompts/answer.txt`. Responses are cached in
 `.cache/answers/`. ROUGE-1, ROUGE-2, and ROUGE-L F1 are saved immediately, but
@@ -155,9 +165,13 @@ Output: `runs/ablations/<run>/evaluation/<answer-stage>.json`.
 - `src/tools/inspect_retrieval_failure.py` prints one retrieval case without
   loading an embedding or language model.
 
+Summaries contain both question-weighted averages and meeting-macro averages.
+The report uses meeting-macro values and includes paired within-meeting Lumber
+differences against both non-semantic baselines.
+
 Generated files are deliberately verbose JSON: they are experimental records,
-not application APIs. `artifacts.py` performs the minimum validation needed to
-read current and older records without rewriting them.
+not application APIs. Current reports expect version-2 artifacts; only Lumber
+segmentation retains a small adapter for older files.
 
 ## Running locally
 
@@ -167,8 +181,9 @@ before running entry-point files directly:
 ```powershell
 $env:PYTHONPATH = "src"
 python -m unittest discover -s tests -v
-python src/tools/report_ablations.py --root runs/ablations/smoke
-python src/tools/inspect_retrieval_failure.py --question-index 3
+python -m meeting_qa_chunking.run_preset --preset src/configs/ablation-smoke.toml --dry-run
+python src/tools/report_ablations.py --preset src/configs/ablation-smoke.toml
+python src/tools/inspect_retrieval_failure.py --preset src/configs/ablation-smoke.toml --question-index 3
 ```
 
 CPU execution is suitable for tests, reports, and inspection. Segmentation,
@@ -186,15 +201,18 @@ The normal Windows entry point is:
 What the PowerShell runner does:
 
 1. Resolves `~/meeting-qa-chunking` on `koko2725@olympus.dsv.su.se`.
-2. Replaces the remote `src/` snapshot, preventing stale deleted files from
+2. Loads the selected TOML locally and obtains its meetings and output paths.
+3. Replaces the remote `src/` snapshot, preventing stale deleted files from
    surviving an upload.
-3. Uploads only the selected QMSum meetings when the full manifest is used.
-4. submits the matching file in `src/wormulon/` with `sbatch`;
-5. monitors the live job with `squeue` and falls back to `sacct` after it leaves
+4. Uploads every selected QMSum meeting, including the smoke meeting.
+5. Submits generic `src/wormulon/ablation.slurm` with the preset path and
+   task-specific wall time;
+6. monitors the live job with `squeue` and falls back to `sacct` after it leaves
    the queue (temporary accounting failures are retried);
-6. downloads the Slurm log and, on success, stages the result download before
+7. downloads the Slurm log and, on success, stages the result download before
    replacing the local result directory;
-7. fetches Lumber segmentations and generates local Markdown reports.
+8. generates local Markdown reports; run-scoped segmentations arrive with the
+   result directory.
 
 Useful runner options:
 
@@ -207,8 +225,9 @@ Useful runner options:
 `-NoWait` prints the job ID and exits. `-ExistingJobId` resumes monitoring and
 fetching without uploading or submitting again.
 
-Inside Slurm, each stage is a separate `srun` process. When the process exits,
-its GPU memory is released before the next model is loaded. `run_python.sh`
+Inside Slurm, `run_preset` translates the TOML into stage commands. Each stage
+is a separate `srun` process, so its GPU memory is released before the next
+model is loaded. `run_python.sh`
 creates/reuses `.venv-wormulon`, installs only the exact dependencies needed by
 the current stage, exports `PYTHONPATH=.../src`, prints `nvidia-smi`, and fails
 early if PyTorch cannot see CUDA.
@@ -229,9 +248,23 @@ Cache keys include the inputs that affect their value:
 | `.cache/answers/` | answer model, revision, settings, prompt | force answer generation |
 | `.cache/judgments/` | judge model, revision, settings, prompt | force re-judging |
 
-Stage JSON has additional version/config checks before it is considered
-complete. Prompt text participates in answer/judge cache keys because it is
-inside the final prompt. Segmentation prompt text does as well.
+Every stage JSON contains provenance with its resolved effective configuration,
+config hash, input-file hashes, input hash, and final fingerprint. A stage is
+reused only when that fingerprint matches and its structure validates. The
+dependency chain is:
+
+```text
+meeting -> segmentation
+meeting + segmentation -> retrieval
+meeting + retrieval + segmentation -> retrieved answers
+meeting -> oracle answers
+meeting + answer artifacts -> evaluation
+```
+
+Raw upstream files are hashed, so hand edits are detected. Prompt text, model
+revision, generation settings, BM25/RRF parameters, chunk limits, and evidence
+ordering all participate in the appropriate fingerprint. The complete preset
+hash is stored for auditing but not used to invalidate unrelated stages.
 
 Do not hand-edit result JSON to make a run resume. Either keep a complete valid
 meeting record or remove that meeting's file and let the stage regenerate it.
@@ -247,9 +280,9 @@ meeting record or remove that meeting's file and let the stage regenerate it.
   already 4-bit.
 - **Hugging Face unauthenticated warning**: it affects download rate limits,
   not model correctness. Set `HF_TOKEN` on the cluster if downloads fail.
-- **A completed result is unexpectedly reused**: inspect its saved model,
-  prompt, configuration, and `experiment_version`; remove only that stage's
-  meeting file if it is genuinely stale.
+- **A completed result is unexpectedly reused**: compare its
+  `provenance.fingerprint`; remove only that stage's meeting file if it is
+  genuinely stale.
 - **Local script cannot import `meeting_qa_chunking`**: set
   `$env:PYTHONPATH = "src"` before invoking a file below `src/stages` or
   `src/tools`.
@@ -258,10 +291,10 @@ meeting record or remove that meeting's file and let the stage regenerate it.
 
 - New prompt: edit the relevant `.txt` file in `prompts/`; do not put prompt
   variants back into Python.
-- New answer model: add a pinned `ModelSpec` in `config.py`, add the intended
-  answer stage to the TOML preset, and add the explicit Slurm call.
-- New retrieval condition: extend `config.retrieval_conditions`, then ensure
-  stage 2 writes it and stage 3 reconstructs it.
+- New answer model: add a pinned `ModelSpec` in `config.py`, then select its tag
+  in the TOML preset. Slurm does not change.
+- New retrieval condition: change the TOML lists or extend the small validated
+  registries in `config.py`. Slurm does not change.
 - Token-budget ablation: add it as a new chunk/evidence accounting method. Do
   not silently reinterpret the current `w512`/`w1024` word conditions.
 - New dataset: implement a loader that produces the same small `Meeting`,

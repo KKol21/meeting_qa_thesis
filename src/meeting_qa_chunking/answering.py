@@ -1,7 +1,5 @@
 """Shared prompt for answering from retrieved meeting evidence."""
 
-from rouge_score import rouge_scorer
-
 from .prompt_files import load_prompt
 
 
@@ -18,7 +16,7 @@ def build_answer_prompt(question: str, evidence: str) -> str:
 
 
 def score_answer(
-    scorer: rouge_scorer.RougeScorer,
+    scorer,
     reference: str,
     answer: str,
 ) -> dict[str, float]:

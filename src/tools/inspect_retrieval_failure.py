@@ -1,66 +1,63 @@
-"""Inspect one failed retrieval without recomputing embeddings."""
+"""Inspect one saved retrieval condition without loading a model."""
 
 import argparse
 import json
 from pathlib import Path
 
-from meeting_qa_chunking.chunking import Chunk, chunk_by_word_budget, render_turn
-from meeting_qa_chunking.lumber import load_lumber_chunks
-from meeting_qa_chunking.qmsum import Turn, load_meeting
-
-
-def preview(chunk: Chunk, length: int = 500) -> str:
-    return chunk.text[:length].replace("\n", " ")
-
-
-def preview_turns(turns: list[Turn], length: int = 500) -> str:
-    text = "\n".join(render_turn(turn) for turn in turns)
-    return text[:length].replace("\n", " ")
+from meeting_qa_chunking.evidence import (
+    reconstruct_evidence,
+    render_evidence,
+    render_gold_evidence,
+)
+from meeting_qa_chunking.evidence_preparation import build_chunk_sets
+from meeting_qa_chunking.config import load_run_config
+from meeting_qa_chunking.qmsum import load_meeting
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--meeting", default="Bed002")
+    parser.add_argument("--preset", type=Path, required=True)
+    parser.add_argument("--meeting")
     parser.add_argument("--question-index", type=int, default=3)
-    parser.add_argument(
-        "--data-dir", type=Path, default=Path("data/raw/qmsum/data/ALL/val")
-    )
-    parser.add_argument(
-        "--lumber-result", type=Path, default=Path("runs/lumber/qmsum/Bed002.json")
-    )
-    parser.add_argument(
-        "--retrieval-result",
-        type=Path,
-        default=Path("runs/retrieval/qmsum/Bed002.json"),
-    )
+    parser.add_argument("--condition")
     args = parser.parse_args()
 
-    meeting = load_meeting(args.data_dir / f"{args.meeting}.json")
-    retrieval = json.loads(args.retrieval_result.read_text(encoding="utf-8"))
-    question = meeting.questions[args.question_index]
-    question_result = retrieval["questions"][args.question_index]
-
-    fixed_chunks = chunk_by_word_budget(
-        meeting.turns, retrieval["fixed"]["chunk_words"]
+    run = load_run_config(args.preset)
+    meeting_id = args.meeting or run.meeting_ids()[0]
+    meeting = load_meeting(run.data_dir / f"{meeting_id}.json")
+    retrieval = json.loads(
+        (run.retrieval_dir / f"{meeting_id}.json").read_text(
+            encoding="utf-8"
+        )
     )
-    lumber_chunks = load_lumber_chunks(args.lumber_result, meeting)
+    question_result = retrieval["questions"][args.question_index]
+    condition = args.condition or next(iter(retrieval["configurations"]))
+    condition_spec = retrieval["configurations"][condition]
+    chunker = condition_spec["chunker"]
+    chunks = build_chunk_sets(
+        meeting,
+        run.lumber_dir / f"{meeting.id}.json" if chunker == "lumber" else None,
+        retrieval["chunking"]["turn_packed_max_words"],
+        retrieval["chunking"]["word_packed_max_words"],
+        [chunker],
+    )[chunker]
+    selected = reconstruct_evidence(
+        question_result["results"][condition],
+        chunks,
+        condition_spec["evidence_words"],
+    )
+    question = meeting.questions[args.question_index]
+    gold, _turn_ids = render_gold_evidence(question, meeting)
 
     print(f"Question: {question.text}")
+    print(f"Condition: {condition}")
+    print(f"Selected chunks: {selected.chunk_indices}")
     print(f"Gold ranges: {question.relevant_turn_ranges}\n")
-    for start, end in question.relevant_turn_ranges:
-        print(
-            f"Gold {start}-{end}: "
-            f"{preview_turns(meeting.turns[start:end + 1])}...\n"
-        )
-
-    for name, chunks in (("Fixed", fixed_chunks), ("Lumber", lumber_chunks)):
-        indices = question_result[name.lower()]["selected_chunk_indices"]
-        for index in indices:
-            chunk = chunks[index]
-            print(
-                f"{name} chunk {index}, turns {chunk.start_turn}-{chunk.end_turn}: "
-                f"{preview(chunk)}...\n"
-            )
+    print("Gold evidence:\n" + gold)
+    print(
+        "\nRetrieved evidence:\n"
+        + render_evidence(selected, meeting, retrieval["evidence_order"])
+    )
 
 
 if __name__ == "__main__":

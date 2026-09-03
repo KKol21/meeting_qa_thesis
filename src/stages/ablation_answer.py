@@ -1,11 +1,10 @@
-"""Stage 3: run one answer model over oracle or retrieved evidence."""
+"""Stage 3: answer one preset-defined oracle or retrieval condition set."""
 
 import argparse
+from dataclasses import asdict
 import json
 from pathlib import Path
 from statistics import mean
-
-from rouge_score import rouge_scorer
 
 from meeting_qa_chunking.answering import (
     ANSWER_INSTRUCTION,
@@ -13,23 +12,22 @@ from meeting_qa_chunking.answering import (
     build_answer_prompt,
     score_answer,
 )
-from meeting_qa_chunking.artifacts import read_retrieval
-from meeting_qa_chunking.experiment import (
+from meeting_qa_chunking.artifacts import (
     EXPERIMENT_VERSION,
-    select_meeting_paths,
+    make_provenance,
+    questions_complete,
+    read_answers,
+    read_retrieval,
+    sha256_file,
     write_json,
 )
-from meeting_qa_chunking.local_model import LocalChatModel
-from meeting_qa_chunking.pipeline import (
+from meeting_qa_chunking.config import load_run_config
+from meeting_qa_chunking.evidence_preparation import (
     prepare_oracle_evidence,
     prepare_retrieved_evidence,
 )
 from meeting_qa_chunking.qmsum import load_meeting
-
-
-DEFAULT_DATA_DIR = Path("data/raw/qmsum/data/ALL/val")
-DEFAULT_LUMBER_DIR = Path("runs/lumber/qmsum")
-DEFAULT_RETRIEVAL_DIR = Path("runs/ablations/full/retrieval")
+from meeting_qa_chunking.selection import select_meeting_paths
 
 
 def summarize(output_dir: Path, meeting_ids: list[str]) -> dict[str, object]:
@@ -37,7 +35,39 @@ def summarize(output_dir: Path, meeting_ids: list[str]) -> dict[str, object]:
         json.loads((output_dir / f"{meeting_id}.json").read_text(encoding="utf-8"))
         for meeting_id in meeting_ids
     ]
-    condition_names = list(results[0]["conditions"])
+    conditions = list(results[0]["conditions"])
+    per_meeting = {
+        result["meeting_id"]: {
+            condition: {
+                rouge_type: mean(
+                    question["results"][condition]["rouge_f1"][rouge_type]
+                    for question in result["questions"]
+                )
+                for rouge_type in ROUGE_TYPES
+            }
+            for condition in conditions
+        }
+        for result in results
+    }
+    paired = {}
+    if results[0]["source"] == "retrieval":
+        for name, condition in results[0]["conditions"].items():
+            if condition["chunker"] != "lumber":
+                continue
+            suffix = f"{condition['retriever']}__w{condition['evidence_words']}"
+            for baseline in ("turn_packed", "word_packed"):
+                baseline_name = f"{baseline}__{suffix}"
+                if baseline_name not in conditions:
+                    continue
+                comparison = f"lumber_minus_{baseline}__{suffix}"
+                paired[comparison] = {
+                    rouge_type: mean(
+                        per_meeting[meeting_id][name][rouge_type]
+                        - per_meeting[meeting_id][baseline_name][rouge_type]
+                        for meeting_id in meeting_ids
+                    )
+                    for rouge_type in ROUGE_TYPES
+                }
     return {
         "experiment_version": EXPERIMENT_VERSION,
         "stage": "answers",
@@ -47,7 +77,7 @@ def summarize(output_dir: Path, meeting_ids: list[str]) -> dict[str, object]:
         "meeting_count": len(meeting_ids),
         "question_count": sum(result["question_count"] for result in results),
         "conditions": results[0]["conditions"],
-        "macro_average_rouge_f1": {
+        "question_average_rouge_f1": {
             condition: {
                 rouge_type: mean(
                     question["results"][condition]["rouge_f1"][rouge_type]
@@ -56,97 +86,130 @@ def summarize(output_dir: Path, meeting_ids: list[str]) -> dict[str, object]:
                 )
                 for rouge_type in ROUGE_TYPES
             }
-            for condition in condition_names
+            for condition in conditions
         },
+        "per_meeting": per_meeting,
+        "meeting_average_rouge_f1": {
+            condition: {
+                rouge_type: mean(
+                    per_meeting[meeting_id][condition][rouge_type]
+                    for meeting_id in meeting_ids
+                )
+                for rouge_type in ROUGE_TYPES
+            }
+            for condition in conditions
+        },
+        "paired_meeting_average": paired,
         "model_calls": sum(result["model_calls"] for result in results),
         "cache_hits": sum(result["cache_hits"] for result in results),
+        "artifact_hashes": {
+            meeting_id: sha256_file(output_dir / f"{meeting_id}.json")
+            for meeting_id in meeting_ids
+        },
     }
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-dir", type=Path, default=DEFAULT_DATA_DIR)
-    parser.add_argument("--lumber-dir", type=Path, default=DEFAULT_LUMBER_DIR)
-    parser.add_argument("--retrieval-dir", type=Path, default=DEFAULT_RETRIEVAL_DIR)
-    parser.add_argument("--output-dir", type=Path, required=True)
-    parser.add_argument("--source", choices=("oracle", "retrieval"), required=True)
-    parser.add_argument("--condition", action="append", dest="conditions")
-    parser.add_argument("--count", type=int, default=20)
-    parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--meetings", nargs="+")
-    parser.add_argument("--model", required=True)
-    parser.add_argument("--revision", required=True)
-    parser.add_argument("--model-tag", required=True)
-    parser.add_argument("--prequantized", action="store_true")
-    parser.add_argument("--max-new-tokens", type=int, default=512)
+    parser.add_argument("--preset", type=Path, required=True)
+    parser.add_argument("--answer-stage", required=True)
     args = parser.parse_args()
 
-    if args.source == "oracle" and args.conditions:
-        raise ValueError("--condition only applies to retrieved evidence")
-    paths = select_meeting_paths(
-        args.data_dir, args.count, args.seed, args.meetings
-    )
-    expected_model = {
-        "tag": args.model_tag,
-        "model": args.model,
-        "revision": args.revision,
-        "prequantized": args.prequantized,
-        "max_new_tokens": args.max_new_tokens,
-        "temperature": 0.0,
-        "instruction": ANSWER_INSTRUCTION,
+    from rouge_score import rouge_scorer
+    from meeting_qa_chunking.local_model import LocalChatModel
+
+    run = load_run_config(args.preset)
+    stage = run.answer_stage(args.answer_stage)
+    generation = run.generation
+    meeting_ids = run.meeting_ids()
+    paths = select_meeting_paths(run.data_dir, len(meeting_ids), 0, meeting_ids)
+    output_dir = run.answers_dir / stage.name
+    answer_model = {
+        **asdict(stage.model),
+        "max_new_tokens": generation.max_new_tokens,
+        "temperature": generation.temperature,
+        "seed": generation.seed,
     }
-    # Prompt, model, and evidence conditions all participate in resume checks.
+
     pending = []
     for path in paths:
-        output_path = args.output_dir / path.name
-        if args.source == "oracle":
-            expected_conditions = {"oracle": {"source": "annotated evidence"}}
+        meeting = load_meeting(path)
+        inputs = {"meeting": path}
+        if stage.source == "oracle":
+            conditions = {"oracle": {"source": "annotated evidence"}}
         else:
-            retrieval_path = args.retrieval_dir / path.name
+            retrieval_path = run.retrieval_dir / path.name
+            lumber_path = run.lumber_dir / path.name
             if not retrieval_path.exists():
                 raise FileNotFoundError(retrieval_path)
             retrieval = read_retrieval(retrieval_path)
-            names = args.conditions or list(retrieval["configurations"])
-            expected_conditions = {
-                name: retrieval["configurations"][name] for name in names
-            }
+            conditions = retrieval["configurations"]
+            inputs["retrieval"] = retrieval_path
+            if any(item["chunker"] == "lumber" for item in conditions.values()):
+                if not lumber_path.exists():
+                    raise FileNotFoundError(lumber_path)
+                inputs["segmentation"] = lumber_path
+
+        effective_config = {
+            "experiment_version": EXPERIMENT_VERSION,
+            "source": stage.source,
+            "conditions": conditions,
+            "model": answer_model,
+            "prompt": ANSWER_INSTRUCTION,
+            "rouge_types": ROUGE_TYPES,
+            "rouge_stemmer": True,
+        }
+        provenance = make_provenance(
+            "answers", effective_config, inputs, args.preset
+        )
+        output_path = output_dir / path.name
         if output_path.exists():
-            saved = json.loads(output_path.read_text(encoding="utf-8"))
+            try:
+                saved = read_answers(output_path)
+            except ValueError:
+                saved = {}
             if (
-                saved.get("experiment_version") == EXPERIMENT_VERSION
-                and saved.get("source") == args.source
-                and saved.get("answer_model") == expected_model
-                and saved.get("conditions") == expected_conditions
+                saved.get("provenance", {}).get("fingerprint")
+                == provenance["fingerprint"]
+                and saved.get("source") == stage.source
+                and saved.get("conditions") == conditions
+                and saved.get("answer_model") == answer_model
+                and questions_complete(
+                    saved,
+                    meeting.id,
+                    [question.text for question in meeting.questions],
+                    set(conditions),
+                )
             ):
                 print(f"Answers {path.stem}: existing", flush=True)
                 continue
-        pending.append((path, output_path))
+        pending.append((meeting, output_path, provenance, conditions))
 
-    # Avoid allocating a GPU model when every requested meeting is complete.
     model = None
     if pending:
         model = LocalChatModel(
-            model_name=args.model,
-            revision=args.revision,
-            max_new_tokens=args.max_new_tokens,
-            temperature=0.0,
+            model_name=stage.model.name,
+            revision=stage.model.revision,
+            max_new_tokens=generation.max_new_tokens,
+            seed=generation.seed,
+            temperature=generation.temperature,
             cache_dir=Path(".cache/answers"),
-            prequantized=args.prequantized,
+            prequantized=stage.model.prequantized,
         )
         print(f"Answer model device: {model.device}", flush=True)
 
-    for path, output_path in pending:
-        meeting = load_meeting(path)
-        if args.source == "oracle":
-            conditions = {"oracle": {"source": "annotated evidence"}}
-            oracle = prepare_oracle_evidence(meeting)
-            prepared = [{"oracle": evidence} for evidence in oracle]
+    for meeting, output_path, provenance, conditions in pending:
+        if stage.source == "oracle":
+            prepared = [
+                {"oracle": evidence}
+                for evidence in prepare_oracle_evidence(meeting)
+            ]
         else:
             conditions, prepared = prepare_retrieved_evidence(
                 meeting,
-                args.retrieval_dir / path.name,
-                args.lumber_dir,
-                args.conditions,
+                run.retrieval_dir / f"{meeting.id}.json",
+                run.lumber_dir,
+                requested_conditions=None,
             )
 
         calls_before = model.model_calls
@@ -186,11 +249,12 @@ def main() -> None:
 
         result = {
             "experiment_version": EXPERIMENT_VERSION,
+            "provenance": provenance,
             "meeting_id": meeting.id,
             "question_count": len(questions),
-            "source": args.source,
+            "source": stage.source,
             "conditions": conditions,
-            "answer_model": expected_model,
+            "answer_model": answer_model,
             "model_calls": model.model_calls - calls_before,
             "cache_hits": model.cache_hits - hits_before,
             "questions": questions,
@@ -198,10 +262,8 @@ def main() -> None:
         write_json(output_path, result)
         print(f"Answers {meeting.id}: saved", flush=True)
 
-    meeting_ids = [path.stem for path in paths]
-    summary = summarize(args.output_dir, meeting_ids)
-    write_json(args.output_dir / "summary.json", summary)
-    print(f"Answer summary: {args.output_dir / 'summary.json'}")
+    write_json(output_dir / "summary.json", summarize(output_dir, meeting_ids))
+    print(f"Answer summary: {output_dir / 'summary.json'}")
 
 
 if __name__ == "__main__":

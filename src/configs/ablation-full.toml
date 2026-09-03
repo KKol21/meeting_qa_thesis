@@ -1,13 +1,35 @@
 [run]
 name = "full"
 output_root = "runs/ablations/full"
+data_dir = "data/raw/qmsum/data/ALL/val"
+lumber_dir = "runs/ablations/full/segmentation"
 meeting_manifest = "src/configs/ablation-meetings.txt"
 run_segmentation = true
 run_evaluation = true
 
+[segmentation]
+model = "qwen2.5-7b"
+target_tokens = 550
+max_new_tokens = 32
+temperature = 0.0
+seed = 42
+
 [retrieval]
-fixed_chunk_words = 256
+dense_model = "gte-modernbert-base"
+chunkers = ["turn_packed", "word_packed", "lumber"]
+retrievers = ["dense", "bm25", "hybrid"]
+turn_packed_max_words = 256
+word_packed_max_words = 256
 evidence_budgets = [512, 1024]
+evidence_order = "chronological"
+bm25_k1 = 1.5
+bm25_b = 0.75
+rrf_k = 60
+
+[generation]
+max_new_tokens = 512
+temperature = 0.0
+seed = 42
 
 [[answers]]
 name = "oracle-7b"
@@ -28,3 +50,12 @@ model = "qwen2.5-32b-bnb4"
 name = "retrieval-14b"
 source = "retrieval"
 model = "qwen2.5-14b"
+
+[evaluation]
+bertscore_model = "roberta-large"
+bertscore_layers = 17
+bertscore_batch_size = 16
+judge_model = "llama-3.3-70b-bnb4"
+judge_max_new_tokens = 192
+judge_temperature = 0.0
+judge_seed = 42

@@ -15,17 +15,12 @@ $remoteDirectory = "~/meeting-qa-chunking"
 # One table keeps task-specific paths out of the upload/monitoring logic below.
 $jobs = @{
     "ablation-smoke" = @{
-        Slurm = "src/wormulon/ablation_smoke.slurm"
-        LogPrefix = "slurm-ablation-smoke"
-        Result = "runs/ablations/smoke"
-        ResultIsDirectory = $true
+        Preset = "src/configs/ablation-smoke.toml"
+        WallTime = "04:00:00"
     }
     "ablation-full" = @{
-        Slurm = "src/wormulon/ablation_full.slurm"
-        LogPrefix = "slurm-ablation-full"
-        Result = "runs/ablations/full"
-        ResultIsDirectory = $true
-        DataManifest = "src/configs/ablation-meetings.txt"
+        Preset = "src/configs/ablation-full.toml"
+        WallTime = "10:00:00"
     }
 }
 
@@ -93,18 +88,27 @@ function Receive-RemoteDirectory {
 Push-Location $PSScriptRoot
 try {
     $job = $jobs[$Task]
+    $previousPythonPath = $env:PYTHONPATH
+    $env:PYTHONPATH = Join-Path $PSScriptRoot "src"
+    $descriptionJson = python -m meeting_qa_chunking.run_preset `
+        --preset $job.Preset `
+        --describe
+    $env:PYTHONPATH = $previousPythonPath
+    if ($LASTEXITCODE -ne 0) {
+        throw "Could not read preset: $($job.Preset)"
+    }
+    $description = ($descriptionJson -join "`n") | ConvertFrom-Json
+    $slurm = "src/wormulon/ablation.slurm"
+    $logPrefix = "slurm-ablation-$($description.name)"
+    $result = $description.output_root
 
     if ($DryRun) {
         Write-Host "Task: $Task"
+        Write-Host "Preset: $($job.Preset)"
         Write-Host "Upload: src/"
-        Write-Host "Slurm: $($job.Slurm)"
-        Write-Host "Result: $($job.Result)"
-        if ($job.DataManifest) {
-            Write-Host "Data: the 20 QMSum files in $($job.DataManifest)"
-        }
-        if ($job.MeetingIds) {
-            Write-Host "Data: $($job.MeetingIds -join ', ')"
-        }
+        Write-Host "Slurm: $slurm ($($job.WallTime))"
+        Write-Host "Result: $result"
+        Write-Host "Data: $($description.meeting_ids -join ', ')"
         return
     }
 
@@ -136,36 +140,28 @@ try {
             throw "Upload failed"
         }
 
-        if ($job.DataManifest -or $job.MeetingIds) {
-            $remoteDataDirectory = "$remoteDirectory/data/raw/qmsum/data/ALL/val"
-            ssh -o BatchMode=yes $remote "mkdir -p $remoteDataDirectory"
+        $remoteDataDirectory = "$remoteDirectory/$($description.data_dir)"
+        ssh -o BatchMode=yes $remote "mkdir -p $remoteDataDirectory"
+        if ($LASTEXITCODE -ne 0) {
+            throw "Could not create the remote data directory"
+        }
+        Write-Host "Uploading $($description.meeting_ids.Count) selected QMSum meetings..."
+        foreach ($meetingId in $description.meeting_ids) {
+            $localMeeting = Join-Path $PSScriptRoot `
+                "$($description.data_dir)\$meetingId.json"
+            if (-not (Test-Path -LiteralPath $localMeeting)) {
+                throw "Missing local meeting: $localMeeting"
+            }
+            scp -o BatchMode=yes $localMeeting `
+                "${remote}:${remoteDataDirectory}/"
             if ($LASTEXITCODE -ne 0) {
-                throw "Could not create the remote data directory"
-            }
-            $meetingIds = if ($job.DataManifest) {
-                Get-Content -LiteralPath $job.DataManifest
-            }
-            else {
-                $job.MeetingIds
-            }
-            Write-Host "Uploading $($meetingIds.Count) selected QMSum meetings..."
-            foreach ($meetingId in $meetingIds) {
-                $localMeeting = Join-Path $PSScriptRoot `
-                    "data\raw\qmsum\data\ALL\val\$meetingId.json"
-                if (-not (Test-Path -LiteralPath $localMeeting)) {
-                    throw "Missing local meeting: $localMeeting"
-                }
-                scp -o BatchMode=yes $localMeeting `
-                    "${remote}:${remoteDataDirectory}/"
-                if ($LASTEXITCODE -ne 0) {
-                    throw "Could not upload meeting: $meetingId"
-                }
+                throw "Could not upload meeting: $meetingId"
             }
         }
 
         Write-Host "Submitting $Task job..."
         $submission = ssh -o BatchMode=yes $remote `
-            "cd $remoteDirectory && sbatch $($job.Slurm)"
+            "cd $remoteDirectory && sbatch --job-name=ablation-$($description.name) --time=$($job.WallTime) --output=$logPrefix-%j.out $slurm $($job.Preset)"
         if ($LASTEXITCODE -ne 0) {
             throw "Job submission failed"
         }
@@ -235,7 +231,7 @@ try {
             $state = ($stateLine -split "\|")[1].Trim()
             $statusFailures = 0
         }
-        elseif (-not $queueSucceeded -or -not $accountingSucceeded) {
+        else {
             $statusFailures += 1
             if ($statusFailures -ge 60) {
                 throw "Could not read Slurm status for job $jobId after 5 minutes"
@@ -251,7 +247,7 @@ try {
     }
     Write-Host ""
 
-    $remoteLog = "$($job.LogPrefix)-$jobId.out"
+    $remoteLog = "$logPrefix-$jobId.out"
     $localLogDirectory = Join-Path $PSScriptRoot "runs\wormulon\logs"
     $localLog = Join-Path $localLogDirectory $remoteLog
     New-Item -ItemType Directory -Force $localLogDirectory | Out-Null
@@ -269,35 +265,17 @@ try {
         throw "Slurm job $jobId did not complete successfully"
     }
 
-    $localResult = Join-Path $PSScriptRoot $job.Result
-    if ($job.ResultIsDirectory) {
-        Receive-RemoteDirectory `
-            "$remoteDirectory/$($job.Result)" `
-            $localResult `
-            $jobId
-    }
-    else {
-        New-Item -ItemType Directory -Force `
-            (Split-Path -Parent $localResult) | Out-Null
-        scp -o BatchMode=yes `
-            "${remote}:${remoteDirectory}/$($job.Result)" $localResult
-    }
-    if ($LASTEXITCODE -ne 0) {
-        throw "Could not download the result"
-    }
+    $localResult = Join-Path $PSScriptRoot $result
+    Receive-RemoteDirectory `
+        "$remoteDirectory/$result" `
+        $localResult `
+        $jobId
     Write-Host "Result: $localResult"
 
-    if ($job.ResultIsDirectory) {
-        # Lumber artifacts live outside the ablation result but reports need them.
-        $localLumber = Join-Path $PSScriptRoot "runs\lumber\qmsum"
-        Receive-RemoteDirectory `
-            "$remoteDirectory/runs/lumber/qmsum" `
-            $localLumber `
-            "lumber-$jobId"
-        # Scripts live below src/, so expose the reusable package to Python.
+    if ($description.run_evaluation) {
         $previousPythonPath = $env:PYTHONPATH
         $env:PYTHONPATH = Join-Path $PSScriptRoot "src"
-        python src/tools/report_ablations.py --root $localResult
+        python src/tools/report_ablations.py --preset $job.Preset
         $env:PYTHONPATH = $previousPythonPath
         if ($LASTEXITCODE -ne 0) {
             throw "Could not generate the ablation report"

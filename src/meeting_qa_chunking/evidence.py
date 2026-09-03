@@ -11,6 +11,7 @@ class EvidencePart:
     chunk_index: int
     turn_id: int
     text: str
+    start_word: int = 0
 
     @property
     def word_count(self) -> int:
@@ -30,12 +31,21 @@ class Evidence:
         return list(dict.fromkeys(part.chunk_index for part in self.parts))
 
 
-def render_evidence(evidence: Evidence, meeting: Meeting) -> str:
-    """Render retrieved parts with their original turn IDs and speakers."""
+def render_evidence(
+    evidence: Evidence,
+    meeting: Meeting,
+    order: str = "ranked",
+) -> str:
+    """Render selected evidence in retrieval-ranked or transcript order."""
 
+    parts = evidence.parts
+    if order == "chronological":
+        parts = sorted(parts, key=lambda part: (part.turn_id, part.start_word))
+    elif order != "ranked":
+        raise ValueError(f"Unknown evidence order: {order}")
     return "\n".join(
         f"[{part.turn_id}] {meeting.turns[part.turn_id].speaker}: {part.text}"
-        for part in evidence.parts
+        for part in parts
     )
 
 
@@ -117,27 +127,37 @@ def select_evidence(
         raise ValueError("max_words must be positive")
 
     parts: list[EvidencePart] = []
-    seen_turns: set[int] = set()
+    seen_words: set[tuple[int, int]] = set()
     remaining = max_words
 
     for chunk_index, _score in ranking:
-        for turn in chunks[chunk_index].turns:
-            if turn.id in seen_turns:
-                continue
-            seen_turns.add(turn.id)
+        for chunk_part in chunks[chunk_index].parts:
+            words = chunk_part.text.split()
+            selected = []
+            selected_start = None
+            for local_offset, word in enumerate(words):
+                absolute_offset = chunk_part.start_word + local_offset
+                key = (chunk_part.turn_id, absolute_offset)
+                if key in seen_words:
+                    continue
+                seen_words.add(key)
+                selected_start = (
+                    absolute_offset if selected_start is None else selected_start
+                )
+                selected.append(word)
+                remaining -= 1
+                if remaining == 0:
+                    break
 
-            words = turn.text.split()
-            selected_words = words[:remaining]
-            if selected_words:
+            if selected:
                 parts.append(
                     EvidencePart(
                         chunk_index=chunk_index,
-                        turn_id=turn.id,
-                        text=" ".join(selected_words),
+                        turn_id=chunk_part.turn_id,
+                        text=" ".join(selected),
+                        start_word=selected_start,
                     )
                 )
-                remaining -= len(selected_words)
-
             if remaining == 0:
                 return Evidence(parts)
 

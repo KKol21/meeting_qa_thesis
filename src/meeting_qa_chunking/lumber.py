@@ -28,13 +28,13 @@ def load_lumber_chunks(path: Path, meeting: Meeting) -> list[Chunk]:
         raise ValueError("Lumber result belongs to a different meeting")
 
     chunks = [
-        Chunk(
-            index=item.index,
-            turns=meeting.turns[item.start_turn : item.end_turn + 1],
+        Chunk.from_turns(
+            item.index,
+            meeting.turns[item.start_turn : item.end_turn + 1],
         )
         for item in result.chunks
     ]
-    covered_turns = [turn.id for chunk in chunks for turn in chunk.turns]
+    covered_turns = [part.turn_id for chunk in chunks for part in chunk.parts]
     if covered_turns != list(range(len(meeting.turns))):
         raise ValueError("Lumber chunks do not cover every turn exactly once")
     return chunks
@@ -62,7 +62,7 @@ def lumber_chunks(
         window_tokens = estimate_tokens(render_document(window))
 
         if len(window) < 2 or window_tokens <= target_tokens:
-            chunks.append(Chunk(index=len(chunks), turns=turns[start:]))
+            chunks.append(Chunk.from_turns(len(chunks), turns[start:]))
             break
 
         response = choose_boundary(build_prompt(window))
@@ -73,7 +73,7 @@ def lumber_chunks(
             boundary = parse_boundary(response, window)
         if record_decision is not None:
             record_decision(response)
-        chunks.append(Chunk(index=len(chunks), turns=turns[start:boundary]))
+        chunks.append(Chunk.from_turns(len(chunks), turns[start:boundary]))
         start = boundary
 
         if max_boundaries is not None and len(chunks) >= max_boundaries:

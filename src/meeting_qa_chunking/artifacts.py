@@ -1,9 +1,13 @@
-"""Read saved experiment artifacts without rewriting historical files."""
+"""Read, write, and fingerprint experiment artifacts."""
 
+import hashlib
 import json
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+
+
+EXPERIMENT_VERSION = 2
 
 
 @dataclass(frozen=True)
@@ -40,7 +44,13 @@ class ArtifactSchema:
 
 RETRIEVAL_SCHEMA = ArtifactSchema(
     "retrieval",
-    ("meeting_id", "configurations", "fixed_chunk_words", "questions"),
+    (
+        "meeting_id",
+        "configurations",
+        "chunking",
+        "evidence_order",
+        "questions",
+    ),
 )
 ANSWER_SCHEMA = ArtifactSchema(
     "answers",
@@ -50,6 +60,86 @@ ANSWER_SUMMARY_SCHEMA = ArtifactSchema(
     "answer summary",
     ("source", "answer_model", "meeting_ids", "conditions"),
 )
+
+
+def sha256_json(value: object) -> str:
+    content = json.dumps(
+        value,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+    ).encode("utf-8")
+    return hashlib.sha256(content).hexdigest()
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as file:
+        for block in iter(lambda: file.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def make_provenance(
+    stage: str,
+    config: dict[str, object],
+    inputs: dict[str, Path],
+    preset_path: Path,
+) -> dict[str, object]:
+    """Describe exactly which effective settings and files produced a stage."""
+
+    input_records = {
+        name: {"file": path.name, "sha256": sha256_file(path)}
+        for name, path in sorted(inputs.items())
+    }
+    config_hash = sha256_json(config)
+    input_hash = sha256_json(input_records)
+    fingerprint = sha256_json(
+        {"stage": stage, "config_hash": config_hash, "input_hash": input_hash}
+    )
+    return {
+        "stage": stage,
+        "config": config,
+        "config_hash": config_hash,
+        "inputs": input_records,
+        "input_hash": input_hash,
+        "fingerprint": fingerprint,
+        # Useful for auditing, but unrelated preset edits do not invalidate work.
+        "preset": {"file": preset_path.name, "sha256": sha256_file(preset_path)},
+    }
+
+
+def write_json(path: Path, value: object) -> None:
+    """Atomically write an experiment artifact."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary_path = path.with_suffix(".tmp")
+    temporary_path.write_text(
+        json.dumps(value, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    temporary_path.replace(path)
+
+
+def questions_complete(
+    artifact: dict[str, Any],
+    meeting_id: str,
+    question_texts: list[str],
+    conditions: set[str],
+) -> bool:
+    """Check the repeated per-question shape used by retrieval and answers."""
+
+    questions = artifact.get("questions")
+    return (
+        artifact.get("meeting_id") == meeting_id
+        and isinstance(questions, list)
+        and len(questions) == len(question_texts)
+        and all(
+            item.get("question_index") == index
+            and item.get("question") == question_texts[index]
+            and set(item.get("results", {})) == conditions
+            for index, item in enumerate(questions)
+        )
+    )
 
 
 def read_json_object(path: Path) -> dict[str, Any]:

@@ -1,49 +1,45 @@
-"""Stage 2: evaluate the retrieval grid on a fixed QMSum meeting set."""
+"""Stage 2: evaluate the retrieval grid defined by one preset."""
 
 import argparse
+from dataclasses import asdict
 import json
 from pathlib import Path
 from statistics import mean
 
-from meeting_qa_chunking.config import ConditionSpec, retrieval_conditions
+from meeting_qa_chunking.artifacts import (
+    EXPERIMENT_VERSION,
+    make_provenance,
+    questions_complete,
+    read_retrieval,
+    sha256_file,
+    write_json,
+)
+from meeting_qa_chunking.config import (
+    ConditionSpec,
+    load_run_config,
+    retrieval_conditions,
+)
 from meeting_qa_chunking.evidence import (
     first_relevant_chunk_rank,
     score_evidence,
     select_evidence,
 )
-from meeting_qa_chunking.experiment import (
-    EXPERIMENT_VERSION,
-    select_meeting_paths,
-    write_json,
-)
-from meeting_qa_chunking.pipeline import build_chunk_sets
+from meeting_qa_chunking.evidence_preparation import build_chunk_sets
 from meeting_qa_chunking.qmsum import load_meeting
-from meeting_qa_chunking.retrieval import (
-    BM25_B,
-    BM25_K1,
-    MODEL_NAME,
-    MODEL_REVISION,
-    RRF_K,
-    load_model,
-    rank_chunks,
-    rank_chunks_bm25,
-    reciprocal_rank_fusion,
-)
+from meeting_qa_chunking.selection import select_meeting_paths
 
 
-DEFAULT_DATA_DIR = Path("data/raw/qmsum/data/ALL/val")
-DEFAULT_LUMBER_DIR = Path("runs/lumber/qmsum")
-DEFAULT_OUTPUT_DIR = Path("runs/ablations/full/retrieval")
+METRICS = ("precision", "recall", "first_overlap_reciprocal_rank")
 
 
-def configuration_name(chunker: str, retriever: str, words: int) -> str:
-    return ConditionSpec(chunker, retriever, words).name
-
-
-def configurations(evidence_budgets: list[int]) -> dict[str, dict[str, object]]:
+def configurations(run) -> dict[str, dict[str, object]]:
     return {
         condition.name: condition.to_dict()
-        for condition in retrieval_conditions(evidence_budgets)
+        for condition in retrieval_conditions(
+            run.retrieval.evidence_budgets,
+            run.retrieval.chunkers,
+            run.retrieval.retrievers,
+        )
     }
 
 
@@ -52,7 +48,50 @@ def summarize(output_dir: Path, meeting_ids: list[str]) -> dict[str, object]:
         json.loads((output_dir / f"{meeting_id}.json").read_text(encoding="utf-8"))
         for meeting_id in meeting_ids
     ]
-    condition_names = list(results[0]["configurations"])
+    names = list(results[0]["configurations"])
+    per_meeting = {
+        result["meeting_id"]: {
+            condition: {
+                metric: mean(
+                    question["results"][condition][metric]
+                    for question in result["questions"]
+                )
+                for metric in METRICS
+            }
+            for condition in names
+        }
+        for result in results
+    }
+    meeting_average = {
+        condition: {
+            metric: mean(
+                per_meeting[meeting_id][condition][metric]
+                for meeting_id in meeting_ids
+            )
+            for metric in METRICS
+        }
+        for condition in names
+    }
+
+    paired = {}
+    for name, condition in results[0]["configurations"].items():
+        if condition["chunker"] != "lumber":
+            continue
+        suffix = f"{condition['retriever']}__w{condition['evidence_words']}"
+        for baseline in ("turn_packed", "word_packed"):
+            baseline_name = f"{baseline}__{suffix}"
+            if baseline_name not in names:
+                continue
+            comparison = f"lumber_minus_{baseline}__{suffix}"
+            paired[comparison] = {
+                metric: mean(
+                    per_meeting[meeting_id][name][metric]
+                    - per_meeting[meeting_id][baseline_name][metric]
+                    for meeting_id in meeting_ids
+                )
+                for metric in ("precision", "recall")
+            }
+
     return {
         "experiment_version": EXPERIMENT_VERSION,
         "stage": "retrieval",
@@ -60,96 +99,154 @@ def summarize(output_dir: Path, meeting_ids: list[str]) -> dict[str, object]:
         "meeting_count": len(meeting_ids),
         "question_count": sum(result["question_count"] for result in results),
         "configurations": results[0]["configurations"],
-        "macro_average": {
+        "question_average": {
             condition: {
                 metric: mean(
                     question["results"][condition][metric]
                     for result in results
                     for question in result["questions"]
                 )
-                for metric in ("precision", "recall", "reciprocal_rank")
+                for metric in METRICS
             }
-            for condition in condition_names
+            for condition in names
+        },
+        "per_meeting": per_meeting,
+        "meeting_average": meeting_average,
+        "paired_meeting_average": paired,
+        "artifact_hashes": {
+            meeting_id: sha256_file(output_dir / f"{meeting_id}.json")
+            for meeting_id in meeting_ids
         },
     }
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-dir", type=Path, default=DEFAULT_DATA_DIR)
-    parser.add_argument("--lumber-dir", type=Path, default=DEFAULT_LUMBER_DIR)
-    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
-    parser.add_argument("--count", type=int, default=20)
-    parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--meetings", nargs="+")
-    parser.add_argument("--fixed-chunk-words", type=int, default=256)
-    parser.add_argument("--evidence-budgets", type=int, nargs="+", default=[512, 1024])
+    parser.add_argument("--preset", type=Path, required=True)
     args = parser.parse_args()
 
-    if any(words <= 0 for words in args.evidence_budgets):
-        raise ValueError("Evidence budgets must be positive")
-    paths = select_meeting_paths(
-        args.data_dir, args.count, args.seed, args.meetings
+    from meeting_qa_chunking.retrieval import (
+        load_model,
+        rank_chunks,
+        rank_chunks_bm25,
+        reciprocal_rank_fusion,
     )
-    config = configurations(args.evidence_budgets)
-    # Results are resumable per meeting, but only if the grid is unchanged.
+
+    run = load_run_config(args.preset)
+    spec = run.retrieval
+    meeting_ids = run.meeting_ids()
+    paths = select_meeting_paths(run.data_dir, len(meeting_ids), 0, meeting_ids)
+    condition_config = configurations(run)
+    uses_dense = any(name in ("dense", "hybrid") for name in spec.retrievers)
+    uses_bm25 = any(name in ("bm25", "hybrid") for name in spec.retrievers)
+    effective_config = {
+        "experiment_version": EXPERIMENT_VERSION,
+        "configurations": condition_config,
+        "chunkers": spec.chunkers,
+        "retrievers": spec.retrievers,
+        "turn_packed_max_words": spec.turn_packed_max_words,
+        "word_packed_max_words": spec.word_packed_max_words,
+        "evidence_order": spec.evidence_order,
+    }
+    if uses_dense:
+        effective_config["dense_model"] = asdict(spec.dense_model)
+    if uses_bm25:
+        effective_config["bm25"] = {"k1": spec.bm25_k1, "b": spec.bm25_b}
+    if "hybrid" in spec.retrievers:
+        effective_config["rrf_k"] = spec.rrf_k
+
     pending = []
     for path in paths:
-        output_path = args.output_dir / path.name
+        meeting = load_meeting(path)
+        lumber_path = run.lumber_dir / path.name
+        uses_lumber = "lumber" in spec.chunkers
+        if uses_lumber and not lumber_path.exists():
+            raise FileNotFoundError(lumber_path)
+        output_path = run.retrieval_dir / path.name
+        inputs = {"meeting": path}
+        if uses_lumber:
+            inputs["segmentation"] = lumber_path
+        provenance = make_provenance(
+            "retrieval",
+            effective_config,
+            inputs,
+            args.preset,
+        )
         if output_path.exists():
-            saved = json.loads(output_path.read_text(encoding="utf-8"))
+            try:
+                saved = read_retrieval(output_path)
+            except ValueError:
+                saved = {}
             if (
-                saved.get("experiment_version") == EXPERIMENT_VERSION
-                and saved.get("configurations") == config
+                saved.get("provenance", {}).get("fingerprint")
+                == provenance["fingerprint"]
+                and saved.get("configurations") == condition_config
+                and questions_complete(
+                    saved,
+                    meeting.id,
+                    [question.text for question in meeting.questions],
+                    set(condition_config),
+                )
             ):
                 print(f"Retrieval {path.stem}: existing", flush=True)
                 continue
-        pending.append((path, output_path))
+        pending.append((meeting, output_path, provenance))
 
-    model = load_model() if pending else None
-    if model is not None:
+    model = None
+    if pending and uses_dense:
+        model = load_model(spec.dense_model.name, spec.dense_model.revision)
         print(f"Embedding device: {model.device}", flush=True)
 
-    for path, output_path in pending:
-        meeting = load_meeting(path)
+    for meeting, output_path, provenance in pending:
         chunk_sets = build_chunk_sets(
             meeting,
-            args.lumber_dir / f"{meeting.id}.json",
-            args.fixed_chunk_words,
+            run.lumber_dir / f"{meeting.id}.json",
+            spec.turn_packed_max_words,
+            spec.word_packed_max_words,
+            spec.chunkers,
         )
         questions = []
         dense_cache_hits = {}
         for question_index, question in enumerate(meeting.questions):
             question_results = {}
-            for chunker, chunks in chunk_sets.items():
-                dense, cache_hit = rank_chunks(question.text, chunks, model)
-                dense_cache_hits.setdefault(chunker, cache_hit)
-                bm25 = rank_chunks_bm25(question.text, chunks)
-                # Dense and BM25 are computed once, then reused across budgets.
-                rankings = {
-                    "dense": dense,
-                    "bm25": bm25,
-                    "hybrid": reciprocal_rank_fusion([dense, bm25]),
-                }
-                for retriever, ranking in rankings.items():
-                    first_gold_rank = first_relevant_chunk_rank(
-                        ranking, chunks, question
+            for chunker in spec.chunkers:
+                chunks = chunk_sets[chunker]
+                all_rankings = {}
+                if uses_dense:
+                    dense, cache_hit = rank_chunks(
+                        question.text,
+                        chunks,
+                        model,
+                        spec.dense_model.name,
+                        spec.dense_model.revision,
                     )
-                    for words in args.evidence_budgets:
+                    dense_cache_hits.setdefault(chunker, cache_hit)
+                    all_rankings["dense"] = dense
+                if uses_bm25:
+                    all_rankings["bm25"] = rank_chunks_bm25(
+                        question.text, chunks, spec.bm25_k1, spec.bm25_b
+                    )
+                if "hybrid" in spec.retrievers:
+                    all_rankings["hybrid"] = reciprocal_rank_fusion(
+                        [all_rankings["dense"], all_rankings["bm25"]],
+                        spec.rrf_k,
+                    )
+                for retriever in spec.retrievers:
+                    ranking = all_rankings[retriever]
+                    first_rank = first_relevant_chunk_rank(ranking, chunks, question)
+                    for words in spec.evidence_budgets:
                         evidence = select_evidence(ranking, chunks, words)
                         metrics = score_evidence(evidence, meeting, question)
-                        name = configuration_name(chunker, retriever, words)
+                        name = ConditionSpec(chunker, retriever, words).name
                         question_results[name] = {
                             "precision": metrics.precision,
                             "recall": metrics.recall,
-                            "first_gold_rank": first_gold_rank,
-                            "reciprocal_rank": (
-                                1 / first_gold_rank if first_gold_rank else 0.0
+                            "first_overlap_rank": first_rank,
+                            "first_overlap_reciprocal_rank": (
+                                1 / first_rank if first_rank else 0.0
                             ),
                             "retrieved_words": metrics.retrieved_words,
-                            "relevant_retrieved_words": (
-                                metrics.relevant_retrieved_words
-                            ),
+                            "relevant_retrieved_words": metrics.relevant_retrieved_words,
                             "gold_words": metrics.gold_words,
                             "selected_chunk_indices": evidence.chunk_indices,
                         }
@@ -164,14 +261,27 @@ def main() -> None:
 
         result = {
             "experiment_version": EXPERIMENT_VERSION,
+            "provenance": provenance,
             "meeting_id": meeting.id,
             "question_count": len(questions),
-            "configurations": config,
-            "fixed_chunk_words": args.fixed_chunk_words,
+            "configurations": condition_config,
+            "chunking": {
+                "turn_packed_max_words": spec.turn_packed_max_words,
+                "word_packed_max_words": spec.word_packed_max_words,
+            },
+            "evidence_order": spec.evidence_order,
             "retrievers": {
-                "dense": {"model": MODEL_NAME, "revision": MODEL_REVISION},
-                "bm25": {"k1": BM25_K1, "b": BM25_B},
-                "hybrid": {"method": "reciprocal_rank_fusion", "k": RRF_K},
+                name: (
+                    asdict(spec.dense_model)
+                    if name == "dense"
+                    else {"k1": spec.bm25_k1, "b": spec.bm25_b}
+                    if name == "bm25"
+                    else {
+                        "method": "reciprocal_rank_fusion",
+                        "k": spec.rrf_k,
+                    }
+                )
+                for name in spec.retrievers
             },
             "dense_embeddings_initially_cached": dense_cache_hits,
             "chunk_counts": {
@@ -182,10 +292,8 @@ def main() -> None:
         write_json(output_path, result)
         print(f"Retrieval {meeting.id}: saved", flush=True)
 
-    meeting_ids = [path.stem for path in paths]
-    summary = summarize(args.output_dir, meeting_ids)
-    write_json(args.output_dir / "summary.json", summary)
-    print(f"Retrieval summary: {args.output_dir / 'summary.json'}")
+    write_json(run.retrieval_dir / "summary.json", summarize(run.retrieval_dir, meeting_ids))
+    print(f"Retrieval summary: {run.retrieval_dir / 'summary.json'}")
 
 
 if __name__ == "__main__":

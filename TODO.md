@@ -3,7 +3,7 @@
 ## Decisions to confirm
 
 - [ ] Confirm whether retrieval evidence should remain budgeted in whitespace-delimited words or use Qwen tokens.
-- [ ] Choose the fixed-token chunk size. It should be approximately comparable to the 256-word turn-packed baseline.
+- [ ] Ask whether a tokenizer-based baseline is still needed beyond the implemented 256-word hard-packed baseline.
 - [ ] Decide whether the final evaluation is an untouched validation subset or a test-set experiment.
 - [ ] Decide whether ELITR Bench remains in scope. The current experiment evaluates QMSum only.
 
@@ -17,29 +17,27 @@
 - [ ] Change the answer judge so gold transcript evidence is the primary factual source and the reference answer is explicitly non-exhaustive.
 - [ ] Increment the evaluation version and rerun evaluation only; reuse cached segmentations, retrieval results, and answers.
 
-### P1 — add a genuine fixed-token baseline
+### P1 — add a genuine fixed-word baseline
 
-- [ ] Add a chunk representation that can retain partial-turn text together with its original turn ID and source offsets.
-- [ ] Implement sequential fixed-token chunking that may split speaker turns and has no overlap.
-- [ ] Pin and record the tokenizer name and revision used for chunk boundaries.
-- [ ] Define whether speaker labels count toward the token limit and apply that choice consistently.
-- [ ] Ensure fixed-token chunks reconstruct the complete transcript exactly once, without gaps or duplicated source text.
-- [ ] Keep the existing 256-word turn-preserving chunker as a separate baseline.
-- [ ] Rename chunkers unambiguously, for example `fixed_token`, `turn_packed`, and `lumber`.
-- [ ] Extend retrieval configurations from 12 to 18 conditions: 3 chunkers × 3 retrievers × 2 evidence budgets.
-- [ ] Update evidence selection and reconstruction so partial turns remain traceable and are not incorrectly deduplicated by turn ID.
-- [ ] Update retrieval scoring so partial-turn evidence receives the correct source-word overlap credit.
-- [ ] Update answer generation and manual-review reports to render partial turns with their speaker and source position.
-- [ ] Preserve caches for the existing conditions so only the new fixed-token conditions require generation.
-- [ ] Add unit tests for exact transcript coverage, long-turn splitting, chunk limits, source mapping, evidence reconstruction, and deterministic boundaries.
-- [ ] Run a one-meeting smoke test before launching the additional conditions.
+- [x] Add a chunk representation that retains partial-turn text, original turn ID, and word offsets.
+- [x] Implement sequential fixed-word chunking that may split speaker turns and has no overlap.
+- [x] Exclude repeated speaker/turn labels from the 256-content-word limit and document the choice.
+- [x] Ensure word-packed chunks reconstruct source words exactly once, without gaps or duplication.
+- [x] Keep the 256-word turn-preserving chunker as a separate soft-limit baseline.
+- [x] Rename chunkers unambiguously: `word_packed`, `turn_packed`, and `lumber`.
+- [x] Extend retrieval to 18 conditions: 3 chunkers × 3 retrievers × 2 evidence budgets.
+- [x] Preserve and reconstruct split-turn fragments without deduplicating by turn ID.
+- [x] Score partial-turn evidence using its source turn and selected source-word count.
+- [x] Render split turns with repeated speaker attribution and chronological evidence order.
+- [x] Add unit tests for long-turn splitting, offsets, empty turns, evidence reconstruction, and ordering.
+- [x] Run a one-meeting smoke test before launching the additional conditions.
 
 ### P1 — complete quantitative analysis
 
 - [ ] Add retrieval F1 per question and macro-average F1 per condition.
 - [ ] Add zero-hit rate per condition.
-- [ ] Add per-meeting metric tables.
-- [ ] Add paired chunker differences while holding retriever and evidence budget constant.
+- [x] Add per-meeting metric tables.
+- [x] Add paired chunker differences while holding retriever and evidence budget constant.
 - [ ] Add meeting-clustered bootstrap confidence intervals for paired differences.
 - [ ] Fix the bootstrap seed and record the number of resamples and confidence level.
 - [ ] Report the number of meetings and questions contributing to every aggregate.
@@ -47,14 +45,14 @@
 ### P1 — validate automatic answer evaluation
 
 - [ ] Define a fixed manual-review sample before examining the full results.
-- [ ] Include random questions, zero-hit cases, large fixed-versus-Lumber differences, and metric-disagreement cases.
+- [ ] Include random questions, zero-hit cases, large baseline-versus-Lumber differences, and metric-disagreement cases.
 - [ ] Record reference adequacy, evidence sufficiency, answer correctness, and unsupported claims during manual review.
 - [ ] Report possible same-family bias because the judge and answer models are Qwen models.
 - [ ] Treat ROUGE and BERTScore as reference-overlap measures rather than direct factual-correctness measures.
 
 ### P2 — reporting and reproducibility
 
-- [ ] Extend `report_ablations.py` to include F1, zero-hit rate, confidence intervals, and paired differences.
+- [ ] Extend `report_ablations.py` with F1, zero-hit rate, and confidence intervals. Paired differences are implemented.
 - [ ] Mark development meetings separately in reports and exclude them from final aggregates by default.
 - [ ] Record dataset split, meeting-selection rule, seed, exact meeting IDs, model revisions, prompts, and decoding settings in the final summary.
 - [ ] Record hardware and pinned software versions.
@@ -68,8 +66,8 @@ results or instructor decisions are still pending.
 
 ### 1. Align the experimental-design overview
 
-- [ ] Describe a factorial experiment with segmentation as the primary factor. The planned final grid has three chunkers (`fixed_token`, `turn_packed`, and `lumber`), three retrievers (dense, BM25, and hybrid), and two evidence budgets (512 and 1,024 words), for 18 conditions. If fixed-token chunking is not completed, describe only the two implemented chunkers and 12 conditions.
-- [ ] Explain the chunkers in one sentence each: fixed-token chunks may split turns; turn-packed chunks greedily pack complete turns up to 256 words; Lumber uses an LLM to place semantic boundaries only between turns. Neither fixed baseline overlaps.
+- [ ] Describe a factorial experiment with three chunkers (`word_packed`, `turn_packed`, and `lumber`), three retrievers, and two evidence budgets, for 18 conditions.
+- [ ] Explain the chunkers in one sentence each: word-packed chunks split at 256 content words and repeat attribution; turn-packed chunks greedily pack complete turns under a soft 256-word limit; Lumber places semantic boundaries only between turns. Neither non-semantic baseline overlaps.
 - [ ] Describe the separate oracle experiment, which supplies annotated gold evidence directly and compares Qwen2.5 7B, 14B, and quantized 32B answer models.
 
 ### 2. Correct the dataset description
@@ -80,9 +78,9 @@ results or instructor decisions are still pending.
 
 ### 3. Replace the segmentation-method details
 
-- [ ] For fixed-token chunking, report the final tokenizer/checkpoint, token limit, whether speaker labels count toward it, and that source offsets are preserved when a turn is split. Leave these as explicit placeholders until the implementation decision is frozen.
+- [ ] For word-packed chunking, report the 256-content-word hard limit, repeated speaker labels outside that budget, and preserved source word offsets.
 - [ ] For turn-packed chunking, report the implemented 256-whitespace-word limit and preservation of complete turns.
-- [ ] For Lumber, state that turns replace the paragraphs in the original method; the original prompt is used on rolling windows of approximately 550 tokens, estimated as `1.2 x whitespace word count`. The boundary model is Qwen2.5-7B-Instruct with temperature 0.1 and seed 42. An invalid boundary triggers one constrained retry. Put the full prompt and exact checkpoint revision in an appendix or configuration table.
+- [ ] For Lumber, state that turns replace the paragraphs in the original method; the original prompt is used on rolling windows of approximately 550 tokens, estimated as `1.2 x whitespace word count`. The boundary model is Qwen2.5-7B-Instruct with greedy decoding, at most 32 new tokens, and seed 42. An invalid boundary triggers one constrained retry.
 
 ### 4. Correct retrieval and budget accounting
 
@@ -106,7 +104,7 @@ results or instructor decisions are still pending.
 
 1. Recover and preserve job `4937` results.
 2. Exclude `Bed002` and settle the final meeting set.
-3. Implement and smoke-test fixed-token chunks.
+3. Smoke-test the new word-packed chunks and provenance chain. (Completed.)
 4. Run only the additional or invalidated conditions.
 5. Revise and rerun the evidence-first judge.
 6. Compute paired statistics and confidence intervals from saved outputs.

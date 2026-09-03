@@ -23,22 +23,30 @@ RRF_K = 60
 TOKEN_PATTERN = re.compile(r"\w+")
 
 
-def load_model() -> SentenceTransformer:
+def load_model(
+    model_name: str = MODEL_NAME,
+    revision: str = MODEL_REVISION,
+) -> SentenceTransformer:
     try:
         return SentenceTransformer(
-            MODEL_NAME,
-            revision=MODEL_REVISION,
+            model_name,
+            revision=revision,
             local_files_only=True,
         )
     except OSError:
-        return SentenceTransformer(MODEL_NAME, revision=MODEL_REVISION)
+        return SentenceTransformer(model_name, revision=revision)
 
 
-def cache_path(chunks: list[Chunk], cache_dir: Path) -> Path:
+def cache_path(
+    chunks: list[Chunk],
+    cache_dir: Path,
+    model_name: str,
+    revision: str,
+) -> Path:
     content = json.dumps(
         {
-            "model": MODEL_NAME,
-            "revision": MODEL_REVISION,
+            "model": model_name,
+            "revision": revision,
             "chunks": [chunk.text for chunk in chunks],
         },
         ensure_ascii=False,
@@ -50,8 +58,10 @@ def load_or_encode_chunks(
     chunks: list[Chunk],
     model: SentenceTransformer,
     cache_dir: Path = DEFAULT_CACHE_DIR,
+    model_name: str = MODEL_NAME,
+    revision: str = MODEL_REVISION,
 ) -> tuple[np.ndarray, bool]:
-    path = cache_path(chunks, cache_dir)
+    path = cache_path(chunks, cache_dir, model_name, revision)
     if path.exists():
         return np.load(path, allow_pickle=False), True
 
@@ -71,6 +81,8 @@ def rank_chunks(
     question: str,
     chunks: list[Chunk],
     model: SentenceTransformer,
+    model_name: str = MODEL_NAME,
+    revision: str = MODEL_REVISION,
 ) -> tuple[list[tuple[int, float]], bool]:
     """Return the ranking and whether chunk embeddings came from cache."""
 
@@ -78,7 +90,9 @@ def rank_chunks(
         raise ValueError("Chunk indices must match their list positions")
 
     query_embedding = model.encode(question, normalize_embeddings=True)
-    chunk_embeddings, cache_hit = load_or_encode_chunks(chunks, model)
+    chunk_embeddings, cache_hit = load_or_encode_chunks(
+        chunks, model, model_name=model_name, revision=revision
+    )
     # Normalized embeddings make this dot product equal cosine similarity.
     scores = chunk_embeddings @ query_embedding
 

@@ -10,7 +10,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
 from meeting_qa_chunking.artifacts import read_segmentation
-from meeting_qa_chunking.chunking import Chunk, chunk_by_word_budget
+from meeting_qa_chunking.chunking import (
+    Chunk,
+    chunk_turn_packed,
+    chunk_word_packed,
+)
 from meeting_qa_chunking.evidence import (
     reconstruct_evidence,
     render_evidence,
@@ -55,17 +59,44 @@ class ChunkingCharacterizationTest(unittest.TestCase):
             Turn(2, "A", "zeta"),
         ]
 
-        chunks = chunk_by_word_budget(turns, max_words=4)
+        chunks = chunk_turn_packed(turns, max_words=4)
 
-        self.assertEqual([[turn.id for turn in chunk.turns] for chunk in chunks], [[0], [1, 2]])
+        self.assertEqual(
+            [[part.turn_id for part in chunk.parts] for chunk in chunks],
+            [[0], [1, 2]],
+        )
         self.assertEqual(chunks[1].index, 1)
         self.assertEqual(chunks[1].word_count, 4)
         self.assertEqual(chunks[1].text, "[1] B: gamma delta epsilon\n[2] A: zeta")
 
     def test_keeps_an_oversized_turn_intact(self) -> None:
-        chunks = chunk_by_word_budget([Turn(0, "A", "one two three")], max_words=2)
+        chunks = chunk_turn_packed(
+            [Turn(0, "A", "one two three")], max_words=2
+        )
         self.assertEqual(len(chunks), 1)
         self.assertEqual(chunks[0].word_count, 3)
+
+    def test_word_packing_splits_turns_and_repeats_speaker_labels(self) -> None:
+        turns = [
+            Turn(0, "A", "one two three four five"),
+            Turn(1, "B", "six seven"),
+        ]
+        chunks = chunk_word_packed(turns, max_words=3)
+
+        self.assertEqual([chunk.word_count for chunk in chunks], [3, 3, 1])
+        self.assertEqual(chunks[0].text, "[0] A: one two three")
+        self.assertEqual(chunks[1].text, "[0] A: four five\n[1] B: six")
+        self.assertEqual(chunks[2].text, "[1] B: seven")
+        self.assertEqual(
+            [(part.turn_id, part.start_word) for chunk in chunks for part in chunk.parts],
+            [(0, 0), (0, 3), (1, 0), (1, 1)],
+        )
+
+    def test_word_packing_preserves_empty_turns(self) -> None:
+        chunks = chunk_word_packed(
+            [Turn(0, "A", ""), Turn(1, "B", "one two")], max_words=2
+        )
+        self.assertEqual(chunks[0].text, "[0] A: \n[1] B: one two")
 
 
 class EvidenceCharacterizationTest(unittest.TestCase):
@@ -80,8 +111,8 @@ class EvidenceCharacterizationTest(unittest.TestCase):
             questions=[Question("What did B say?", "Gamma.", [(1, 1)])],
         )
         self.chunks = [
-            Chunk(0, self.meeting.turns[0:2]),
-            Chunk(1, self.meeting.turns[1:3]),
+            Chunk.from_turns(0, self.meeting.turns[0:2]),
+            Chunk.from_turns(1, self.meeting.turns[1:3]),
         ]
 
     def test_clips_final_turn_and_scores_words_by_gold_turn(self) -> None:
@@ -101,6 +132,31 @@ class EvidenceCharacterizationTest(unittest.TestCase):
         self.assertEqual([part.turn_id for part in evidence.parts], [1, 2, 0])
         self.assertEqual(evidence.chunk_indices, [1, 0])
         self.assertEqual(evidence.word_count, 6)
+
+    def test_chronological_rendering_keeps_ranked_chunk_selection(self) -> None:
+        evidence = select_evidence([(1, 1.0), (0, 0.5)], self.chunks, max_words=6)
+
+        self.assertEqual(evidence.chunk_indices, [1, 0])
+        self.assertEqual(
+            render_evidence(evidence, self.meeting, order="chronological"),
+            "[0] A: alpha\n[1] B: gamma delta epsilon\n[2] C: zeta eta",
+        )
+
+    def test_split_fragments_from_the_same_turn_both_survive(self) -> None:
+        chunks = chunk_word_packed(
+            [Turn(0, "A", "one two three four")], max_words=2
+        )
+        evidence = select_evidence([(1, 1.0), (0, 0.5)], chunks, max_words=4)
+
+        self.assertEqual([part.start_word for part in evidence.parts], [2, 0])
+        self.assertEqual(
+            render_evidence(
+                evidence,
+                Meeting("Split", [Turn(0, "A", "one two three four")], []),
+                order="chronological",
+            ),
+            "[0] A: one two\n[0] A: three four",
+        )
 
     def test_renders_gold_turns_in_transcript_order(self) -> None:
         text, turn_ids = render_gold_evidence(self.meeting.questions[0], self.meeting)

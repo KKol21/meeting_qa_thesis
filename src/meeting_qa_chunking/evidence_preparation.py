@@ -1,9 +1,15 @@
-"""Pure preparation shared by retrieval, answering, and reporting stages."""
+"""Prepare oracle and retrieved evidence for answering and reporting."""
 
+from collections.abc import Iterable
 from pathlib import Path
 
 from .artifacts import read_retrieval
-from .chunking import Chunk, chunk_by_word_budget, turn_word_count
+from .chunking import (
+    Chunk,
+    chunk_turn_packed,
+    chunk_word_packed,
+    turn_word_count,
+)
 from .evidence import reconstruct_evidence, render_evidence, render_gold_evidence
 from .lumber import load_lumber_chunks
 from .qmsum import Meeting
@@ -11,15 +17,32 @@ from .qmsum import Meeting
 
 def build_chunk_sets(
     meeting: Meeting,
-    lumber_path: Path,
-    fixed_chunk_words: int,
+    lumber_path: Path | None,
+    turn_packed_max_words: int,
+    word_packed_max_words: int,
+    chunkers: Iterable[str] = ("turn_packed", "word_packed", "lumber"),
 ) -> dict[str, list[Chunk]]:
-    """Build the two chunk sets used by the existing ablation grid."""
+    """Build the requested chunk views."""
 
-    return {
-        "fixed": chunk_by_word_budget(meeting.turns, fixed_chunk_words),
-        "lumber": load_lumber_chunks(lumber_path, meeting),
+    builders = {
+        "turn_packed": lambda: chunk_turn_packed(
+            meeting.turns, turn_packed_max_words
+        ),
+        "word_packed": lambda: chunk_word_packed(
+            meeting.turns, word_packed_max_words
+        ),
     }
+    built = {}
+    for name in chunkers:
+        if name == "lumber":
+            if lumber_path is None:
+                raise ValueError("Lumber chunks require a segmentation path")
+            built[name] = load_lumber_chunks(lumber_path, meeting)
+        elif name in builders:
+            built[name] = builders[name]()
+        else:
+            raise ValueError(f"Unknown chunker: {name}")
+    return built
 
 
 def prepare_oracle_evidence(meeting: Meeting) -> list[dict[str, object]]:
@@ -57,11 +80,17 @@ def prepare_retrieved_evidence(
         raise ValueError(f"Unknown retrieval conditions: {', '.join(unknown)}")
     selected_conditions = {name: conditions[name] for name in selected_names}
 
+    chunkers = tuple(dict.fromkeys(
+        condition["chunker"] for condition in selected_conditions.values()
+    ))
     chunk_sets = build_chunk_sets(
         meeting,
-        lumber_dir / f"{meeting.id}.json",
-        retrieval["fixed_chunk_words"],
+        lumber_dir / f"{meeting.id}.json" if "lumber" in chunkers else None,
+        retrieval["chunking"]["turn_packed_max_words"],
+        retrieval["chunking"]["word_packed_max_words"],
+        chunkers,
     )
+    evidence_order = retrieval["evidence_order"]
     prepared = []
     for question_index, question_result in enumerate(retrieval["questions"]):
         if question_result["question_index"] != question_index:
@@ -77,9 +106,10 @@ def prepare_retrieved_evidence(
                 condition["evidence_words"],
             )
             question_evidence[name] = {
-                "text": render_evidence(evidence, meeting),
+                "text": render_evidence(evidence, meeting, evidence_order),
                 "metadata": {
                     "evidence_words": evidence.word_count,
+                    "evidence_order": evidence_order,
                     "selected_chunk_indices": evidence.chunk_indices,
                     "retrieval_precision": saved["precision"],
                     "retrieval_recall": saved["recall"],
