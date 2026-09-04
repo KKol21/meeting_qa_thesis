@@ -1,0 +1,6663 @@
+{
+  "experiment_version": 2,
+  "evaluation_config": {
+    "experiment_version": 2,
+    "bertscore": {
+      "package_version": "0.3.13",
+      "model": {
+        "tag": "roberta-large",
+        "name": "FacebookAI/roberta-large",
+        "revision": "722cf37b1afa9454edce342e7895e588b6ff1d59",
+        "prequantized": false
+      },
+      "layers": 17,
+      "batch_size": 16,
+      "rescale_with_baseline": false
+    },
+    "judge": {
+      "model": {
+        "tag": "llama-3.3-70b-bnb4",
+        "name": "unsloth/Llama-3.3-70B-Instruct-bnb-4bit",
+        "revision": "74be54198eaf4f3c7fba1f4e9fa63725a810c7eb",
+        "prequantized": true
+      },
+      "max_new_tokens": 192,
+      "temperature": 0.0,
+      "seed": 42,
+      "prompt": "You are evaluating an answer to a meeting question.\nUse the reference answer and gold transcript evidence as complementary sources of truth. Do not require identical wording, and do not reward an answer merely for repeating the question.\n\nFirst identify the important points in the reference answer, then check them against the candidate and transcript. A supported but incomplete answer must receive 2, not 3. Transcript-supported details beyond the reference are allowed, but do not compensate for omitted important reference points.\n\nScore the candidate answer using this scale:\n1 = Invalid or incorrect. It does not answer the question, contradicts the evidence, is mostly unsupported, contains a major unsupported claim, or claims insufficient evidence when the answer is available.\n2 = Partially correct. It gives useful supported information, but omits one or more important points from the reference answer or includes a minor unsupported claim.\n3 = Correct. It covers all or nearly all important points from the reference answer, is supported by the transcript evidence, and contains no material error or unsupported claim.\n\nReturn only a JSON object with an integer score and one short reason:\n{\"score\": 1, \"reason\": \"...\"}"
+    }
+  },
+  "stages": {
+    "oracle-14b": {
+      "source": "oracle",
+      "answer_model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "answer_count": 142,
+      "question_average": {
+        "oracle": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8714332647726569,
+            "recall": 0.8795150086073809,
+            "f1": 0.8753580782614964
+          },
+          "judge_mean": 2.528169014084507,
+          "judge_distribution": {
+            "1": 5,
+            "2": 57,
+            "3": 80
+          }
+        }
+      },
+      "per_meeting": {
+        "ES2006a": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8639683723449707,
+              "recall": 0.8780379096666971,
+              "f1": 0.8708877265453339
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 3,
+              "3": 3
+            }
+          }
+        },
+        "ES2006d": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.868706077337265,
+              "recall": 0.8787903587023417,
+              "f1": 0.8736555278301239
+            },
+            "judge_mean": 2.6666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 2,
+              "3": 4
+            }
+          }
+        },
+        "Bmr026": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8659216264883677,
+              "recall": 0.8827807505925497,
+              "f1": 0.8742247521877289
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 3,
+              "3": 3
+            }
+          }
+        },
+        "IS1006d": {
+          "oracle": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8734021410346031,
+              "recall": 0.8820658549666405,
+              "f1": 0.8776696547865868
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 1,
+              "2": 2,
+              "3": 5
+            }
+          }
+        },
+        "education_0": {
+          "oracle": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8625646481911341,
+              "recall": 0.8638577163219452,
+              "f1": 0.8631666998068491
+            },
+            "judge_mean": 2.4166666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 7,
+              "3": 5
+            }
+          }
+        },
+        "TS3009b": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.870997836192449,
+              "recall": 0.8841736217339834,
+              "f1": 0.8774247666200002
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 3,
+              "3": 3
+            }
+          }
+        },
+        "covid_2": {
+          "oracle": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8865664856774467,
+              "recall": 0.9025051508631025,
+              "f1": 0.8944021718842643
+            },
+            "judge_mean": 2.142857142857143,
+            "judge_distribution": {
+              "1": 0,
+              "2": 6,
+              "3": 1
+            }
+          }
+        },
+        "ES2009d": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8532813191413879,
+              "recall": 0.8663745125134786,
+              "f1": 0.8597437043984731
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 3,
+              "3": 2
+            }
+          }
+        },
+        "TS3010b": {
+          "oracle": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8886272651808602,
+              "recall": 0.8878541418484279,
+              "f1": 0.888221664088113
+            },
+            "judge_mean": 2.5714285714285716,
+            "judge_distribution": {
+              "1": 0,
+              "2": 3,
+              "3": 4
+            }
+          }
+        },
+        "TS3009d": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8783332606156667,
+              "recall": 0.8770132760206858,
+              "f1": 0.8776124020417532
+            },
+            "judge_mean": 2.6666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 2,
+              "3": 4
+            }
+          }
+        },
+        "ES2009b": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8720125357309977,
+              "recall": 0.8758933345476786,
+              "f1": 0.8739140232404073
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 3,
+              "3": 3
+            }
+          }
+        },
+        "ES2006b": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8698230981826782,
+              "recall": 0.8777654469013214,
+              "f1": 0.8736091156800588
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 0,
+              "2": 4,
+              "3": 2
+            }
+          }
+        },
+        "ES2006c": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8654698332150778,
+              "recall": 0.8681926826635996,
+              "f1": 0.8667126893997192
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 3,
+              "3": 3
+            }
+          }
+        },
+        "TS3010c": {
+          "oracle": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8743561932018825,
+              "recall": 0.8684780767985752,
+              "f1": 0.8713312063898359
+            },
+            "judge_mean": 2.142857142857143,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 2
+            }
+          }
+        },
+        "Bro022": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8669016063213348,
+              "recall": 0.9035946428775787,
+              "f1": 0.884837140639623
+            },
+            "judge_mean": 3,
+            "judge_distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 6
+            }
+          }
+        },
+        "IS1006c": {
+          "oracle": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8790807922681173,
+              "recall": 0.8879803352885776,
+              "f1": 0.8834646344184875
+            },
+            "judge_mean": 2.888888888888889,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 8
+            }
+          }
+        },
+        "covid_6": {
+          "oracle": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.87371926009655,
+              "recall": 0.8835557450850805,
+              "f1": 0.8785826116800308
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 7
+            }
+          }
+        },
+        "Bro005": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.855401615301768,
+              "recall": 0.8869045277436575,
+              "f1": 0.870781014362971
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 0,
+              "2": 4,
+              "3": 2
+            }
+          }
+        },
+        "TS3010a": {
+          "oracle": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8669067621231079,
+              "recall": 0.8587159514427185,
+              "f1": 0.8627744615077972
+            },
+            "judge_mean": 3,
+            "judge_distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 2
+            }
+          }
+        },
+        "education_18": {
+          "oracle": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8786338518063227,
+              "recall": 0.8722833295663198,
+              "f1": 0.8753054191668829
+            },
+            "judge_mean": 2.8333333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 0,
+              "3": 11
+            }
+          }
+        }
+      },
+      "meeting_average": {
+        "oracle": {
+          "bertscore": {
+            "precision": 0.8707337290225994,
+            "recall": 0.879340868307248,
+            "f1": 0.874916069333752
+          },
+          "judge_mean": 2.5331349206349207
+        }
+      },
+      "paired_meeting_average": {}
+    },
+    "oracle-32b-bnb4": {
+      "source": "oracle",
+      "answer_model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "answer_count": 142,
+      "question_average": {
+        "oracle": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.862772459715185,
+            "recall": 0.8808981528584386,
+            "f1": 0.8716212171064296
+          },
+          "judge_mean": 2.584507042253521,
+          "judge_distribution": {
+            "1": 12,
+            "2": 35,
+            "3": 95
+          }
+        }
+      },
+      "per_meeting": {
+        "ES2006a": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8557944297790527,
+              "recall": 0.8757211267948151,
+              "f1": 0.8655997216701508
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 1,
+              "2": 1,
+              "3": 4
+            }
+          }
+        },
+        "ES2006d": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8561811248461405,
+              "recall": 0.8744646310806274,
+              "f1": 0.8650424381097158
+            },
+            "judge_mean": 2.6666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 0,
+              "3": 5
+            }
+          }
+        },
+        "Bmr026": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.864406406879425,
+              "recall": 0.886175811290741,
+              "f1": 0.8751013875007629
+            },
+            "judge_mean": 2.8333333333333335,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 5
+            }
+          }
+        },
+        "IS1006d": {
+          "oracle": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8636216148734093,
+              "recall": 0.8822275400161743,
+              "f1": 0.8727409243583679
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 2,
+              "2": 0,
+              "3": 6
+            }
+          }
+        },
+        "education_0": {
+          "oracle": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8523748964071274,
+              "recall": 0.8638414442539215,
+              "f1": 0.8580137888590494
+            },
+            "judge_mean": 2.6666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 2,
+              "3": 9
+            }
+          }
+        },
+        "TS3009b": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8583226601282755,
+              "recall": 0.8757698138554891,
+              "f1": 0.8667952219645182
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 3,
+              "3": 2
+            }
+          }
+        },
+        "covid_2": {
+          "oracle": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8853940623147147,
+              "recall": 0.9055181656564985,
+              "f1": 0.8953253371374947
+            },
+            "judge_mean": 2.2857142857142856,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 2
+            }
+          }
+        },
+        "ES2009d": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8564854760964712,
+              "recall": 0.8695574303468069,
+              "f1": 0.8629329800605774
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 3,
+              "3": 2
+            }
+          }
+        },
+        "TS3010b": {
+          "oracle": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8689275213650295,
+              "recall": 0.8924270783151899,
+              "f1": 0.8804087127958026
+            },
+            "judge_mean": 2.857142857142857,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 6
+            }
+          }
+        },
+        "TS3009d": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8685858647028605,
+              "recall": 0.8768747846285502,
+              "f1": 0.8726514478524526
+            },
+            "judge_mean": 3,
+            "judge_distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 6
+            }
+          }
+        },
+        "ES2009b": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8661212821801504,
+              "recall": 0.8720144927501678,
+              "f1": 0.8690284689267477
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 3,
+              "3": 3
+            }
+          }
+        },
+        "ES2006b": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8541625142097473,
+              "recall": 0.8734264969825745,
+              "f1": 0.8635735511779785
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 3,
+              "3": 2
+            }
+          }
+        },
+        "ES2006c": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8649750351905823,
+              "recall": 0.8764177560806274,
+              "f1": 0.8706078628698984
+            },
+            "judge_mean": 2.6666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 2,
+              "3": 4
+            }
+          }
+        },
+        "TS3010c": {
+          "oracle": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8657196589878627,
+              "recall": 0.8754966855049133,
+              "f1": 0.8704883796828133
+            },
+            "judge_mean": 2.4285714285714284,
+            "judge_distribution": {
+              "1": 1,
+              "2": 2,
+              "3": 4
+            }
+          }
+        },
+        "Bro022": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8612450758616129,
+              "recall": 0.8953562080860138,
+              "f1": 0.8779267569382986
+            },
+            "judge_mean": 2.8333333333333335,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 5
+            }
+          }
+        },
+        "IS1006c": {
+          "oracle": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8555147118038602,
+              "recall": 0.8886703451474508,
+              "f1": 0.87120607164171
+            },
+            "judge_mean": 2.888888888888889,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 8
+            }
+          }
+        },
+        "covid_6": {
+          "oracle": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8693679620822271,
+              "recall": 0.8868288199106852,
+              "f1": 0.8779639154672623
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 7
+            }
+          }
+        },
+        "Bro005": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8451775709788004,
+              "recall": 0.8807345728079478,
+              "f1": 0.862501343091329
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 2,
+              "3": 3
+            }
+          }
+        },
+        "TS3010a": {
+          "oracle": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8678343296051025,
+              "recall": 0.8804241120815277,
+              "f1": 0.874074250459671
+            },
+            "judge_mean": 3,
+            "judge_distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 2
+            }
+          }
+        },
+        "education_18": {
+          "oracle": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8716223041216532,
+              "recall": 0.88413505256176,
+              "f1": 0.8777854790290197
+            },
+            "judge_mean": 2.75,
+            "judge_distribution": {
+              "1": 1,
+              "2": 1,
+              "3": 10
+            }
+          }
+        }
+      },
+      "meeting_average": {
+        "oracle": {
+          "bertscore": {
+            "precision": 0.8625917251207053,
+            "recall": 0.8808041184076241,
+            "f1": 0.871488401979681
+          },
+          "judge_mean": 2.585515873015873
+        }
+      },
+      "paired_meeting_average": {}
+    },
+    "oracle-7b": {
+      "source": "oracle",
+      "answer_model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "answer_count": 142,
+      "question_average": {
+        "oracle": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8649166394287432,
+            "recall": 0.8794078104932543,
+            "f1": 0.8719801361292181
+          },
+          "judge_mean": 2.436619718309859,
+          "judge_distribution": {
+            "1": 12,
+            "2": 56,
+            "3": 74
+          }
+        }
+      },
+      "per_meeting": {
+        "ES2006a": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8758182922999064,
+              "recall": 0.8831450641155243,
+              "f1": 0.8794351319471995
+            },
+            "judge_mean": 2.8333333333333335,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 5
+            }
+          }
+        },
+        "ES2006d": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8543764849503835,
+              "recall": 0.8654104073842367,
+              "f1": 0.8597267270088196
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 1,
+              "2": 1,
+              "3": 4
+            }
+          }
+        },
+        "Bmr026": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.859412839015325,
+              "recall": 0.8852594892183939,
+              "f1": 0.8720544377962748
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 0,
+              "2": 4,
+              "3": 2
+            }
+          }
+        },
+        "IS1006d": {
+          "oracle": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8665539622306824,
+              "recall": 0.8838077858090401,
+              "f1": 0.874947264790535
+            },
+            "judge_mean": 2.375,
+            "judge_distribution": {
+              "1": 1,
+              "2": 3,
+              "3": 4
+            }
+          }
+        },
+        "education_0": {
+          "oracle": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8572167158126831,
+              "recall": 0.8622883756955465,
+              "f1": 0.8596284985542297
+            },
+            "judge_mean": 2.25,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 5
+            }
+          }
+        },
+        "TS3009b": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8574261864026388,
+              "recall": 0.8798839251200358,
+              "f1": 0.8682966033617655
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 3,
+              "3": 3
+            }
+          }
+        },
+        "covid_2": {
+          "oracle": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8895154254777091,
+              "recall": 0.8975799935204642,
+              "f1": 0.8934715901102338
+            },
+            "judge_mean": 1.8571428571428572,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 1
+            }
+          }
+        },
+        "ES2009d": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8555176854133606,
+              "recall": 0.8675779700279236,
+              "f1": 0.8614469369252523
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 3,
+              "3": 3
+            }
+          }
+        },
+        "TS3010b": {
+          "oracle": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8846629176821027,
+              "recall": 0.8935461044311523,
+              "f1": 0.8889743089675903
+            },
+            "judge_mean": 2.2857142857142856,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 2
+            }
+          }
+        },
+        "TS3009d": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8700922230879465,
+              "recall": 0.8765358626842499,
+              "f1": 0.8732840518156687
+            },
+            "judge_mean": 2.6666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 2,
+              "3": 4
+            }
+          }
+        },
+        "ES2009b": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8614311714967092,
+              "recall": 0.8738713761170706,
+              "f1": 0.8675431211789449
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 3,
+              "3": 3
+            }
+          }
+        },
+        "ES2006b": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8570209542910258,
+              "recall": 0.8754942119121552,
+              "f1": 0.8659528096516927
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 2,
+              "3": 3
+            }
+          }
+        },
+        "ES2006c": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8549991349379221,
+              "recall": 0.871033102273941,
+              "f1": 0.8627034624417623
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 3,
+              "3": 3
+            }
+          }
+        },
+        "TS3010c": {
+          "oracle": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8559141669954572,
+              "recall": 0.8680716753005981,
+              "f1": 0.8617485846791949
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 3,
+              "2": 1,
+              "3": 3
+            }
+          }
+        },
+        "Bro022": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8662711183230082,
+              "recall": 0.900319496790568,
+              "f1": 0.8828887343406677
+            },
+            "judge_mean": 2.6666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 2,
+              "3": 4
+            }
+          }
+        },
+        "IS1006c": {
+          "oracle": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8808205591307746,
+              "recall": 0.8917233546574911,
+              "f1": 0.8862084348996481
+            },
+            "judge_mean": 2.888888888888889,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 8
+            }
+          }
+        },
+        "covid_6": {
+          "oracle": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8665895362695059,
+              "recall": 0.8812379191319147,
+              "f1": 0.8738222817579905
+            },
+            "judge_mean": 2.25,
+            "judge_distribution": {
+              "1": 1,
+              "2": 7,
+              "3": 4
+            }
+          }
+        },
+        "Bro005": {
+          "oracle": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8416908184687296,
+              "recall": 0.8794124921162924,
+              "f1": 0.8599790136019388
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 1
+            }
+          }
+        },
+        "TS3010a": {
+          "oracle": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8593527674674988,
+              "recall": 0.876246303319931,
+              "f1": 0.867713451385498
+            },
+            "judge_mean": 3,
+            "judge_distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 2
+            }
+          }
+        },
+        "education_18": {
+          "oracle": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8682480404774348,
+              "recall": 0.8785903056462606,
+              "f1": 0.8733051220575968
+            },
+            "judge_mean": 2.75,
+            "judge_distribution": {
+              "1": 1,
+              "2": 1,
+              "3": 10
+            }
+          }
+        }
+      },
+      "meeting_average": {
+        "oracle": {
+          "bertscore": {
+            "precision": 0.8641465500115402,
+            "recall": 0.8795517607636395,
+            "f1": 0.8716565283636252
+          },
+          "judge_mean": 2.4578373015873014
+        }
+      },
+      "paired_meeting_average": {}
+    },
+    "retrieval-14b": {
+      "source": "retrieval",
+      "answer_model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "answer_count": 2556,
+      "question_average": {
+        "turn_packed__dense__w512": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8645877909492439,
+            "recall": 0.8677548115522089,
+            "f1": 0.866094321012497
+          },
+          "judge_mean": 1.7112676056338028,
+          "judge_distribution": {
+            "1": 52,
+            "2": 79,
+            "3": 11
+          }
+        },
+        "turn_packed__dense__w1024": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8646785344036532,
+            "recall": 0.8726135181709075,
+            "f1": 0.8685406899788011
+          },
+          "judge_mean": 1.9014084507042253,
+          "judge_distribution": {
+            "1": 37,
+            "2": 82,
+            "3": 23
+          }
+        },
+        "turn_packed__bm25__w512": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8634042765053225,
+            "recall": 0.8652541587050532,
+            "f1": 0.8642533291393603
+          },
+          "judge_mean": 1.6690140845070423,
+          "judge_distribution": {
+            "1": 56,
+            "2": 77,
+            "3": 9
+          }
+        },
+        "turn_packed__bm25__w1024": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.863548348907014,
+            "recall": 0.8700170819188507,
+            "f1": 0.8666848225492827
+          },
+          "judge_mean": 1.8169014084507042,
+          "judge_distribution": {
+            "1": 41,
+            "2": 86,
+            "3": 15
+          }
+        },
+        "turn_packed__hybrid__w512": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8661199136519097,
+            "recall": 0.8687249585776262,
+            "f1": 0.8673493329068305
+          },
+          "judge_mean": 1.7816901408450705,
+          "judge_distribution": {
+            "1": 45,
+            "2": 83,
+            "3": 14
+          }
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8638188234517272,
+            "recall": 0.8719632004348326,
+            "f1": 0.8677951000945668
+          },
+          "judge_mean": 1.9859154929577465,
+          "judge_distribution": {
+            "1": 33,
+            "2": 78,
+            "3": 31
+          }
+        },
+        "word_packed__dense__w512": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8637687421180833,
+            "recall": 0.8676732581266215,
+            "f1": 0.8656389356498987
+          },
+          "judge_mean": 1.795774647887324,
+          "judge_distribution": {
+            "1": 44,
+            "2": 83,
+            "3": 15
+          }
+        },
+        "word_packed__dense__w1024": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8627071859131397,
+            "recall": 0.8718279444835555,
+            "f1": 0.8671486125865453
+          },
+          "judge_mean": 1.9225352112676057,
+          "judge_distribution": {
+            "1": 38,
+            "2": 77,
+            "3": 27
+          }
+        },
+        "word_packed__bm25__w512": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.863014002501125,
+            "recall": 0.8657052428789542,
+            "f1": 0.8642293042700055
+          },
+          "judge_mean": 1.6971830985915493,
+          "judge_distribution": {
+            "1": 53,
+            "2": 79,
+            "3": 10
+          }
+        },
+        "word_packed__bm25__w1024": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8638098693229783,
+            "recall": 0.8696865657685509,
+            "f1": 0.8666454331136085
+          },
+          "judge_mean": 1.852112676056338,
+          "judge_distribution": {
+            "1": 42,
+            "2": 79,
+            "3": 21
+          }
+        },
+        "word_packed__hybrid__w512": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8621998177447789,
+            "recall": 0.8665453120016716,
+            "f1": 0.8642816921355019
+          },
+          "judge_mean": 1.7605633802816902,
+          "judge_distribution": {
+            "1": 47,
+            "2": 82,
+            "3": 13
+          }
+        },
+        "word_packed__hybrid__w1024": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8647009604413745,
+            "recall": 0.87295298173394,
+            "f1": 0.8687192289762093
+          },
+          "judge_mean": 1.9014084507042253,
+          "judge_distribution": {
+            "1": 36,
+            "2": 84,
+            "3": 22
+          }
+        },
+        "lumber__dense__w512": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8660253819445489,
+            "recall": 0.8697852332827071,
+            "f1": 0.8678114796188515
+          },
+          "judge_mean": 1.8169014084507042,
+          "judge_distribution": {
+            "1": 43,
+            "2": 82,
+            "3": 17
+          }
+        },
+        "lumber__dense__w1024": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8634060188918047,
+            "recall": 0.8737487646055894,
+            "f1": 0.8684369795758959
+          },
+          "judge_mean": 1.971830985915493,
+          "judge_distribution": {
+            "1": 31,
+            "2": 84,
+            "3": 27
+          }
+        },
+        "lumber__bm25__w512": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8641486978027183,
+            "recall": 0.8657288899723913,
+            "f1": 0.86485306687758
+          },
+          "judge_mean": 1.732394366197183,
+          "judge_distribution": {
+            "1": 57,
+            "2": 66,
+            "3": 19
+          }
+        },
+        "lumber__bm25__w1024": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8639649824357368,
+            "recall": 0.8700205184204478,
+            "f1": 0.8668918542458978
+          },
+          "judge_mean": 1.8732394366197183,
+          "judge_distribution": {
+            "1": 43,
+            "2": 74,
+            "3": 25
+          }
+        },
+        "lumber__hybrid__w512": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8662799726909315,
+            "recall": 0.8686190058647747,
+            "f1": 0.8673719029191514
+          },
+          "judge_mean": 1.795774647887324,
+          "judge_distribution": {
+            "1": 46,
+            "2": 79,
+            "3": 17
+          }
+        },
+        "lumber__hybrid__w1024": {
+          "answer_count": 142,
+          "bertscore": {
+            "precision": 0.8646201697033895,
+            "recall": 0.8730901769349273,
+            "f1": 0.8687458113885261
+          },
+          "judge_mean": 1.908450704225352,
+          "judge_distribution": {
+            "1": 34,
+            "2": 87,
+            "3": 21
+          }
+        }
+      },
+      "per_meeting": {
+        "ES2006a": {
+          "turn_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8715486625830332,
+              "recall": 0.8769253293673197,
+              "f1": 0.8740894695123037
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8737195034821829,
+              "recall": 0.8841949105262756,
+              "f1": 0.8788935442765554
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8665483295917511,
+              "recall": 0.8747459053993225,
+              "f1": 0.8705656230449677
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8726099034150442,
+              "recall": 0.8783785204092661,
+              "f1": 0.8753558198610941
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8664065102736155,
+              "recall": 0.8737826645374298,
+              "f1": 0.8699938555558523
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8738346894582113,
+              "recall": 0.8850318789482117,
+              "f1": 0.8792981604735056
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.869782159725825,
+              "recall": 0.878020852804184,
+              "f1": 0.8738536636034647
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 2,
+              "3": 2
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8638949195543925,
+              "recall": 0.8826441963513693,
+              "f1": 0.873058001200358
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8630034029483795,
+              "recall": 0.8666910529136658,
+              "f1": 0.8646855652332306
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8754527072111765,
+              "recall": 0.8761645158131918,
+              "f1": 0.875700036684672
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 2,
+              "3": 2
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8610070546468099,
+              "recall": 0.8708186646302541,
+              "f1": 0.8657633264859518
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8736488819122314,
+              "recall": 0.8808140158653259,
+              "f1": 0.8769550124804179
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8684487342834473,
+              "recall": 0.883740077416102,
+              "f1": 0.8759500583012899
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 3,
+              "3": 3
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8670429984728495,
+              "recall": 0.8777411977450053,
+              "f1": 0.8723180592060089
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 2,
+              "3": 3
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8685964445273081,
+              "recall": 0.8697189092636108,
+              "f1": 0.8690802256266276
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8754038711388906,
+              "recall": 0.8758748273054758,
+              "f1": 0.8755404551823934
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 2,
+              "3": 2
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8724551300207773,
+              "recall": 0.8714092175165812,
+              "f1": 0.8718007306257883
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8724615176518759,
+              "recall": 0.87602166334788,
+              "f1": 0.8742077052593231
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          }
+        },
+        "ES2006d": {
+          "turn_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8543426394462585,
+              "recall": 0.8478045165538788,
+              "f1": 0.8510238726933798
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8533156315485636,
+              "recall": 0.8530272841453552,
+              "f1": 0.8531184693177541
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8487846851348877,
+              "recall": 0.8453551729520162,
+              "f1": 0.8470265666643778
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8544144332408905,
+              "recall": 0.8547649284203848,
+              "f1": 0.8545145094394684
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8545593122641245,
+              "recall": 0.8519061207771301,
+              "f1": 0.8531966904799143
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8547538816928864,
+              "recall": 0.8521878123283386,
+              "f1": 0.8534497618675232
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8490066528320312,
+              "recall": 0.8522820572058359,
+              "f1": 0.85059521595637
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8524182836214701,
+              "recall": 0.8531880478064219,
+              "f1": 0.8527181843916575
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.848461389541626,
+              "recall": 0.8447606265544891,
+              "f1": 0.8465925256411234
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8551378548145294,
+              "recall": 0.8536156515280405,
+              "f1": 0.8543723424275717
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8530277411142985,
+              "recall": 0.8564730485280355,
+              "f1": 0.8547139267126719
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8583357036113739,
+              "recall": 0.8659054934978485,
+              "f1": 0.8620269000530243
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8505524595578512,
+              "recall": 0.8485960563023885,
+              "f1": 0.8495419224103292
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 4,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.849721093972524,
+              "recall": 0.8512368500232697,
+              "f1": 0.8504061202208201
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8522641261418661,
+              "recall": 0.8408239086469015,
+              "f1": 0.8464464942614237
+            },
+            "judge_mean": 1.1666666666666667,
+            "judge_distribution": {
+              "1": 5,
+              "2": 1,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8519874115784963,
+              "recall": 0.8507107595602671,
+              "f1": 0.8512899180253347
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8543945650259653,
+              "recall": 0.8503611187140147,
+              "f1": 0.8523603280385336
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8410274783770243,
+              "recall": 0.8561157683531443,
+              "f1": 0.848166286945343
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          }
+        },
+        "Bmr026": {
+          "turn_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8574329912662506,
+              "recall": 0.8803261915842692,
+              "f1": 0.8686643838882446
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8699445128440857,
+              "recall": 0.8827467163403829,
+              "f1": 0.8762626647949219
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8540695210297903,
+              "recall": 0.8628453214963278,
+              "f1": 0.8583301603794098
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8586129049460093,
+              "recall": 0.8676450848579407,
+              "f1": 0.863029956817627
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 2,
+              "3": 2
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.866939902305603,
+              "recall": 0.8688262005647024,
+              "f1": 0.8677998582522074
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8645764688650767,
+              "recall": 0.8788364430268606,
+              "f1": 0.8715310494105021
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 2,
+              "3": 3
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.863992323478063,
+              "recall": 0.8781503935654958,
+              "f1": 0.8709579507509867
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8476287325223287,
+              "recall": 0.8769502540429434,
+              "f1": 0.8617661794026693
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 2,
+              "3": 3
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8636007706324259,
+              "recall": 0.8631276985009512,
+              "f1": 0.8633066713809967
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8565501471360525,
+              "recall": 0.8654846847057343,
+              "f1": 0.860921710729599
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.855331023534139,
+              "recall": 0.8634171485900879,
+              "f1": 0.8593008915583292
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8629609644412994,
+              "recall": 0.8757346967856089,
+              "f1": 0.8692386945088705
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 2,
+              "3": 3
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8644150793552399,
+              "recall": 0.8752285440762838,
+              "f1": 0.8696958323319753
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8605286876360575,
+              "recall": 0.8814595143000284,
+              "f1": 0.8708419501781464
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 0,
+              "2": 4,
+              "3": 2
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8576413790384928,
+              "recall": 0.8614428242047628,
+              "f1": 0.8595095177491506
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 4,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8564673264821371,
+              "recall": 0.8627110719680786,
+              "f1": 0.85953688621521
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8605793118476868,
+              "recall": 0.8753741383552551,
+              "f1": 0.867852528889974
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8654823005199432,
+              "recall": 0.8798421521981558,
+              "f1": 0.8725030521551768
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 2,
+              "3": 3
+            }
+          }
+        },
+        "IS1006d": {
+          "turn_packed__dense__w512": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8534556999802589,
+              "recall": 0.8476029336452484,
+              "f1": 0.8504930213093758
+            },
+            "judge_mean": 1.25,
+            "judge_distribution": {
+              "1": 6,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8622448742389679,
+              "recall": 0.8597665652632713,
+              "f1": 0.8608966916799545
+            },
+            "judge_mean": 1.375,
+            "judge_distribution": {
+              "1": 5,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8633174151182175,
+              "recall": 0.8571453392505646,
+              "f1": 0.8602033704519272
+            },
+            "judge_mean": 1.375,
+            "judge_distribution": {
+              "1": 5,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8593594133853912,
+              "recall": 0.8543458506464958,
+              "f1": 0.8567971140146255
+            },
+            "judge_mean": 1.375,
+            "judge_distribution": {
+              "1": 5,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8618158176541328,
+              "recall": 0.8514933809638023,
+              "f1": 0.8565714061260223
+            },
+            "judge_mean": 1.375,
+            "judge_distribution": {
+              "1": 5,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8478927463293076,
+              "recall": 0.8507656455039978,
+              "f1": 0.8492596447467804
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 5,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8618859574198723,
+              "recall": 0.8509290516376495,
+              "f1": 0.8563114032149315
+            },
+            "judge_mean": 1.375,
+            "judge_distribution": {
+              "1": 5,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8681098595261574,
+              "recall": 0.8605462163686752,
+              "f1": 0.8642643839120865
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 5,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8498640432953835,
+              "recall": 0.8444238156080246,
+              "f1": 0.8470886945724487
+            },
+            "judge_mean": 1.25,
+            "judge_distribution": {
+              "1": 6,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8590156584978104,
+              "recall": 0.8532046526670456,
+              "f1": 0.8560587093234062
+            },
+            "judge_mean": 1.25,
+            "judge_distribution": {
+              "1": 6,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.852123461663723,
+              "recall": 0.8452344313263893,
+              "f1": 0.8486492931842804
+            },
+            "judge_mean": 1.25,
+            "judge_distribution": {
+              "1": 6,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8554221168160439,
+              "recall": 0.8552779853343964,
+              "f1": 0.8552862256765366
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 4,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.860546812415123,
+              "recall": 0.8537557125091553,
+              "f1": 0.8571236878633499
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 5,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8649691939353943,
+              "recall": 0.8603880330920219,
+              "f1": 0.8626024127006531
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 5,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8589281141757965,
+              "recall": 0.8506419882178307,
+              "f1": 0.8547270074486732
+            },
+            "judge_mean": 1.375,
+            "judge_distribution": {
+              "1": 6,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8471455872058868,
+              "recall": 0.8557960763573647,
+              "f1": 0.8513753265142441
+            },
+            "judge_mean": 1.375,
+            "judge_distribution": {
+              "1": 6,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8547201305627823,
+              "recall": 0.8476744666695595,
+              "f1": 0.851145401597023
+            },
+            "judge_mean": 1.375,
+            "judge_distribution": {
+              "1": 6,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 8,
+            "bertscore": {
+              "precision": 0.8593916818499565,
+              "recall": 0.8590234145522118,
+              "f1": 0.8591913133859634
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 5,
+              "2": 2,
+              "3": 1
+            }
+          }
+        },
+        "education_0": {
+          "turn_packed__dense__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8664013693730036,
+              "recall": 0.859659731388092,
+              "f1": 0.8629784087340037
+            },
+            "judge_mean": 1.75,
+            "judge_distribution": {
+              "1": 4,
+              "2": 7,
+              "3": 1
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8558220863342285,
+              "recall": 0.8612131774425507,
+              "f1": 0.8584299435218176
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 0,
+              "2": 8,
+              "3": 4
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8635511696338654,
+              "recall": 0.8625101496775945,
+              "f1": 0.8629487355550131
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 8,
+              "3": 2
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8604788929224014,
+              "recall": 0.862368514140447,
+              "f1": 0.8613794694344202
+            },
+            "judge_mean": 2.0833333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 9,
+              "3": 2
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8664848903814951,
+              "recall": 0.8639135807752609,
+              "f1": 0.865147148569425
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 8,
+              "3": 3
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8624887019395828,
+              "recall": 0.8634961843490601,
+              "f1": 0.8629209647576014
+            },
+            "judge_mean": 2.25,
+            "judge_distribution": {
+              "1": 0,
+              "2": 9,
+              "3": 3
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8654498159885406,
+              "recall": 0.8644577711820602,
+              "f1": 0.8649043689171473
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 10,
+              "3": 2
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8613156378269196,
+              "recall": 0.8630231370528539,
+              "f1": 0.8621209313472112
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 8,
+              "3": 3
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8662477533022562,
+              "recall": 0.862652137875557,
+              "f1": 0.8643757800261179
+            },
+            "judge_mean": 2.0833333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 9,
+              "3": 2
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8650210152069727,
+              "recall": 0.8657478590806326,
+              "f1": 0.8653264145056406
+            },
+            "judge_mean": 2.0833333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 9,
+              "3": 2
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.867050384481748,
+              "recall": 0.8659694890181223,
+              "f1": 0.8664273569981257
+            },
+            "judge_mean": 2.0833333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 9,
+              "3": 2
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8625369369983673,
+              "recall": 0.8675729731718699,
+              "f1": 0.8649437775214514
+            },
+            "judge_mean": 2.25,
+            "judge_distribution": {
+              "1": 0,
+              "2": 9,
+              "3": 3
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8649459630250931,
+              "recall": 0.8657853702704111,
+              "f1": 0.8653007596731186
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 10,
+              "3": 0
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8604179372390112,
+              "recall": 0.864373505115509,
+              "f1": 0.862361858288447
+            },
+            "judge_mean": 2.25,
+            "judge_distribution": {
+              "1": 1,
+              "2": 7,
+              "3": 4
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8654982397953669,
+              "recall": 0.8603475938240687,
+              "f1": 0.8628380497296652
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 8,
+              "3": 3
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8622277875741323,
+              "recall": 0.862600694100062,
+              "f1": 0.8623427798350652
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 10,
+              "3": 1
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8668253868818283,
+              "recall": 0.8664018015066782,
+              "f1": 0.8665624360243479
+            },
+            "judge_mean": 2.0833333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 9,
+              "3": 2
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8600082298119863,
+              "recall": 0.865891287724177,
+              "f1": 0.862882062792778
+            },
+            "judge_mean": 2.25,
+            "judge_distribution": {
+              "1": 0,
+              "2": 9,
+              "3": 3
+            }
+          }
+        },
+        "TS3009b": {
+          "turn_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8603010475635529,
+              "recall": 0.8690076768398285,
+              "f1": 0.8645622034867605
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8601090212663015,
+              "recall": 0.8729615608851115,
+              "f1": 0.8664277394612631
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8636442720890045,
+              "recall": 0.8679604331652323,
+              "f1": 0.8657806217670441
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8632029294967651,
+              "recall": 0.871966560681661,
+              "f1": 0.8675581614176432
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8639066517353058,
+              "recall": 0.8711275160312653,
+              "f1": 0.8674856523672739
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.862390418847402,
+              "recall": 0.8726480901241302,
+              "f1": 0.8674456179141998
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8619595964749655,
+              "recall": 0.864825963973999,
+              "f1": 0.8633366823196411
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8527248998483022,
+              "recall": 0.8692697286605835,
+              "f1": 0.8608011106650034
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8635467489560446,
+              "recall": 0.8686212301254272,
+              "f1": 0.8660659690697988
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 1,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8619000415007273,
+              "recall": 0.8713465134302775,
+              "f1": 0.8665750920772552
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8531026840209961,
+              "recall": 0.8650540808836619,
+              "f1": 0.8589862485726675
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.864642063776652,
+              "recall": 0.8685369292894999,
+              "f1": 0.8665357927481333
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8674964010715485,
+              "recall": 0.8701845010121664,
+              "f1": 0.8687336842219034
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8568489154179891,
+              "recall": 0.8750183582305908,
+              "f1": 0.865780254205068
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8709771037101746,
+              "recall": 0.8726838231086731,
+              "f1": 0.87176313996315
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.867497573296229,
+              "recall": 0.874568392833074,
+              "f1": 0.8709655404090881
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8696649968624115,
+              "recall": 0.8735125064849854,
+              "f1": 0.8715092539787292
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8620313306649526,
+              "recall": 0.8739612698554993,
+              "f1": 0.8678861955801646
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 1,
+              "2": 5,
+              "3": 0
+            }
+          }
+        },
+        "covid_2": {
+          "turn_packed__dense__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8910996743610927,
+              "recall": 0.9122495566095624,
+              "f1": 0.9014907394136701
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 7,
+              "3": 0
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8796317066465106,
+              "recall": 0.9107694796153477,
+              "f1": 0.8949205194200788
+            },
+            "judge_mean": 2.142857142857143,
+            "judge_distribution": {
+              "1": 0,
+              "2": 6,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8859021067619324,
+              "recall": 0.9034403562545776,
+              "f1": 0.8945397649492536
+            },
+            "judge_mean": 2.142857142857143,
+            "judge_distribution": {
+              "1": 0,
+              "2": 6,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8819940175328936,
+              "recall": 0.9061779464994159,
+              "f1": 0.893886421407972
+            },
+            "judge_mean": 1.8571428571428572,
+            "judge_distribution": {
+              "1": 1,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8876163193157741,
+              "recall": 0.9086144821984428,
+              "f1": 0.8979337726320539
+            },
+            "judge_mean": 2.142857142857143,
+            "judge_distribution": {
+              "1": 0,
+              "2": 6,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8813244530132839,
+              "recall": 0.9089831454413277,
+              "f1": 0.8948852675301688
+            },
+            "judge_mean": 2.2857142857142856,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 2
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.879195545400892,
+              "recall": 0.9067960126059396,
+              "f1": 0.8927420037133353
+            },
+            "judge_mean": 2.142857142857143,
+            "judge_distribution": {
+              "1": 0,
+              "2": 6,
+              "3": 1
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.876959136554173,
+              "recall": 0.9087321673120771,
+              "f1": 0.892533574785505
+            },
+            "judge_mean": 2.142857142857143,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 2
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8787212116377694,
+              "recall": 0.9050799437931606,
+              "f1": 0.8916664464133126
+            },
+            "judge_mean": 1.8571428571428572,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.876919150352478,
+              "recall": 0.9035771574292865,
+              "f1": 0.889990781034742
+            },
+            "judge_mean": 1.8571428571428572,
+            "judge_distribution": {
+              "1": 1,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8762782556670052,
+              "recall": 0.8977377329553876,
+              "f1": 0.8868379507746015
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8804084828921727,
+              "recall": 0.9083438771111625,
+              "f1": 0.8941154820578439
+            },
+            "judge_mean": 1.8571428571428572,
+            "judge_distribution": {
+              "1": 1,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8888942514147077,
+              "recall": 0.911236550126757,
+              "f1": 0.8998912487711225
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 7,
+              "3": 0
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8830585139138358,
+              "recall": 0.912386919770922,
+              "f1": 0.8974648118019104
+            },
+            "judge_mean": 2.5714285714285716,
+            "judge_distribution": {
+              "1": 0,
+              "2": 3,
+              "3": 4
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8805525984082904,
+              "recall": 0.8962981615747724,
+              "f1": 0.8882838998522077
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.883180490561894,
+              "recall": 0.9110931924411229,
+              "f1": 0.8968615702220372
+            },
+            "judge_mean": 2.142857142857143,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 2
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.888307009424482,
+              "recall": 0.9069294503756932,
+              "f1": 0.8974790062223162
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 7,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8784947310175214,
+              "recall": 0.9099397659301758,
+              "f1": 0.8939243469919477
+            },
+            "judge_mean": 2.142857142857143,
+            "judge_distribution": {
+              "1": 0,
+              "2": 6,
+              "3": 1
+            }
+          }
+        },
+        "ES2009d": {
+          "turn_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8592935899893442,
+              "recall": 0.8601840138435364,
+              "f1": 0.8597099284331003
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8544557889302572,
+              "recall": 0.8583409686883291,
+              "f1": 0.8563637832800547
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8459644913673401,
+              "recall": 0.8559104104836782,
+              "f1": 0.850852906703949
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8606603344281515,
+              "recall": 0.8554126024246216,
+              "f1": 0.8580208222071329
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8575418988863627,
+              "recall": 0.8597147663434347,
+              "f1": 0.8586019774278005
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8613833089669546,
+              "recall": 0.8642486830552419,
+              "f1": 0.8627898693084717
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 3,
+              "2": 1,
+              "3": 2
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8610278367996216,
+              "recall": 0.8596461514631907,
+              "f1": 0.8602880239486694
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8568702737490336,
+              "recall": 0.8640851378440857,
+              "f1": 0.8604330519835154
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8532530864079794,
+              "recall": 0.856717179218928,
+              "f1": 0.8549429476261139
+            },
+            "judge_mean": 1.1666666666666667,
+            "judge_distribution": {
+              "1": 5,
+              "2": 1,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8551461398601532,
+              "recall": 0.8591173787911733,
+              "f1": 0.85707359512647
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 4,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8587695856889089,
+              "recall": 0.858053594827652,
+              "f1": 0.8583546976248423
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8584899504979452,
+              "recall": 0.8583513001600901,
+              "f1": 0.8583925366401672
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8499445716540018,
+              "recall": 0.8573337495326996,
+              "f1": 0.8535961111386617
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8558797836303711,
+              "recall": 0.8593564530213674,
+              "f1": 0.8575892945130666
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8566207687060038,
+              "recall": 0.8551461299260458,
+              "f1": 0.8558600048224131
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8562396864096323,
+              "recall": 0.8555497427781423,
+              "f1": 0.8558724423249563
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8550284206867218,
+              "recall": 0.857257346312205,
+              "f1": 0.8561196227868398
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8582412501176199,
+              "recall": 0.8597979048887888,
+              "f1": 0.8589941759904226
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          }
+        },
+        "TS3010b": {
+          "turn_packed__dense__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8689459392002651,
+              "recall": 0.8742492624691555,
+              "f1": 0.8715476563998631
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8704621280942645,
+              "recall": 0.881332950932639,
+              "f1": 0.8758125390325274
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 3,
+              "2": 1,
+              "3": 3
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8569854327610561,
+              "recall": 0.856850232396807,
+              "f1": 0.8568337729998997
+            },
+            "judge_mean": 1.1428571428571428,
+            "judge_distribution": {
+              "1": 6,
+              "2": 1,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8612173625401088,
+              "recall": 0.8713634099279132,
+              "f1": 0.8661176477159772
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8744440504482814,
+              "recall": 0.8764809370040894,
+              "f1": 0.8754218646458217
+            },
+            "judge_mean": 1.5714285714285714,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8654119287218366,
+              "recall": 0.8803929686546326,
+              "f1": 0.8727596487317767
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 2
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8728428653308323,
+              "recall": 0.8785583547183445,
+              "f1": 0.8755547830036708
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 2
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8680635690689087,
+              "recall": 0.8844324435506549,
+              "f1": 0.8760862350463867
+            },
+            "judge_mean": 2.142857142857143,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 2
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8714299968310765,
+              "recall": 0.869639686175755,
+              "f1": 0.8703492198671613
+            },
+            "judge_mean": 1.5714285714285714,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8672705973897662,
+              "recall": 0.8721005320549011,
+              "f1": 0.869564345904759
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 4,
+              "2": 1,
+              "3": 2
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8723429441452026,
+              "recall": 0.8703192557607379,
+              "f1": 0.8712771705218724
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8696883916854858,
+              "recall": 0.8820990409169879,
+              "f1": 0.875819981098175
+            },
+            "judge_mean": 1.8571428571428572,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 2
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8769845962524414,
+              "recall": 0.8801857829093933,
+              "f1": 0.8784427302224296
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8733721545764378,
+              "recall": 0.8838080423218864,
+              "f1": 0.8784573929650443
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 2
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8627234356743949,
+              "recall": 0.8615136657442365,
+              "f1": 0.8620336651802063
+            },
+            "judge_mean": 1.2857142857142858,
+            "judge_distribution": {
+              "1": 5,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.871513341154371,
+              "recall": 0.871142566204071,
+              "f1": 0.8712310876165118
+            },
+            "judge_mean": 1.8571428571428572,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 2
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8691090941429138,
+              "recall": 0.8726949521473476,
+              "f1": 0.8708221571786063
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8707849042756217,
+              "recall": 0.8797582728522164,
+              "f1": 0.8751608984810966
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 0
+            }
+          }
+        },
+        "TS3009d": {
+          "turn_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8629971245924631,
+              "recall": 0.8490205705165863,
+              "f1": 0.8559192518393198
+            },
+            "judge_mean": 1.1666666666666667,
+            "judge_distribution": {
+              "1": 5,
+              "2": 1,
+              "3": 0
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8660963873068491,
+              "recall": 0.8556164602438608,
+              "f1": 0.8607549071311951
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8598162432511648,
+              "recall": 0.8503589232762655,
+              "f1": 0.8550522824128469
+            },
+            "judge_mean": 1.1666666666666667,
+            "judge_distribution": {
+              "1": 5,
+              "2": 1,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8580417931079865,
+              "recall": 0.8542355100313822,
+              "f1": 0.856111208597819
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8545811176300049,
+              "recall": 0.8532988727092743,
+              "f1": 0.8538405199845632
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.861259251832962,
+              "recall": 0.8576476474603018,
+              "f1": 0.8593940734863281
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8631863991419474,
+              "recall": 0.8570470611254374,
+              "f1": 0.8600793480873108
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8695003986358643,
+              "recall": 0.8602455457051595,
+              "f1": 0.8647900621096293
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8371051053206126,
+              "recall": 0.8488757908344269,
+              "f1": 0.8421960969765981
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8629039426644644,
+              "recall": 0.8589242200056711,
+              "f1": 0.8608736395835876
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.857749323050181,
+              "recall": 0.8552221556504568,
+              "f1": 0.8564478754997253
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8682874341805776,
+              "recall": 0.8611096640427908,
+              "f1": 0.8646410008271536
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 1,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8653325537840525,
+              "recall": 0.8516310850779215,
+              "f1": 0.8582826952139536
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8533545533816019,
+              "recall": 0.865777850151062,
+              "f1": 0.8588644663492838
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8595195015271505,
+              "recall": 0.8498103022575378,
+              "f1": 0.8544548948605856
+            },
+            "judge_mean": 1.1666666666666667,
+            "judge_distribution": {
+              "1": 5,
+              "2": 1,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8591057161490122,
+              "recall": 0.8515232702096304,
+              "f1": 0.8551946878433228
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8646652400493622,
+              "recall": 0.8514471054077148,
+              "f1": 0.8579470217227936
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8662892480691274,
+              "recall": 0.858903040488561,
+              "f1": 0.8625434438387553
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          }
+        },
+        "ES2009b": {
+          "turn_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8621604442596436,
+              "recall": 0.854494164387385,
+              "f1": 0.8582969307899475
+            },
+            "judge_mean": 1.1666666666666667,
+            "judge_distribution": {
+              "1": 5,
+              "2": 1,
+              "3": 0
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8567819595336914,
+              "recall": 0.8552046020825704,
+              "f1": 0.855984628200531
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8597926994164785,
+              "recall": 0.8531003991762797,
+              "f1": 0.8564235667387644
+            },
+            "judge_mean": 1.1666666666666667,
+            "judge_distribution": {
+              "1": 5,
+              "2": 1,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8509923815727234,
+              "recall": 0.8591705560684204,
+              "f1": 0.8550189137458801
+            },
+            "judge_mean": 1.1666666666666667,
+            "judge_distribution": {
+              "1": 5,
+              "2": 1,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.857225755850474,
+              "recall": 0.8494434257348379,
+              "f1": 0.8532892465591431
+            },
+            "judge_mean": 1.1666666666666667,
+            "judge_distribution": {
+              "1": 5,
+              "2": 1,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8475806514422098,
+              "recall": 0.8563280701637268,
+              "f1": 0.8519081771373749
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8511554797490438,
+              "recall": 0.8556874096393585,
+              "f1": 0.8533774117628733
+            },
+            "judge_mean": 1.1666666666666667,
+            "judge_distribution": {
+              "1": 5,
+              "2": 1,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8546303908030192,
+              "recall": 0.8611583809057871,
+              "f1": 0.8578051428000132
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8591269552707672,
+              "recall": 0.8543403446674347,
+              "f1": 0.8566776116689047
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8461358348528544,
+              "recall": 0.8578512072563171,
+              "f1": 0.851869155963262
+            },
+            "judge_mean": 1.1666666666666667,
+            "judge_distribution": {
+              "1": 5,
+              "2": 1,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8573590914408366,
+              "recall": 0.8535922765731812,
+              "f1": 0.8554099996884664
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8467998305956522,
+              "recall": 0.8601199984550476,
+              "f1": 0.8533624112606049
+            },
+            "judge_mean": 1.1666666666666667,
+            "judge_distribution": {
+              "1": 5,
+              "2": 1,
+              "3": 0
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8540341158707937,
+              "recall": 0.8552059431870779,
+              "f1": 0.8545976181825002
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8478747606277466,
+              "recall": 0.8560771048069,
+              "f1": 0.8518964052200317
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8550605475902557,
+              "recall": 0.8539533615112305,
+              "f1": 0.8544842004776001
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8515857060750326,
+              "recall": 0.8588426411151886,
+              "f1": 0.8551549911499023
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8533757527669271,
+              "recall": 0.8533822993437449,
+              "f1": 0.8533436357975006
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8509019513924917,
+              "recall": 0.8617712557315826,
+              "f1": 0.8562534352143606
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          }
+        },
+        "ES2006b": {
+          "turn_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.863539308309555,
+              "recall": 0.8683983484903971,
+              "f1": 0.8659174938996633
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.871583878993988,
+              "recall": 0.8767646650473276,
+              "f1": 0.8741204639275869
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8599836528301239,
+              "recall": 0.8568139473597208,
+              "f1": 0.8583737015724182
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8669290244579315,
+              "recall": 0.871334562699,
+              "f1": 0.8691044847170512
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 2,
+              "3": 2
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8653799990812937,
+              "recall": 0.8701604306697845,
+              "f1": 0.8677292068799337
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8683152198791504,
+              "recall": 0.8776278992493948,
+              "f1": 0.8729095757007599
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 3,
+              "3": 2
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8610117038091024,
+              "recall": 0.8640059729417165,
+              "f1": 0.8624867101510366
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8641069432099661,
+              "recall": 0.8715608616669973,
+              "f1": 0.867777943611145
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8718637724717458,
+              "recall": 0.8721254765987396,
+              "f1": 0.8719574610392252
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 1,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8698827922344208,
+              "recall": 0.8761736452579498,
+              "f1": 0.8729601204395294
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 3,
+              "3": 2
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8697414398193359,
+              "recall": 0.8691917459170023,
+              "f1": 0.8694405853748322
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 1,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8668578465779623,
+              "recall": 0.8771522541840872,
+              "f1": 0.8719358940919241
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 3,
+              "3": 2
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8657626907030741,
+              "recall": 0.8663529455661774,
+              "f1": 0.8660082618395487
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 2,
+              "3": 1
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8618294099966685,
+              "recall": 0.8801738818486532,
+              "f1": 0.8708782990773519
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8635580639044443,
+              "recall": 0.8652151127656301,
+              "f1": 0.864359180132548
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8638894359270731,
+              "recall": 0.8789474169413248,
+              "f1": 0.8712676366170248
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 3,
+              "3": 2
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.868800938129425,
+              "recall": 0.8735986053943634,
+              "f1": 0.871171365181605
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8696148892243704,
+              "recall": 0.8802357912063599,
+              "f1": 0.8748531738917033
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 1,
+              "2": 5,
+              "3": 0
+            }
+          }
+        },
+        "ES2006c": {
+          "turn_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8607694804668427,
+              "recall": 0.8624561925729116,
+              "f1": 0.8615013162295023
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8633443613847097,
+              "recall": 0.873988002538681,
+              "f1": 0.8685623904069265
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 2,
+              "3": 2
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8592694699764252,
+              "recall": 0.8500232100486755,
+              "f1": 0.8545807798703512
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8674847483634949,
+              "recall": 0.8612369894981384,
+              "f1": 0.8643338978290558
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8674224416414896,
+              "recall": 0.8688718775908152,
+              "f1": 0.8680969874064127
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 3,
+              "3": 2
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8690156439940134,
+              "recall": 0.8640967508157095,
+              "f1": 0.8665384451548258
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.85922239224116,
+              "recall": 0.8570031225681305,
+              "f1": 0.8580805957317352
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 2,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8669029176235199,
+              "recall": 0.8641290267308553,
+              "f1": 0.8655018210411072
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 2,
+              "3": 2
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.862104594707489,
+              "recall": 0.8505804737408956,
+              "f1": 0.8562532762686411
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8673567871252695,
+              "recall": 0.8602337340513865,
+              "f1": 0.8636824687321981
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8694745302200317,
+              "recall": 0.8611771066983541,
+              "f1": 0.8652385572592417
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 2,
+              "3": 2
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8687606553236643,
+              "recall": 0.8700764874617258,
+              "f1": 0.8693791627883911
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8715199033419291,
+              "recall": 0.8654516339302063,
+              "f1": 0.8684273262818655
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8697434564431509,
+              "recall": 0.8667853971322378,
+              "f1": 0.8682222266991934
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8650855819384257,
+              "recall": 0.8592665990193685,
+              "f1": 0.8621305624643961
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8551474511623383,
+              "recall": 0.8605571389198303,
+              "f1": 0.8577791849772135
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8667032619317373,
+              "recall": 0.8616237243016561,
+              "f1": 0.8641448020935059
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8693288067976633,
+              "recall": 0.8661382695039114,
+              "f1": 0.8676892618338267
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          }
+        },
+        "TS3010c": {
+          "turn_packed__dense__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8634247268949237,
+              "recall": 0.8666084408760071,
+              "f1": 0.8649476851735797
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8742498670305524,
+              "recall": 0.8725922533443996,
+              "f1": 0.8733457752636501
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8709292071206229,
+              "recall": 0.8670453684670585,
+              "f1": 0.8689123392105103
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8768273506845746,
+              "recall": 0.8722260764666966,
+              "f1": 0.8744238359587533
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 7,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.865244448184967,
+              "recall": 0.8678424784115383,
+              "f1": 0.866489555154528
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8666420153209141,
+              "recall": 0.8697244865553719,
+              "f1": 0.8681531974247524
+            },
+            "judge_mean": 1.5714285714285714,
+            "judge_distribution": {
+              "1": 3,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8626712475504194,
+              "recall": 0.8673376441001892,
+              "f1": 0.8648654903684344
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8631896376609802,
+              "recall": 0.8684505309377398,
+              "f1": 0.8657628979001727
+            },
+            "judge_mean": 1.4285714285714286,
+            "judge_distribution": {
+              "1": 4,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.87516302721841,
+              "recall": 0.8762166755540031,
+              "f1": 0.8755683132580349
+            },
+            "judge_mean": 1.8571428571428572,
+            "judge_distribution": {
+              "1": 1,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8690325021743774,
+              "recall": 0.8749244213104248,
+              "f1": 0.8718331030436924
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 7,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8631868532725743,
+              "recall": 0.8652597410338265,
+              "f1": 0.8640860319137573
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8686230863843646,
+              "recall": 0.8749312673296247,
+              "f1": 0.8716732348714556
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 7,
+              "3": 0
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8676056691578456,
+              "recall": 0.8704659853662763,
+              "f1": 0.8688727276665824
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8675246153559003,
+              "recall": 0.8728527171271188,
+              "f1": 0.870055113519941
+            },
+            "judge_mean": 1.8571428571428572,
+            "judge_distribution": {
+              "1": 1,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8714366980961391,
+              "recall": 0.8691556624003819,
+              "f1": 0.8702397431646075
+            },
+            "judge_mean": 1.5714285714285714,
+            "judge_distribution": {
+              "1": 3,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8749704616410392,
+              "recall": 0.8722562364169529,
+              "f1": 0.8734926411083767
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8684895804950169,
+              "recall": 0.8713886993271964,
+              "f1": 0.8698726722172329
+            },
+            "judge_mean": 1.5714285714285714,
+            "judge_distribution": {
+              "1": 3,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 7,
+            "bertscore": {
+              "precision": 0.8723565680640084,
+              "recall": 0.8743224995476859,
+              "f1": 0.873215547629765
+            },
+            "judge_mean": 1.7142857142857142,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 0
+            }
+          }
+        },
+        "Bro022": {
+          "turn_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8611221214135488,
+              "recall": 0.8842719395955404,
+              "f1": 0.8725052277247111
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.854391465584437,
+              "recall": 0.8878917495409647,
+              "f1": 0.8707858324050903
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.859960933526357,
+              "recall": 0.885110596815745,
+              "f1": 0.8723300993442535
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8567813734213511,
+              "recall": 0.8917886018753052,
+              "f1": 0.8739019731680552
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8596072892347971,
+              "recall": 0.8854838709036509,
+              "f1": 0.8723258177439371
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8564944863319397,
+              "recall": 0.889683206876119,
+              "f1": 0.8727611700693766
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 0,
+              "2": 4,
+              "3": 2
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.865375945965449,
+              "recall": 0.888087123632431,
+              "f1": 0.8765526413917542
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8636631965637207,
+              "recall": 0.8900353312492371,
+              "f1": 0.8766096731026968
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.85523854692777,
+              "recall": 0.8824188709259033,
+              "f1": 0.8685571153958639
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8548561533292135,
+              "recall": 0.8865832388401031,
+              "f1": 0.8703894714514414
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 0,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8583181103070577,
+              "recall": 0.8882976671059927,
+              "f1": 0.8730054398377737
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8548946579297384,
+              "recall": 0.8884926438331604,
+              "f1": 0.87131467461586
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8553634683291117,
+              "recall": 0.8839382231235504,
+              "f1": 0.8693819244702657
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.848766952753067,
+              "recall": 0.8872852424780527,
+              "f1": 0.8675637940565745
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8563075959682465,
+              "recall": 0.8895369668801626,
+              "f1": 0.8725772202014923
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 0,
+              "2": 4,
+              "3": 2
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8630959888299307,
+              "recall": 0.8908226589361826,
+              "f1": 0.8767050902048746
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8621145784854889,
+              "recall": 0.8877545197804769,
+              "f1": 0.8747113049030304
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 0,
+              "2": 4,
+              "3": 2
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8521224359671274,
+              "recall": 0.888260006904602,
+              "f1": 0.8697720368703207
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 0,
+              "2": 4,
+              "3": 2
+            }
+          }
+        },
+        "IS1006c": {
+          "turn_packed__dense__w512": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8670355478922526,
+              "recall": 0.8692597150802612,
+              "f1": 0.8681191205978394
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8704398274421692,
+              "recall": 0.875965780682034,
+              "f1": 0.8731792436705695
+            },
+            "judge_mean": 1.8888888888888888,
+            "judge_distribution": {
+              "1": 2,
+              "2": 6,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8699070877499051,
+              "recall": 0.866768307156033,
+              "f1": 0.8683055639266968
+            },
+            "judge_mean": 1.7777777777777777,
+            "judge_distribution": {
+              "1": 2,
+              "2": 7,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8692681127124362,
+              "recall": 0.8756687045097351,
+              "f1": 0.8724303245544434
+            },
+            "judge_mean": 1.7777777777777777,
+            "judge_distribution": {
+              "1": 2,
+              "2": 7,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.868924531671736,
+              "recall": 0.8706707954406738,
+              "f1": 0.8697680102454292
+            },
+            "judge_mean": 1.5555555555555556,
+            "judge_distribution": {
+              "1": 4,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.874018046591017,
+              "recall": 0.8780046039157443,
+              "f1": 0.8759824766053094
+            },
+            "judge_mean": 2.2222222222222223,
+            "judge_distribution": {
+              "1": 1,
+              "2": 5,
+              "3": 3
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8628211352560256,
+              "recall": 0.8641582992341783,
+              "f1": 0.8634640375773112
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8625278340445625,
+              "recall": 0.8723714749018351,
+              "f1": 0.867398116323683
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8613195882903205,
+              "recall": 0.8578426771693759,
+              "f1": 0.859539250532786
+            },
+            "judge_mean": 1.5555555555555556,
+            "judge_distribution": {
+              "1": 4,
+              "2": 5,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8631577094395956,
+              "recall": 0.8666815161705017,
+              "f1": 0.864885946114858
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 6,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8601613839467367,
+              "recall": 0.8623436093330383,
+              "f1": 0.8612267308764987
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 4,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8637865053282844,
+              "recall": 0.8730242914623685,
+              "f1": 0.8683628771040175
+            },
+            "judge_mean": 1.7777777777777777,
+            "judge_distribution": {
+              "1": 3,
+              "2": 5,
+              "3": 1
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8763538665241666,
+              "recall": 0.8774056368403964,
+              "f1": 0.8768594927257962
+            },
+            "judge_mean": 2.111111111111111,
+            "judge_distribution": {
+              "1": 1,
+              "2": 6,
+              "3": 2
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8664676878187392,
+              "recall": 0.8733989199002584,
+              "f1": 0.8698924250072904
+            },
+            "judge_mean": 1.8888888888888888,
+            "judge_distribution": {
+              "1": 2,
+              "2": 6,
+              "3": 1
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8737254275215997,
+              "recall": 0.8720111714469062,
+              "f1": 0.872845921251509
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 4,
+              "2": 4,
+              "3": 1
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8658017383681403,
+              "recall": 0.8701769047313266,
+              "f1": 0.8679658770561218
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 5,
+              "3": 2
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.862834095954895,
+              "recall": 0.8682735562324524,
+              "f1": 0.8655287557178073
+            },
+            "judge_mean": 1.5555555555555556,
+            "judge_distribution": {
+              "1": 5,
+              "2": 3,
+              "3": 1
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 9,
+            "bertscore": {
+              "precision": 0.8703981439272562,
+              "recall": 0.8757323092884488,
+              "f1": 0.873037854830424
+            },
+            "judge_mean": 1.8888888888888888,
+            "judge_distribution": {
+              "1": 3,
+              "2": 4,
+              "3": 2
+            }
+          }
+        },
+        "covid_6": {
+          "turn_packed__dense__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8704653382301331,
+              "recall": 0.8753304928541183,
+              "f1": 0.8728546897570292
+            },
+            "judge_mean": 1.75,
+            "judge_distribution": {
+              "1": 3,
+              "2": 9,
+              "3": 0
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8667139013608297,
+              "recall": 0.8795305987199148,
+              "f1": 0.8729984015226364
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 3,
+              "2": 8,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8711732625961304,
+              "recall": 0.8760287513335546,
+              "f1": 0.8735552380482355
+            },
+            "judge_mean": 1.75,
+            "judge_distribution": {
+              "1": 4,
+              "2": 7,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8662644624710083,
+              "recall": 0.8770412504673004,
+              "f1": 0.8715875496466955
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 3,
+              "2": 8,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8741496255000433,
+              "recall": 0.8790891716877619,
+              "f1": 0.8765756785869598
+            },
+            "judge_mean": 1.75,
+            "judge_distribution": {
+              "1": 3,
+              "2": 9,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8664072751998901,
+              "recall": 0.8767641286055247,
+              "f1": 0.8715241849422455
+            },
+            "judge_mean": 1.9166666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 7,
+              "3": 2
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8604869941870371,
+              "recall": 0.8673364917437235,
+              "f1": 0.8638336211442947
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 5,
+              "2": 6,
+              "3": 1
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8603323499361674,
+              "recall": 0.8693907558917999,
+              "f1": 0.8648012181123098
+            },
+            "judge_mean": 1.75,
+            "judge_distribution": {
+              "1": 4,
+              "2": 7,
+              "3": 1
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8731783330440521,
+              "recall": 0.8748844911654791,
+              "f1": 0.8739346563816071
+            },
+            "judge_mean": 1.75,
+            "judge_distribution": {
+              "1": 3,
+              "2": 9,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8725712150335312,
+              "recall": 0.8734784026940664,
+              "f1": 0.8729451994101206
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 3,
+              "2": 8,
+              "3": 1
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8691438337167104,
+              "recall": 0.8753741731246313,
+              "f1": 0.8721594164768854
+            },
+            "judge_mean": 1.75,
+            "judge_distribution": {
+              "1": 3,
+              "2": 9,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.870324581861496,
+              "recall": 0.8724049478769302,
+              "f1": 0.8713143716255823
+            },
+            "judge_mean": 1.75,
+            "judge_distribution": {
+              "1": 4,
+              "2": 7,
+              "3": 1
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8688988784948984,
+              "recall": 0.8751331567764282,
+              "f1": 0.8719391574462255
+            },
+            "judge_mean": 1.8333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 6,
+              "3": 2
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.870337242881457,
+              "recall": 0.8838014851013819,
+              "f1": 0.8769440352916718
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 10,
+              "3": 1
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8697180896997452,
+              "recall": 0.8766519924004873,
+              "f1": 0.8731059283018112
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 2,
+              "2": 8,
+              "3": 2
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8719572424888611,
+              "recall": 0.8771319290002187,
+              "f1": 0.8744704077641169
+            },
+            "judge_mean": 1.9166666666666667,
+            "judge_distribution": {
+              "1": 3,
+              "2": 7,
+              "3": 2
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.871256152788798,
+              "recall": 0.8747788965702057,
+              "f1": 0.8729479759931564
+            },
+            "judge_mean": 1.75,
+            "judge_distribution": {
+              "1": 3,
+              "2": 9,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8712246616681417,
+              "recall": 0.8773399541775385,
+              "f1": 0.874243383606275
+            },
+            "judge_mean": 1.75,
+            "judge_distribution": {
+              "1": 4,
+              "2": 7,
+              "3": 1
+            }
+          }
+        },
+        "Bro005": {
+          "turn_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8555644949277242,
+              "recall": 0.8623671531677246,
+              "f1": 0.8588300247987112
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8408456941445669,
+              "recall": 0.8623773058255514,
+              "f1": 0.8513296842575073
+            },
+            "judge_mean": 1.3333333333333333,
+            "judge_distribution": {
+              "1": 4,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.844722698132197,
+              "recall": 0.8642781476179758,
+              "f1": 0.8543256421883901
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8437096476554871,
+              "recall": 0.8676159183184305,
+              "f1": 0.8553099632263184
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8549010952313741,
+              "recall": 0.8672334551811218,
+              "f1": 0.8609751562277476
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8465793430805206,
+              "recall": 0.8705394764741262,
+              "f1": 0.8582920034726461
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8546959559122721,
+              "recall": 0.8652498026688894,
+              "f1": 0.8598086833953857
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8594059447447459,
+              "recall": 0.8716968397299448,
+              "f1": 0.8653985361258189
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8441716730594635,
+              "recall": 0.8733349541823069,
+              "f1": 0.8584677875041962
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8449901243050894,
+              "recall": 0.8702508608500162,
+              "f1": 0.8573999404907227
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8365921477476755,
+              "recall": 0.8671686947345734,
+              "f1": 0.851574569940567
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8448366026083628,
+              "recall": 0.8717658221721649,
+              "f1": 0.8580473164717356
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8564669191837311,
+              "recall": 0.8656121095021566,
+              "f1": 0.8608926932017008
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.847522129615148,
+              "recall": 0.8698881963888804,
+              "f1": 0.8584785858790079
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8438880542914072,
+              "recall": 0.8676507771015167,
+              "f1": 0.8555622696876526
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8509109318256378,
+              "recall": 0.8724312285582224,
+              "f1": 0.8614453077316284
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.8662871221701304,
+              "recall": 0.8664838870366415,
+              "f1": 0.8662112454573313
+            },
+            "judge_mean": 1.5,
+            "judge_distribution": {
+              "1": 3,
+              "2": 3,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 6,
+            "bertscore": {
+              "precision": 0.843997855981191,
+              "recall": 0.865103522936503,
+              "f1": 0.8543555835882822
+            },
+            "judge_mean": 1.6666666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 4,
+              "3": 0
+            }
+          }
+        },
+        "TS3010a": {
+          "turn_packed__dense__w512": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8616227209568024,
+              "recall": 0.8715713024139404,
+              "f1": 0.8665668070316315
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8565913140773773,
+              "recall": 0.8747056424617767,
+              "f1": 0.8655041754245758
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8767787218093872,
+              "recall": 0.8564572930335999,
+              "f1": 0.8664133846759796
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8594510853290558,
+              "recall": 0.8700313568115234,
+              "f1": 0.8645850718021393
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8572309613227844,
+              "recall": 0.8647400736808777,
+              "f1": 0.8607834279537201
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8594510555267334,
+              "recall": 0.8700313568115234,
+              "f1": 0.8645850718021393
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8688848614692688,
+              "recall": 0.8573129177093506,
+              "f1": 0.8630400598049164
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8710068762302399,
+              "recall": 0.8716970980167389,
+              "f1": 0.8712939620018005
+            },
+            "judge_mean": 3,
+            "judge_distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 2
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8803941309452057,
+              "recall": 0.8677986860275269,
+              "f1": 0.873979926109314
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.864384800195694,
+              "recall": 0.8685097396373749,
+              "f1": 0.8661613762378693
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.870634138584137,
+              "recall": 0.8623006343841553,
+              "f1": 0.8664090037345886
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8821119368076324,
+              "recall": 0.8758654594421387,
+              "f1": 0.8788528442382812
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 1
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8570032119750977,
+              "recall": 0.8607917428016663,
+              "f1": 0.8588897883892059
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8622963130474091,
+              "recall": 0.867519736289978,
+              "f1": 0.8648196160793304
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8700236678123474,
+              "recall": 0.855972558259964,
+              "f1": 0.8629345297813416
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8713523149490356,
+              "recall": 0.8751870691776276,
+              "f1": 0.8731341361999512
+            },
+            "judge_mean": 3,
+            "judge_distribution": {
+              "1": 0,
+              "2": 0,
+              "3": 2
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8726070523262024,
+              "recall": 0.8675587475299835,
+              "f1": 0.8700703680515289
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 0,
+              "2": 2,
+              "3": 0
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 2,
+            "bertscore": {
+              "precision": 0.8646813333034515,
+              "recall": 0.8767691552639008,
+              "f1": 0.870656281709671
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 0,
+              "2": 1,
+              "3": 1
+            }
+          }
+        },
+        "education_18": {
+          "turn_packed__dense__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8663442532221476,
+              "recall": 0.8658924698829651,
+              "f1": 0.8661019454399744
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 3,
+              "2": 6,
+              "3": 3
+            }
+          },
+          "turn_packed__dense__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8759070684512457,
+              "recall": 0.8732841908931732,
+              "f1": 0.8745555231968561
+            },
+            "judge_mean": 2.25,
+            "judge_distribution": {
+              "1": 1,
+              "2": 7,
+              "3": 4
+            }
+          },
+          "turn_packed__bm25__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8721161931753159,
+              "recall": 0.8701887627442678,
+              "f1": 0.8710723668336868
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 1,
+              "2": 10,
+              "3": 1
+            }
+          },
+          "turn_packed__bm25__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8687372356653214,
+              "recall": 0.871999129652977,
+              "f1": 0.8703055828809738
+            },
+            "judge_mean": 2.1666666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 8,
+              "3": 3
+            }
+          },
+          "turn_packed__hybrid__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8725115607182184,
+              "recall": 0.8646488537391027,
+              "f1": 0.8684962491194407
+            },
+            "judge_mean": 1.9166666666666667,
+            "judge_distribution": {
+              "1": 2,
+              "2": 9,
+              "3": 1
+            }
+          },
+          "turn_packed__hybrid__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.871380478143692,
+              "recall": 0.871705119808515,
+              "f1": 0.8714982171853384
+            },
+            "judge_mean": 2.25,
+            "judge_distribution": {
+              "1": 1,
+              "2": 7,
+              "3": 4
+            }
+          },
+          "word_packed__dense__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8733504811922709,
+              "recall": 0.8699757506450018,
+              "f1": 0.8716239829858144
+            },
+            "judge_mean": 2,
+            "judge_distribution": {
+              "1": 3,
+              "2": 6,
+              "3": 3
+            }
+          },
+          "word_packed__dense__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8689194669326147,
+              "recall": 0.8758673419555029,
+              "f1": 0.8723428299029669
+            },
+            "judge_mean": 2.25,
+            "judge_distribution": {
+              "1": 1,
+              "2": 7,
+              "3": 4
+            }
+          },
+          "word_packed__bm25__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.871436874071757,
+              "recall": 0.8685013850529989,
+              "f1": 0.8699172735214233
+            },
+            "judge_mean": 2.25,
+            "judge_distribution": {
+              "1": 1,
+              "2": 7,
+              "3": 4
+            }
+          },
+          "word_packed__bm25__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8705124606688818,
+              "recall": 0.874441514412562,
+              "f1": 0.8724169284105301
+            },
+            "judge_mean": 2.4166666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 5,
+              "3": 6
+            }
+          },
+          "word_packed__hybrid__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.869403526186943,
+              "recall": 0.8684772451718649,
+              "f1": 0.8689234405755997
+            },
+            "judge_mean": 2.0833333333333335,
+            "judge_distribution": {
+              "1": 2,
+              "2": 7,
+              "3": 3
+            }
+          },
+          "word_packed__hybrid__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8724492937326431,
+              "recall": 0.8752033164103826,
+              "f1": 0.8737945059935252
+            },
+            "judge_mean": 2.25,
+            "judge_distribution": {
+              "1": 1,
+              "2": 7,
+              "3": 4
+            }
+          },
+          "lumber__dense__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8694572846094767,
+              "recall": 0.8664444535970688,
+              "f1": 0.8678959061702093
+            },
+            "judge_mean": 2.0833333333333335,
+            "judge_distribution": {
+              "1": 2,
+              "2": 7,
+              "3": 3
+            }
+          },
+          "lumber__dense__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8758061428864797,
+              "recall": 0.8756130536397299,
+              "f1": 0.875667671362559
+            },
+            "judge_mean": 2.3333333333333335,
+            "judge_distribution": {
+              "1": 1,
+              "2": 6,
+              "3": 5
+            }
+          },
+          "lumber__bm25__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8676178256670634,
+              "recall": 0.8686717549959818,
+              "f1": 0.8681034942468008
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 7
+            }
+          },
+          "lumber__bm25__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8704237937927246,
+              "recall": 0.8717590322097143,
+              "f1": 0.8710259447495142
+            },
+            "judge_mean": 2.4166666666666665,
+            "judge_distribution": {
+              "1": 1,
+              "2": 5,
+              "3": 6
+            }
+          },
+          "lumber__hybrid__w512": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.871711661418279,
+              "recall": 0.869036391377449,
+              "f1": 0.8702812194824219
+            },
+            "judge_mean": 2.5,
+            "judge_distribution": {
+              "1": 1,
+              "2": 4,
+              "3": 7
+            }
+          },
+          "lumber__hybrid__w1024": {
+            "answer_count": 12,
+            "bertscore": {
+              "precision": 0.8752285142739614,
+              "recall": 0.8756388475497564,
+              "f1": 0.8753970364729563
+            },
+            "judge_mean": 2.25,
+            "judge_distribution": {
+              "1": 1,
+              "2": 7,
+              "3": 4
+            }
+          }
+        }
+      },
+      "meeting_average": {
+        "turn_packed__dense__w512": {
+          "bertscore": {
+            "precision": 0.8638933587464548,
+            "recall": 0.8678840001069364,
+            "f1": 0.8658060088576306
+          },
+          "judge_mean": 1.7089285714285714
+        },
+        "turn_packed__dense__w1024": {
+          "bertscore": {
+            "precision": 0.8638325489347889,
+            "recall": 0.8726137432609758,
+            "f1": 0.8681123460096026
+          },
+          "judge_mean": 1.8935515873015873
+        },
+        "turn_packed__bm25__w512": {
+          "bertscore": {
+            "precision": 0.8626608796535976,
+            "recall": 0.8641468514052648,
+            "f1": 0.8633213243668988
+          },
+          "judge_mean": 1.645138888888889
+        },
+        "turn_packed__bm25__w1024": {
+          "bertscore": {
+            "precision": 0.8628518703674514,
+            "recall": 0.8697386037203527,
+            "f1": 0.8661886364221573
+          },
+          "judge_mean": 1.815376984126984
+        },
+        "turn_packed__hybrid__w512": {
+          "bertscore": {
+            "precision": 0.8648447089665939,
+            "recall": 0.8683671477472499,
+            "f1": 0.8665261040959094
+          },
+          "judge_mean": 1.7929563492063492
+        },
+        "turn_packed__hybrid__w1024": {
+          "bertscore": {
+            "precision": 0.8630600032588792,
+            "recall": 0.8719371799083929,
+            "f1": 0.8673943288860813
+          },
+          "judge_mean": 1.9831349206349207
+        },
+        "word_packed__dense__w512": {
+          "bertscore": {
+            "precision": 0.863400267496232,
+            "recall": 0.8673434102582553,
+            "f1": 0.8652878338914542
+          },
+          "judge_mean": 1.7866071428571428
+        },
+        "word_packed__dense__w1024": {
+          "bertscore": {
+            "precision": 0.8626085634328543,
+            "recall": 0.8719737258340632,
+            "f1": 0.8671631927882868
+          },
+          "judge_mean": 1.9523809523809523
+        },
+        "word_packed__bm25__w512": {
+          "bertscore": {
+            "precision": 0.8624615502440267,
+            "recall": 0.8654316598342524,
+            "f1": 0.8638061294243449
+          },
+          "judge_mean": 1.6837301587301587
+        },
+        "word_packed__bm25__w1024": {
+          "bertscore": {
+            "precision": 0.8629098816996529,
+            "recall": 0.8694205722993329,
+            "f1": 0.8660500188845963
+          },
+          "judge_mean": 1.8494047619047618
+        },
+        "word_packed__hybrid__w512": {
+          "bertscore": {
+            "precision": 0.8615398756627526,
+            "recall": 0.8660741248123702,
+            "f1": 0.8637116256805639
+          },
+          "judge_mean": 1.763095238095238
+        },
+        "word_packed__hybrid__w1024": {
+          "bertscore": {
+            "precision": 0.8646932961980975,
+            "recall": 0.8731391232401605,
+            "f1": 0.8687996348336575
+          },
+          "judge_mean": 1.9037698412698414
+        },
+        "lumber__dense__w512": {
+          "bertscore": {
+            "precision": 0.8650013715501815,
+            "recall": 0.8692239629962142,
+            "f1": 0.8670161813261017
+          },
+          "judge_mean": 1.8061507936507937
+        },
+        "lumber__dense__w1024": {
+          "bertscore": {
+            "precision": 0.862168127180092,
+            "recall": 0.8732471229242427,
+            "f1": 0.8675552396310701
+          },
+          "judge_mean": 1.9450396825396825
+        },
+        "lumber__bm25__w512": {
+          "bertscore": {
+            "precision": 0.863487163209726,
+            "recall": 0.8648256631775035,
+            "f1": 0.8640669974601931
+          },
+          "judge_mean": 1.6806547619047618
+        },
+        "lumber__bm25__w1024": {
+          "bertscore": {
+            "precision": 0.8634951928305248,
+            "recall": 0.8699841424881939,
+            "f1": 0.8666325955873444
+          },
+          "judge_mean": 1.8794642857142856
+        },
+        "lumber__hybrid__w512": {
+          "bertscore": {
+            "precision": 0.8659964740985916,
+            "recall": 0.8683470715192102,
+            "f1": 0.8670940915980037
+          },
+          "judge_mean": 1.7691468253968254
+        },
+        "lumber__hybrid__w1024": {
+          "bertscore": {
+            "precision": 0.8637033916477647,
+            "recall": 0.873028307615055,
+            "f1": 0.8682466538534278
+          },
+          "judge_mean": 1.9105158730158731
+        }
+      },
+      "paired_meeting_average": {
+        "lumber_minus_turn_packed__dense__w512": {
+          "bertscore_f1": 0.0012101724684711657,
+          "judge_mean": 0.09722222222222221
+        },
+        "lumber_minus_word_packed__dense__w512": {
+          "bertscore_f1": 0.0017283474346475147,
+          "judge_mean": 0.01954365079365078
+        },
+        "lumber_minus_turn_packed__dense__w1024": {
+          "bertscore_f1": -0.0005571063785326013,
+          "judge_mean": 0.0514880952380953
+        },
+        "lumber_minus_word_packed__dense__w1024": {
+          "bertscore_f1": 0.00039204684278321687,
+          "judge_mean": -0.007341269841269782
+        },
+        "lumber_minus_turn_packed__bm25__w512": {
+          "bertscore_f1": 0.0007456730932943412,
+          "judge_mean": 0.035515873015873035
+        },
+        "lumber_minus_word_packed__bm25__w512": {
+          "bertscore_f1": 0.00026086803584818297,
+          "judge_mean": -0.0030753968253968145
+        },
+        "lumber_minus_turn_packed__bm25__w1024": {
+          "bertscore_f1": 0.00044395916518713,
+          "judge_mean": 0.0640873015873016
+        },
+        "lumber_minus_word_packed__bm25__w1024": {
+          "bertscore_f1": 0.0005825767027480333,
+          "judge_mean": 0.030059523809523814
+        },
+        "lumber_minus_turn_packed__hybrid__w512": {
+          "bertscore_f1": 0.0005679875020943026,
+          "judge_mean": -0.02380952380952376
+        },
+        "lumber_minus_word_packed__hybrid__w512": {
+          "bertscore_f1": 0.0033824659174396974,
+          "judge_mean": 0.006051587301587313
+        },
+        "lumber_minus_turn_packed__hybrid__w1024": {
+          "bertscore_f1": 0.000852324967346485,
+          "judge_mean": -0.07261904761904762
+        },
+        "lumber_minus_word_packed__hybrid__w1024": {
+          "bertscore_f1": -0.0005529809802297669,
+          "judge_mean": 0.006746031746031733
+        }
+      }
+    }
+  }
+}

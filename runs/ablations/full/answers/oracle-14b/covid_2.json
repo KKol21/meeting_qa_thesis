@@ -1,0 +1,226 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "covid_2.json",
+        "sha256": "594eefe6146935a4f341bf1280957d8467f98106ef752dcf3f19496e8d86ad34"
+      }
+    },
+    "input_hash": "a20c8ea2517b6fb0ab07131298c1272928406d91b8fb44f09a104aff43a96b7e",
+    "fingerprint": "413609477ccd2bafb5389dede57849693d3488d72f4d5fa5d5fd7a87cd3c5c97",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "covid_2",
+  "question_count": 7,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 7,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the Prime Minister say about fraud in distribution of funds?",
+      "reference_answer": "The Prime Minister was adamant that fraud was unacceptable and reiterated that fraudsters would have to return the money. Nonetheless, the government's priority remained the speedy disbursement of funds to those that were in need.",
+      "results": {
+        "oracle": {
+          "answer": "The Prime Minister stated that the priority was to distribute funds quickly to Canadians in need and emphasized that fraud is unacceptable. He mentioned having measures in place to detect fraud and that all fraudsters would be required to pay back the money they fraudulently received. He also noted that this repayment would occur in the coming months.",
+          "rouge_f1": {
+            "rouge1": 0.48936170212765956,
+            "rouge2": 0.13043478260869565,
+            "rougeL": 0.3404255319148936
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              4,
+              9
+            ]
+          ],
+          "evidence_words": 361
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the Minister of Seniors say about pandemic assistance for seniors?",
+      "reference_answer": "The Minister of Seniors clarified that his office recognizes that seniors are in great need. The minister explained that those receiving OAS and GIS are getting payments of $200 and $300 respectively. The minister was insistent that this was not an insignificant amount.",
+      "results": {
+        "oracle": {
+          "answer": "The Minister of Seniors stated that the government is providing Canadian seniors with greater financial security during the pandemic through a one-time tax-free payment of $300 for those who receive Old Age Security (OAS) and $200 for those receiving Guaranteed Income Supplement (GIS), totaling $500 for those receiving both. Additionally, she mentioned support for community-based projects to improve the quality of life for seniors through the New Horizons for Seniors program and investments in other charities.",
+          "rouge_f1": {
+            "rouge1": 0.3114754098360656,
+            "rouge2": 0.1,
+            "rougeL": 0.2295081967213115
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              324,
+              327
+            ]
+          ],
+          "evidence_words": 427
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the Prime Minister say about students?",
+      "reference_answer": "The Prime Minister clarified that while young people are in need of funds, especially due to loss of income over the summer, they are also in need of work experience. The government would start providing the Canada emergency student benefit which will assist in this by making both jobs and money available.",
+      "results": {
+        "oracle": {
+          "answer": "The Prime Minister stated that young people need both financial support and work experience, acknowledging that many students won't be able to secure the summer jobs they had anticipated. He mentioned setting up programs such as Canada Summer Jobs and another initiative providing 76,000 new positions for young people in key sectors. Additionally, he emphasized the government's commitment to collaborating with youth and employers to address labor market gaps and ensure adequate support for students who cannot find employment.",
+          "rouge_f1": {
+            "rouge1": 0.3283582089552239,
+            "rouge2": 0.10606060606060606,
+            "rougeL": 0.22388059701492538
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              19,
+              24
+            ]
+          ],
+          "evidence_words": 603
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did Bains say about business loans?",
+      "reference_answer": "Bains said that the government has been accommodating of small businesses in the past and it will continue to do so. The government has increased the threshold for individual companies and looks forward to making further adjustments. Bains emphasized that 590,000 loans have already been distributed through the CEBA program, highlighting its efficacy.",
+      "results": {
+        "oracle": {
+          "answer": "Bains stated that the government is looking into issues related to business loan eligibility and will come forward with a resolution in a timely manner. He also mentioned that the government has shown flexibility in adjusting the eligibility criteria for business loans, such as decreasing the payroll threshold for applying for the loan.",
+          "rouge_f1": {
+            "rouge1": 0.4112149532710281,
+            "rouge2": 0.09523809523809523,
+            "rougeL": 0.2616822429906542
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              84,
+              95
+            ]
+          ],
+          "evidence_words": 809
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did Morneau say about the debt?",
+      "reference_answer": "Morneau explained that the government was committed to supporting Canadians. It came into the pandemic with a strong fiscal position, and while the pandemic will bring challenges, it will face those challenges while supporting small businesses and Canadians.",
+      "results": {
+        "oracle": {
+          "answer": "Morneau did not directly address the cost of servicing a $1-trillion debt or provide an estimate for the annual debt servicing cost of the aid measures announced so far. He stated that the government remains committed to supporting Canadians through challenging times and will provide a full outline of the costs and benefits of their measures at an appropriate time.",
+          "rouge_f1": {
+            "rouge1": 0.30303030303030304,
+            "rouge2": 0.10309278350515463,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              121,
+              126
+            ]
+          ],
+          "evidence_words": 118
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did Bains say about the threshold for the wage subsidy program and loan refinancing?",
+      "reference_answer": "Bains said that the threshold for the program had been lowered to a 15% decline in revenue from a 30% decline. Businesses will also be able to compare losses to more recent time periods due to greater flexibility. Bain clarified that the government is listening to businesses and recognizes its need to be agile.",
+      "results": {
+        "oracle": {
+          "answer": "Bains stated that the threshold for the wage subsidy program was reduced from 30% to 15%, allowing businesses to demonstrate revenue loss using either January and February as a reference period or the same time last year. He did not directly address the specific question regarding loan refinancing in his response.",
+          "rouge_f1": {
+            "rouge1": 0.39999999999999997,
+            "rouge2": 0.07766990291262135,
+            "rougeL": 0.26666666666666666
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              246,
+              250
+            ]
+          ],
+          "evidence_words": 285
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "What did Bains say about the arts, culture, and tourism industry?",
+      "reference_answer": "Bains claimed that the government was aware of these issues and had allocated $500 million to arts and culture organizations. Bains also explained that while pandemic control efforts were affecting these industries adversely, Canadians' health and safety remained the government's priority.",
+      "results": {
+        "oracle": {
+          "answer": "Hon. Navdeep Bains stated that the government allocated $500 million to respond to the specific financial needs of arts, heritage, and sports organizations to help them become more resilient during the difficult time.",
+          "rouge_f1": {
+            "rouge1": 0.3466666666666667,
+            "rouge2": 0.136986301369863,
+            "rougeL": 0.32
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              231,
+              233
+            ]
+          ],
+          "evidence_words": 250
+        }
+      }
+    }
+  ]
+}

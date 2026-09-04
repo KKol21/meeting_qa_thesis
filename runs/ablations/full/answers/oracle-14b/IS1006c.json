@@ -1,0 +1,280 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "IS1006c.json",
+        "sha256": "f449ea2bc578d5d7091b90df78465d5c8dc8973db2b40af7ee29d6f66942f1c7"
+      }
+    },
+    "input_hash": "b0f1ae336005b300f338791022d47db4a547c7061b880ac77342301ec40f9167",
+    "fingerprint": "9546cdbaba4bab7cce9de9fb1eb0fb3e3989b6e2eaa4c12f1d72bb691538bcf9",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "IS1006c",
+  "question_count": 9,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 9,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about industrial components.",
+      "reference_answer": "The industrial designer provided several options respectively for energy, material and interface. Among these options, the industrial designer preferred traditional battery, titanium and simple push buttons so that they would have enough money for speech recognition. After that, the user interface designer proposed an LCD display only for output, which might be taken into account. The group also talked about how to enable the users to find their controllers.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion focused on selecting appropriate industrial components for a remote control device. Key points included:\n\n- **Energy Source**: Decided to use a simple battery instead of solar cells due to feasibility issues with solar cells providing sufficient energy.\n- **Material**: Chose titanium over rubber for its aesthetic appeal and manufacturing ease, though they considered incorporating rubber parts for better feel and functionality.\n- **Interface**: Opted for push buttons over LCD displays to reduce costs, with the possibility of including a non-touch LCD display for informational purposes if budget allows.\n- **Speech Recognition**: Aimed to integrate speech recognition technology, considering both speaker-dependent and independent systems based on household usage requirements.\n- **Cost Constraints**: Emphasized the importance of keeping costs within a budget, particularly noting that speech recognition technology would require significant investment (around 5 Euros), necessitating careful allocation of funds for other components.",
+          "rouge_f1": {
+            "rouge1": 0.2679425837320574,
+            "rouge2": 0.03864734299516908,
+            "rougeL": 0.14354066985645933
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              17,
+              137
+            ]
+          ],
+          "evidence_words": 1298
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the industrial designer recommend when discussing industrial components and why?",
+      "reference_answer": "The industrial designer recommended batteries instead of solar cells because it would be problematic if solar cells didn't have enough energy. Titanium was proposed rather than rubber as the latter would make it difficult to do the moulding of buttons. Besides, the industrial designer wanted a simple push button because it only needed a simple chip and was less expensive than LCD.",
+      "results": {
+        "oracle": {
+          "answer": "The industrial designer recommended using batteries instead of solar cells due to the difficulty in generating sufficient energy with solar cells. They also suggested using a titanium design over rubber or another material, citing issues with manufacturing double-curved shapes and the higher costs associated with rubber. Additionally, they proposed using simple push buttons rather than LCDs to reduce costs, aiming to allocate funds for incorporating speech recognition technology.",
+          "rouge_f1": {
+            "rouge1": 0.4090909090909091,
+            "rouge2": 0.18461538461538463,
+            "rougeL": 0.2878787878787879
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              21,
+              67
+            ]
+          ],
+          "evidence_words": 460
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the user interface designer propose in the discussion about industrial components?",
+      "reference_answer": "Although the industrial designer regarded LCD as costly, the user interface designer proposed adding an LCD as a kind of output that only displayed some information or menu and was not touch sensitive, which might reduce the cost.",
+      "results": {
+        "oracle": {
+          "answer": "The user interface designer proposed including an LCD display that would serve as a source of information or for menus, but it would not be touch-sensitive; it would only provide output information.",
+          "rouge_f1": {
+            "rouge1": 0.5633802816901409,
+            "rouge2": 0.2318840579710145,
+            "rougeL": 0.4507042253521127
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              68,
+              94
+            ]
+          ],
+          "evidence_words": 206
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about user interface concept.",
+      "reference_answer": "The user interface designer presented a good-looking design with few buttons. As for the colour, the user interface designer suggested making a backlight of the LCD screen with different colours, but this was denied due to the high cost. Then the industrial designer recommended changing the colour of the assembly at an extra charge to meet special needs. Light and infrared were also taken into consideration to make the controller glow in the dark. In order to make a smart controller, the group mentioned speech recognition and user identification.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the user interface concept focused on developing a simplified remote control design with fewer buttons and a more intuitive layout compared to the initially proposed \"millennium remote control\" with numerous buttons. The team considered incorporating customizable features such as color options for the LCD screen backlight and the possibility of changing the assembler color for additional costs. They also explored the idea of integrating glow-in-the-dark or light-emitting elements for use in darkness. Additionally, the concept included making the remote control smarter through voice recognition and personalization features, such as recording user preferences for channels and volume levels. However, concerns were raised about the complexity and cost implications of these advanced features.",
+          "rouge_f1": {
+            "rouge1": 0.42307692307692313,
+            "rouge2": 0.13592233009708737,
+            "rougeL": 0.2692307692307692
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              138,
+              389
+            ]
+          ],
+          "evidence_words": 1866
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Why did the marketing propose having different colours for the product?",
+      "reference_answer": "Because the marketing believed that young people wanted to be different from their friends and would be ready to pay more for things that were specific to them and made them special. Thus, providing some upgradeable remote controls with various colours for these customers would be a selling point.",
+      "results": {
+        "oracle": {
+          "answer": "Marketing proposed having different colors for the product because they believe there are people who view the remote control as a personal statement or \"signature,\" making them feel special. Specifically, Marketing noted that young people want to be different from their friends and desire something slightly better, such as a pink remote control. They also suggested that these individuals might be willing to pay more for such customization.",
+          "rouge_f1": {
+            "rouge1": 0.5128205128205129,
+            "rouge2": 0.2434782608695652,
+            "rougeL": 0.3418803418803419
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              254,
+              287
+            ]
+          ],
+          "evidence_words": 262
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "Summarize the marketing expert's opinions towards user identification.",
+      "reference_answer": "The marketing expert came up with the idea that the remote control could identify the user. Since it knows who was using it, it might record the kind of channels that you often watched and the level of volumes you liked. In other words, it would provide your way of using it. This would be a good sales pitch though it might be expensive.",
+      "results": {
+        "oracle": {
+          "answer": "The marketing expert supports the idea of user identification through methods like fingerprint or voice recognition, suggesting it could make the remote control \"smart.\" They also propose that the remote could remember user preferences (e.g., favorite channels, volume levels) and potentially use this feature as a selling point, referring to it as \"the remote that knows you.\"",
+          "rouge_f1": {
+            "rouge1": 0.4426229508196722,
+            "rouge2": 0.1,
+            "rougeL": 0.26229508196721313
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              358,
+              389
+            ]
+          ],
+          "evidence_words": 287
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "Summarize the discussion about trend watching and appearance design.",
+      "reference_answer": "The marketing put forward three noteworthy aspects in trends. First and foremost, people loved fancy things that they could be identified with. The second point was that as a remote control it had to be technologically innovative. Thirdly, being easy to use was also necessary. From a broader perspective, fruit and vegetables were in fashion this year and being spongy was also popular. Thus, contrary to the industrial designer, the marketing thought rubber was more feasible in terms of sponginess. The group agreed that the product should resemble fruit and vegetable in shape and colour but the specific design was not decided.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion focused on designing a remote control that aligns with current trends. Marketing emphasized the importance of making the remote control \"fancy\" and innovative rather than merely functional. Trends observed included a preference for designs resembling fruits and vegetables, being spongy, and having a natural, rounded shape. The team considered incorporating these trends into the remote control's appearance, possibly using rubber for its sponginess and painting it to resemble titanium. They aimed to balance technological innovation with aesthetic appeal, considering features like voice recognition and thematic designs inspired by nature.",
+          "rouge_f1": {
+            "rouge1": 0.38144329896907214,
+            "rouge2": 0.07291666666666667,
+            "rougeL": 0.2061855670103093
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              390,
+              497
+            ],
+            [
+              509,
+              603
+            ]
+          ],
+          "evidence_words": 2051
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "What did the marketing learn about the trend?",
+      "reference_answer": "The marketing found that trends were quite the same in many areas. Take this year's fruit and vegetable as an example, it applies to everything from clothing to furniture, which meant it was quite general. It might be surprising that people liked products that looked natural and round rather than some futuristic remote control with angles and titanium.",
+      "results": {
+        "oracle": {
+          "answer": "The marketing learned that the current trends observed in big cities like Paris and Milan involve designs inspired by fruits and vegetables, characterized by round shapes, natural looks, and sponge-like textures. These trends are not limited to remote controls but are seen across various product categories, indicating a preference for organic and less futuristic aesthetics.",
+          "rouge_f1": {
+            "rouge1": 0.34782608695652173,
+            "rouge2": 0.07079646017699115,
+            "rougeL": 0.2260869565217391
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              410,
+              415
+            ],
+            [
+              438,
+              469
+            ]
+          ],
+          "evidence_words": 413
+        }
+      }
+    },
+    {
+      "question_index": 8,
+      "question": "Summarize the discussion about appearance design.",
+      "reference_answer": "To follow the trend of fruit and vegetable, there were two options: something in titanium and smelling like fruit, or something spongy and fruity-like. The industrial designer would explore these two choices and he also suggested having two different assemblies, but the project manager said they couldn't have both. The project manager also mentioned another solution - painting the controller to pretend that it was titanium. The group didn't make a final decision.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about appearance design focused on incorporating trendy and fancy features into the product. The team considered making the product smell like fruit and explored the possibility of designing it in fruit shapes such as banana. They debated between a \"titanium\" (likely referring to material or finish) and a \"spongy\" texture, aiming to differentiate their product from competitors by offering unique features. The team decided to explore both options further, considering a combination of materials like rubber and titanium, and discussed the feasibility of creating dual-assembly designs with different textures. They also mentioned the possibility of painting the product to simulate a titanium finish.",
+          "rouge_f1": {
+            "rouge1": 0.3977900552486188,
+            "rouge2": 0.0670391061452514,
+            "rougeL": 0.20994475138121546
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              509,
+              603
+            ]
+          ],
+          "evidence_words": 716
+        }
+      }
+    }
+  ]
+}

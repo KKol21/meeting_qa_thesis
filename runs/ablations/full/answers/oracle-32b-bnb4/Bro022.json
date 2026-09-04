@@ -1,0 +1,203 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "Bro022.json",
+        "sha256": "aa15696864a75fa6f3e55b318dde95bd6773cbfe05f8055e6629eaf46aa40c0c"
+      }
+    },
+    "input_hash": "81ac3cf2feb7608c73b3c35fc2465af7f2d365430c2fc084d0f82478cd635e2f",
+    "fingerprint": "1d98e1f36cbdc68eb2d64490d774d343fdb0fc812f63f4e834b103b324428917",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "Bro022",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion on TORRENT schedule and intermediate categorization",
+      "reference_answer": "The professor told the team that the TORRENT chip schedule kept getting pushed. Then, Grad F talked about his proposal, in which he was done with the section on intermediate categories. Including features from intermediate categories was a potential way of reducing error.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion on the TORRENT schedule revealed skepticism due to past experiences with overly optimistic timelines that lasted for two years. There was an agreement to wait for Sunil's arrival to discuss his part of the project. Regarding intermediate categorization, Grad F discussed his work on writing a proposal involving intermediate categories for classification as part of his research leading up to his qualifying exams in July. He plans to start with a basic set of phonetic features, use multi-band techniques for phoneme recognition, analyze errors, and iteratively refine the intermediate categories based on those errors.",
+          "rouge_f1": {
+            "rouge1": 0.34042553191489366,
+            "rouge2": 0.05755395683453238,
+            "rougeL": 0.2127659574468085
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              2,
+              51
+            ]
+          ],
+          "evidence_words": 872
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Grad F say about his proposal?",
+      "reference_answer": "Grad F explained that he was focusing on writing his proposal for his qualification exams, which was on the 25th of July. He had to write a paper and pass it around before that date.",
+      "results": {
+        "oracle": {
+          "answer": "Grad F mentioned that he has been working on writing his proposal and recently finished a section on intermediate categories for classification. He aims to complete a full rough draft by Monday to give it to Morgan. He did not provide further details about the content or specifics of his proposal beyond this.",
+          "rouge_f1": {
+            "rouge1": 0.40909090909090906,
+            "rouge2": 0.11627906976744186,
+            "rougeL": 0.29545454545454547
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              24,
+              39
+            ]
+          ],
+          "evidence_words": 236
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did Grad F think about intermediate categories?",
+      "reference_answer": "Grad F informed the team that he was building a system that classified intermediate categories with multi-band techniques. Then, to reduce error for phoneme recognition, the intermediate categories could be added to improve performance. The method could be replicated for large vocabulary tasks like switchboard.",
+      "results": {
+        "oracle": {
+          "answer": "Grad F initially felt that creating a complete set of intermediate categories for classification was necessary but later decided to start with a reasonable set of regular phonetic features for initial phone recognition. Grad F planned to build a system using multi-band techniques to classify these intermediate categories and perform phoneme recognition. By examining the errors from phoneme recognition, Grad F intended to iteratively refine the intermediate categories by adding or removing them based on their impact on reducing specific confusions. This iterative process would involve building intermediate classifiers, performing phoneme recognition, analyzing errors, and repeating the cycle.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.1258741258741259,
+            "rougeL": 0.27586206896551724
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              50,
+              60
+            ]
+          ],
+          "evidence_words": 466
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion on mean subtraction in SRI",
+      "reference_answer": "The team got an improvement on the SRI system for TI- digits and Meeting Recorder digits but near mic performance worsened. The team explored the reasons for this difference. The professor suggested getting rid of low energy sections. The team also discussed how more nuanced normalization approaches could improve task performance.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion on mean subtraction in SRI involved evaluating its impact on word error rates (WER) across different microphone setups. Grad E reported an improvement in WER from 6% to 4.5% on far-mike data using PZM F, but noted a worsening from 1.2% to 2.4% on near-mike data. The team theorized that the SRI system's channel adaptation and finer-grained acoustic models might explain the discrepancy compared to HTK results. They observed artifacts like echoes in the re-synthesized audio, suggesting that the system might be more sensitive to these issues. Grad E planned to address this by training on a larger dataset, specifically the Macrophone set of read speech, to improve robustness. Additionally, Professor B suggested applying a high-pass filter or setting very low-energy sections to near-zero values to mitigate the effects of reverberation-like artifacts. The group also discussed the possibility that mean subtraction might inadvertently increase the signal-to-noise ratio, potentially explaining the perceived increase in loudness of PZM signals post-processing.",
+          "rouge_f1": {
+            "rouge1": 0.24778761061946905,
+            "rouge2": 0.0625,
+            "rougeL": 0.17699115044247787
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              72,
+              158
+            ]
+          ],
+          "evidence_words": 2206
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the professor think about echoes and reverberation?",
+      "reference_answer": "The professor thought it was possible to reduce the effects of reverberation by removing the low-energy segments. He thought a VAD-like approach would work. This would make it so that the model was more likely to keep an echo than throw out speech.",
+      "results": {
+        "oracle": {
+          "answer": "Professor B discussed the effects of reverberation and echoes in speech processing. He mentioned that high-pass filtering, as done by Hirsch in the late eighties, can reduce some effects of reverberation. However, he suggested that the effectiveness might not be due to the filtering itself but rather the introduction of negative values in the power spectrum, which are then set to zero. This process effectively removes low-energy parts of the speech where reverberation is most noticeable. Professor B proposed that instead of aiming to reconstruct the original signal, one could focus on making the processed signal \"nicer\" by using Voice Activity Detection (VAD) techniques to set very low-energy sections to near-zero values. This approach could help eliminate echoes or pre-echoes that contribute to the problem, though it should be done conservatively to avoid removing actual speech.",
+          "rouge_f1": {
+            "rouge1": 0.25806451612903225,
+            "rouge2": 0.05434782608695652,
+            "rougeL": 0.16129032258064516
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              73,
+              84
+            ]
+          ],
+          "evidence_words": 556
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did PhD C think about the signal to noise ratio?",
+      "reference_answer": "PhD C was skeptical of why the signal was louder after processing. PhD C suggested that the system is not too dependent on the signal level, agreeing with the professor that improvement in the model was more likely dependent on the ratio.",
+      "results": {
+        "oracle": {
+          "answer": "PhD C was uncertain about why the signal appeared louder after processing but acknowledged the importance of the signal-to-noise ratio. They agreed with Professor B that simply increasing the signal size without improving the signal-to-noise ratio would not have a significant effect. Additionally, PhD C noted that the system uses absolute energy, which depends somewhat on the signal level, though not significantly.",
+          "rouge_f1": {
+            "rouge1": 0.5555555555555556,
+            "rouge2": 0.24528301886792453,
+            "rougeL": 0.3888888888888889
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              108,
+              128
+            ]
+          ],
+          "evidence_words": 262
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "covid_2.json",
+        "sha256": "594eefe6146935a4f341bf1280957d8467f98106ef752dcf3f19496e8d86ad34"
+      }
+    },
+    "input_hash": "a20c8ea2517b6fb0ab07131298c1272928406d91b8fb44f09a104aff43a96b7e",
+    "fingerprint": "4b4f828b87f74a5bc0c86b6f374ca1c6e544fc3d604a6f752c7df5f0be289c9e",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "covid_2",
+  "question_count": 7,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 7,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the Prime Minister say about fraud in distribution of funds?",
+      "reference_answer": "The Prime Minister was adamant that fraud was unacceptable and reiterated that fraudsters would have to return the money. Nonetheless, the government's priority remained the speedy disbursement of funds to those that were in need.",
+      "results": {
+        "oracle": {
+          "answer": "The Prime Minister stated that fraud is unacceptable and that measures are in place to detect it. He also mentioned that all fraudsters will be required to pay back the money they fraudulently received, and emphasized that the priority was getting money out to those who needed it quickly.",
+          "rouge_f1": {
+            "rouge1": 0.47058823529411764,
+            "rouge2": 0.14457831325301204,
+            "rougeL": 0.39999999999999997
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              4,
+              9
+            ]
+          ],
+          "evidence_words": 361
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the Minister of Seniors say about pandemic assistance for seniors?",
+      "reference_answer": "The Minister of Seniors clarified that his office recognizes that seniors are in great need. The minister explained that those receiving OAS and GIS are getting payments of $200 and $300 respectively. The minister was insistent that this was not an insignificant amount.",
+      "results": {
+        "oracle": {
+          "answer": "The Minister of Seniors stated that her government is providing support to Canadian seniors during the pandemic through a one-time tax-free payment of $300 for those who receive Old Age Security (OAS) and $200 for those receiving Guaranteed Income Supplement (GIS), totaling $500 for seniors who receive both benefits. Additionally, the government is supporting community-based projects to improve the quality of life for seniors through the New Horizons for Seniors program and investing in other charities.",
+          "rouge_f1": {
+            "rouge1": 0.3114754098360656,
+            "rouge2": 0.1,
+            "rougeL": 0.2295081967213115
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              324,
+              327
+            ]
+          ],
+          "evidence_words": 427
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the Prime Minister say about students?",
+      "reference_answer": "The Prime Minister clarified that while young people are in need of funds, especially due to loss of income over the summer, they are also in need of work experience. The government would start providing the Canada emergency student benefit which will assist in this by making both jobs and money available.",
+      "results": {
+        "oracle": {
+          "answer": "The Prime Minister, Right Hon. Justin Trudeau, said that young people need both money and work experience. He stated that they are setting up programs such as Canada summer jobs and another program with 76,000 new jobs for young people in important sectors. Trudeau emphasized the need to address gaps in the labour market while ensuring that youth are well-supported.",
+          "rouge_f1": {
+            "rouge1": 0.43859649122807015,
+            "rouge2": 0.10714285714285714,
+            "rougeL": 0.21052631578947367
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              19,
+              24
+            ]
+          ],
+          "evidence_words": 603
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did Bains say about business loans?",
+      "reference_answer": "Bains said that the government has been accommodating of small businesses in the past and it will continue to do so. The government has increased the threshold for individual companies and looks forward to making further adjustments. Bains emphasized that 590,000 loans have already been distributed through the CEBA program, highlighting its efficacy.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence is insufficient to determine what Bains specifically said about business loans. His comments in the excerpts focus on the CEBA program and its eligibility criteria, but do not directly address business loans beyond mentioning the CEBA program.",
+          "rouge_f1": {
+            "rouge1": 0.3225806451612903,
+            "rouge2": 0.06593406593406592,
+            "rougeL": 0.23655913978494622
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              84,
+              95
+            ]
+          ],
+          "evidence_words": 809
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did Morneau say about the debt?",
+      "reference_answer": "Morneau explained that the government was committed to supporting Canadians. It came into the pandemic with a strong fiscal position, and while the pandemic will bring challenges, it will face those challenges while supporting small businesses and Canadians.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence is insufficient to determine what Morneau specifically said about the debt. His statements focused on supporting Canadians through challenging times and providing an outline of costs and benefits, but did not address the debt servicing costs directly.",
+          "rouge_f1": {
+            "rouge1": 0.2597402597402597,
+            "rouge2": 0.02666666666666667,
+            "rougeL": 0.15584415584415584
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              121,
+              126
+            ]
+          ],
+          "evidence_words": 118
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did Bains say about the threshold for the wage subsidy program and loan refinancing?",
+      "reference_answer": "Bains said that the threshold for the program had been lowered to a 15% decline in revenue from a 30% decline. Businesses will also be able to compare losses to more recent time periods due to greater flexibility. Bain clarified that the government is listening to businesses and recognizes its need to be agile.",
+      "results": {
+        "oracle": {
+          "answer": "Bains stated that the threshold for the wage subsidy program was reduced from 30% for the month of March to 15%, and businesses would have the option to use January and February as a reference period or the same time last year to demonstrate revenue losses. He emphasized the government's flexibility and quick action to support businesses during the health crisis.",
+          "rouge_f1": {
+            "rouge1": 0.4310344827586207,
+            "rouge2": 0.08771929824561403,
+            "rougeL": 0.29310344827586204
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              246,
+              250
+            ]
+          ],
+          "evidence_words": 285
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "What did Bains say about the arts, culture, and tourism industry?",
+      "reference_answer": "Bains claimed that the government was aware of these issues and had allocated $500 million to arts and culture organizations. Bains also explained that while pandemic control efforts were affecting these industries adversely, Canadians' health and safety remained the government's priority.",
+      "results": {
+        "oracle": {
+          "answer": "Bains said that the government allocated $500 million to respond to the specific financial needs of arts, heritage, and sports organizations to help them become more resilient during the difficult time.",
+          "rouge_f1": {
+            "rouge1": 0.3561643835616438,
+            "rouge2": 0.14084507042253522,
+            "rougeL": 0.3287671232876712
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              231,
+              233
+            ]
+          ],
+          "evidence_words": 250
+        }
+      }
+    }
+  ]
+}

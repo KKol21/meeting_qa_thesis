@@ -1,0 +1,203 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "ES2006b.json",
+        "sha256": "6b7ac18c069947da908885a151d2d3ce64b4848ab683f97ab0bba78eac9b14d6"
+      }
+    },
+    "input_hash": "088586759de51bee23f85dd258be046103847bc8014080847022d3748e4a0fb1",
+    "fingerprint": "b0dc10ac40021d4e5b3fe9dc087907ba3af313e4837ab3a6d15b0fbb0cde28b3",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "ES2006b",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the presentations on working design, technical functions, functional requirements.",
+      "reference_answer": "Firstly, Industrial Designer presented on working design, identifying a few basic components of the remote. From the functional design perspective, Industrial Designer introduced what exactly the components were and how they worked with each other. Next, User Interface presented on technical functions design and personally suggested a small size of remote, red in colour and easy to use with must-have buttons. Then, Marketing presented on functional requirements and suggested the group aiming at both the functionality and beauty of the remote.",
+      "results": {
+        "oracle": {
+          "answer": "The presentations on working design, technical functions, and functional requirements covered the following points:\n\n### Working Design\n- **Industrial Designer** presented the working design of the remote control, identifying basic components and how they function together.\n  - Components include an energy source (e.g., a cell), a chip, and a user interface.\n  - The user interface communicates with the chip, which then generates an infrared bit code sent to an infrared terminal.\n  - The remote control should be simple and incorporate color and the company's slogan to ensure uniqueness.\n  - The designer prefers a simple and clear design to facilitate future upgrades and compatibility with most televisions.\n\n### Technical Functions\n- **User Interface** discussed the technical functions of the remote control based on research and user needs.\n  - Main functions include switching on/off, changing channels, and adjusting volume.\n  - Additional functionalities like controlling VCRs or DVD players are not desired due to complexity.\n  - The user interface should be easy to use, with essential buttons like on/off, channel numbers, and volume controls.\n  - Other functionalities could be managed through a menu system.\n\n### Functional Requirements\n- **Marketing** provided insights from a usability lab survey on remote control usage.\n  - Users dislike current remote controls, finding them ugly and unintuitive.\n  - Most users only use a small percentage of the buttons, suggesting unnecessary complexity.\n  - Key functions include channel selection, volume adjustment, and power control.\n  - Users find remote controls annoying due to loss, lack of intuitiveness, and potential for repetitive strain injury.\n  - Preferences include sleek, stylish designs, long battery life, and eco-friendly features like solar power.\n  - Additional features like voice recognition, a locator, and unique activation methods (e.g., clapping) were suggested.",
+          "rouge_f1": {
+            "rouge1": 0.34285714285714286,
+            "rouge2": 0.11494252873563218,
+            "rougeL": 0.19999999999999996
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              0,
+              259
+            ]
+          ],
+          "evidence_words": 4516
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did Project Manager think of the advanced technology design when presenting the technical functions?",
+      "reference_answer": "Industrial Designer suggested the group could keep the design as simple and clear as possible because this would help them to upgrade their technology at a future point of time. Project Manager asked about the cost at this point, however, Industrial Designer had no idea about what each component cost. So Project Manager thought it should be considered because the price would increase if they were using more advanced technology.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence is insufficient to determine why the Project Manager specifically thought of the advanced technology design when presenting the technical functions. The excerpts do not provide any direct statements from the Project Manager regarding the reasoning behind considering advanced technology design.",
+          "rouge_f1": {
+            "rouge1": 0.30357142857142855,
+            "rouge2": 0.05454545454545454,
+            "rougeL": 0.19642857142857142
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              46,
+              59
+            ]
+          ],
+          "evidence_words": 261
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Why did the group think of the locator when presenting the functional requirements?",
+      "reference_answer": "When Marketing mentioned about the long battery life, the group came up with the locator that the remote could beep when users clapped. Also, this function should be designed to not beep every five minutes so that users would not like the remote. The group mates agreed on it and thought it was an interesting and excellent idea.",
+      "results": {
+        "oracle": {
+          "answer": "The group thought of the locator when presenting the functional requirements because Marketing mentioned the idea while discussing additional features for the remote control. Specifically, Marketing suggested a locator feature similar to that of a mobile phone, which could help locate items like keys or other remote controls. This idea was further elaborated upon with suggestions for activation methods such as clapping or whistling, and a distinctive sound to avoid constant beeping.",
+          "rouge_f1": {
+            "rouge1": 0.3846153846153846,
+            "rouge2": 0.0625,
+            "rougeL": 0.18461538461538463
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              232,
+              258
+            ]
+          ],
+          "evidence_words": 259
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the group discussion about general requirements.",
+      "reference_answer": "The group had a discussion about the target age group and they agreed to look at 15 to 35 year olds. Also, they decided to make it look simple, but still have those key buttons so it would be easy to use. Lastly, the group agreed to include one sort of menu button and voice recognition as an option.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed general requirements for a new remote control, focusing on targeting a younger audience (15-35 years old). They considered including voice recognition as a feature, noting that it is more popular among younger people and those with higher disposable income. However, they also acknowledged that voice recognition technology is still limited and may not be practical for all functions. The group decided to include voice recognition as an optional feature, along with essential buttons for channel changing and other basic functions. They agreed to design the remote control to be simple and user-friendly, with a focus on the 15-35 age group. Additionally, they planned to include a beeper function to help locate the remote control. The team will continue to refine these requirements and explore technical feasibility in subsequent meetings.",
+          "rouge_f1": {
+            "rouge1": 0.3917525773195876,
+            "rouge2": 0.13541666666666669,
+            "rougeL": 0.21649484536082472
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              260,
+              540
+            ]
+          ],
+          "evidence_words": 2980
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the group think of disposable income when discussing general requirements?",
+      "reference_answer": "Industrial Designer suggested they should also look up popularity among the 25 to 35 years old age group if they looked into a stylish design. Marketing said it was 70% popular among this age group and thought this age group didn't have much economic burden so the remote price should not be unaffordable. User Interface supplemented that their remote might not function with the old TV. Therefore, the group decided to include both 15 to 25 and 25 to 35 years old age group into consideration.",
+      "results": {
+        "oracle": {
+          "answer": "The group thought that the age group between 25 to 35 had a higher disposable income compared to younger individuals due to fewer financial commitments such as mortgages, life insurance policies, and cars. They believed that targeting this age group could be effective, especially considering that 76.3% of people in this age range were still interested in the product. However, there was also acknowledgment that both the 25 to 35 age group and the 15 to 25 age group should be considered as potential targets since they are both young and have shown interest in the product, particularly in terms of willingness to pay more for a voice recognition remote control.",
+          "rouge_f1": {
+            "rouge1": 0.39195979899497485,
+            "rouge2": 0.15228426395939085,
+            "rougeL": 0.19095477386934673
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              291,
+              354
+            ]
+          ],
+          "evidence_words": 616
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "Why did Project Manager think that they should try to incorporate voice recognition when discussing general requirements?",
+      "reference_answer": "Project Manager thought since they not only targeted 15 to 35 years old age groups, they should have an implementation for voice recognition technology. Industrial Designer mentioned that voice recognition was not yet a mature technology and most remotes went for buttons to change channels. User Interface suggested they need to have both features and group mates agreed on it.",
+      "results": {
+        "oracle": {
+          "answer": "The Project Manager thought they should try to incorporate voice recognition when discussing general requirements because it could be feasible for a limited set of functions, such as changing channels, especially with the use of a code word like \"remote.\" The Project Manager also considered the target age group (fifteen to thirty-five) and noted that even those older than thirty-five might still prefer the same advertising approach. However, the Project Manager acknowledged that voice recognition technology was still limited and might not be reliable enough for widespread use at that time.",
+          "rouge_f1": {
+            "rouge1": 0.3529411764705882,
+            "rouge2": 0.11920529801324503,
+            "rougeL": 0.1699346405228758
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              358,
+              412
+            ]
+          ],
+          "evidence_words": 536
+        }
+      }
+    }
+  ]
+}

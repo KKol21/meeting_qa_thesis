@@ -1,0 +1,207 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "evaluation",
+    "config": {
+      "experiment_version": 2,
+      "bertscore": {
+        "package_version": "0.3.13",
+        "model": {
+          "tag": "roberta-large",
+          "name": "FacebookAI/roberta-large",
+          "revision": "722cf37b1afa9454edce342e7895e588b6ff1d59",
+          "prequantized": false
+        },
+        "layers": 17,
+        "batch_size": 16,
+        "rescale_with_baseline": false
+      },
+      "judge": {
+        "model": {
+          "tag": "llama-3.3-70b-bnb4",
+          "name": "unsloth/Llama-3.3-70B-Instruct-bnb-4bit",
+          "revision": "74be54198eaf4f3c7fba1f4e9fa63725a810c7eb",
+          "prequantized": true
+        },
+        "max_new_tokens": 192,
+        "temperature": 0.0,
+        "seed": 42,
+        "prompt": "You are evaluating an answer to a meeting question.\nUse the reference answer and gold transcript evidence as complementary sources of truth. Do not require identical wording, and do not reward an answer merely for repeating the question.\n\nFirst identify the important points in the reference answer, then check them against the candidate and transcript. A supported but incomplete answer must receive 2, not 3. Transcript-supported details beyond the reference are allowed, but do not compensate for omitted important reference points.\n\nScore the candidate answer using this scale:\n1 = Invalid or incorrect. It does not answer the question, contradicts the evidence, is mostly unsupported, contains a major unsupported claim, or claims insufficient evidence when the answer is available.\n2 = Partially correct. It gives useful supported information, but omits one or more important points from the reference answer or includes a minor unsupported claim.\n3 = Correct. It covers all or nearly all important points from the reference answer, is supported by the transcript evidence, and contains no material error or unsupported claim.\n\nReturn only a JSON object with an integer score and one short reason:\n{\"score\": 1, \"reason\": \"...\"}"
+      }
+    },
+    "config_hash": "09d95b9b6b254a97435a1587c1d2c53dfa07763e34812caf4a773dd281351504",
+    "inputs": {
+      "answer_summary": {
+        "file": "summary.json",
+        "sha256": "8637e6c5018409d52bde11a349dada3fc53bb6410968d9c9139d9f5268994c14"
+      },
+      "answers_Bed002": {
+        "file": "Bed002.json",
+        "sha256": "53d385c0b635a7e3b67c472c1feba915b0bc6c9e7aa4a4aee9e6130bd885798c"
+      },
+      "meeting_Bed002": {
+        "file": "Bed002.json",
+        "sha256": "154dcbab359183b9429d63dccd1c8f0e07260f63a74688ba8435627d0a5111ed"
+      }
+    },
+    "input_hash": "dee5b9483c0c46e941609f674cb259007e77dea1ef5db8965643c2a4d0cdb795",
+    "fingerprint": "246bf10be06e862606a6afcd0cad6268c59647c9e6fc16f3e48e1533c44bcaac",
+    "preset": {
+      "file": "ablation-smoke.toml",
+      "sha256": "8b39ae5d3d717826e07537b9212ed1bbdc8ddbcaaa6569d49a83a2b7896bbbb3"
+    }
+  },
+  "answer_summary": {
+    "experiment_version": 2,
+    "stage": "answers",
+    "source": "oracle",
+    "answer_model": {
+      "tag": "qwen2.5-14b",
+      "name": "Qwen/Qwen2.5-14B-Instruct",
+      "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+      "prequantized": false,
+      "max_new_tokens": 512,
+      "temperature": 0.0,
+      "seed": 42
+    },
+    "meeting_ids": [
+      "Bed002"
+    ],
+    "meeting_count": 1,
+    "question_count": 6,
+    "conditions": {
+      "oracle": {
+        "source": "annotated evidence"
+      }
+    },
+    "question_average_rouge_f1": {
+      "oracle": {
+        "rouge1": 0.3712926497057807,
+        "rouge2": 0.09430550910121081,
+        "rougeL": 0.23463250804282113
+      }
+    },
+    "per_meeting": {
+      "Bed002": {
+        "oracle": {
+          "rouge1": 0.3712926497057807,
+          "rouge2": 0.09430550910121081,
+          "rougeL": 0.23463250804282113
+        }
+      }
+    },
+    "meeting_average_rouge_f1": {
+      "oracle": {
+        "rouge1": 0.3712926497057807,
+        "rouge2": 0.09430550910121081,
+        "rougeL": 0.23463250804282113
+      }
+    },
+    "paired_meeting_average": {},
+    "model_calls": 0,
+    "cache_hits": 6,
+    "artifact_hashes": {
+      "Bed002": "53d385c0b635a7e3b67c472c1feba915b0bc6c9e7aa4a4aee9e6130bd885798c"
+    }
+  },
+  "judge_model_calls": 0,
+  "judge_cache_hits": 6,
+  "records": [
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8302942514419556,
+        "recall": 0.8429930210113525,
+        "f1": 0.8365954756736755
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the key points from the reference answer and gold transcript evidence, including the setup of recording equipment, positioning of microphones, and the procedure for reading digit strings.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the key points from the reference answer and gold transcript evidence, including the setup of recording equipment, positioning of microphones, and the procedure for reading digit strings.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8627424240112305,
+        "recall": 0.8594740033149719,
+        "f1": 0.8611051440238953
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available, as the reference answer and transcript provide information about Professor C's questions and clarifications regarding the recording procedure.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available, as the reference answer and transcript provide information about Professor C's questions and clarifications regarding the recording procedure.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8632041215896606,
+        "recall": 0.8853399753570557,
+        "f1": 0.8741319179534912
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points, such as the proper use of the microphone and the purpose of the recording setup, but omits key details like the requirement for participants to sign a consent form and the anonymization of transcripts.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points, such as the proper use of the microphone and the purpose of the recording setup, but omits key details like the requirement for participants to sign a consent form and the anonymization of transcripts.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8755310773849487,
+        "recall": 0.8931462168693542,
+        "f1": 0.8842509984970093
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the experimental setup, covering key points such as participant familiarization, task completion, system crash, and data collection through recorded dialogue, all of which are supported by the reference answer and gold transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the experimental setup, covering key points such as participant familiarization, task completion, system crash, and data collection through recorded dialogue, all of which are supported by the reference answer and gold transcript evidence.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8717683553695679,
+        "recall": 0.886310875415802,
+        "f1": 0.8789793848991394
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8790302276611328,
+        "recall": 0.8764990568161011,
+        "f1": 0.8777628540992737
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits details about the first person perspective and the goal of understanding human reaction",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits details about the first person perspective and the goal of understanding human reaction\"}",
+        "cache_hit": true
+      }
+    }
+  ]
+}

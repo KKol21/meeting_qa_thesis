@@ -1,0 +1,203 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "ES2006c.json",
+        "sha256": "40ff9696b3958b6ff32e92cd7be836a42f99f44b7b45ed983f400be6aeba6635"
+      }
+    },
+    "input_hash": "9314fb0ab8eeb038a7ea6ddef40443e6afded630fca244285a721eeb645fddb1",
+    "fingerprint": "3b69bb600456e658c461ba33c817149279e8f0a50774bd606a84a2d8302acf08",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "ES2006c",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the presentations on remote components, user interface and market trends.",
+      "reference_answer": "Firstly, Industrial Designer presented on the remote components including the circuit board, the chip, the kinetic energy, the solar cell, the case shape and the interface. Next, User Interface presented on user interface including the mechanisms to operate and input data, the shape and the size, the buttons and the voice recognition as well as the scroll wheel. Then, Marketing presented on market trends. In consideration of the target age group and technology innovation, Marketing suggested the group could go for LCD, the colours and the voice recognition as well as the flat spongy material based on current trends.",
+      "results": {
+        "oracle": {
+          "answer": "The Industrial Designer presented on the remote components, including the internal circuit board, chip, and LED device. They discussed various battery options such as traditional cells, dynamos (wind-up), kinetic energy, and solar cells. The case designs included flat, one-sided curved, and double-curved surfaces, with materials like plastic, rubber, wood, and titanium. For the user interface, options included push-buttons, scroll wheels, LCD displays, and voice recognition capabilities. The Marketing expert highlighted market trends, emphasizing the importance of innovation, style, and functionality. Trends suggested incorporating LCD screens for feedback, curvaceous designs inspired by fruits and vegetables, and ergonomic considerations to reduce RSI. Materials like rubber were proposed for their protective qualities, but with constraints on using solar cells. The team agreed on the inclusion of LCD screens and considered a sliding mechanism to protect the screen.",
+          "rouge_f1": {
+            "rouge1": 0.47257383966244726,
+            "rouge2": 0.15319148936170213,
+            "rougeL": 0.3206751054852321
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              0,
+              370
+            ]
+          ],
+          "evidence_words": 4834
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Industrial Designer think of the scroll wheel when presenting the user interface?",
+      "reference_answer": "When User Interface mentioned about the new developments they would include, Industrial Designer asked about what a spinning wheel with the LCD display was. User Interface explained that it was a wheel but not separate buttons. Marketing supplemented that it was a fast wheel to control over. Industrial Designer agreed on LCD with spinning and would include it into the design.",
+      "results": {
+        "oracle": {
+          "answer": "Industrial Designer was initially unsure about the scroll wheel, asking for clarification on its function and comparing it to the iPod. After receiving more information, they seemed to understand and accept the concept, acknowledging it as similar to the iPod's interface. They agreed that instead of going down, you just spin, indicating a basic understanding and acceptance of the feature. Industrial Designer also considered including the scroll wheel in their design, as indicated by their statement \"maybe I should include that here as well.\"",
+          "rouge_f1": {
+            "rouge1": 0.3698630136986301,
+            "rouge2": 0.041666666666666664,
+            "rougeL": 0.1780821917808219
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              169,
+              202
+            ]
+          ],
+          "evidence_words": 374
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Why did the Marketing think they should have LCD when presenting the market trends?",
+      "reference_answer": "When Industrial Designer mentioned that LCD was basically feedback from television and questioned the necessity of LCD, Marketing suggested that they could integrate with the television then it could come up with new information about what was on, and users could just see that on the remote rather than TV itself so that users won't get interrupted by viewing pleasure. Also, Marketing thought the group could have a minimalist remote control so that users could flip it open if they wanted to mess about it.",
+      "results": {
+        "oracle": {
+          "answer": "Marketing thought they should have an LCD when presenting the market trends because:\n\n1. An LCD on the remote could reduce the time users spend waiting for feedback from the TV, especially when entering numbers.\n2. If users input the wrong number, an LCD would help avoid additional waiting time and inconvenience.\n3. An integrated LCD on the remote could display new information about available channels or content without interrupting the viewer’s experience on the TV screen.\n4. The LCD could be protected similarly to mobile phones (like slide or flip mechanisms) to prevent scratches and damage, maintaining a minimalist design while adding functionality.",
+          "rouge_f1": {
+            "rouge1": 0.387434554973822,
+            "rouge2": 0.07407407407407407,
+            "rougeL": 0.19895287958115185
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              245,
+              277
+            ]
+          ],
+          "evidence_words": 442
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the decision discussion about key remote control concepts.",
+      "reference_answer": "They decided to implement a LCD display with a scroll wheel. Instead of using hand dynamos, the group decided to use a wind dynamo which was more environmentally friendly. And they would keep the kinetic energy as an option and keep the spongy material preferences as well as voice recognition. At last, groupmates agreed to apply interchangeable cases with incorporated colours to make the remote more trendy. They would use a simple battery, the advanced chip, a curved side case and rubber buttons.",
+      "results": {
+        "oracle": {
+          "answer": "The team decided on several key concepts for the remote control:\n\n1. **LCD Display**: They agreed to include an LCD display with a spinning wheel inside the remote control.\n2. **Case Design**: The case would be curved on one side and flat on the other, folding in on itself. The exterior would be made of rubber, and the buttons would also be rubber.\n3. **Power Source**: They opted for a simple battery over kinetic energy due to its reliability and cost-effectiveness.\n4. **Buttons**: Push-buttons would be included on the outside for quick access to frequently used functions, while the LCD display would handle more complex interactions.\n5. **Voice Recognition**: This feature was incorporated into the design.\n6. **Color Scheme**: The remote would have a vegetable-themed color scheme (orange, green, red, and purple) with company colors potentially used for the buttons.\n7. **Spinning Wheel**: Located inside the remote, the spinning wheel would be integrated with the LCD display for navigation.\n8. **Minimalist Exterior**: The exterior would be minimalist, with the LCD display and spinning wheel hidden inside when closed.\n\nThese decisions were aimed at creating a sleek, user-friendly, and trendy remote control.",
+          "rouge_f1": {
+            "rouge1": 0.35251798561151076,
+            "rouge2": 0.07246376811594203,
+            "rougeL": 0.17985611510791366
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              371,
+              660
+            ]
+          ],
+          "evidence_words": 2955
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the group think of the wood case when discussing the key remote control concepts?",
+      "reference_answer": "User Interface thought it would be hard to keep the remote control small with a wood case. Industrial Designer thought the thin wood remote would be easy to break. Project Manager thought given that they were looking at more spongy material preferences, rubber or plastic would be more practical. Also, the group thought that wood was not cleanable, so they decided not to use a wood case for the remote control.",
+      "results": {
+        "oracle": {
+          "answer": "The group had several concerns about using wood for the remote control case. User Interface pointed out that wood cannot be made very small or thin, making the remote bulky and prone to breaking if made too thin. Marketing added that wood is not very cleanable and is not practical for a remote control due to issues like splinters. The Project Manager suggested that softer materials like rubber or plastic might be more suitable. Overall, the group consensus was that wood was not a viable option for the remote control case.",
+          "rouge_f1": {
+            "rouge1": 0.5308641975308642,
+            "rouge2": 0.1875,
+            "rougeL": 0.35802469135802467
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              397,
+              429
+            ]
+          ],
+          "evidence_words": 273
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "Why did the group think of the push-buttons when discussing the key remote control concepts?",
+      "reference_answer": "Industrial Designer mentioned that the push-buttons were their expertise in the industry when discussing the interface. And Industrial Designer thought it seemed to be out of trend, while Marketing thought they had to have push-buttons. Industrial Designer supplemented that if they had LCD displays, users could select everything on the LCD. However, User Interface thought the LCD was just for fast scrolling. So User Interface suggested using it as normal control. Marketing mentioned that they wanted buttons for users and everything else menu-driven.",
+      "results": {
+        "oracle": {
+          "answer": "The group thought of the push-buttons when discussing the key remote control concepts because they recognized that push-buttons are essential for certain functions, particularly for selecting channel numbers. Despite push-buttons being somewhat out of trend, there was agreement that they are necessary for quick and easy access to frequently used functions. The discussion also highlighted that while LCD displays offer flexibility and speed, push-buttons remain a practical choice for immediate actions.",
+          "rouge_f1": {
+            "rouge1": 0.4099378881987578,
+            "rouge2": 0.11320754716981132,
+            "rougeL": 0.21118012422360247
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              430,
+              455
+            ]
+          ],
+          "evidence_words": 281
+        }
+      }
+    }
+  ]
+}

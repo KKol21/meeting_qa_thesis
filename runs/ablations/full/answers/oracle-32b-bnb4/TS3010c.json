@@ -1,0 +1,226 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "TS3010c.json",
+        "sha256": "6c675f16089561bb8a6684d792482953ca5f8a4527a6a0a37c9c7abcce686768"
+      }
+    },
+    "input_hash": "dc6b44e0c98559a55679b4949047dfda9851c773202830275e1e954350060a27",
+    "fingerprint": "adae659a65b4d9be7fec52f42d7887f172c55b95e7a0cdd1791a7f32f46d95db",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "TS3010c",
+  "question_count": 7,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 7,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did User Interface say about the interface concept design?",
+      "reference_answer": "User Interface introduced to use the power button to switch the television on and off. The mute button to switch the volume on and off. The channels buttons, one to nine, or zero to nine. The volume and channel quadrants, from left to right, and up and down arrows, to control the volume and channel. And last, the menu button to manipulate the LCD display. User Interface also suggested that power buttons are usually at the top left or right and the team should decide to choose the right icons, or letters on the buttons.",
+      "results": {
+        "oracle": {
+          "answer": "User Interface discussed the interface concept design by mentioning the buttons chosen for the television, including the power button, mute button, channel buttons (one to nine and zero to nine), and a button for selecting channels higher than nine. They also talked about the volume and channel quadrants with left, right, up, and down arrows, and the menu button to manipulate the LCD display. User Interface noted that the buttons are typically large, thin, and long, with the power buttons usually positioned at the top left or right. They also mentioned that arrow buttons could be blue and highlighted the importance of choosing the right icons or letters for the buttons, noting an example where \"V\" was used for volume.",
+          "rouge_f1": {
+            "rouge1": 0.6604651162790698,
+            "rouge2": 0.3849765258215962,
+            "rougeL": 0.5488372093023256
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              27,
+              33
+            ]
+          ],
+          "evidence_words": 313
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "How did User Interface answer Project Manager's question about the icon design on the buttons?",
+      "reference_answer": "User Interface believed that the team should design the case and the whole remote control in the company. And for colors and the logo, User Interface would recommend a yellow case, with round edges and the logo at the bottom. User Interface also suggested a set of buttons with its own color to make it recognizable. But this idea was turned down by Project Manager.",
+      "results": {
+        "oracle": {
+          "answer": "User Interface responded to Project Manager's question about the icon design on the buttons by saying it was something to think about. They did not provide a specific answer but later suggested that good icons on the buttons and big buttons were their personal opinion.",
+          "rouge_f1": {
+            "rouge1": 0.32432432432432434,
+            "rouge2": 0.03669724770642201,
+            "rougeL": 0.14414414414414414
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              51,
+              66
+            ]
+          ],
+          "evidence_words": 247
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Summarize the discussion about interface concept design.",
+      "reference_answer": "The team believed that there were always large and many buttons on the standard remote control. To design its unique device, they decided on a pure color one with arrows to eliminate the number of buttons used. They also planned to incorporate the company logo. Moreover, User Interface suggested a set of buttons with its own color to make it recognizable. But this idea was turned down by Project Manager.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about interface concept design focused on several aspects:\n\n- **Buttons**: The team discussed the standardization of button sizes, noting that they should be large, thin, and long. Specific buttons mentioned included the power button (top left or right), mute button, channel buttons (one to nine and zero to nine), and higher channel selection button. Volume and channel controls were indicated by left and right, up and down arrows. The menu button was also discussed, with the suggestion that it could be integrated into the existing channel or volume buttons.\n\n- **Icons**: There was a debate over the clarity of icons on buttons, such as the volume button labeled \"V\". The team agreed that the icons needed to be clear and functional. The discussion also touched on the possibility of using different colors for sets of buttons to improve recognizability.\n\n- **Design Preferences**: The User Interface suggested a yellow case with rounded edges and the company logo at the bottom. The preference was for a trendy yet not overly colorful design, avoiding a \"flower power\" look.\n\n- **Arrows**: The team decided that the arrows should have clear icons to indicate their functions, with the second option being preferred.\n\nOverall, the focus was on creating a user-friendly interface with clear, recognizable buttons and icons, while maintaining a modern and appealing design.",
+          "rouge_f1": {
+            "rouge1": 0.3263888888888889,
+            "rouge2": 0.07692307692307693,
+            "rougeL": 0.15972222222222224
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              27,
+              66
+            ]
+          ],
+          "evidence_words": 698
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did Industrial Designer say about the customers' taste?",
+      "reference_answer": "Industrial Designer said that the younger people fancied soft materials and primary colors. For example, total yellow or totally red could be visible. The shapes could be curved and round,which would be easier to use. It would be better to use the basic battery so everybody could get it at the supermarket, or to use a kinetic battery after shaking it a few times, it could be loaded. Industrial Designer suggested hard plastic material and rubber since the younger people liked that. The survey also discovered that the young favored a scroll push like the mouse to use for channels and volume.",
+      "results": {
+        "oracle": {
+          "answer": "Industrial Designer stated that younger customers prefer soft material and primary colors for remote controls, such as totally yellow or red, making them highly visible. They also prefer curved and round shapes over straight and flat designs. The idea is to make the remote control hand-shaped for easier use. Additionally, the material should be hard plastic for durability and incorporate rubber, which younger people like based on research. For the buttons, a scroll push feature similar to a mouse was suggested for ease of use when changing channels or adjusting volume.",
+          "rouge_f1": {
+            "rouge1": 0.5230769230769231,
+            "rouge2": 0.15544041450777202,
+            "rougeL": 0.3794871794871794
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              73,
+              78
+            ]
+          ],
+          "evidence_words": 475
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the team discuss about the use of advanced chips and LCD display?",
+      "reference_answer": "Industrial Designer introduced both simple chips and advanced chips could be used for the mouse. But it would require the use of LCD display, which would highly increase the cost. Project Manager agreed that the LCD was easy when using the scroll buttons and could see the number. But Project Manager argued that young people were less likely to have their own room to afford a LCD TV and decided not to choose the advanced ones.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed the use of advanced chips and LCD displays in the context of designing a new remote control. The Industrial Designer mentioned that while advanced chips could be used with an LCD screen, the costs would significantly increase, making it difficult to fit within their current budget. The Project Manager noted that an LCD screen would make the remote control easier to use with scroll buttons, but acknowledged that the cost would be higher. However, the team agreed that the remote control should not be too basic, as consumers already have many such devices. The Industrial Designer suggested that younger people might have newer televisions capable of supporting advanced features, but the Project Manager pointed out that most young people's rooms contain standard, less advanced televisions. Overall, the team concluded that the budget constraints and the prevalence of basic remote controls in the market made the use of advanced chips and LCD displays less feasible.",
+          "rouge_f1": {
+            "rouge1": 0.4444444444444445,
+            "rouge2": 0.13793103448275862,
+            "rougeL": 0.24786324786324787
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              79,
+              103
+            ]
+          ],
+          "evidence_words": 552
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did Marketing talk about market trend findings?",
+      "reference_answer": "There were two groups, the young and trendy, and the old and rich. For the first group, they would like fruit and vegetables as a theme for clothes, shoes, and also products. And for the material, a spongy feeling one would be better. But the old and rich would like dark colors, simple, and recognizable shapes as well as familiar material, wood especially.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence provided does not contain any relevant information about what Marketing talked about regarding market trend findings.",
+          "rouge_f1": {
+            "rouge1": 0.024691358024691357,
+            "rouge2": 0.0,
+            "rougeL": 0.024691358024691357
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              147,
+              162
+            ]
+          ],
+          "evidence_words": 96
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "What did the team decide on the cost?",
+      "reference_answer": "Project Manager decided to use normal battery and no kinetic.The team would try to incorporate the joystick to solve the scroll chip problem. But if the advanced chips would be used still remained to be discussed. The shape of the design and the use of chips would depend on the LCD display but it should be small.",
+      "results": {
+        "oracle": {
+          "answer": "The team did not reach a definitive decision on the exact cost. They discussed the cost implications of different components such as the LCD and scroll wheel, noting that certain features would increase the cost. The Project Manager suggested using a normal battery to keep costs down, stating that kinetic options would make it more expensive. However, specific cost figures were not agreed upon during the meeting.",
+          "rouge_f1": {
+            "rouge1": 0.384,
+            "rouge2": 0.0975609756097561,
+            "rougeL": 0.192
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              328,
+              401
+            ]
+          ],
+          "evidence_words": 718
+        }
+      }
+    }
+  ]
+}

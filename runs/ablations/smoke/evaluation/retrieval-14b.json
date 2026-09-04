@@ -1,0 +1,2242 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "evaluation",
+    "config": {
+      "experiment_version": 2,
+      "bertscore": {
+        "package_version": "0.3.13",
+        "model": {
+          "tag": "roberta-large",
+          "name": "FacebookAI/roberta-large",
+          "revision": "722cf37b1afa9454edce342e7895e588b6ff1d59",
+          "prequantized": false
+        },
+        "layers": 17,
+        "batch_size": 16,
+        "rescale_with_baseline": false
+      },
+      "judge": {
+        "model": {
+          "tag": "llama-3.3-70b-bnb4",
+          "name": "unsloth/Llama-3.3-70B-Instruct-bnb-4bit",
+          "revision": "74be54198eaf4f3c7fba1f4e9fa63725a810c7eb",
+          "prequantized": true
+        },
+        "max_new_tokens": 192,
+        "temperature": 0.0,
+        "seed": 42,
+        "prompt": "You are evaluating an answer to a meeting question.\nUse the reference answer and gold transcript evidence as complementary sources of truth. Do not require identical wording, and do not reward an answer merely for repeating the question.\n\nFirst identify the important points in the reference answer, then check them against the candidate and transcript. A supported but incomplete answer must receive 2, not 3. Transcript-supported details beyond the reference are allowed, but do not compensate for omitted important reference points.\n\nScore the candidate answer using this scale:\n1 = Invalid or incorrect. It does not answer the question, contradicts the evidence, is mostly unsupported, contains a major unsupported claim, or claims insufficient evidence when the answer is available.\n2 = Partially correct. It gives useful supported information, but omits one or more important points from the reference answer or includes a minor unsupported claim.\n3 = Correct. It covers all or nearly all important points from the reference answer, is supported by the transcript evidence, and contains no material error or unsupported claim.\n\nReturn only a JSON object with an integer score and one short reason:\n{\"score\": 1, \"reason\": \"...\"}"
+      }
+    },
+    "config_hash": "09d95b9b6b254a97435a1587c1d2c53dfa07763e34812caf4a773dd281351504",
+    "inputs": {
+      "answer_summary": {
+        "file": "summary.json",
+        "sha256": "10a4c5801aafe898e1719997614c0c88de4dea48ddca8325b680fd37518991a2"
+      },
+      "answers_Bed002": {
+        "file": "Bed002.json",
+        "sha256": "cbb18aa06461ca499d4dc52a4f90a15edea5eb037bd783747ab650693cbd55f9"
+      },
+      "meeting_Bed002": {
+        "file": "Bed002.json",
+        "sha256": "154dcbab359183b9429d63dccd1c8f0e07260f63a74688ba8435627d0a5111ed"
+      }
+    },
+    "input_hash": "1f3e504b0171c75715649bd219b43bbbccd9792228b8b09352b682009ff44fe9",
+    "fingerprint": "54699dd4381fafdd259a077e845dab4543ef3dca7068aecb159b980007d9297a",
+    "preset": {
+      "file": "ablation-smoke.toml",
+      "sha256": "8b39ae5d3d717826e07537b9212ed1bbdc8ddbcaaa6569d49a83a2b7896bbbb3"
+    }
+  },
+  "answer_summary": {
+    "experiment_version": 2,
+    "stage": "answers",
+    "source": "retrieval",
+    "answer_model": {
+      "tag": "qwen2.5-14b",
+      "name": "Qwen/Qwen2.5-14B-Instruct",
+      "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+      "prequantized": false,
+      "max_new_tokens": 512,
+      "temperature": 0.0,
+      "seed": 42
+    },
+    "meeting_ids": [
+      "Bed002"
+    ],
+    "meeting_count": 1,
+    "question_count": 6,
+    "conditions": {
+      "turn_packed__dense__w512": {
+        "chunker": "turn_packed",
+        "retriever": "dense",
+        "evidence_words": 512
+      },
+      "turn_packed__dense__w1024": {
+        "chunker": "turn_packed",
+        "retriever": "dense",
+        "evidence_words": 1024
+      },
+      "turn_packed__bm25__w512": {
+        "chunker": "turn_packed",
+        "retriever": "bm25",
+        "evidence_words": 512
+      },
+      "turn_packed__bm25__w1024": {
+        "chunker": "turn_packed",
+        "retriever": "bm25",
+        "evidence_words": 1024
+      },
+      "turn_packed__hybrid__w512": {
+        "chunker": "turn_packed",
+        "retriever": "hybrid",
+        "evidence_words": 512
+      },
+      "turn_packed__hybrid__w1024": {
+        "chunker": "turn_packed",
+        "retriever": "hybrid",
+        "evidence_words": 1024
+      },
+      "word_packed__dense__w512": {
+        "chunker": "word_packed",
+        "retriever": "dense",
+        "evidence_words": 512
+      },
+      "word_packed__dense__w1024": {
+        "chunker": "word_packed",
+        "retriever": "dense",
+        "evidence_words": 1024
+      },
+      "word_packed__bm25__w512": {
+        "chunker": "word_packed",
+        "retriever": "bm25",
+        "evidence_words": 512
+      },
+      "word_packed__bm25__w1024": {
+        "chunker": "word_packed",
+        "retriever": "bm25",
+        "evidence_words": 1024
+      },
+      "word_packed__hybrid__w512": {
+        "chunker": "word_packed",
+        "retriever": "hybrid",
+        "evidence_words": 512
+      },
+      "word_packed__hybrid__w1024": {
+        "chunker": "word_packed",
+        "retriever": "hybrid",
+        "evidence_words": 1024
+      },
+      "lumber__dense__w512": {
+        "chunker": "lumber",
+        "retriever": "dense",
+        "evidence_words": 512
+      },
+      "lumber__dense__w1024": {
+        "chunker": "lumber",
+        "retriever": "dense",
+        "evidence_words": 1024
+      },
+      "lumber__bm25__w512": {
+        "chunker": "lumber",
+        "retriever": "bm25",
+        "evidence_words": 512
+      },
+      "lumber__bm25__w1024": {
+        "chunker": "lumber",
+        "retriever": "bm25",
+        "evidence_words": 1024
+      },
+      "lumber__hybrid__w512": {
+        "chunker": "lumber",
+        "retriever": "hybrid",
+        "evidence_words": 512
+      },
+      "lumber__hybrid__w1024": {
+        "chunker": "lumber",
+        "retriever": "hybrid",
+        "evidence_words": 1024
+      }
+    },
+    "question_average_rouge_f1": {
+      "turn_packed__dense__w512": {
+        "rouge1": 0.28256400451043795,
+        "rouge2": 0.04770776155730929,
+        "rougeL": 0.17491000940530532
+      },
+      "turn_packed__dense__w1024": {
+        "rouge1": 0.34621466802011813,
+        "rouge2": 0.05993946415877498,
+        "rougeL": 0.2109261049726346
+      },
+      "turn_packed__bm25__w512": {
+        "rouge1": 0.26259788759518937,
+        "rouge2": 0.044426900796162086,
+        "rougeL": 0.16261309163338197
+      },
+      "turn_packed__bm25__w1024": {
+        "rouge1": 0.3244234492194813,
+        "rouge2": 0.05278052490376779,
+        "rougeL": 0.18763664243132966
+      },
+      "turn_packed__hybrid__w512": {
+        "rouge1": 0.2746762123166591,
+        "rouge2": 0.03670293275379068,
+        "rougeL": 0.16699155295109394
+      },
+      "turn_packed__hybrid__w1024": {
+        "rouge1": 0.305215287488513,
+        "rouge2": 0.05212446492295838,
+        "rougeL": 0.18480979060726938
+      },
+      "word_packed__dense__w512": {
+        "rouge1": 0.2718151330903006,
+        "rouge2": 0.045669003125506855,
+        "rougeL": 0.1733714482782712
+      },
+      "word_packed__dense__w1024": {
+        "rouge1": 0.28777444156589743,
+        "rouge2": 0.06109299444170688,
+        "rougeL": 0.18327716832648575
+      },
+      "word_packed__bm25__w512": {
+        "rouge1": 0.29048348734381596,
+        "rouge2": 0.050626488688205885,
+        "rougeL": 0.1806904863227448
+      },
+      "word_packed__bm25__w1024": {
+        "rouge1": 0.3247118175729959,
+        "rouge2": 0.06422510356866161,
+        "rougeL": 0.19403624992868626
+      },
+      "word_packed__hybrid__w512": {
+        "rouge1": 0.2486701727052097,
+        "rouge2": 0.03942521702626493,
+        "rougeL": 0.16957680605937933
+      },
+      "word_packed__hybrid__w1024": {
+        "rouge1": 0.30448207545066636,
+        "rouge2": 0.055230441537288115,
+        "rougeL": 0.17589585769044355
+      },
+      "lumber__dense__w512": {
+        "rouge1": 0.24808444302365917,
+        "rouge2": 0.02674019321772095,
+        "rougeL": 0.1541133767735669
+      },
+      "lumber__dense__w1024": {
+        "rouge1": 0.30017496691543843,
+        "rouge2": 0.06126291168444065,
+        "rougeL": 0.18774726418202264
+      },
+      "lumber__bm25__w512": {
+        "rouge1": 0.2656681016466743,
+        "rouge2": 0.03778011415472522,
+        "rougeL": 0.17126268053418647
+      },
+      "lumber__bm25__w1024": {
+        "rouge1": 0.30484054779783853,
+        "rouge2": 0.058992819470542454,
+        "rougeL": 0.17868126185641284
+      },
+      "lumber__hybrid__w512": {
+        "rouge1": 0.25354949076173744,
+        "rouge2": 0.03890244781296986,
+        "rougeL": 0.17465487155660064
+      },
+      "lumber__hybrid__w1024": {
+        "rouge1": 0.2725905227839062,
+        "rouge2": 0.047626764212944775,
+        "rougeL": 0.17786063918875947
+      }
+    },
+    "per_meeting": {
+      "Bed002": {
+        "turn_packed__dense__w512": {
+          "rouge1": 0.28256400451043795,
+          "rouge2": 0.04770776155730929,
+          "rougeL": 0.17491000940530532
+        },
+        "turn_packed__dense__w1024": {
+          "rouge1": 0.34621466802011813,
+          "rouge2": 0.05993946415877498,
+          "rougeL": 0.2109261049726346
+        },
+        "turn_packed__bm25__w512": {
+          "rouge1": 0.26259788759518937,
+          "rouge2": 0.044426900796162086,
+          "rougeL": 0.16261309163338197
+        },
+        "turn_packed__bm25__w1024": {
+          "rouge1": 0.3244234492194813,
+          "rouge2": 0.05278052490376779,
+          "rougeL": 0.18763664243132966
+        },
+        "turn_packed__hybrid__w512": {
+          "rouge1": 0.2746762123166591,
+          "rouge2": 0.03670293275379068,
+          "rougeL": 0.16699155295109394
+        },
+        "turn_packed__hybrid__w1024": {
+          "rouge1": 0.305215287488513,
+          "rouge2": 0.05212446492295838,
+          "rougeL": 0.18480979060726938
+        },
+        "word_packed__dense__w512": {
+          "rouge1": 0.2718151330903006,
+          "rouge2": 0.045669003125506855,
+          "rougeL": 0.1733714482782712
+        },
+        "word_packed__dense__w1024": {
+          "rouge1": 0.28777444156589743,
+          "rouge2": 0.06109299444170688,
+          "rougeL": 0.18327716832648575
+        },
+        "word_packed__bm25__w512": {
+          "rouge1": 0.29048348734381596,
+          "rouge2": 0.050626488688205885,
+          "rougeL": 0.1806904863227448
+        },
+        "word_packed__bm25__w1024": {
+          "rouge1": 0.3247118175729959,
+          "rouge2": 0.06422510356866161,
+          "rougeL": 0.19403624992868626
+        },
+        "word_packed__hybrid__w512": {
+          "rouge1": 0.2486701727052097,
+          "rouge2": 0.03942521702626493,
+          "rougeL": 0.16957680605937933
+        },
+        "word_packed__hybrid__w1024": {
+          "rouge1": 0.30448207545066636,
+          "rouge2": 0.055230441537288115,
+          "rougeL": 0.17589585769044355
+        },
+        "lumber__dense__w512": {
+          "rouge1": 0.24808444302365917,
+          "rouge2": 0.02674019321772095,
+          "rougeL": 0.1541133767735669
+        },
+        "lumber__dense__w1024": {
+          "rouge1": 0.30017496691543843,
+          "rouge2": 0.06126291168444065,
+          "rougeL": 0.18774726418202264
+        },
+        "lumber__bm25__w512": {
+          "rouge1": 0.2656681016466743,
+          "rouge2": 0.03778011415472522,
+          "rougeL": 0.17126268053418647
+        },
+        "lumber__bm25__w1024": {
+          "rouge1": 0.30484054779783853,
+          "rouge2": 0.058992819470542454,
+          "rougeL": 0.17868126185641284
+        },
+        "lumber__hybrid__w512": {
+          "rouge1": 0.25354949076173744,
+          "rouge2": 0.03890244781296986,
+          "rougeL": 0.17465487155660064
+        },
+        "lumber__hybrid__w1024": {
+          "rouge1": 0.2725905227839062,
+          "rouge2": 0.047626764212944775,
+          "rougeL": 0.17786063918875947
+        }
+      }
+    },
+    "meeting_average_rouge_f1": {
+      "turn_packed__dense__w512": {
+        "rouge1": 0.28256400451043795,
+        "rouge2": 0.04770776155730929,
+        "rougeL": 0.17491000940530532
+      },
+      "turn_packed__dense__w1024": {
+        "rouge1": 0.34621466802011813,
+        "rouge2": 0.05993946415877498,
+        "rougeL": 0.2109261049726346
+      },
+      "turn_packed__bm25__w512": {
+        "rouge1": 0.26259788759518937,
+        "rouge2": 0.044426900796162086,
+        "rougeL": 0.16261309163338197
+      },
+      "turn_packed__bm25__w1024": {
+        "rouge1": 0.3244234492194813,
+        "rouge2": 0.05278052490376779,
+        "rougeL": 0.18763664243132966
+      },
+      "turn_packed__hybrid__w512": {
+        "rouge1": 0.2746762123166591,
+        "rouge2": 0.03670293275379068,
+        "rougeL": 0.16699155295109394
+      },
+      "turn_packed__hybrid__w1024": {
+        "rouge1": 0.305215287488513,
+        "rouge2": 0.05212446492295838,
+        "rougeL": 0.18480979060726938
+      },
+      "word_packed__dense__w512": {
+        "rouge1": 0.2718151330903006,
+        "rouge2": 0.045669003125506855,
+        "rougeL": 0.1733714482782712
+      },
+      "word_packed__dense__w1024": {
+        "rouge1": 0.28777444156589743,
+        "rouge2": 0.06109299444170688,
+        "rougeL": 0.18327716832648575
+      },
+      "word_packed__bm25__w512": {
+        "rouge1": 0.29048348734381596,
+        "rouge2": 0.050626488688205885,
+        "rougeL": 0.1806904863227448
+      },
+      "word_packed__bm25__w1024": {
+        "rouge1": 0.3247118175729959,
+        "rouge2": 0.06422510356866161,
+        "rougeL": 0.19403624992868626
+      },
+      "word_packed__hybrid__w512": {
+        "rouge1": 0.2486701727052097,
+        "rouge2": 0.03942521702626493,
+        "rougeL": 0.16957680605937933
+      },
+      "word_packed__hybrid__w1024": {
+        "rouge1": 0.30448207545066636,
+        "rouge2": 0.055230441537288115,
+        "rougeL": 0.17589585769044355
+      },
+      "lumber__dense__w512": {
+        "rouge1": 0.24808444302365917,
+        "rouge2": 0.02674019321772095,
+        "rougeL": 0.1541133767735669
+      },
+      "lumber__dense__w1024": {
+        "rouge1": 0.30017496691543843,
+        "rouge2": 0.06126291168444065,
+        "rougeL": 0.18774726418202264
+      },
+      "lumber__bm25__w512": {
+        "rouge1": 0.2656681016466743,
+        "rouge2": 0.03778011415472522,
+        "rougeL": 0.17126268053418647
+      },
+      "lumber__bm25__w1024": {
+        "rouge1": 0.30484054779783853,
+        "rouge2": 0.058992819470542454,
+        "rougeL": 0.17868126185641284
+      },
+      "lumber__hybrid__w512": {
+        "rouge1": 0.25354949076173744,
+        "rouge2": 0.03890244781296986,
+        "rougeL": 0.17465487155660064
+      },
+      "lumber__hybrid__w1024": {
+        "rouge1": 0.2725905227839062,
+        "rouge2": 0.047626764212944775,
+        "rougeL": 0.17786063918875947
+      }
+    },
+    "paired_meeting_average": {
+      "lumber_minus_turn_packed__dense__w512": {
+        "rouge1": -0.034479561486778776,
+        "rouge2": -0.02096756833958834,
+        "rougeL": -0.02079663263173842
+      },
+      "lumber_minus_word_packed__dense__w512": {
+        "rouge1": -0.023730690066641413,
+        "rouge2": -0.018928809907785903,
+        "rougeL": -0.019258071504704294
+      },
+      "lumber_minus_turn_packed__dense__w1024": {
+        "rouge1": -0.0460397011046797,
+        "rouge2": 0.001323447525665676,
+        "rougeL": -0.023178840790611943
+      },
+      "lumber_minus_word_packed__dense__w1024": {
+        "rouge1": 0.012400525349541003,
+        "rouge2": 0.00016991724273377612,
+        "rougeL": 0.004470095855536899
+      },
+      "lumber_minus_turn_packed__bm25__w512": {
+        "rouge1": 0.003070214051484943,
+        "rouge2": -0.006646786641436864,
+        "rougeL": 0.0086495889008045
+      },
+      "lumber_minus_word_packed__bm25__w512": {
+        "rouge1": -0.024815385697141645,
+        "rouge2": -0.012846374533480663,
+        "rougeL": -0.009427805788558313
+      },
+      "lumber_minus_turn_packed__bm25__w1024": {
+        "rouge1": -0.019582901421642762,
+        "rouge2": 0.006212294566774662,
+        "rougeL": -0.008955380574916821
+      },
+      "lumber_minus_word_packed__bm25__w1024": {
+        "rouge1": -0.019871269775157352,
+        "rouge2": -0.005232284098119155,
+        "rougeL": -0.015354988072273423
+      },
+      "lumber_minus_turn_packed__hybrid__w512": {
+        "rouge1": -0.02112672155492168,
+        "rouge2": 0.0021995150591791746,
+        "rougeL": 0.007663318605506703
+      },
+      "lumber_minus_word_packed__hybrid__w512": {
+        "rouge1": 0.004879318056527748,
+        "rouge2": -0.0005227692132950754,
+        "rougeL": 0.005078065497221312
+      },
+      "lumber_minus_turn_packed__hybrid__w1024": {
+        "rouge1": -0.03262476470460679,
+        "rouge2": -0.004497700710013604,
+        "rougeL": -0.006949151418509908
+      },
+      "lumber_minus_word_packed__hybrid__w1024": {
+        "rouge1": -0.03189155266676014,
+        "rouge2": -0.00760367732434334,
+        "rougeL": 0.001964781498315915
+      }
+    },
+    "model_calls": 96,
+    "cache_hits": 12,
+    "artifact_hashes": {
+      "Bed002": "cbb18aa06461ca499d4dc52a4f90a15edea5eb037bd783747ab650693cbd55f9"
+    }
+  },
+  "judge_model_calls": 76,
+  "judge_cache_hits": 32,
+  "records": [
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "turn_packed__dense__w512",
+      "bertscore": {
+        "precision": 0.8340983986854553,
+        "recall": 0.863932728767395,
+        "f1": 0.8487534523010254
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about setting up the recording equipment, covering key points such as the project's goal, the use of different types of microphones, and the intention to release the data publicly.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about setting up the recording equipment, covering key points such as the project's goal, the use of different types of microphones, and the intention to release the data publicly.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "turn_packed__dense__w1024",
+      "bertscore": {
+        "precision": 0.833643913269043,
+        "recall": 0.8540355563163757,
+        "f1": 0.843716561794281
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer and transcript evidence, such as microphone placement and the goal of recording meetings, but omits key details like the project's name, the anonymization of data, and the involvement of other institutions.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer and transcript evidence, such as microphone placement and the goal of recording meetings, but omits key details like the project's name, the anonymization of data, and the involvement of other institutions.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "turn_packed__bm25__w512",
+      "bertscore": {
+        "precision": 0.8449071645736694,
+        "recall": 0.8501718044281006,
+        "f1": 0.8475313186645508
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately summarize the discussion about setting up the recording equipment, and it introduces unsupported claims and information not present in the reference answer or the gold transcript evidence.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately summarize the discussion about setting up the recording equipment, and it introduces unsupported claims and information not present in the reference answer or the gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "turn_packed__bm25__w1024",
+      "bertscore": {
+        "precision": 0.847646951675415,
+        "recall": 0.8509262204170227,
+        "f1": 0.8492834568023682
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides some useful information about the recording equipment setup, but it omits important points from the reference answer, such as the purpose of the Meeting Recorder project and the anonymization of the data collection.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides some useful information about the recording equipment setup, but it omits important points from the reference answer, such as the purpose of the Meeting Recorder project and the anonymization of the data collection.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "turn_packed__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8574844002723694,
+        "recall": 0.8550108075141907,
+        "f1": 0.8562458157539368
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides some useful information about the recording equipment setup, but it omits important points from the reference answer, such as the purpose of the project, the anonymization of data, and the release of the data to the public.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides some useful information about the recording equipment setup, but it omits important points from the reference answer, such as the purpose of the project, the anonymization of data, and the release of the data to the public.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "turn_packed__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.828144907951355,
+        "recall": 0.843658447265625,
+        "f1": 0.8358297348022461
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer and transcript evidence, such as the use of both far-field and near-field microphones, the inclusion of digit strings, and the requirement for participants to complete consent forms. However, it omits other important details, like the project's goal of developing a PDA for meeting recording and the anonymization of data, and includes some unsupported claims, such as the expectation to begin recording subjects within a month, which is not mentioned in the provided transcript or reference answer.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer and transcript evidence, such as the use of both far-field and near-field microphones, the inclusion of digit strings, and the requirement for participants to complete consent forms. However, it omits other important details, like the project's goal of developing a PDA for meeting recording and the anonymization of data, and includes some unsupported claims, such as the expectation to begin recording subjects within a month, which is not mentioned in the provided transcript or reference answer.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "word_packed__dense__w512",
+      "bertscore": {
+        "precision": 0.8625191450119019,
+        "recall": 0.8607773780822754,
+        "f1": 0.861647367477417
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when in fact, the transcript provides details about setting up the recording equipment, such as wearing wireless microphones and positioning them correctly.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when in fact, the transcript provides details about setting up the recording equipment, such as wearing wireless microphones and positioning them correctly.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "word_packed__dense__w1024",
+      "bertscore": {
+        "precision": 0.8340275883674622,
+        "recall": 0.847351610660553,
+        "f1": 0.8406367897987366
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points, such as microphone placement and the importance of filling out forms, but omits key details about the project's goals and the purpose of recording the meeting, as mentioned in the reference answer and supported by the transcript evidence.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points, such as microphone placement and the importance of filling out forms, but omits key details about the project's goals and the purpose of recording the meeting, as mentioned in the reference answer and supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "word_packed__bm25__w512",
+      "bertscore": {
+        "precision": 0.8328121304512024,
+        "recall": 0.8507850170135498,
+        "f1": 0.8417026400566101
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides some correct information about the recording equipment setup, but it lacks important details about the purpose of the recording, the project's goals, and the anonymization of the data collection, as mentioned in the reference answer.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides some correct information about the recording equipment setup, but it lacks important details about the purpose of the recording, the project's goals, and the anonymization of the data collection, as mentioned in the reference answer.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "word_packed__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8372806310653687,
+        "recall": 0.8529307246208191,
+        "f1": 0.8450332880020142
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides some correct information about the recording equipment setup, such as the use of close-talking and far-field microphones, but it omits important points from the reference answer, like the purpose of the Meeting Recorder project and the anonymization of the data collection.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides some correct information about the recording equipment setup, such as the use of close-talking and far-field microphones, but it omits important points from the reference answer, like the purpose of the Meeting Recorder project and the anonymization of the data collection.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "word_packed__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8355016708374023,
+        "recall": 0.8498979806900024,
+        "f1": 0.8426383137702942
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides useful supported information about setting up the recording equipment, but omits important points from the reference answer, such as the purpose of the project and the anonymization of the data collection.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides useful supported information about setting up the recording equipment, but omits important points from the reference answer, such as the purpose of the project and the anonymization of the data collection.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "word_packed__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.8337642550468445,
+        "recall": 0.8525384664535522,
+        "f1": 0.8430468440055847
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides useful supported information about the discussion on setting up recording equipment, including the use of close-talking and far-field microphones, simultaneous recording, and the intention to release the data publicly. However, it omits important points from the reference answer, such as the project's goal of developing a PDA of the future for recording and querying meetings, and the anonymization of data collection to a large extent.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides useful supported information about the discussion on setting up recording equipment, including the use of close-talking and far-field microphones, simultaneous recording, and the intention to release the data publicly. However, it omits important points from the reference answer, such as the project's goal of developing a PDA of the future for recording and querying meetings, and the anonymization of data collection to a large extent.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "lumber__dense__w512",
+      "bertscore": {
+        "precision": 0.8340983986854553,
+        "recall": 0.863932728767395,
+        "f1": 0.8487534523010254
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about setting up the recording equipment, covering key points such as the project's goal, the use of different types of microphones, and the intention to release the data publicly.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about setting up the recording equipment, covering key points such as the project's goal, the use of different types of microphones, and the intention to release the data publicly.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "lumber__dense__w1024",
+      "bertscore": {
+        "precision": 0.8333436250686646,
+        "recall": 0.8464352488517761,
+        "f1": 0.8398385047912598
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about setting up the recording equipment, covering key points such as the use of different microphones, simultaneous recording, and the importance of the consent form.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about setting up the recording equipment, covering key points such as the use of different microphones, simultaneous recording, and the importance of the consent form.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "lumber__bm25__w512",
+      "bertscore": {
+        "precision": 0.84095299243927,
+        "recall": 0.848423957824707,
+        "f1": 0.844671905040741
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides some useful information about the recording equipment setup, but omits important points from the reference answer, such as the purpose of the meeting recording and the anonymization of the data collection.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides some useful information about the recording equipment setup, but omits important points from the reference answer, such as the purpose of the meeting recording and the anonymization of the data collection.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "lumber__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8362469673156738,
+        "recall": 0.8541158437728882,
+        "f1": 0.845086932182312
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about setting up the recording equipment, covering key points such as the use of both far-field and close-talking microphones, the purpose of recording meetings for research, and the plan to release the data publicly.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about setting up the recording equipment, covering key points such as the use of both far-field and close-talking microphones, the purpose of recording meetings for research, and the plan to release the data publicly.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "lumber__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8434954881668091,
+        "recall": 0.8467925190925598,
+        "f1": 0.8451407551765442
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides some correct information about the recording equipment setup, but it omits important points from the reference answer, such as the purpose of the recording and the project's goal of creating a portable device for meeting recording and information retrieval.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides some correct information about the recording equipment setup, but it omits important points from the reference answer, such as the purpose of the recording and the project's goal of creating a portable device for meeting recording and information retrieval.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "lumber__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.8333436250686646,
+        "recall": 0.8464352488517761,
+        "f1": 0.8398385047912598
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about setting up the recording equipment, covering key points such as the use of different microphones, simultaneous recording, and the importance of the consent form.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about setting up the recording equipment, covering key points such as the use of different microphones, simultaneous recording, and the importance of the consent form.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "turn_packed__dense__w512",
+      "bertscore": {
+        "precision": 0.853094756603241,
+        "recall": 0.8608192801475525,
+        "f1": 0.8569396138191223
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides some supported information about Professor C's interaction with the recording equipment, but omits important points from the reference answer, such as Professor C's curiosity and questions about the recording procedure.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides some supported information about Professor C's interaction with the recording equipment, but omits important points from the reference answer, such as Professor C's curiosity and questions about the recording procedure.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "turn_packed__dense__w1024",
+      "bertscore": {
+        "precision": 0.8702688217163086,
+        "recall": 0.850034236907959,
+        "f1": 0.8600325584411621
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately reflect Professor C's thoughts and concerns about setting up the recording equipment as discussed in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately reflect Professor C's thoughts and concerns about setting up the recording equipment as discussed in the transcript.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "turn_packed__bm25__w512",
+      "bertscore": {
+        "precision": 0.8840039968490601,
+        "recall": 0.8458875417709351,
+        "f1": 0.8645258545875549
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "turn_packed__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8840039968490601,
+        "recall": 0.8458875417709351,
+        "f1": 0.8645258545875549
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "turn_packed__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8559907078742981,
+        "recall": 0.849066972732544,
+        "f1": 0.8525148630142212
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "turn_packed__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.8840039968490601,
+        "recall": 0.8458875417709351,
+        "f1": 0.8645258545875549
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "word_packed__dense__w512",
+      "bertscore": {
+        "precision": 0.8823803663253784,
+        "recall": 0.8451223969459534,
+        "f1": 0.8633496165275574
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "word_packed__dense__w1024",
+      "bertscore": {
+        "precision": 0.8823803663253784,
+        "recall": 0.8451223969459534,
+        "f1": 0.8633496165275574
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "word_packed__bm25__w512",
+      "bertscore": {
+        "precision": 0.8840039968490601,
+        "recall": 0.8458875417709351,
+        "f1": 0.8645258545875549
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "word_packed__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8840039968490601,
+        "recall": 0.8458875417709351,
+        "f1": 0.8645258545875549
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "word_packed__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8840039968490601,
+        "recall": 0.8458875417709351,
+        "f1": 0.8645258545875549
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "word_packed__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.8840039968490601,
+        "recall": 0.8458875417709351,
+        "f1": 0.8645258545875549
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "lumber__dense__w512",
+      "bertscore": {
+        "precision": 0.8840039968490601,
+        "recall": 0.8458875417709351,
+        "f1": 0.8645258545875549
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "lumber__dense__w1024",
+      "bertscore": {
+        "precision": 0.8823803663253784,
+        "recall": 0.8451223969459534,
+        "f1": 0.8633496165275574
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "lumber__bm25__w512",
+      "bertscore": {
+        "precision": 0.8674437999725342,
+        "recall": 0.8474100828170776,
+        "f1": 0.857309877872467
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "lumber__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8840039968490601,
+        "recall": 0.8458875417709351,
+        "f1": 0.8645258545875549
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "lumber__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8840039968490601,
+        "recall": 0.8458875417709351,
+        "f1": 0.8645258545875549
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "lumber__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.8840039968490601,
+        "recall": 0.8458875417709351,
+        "f1": 0.8645258545875549
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "turn_packed__dense__w512",
+      "bertscore": {
+        "precision": 0.8432921171188354,
+        "recall": 0.8671298027038574,
+        "f1": 0.8550448417663574
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer, such as the importance of collecting high-quality data and the use of multiple microphones, but omits other key points, including the requirement for participants to sign a consent form and the goal of anonymizing transcripts.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer, such as the importance of collecting high-quality data and the use of multiple microphones, but omits other key points, including the requirement for participants to sign a consent form and the goal of anonymizing transcripts.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "turn_packed__dense__w1024",
+      "bertscore": {
+        "precision": 0.8436751961708069,
+        "recall": 0.8639675378799438,
+        "f1": 0.8537008166313171
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points, such as the use of different types of microphones and the goal of releasing the data, but omits key details like the requirement for participants to sign a consent form and the anonymization of transcripts.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points, such as the use of different types of microphones and the goal of releasing the data, but omits key details like the requirement for participants to sign a consent form and the anonymization of transcripts.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "turn_packed__bm25__w512",
+      "bertscore": {
+        "precision": 0.8602575063705444,
+        "recall": 0.8393422365188599,
+        "f1": 0.8496711850166321
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when in fact the transcript provides relevant information about A's thoughts on setting up the recording equipment.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when in fact the transcript provides relevant information about A's thoughts on setting up the recording equipment.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "turn_packed__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8395556211471558,
+        "recall": 0.86385178565979,
+        "f1": 0.8515304327011108
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer, such as the importance of collecting high-quality data and the use of different types of microphones, but it omits key details like the requirement for participants to sign a consent form, the anonymization of transcripts, and the goal of eventually querying meetings for information.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer, such as the importance of collecting high-quality data and the use of different types of microphones, but it omits key details like the requirement for participants to sign a consent form, the anonymization of transcripts, and the goal of eventually querying meetings for information.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "turn_packed__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8424417972564697,
+        "recall": 0.8619940280914307,
+        "f1": 0.8521057367324829
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer, such as the purpose of setting up the recording equipment, but omits key details like the requirement for participants to sign a consent form, the anonymization of transcripts, and the goal of eventually querying meetings for information.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer, such as the purpose of setting up the recording equipment, but omits key details like the requirement for participants to sign a consent form, the anonymization of transcripts, and the goal of eventually querying meetings for information.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "turn_packed__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.8584240674972534,
+        "recall": 0.877737283706665,
+        "f1": 0.867973268032074
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including A's thoughts on setting up the recording equipment, the importance of different microphones, and the intention to release the data publicly.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including A's thoughts on setting up the recording equipment, the importance of different microphones, and the intention to release the data publicly.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "word_packed__dense__w512",
+      "bertscore": {
+        "precision": 0.8386690020561218,
+        "recall": 0.8391971588134766,
+        "f1": 0.838932991027832
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when in fact, the transcript provides relevant information about A's thoughts on setting up the recording equipment, such as microphone placement and anonymization of transcripts.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when in fact, the transcript provides relevant information about A's thoughts on setting up the recording equipment, such as microphone placement and anonymization of transcripts.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "word_packed__dense__w1024",
+      "bertscore": {
+        "precision": 0.8714118003845215,
+        "recall": 0.8868628144264221,
+        "f1": 0.879069447517395
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important points about anonymization and the goal of the project",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important points about anonymization and the goal of the project\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "word_packed__bm25__w512",
+      "bertscore": {
+        "precision": 0.8602575063705444,
+        "recall": 0.8393422365188599,
+        "f1": 0.8496711850166321
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when in fact the transcript provides relevant information about A's thoughts on setting up the recording equipment.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when in fact the transcript provides relevant information about A's thoughts on setting up the recording equipment.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "word_packed__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8389806747436523,
+        "recall": 0.855977475643158,
+        "f1": 0.8473938703536987
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points, such as the use of close-talking microphones for high-quality audio and simultaneous recording for research purposes, but omits key details like the requirement for consent forms, anonymization in transcripts, and the goal of eventually querying meetings for information.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points, such as the use of close-talking microphones for high-quality audio and simultaneous recording for research purposes, but omits key details like the requirement for consent forms, anonymization in transcripts, and the goal of eventually querying meetings for information.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "word_packed__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8602575063705444,
+        "recall": 0.8393422365188599,
+        "f1": 0.8496711850166321
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when in fact the transcript provides relevant information about A's thoughts on setting up the recording equipment.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when in fact the transcript provides relevant information about A's thoughts on setting up the recording equipment.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "word_packed__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.8389806747436523,
+        "recall": 0.855977475643158,
+        "f1": 0.8473938703536987
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points, such as the use of close-talking microphones for high-quality audio and simultaneous recording for research purposes, but omits key details like the requirement for consent forms, anonymization in transcripts, and the goal of eventually querying meetings for information.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points, such as the use of close-talking microphones for high-quality audio and simultaneous recording for research purposes, but omits key details like the requirement for consent forms, anonymization in transcripts, and the goal of eventually querying meetings for information.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "lumber__dense__w512",
+      "bertscore": {
+        "precision": 0.8447591662406921,
+        "recall": 0.8352411985397339,
+        "f1": 0.8399732708930969
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when in fact, the transcript provides relevant information about Grad A's instructions and considerations for setting up the recording equipment.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when in fact, the transcript provides relevant information about Grad A's instructions and considerations for setting up the recording equipment.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "lumber__dense__w1024",
+      "bertscore": {
+        "precision": 0.8385389447212219,
+        "recall": 0.85175621509552,
+        "f1": 0.8450958728790283
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer, such as the use of microphones and the purpose of the setup, but omits key details like the requirement for consent forms and anonymization in the transcript.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer, such as the use of microphones and the purpose of the setup, but omits key details like the requirement for consent forms and anonymization in the transcript.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "lumber__bm25__w512",
+      "bertscore": {
+        "precision": 0.8602575063705444,
+        "recall": 0.8393422365188599,
+        "f1": 0.8496711850166321
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when in fact the transcript provides relevant information about A's thoughts on setting up the recording equipment.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when in fact the transcript provides relevant information about A's thoughts on setting up the recording equipment.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "lumber__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8345029354095459,
+        "recall": 0.8642408847808838,
+        "f1": 0.8491116166114807
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer, such as the need for high-quality data and the use of both far-field and near-field microphones, but it omits other key points like the requirement for participants to sign a consent form, the anonymization of transcripts, and the goal of eventually being able to query meetings for information.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer, such as the need for high-quality data and the use of both far-field and near-field microphones, but it omits other key points like the requirement for participants to sign a consent form, the anonymization of transcripts, and the goal of eventually being able to query meetings for information.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "lumber__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8447591662406921,
+        "recall": 0.8352411985397339,
+        "f1": 0.8399732708930969
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when in fact, the transcript provides relevant information about Grad A's instructions and considerations for setting up the recording equipment.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when in fact, the transcript provides relevant information about Grad A's instructions and considerations for setting up the recording equipment.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "lumber__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.8494162559509277,
+        "recall": 0.8717755079269409,
+        "f1": 0.8604506254196167
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer, such as the use of multiple microphones and the intention to release the data, but omits key details like the requirement for participants to sign a consent form and the anonymization of transcripts.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer, such as the use of multiple microphones and the intention to release the data, but omits key details like the requirement for participants to sign a consent form and the anonymization of transcripts.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "turn_packed__dense__w512",
+      "bertscore": {
+        "precision": 0.8401741981506348,
+        "recall": 0.8489106297492981,
+        "f1": 0.844519853591919
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately summarize the discussion about the experimental setup of the computer navigation system as described in the reference answer and supported by the gold transcript evidence.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately summarize the discussion about the experimental setup of the computer navigation system as described in the reference answer and supported by the gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "turn_packed__dense__w1024",
+      "bertscore": {
+        "precision": 0.876162588596344,
+        "recall": 0.8870327472686768,
+        "f1": 0.881564199924469
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about the experimental setup of the computer navigation system, covering all important points from the reference answer and supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about the experimental setup of the computer navigation system, covering all important points from the reference answer and supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "turn_packed__bm25__w512",
+      "bertscore": {
+        "precision": 0.8599284887313843,
+        "recall": 0.8759878873825073,
+        "f1": 0.8678839206695557
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the key points of the discussion about the experimental setup of the computer navigation system, including the use of GPS, the role of the human operator after the system crash, and the considerations for the interaction design.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the key points of the discussion about the experimental setup of the computer navigation system, including the use of GPS, the role of the human operator after the system crash, and the considerations for the interaction design.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "turn_packed__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8657932877540588,
+        "recall": 0.8893028497695923,
+        "f1": 0.8773905634880066
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the experimental setup, including the tasks and the system crash, and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the experimental setup, including the tasks and the system crash, and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "turn_packed__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8652270436286926,
+        "recall": 0.8746597766876221,
+        "f1": 0.8699178695678711
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers the main points of the experimental setup, including the two phases and the transition from the system to a human operator, but omits some important details, such as the initial familiarization with the city and the specific tasks to be completed.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers the main points of the experimental setup, including the two phases and the transition from the system to a human operator, but omits some important details, such as the initial familiarization with the city and the specific tasks to be completed.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "turn_packed__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.876162588596344,
+        "recall": 0.8870327472686768,
+        "f1": 0.881564199924469
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about the experimental setup of the computer navigation system, covering all important points from the reference answer and supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about the experimental setup of the computer navigation system, covering all important points from the reference answer and supported by the transcript evidence.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "word_packed__dense__w512",
+      "bertscore": {
+        "precision": 0.8367232084274292,
+        "recall": 0.8504166603088379,
+        "f1": 0.8435143828392029
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately summarize the discussion about the experimental setup of the computer navigation system as described in the reference answer and supported by the gold transcript evidence.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately summarize the discussion about the experimental setup of the computer navigation system as described in the reference answer and supported by the gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "word_packed__dense__w1024",
+      "bertscore": {
+        "precision": 0.8290058970451355,
+        "recall": 0.8612679243087769,
+        "f1": 0.8448290228843689
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately reflect the discussion about the experimental setup of the computer navigation system as described in the reference answer and supported by the gold transcript evidence.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately reflect the discussion about the experimental setup of the computer navigation system as described in the reference answer and supported by the gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "word_packed__bm25__w512",
+      "bertscore": {
+        "precision": 0.860358715057373,
+        "recall": 0.8818717002868652,
+        "f1": 0.8709824085235596
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about the experimental setup, covering key points such as the tasks, system crash, human operator takeover, and data recording, with additional details from the transcript.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about the experimental setup, covering key points such as the tasks, system crash, human operator takeover, and data recording, with additional details from the transcript.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "word_packed__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8692797422409058,
+        "recall": 0.8923443555831909,
+        "f1": 0.8806610703468323
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the experimental setup, including the tasks, system crash, and human operator takeover, and is supported by the gold transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the experimental setup, including the tasks, system crash, and human operator takeover, and is supported by the gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "word_packed__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8447545766830444,
+        "recall": 0.8542925119400024,
+        "f1": 0.8494967818260193
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides some supported information about the experimental setup, such as the GPS component and the 2D map-type display, but it omits important points from the reference answer, like the initial familiarization with the city, the tasks given to the subject, and the recording of both sides for data collection purposes.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides some supported information about the experimental setup, such as the GPS component and the 2D map-type display, but it omits important points from the reference answer, like the initial familiarization with the city, the tasks given to the subject, and the recording of both sides for data collection purposes.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "word_packed__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.8319050073623657,
+        "recall": 0.8625835180282593,
+        "f1": 0.8469665050506592
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer and transcript evidence, but omits key details such as the initial familiarization of the subject with the city information, the introduction to the navigation system, and the recording of both the subject and the human operator for data collection purposes.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer and transcript evidence, but omits key details such as the initial familiarization of the subject with the city information, the introduction to the navigation system, and the recording of both the subject and the human operator for data collection purposes.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "lumber__dense__w512",
+      "bertscore": {
+        "precision": 0.8425343036651611,
+        "recall": 0.8479349613189697,
+        "f1": 0.845225989818573
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately summarize the discussion about the experimental setup of the computer navigation system as described in the reference answer and supported by the gold transcript evidence.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately summarize the discussion about the experimental setup of the computer navigation system as described in the reference answer and supported by the gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "lumber__dense__w1024",
+      "bertscore": {
+        "precision": 0.8734384775161743,
+        "recall": 0.8929750919342041,
+        "f1": 0.8830987215042114
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the experimental setup, covering key points such as participant familiarization, task completion, system crash, and human operator takeover, all of which are supported by the gold transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the experimental setup, covering key points such as participant familiarization, task completion, system crash, and human operator takeover, all of which are supported by the gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "lumber__bm25__w512",
+      "bertscore": {
+        "precision": 0.8674923181533813,
+        "recall": 0.8870264887809753,
+        "f1": 0.8771507143974304
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the experimental setup, covering key points such as participant familiarization, interaction with the navigation system, task completion, system crash, and human operator takeover, all of which are supported by the gold transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the experimental setup, covering key points such as participant familiarization, interaction with the navigation system, task completion, system crash, and human operator takeover, all of which are supported by the gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "lumber__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8712327480316162,
+        "recall": 0.8977205753326416,
+        "f1": 0.8842783570289612
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the experimental setup, covering key points such as the simulated environment, participant tasks, system crash, and data collection, all of which are supported by the gold transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the experimental setup, covering key points such as the simulated environment, participant tasks, system crash, and data collection, all of which are supported by the gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "lumber__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8674923181533813,
+        "recall": 0.8870264887809753,
+        "f1": 0.8771507143974304
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the experimental setup, covering key points such as participant familiarization, interaction with the navigation system, task completion, system crash, and human operator takeover, all of which are supported by the gold transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the experimental setup, covering key points such as participant familiarization, interaction with the navigation system, task completion, system crash, and human operator takeover, all of which are supported by the gold transcript evidence.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "lumber__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.870680034160614,
+        "recall": 0.8911129236221313,
+        "f1": 0.8807780742645264
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the experimental setup, covering key points such as participant familiarization, task completion, system crash, and human operator takeover, all of which are supported by the gold transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the experimental setup, covering key points such as participant familiarization, task completion, system crash, and human operator takeover, all of which are supported by the gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "turn_packed__dense__w512",
+      "bertscore": {
+        "precision": 0.841850996017456,
+        "recall": 0.8489701747894287,
+        "f1": 0.845395565032959
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not match the reference answer or the gold transcript evidence, and introduces unsupported claims about the system's accuracy and usability.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not match the reference answer or the gold transcript evidence, and introduces unsupported claims about the system's accuracy and usability.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "turn_packed__dense__w1024",
+      "bertscore": {
+        "precision": 0.8724542856216431,
+        "recall": 0.8687461614608765,
+        "f1": 0.8705962896347046
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer omits key points from the reference answer, such as the initial familiarization with a city through texts and the specific tasks participants must complete before and after the system crash.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer omits key points from the reference answer, such as the initial familiarization with a city through texts and the specific tasks participants must complete before and after the system crash.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "turn_packed__bm25__w512",
+      "bertscore": {
+        "precision": 0.8587855100631714,
+        "recall": 0.8615133762359619,
+        "f1": 0.8601472973823547
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "turn_packed__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8490278720855713,
+        "recall": 0.8578029870986938,
+        "f1": 0.8533928990364075
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides useful information about the experimental setup but does not explicitly state B's thoughts or opinions about it, omitting an important point from the reference answer.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides useful information about the experimental setup but does not explicitly state B's thoughts or opinions about it, omitting an important point from the reference answer.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "turn_packed__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8744679689407349,
+        "recall": 0.8658614158630371,
+        "f1": 0.8701434135437012
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer, such as the simulation of a GPS system crash and the reliance on a human operator, but omits key details like the initial familiarization with the city through texts and the specific tasks to be completed by the participant.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer, such as the simulation of a GPS system crash and the reliance on a human operator, but omits key details like the initial familiarization with the city through texts and the specific tasks to be completed by the participant.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "turn_packed__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.8707332015037537,
+        "recall": 0.8655831813812256,
+        "f1": 0.868150532245636
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer, such as the phases of the experiment and the tasks involved, but omits key details like the system crash, the role of GPS, and the provision of visual information to the human operator.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer, such as the phases of the experiment and the tasks involved, but omits key details like the system crash, the role of GPS, and the provision of visual information to the human operator.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "word_packed__dense__w512",
+      "bertscore": {
+        "precision": 0.8490550518035889,
+        "recall": 0.8490301370620728,
+        "f1": 0.8490426540374756
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately reflect B's thoughts on the experimental setup as described in the reference answer and gold transcript evidence.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately reflect B's thoughts on the experimental setup as described in the reference answer and gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "word_packed__dense__w1024",
+      "bertscore": {
+        "precision": 0.8438984155654907,
+        "recall": 0.8485584855079651,
+        "f1": 0.8462220430374146
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not match the reference answer or the gold transcript evidence, and introduces new, unsupported information.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not match the reference answer or the gold transcript evidence, and introduces new, unsupported information.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "word_packed__bm25__w512",
+      "bertscore": {
+        "precision": 0.8799105882644653,
+        "recall": 0.8691235184669495,
+        "f1": 0.8744837045669556
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer, such as the system crashing and the need for human intervention, but omits key details like the initial familiarization with the city through texts and the goal of seeing how people communicate in such scenarios.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer, such as the system crashing and the need for human intervention, but omits key details like the initial familiarization with the city through texts and the goal of seeing how people communicate in such scenarios.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "word_packed__bm25__w1024",
+      "bertscore": {
+        "precision": 0.881649911403656,
+        "recall": 0.8719556331634521,
+        "f1": 0.8767759203910828
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important points about familiarization with foreign terms and the goal of the experiment",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important points about familiarization with foreign terms and the goal of the experiment\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "word_packed__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8490550518035889,
+        "recall": 0.8490301370620728,
+        "f1": 0.8490426540374756
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately reflect B's thoughts on the experimental setup as described in the reference answer and gold transcript evidence.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately reflect B's thoughts on the experimental setup as described in the reference answer and gold transcript evidence.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "word_packed__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.8578051328659058,
+        "recall": 0.8695920705795288,
+        "f1": 0.8636584281921387
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides useful information about the experimental setup but omits key points, such as the initial step of familiarizing the subject with the city through texts and the goal of observing how people communicate in the scenario.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides useful information about the experimental setup but omits key points, such as the initial step of familiarizing the subject with the city through texts and the goal of observing how people communicate in the scenario.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "lumber__dense__w512",
+      "bertscore": {
+        "precision": 0.8419914245605469,
+        "recall": 0.8471329212188721,
+        "f1": 0.8445543646812439
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately reflect B's thoughts on the experimental setup as described in the reference answer and gold transcript evidence.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately reflect B's thoughts on the experimental setup as described in the reference answer and gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "lumber__dense__w1024",
+      "bertscore": {
+        "precision": 0.8574932813644409,
+        "recall": 0.8513776659965515,
+        "f1": 0.8544245362281799
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately reflect B's thoughts on the experimental setup as described in the reference answer and gold transcript evidence.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately reflect B's thoughts on the experimental setup as described in the reference answer and gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "lumber__bm25__w512",
+      "bertscore": {
+        "precision": 0.8680960536003113,
+        "recall": 0.8626028299331665,
+        "f1": 0.8653407096862793
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer, such as the experimental setup and the potential for valuable data, but omits key details like the initial familiarization with the city and the tasks to be completed before the system crash.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer, such as the experimental setup and the potential for valuable data, but omits key details like the initial familiarization with the city and the tasks to be completed before the system crash.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "lumber__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8579282164573669,
+        "recall": 0.8605592250823975,
+        "f1": 0.8592417240142822
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures the essence of Grad B's thoughts on the experimental setup, including the tasks, system crash, and human assistance, as well as the goal of recording interactions and assessing communication in such scenarios.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures the essence of Grad B's thoughts on the experimental setup, including the tasks, system crash, and human assistance, as well as the goal of recording interactions and assessing communication in such scenarios.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "lumber__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8714877367019653,
+        "recall": 0.8583650588989258,
+        "f1": 0.8648766279220581
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer, such as the experimental setup and the scenario where the system crashes, but omits key details like the initial familiarization with the city through texts, the tasks to be completed, and the role of visual information in finding the location after the crash.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer, such as the experimental setup and the scenario where the system crashes, but omits key details like the initial familiarization with the city through texts, the tasks to be completed, and the role of visual information in finding the location after the crash.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "lumber__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.856844425201416,
+        "recall": 0.8521476984024048,
+        "f1": 0.8544896245002747
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately reflect B's thoughts on the experimental setup as described in the reference answer and gold transcript evidence.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately reflect B's thoughts on the experimental setup as described in the reference answer and gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "turn_packed__dense__w512",
+      "bertscore": {
+        "precision": 0.8246084451675415,
+        "recall": 0.8563791513442993,
+        "f1": 0.8401935696601868
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when in fact the transcript provides details about D's questions and concerns regarding the system's setup, such as perspective and ambition.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when in fact the transcript provides details about D's questions and concerns regarding the system's setup, such as perspective and ambition.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "turn_packed__dense__w1024",
+      "bertscore": {
+        "precision": 0.866955041885376,
+        "recall": 0.872641384601593,
+        "f1": 0.8697889447212219
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits D's question about the first person perspective of the videos",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits D's question about the first person perspective of the videos\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "turn_packed__bm25__w512",
+      "bertscore": {
+        "precision": 0.8755446672439575,
+        "recall": 0.8522763252258301,
+        "f1": 0.8637537956237793
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "turn_packed__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8640130758285522,
+        "recall": 0.8662647008895874,
+        "f1": 0.8651374578475952
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits details about the first-person perspective and the goal of understanding human reactions",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits details about the first-person perspective and the goal of understanding human reactions\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "turn_packed__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8755446076393127,
+        "recall": 0.8522763252258301,
+        "f1": 0.8637537956237793
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "turn_packed__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.856482982635498,
+        "recall": 0.8527628183364868,
+        "f1": 0.8546188473701477
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "word_packed__dense__w512",
+      "bertscore": {
+        "precision": 0.8659384250640869,
+        "recall": 0.8806486129760742,
+        "f1": 0.8732315897941589
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important points about D's questions on the system's ambition and goals",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important points about D's questions on the system's ambition and goals\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "word_packed__dense__w1024",
+      "bertscore": {
+        "precision": 0.8433189392089844,
+        "recall": 0.8579073548316956,
+        "f1": 0.850550651550293
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately reflect D's thoughts and concerns about the experimental setup as discussed in the transcript evidence.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately reflect D's thoughts and concerns about the experimental setup as discussed in the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "word_packed__bm25__w512",
+      "bertscore": {
+        "precision": 0.8660663366317749,
+        "recall": 0.8733797073364258,
+        "f1": 0.8697076439857483
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important points about D's questions on the system's ambition and goals",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important points about D's questions on the system's ambition and goals\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "word_packed__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8678624033927917,
+        "recall": 0.8723764419555664,
+        "f1": 0.8701135516166687
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides some supported information about D's engagement and questions, but omits important points from the reference answer, such as D's inquiry about the first-person perspective and the goal of understanding human reaction and conversation in the scenario.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides some supported information about D's engagement and questions, but omits important points from the reference answer, such as D's inquiry about the first-person perspective and the goal of understanding human reaction and conversation in the scenario.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "word_packed__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8659384250640869,
+        "recall": 0.8806486129760742,
+        "f1": 0.8732315897941589
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important points about D's questions on the system's ambition and goals",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important points about D's questions on the system's ambition and goals\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "word_packed__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.8634955286979675,
+        "recall": 0.8789609670639038,
+        "f1": 0.8711596131324768
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important points about the goal of the system and potential candidates for human operator and wizard roles",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important points about the goal of the system and potential candidates for human operator and wizard roles\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "lumber__dense__w512",
+      "bertscore": {
+        "precision": 0.8291664123535156,
+        "recall": 0.8568850159645081,
+        "f1": 0.8427979350090027
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available, and does not address D's questions and concerns about the system.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available, and does not address D's questions and concerns about the system.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "lumber__dense__w1024",
+      "bertscore": {
+        "precision": 0.8761038780212402,
+        "recall": 0.8796108961105347,
+        "f1": 0.8778539299964905
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits details about the first-person perspective and the goal of understanding human reaction and conversation",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits details about the first-person perspective and the goal of understanding human reaction and conversation\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "lumber__bm25__w512",
+      "bertscore": {
+        "precision": 0.8624076843261719,
+        "recall": 0.8719555139541626,
+        "f1": 0.8671553134918213
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important points about the first-person perspective and the goal of understanding how people react and talk in the scenario",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important points about the first-person perspective and the goal of understanding how people react and talk in the scenario\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "lumber__bm25__w1024",
+      "bertscore": {
+        "precision": 0.8582716584205627,
+        "recall": 0.854523777961731,
+        "f1": 0.856393575668335
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately reflect the content of the reference answer or the gold transcript evidence, and introduces unsupported claims.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately reflect the content of the reference answer or the gold transcript evidence, and introduces unsupported claims.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "lumber__hybrid__w512",
+      "bertscore": {
+        "precision": 0.8241302967071533,
+        "recall": 0.8552356958389282,
+        "f1": 0.8393949270248413
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "lumber__hybrid__w1024",
+      "bertscore": {
+        "precision": 0.8349099159240723,
+        "recall": 0.8553204536437988,
+        "f1": 0.84499192237854
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not accurately reflect D's thoughts on the experimental setup, omitting key points such as D's inquiry about the first-person perspective of the videos and the ambition of the system.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not accurately reflect D's thoughts on the experimental setup, omitting key points such as D's inquiry about the first-person perspective of the videos and the ambition of the system.\"}",
+        "cache_hit": false
+      }
+    }
+  ]
+}

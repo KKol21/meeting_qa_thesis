@@ -4,7 +4,7 @@
 
 - [ ] Confirm whether retrieval evidence should remain budgeted in whitespace-delimited words or use Qwen tokens.
 - [ ] Ask whether a tokenizer-based baseline is still needed beyond the implemented 256-word hard-packed baseline.
-- [ ] Decide whether the final evaluation is an untouched validation subset or a test-set experiment.
+- [ ] Use `val` for development; decide whether the frozen final evaluation should run once on `test`.
 - [ ] Decide whether ELITR Bench remains in scope. The current experiment evaluates QMSum only.
 
 ## Code TODOs
@@ -12,10 +12,9 @@
 ### P0 — protect the validity of the current experiment
 
 - [x] Let Wormulon job `4937` finish and download its outputs before changing existing result formats.
-- [ ] Remove the repeatedly inspected meeting `Bed002` from final aggregate results.
-- [ ] Either report 19 untouched meetings or run one untouched replacement meeting to retain 20.
+- [x] Remove the repeatedly inspected meeting `Bed002` from full aggregate results.
+- [x] Replace it with `education_18`, the next meeting in the seed-42 ordering.
 - [ ] Change the answer judge so gold transcript evidence is the primary factual source and the reference answer is explicitly non-exhaustive.
-- [ ] Increment the evaluation version and rerun evaluation only; reuse cached segmentations, retrieval results, and answers.
 
 ### P1 — add a genuine fixed-word baseline
 
@@ -47,7 +46,7 @@
 - [ ] Define a fixed manual-review sample before examining the full results.
 - [ ] Include random questions, zero-hit cases, large baseline-versus-Lumber differences, and metric-disagreement cases.
 - [ ] Record reference adequacy, evidence sufficiency, answer correctness, and unsupported claims during manual review.
-- [ ] Report possible same-family bias because the judge and answer models are Qwen models.
+- [ ] Discuss general LLM-judge bias; the Llama 3.3 judge and Qwen2.5 answer models are from different model families.
 - [ ] Treat ROUGE and BERTScore as reference-overlap measures rather than direct factual-correctness measures.
 
 ### P2 — reporting and reproducibility
@@ -72,7 +71,7 @@ results or instructor decisions are still pending.
 
 ### 2. Correct the dataset description
 
-- [ ] State that the experiment uses a fixed subset of QMSum validation meetings selected with seed 42. Add final meeting and question counts after excluding the development meeting `Bed002` or replacing it with an untouched meeting.
+- [ ] State that development uses 20 QMSum validation meetings (142 questions) in a seed-42 order, excludes the repeatedly inspected `Bed002`, and replaces it with the next meeting, `education_18`.
 - [ ] Say that transcripts are represented as ordered speaker turns with stable source positions, allowing every chunk and retrieved span to be mapped back to the transcript.
 - [ ] State clearly whether ELITR Bench is included. If QMSum is the only evaluated dataset, call it "the evaluation dataset," not "the primary dataset."
 
@@ -92,7 +91,7 @@ results or instructor decisions are still pending.
 
 - [ ] State that Qwen2.5-14B-Instruct answers every retrieval condition using the same prompt, temperature 0, seed 42, and at most 512 generated tokens.
 - [ ] Report ROUGE-1/2/L F1, BERTScore with RoBERTa-large, and an LLM judge score of 1 (incorrect), 2 (partially correct), or 3 (correct). The judge receives the question, candidate answer, QMSum reference, and gold transcript evidence.
-- [ ] Explain that QMSum references can be selective or incomplete, so ROUGE and BERTScore measure reference similarity rather than factual correctness. Treat transcript-grounded judging and predefined manual review as complementary evidence, while acknowledging same-Qwen-family judge bias.
+- [ ] Explain that QMSum references can be selective or incomplete, so ROUGE and BERTScore measure reference similarity rather than factual correctness. Treat transcript-grounded judging and predefined manual review as complementary evidence, and discuss general LLM-judge bias while noting that the Llama judge and Qwen answer models are from different families.
 
 ### 6. State the analysis and reproducibility plan cautiously
 
@@ -103,7 +102,7 @@ results or instructor decisions are still pending.
 ## Suggested order of work
 
 1. Recover and preserve job `4937` results.
-2. Exclude `Bed002` and settle the final meeting set.
+2. Freeze the 20-meeting development set without `Bed002`. (Completed.)
 3. Smoke-test the new word-packed chunks and provenance chain. (Completed.)
 4. Run only the additional or invalidated conditions.
 5. Revise and rerun the evidence-first judge.

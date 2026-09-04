@@ -194,8 +194,8 @@ class SegmentationCompatibilityTest(unittest.TestCase):
         self.assertEqual([chunk.index for chunk in chunks], [0, 1])
         self.assertEqual([(chunk.start_turn, chunk.end_turn) for chunk in chunks], [(0, 1), (2, 2)])
 
-    def test_loads_current_chunks_with_version_and_indices(self) -> None:
-        current = {
+    def test_loads_version_one_chunks_with_indices(self) -> None:
+        version_one = {
             "experiment_version": 1,
             "meeting_id": "TinyMeeting",
             "chunks": [
@@ -204,7 +204,7 @@ class SegmentationCompatibilityTest(unittest.TestCase):
             ],
         }
         with tempfile.TemporaryDirectory() as directory:
-            path = self._write(directory, current)
+            path = self._write(directory, version_one)
             saved = read_segmentation(path)
             chunks = load_lumber_chunks(path, self.meeting)
 

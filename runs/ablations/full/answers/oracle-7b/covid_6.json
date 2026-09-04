@@ -1,0 +1,341 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "covid_6.json",
+        "sha256": "717ab9379731c09a8ad069b23efa00bea4c8c27c01ea8946ac0766014f8d9d3a"
+      }
+    },
+    "input_hash": "b1d4ca08fc1f1007e9d4b8fb3751c88342f0a7da1032aabfd3d36ec56bb00a08",
+    "fingerprint": "a6282b5d937966f743df1935622910f836014a02110ac05795b28a2e6241a08f",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "covid_6",
+  "question_count": 12,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 12,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "How did the Prime Minister debate about the delaying of the government's response towards Covid-19?",
+      "reference_answer": "In response to the opposition party, the Prime Minister answered that the government rolled out the Canada emergency response benefit extremely quickly, and they had been helping the small businesses with the Canada emergency business account. The opposition party was not very satisfied because he thought that the government did not reach out to as many businesses as possible. Also, the opposition party made a few comments on the rent relief program which was too rigid and hard to apply.",
+      "results": {
+        "oracle": {
+          "answer": "The Prime Minister (Justin Trudeau) defended the government's rapid response to the pandemic, highlighting the quick implementation of benefits like the Canada emergency response benefit and the wage subsidy. He acknowledged that some businesses, particularly those with specific challenges such as recent mergers, may face difficulties qualifying for certain programs. Trudeau stated that the government was working with these businesses through regional development agencies to address their needs. When questioned by Hon. Andrew Scheer about delays in making simple fixes, Trudeau maintained that the government was working closely with affected businesses, including Brandt Tractor, to provide support. He emphasized the government's focus on helping the most vulnerable and stressed ongoing efforts to fill gaps in support programs.",
+          "rouge_f1": {
+            "rouge1": 0.38190954773869346,
+            "rouge2": 0.1319796954314721,
+            "rougeL": 0.25125628140703515
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              40,
+              46
+            ]
+          ],
+          "evidence_words": 731
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the opposition party and the Prime Minister commented about companies laying off workers in the midst of pandemic?",
+      "reference_answer": "The Prime Minister explained that the government recognized that several organizations and companies were facing difficulties because of COVID-19 and they were supporting people all over the country through that program. Although the opposition party was getting rigorous about the intensity of the question, the Prime Minister kept emphasizing that the government's priority had always been workers in difficulty so that they do not lose their jobs. This applied to all organizations and companies in the country to the extent possible.",
+      "results": {
+        "oracle": {
+          "answer": "The opposition party, represented by Mr. Yves-Franois Blanchet, questioned the Prime Minister, Justin Trudeau, about the Liberal Party's status during the pandemic. Specifically, Mr. Blanchet asked if the Liberal Party was in difficulty, comparing it to companies laying off workers due to the pandemic. The Prime Minister responded that the Liberal Party had created criteria to help organizations in difficulty and that any organization experiencing significant financial drops could apply for assistance. He emphasized that the priority was to support workers and organizations affected by the pandemic. There is no direct statement from the opposition party or the Prime Minister indicating that companies laying off workers were specifically criticized by the opposition.",
+          "rouge_f1": {
+            "rouge1": 0.4365482233502538,
+            "rouge2": 0.1435897435897436,
+            "rougeL": 0.233502538071066
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              47,
+              72
+            ]
+          ],
+          "evidence_words": 680
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What was the debate over the situation of long-term care?",
+      "reference_answer": "The opposition party questioned about sending military groups to provinces in order to fix long-term care. The Prime Minister answered that the government needed to make sure seniors across the country were properly cared for, and they sent in the military to help the provinces. The opposition party also questioned about applying the national standards so that long-term care was governed by the same principles as the Canada Health Act. The Prime Minister elaborated that due the Covid-19, pushing the project had become extremely difficult.",
+      "results": {
+        "oracle": {
+          "answer": "The debate over the situation of long-term care centered around the need for federal leadership and action to address the poor conditions reported by the military. Mr. Jagmeet Singh highlighted several issues, including the reuse of needles, expired medication, presence of pests, rotten food, and a lack of respect for patient dignity. He called for an end to profit in long-term care and the establishment of national standards similar to those of the Canada Health Act. The Prime Minister, Justin Trudeau, acknowledged the severity of the issues and stated that the federal government would work with the provinces to improve long-term care facilities, respecting provincial jurisdiction.",
+          "rouge_f1": {
+            "rouge1": 0.40609137055837563,
+            "rouge2": 0.15384615384615385,
+            "rougeL": 0.2639593908629442
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              73,
+              89
+            ]
+          ],
+          "evidence_words": 896
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What was the questioning about the reports on long-term care facilities?",
+      "reference_answer": "The opposition party questioned that the report was delayed in issuing by the government and was not acted upon. The minister answered that the report was done and given up through the chain of command, and once the government received this report, it was forwarded to the appropriate authorities. The minister denied the fact that the report was released and acted upon late.",
+      "results": {
+        "oracle": {
+          "answer": "The questioning was about the delay in acting upon a report from the Canadian Armed Forces regarding appalling conditions in long-term care facilities in Ontario. The report was written on May 14 but was not received by the government until May 22, causing a delay of seven days. Mr. James Bezan questioned why the report was not acted upon during this period and whether the delay could have contributed to the spread of COVID-19 among Canadian Armed Forces members serving in these facilities.",
+          "rouge_f1": {
+            "rouge1": 0.4054054054054055,
+            "rouge2": 0.1643835616438356,
+            "rougeL": 0.2432432432432432
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              90,
+              103
+            ]
+          ],
+          "evidence_words": 786
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What was the debate about a particular fundraising campaign?",
+      "reference_answer": "The opposition party claimed that the Minister of Digital Government has been promoting a fundraising campaign to sue Global News for their story criticizing the Chinese Communist Party, and the opposition party thought the minister was supporting the Communist Party of China and threatening our media and freedom of expression. The Minister explained that community outreach was a very important part of the work of a member of Parliament and WeChat was one of many social media sites regularly used by members, and the minister did not share any personal views on Wechat.",
+      "results": {
+        "oracle": {
+          "answer": "The debate was about a fundraising campaign initiated by the Minister of Digital Government to sue Global News for a story criticizing the Chinese Communist Party. Mrs. Rosemarie Falk questioned the minister's use of her authority to support the Chinese Communist Party and her actions that threatened media and freedom of expression in Canada. The minister defended her position, stating that the posts in question were outside the guidelines of her WeChat group and that the individual responsible was no longer part of it. The discussion also touched on the government's adherence to laws preventing foreign interference and defending freedom of expression as part of their digital charter.",
+          "rouge_f1": {
+            "rouge1": 0.5517241379310344,
+            "rouge2": 0.2587064676616915,
+            "rougeL": 0.39408866995073893
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              104,
+              132
+            ]
+          ],
+          "evidence_words": 800
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What policy the government was going to roll out to ease the deficit?",
+      "reference_answer": "The minister argued that it was very important to be transparent with our investments and the government would look at the investments and the figures every day and be transparent about it. The minister promised that Canada would have a good economy in the future, and the government would not raise taxes after the crisis to tackle the deficit. Hence, the opposition party demanded a regular economy update.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence provided does not contain any specific details about a policy the government was planning to roll out to ease the deficit. The conversation focuses primarily on the size of the deficit and the government's approach to economic investments and transparency, but does not mention any particular policy. Therefore, the evidence is insufficient to answer the question.",
+          "rouge_f1": {
+            "rouge1": 0.3464566929133858,
+            "rouge2": 0.08,
+            "rougeL": 0.22047244094488191
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              133,
+              155
+            ]
+          ],
+          "evidence_words": 668
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "What was the debate about the economic bilateral relations with the UK?",
+      "reference_answer": "The opposition party claimed that the government was not cooperating with the UK, its largest trading partner, protecting the viability of their international supply chains and capitalizing on the opportunities. The minister explained that the UK, of course, was a very important trading partner for Canada, and CETA would continue to apply to trade with the U.K. during this period while they went through Brexit.",
+      "results": {
+        "oracle": {
+          "answer": "The debate was not specifically about economic bilateral relations with the UK. However, there was a mention of the UK in the context of trade agreements and tariffs. Mr. Hoback questioned why Canada was not part of an economic prosperity group with other countries, and raised concerns about potential tariffs from the UK starting next year on Canadian exports like seafood, beef, and cars. Minister Ng assured that CETA continues to apply during the UK's transition out of the EU, but acknowledged monitoring the situation carefully.",
+          "rouge_f1": {
+            "rouge1": 0.39215686274509803,
+            "rouge2": 0.09271523178807947,
+            "rougeL": 0.23529411764705882
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              156,
+              168
+            ]
+          ],
+          "evidence_words": 452
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "What was the discussion about imports and supply chains?",
+      "reference_answer": "The opposition party claimed that the supply chain in Canada amidst the pandemic was not stable enough and the government was not doing anything. The minister explained that they would continue to work with countries around the globe to ensure that Canada's supply chains and those global supply chains, particularly for essential goods, for agricultural products, for medical supplies, would continue to remain open.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion did not directly focus on imports and supply chains. However, some relevant points were made:\n\n- There was concern about potential import restrictions on Canadian cattle exports to the U.S., with the government providing reassurance through the new NAFTA trade agreement.\n- The government is working to ensure global supply chains remain open, especially for essential goods, agricultural products, and medical supplies.\n- There was a mention of the status of canola exports to China, indicating ongoing efforts to maintain trade relations.\n\nIn summary, while imports and supply chains were tangentially discussed, the primary focus was on trade agreements and ensuring the stability of supply chains for essential goods.",
+          "rouge_f1": {
+            "rouge1": 0.4252873563218391,
+            "rouge2": 0.12790697674418602,
+            "rougeL": 0.2413793103448276
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              169,
+              179
+            ]
+          ],
+          "evidence_words": 360
+        }
+      }
+    },
+    {
+      "question_index": 8,
+      "question": "What was the controversy about China hoarding PPE amid the pandemic?",
+      "reference_answer": "The opposition party claimed that China was procuring and hoarding PPE during January. And in April, the minister stated there were not enough supplies in the national emergency stockpile. The opposition party was triggered by the fact that the minister approved a donation of 16 tonnes of PPE for China on January 31, claiming it would not compromise the country's supply. The minister explained that the government was doing so because they had multiple complementary supply chains operating at the same time for PPE production.",
+      "results": {
+        "oracle": {
+          "answer": "The controversy about China hoarding PPE amid the pandemic centered around the donation of 16 tonnes of nearly expired or expired PPE to China on January 31. Health Minister Patty Hajdu approved this donation despite concerns raised by Mrs. Cathy McLeod about the potential impact on Canada's domestic supply. Hajdu defended the donation, stating that China was in desperate need of the goods to contain the virus and that Canada had been working closely with provinces and territories to ensure their needs were met. McLeod questioned whether the donation could have been more strategically timed to benefit Canada's own healthcare workers, suggesting that the equipment could have been used more efficiently if it had been retained.",
+          "rouge_f1": {
+            "rouge1": 0.3823529411764706,
+            "rouge2": 0.10891089108910892,
+            "rougeL": 0.2450980392156863
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              180,
+              193
+            ]
+          ],
+          "evidence_words": 784
+        }
+      }
+    },
+    {
+      "question_index": 9,
+      "question": "What was the debate about government giving money to companies which did not put the amount into proper use?",
+      "reference_answer": "The opposition party claimed that the government had been providing financial support to companies such as Air Canada, which did not pay a single cent in tax nor did it use the money to reimburse customers. The minister explained that the government did not bias against any company, , and it was thought that it was very important to protect employees in every sector of the economy and across Canada.The fight against tax evasion was a priority for the government. The minister promised that they would continue to target companies that use tax evasion schemes.",
+      "results": {
+        "oracle": {
+          "answer": "The debate was about the government providing financial assistance to companies during the pandemic, specifically questioning whether the funds were used appropriately. Participants highlighted instances where companies, including Air Canada and the Liberal Party, allegedly misused emergency wage subsidies and other financial aid. The opposition suggested that these actions were wasteful and could have benefited smaller businesses instead. The government defended its actions, emphasizing the importance of protecting employees and maintaining job security during the pandemic.",
+          "rouge_f1": {
+            "rouge1": 0.3391812865497076,
+            "rouge2": 0.08284023668639054,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              194,
+              206
+            ]
+          ],
+          "evidence_words": 672
+        }
+      }
+    },
+    {
+      "question_index": 10,
+      "question": "What was the discussion about the government's policy to improve long-term care facilities and protect the seniors?",
+      "reference_answer": "The opposition party claimed that people across Canada were appalled by the situation in care homes which left seniors suffering. The minister explained that the government was fully aware of the situation. The minister promised that they would fully play their role federal level with advice, with guidance, with support and with investments. They were going to have those conversations about how best they can improve the care for all seniors.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion focused on the government's response to the poor conditions in long-term care facilities, particularly following reports from the Canadian Armed Forces. The reports detailed issues such as unaddressed cries for help, force-feeding, bug infestations, lack of personal protective equipment, and neglect, leading to significant loss of life among seniors. The Minister of Health, Patty Hajdu, acknowledged the severity of the situation and stated that the federal government is working with provinces and territories to prevent further tragedies and ensure proper care for seniors. She highlighted the federal government's $6 billion investment in home care and expressed commitment to improving care for all seniors. Additionally, there was a call for a full, independent, non-partisan public inquiry into the conditions at specific long-term care homes, particularly in Ontario, though the responsibility for these facilities lies with the provincial government.",
+          "rouge_f1": {
+            "rouge1": 0.25925925925925924,
+            "rouge2": 0.08411214953271028,
+            "rougeL": 0.2037037037037037
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              207,
+              212
+            ]
+          ],
+          "evidence_words": 709
+        }
+      }
+    },
+    {
+      "question_index": 11,
+      "question": "What was the discussion about the seniors care crisis?",
+      "reference_answer": "The opposition party claimed that the seniors care crisis was a national problem, and the federal government was not taking immediate response. The opposition party pointed out that these failures were the product of systemic neglect.The minister replied that they were fully aware that in long-term care facilities both seniors and persons living with a disability face unique challenges. And considering the severity of this report, the federal government promptly shared it with the Province of Ontario, and the Province of Ontario has initiated an investigation based on the report's findings.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the seniors care crisis centered around the poor conditions in long-term care homes during the COVID-19 pandemic, particularly highlighted by reports from the Canadian Armed Forces. The crisis included issues such as filth, neglect, abuse, and inadequate care, leading to significant deaths among residents. Members called for immediate actions, including a full, independent, non-partisan public inquiry and the establishment of binding national standards for long-term care facilities. The federal government acknowledged the severity of the situation and committed to working with provincial and territorial counterparts to improve care standards and address the vulnerabilities exposed by the pandemic. There was also a suggestion to bring long-term care facilities under the Canada Health Act or similar legislation to ensure formal funding tied to acceptable standards of care.",
+          "rouge_f1": {
+            "rouge1": 0.3259911894273128,
+            "rouge2": 0.10666666666666667,
+            "rougeL": 0.20264317180616737
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              210,
+              221
+            ]
+          ],
+          "evidence_words": 1210
+        }
+      }
+    }
+  ]
+}

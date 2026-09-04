@@ -1,0 +1,203 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "ES2006d.json",
+        "sha256": "19629ff852fc5b2fe29e4c2e89b9657209dd1e17ef195383ec80a18ffd165a88"
+      }
+    },
+    "input_hash": "aa095d5ef51fff63a758dae083fc40d2d9234c8b08c94bd3b9d88865508b9a62",
+    "fingerprint": "07f5142061b8e241475b06575432ac2441e098f8e47ddd23342452de0f26850a",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "ES2006d",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the presentation on evaluation criteria.",
+      "reference_answer": "The group gave a high score in terms of a fashion look, the ease of use, the locator, the scroll wheel, the LCD screen as well as the voice recognition technology. They also calculated the average overall score was six point five. The group agreed that the assessment was very good.",
+      "results": {
+        "oracle": {
+          "answer": "The presentation on evaluation criteria involved using a seven-point scale where one indicates that a requirement is fully met and seven indicates that it is not met at all, necessitating a restart. Marketing prepared the evaluation based on user requirements and listed specific criteria (A_, B_, C_, D_, etc.) to assess the new design. Each criterion was evaluated individually:\n\n- **A_**: Attractive appearance, scored a seven.\n- **B_**: Operating behavior matching user expectations, scored a six due to potential issues with left-handed users.\n- **C_**: Locatability, scored a seven after deciding to add a locator dot.\n- **D_**: Intuitiveness, scored a five due to its unique layout and technology.\n- **E_**: Ergonomic design, scored a six.\n- **F_**: Voice control, scored a seven.\n- **G_**: Technological innovation, scored a six.\n\nThe overall average score was approximately 6.5, indicating a generally positive evaluation with room for improvement.",
+          "rouge_f1": {
+            "rouge1": 0.2176165803108808,
+            "rouge2": 0.010471204188481676,
+            "rougeL": 0.12435233160621763
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              163,
+              481
+            ]
+          ],
+          "evidence_words": 2706
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did Project Manager agree with Marketing when assessing the criteria of matching the operating behaviour of the user?",
+      "reference_answer": "Industrial Designer mentioned that they were considering that the remote was more for right-handed people than for left-handed people. Project Manager said that there didn't always have all left-handers or all right-handers in a family. Marketing mentioned that users could use their finger to scroll rather than their thumb and this would negate the whole RSI issue. Project Manager agreed on it and the group would need an investigation.",
+      "results": {
+        "oracle": {
+          "answer": "Project Manager agreed with Marketing when assessing the criteria of matching the operating behaviour of the user because:\n\n1. The device is operable by both right-handed and left-handed users, though it is primarily designed for right-handed people (as noted by Industrial Designer).\n2. Left-handed people can still use the device by scrolling with their fingers, similar to how they adapt to other right-handed tools (as mentioned by Marketing and User Interface).\n3. Most people are right-handed, making the design suitable for the largest target group (as stated by Project Manager).\n\nThese points indicate that while there is a slight bias towards right-handed users, it is not a significant issue given the adaptability of left-handed users and the predominance of right-handed individuals.",
+          "rouge_f1": {
+            "rouge1": 0.3627450980392157,
+            "rouge2": 0.10891089108910891,
+            "rougeL": 0.1862745098039216
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              225,
+              273
+            ]
+          ],
+          "evidence_words": 427
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What's the conclusion of the discussion about intuitive when presenting on evaluation criteria?",
+      "reference_answer": "The group agreed that the remote had a high score in terms of locatability, so they first thought it was also intuitive. Then, Industrial Designer mentioned that it might be a little more difficult for people to get used to in the beginning because the scroll was a new technology. Marketing thought it was obvious how to use it. Therefore, groupmates agreed to give an average score of five.",
+      "results": {
+        "oracle": {
+          "answer": "The conclusion of the discussion about intuitiveness when presenting on evaluation criteria is that the design is somewhat intuitive but requires some initial thinking from users due to its new technology and layout. The team agreed to rate it a 5 out of 10 for intuitiveness.",
+          "rouge_f1": {
+            "rouge1": 0.2956521739130435,
+            "rouge2": 0.05309734513274336,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              306,
+              355
+            ]
+          ],
+          "evidence_words": 475
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about project finance.",
+      "reference_answer": "The production cost was 12.5 Euros. So, the group decided to have one simple battery, no kinetic energy, no solar, one advanced chip on print, one sample speaker, one single-curved surface which can be folded, push-buttons, the scroll wheel, the LCD display. And they decided to give up the sample sensor as well as the locator.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about project finance focused on calculating production costs using an Excel spreadsheet provided by the Project Manager. They decided to simplify the design by removing unnecessary components such as the hand dynamo, kinetic energy, and solar options, opting for a single battery and an advanced chip-on-print. The case material was chosen to be rubber, and the team debated whether to include a special color, eventually deciding to leave it as zero cost for simplicity. They also discussed the inclusion of a sample sensor and speaker, ultimately deciding to remove the sample sensor due to cost constraints. The team agreed to replace the sample speaker with a simpler beeping device. They considered the cost implications of the scroll wheel and pushbuttons, deciding to reduce the interface complexity to stay within budget. After several adjustments, they ended up under budget, ensuring they could still potentially add a special color or other features without exceeding the budget.",
+          "rouge_f1": {
+            "rouge1": 0.3133640552995392,
+            "rouge2": 0.13023255813953485,
+            "rougeL": 0.21198156682027652
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              482,
+              726
+            ]
+          ],
+          "evidence_words": 2114
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did Marketing agree with group mates when discussing the spin wheel with LCD display?",
+      "reference_answer": "User Interface asked whether they could put an additional mute button on the top of the scroll spinning when discussing the scroll wheel push button. Marketing suggested the spin wheel with the LCD because it would not add much cost. Project Manager mentioned that it already came with the LCD and it's not on their list. The scroll wheel was on the remote side. Marketing agreed on it and group mates thought it was a good idea.",
+      "results": {
+        "oracle": {
+          "answer": "Marketing agreed with group mates that the spin wheel with LCD display would not require additional costs and that the scroll wheel feature would come with the LCD display. Marketing also suggested that selections could be made by spinning the wheel down for actions like muting.",
+          "rouge_f1": {
+            "rouge1": 0.45161290322580644,
+            "rouge2": 0.16393442622950818,
+            "rougeL": 0.24193548387096775
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              604,
+              629
+            ]
+          ],
+          "evidence_words": 307
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "Why did group mates disagree with Industrial Designer when discussing whether they lost their evaluation criteria?",
+      "reference_answer": "Industrial Designer thought they lost the locator while keeping other features. But Project Manager responded that they were going to have a beeper. User Interface supplemented that it was not like a sample speaker, but it would beep so they still had the locator.",
+      "results": {
+        "oracle": {
+          "answer": "The group mates did not disagree with the Industrial Designer regarding losing their evaluation criteria. Instead, they agreed with the Industrial Designer that they did not lose their evaluation criteria. The Industrial Designer stated that they kept all the essential features such as voice recognition and LCD display, and Marketing added that they removed a non-essential feature (the scroll wheel) which was not a significant loss. There is no evidence of disagreement from the group mates on this point.",
+          "rouge_f1": {
+            "rouge1": 0.22580645161290322,
+            "rouge2": 0.04918032786885246,
+            "rougeL": 0.19354838709677416
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              661,
+              696
+            ]
+          ],
+          "evidence_words": 265
+        }
+      }
+    }
+  ]
+}

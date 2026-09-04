@@ -160,7 +160,7 @@ Output: `runs/ablations/<run>/evaluation/<answer-stage>.json`.
 - `src/tools/summarize_ablations.py` collects the small stage summaries into
   the run's top-level `summary.json`.
 - `src/tools/report_ablations.py` writes `report.md` plus `review.md`. The
-  review file includes the first questions per condition with retrieved span,
+  review file includes every question and condition with retrieved span,
   oracle span, reference, candidate, and metrics.
 - `src/tools/inspect_retrieval_failure.py` prints one retrieval case without
   loading an embedding or language model.
@@ -170,8 +170,8 @@ The report uses meeting-macro values and includes paired within-meeting Lumber
 differences against both non-semantic baselines.
 
 Generated files are deliberately verbose JSON: they are experimental records,
-not application APIs. Current reports expect version-2 artifacts; only Lumber
-segmentation retains a small adapter for older files.
+not application APIs. Reporting retains a small read-only adapter for the
+existing version-1 run; new experiment stages write version-2 artifacts.
 
 ## Running locally
 
@@ -232,8 +232,10 @@ creates/reuses `.venv-wormulon`, installs only the exact dependencies needed by
 the current stage, exports `PYTHONPATH=.../src`, prints `nvidia-smi`, and fails
 early if PyTorch cannot see CUDA.
 
-The smoke job is one meeting with a four-hour limit. The full job is the 20
-meetings in `src/configs/ablation-meetings.txt` with a ten-hour limit. All
+The smoke job is `Bed002` with a four-hour limit. The full job uses 20 meetings
+and 142 questions
+from QMSum's validation/development split, excluding `Bed002` and adding the
+next seed-42 candidate, `education_18`. It has a ten-hour limit. All
 stages are meeting-resumable, so a second submission reuses valid saved files
 and cached model calls if the first job reaches its wall-time limit.
 

@@ -32,7 +32,8 @@ all three answer models, including the quantized 32B backend:
 .\run_on_wormulon.ps1 ablation-smoke
 ```
 
-Only after that succeeds, run the resumable seeded 20-meeting experiment:
+Only after that succeeds, run the resumable 20-meeting, 142-question
+development experiment:
 
 ```powershell
 .\run_on_wormulon.ps1 ablation-full

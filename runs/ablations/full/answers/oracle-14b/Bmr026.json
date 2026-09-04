@@ -1,0 +1,207 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "Bmr026.json",
+        "sha256": "1e878d70ce756408b39334d543a34242dea0ae7003d9c99bb44527a663d3d70f"
+      }
+    },
+    "input_hash": "7740c7e4587bcc643666b818d2d1e1dc43bdcc89ca8a81e061bbd6eb7afebf39",
+    "fingerprint": "6fbf3b7b885338e56052b59371dee4b93ce289e4b8736f84c9dfa6297a48bb56",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "Bmr026",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion on storage disks and computer connections",
+      "reference_answer": "The participants learned that the storage disks had eventually arrived. They were waiting on the disks to be installed. Grad E volunteered storage space on their own computer for the meantime. The meetings were around 1.5 gigs uncompressed and .5 gigs compressed. So, the group needed substantial space. The professor encouraged the team members to talk to Dave, the person responsible for managing the organization's storage systems, and figure things out.",
+      "results": {
+        "oracle": {
+          "answer": "The meeting discussed the need for additional storage space due to the accumulation of meeting data and transcription files. Grad A suggested using the newly arrived SUN-Blades for hanging scratch disks because they were in the machine room and had spare drive bays. However, there was concern about the lack of space on Abbott, the current disk server, and the possibility of needing a second disk rack or file server. Grad E offered to provide temporary space on their computer, which would suffice for the next few days. The group acknowledged the need for a long-term solution involving discussions with Dave Johnson, the system administrator, regarding the placement and setup of new disks. They also considered alternative locations such as the popcorn room, but noted connectivity issues. The immediate need was addressed by utilizing available space on Grad E's computer, while planning for future expansion remained unresolved pending further communication with Dave Johnson.",
+          "rouge_f1": {
+            "rouge1": 0.3231441048034934,
+            "rouge2": 0.07048458149779736,
+            "rougeL": 0.2183406113537118
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              194,
+              411
+            ]
+          ],
+          "evidence_words": 2817
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Grad E contribute to the discussion on storage disks?",
+      "reference_answer": "Grad E volunteered his 18 Gigabyte drive to the group. The drive had 12 gigabytes of memory and he was not using it for anything.",
+      "results": {
+        "oracle": {
+          "answer": "Grad E contributed information about having an 18 gigabyte drive with approximately 12 gigabytes remaining, which they were not actively using for work at the moment. They offered this drive for potential use but noted that they would need new transcription tasks before they could fully relinquish its use.",
+          "rouge_f1": {
+            "rouge1": 0.3243243243243243,
+            "rouge2": 0.1111111111111111,
+            "rougeL": 0.2702702702702703
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              248,
+              260
+            ]
+          ],
+          "evidence_words": 187
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the group think about Dave leaving?",
+      "reference_answer": "The group needed Dave Johnson to install the some one hundred SUN - Blades that had arrived and would help with storage. But Dave Johnson, the professor informed them, was leaving for ten days. The Professor informed the group that Dave was always busy and the group realized that there was no dedicated person who could help them.",
+      "results": {
+        "oracle": {
+          "answer": "The group expressed surprise and concern about Dave leaving. Grad A mentioned not knowing that Dave had left already, indicating a lack of prior communication about his departure. Additionally, Professor B noted that Dave's absence would impact the group's ability to address current issues since Dave knew \"all these things\" and had plans to improve them but lacked the time to implement them. This suggests that the group valued Dave's knowledge and presence, viewing his departure negatively due to the potential delays in addressing technical challenges without him.",
+          "rouge_f1": {
+            "rouge1": 0.32432432432432434,
+            "rouge2": 0.0547945205479452,
+            "rougeL": 0.1891891891891892
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              204,
+              237
+            ],
+            [
+              362,
+              393
+            ]
+          ],
+          "evidence_words": 905
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about scheduling meetings going forward",
+      "reference_answer": "The team thought that they should not have everyone attend meetings on specific topics. For general catchup meetings like this, they thought it would make sense to alternate every two weeks. The team joked around about having a guys meeting, as one of the groups would not have any female members. They were mainly concerned with collecting more data through their own meeting recordings. Though, many of the meetings they were having for that purpose were shorter than they would have liked.",
+      "results": {
+        "oracle": {
+          "answer": "The participants discussed scheduling meetings going forward, deciding to alternate the focus of their meetings. They proposed holding meetings every other week, focusing on different aspects each time—such as data collection on even weeks and recognition-related topics on odd weeks. This adjustment aims to avoid redundancy and maintain interest among attendees. They agreed to discuss this plan further with Liz and Jane before finalizing the schedule.",
+          "rouge_f1": {
+            "rouge1": 0.28,
+            "rouge2": 0.02702702702702702,
+            "rougeL": 0.1333333333333333
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              412,
+              507
+            ]
+          ],
+          "evidence_words": 1122
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the professor think about scheduling meetings going forward?",
+      "reference_answer": "The professor polled the group on how many people would not be interested in meetings on recognition. He thought that they should at least try the smaller meetings and see what happens.",
+      "results": {
+        "oracle": {
+          "answer": "The professor thought that meetings should be scheduled with flexibility going forward. They suggested starting with the primary agenda and expanding into additional meetings if necessary, indicating a preference for not over-scheduling unless required.",
+          "rouge_f1": {
+            "rouge1": 0.3582089552238806,
+            "rouge2": 0.061538461538461535,
+            "rougeL": 0.20895522388059704
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              425,
+              500
+            ]
+          ],
+          "evidence_words": 793
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What was the team joking about when it came to scheduling meetings?",
+      "reference_answer": "The team was joking about one meeting being a \"guys\" meeting because both the female members of the group would be in the other meeting. They also seemed to be using foul language and joked at all the bleeping it would entail in the transcription.",
+      "results": {
+        "oracle": {
+          "answer": "The team was joking about having a \"guy's meeting\" where they would avoid topics that might bore some members, such as data collection stuff, and potentially engage in activities more aligned with their interests, like watching a ball game. This jesting included light-hearted teasing about stereotypical gender roles and behaviors.",
+          "rouge_f1": {
+            "rouge1": 0.26804123711340205,
+            "rouge2": 0.10526315789473685,
+            "rougeL": 0.2268041237113402
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              436,
+              452
+            ]
+          ],
+          "evidence_words": 184
+        }
+      }
+    }
+  ]
+}

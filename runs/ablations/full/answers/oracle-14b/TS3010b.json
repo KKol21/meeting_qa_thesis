@@ -1,0 +1,230 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "TS3010b.json",
+        "sha256": "78fe6232a63138ed322178849f1ea5c7c3c102203a6bc617e2f39e0b35cd205c"
+      }
+    },
+    "input_hash": "57ac31ee03867381c0cfcd3162eea5e92f3b459f9cff236dd70709bb53b9a284",
+    "fingerprint": "4d8aefa3a9067149e6fc15c8e9cbe7080e1df8b35908d77be840d4b64b759943",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "TS3010b",
+  "question_count": 7,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 7,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did Industrial Designer say about the structure of the device?",
+      "reference_answer": "There were a lot of small wires connecting the components, the battery and the switches. On the top of the remote control, there was the chip, buttons with numbers and teletext. Industrial Designer suggested that the remote control should be small and contain only one long-lasting battery to cut cost. And a bleep could be added to remind the battery usage.",
+      "results": {
+        "oracle": {
+          "answer": "The Industrial Designer described the structure of the device as having a significant amount of plastic due to cost considerations, numerous wires connecting various components including the battery and switches, and a chip that processes signals from the buttons before sending them via infrared to the television. They also suggested keeping the device not too large, using only one long-lasting battery, and minimizing the number of buttons while incorporating a menu button that allows users to access settings on their TV.",
+          "rouge_f1": {
+            "rouge1": 0.5,
+            "rouge2": 0.14084507042253522,
+            "rougeL": 0.2916666666666667
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              55,
+              61
+            ]
+          ],
+          "evidence_words": 547
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Project Manager question about the Industrial Designer's presentation?",
+      "reference_answer": "Project Manager questioned the reason why not to use two batteries and Industrial Designer argued that two batteries would enlarge the size and thus, make the cost rise. Project Manager also questioned the button design.After discussion, they agreed that the menu button will only work on the newer televisions.",
+      "results": {
+        "oracle": {
+          "answer": "Project Manager questioned why one battery would be cheaper and pointed out that using two batteries could extend usage time twice as long. Additionally, the Project Manager inquired about the compatibility of the remote control with other television brands, emphasizing that the remote should work on all televisions.",
+          "rouge_f1": {
+            "rouge1": 0.4285714285714286,
+            "rouge2": 0.16666666666666666,
+            "rougeL": 0.3673469387755102
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              62,
+              81
+            ]
+          ],
+          "evidence_words": 294
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the team think about the new idea of Industrial Designer concerning the cover of the device?",
+      "reference_answer": "Industrial Designer suggested having a trendy remote control with bright color, red for instance. But Marketing argued that it might add to cost and make it more difficult to design if the cover were to be changed. Industrial Designer also suggested that young people could draw on the cover to make their own remote control more unique. But again, it was questioned by User Interface who were not sure about whether it would be profitable.",
+      "results": {
+        "oracle": {
+          "answer": "The team thought the idea was good and original but had concerns about its practicality and profitability. Marketing questioned whether adding cover options would increase costs and complexity without sufficient return. The User Interface agreed it was an original idea but was unsure if it would generate enough profit. The Project Manager ultimately decided against pursuing the idea.",
+          "rouge_f1": {
+            "rouge1": 0.28571428571428575,
+            "rouge2": 0.061068702290076333,
+            "rougeL": 0.15037593984962408
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              82,
+              120
+            ]
+          ],
+          "evidence_words": 466
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did User Interface say about the technical function design?",
+      "reference_answer": "A remote control to have some influence on the TV set, both audio and video in a cordless way. User Interface suggested more functions on the remote control so that they could influence more devices like a radio or a video recorder. But the team was not sure whether the new remote control should be basic or multifunctional and they decided to get back to that point later.",
+      "results": {
+        "oracle": {
+          "answer": "User Interface said that the technical function design aimed to allow a remote control to influence a TV set cordlessly, focusing on basic operations such as turning it on and off, switching channels, and potentially including features like teletext. They also suggested a dilemma between creating a basic remote control with limited functions versus a multifunctional one that could control additional devices like radios or VCRs.",
+          "rouge_f1": {
+            "rouge1": 0.4925373134328358,
+            "rouge2": 0.1212121212121212,
+            "rougeL": 0.2537313432835821
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              121,
+              130
+            ]
+          ],
+          "evidence_words": 333
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What was the finding of the market?",
+      "reference_answer": "Marketing did a usability lab-test with a hundred people and found that users disliked the ugly look of current remote controls and the market segmentation includes different attitudes towards new functions. Users felt it hard to learn new functions and they zapped a lot. The channel switch was the most popular function while the power, volume and channel selections buttons were very relevant. The market was to be segmented to different groups and most users were between thirty-six and forty-five years old and young users had different tastes about the LCD compared to the old. The speech recognition features were welcomed by the second largest group, the young but which group they should targeted remained to be discussed. Marketing concluded that less important functions should be discarded and the device should be user friendly.",
+      "results": {
+        "oracle": {
+          "answer": "The market findings indicated that users disliked the look and feel of current remote controls, finding them ugly and difficult to learn. Users emphasized the importance of ease of use, particularly for zapping (channel changing). Only 50% of users utilized 10% of the buttons, indicating many buttons were unused. The most relevant buttons were identified as power, volume, and channel selection, followed by teletext, which was considered less relevant but still important. Less relevant and infrequently used buttons included those for audio adjustments, screen settings, and channel settings. The market primarily consisted of users aged 36-45, with a smaller proportion being younger (16-25) or older (46-65). Younger users showed greater interest in new features like LCD screens and speech recognition, whereas older users were more hesitant towards these innovations.",
+          "rouge_f1": {
+            "rouge1": 0.4237918215613383,
+            "rouge2": 0.13483146067415733,
+            "rougeL": 0.2304832713754647
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              137,
+              143
+            ]
+          ],
+          "evidence_words": 970
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the team discuss about the new features?",
+      "reference_answer": "Industrial Designer argued that the LCD and speech recognition features would largely add to cost. Project Manager said that the LCD would be cheaper than speech recognition and might be a good idea. The team would come back on that later.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed that aiming for younger people would require features like LCD and speech recognition, but these features would increase costs significantly beyond their budget. They decided to focus on including only the LCD feature as it was cheaper than speech recognition.",
+          "rouge_f1": {
+            "rouge1": 0.45238095238095233,
+            "rouge2": 0.2195121951219512,
+            "rougeL": 0.33333333333333337
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              147,
+              162
+            ]
+          ],
+          "evidence_words": 154
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "What did the team say about the new product requirements?",
+      "reference_answer": "Project Manager decided that the remote control should only be used on television and targeted at the biggest size of group. Corporate colour and slogan must be used on the cover. They agreed that a power button, channel switches from zero to nine, volume control, mute should be contained and a small-size menu included.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed several new product requirements including a power button, channel selection (zero to nine), volume control, and a menu system with directional arrows for navigation. They also considered muting functionality but decided against having it as a dedicated button, opting instead for inclusion within the menu system. The team aimed to keep the number of buttons minimal while ensuring ease of use, particularly for a younger market segment.",
+          "rouge_f1": {
+            "rouge1": 0.33599999999999997,
+            "rouge2": 0.13008130081300812,
+            "rougeL": 0.20800000000000002
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              164,
+              164
+            ],
+            [
+              188,
+              231
+            ]
+          ],
+          "evidence_words": 602
+        }
+      }
+    }
+  ]
+}

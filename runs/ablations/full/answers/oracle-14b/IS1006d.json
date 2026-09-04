@@ -1,0 +1,249 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "IS1006d.json",
+        "sha256": "f42f4b7d9aa3617b74dd1baccf53c2808b33c837f90f53624a169e1773c3f14a"
+      }
+    },
+    "input_hash": "f807c79e42b11abed12e9974c41d7e43f26fd0e08fdae209751d2a68363e6671",
+    "fingerprint": "89e9718b0a107a6ccacc9a8d4085c29a9df5b847d9061797b3a50a4116751af6",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "IS1006d",
+  "question_count": 8,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 8,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about the presentation on the prototype model.",
+      "reference_answer": "With a working prototype, the user interface designer displayed the appearance and the texture of the product, which was fruit-like and spongy. As for the material, they still wanted to use titanium because it was the most modern material that they could select. Then the industrial designer gave some technical specifications on the product, including instructions on buttons, LCD display, speech recognition and location finder.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the presentation on the prototype model included several key points:\n\n- The prototype model was described as a working remote control with various buttons and functions.\n- It featured an LCD screen and speech recognition capabilities.\n- The design incorporated a flexible layout allowing users to add buttons as needed.\n- The team aimed to use titanium for the material due to its modernity and practicality, though they were open to changing the color of the LCD based on user preferences and days of the week.\n- The prototype included sensors shaped like strawberries, which served as location sensors.\n- Participants expressed positive reactions to the prototype, with Marketing indicating interest in purchasing it for personal use.",
+          "rouge_f1": {
+            "rouge1": 0.4222222222222222,
+            "rouge2": 0.0898876404494382,
+            "rougeL": 0.2111111111111111
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              13,
+              144
+            ]
+          ],
+          "evidence_words": 1161
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What were the advantages of the design for the prototype?",
+      "reference_answer": "According to the technical specifications given by the industrial designer, the product was very flexible because users could add buttons. Users could use the jog wheel to select whichever option on the LCD and do the power control. There was also an LCD control, so users could switch on the LCD display if they wanted to use LCD and use a normal button if they didn't want to use LCD. What's more, the controller had the functions of speech recognition and location finder.",
+      "results": {
+        "oracle": {
+          "answer": "The advantages of the design for the prototype include its flexibility (allowing addition of buttons), the ability to switch functions on and off, volume control via buttons, LCD controls with options to switch between LCD and normal button usage, speech recognition capabilities including location finding through voice commands, and personalized nicknames for the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.057971014492753624,
+            "rougeL": 0.30000000000000004
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              68,
+              99
+            ]
+          ],
+          "evidence_words": 311
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the industrial designer recommend to do when discussing the product appearance?",
+      "reference_answer": "The industrial designer recommended to design several simple and perfect shapes so that users could choose the design they like. Also, they should make the colour of the LCD screen changeable to enable users to choose colours for each day depending on their mood.",
+      "results": {
+        "oracle": {
+          "answer": "The industrial designer recommended having simple and perfect shapes for the product appearance, allowing users to choose different colors for the LCD display based on their daily preferences or moods. The color options were particularly discussed for weekdays and weekends.",
+          "rouge_f1": {
+            "rouge1": 0.4523809523809524,
+            "rouge2": 0.24390243902439024,
+            "rougeL": 0.380952380952381
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              106,
+              131
+            ]
+          ],
+          "evidence_words": 214
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about product evaluation.",
+      "reference_answer": "The marketing thought they needed to evaluate whether it made sense to do the project and whether the product could fulfil their requirement. So the group started to judge the design on a scale of one to seven, one being true and seven being false. The criteria were fanciness, technology, robustness, usefulness, size and weight, colour and shape, and adaptiveness. The product got an average score of two point one seven, which implied it was good.",
+      "results": {
+        "oracle": {
+          "answer": "The team evaluated the prototype remote control based on several criteria including fanciness, technology, robustness, usefulness, size and weight, color and shape, and adaptability. They used a scale from one to seven, where one meant the criterion was fully met and seven meant it was not met at all. For fanciness, they rated it a 2. For technology, they rated it a 1. Robustness received a rating of 3. Usefulness was rated 2. Size and weight were given a score of up to 3. Color and shape received a score of 3. Adaptability was rated a 1. The average score across all criteria was 2.17 out of 7, indicating that while the prototype had some strong points, there were areas for improvement.",
+          "rouge_f1": {
+            "rouge1": 0.3919597989949749,
+            "rouge2": 0.16243654822335027,
+            "rougeL": 0.271356783919598
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              170,
+              485
+            ]
+          ],
+          "evidence_words": 2656
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Why did the group decide to give two points on usefulness when doing product evaluation?",
+      "reference_answer": "The basic mode of the product had only two directional buttons with which people could control the volume and change channels. Except for the two main functions, other functions were on the LCD screen and there was a jog dial controlling the cursor on the LCD screen. Therefore, the controller was very easy to use.",
+      "results": {
+        "oracle": {
+          "answer": "The group decided to give two points on usefulness based on the product's ability to address primary functions with its design (two directional buttons and a jog dial) while relegating additional functions to the LCD screen. This approach was deemed sufficient for basic operations without overwhelming users, making the product seem useful despite the slightly longer process for accessing specific channels.",
+          "rouge_f1": {
+            "rouge1": 0.4615384615384615,
+            "rouge2": 0.1391304347826087,
+            "rougeL": 0.2564102564102564
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              266,
+              343
+            ]
+          ],
+          "evidence_words": 609
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the project manager think of the colour and shape of the model when doing product evaluation?",
+      "reference_answer": "The project manager didn't like the strawberry-like sensors on the top because they were not useful. Even though the marketing reminded the manager that fanciness was more important than usefulness, the manager still believed that it would be fancier if the fruit-like thing was useful.",
+      "results": {
+        "oracle": {
+          "answer": "The project manager was not convinced by the strawberries on top of the model, finding them not useful. The relevant excerpt is [388], where the Project Manager states, \"And what about the strawberries on the top? I'm not convinced. But maybe I'm not trendy.\" This indicates dissatisfaction with the practicality of the design element, despite acknowledging a potential trendiness aspect.",
+          "rouge_f1": {
+            "rouge1": 0.29090909090909095,
+            "rouge2": 0.12962962962962962,
+            "rougeL": 0.2545454545454545
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              388,
+              404
+            ]
+          ],
+          "evidence_words": 152
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "Summarize the discussion about product quotation.",
+      "reference_answer": "At first, the product components included a battery, a simple chip, a speech sensor, a single curve, titanium, two push buttons, a scroll wheel, and an LCD screen. These would cost seventeen dot eight dollars in total, which was apparently too expensive. After some discussions about battery and operations on the calculator, the group finally cut the cost down to under twelve dollars.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed the product quotation focusing on reducing costs to meet financial criteria. Initially, there was confusion regarding the number of batteries needed, eventually settling on one battery. They considered removing the LCD display and speaker to reduce expenses, opting for a hand dynamo mechanism to eliminate the need for a battery. They also decided to use standard buttons without special colors or materials to further cut costs. The goal was to ensure the total cost did not exceed $12.50. Despite some initial overruns, they managed to adjust the quotation to meet the financial requirements.",
+          "rouge_f1": {
+            "rouge1": 0.275,
+            "rouge2": 0.02531645569620253,
+            "rougeL": 0.15
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              486,
+              814
+            ]
+          ],
+          "evidence_words": 2028
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "What did the user interface designer recommend to do when discussing product quotation?",
+      "reference_answer": "The user interface designer recommended adding a hand dynamo which could produce electricity from mechanical energy so that it could provide enough energy for the device when users took the controller and pushed the buttons. The proposal was accepted by the group.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence is insufficient to determine what the user interface designer specifically recommended regarding the product quotation during the discussion. The provided excerpts do not contain any statements or suggestions from the User Interface designer pertaining to recommendations for the product quotation.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.0975609756097561,
+            "rougeL": 0.23809523809523808
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              687,
+              711
+            ]
+          ],
+          "evidence_words": 184
+        }
+      }
+    }
+  ]
+}

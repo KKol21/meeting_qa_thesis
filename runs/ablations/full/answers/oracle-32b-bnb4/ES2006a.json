@@ -1,0 +1,211 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "ES2006a.json",
+        "sha256": "18a8e2880abb9baf4ed2c2de1c10195e0c23b67a9d42636f600eb14b00be5504"
+      }
+    },
+    "input_hash": "5cb6f116e47e83b96ac7d22a25d026d80d9f351fa0e839919b5bb35012921fd8",
+    "fingerprint": "d5fd3c6d75d04cc1af36564847d6d66e70c5d227b335b3b760d2a66fb0008ac7",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "ES2006a",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group discuss about the design goal of the remote control?",
+      "reference_answer": "They wanted it to be original, trendy, user-friendly, durable, creative and characteristic, so it can be very intuitive that people could use the product. In addition, the price, cost and expected profit of the remote control were also determined. In the part of creativity, they pointed out that creativity should have its own characteristics and ensure its fashion without affecting its functionality, so as to truly \"introduce fashion into electronics\". In terms of function, it is necessary to simplify the switch and guarantee function.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed several aspects of the design goal for the remote control:\n\n- **Special Features**: The group considered adding unique features to differentiate the remote control from existing ones (Excerpts [234], [237]).\n- **Trendiness and Originality**: The remote control should be trendy, user-friendly, and original, with features that stand out (Excerpt [238]).\n- **Sleek and Stylish Design**: The design should be sleek and stylish while remaining functional, similar to modern phones without physical buttons (Excerpts [242], [246]).\n- **User-Friendly Interface**: The remote control should have a less crowded interface, possibly with a menu-based system instead of numerous buttons (Excerpts [253], [271]).\n- **Battery Life**: While not a major concern, the remote control should aim for a high battery life (Excerpt [287]).\n\nThese points reflect the group's initial thoughts on the design goals for the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.25339366515837103,
+            "rouge2": 0.0547945205479452,
+            "rougeL": 0.14479638009049772
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              12,
+              12
+            ],
+            [
+              233,
+              293
+            ]
+          ],
+          "evidence_words": 912
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What are the target price, target cost and target profit of remote control when discussing the design of the remote control?",
+      "reference_answer": "Project Manager wanted to make a profit of 50 million euros for a cost of 12.50 euros for 25 euros worldwide.",
+      "results": {
+        "oracle": {
+          "answer": "The target price of the remote control is twenty-five Euros each. The target cost for production is a maximum of twelve and a half Euros per unit. The target profit for the project is fifty million Euros.",
+          "rouge_f1": {
+            "rouge1": 0.43333333333333335,
+            "rouge2": 0.034482758620689655,
+            "rougeL": 0.26666666666666666
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              233,
+              237
+            ]
+          ],
+          "evidence_words": 265
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the Industrial Designer think of fashion design when discussing the design of the remote control?",
+      "reference_answer": "Industrial Designers believed that in the design of remote control, fashion should have individuality and combine with function to achieve a perfect fit between fashion and electronics. Beyond that, it should be original in order to be unique.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence provided does not contain any direct statement from the Industrial Designer regarding their thoughts on fashion design specifically when discussing the design of the remote control. The Industrial Designer emphasized the importance of the remote control being trendy, user-friendly, and original, but there is no explicit mention of their opinion on incorporating fashion design principles into the remote control's design.",
+          "rouge_f1": {
+            "rouge1": 0.23529411764705882,
+            "rouge2": 0.08,
+            "rougeL": 0.17647058823529413
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              234,
+              244
+            ]
+          ],
+          "evidence_words": 218
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about the functional design of the remote control.",
+      "reference_answer": "The group felt that the remote control didn't need a lot of buttons,and on the basis of ensuring originality, it should also ensure conventionality and make it applicable to all kinds of groups.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the functional design of the remote control centered around simplifying its interface. Marketing suggested moving towards a design similar to modern phones without physical buttons, emphasizing that most users do not utilize all the buttons on current remote controls. The team agreed that a menu-based system could reduce clutter and confusion. Project Manager proposed a single button for accessing additional functions via the TV screen. Industrial Designer noted that while there is a lot of unused functionality, it should still be accessible for knowledgeable users. User Interface cautioned against deviating too much from conventional designs to avoid a steep learning curve for new users. Overall, the goal was to create a simpler, more intuitive remote control that retains necessary functionalities.",
+          "rouge_f1": {
+            "rouge1": 0.2138364779874214,
+            "rouge2": 0.06369426751592357,
+            "rougeL": 0.15094339622641506
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              246,
+              271
+            ],
+            [
+              275,
+              298
+            ]
+          ],
+          "evidence_words": 551
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the Marketing think of buttons when discussing the functional design of the remote control?",
+      "reference_answer": "The Marketing thought buttons can be omitted, just like cell phones, because many of the functions of buttons, such as the TV button, are generally not used. But they can set up a menu-style button if they really need to.",
+      "results": {
+        "oracle": {
+          "answer": "Marketing thought that there was no need to have buttons for rarely used functions on the remote control. They suggested that these functions could be accessed via a single menu button or through the screen instead of having individual buttons, as these buttons might confuse most users.",
+          "rouge_f1": {
+            "rouge1": 0.4090909090909091,
+            "rouge2": 0.046511627906976744,
+            "rougeL": 0.20454545454545456
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              262,
+              278
+            ]
+          ],
+          "evidence_words": 143
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the group think of battery design when discussing the functional design of the remote control?",
+      "reference_answer": "They felt that the battery design should be long-lived, original, and conventional to ensure the battery's innovation, versatility, and durability. It should also not be far from the usual performance, or it may cause problems for new users.",
+      "results": {
+        "oracle": {
+          "answer": "The group had mixed thoughts on the battery design of the remote control. The Industrial Designer noted that while aiming for a high battery life is possible, it isn't a major concern for remote controls since battery replacement is a common and infrequent task. The User Interface suggested maintaining familiarity with existing designs to avoid a steep learning curve for new users. There was no detailed discussion specifically about innovative battery design features beyond the acknowledgment that battery life is not a significant issue.",
+          "rouge_f1": {
+            "rouge1": 0.24,
+            "rouge2": 0.06504065040650406,
+            "rougeL": 0.15999999999999998
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              287,
+              298
+            ]
+          ],
+          "evidence_words": 172
+        }
+      }
+    }
+  ]
+}

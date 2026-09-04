@@ -1,0 +1,203 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "ES2009b.json",
+        "sha256": "1023ec44f901ec9330ae5c46ecda7510af4d5f7ec72f32eddc57be2f21d1481f"
+      }
+    },
+    "input_hash": "b76e31e80a2697009b19a3d67fc9147375fe56770a2c55e93e11d9ccc397db7f",
+    "fingerprint": "60b8cac23a0db4d32da415c6032cd5b0ee7da1301151186d0f539054f86cf29c",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "ES2009b",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the brief presentations on personal ideas towards the design.",
+      "reference_answer": "Except for the Project Manager, the other three members of the group all did a presentation to show their research findings on the television remote. The Industrial Designer suggested not to use too much metal in case they would disturb the signals. After him, the User Interface focused on the functions that he proposed neither to make the remote too confusing nor cheap-looking. The last one is the Marketing and she introduced the consumer preference as well as the existing problem of easily losing the remote.",
+      "results": {
+        "oracle": {
+          "answer": "The industrial designer presented personal ideas towards the design, focusing on the following points:\n\n1. **Material Choice**: Primarily suggested plastic construction to avoid potential interference issues caused by excessive metal, which could lead to false signals and safety hazards. The designer proposed using modern types of polymers or plastics that could offer both functionality and aesthetic appeal.\n\n2. **Energy Source**: Recommended an eco-friendly approach, considering solar power with an alkaline battery backup as a reliable alternative.\n\n3. **User Interface**: Suggested using high-grade recycled plastic for the casing and buttons due to the restriction on metal usage.\n\n4. **Chip and Sender**: Proposed a silicon-based chip and infrared sender as the industry standard, with a focus on multi-channel capability.\n\n5. **Compatibility and Range**: Aimed for compatibility with PAL and NTSC standards, with a range of approximately 200 feet.\n\n6. **Personal Preferences**: Emphasized the importance of avoiding lawsuits related to potential fires and injuries, advocating for a design that prioritizes safety over aesthetics.\n\nThe user interface developer highlighted the need for a simplified design that focuses on basic functionalities, such as switching channels, turning the TV on, and adjusting volume. They suggested incorporating multiple faces for different functions and emphasized the importance of user-friendliness and minimizing complexity to enhance usability.\n\nMarketing provided insights from usability tests, indicating that the primary functions (changing channels, turning the TV on, and adjusting volume) are the most frequently used features. They noted that the majority of users prefer simplicity and ease of use, with a significant portion of users losing their remotes frequently. Marketing also mentioned that younger demographics are interested in voice recognition options, suggesting this as a future consideration.",
+          "rouge_f1": {
+            "rouge1": 0.2568306010928962,
+            "rouge2": 0.04395604395604396,
+            "rougeL": 0.14207650273224046
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              5,
+              83
+            ]
+          ],
+          "evidence_words": 1799
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did the Project Manager agree with Marketing when discussing his personal ideas towards the design?",
+      "reference_answer": "The Marketing proposed to use voice control on the remote and according to his research, three quarters of people under 35 are in favour of voice control. At the same time, in order to keep the remote not so easy to be lost as its counterparts of other brands, voice control would be an essential technique. For those two reasons, the Marketing persuaded the Project Manager to target their consumers as the youth.",
+      "results": {
+        "oracle": {
+          "answer": "The Project Manager agreed with Marketing because Marketing emphasized that the primary functions of the TV remote control are basic tasks such as changing channels, turning it on, and adjusting the volume. She also pointed out that the majority of users do not use advanced features and find complex remotes frustrating. Additionally, Marketing mentioned that fifty percent of people find losing their remotes to be the worst thing about them, suggesting that simplicity and ease of use are crucial. The Project Manager likely agreed with these points and supported focusing on a simpler design with fewer functions, aligning with the younger demographic's interest in voice recognition, which Marketing also highlighted.",
+          "rouge_f1": {
+            "rouge1": 0.3152173913043478,
+            "rouge2": 0.04395604395604396,
+            "rougeL": 0.1739130434782609
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              68,
+              83
+            ]
+          ],
+          "evidence_words": 627
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the group talk about the functions and buttons of the remote control?",
+      "reference_answer": "To cater to the potential consumers aged under 35, the group decided to use voice control to locate the remote. During their discussion of the voice control technique on the remote control, they also took into consideration several detailed problems. They planned to set the control range within 200 feet and arrange a voice-controlled sticky pad on top of the television on which there would also be a page button.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed the function of a locate command for the remote control, which would cause it to start beeping so it could be found within a 200-foot range. They also considered making the page button voice-activated if the remote was hidden. Additionally, they suggested placing a sticky pad on top of the television that could be used to issue voice commands to find the remote. However, there was no mention of other specific functions or buttons of the remote control during this discussion.",
+          "rouge_f1": {
+            "rouge1": 0.535031847133758,
+            "rouge2": 0.16774193548387098,
+            "rougeL": 0.25477707006369427
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              98,
+              122
+            ]
+          ],
+          "evidence_words": 202
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Why did the Project Manager put forward to cut down the functions when discussing the design of the functions and buttons of the remote control?",
+      "reference_answer": "Due to the limited budget as well as to achieve a satisfying user experience, the Project Manager proposed only to keep the most essential functions in case they would be beyond the capacity of the microchip.",
+      "results": {
+        "oracle": {
+          "answer": "The Project Manager suggested cutting down the functions because the team was concerned about meeting the pricing goal of €120 to €125 for the remote control. Specifically, the Industrial Designer pointed out that adding too many features would require a more expensive microchip, which is the most costly component. This would make it difficult to achieve the desired price point. Therefore, the Project Manager proposed focusing on essential functions to keep costs down while still appealing to a younger demographic interested in high-tech features.",
+          "rouge_f1": {
+            "rouge1": 0.34710743801652894,
+            "rouge2": 0.11764705882352941,
+            "rougeL": 0.18181818181818185
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              145,
+              158
+            ]
+          ],
+          "evidence_words": 241
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the Project Manager elaborate on the members when discussing the materials of the television remote?",
+      "reference_answer": "The group talked about the material and they found it would be hard to balance the budget and the quality. In order to save the cost and ensure satisfying user experience, the Project Manager decided to choose high-quality recycled plastic as the material. But in terms of the battery, he would pay a lot to equip the remote with a cutting-edge lithium battery.",
+      "results": {
+        "oracle": {
+          "answer": "The Project Manager elaborated that they would go for a plastic-cased television remote with a touch screen for basic functions, provisionally deciding on this design based on the team's discussions. The Project Manager also mentioned that if they have a touch screen, users would need to recharge their remote controls, which could address the issue of the remote being lost. However, the cost of recharging bases was noted as a concern.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.10294117647058824,
+            "rougeL": 0.18840579710144928
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              199,
+              220
+            ]
+          ],
+          "evidence_words": 396
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the group talk about the appearance of the television remote?",
+      "reference_answer": "In terms of putting fashion into the electronics, this is both their slogan and their design target. Apart from the company colour of black and red, the Project Manager came up with the idea of providing skins for the users. But the members were not in favour of this idea for that the work would be huge, at the same time, they were inspired to add the logo on the boot-up screen and introduce a dormant mode because most people do not want the remote to be flashing when the TV is on.",
+      "results": {
+        "oracle": {
+          "answer": "The group did not specifically discuss the appearance of the television remote itself. However, they did talk about the touch screen interface and its boot-up process. The Industrial Designer suggested a black and red interface for the touch screen. Marketing proposed that the company logo could appear briefly during the boot-up process, similar to how a carrier provider name appears on a cell phone, but decided against having it permanently engraved on the back. The group also considered having the logo appear subliminally for half a millisecond as the device turned on. Ultimately, they agreed that the remote should turn on automatically when the touch screen is touched and should go into a sleep mode when not in use.",
+          "rouge_f1": {
+            "rouge1": 0.39999999999999997,
+            "rouge2": 0.11267605633802817,
+            "rougeL": 0.21395348837209302
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              240,
+              291
+            ]
+          ],
+          "evidence_words": 569
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "Bro005.json",
+        "sha256": "9ae07cf1c17a88eba67baf37b419d555f685230c195356322fed9abfc7eafa7c"
+      }
+    },
+    "input_hash": "3aa529096fe23806fb0f421f1af9da51251d37d4dee8f6014ea6d49e28668897",
+    "fingerprint": "b9c4cc41a324d8b078413bad47c0d4ddf25e555acbd18a25efd78edf566d0ed9",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "Bro005",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about the results from the experiments",
+      "reference_answer": "Last run of experiments showed that adding more languages was still severely harming model performance. They noted that normalization of any kind has a good effect on the model, whereas MSG does nothing.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the results from the experiments focused on several key points:\n\n- **Noise Robustness Testing**: The team was testing noise robustness but acknowledged the importance of not exaggerating the testing conditions.\n\n- **Experiment Summaries**: PhD A provided summaries of recent experiments, including those involving nets trained on PLP (Perceptual Linear Prediction) features with online normalization and delta features. They noted that the delta feature seemed very important, as seen in the comparison between Aurora-2B results: 106% without delta and 89% with delta.\n\n- **Cross-Language Experiments**: The team discussed cross-language experiments, such as training on French and testing on Italian, and observed that multi-English training often yielded the best results.\n\n- **Feature Combination Experiments**: They explored combining different feature streams and MLP (Multi-Layer Perceptron) outputs. However, MSG (Mel-Spectral Gradient) features did not significantly improve accuracy for the Italian database, while PLP features showed better performance.\n\n- **Baseline Comparisons**: The baseline system's accuracy was 82%, and the team noted that using PLP features alone improved accuracy to around 90%. Adding MSG features did not provide additional benefits for Italian data.\n\n- **Normalization Impact**: Online normalization significantly improved accuracy, reducing the error rate nearly in half. Using a neural network also improved accuracy to around 90%.\n\n- **Future Experiments**: The team suggested conducting further experiments with different configurations, such as using PLP with delta and delta-delta features, and exploring the impact of these changes on various datasets.",
+          "rouge_f1": {
+            "rouge1": 0.13333333333333333,
+            "rouge2": 0.014925373134328358,
+            "rougeL": 0.07407407407407407
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              0,
+              310
+            ]
+          ],
+          "evidence_words": 4238
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the Professor think about the results?",
+      "reference_answer": "The professor noted that the results were better than he expected and that the MSG did nothing. He also noted that adding French and Spanish to the multilingual English model hurt the model.",
+      "results": {
+        "oracle": {
+          "answer": "The Professor thought that the results were better than expected. Specifically, the Professor noted that the results improved from an initial expectation (eighty-two) to a higher value (eighty-nine). The Professor also observed that applying online normalization and using a neural network led to a significant improvement in performance, jumping to around ninety percent accuracy. However, the addition of MSG did not significantly impact the results. The error rate was nearly halved, reducing from approximately eighteen percent to around nine percent. The Professor was satisfied with the improvements and noted that the multi-English approach was effective, though adding French and Spanish data seemed to negatively impact the results.",
+          "rouge_f1": {
+            "rouge1": 0.36363636363636365,
+            "rouge2": 0.19858156028368795,
+            "rougeL": 0.29370629370629375
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              159,
+              213
+            ]
+          ],
+          "evidence_words": 699
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did PhD A think about the results?",
+      "reference_answer": "PhD A thought that most of the nets are not that good, except for the multi English. MSG was not bringing as much information as he thought it would. He explained that even when the features were not normalized, the neural network would perform at 90%, as it would with normalization.",
+      "results": {
+        "oracle": {
+          "answer": "PhD A thought that the nets were not performing as well except for the multi-English, which was one of the best. They noted that the net trained with PLP and delta performed quite well, better than the net using French, Spanish, and English only. However, they also observed that MSG features did not work well for the Italian database, leading to higher error rates compared to PLP. When combining PLP and MSG, the performance was essentially the same as using PLP alone. Additionally, applying on-line normalization or using a neural network improved the recognition accuracy to around ninety percent.",
+          "rouge_f1": {
+            "rouge1": 0.39473684210526316,
+            "rouge2": 0.14666666666666667,
+            "rougeL": 0.27631578947368424
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              62,
+              172
+            ]
+          ],
+          "evidence_words": 1682
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion on future directions",
+      "reference_answer": "The team discussed testing a multi-band approach that is more resistance to noise. The professor thought that it many not be a bad idea to put together several MLP's to improve performance. The team also thought that there might be problems with the pronunciation models.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion on future directions centered around integrating their system with the OGI system and addressing various training and testing challenges. Key points included:\n\n- Attempting to connect their system to the OGI system and determining where to place the MLP.\n- Evaluating the performance of their methods across different tests, not just Italian, to assess how well they perform under varied conditions.\n- Considering the use of multi-band approaches and combining features with the MLP, but acknowledging the complexity and variability in training data.\n- Addressing CPU and memory constraints, with a focus on optimizing performance without excessive computational demands.\n- Tuning their current architecture and potentially incorporating multi-band techniques.\n- Preparing to receive VAD labels and feature files from OGI to ensure consistency and improvement upon their existing results.\n- Prioritizing core questions related to training sets, training targets, and integration with OGI's work due to limited time.\n- Considering further exploration of intriguing aspects after the initial evaluations.",
+          "rouge_f1": {
+            "rouge1": 0.187192118226601,
+            "rouge2": 0.029850746268656716,
+            "rougeL": 0.12807881773399013
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              497,
+              685
+            ]
+          ],
+          "evidence_words": 4605
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the professor think about MSG?",
+      "reference_answer": "The professor generally liked MSG because of its different temporal properties. Nonetheless, he recognized that it might not be practical to explore it further due to time constraints. At this point, he thought that there were no clear solutions to the challenges they were facing, but there was still plenty to do.",
+      "results": {
+        "oracle": {
+          "answer": "Professor D expressed a positive view of MSG, noting that he really liked it due to its unique temporal properties and its potential for incorporating elements with different temporal properties. However, he also mentioned that given the limited time available, they need to prioritize focusing on core issues such as the training set and training targets. Therefore, while he sees the potential in MSG, practical constraints necessitate prioritizing other aspects of their work.",
+          "rouge_f1": {
+            "rouge1": 0.35200000000000004,
+            "rouge2": 0.048780487804878044,
+            "rougeL": 0.17600000000000002
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              623,
+              631
+            ]
+          ],
+          "evidence_words": 327
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the team think about their progress?",
+      "reference_answer": "The professor asked if the team was happy with their progress. The team thought that they were okay. The professor was insistent that everyone be happy since they were pretty much done.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence provided does not contain sufficient information to determine what the team thought about their progress. The excerpts mainly revolve around contributions to sound files and a brief mention of installed neural net tools on a Linux machine, without clear indications of the team's thoughts on their overall progress.",
+          "rouge_f1": {
+            "rouge1": 0.21686746987951808,
+            "rouge2": 0.12345679012345678,
+            "rougeL": 0.1927710843373494
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              644,
+              654
+            ]
+          ],
+          "evidence_words": 182
+        }
+      }
+    }
+  ]
+}

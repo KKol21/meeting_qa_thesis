@@ -1,0 +1,203 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "TS3009b.json",
+        "sha256": "31868f828f6cf76682e4866c709992137c272b243354ce191698ac9e20c05721"
+      }
+    },
+    "input_hash": "0a327d82f94feb24ca708a88a407f855570b3efc626807ee1f10b6c72d903e74",
+    "fingerprint": "b6b43e8f6846887110e4ac6effa86ca9c79d5814f318e3033d95452aa918569e",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "TS3009b",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the presentation on functional requirements.",
+      "reference_answer": "Marketing presented on functional requirements, found that 75% of users would like to pay more on a remote with a better look and it might be sensible to make a beeping device because 50% of users lost their controls in the room. Marketing also suggested designing a remote that would be easy to pick up and use. Lastly, Marketing suggested targeting a younger group market, and most young people were keen on LCD and speech recognition.",
+      "results": {
+        "oracle": {
+          "answer": "The presentation on functional requirements highlighted several key points:\n\n1. **Current User Dislikes**: Seventy-five percent of users find the current controls unattractive and would spend more on better-looking controls. Users utilize only 10% of the control's capacity, suggesting the need for larger, more prominent buttons for common tasks.\n   \n2. **Zapping Functionality**: Seventy-five percent of users frequently use the zapping function, indicating the need for a large, easily accessible zapping button.\n\n3. **Control Loss**: Fifty percent of users lose their controls in the same room, suggesting the inclusion of a beeping device to help locate the control.\n\n4. **Learning Curve**: Thirty-four percent of users find the current controls too difficult to learn, necessitating a simple and intuitive design that minimizes the learning curve.\n\n5. **Design Consistency**: The new design should be consistent with older remotes to ease transition.\n\n6. **Target Audience**: The target audience is a younger demographic (ages 16-20), who prefer having an LCD screen on their remote control, despite potential cost constraints.\n\n7. **Speech Recognition**: While desirable, speech recognition technology is currently too costly and complex to implement.\n\n8. **Cost Considerations**: The team must balance the desire for features like LCD screens with production costs, considering economies of scale for cost reduction.\n\n9. **Manuals**: Given that users rarely read manuals, the focus should be on designing a remote that is easy to use without needing instructions.",
+          "rouge_f1": {
+            "rouge1": 0.32362459546925565,
+            "rouge2": 0.11726384364820847,
+            "rougeL": 0.19417475728155337
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              103,
+              220
+            ]
+          ],
+          "evidence_words": 1459
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Project Manager think of the manual design when discussing the ease of use?",
+      "reference_answer": "Project Manager thought the beeping device was not easy to learn but Industrial Marketing thought the design expert should put more time on the ease of use design than a manual because they didn't have much time. While Project Manager mentioned that they were a design team, they could find some writers to make a manual point which could help maintain consistency with the older remote manual for the users.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence provided does not contain any specific statements from the Project Manager regarding their thoughts on the ease of use concerning the manual design. Therefore, based on the given excerpts, there is insufficient evidence to determine the Project Manager's opinion on this particular aspect.",
+          "rouge_f1": {
+            "rouge1": 0.3076923076923077,
+            "rouge2": 0.10434782608695652,
+            "rougeL": 0.20512820512820512
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              136,
+              165
+            ]
+          ],
+          "evidence_words": 345
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the group conclude on LCD screens and the speech recognition suggested by Marketing?",
+      "reference_answer": "Marketing mentioned that the research found it would be costly for the speech design and suggested considering LCD screens. Industrial Design suggested that they would consider both and see what they could find. The group all agreed on it.pressing the button.",
+      "results": {
+        "oracle": {
+          "answer": "The group concluded that LCD screens were more feasible compared to speech recognition due to cost and development standards. However, they decided to consider both options further without ruling either out yet.",
+          "rouge_f1": {
+            "rouge1": 0.27027027027027023,
+            "rouge2": 0.08333333333333333,
+            "rougeL": 0.16216216216216214
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              193,
+              217
+            ]
+          ],
+          "evidence_words": 198
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the presentation and discussion about the technical design.",
+      "reference_answer": "Industrial designer introduced the working design including the energy, LED sender, different user interface, and the chipboard with buttons on it. They could put every button under the thumb with an RSI. Then, the group discussed and decided to have removable fronts, a small centralized LCD screen, and a power button with 10 other setting buttons.",
+      "results": {
+        "oracle": {
+          "answer": "The presentation and discussion about the technical design focused on the basic functionality of a remote control, emphasizing the importance of user-friendliness and reducing the risk of repetitive strain injury (RSI). The Industrial Designer explained that the remote control's basic function involves the user pressing buttons, which send signals to a chip, which then sends a specific code to an LED to emit an infrared beam to the TV set. The team agreed that the most frequently used buttons—power, channel selection, and volume—should be placed near the thumb for ease of use and to prevent RSI.\n\nThere was a suggestion to add a small LCD screen to display status information, such as the current channel or program name, which would be integrated into the design without making it look like a calculator. The team decided that the LCD screen should be positioned at the bottom of the remote to maintain a familiar shape and allow comfortable hand placement.\n\nThe final list of functions included a power button, channel selection buttons, an LCD window, number buttons (for channels), volume control, and a mute button. The team aimed to keep the design simple and user-centric while incorporating modern features like the LCD screen to appeal to the younger target audience.",
+          "rouge_f1": {
+            "rouge1": 0.2527881040892193,
+            "rouge2": 0.052434456928838954,
+            "rougeL": 0.15613382899628253
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              221,
+              680
+            ]
+          ],
+          "evidence_words": 4584
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Why did User Interface think they should use more buttons than the current one when discussing the technical function design?",
+      "reference_answer": "Compared with the current manufacturer design, User Interface mentioned that they should reduce the option to control the DVD. And according to the new requirements, they need to control the maximum number of buttons within ten.",
+      "results": {
+        "oracle": {
+          "answer": "User Interface thought they should use more buttons than the current one because they wanted to reduce the options to control the DVD and teletext functionalities, which would require additional buttons to maintain usability and functionality. However, they acknowledged that this idea had to be rejected due to the project requirements.",
+          "rouge_f1": {
+            "rouge1": 0.4827586206896552,
+            "rouge2": 0.25882352941176473,
+            "rougeL": 0.367816091954023
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              382,
+              404
+            ]
+          ],
+          "evidence_words": 176
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the group think of the pros and cons of having an LCD screen on top of the remote?",
+      "reference_answer": "Marketing suggested putting a small LCD screen on top of the remote but Industrial Designer against it because a remote should be started with the power button and User Interface thought it would be unnatural to put the LCD on the top. Then, Marketing mentioned that would be where users' handball might be. So Industrial Designer thought they could put the whole interface a bit down so there would be room for the interface.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed the placement of an LCD screen on the remote control, specifically whether it should be at the top or bottom. \n\nPros of having the LCD screen on top:\n- Marketing initially favored placing the LCD screen at the top.\n\nCons of having the LCD screen on top:\n- User Interface noted that placing the LCD screen on top could feel unnatural since most remotes have space left at the bottom.\n- Project Manager stated that \"That thing is terrible,\" suggesting dissatisfaction with the idea.\n- User Interface also mentioned that putting the LCD screen at the top would make the design less recognizable and potentially uglier.\n\nOverall, the group seemed to lean towards placing the LCD screen at the bottom due to the natural feel and recognizability of the remote's shape.",
+          "rouge_f1": {
+            "rouge1": 0.34146341463414637,
+            "rouge2": 0.12807881773399013,
+            "rougeL": 0.2048780487804878
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              549,
+              600
+            ]
+          ],
+          "evidence_words": 501
+        }
+      }
+    }
+  ]
+}

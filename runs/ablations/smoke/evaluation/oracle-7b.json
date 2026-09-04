@@ -1,0 +1,207 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "evaluation",
+    "config": {
+      "experiment_version": 2,
+      "bertscore": {
+        "package_version": "0.3.13",
+        "model": {
+          "tag": "roberta-large",
+          "name": "FacebookAI/roberta-large",
+          "revision": "722cf37b1afa9454edce342e7895e588b6ff1d59",
+          "prequantized": false
+        },
+        "layers": 17,
+        "batch_size": 16,
+        "rescale_with_baseline": false
+      },
+      "judge": {
+        "model": {
+          "tag": "llama-3.3-70b-bnb4",
+          "name": "unsloth/Llama-3.3-70B-Instruct-bnb-4bit",
+          "revision": "74be54198eaf4f3c7fba1f4e9fa63725a810c7eb",
+          "prequantized": true
+        },
+        "max_new_tokens": 192,
+        "temperature": 0.0,
+        "seed": 42,
+        "prompt": "You are evaluating an answer to a meeting question.\nUse the reference answer and gold transcript evidence as complementary sources of truth. Do not require identical wording, and do not reward an answer merely for repeating the question.\n\nFirst identify the important points in the reference answer, then check them against the candidate and transcript. A supported but incomplete answer must receive 2, not 3. Transcript-supported details beyond the reference are allowed, but do not compensate for omitted important reference points.\n\nScore the candidate answer using this scale:\n1 = Invalid or incorrect. It does not answer the question, contradicts the evidence, is mostly unsupported, contains a major unsupported claim, or claims insufficient evidence when the answer is available.\n2 = Partially correct. It gives useful supported information, but omits one or more important points from the reference answer or includes a minor unsupported claim.\n3 = Correct. It covers all or nearly all important points from the reference answer, is supported by the transcript evidence, and contains no material error or unsupported claim.\n\nReturn only a JSON object with an integer score and one short reason:\n{\"score\": 1, \"reason\": \"...\"}"
+      }
+    },
+    "config_hash": "09d95b9b6b254a97435a1587c1d2c53dfa07763e34812caf4a773dd281351504",
+    "inputs": {
+      "answer_summary": {
+        "file": "summary.json",
+        "sha256": "8e1c026e165c02163683987cd2bca3f0cbd55594a9903282bad94c66a770b114"
+      },
+      "answers_Bed002": {
+        "file": "Bed002.json",
+        "sha256": "88ba6e9af727c3956d05adc842f0daa45fa1cfab7033f5437c28528911a833f7"
+      },
+      "meeting_Bed002": {
+        "file": "Bed002.json",
+        "sha256": "154dcbab359183b9429d63dccd1c8f0e07260f63a74688ba8435627d0a5111ed"
+      }
+    },
+    "input_hash": "ba7d8b055df867f6203dcf5884c1658b5e7b0c903374b090f768711c858f99ac",
+    "fingerprint": "e5aca944c3cfb06cba0671f785502df62166f13806c14d9b5bfc9bd5dfce28cf",
+    "preset": {
+      "file": "ablation-smoke.toml",
+      "sha256": "8b39ae5d3d717826e07537b9212ed1bbdc8ddbcaaa6569d49a83a2b7896bbbb3"
+    }
+  },
+  "answer_summary": {
+    "experiment_version": 2,
+    "stage": "answers",
+    "source": "oracle",
+    "answer_model": {
+      "tag": "qwen2.5-7b",
+      "name": "Qwen/Qwen2.5-7B-Instruct",
+      "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "prequantized": false,
+      "max_new_tokens": 512,
+      "temperature": 0.0,
+      "seed": 42
+    },
+    "meeting_ids": [
+      "Bed002"
+    ],
+    "meeting_count": 1,
+    "question_count": 6,
+    "conditions": {
+      "oracle": {
+        "source": "annotated evidence"
+      }
+    },
+    "question_average_rouge_f1": {
+      "oracle": {
+        "rouge1": 0.24321779521193768,
+        "rouge2": 0.03746664039403155,
+        "rougeL": 0.17026752584222363
+      }
+    },
+    "per_meeting": {
+      "Bed002": {
+        "oracle": {
+          "rouge1": 0.24321779521193768,
+          "rouge2": 0.03746664039403155,
+          "rougeL": 0.17026752584222363
+        }
+      }
+    },
+    "meeting_average_rouge_f1": {
+      "oracle": {
+        "rouge1": 0.24321779521193768,
+        "rouge2": 0.03746664039403155,
+        "rougeL": 0.17026752584222363
+      }
+    },
+    "paired_meeting_average": {},
+    "model_calls": 0,
+    "cache_hits": 6,
+    "artifact_hashes": {
+      "Bed002": "88ba6e9af727c3956d05adc842f0daa45fa1cfab7033f5437c28528911a833f7"
+    }
+  },
+  "judge_model_calls": 0,
+  "judge_cache_hits": 6,
+  "records": [
+    {
+      "meeting_id": "Bed002",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8258935213088989,
+        "recall": 0.8416124582290649,
+        "f1": 0.8336788415908813
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points, such as microphone placement and digit string readings, but omits other key details, like the purpose of the meeting recordings and the anonymization of the data.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points, such as microphone placement and digit string readings, but omits other key details, like the purpose of the meeting recordings and the anonymization of the data.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8609373569488525,
+        "recall": 0.8499842286109924,
+        "f1": 0.8554257154464722
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8426114320755005,
+        "recall": 0.8402590751647949,
+        "f1": 0.8414336442947388
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when in fact, the transcript provides relevant information about A's instructions and considerations for setting up the recording equipment.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when in fact, the transcript provides relevant information about A's instructions and considerations for setting up the recording equipment.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8039683103561401,
+        "recall": 0.8834943771362305,
+        "f1": 0.841857373714447
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about the experimental setup of the computer navigation system, covering all important points from the reference answer and including additional details supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about the experimental setup of the computer navigation system, covering all important points from the reference answer and including additional details supported by the transcript evidence.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8656960725784302,
+        "recall": 0.8395311236381531,
+        "f1": 0.8524128794670105
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when in fact, the transcript provides detailed information about the experimental setup and B's thoughts on its technical aspects.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when in fact, the transcript provides detailed information about the experimental setup and B's thoughts on its technical aspects.\"}",
+        "cache_hit": true
+      }
+    },
+    {
+      "meeting_id": "Bed002",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.864197313785553,
+        "recall": 0.8609059453010559,
+        "f1": 0.8625485301017761
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available, and does not provide any information about D's thoughts on the experimental setup.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available, and does not provide any information about D's thoughts on the experimental setup.\"}",
+        "cache_hit": true
+      }
+    }
+  ]
+}

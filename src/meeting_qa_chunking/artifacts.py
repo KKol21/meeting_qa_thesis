@@ -12,8 +12,6 @@ EXPERIMENT_VERSION = 2
 
 @dataclass(frozen=True)
 class SavedChunk:
-    """One inclusive turn range from a saved segmentation."""
-
     index: int
     start_turn: int
     end_turn: int

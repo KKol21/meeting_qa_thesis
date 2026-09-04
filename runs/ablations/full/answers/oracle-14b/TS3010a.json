@@ -1,0 +1,111 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "TS3010a.json",
+        "sha256": "6764f4b9c4ddac869d8b8f08725d9ac338f483013c2d8ba352b9417da3c9c235"
+      }
+    },
+    "input_hash": "d90826dedfddb8af38aea50b72be8e44a7f797099fc51c147adca0f747bd7b8b",
+    "fingerprint": "b07450b7846d4a0010570401cb0a02108f7afdf65646b0397caa881975cc5dec",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "TS3010a",
+  "question_count": 2,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 2,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the team mention about their experiences with remote controls?",
+      "reference_answer": "Industrial Designer suggested that big size devices are hard to use and easily broken while a big button is more useful compared to a hundred small buttons. User Inter face believed that a LED on the remote control device helps the users know the battery usage and the device is working well. Marketing thought it would be convenient if one remote control could control all the devices. All these are accepted by the whole team.",
+      "results": {
+        "oracle": {
+          "answer": "The team mentioned that remote controls with many small buttons are difficult to use because users often don't know what each button does. They also noted that a single remote control for multiple devices (like TV, video recorder, DVD player, and satellite receiver) would be preferable over having separate remotes for each device. Additionally, they found that a remote with a LED indicator showing battery status and confirming button presses is convenient. However, a remote with too many buttons becomes cumbersome and less user-friendly.",
+          "rouge_f1": {
+            "rouge1": 0.3726708074534161,
+            "rouge2": 0.0880503144654088,
+            "rougeL": 0.18633540372670804
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              103,
+              131
+            ]
+          ],
+          "evidence_words": 530
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What's the decision of remote feature design?",
+      "reference_answer": "Project Manager believed that it could not be heavy. Industrial Designer indicated that fewer and bigger buttons are better and should be bust-free, for instance, rubber could be used on it. Industrial Designer also suggested that when users push a button, they could hear some sort of bleep. User Interface suggested a LED on the corner and not too expensive material like plastic could be used. Marketing added that it should look nice for better sales and should work with as many as possible of existing products listed on their website. Industrial Designer also concluded that it should be battery-saving.",
+      "results": {
+        "oracle": {
+          "answer": "The decision on the remote feature design includes:\n- Lightweight construction.\n- Durable material (rubber or hard plastic) to prevent breaking if dropped.\n- Large, easily identifiable buttons.\n- Audible feedback when buttons are pressed.\n- Use of inexpensive materials like plastic.\n- Compatibility with multiple existing products.\n- Low battery consumption to reduce frequent battery changes.",
+          "rouge_f1": {
+            "rouge1": 0.2236842105263158,
+            "rouge2": 0.06666666666666668,
+            "rougeL": 0.15789473684210525
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              132,
+              163
+            ]
+          ],
+          "evidence_words": 325
+        }
+      }
+    }
+  ]
+}

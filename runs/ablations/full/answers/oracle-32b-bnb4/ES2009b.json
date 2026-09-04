@@ -1,0 +1,203 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "ES2009b.json",
+        "sha256": "1023ec44f901ec9330ae5c46ecda7510af4d5f7ec72f32eddc57be2f21d1481f"
+      }
+    },
+    "input_hash": "b76e31e80a2697009b19a3d67fc9147375fe56770a2c55e93e11d9ccc397db7f",
+    "fingerprint": "ec9e581600de8dfdcfb95fd6531ba0607584f24881a754111bd0d51c6ac741a7",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "ES2009b",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the brief presentations on personal ideas towards the design.",
+      "reference_answer": "Except for the Project Manager, the other three members of the group all did a presentation to show their research findings on the television remote. The Industrial Designer suggested not to use too much metal in case they would disturb the signals. After him, the User Interface focused on the functions that he proposed neither to make the remote too confusing nor cheap-looking. The last one is the Marketing and she introduced the consumer preference as well as the existing problem of easily losing the remote.",
+      "results": {
+        "oracle": {
+          "answer": "The Industrial Designer presented ideas focusing on the construction materials and energy sources for the remote control. They highlighted that too much metal can interfere with the remote's functionality and pose safety risks, suggesting primarily plastic construction. They proposed using solar power with an alkaline battery backup for the energy source and high-grade recycled plastic for the user interface. The designer emphasized the importance of avoiding lawsuits due to potential safety issues and suggested using modern, aesthetically pleasing polymers.\n\nThe User Interface Developer focused on simplifying the remote control's functionality while maintaining its capabilities. They noted that complex remotes are often unused and preferred a simpler design that is easier for users to manipulate. Their preference was to revolutionize the remote control by combining the functionality of a complex device with a simple user interface.\n\nMarketing provided insights from usability tests indicating that users primarily use basic functions like changing channels and adjusting volume. They found that complicated remotes are frustrating and often lost. Marketing suggested considering voice recognition for the younger demographic and recommended focusing on simplicity and aesthetics.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.08955223880597014,
+            "rougeL": 0.1851851851851852
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              5,
+              83
+            ]
+          ],
+          "evidence_words": 1799
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did the Project Manager agree with Marketing when discussing his personal ideas towards the design?",
+      "reference_answer": "The Marketing proposed to use voice control on the remote and according to his research, three quarters of people under 35 are in favour of voice control. At the same time, in order to keep the remote not so easy to be lost as its counterparts of other brands, voice control would be an essential technique. For those two reasons, the Marketing persuaded the Project Manager to target their consumers as the youth.",
+      "results": {
+        "oracle": {
+          "answer": "The Project Manager agreed with Marketing because Marketing highlighted that the general public primarily uses basic functions (changing the channel, turning it on, adjusting volume) and finds complex remotes frustrating due to unnecessary buttons. Additionally, Marketing noted that losing the remote is a common issue, suggesting that a simpler design with features like voice recognition could be more appealing, particularly to the younger demographic. The Project Manager concurred, emphasizing the importance of a sleek look and aligning with the younger market's preferences for advanced features such as voice control.",
+          "rouge_f1": {
+            "rouge1": 0.3067484662576687,
+            "rouge2": 0.049689440993788817,
+            "rougeL": 0.18404907975460122
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              68,
+              83
+            ]
+          ],
+          "evidence_words": 627
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the group talk about the functions and buttons of the remote control?",
+      "reference_answer": "To cater to the potential consumers aged under 35, the group decided to use voice control to locate the remote. During their discussion of the voice control technique on the remote control, they also took into consideration several detailed problems. They planned to set the control range within 200 feet and arrange a voice-controlled sticky pad on top of the television on which there would also be a page button.",
+      "results": {
+        "oracle": {
+          "answer": "The group did not specifically discuss the functions and buttons of the remote control based on the provided meeting excerpts. The conversation focused more on the concept of locating a lost remote control through a beeping function and the possibility of voice activation for the remote control or an associated device, such as a small chip or sticky pad placed on the TV. There were no detailed discussions about specific functions or buttons on the remote itself.",
+          "rouge_f1": {
+            "rouge1": 0.3918918918918919,
+            "rouge2": 0.0958904109589041,
+            "rougeL": 0.2567567567567568
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              98,
+              122
+            ]
+          ],
+          "evidence_words": 202
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Why did the Project Manager put forward to cut down the functions when discussing the design of the functions and buttons of the remote control?",
+      "reference_answer": "Due to the limited budget as well as to achieve a satisfying user experience, the Project Manager proposed only to keep the most essential functions in case they would be beyond the capacity of the microchip.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence provided does not explicitly state why the Project Manager suggested cutting down the functions when discussing the design of the functions and buttons of the remote control. However, the context suggests concerns around cost and complexity. The Industrial Designer mentioned worries about meeting the price goal and handling multiple functions with just one microchip, noting that the microchip is the most expensive part. Given this context, the Project Manager likely proposed cutting down functions to manage costs and maintain a sleek design, aligning with the target market's preferences.",
+          "rouge_f1": {
+            "rouge1": 0.22047244094488186,
+            "rouge2": 0.08,
+            "rougeL": 0.15748031496062992
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              145,
+              158
+            ]
+          ],
+          "evidence_words": 241
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the Project Manager elaborate on the members when discussing the materials of the television remote?",
+      "reference_answer": "The group talked about the material and they found it would be hard to balance the budget and the quality. In order to save the cost and ensure satisfying user experience, the Project Manager decided to choose high-quality recycled plastic as the material. But in terms of the battery, he would pay a lot to equip the remote with a cutting-edge lithium battery.",
+      "results": {
+        "oracle": {
+          "answer": "The Project Manager elaborated on the materials of the television remote by suggesting a plastic case, preferably made from high-quality recycled plastic, as it is cost-effective. They also proposed incorporating a touch screen for basic functions and submenus for additional features. The Project Manager noted that a touch screen would require recharging, which could help address the issue of losing the remote but acknowledged the associated cost. They emphasized the need for advanced battery technology to avoid requiring users to frequently recharge the remote.",
+          "rouge_f1": {
+            "rouge1": 0.4105960264900662,
+            "rouge2": 0.12080536912751677,
+            "rougeL": 0.2251655629139073
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              199,
+              220
+            ]
+          ],
+          "evidence_words": 396
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the group talk about the appearance of the television remote?",
+      "reference_answer": "In terms of putting fashion into the electronics, this is both their slogan and their design target. Apart from the company colour of black and red, the Project Manager came up with the idea of providing skins for the users. But the members were not in favour of this idea for that the work would be huge, at the same time, they were inspired to add the logo on the boot-up screen and introduce a dormant mode because most people do not want the remote to be flashing when the TV is on.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed the appearance of the television remote, particularly focusing on the touch screen interface. They considered incorporating company colors (black and red) and the company logo or motto. The idea of downloadable skins was briefly mentioned but deemed too complex. They agreed on having a simple, quick display of the company logo during the boot-up process, similar to a cellphone, to avoid overwhelming users with flashing images. The touch screen would automatically activate upon being touched, and the logo would appear momentarily during the boot-up sequence.",
+          "rouge_f1": {
+            "rouge1": 0.4347826086956522,
+            "rouge2": 0.0989010989010989,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              240,
+              291
+            ]
+          ],
+          "evidence_words": 569
+        }
+      }
+    }
+  ]
+}

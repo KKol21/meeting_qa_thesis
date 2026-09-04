@@ -12,6 +12,8 @@ from meeting_qa_chunking.evidence import (
 )
 from meeting_qa_chunking.evidence_preparation import build_chunk_sets
 from meeting_qa_chunking.config import load_run_config
+from meeting_qa_chunking.chunking import chunk_turn_packed
+from meeting_qa_chunking.lumber import load_lumber_chunks
 from meeting_qa_chunking.qmsum import load_meeting
 
 
@@ -37,6 +39,19 @@ def preformatted(text: str) -> str:
     return f"<pre>{html.escape(text)}</pre>"
 
 
+def model_name(model: dict[str, object] | str) -> str:
+    if isinstance(model, str):
+        return model
+    return model.get("name", model.get("model", model["tag"]))
+
+
+def evaluated_metrics(stage: dict[str, object], condition: str) -> tuple[dict, dict]:
+    if "meeting_average" in stage:
+        return stage["meeting_average"][condition], stage["question_average"][condition]
+    metrics = stage["conditions"][condition]
+    return metrics, metrics
+
+
 def evaluation_lookup(root: Path, stage: str) -> dict[tuple[str, int, str], dict]:
     result = load_json(root / "evaluation" / f"{stage}.json")
     return {
@@ -48,16 +63,28 @@ def evaluation_lookup(root: Path, stage: str) -> dict[tuple[str, int, str], dict
 def retrieved_evidence(
     meeting, retrieval: dict[str, object], lumber_dir: Path
 ) -> list[dict[str, str]]:
-    chunkers = tuple(dict.fromkeys(
-        config["chunker"] for config in retrieval["configurations"].values()
-    ))
-    chunk_sets = build_chunk_sets(
-        meeting,
-        lumber_dir / f"{meeting.id}.json" if "lumber" in chunkers else None,
-        retrieval["chunking"]["turn_packed_max_words"],
-        retrieval["chunking"]["word_packed_max_words"],
-        chunkers,
-    )
+    if "chunking" in retrieval:
+        chunkers = tuple(dict.fromkeys(
+            config["chunker"] for config in retrieval["configurations"].values()
+        ))
+        chunk_sets = build_chunk_sets(
+            meeting,
+            lumber_dir / f"{meeting.id}.json" if "lumber" in chunkers else None,
+            retrieval["chunking"]["turn_packed_max_words"],
+            retrieval["chunking"]["word_packed_max_words"],
+            chunkers,
+        )
+        evidence_order = retrieval["evidence_order"]
+    else:
+        chunk_sets = {
+            "fixed": chunk_turn_packed(
+                meeting.turns, retrieval["fixed_chunk_words"]
+            ),
+            "lumber": load_lumber_chunks(
+                lumber_dir / f"{meeting.id}.json", meeting
+            ),
+        }
+        evidence_order = "ranked"
     prepared = []
     for question in retrieval["questions"]:
         evidence = {}
@@ -67,9 +94,7 @@ def retrieved_evidence(
                 chunk_sets[config["chunker"]],
                 config["evidence_words"],
             )
-            evidence[name] = render_evidence(
-                selected, meeting, retrieval["evidence_order"]
-            )
+            evidence[name] = render_evidence(selected, meeting, evidence_order)
         prepared.append(evidence)
     return prepared
 
@@ -79,16 +104,11 @@ def make_review(
     data_dir: Path,
     lumber_dir: Path,
     answer_stage_names: list[str],
-    samples_per_condition: int,
 ) -> str:
-    sample_description = (
-        "All questions" if samples_per_condition == 0
-        else f"First {samples_per_condition} question(s)"
-    )
     lines = [
-        "# Ablation manual-review samples",
+        "# Ablation detailed results",
         "",
-        f"{sample_description} per ablation condition, in dataset order.",
+        "Every generated answer and its evidence, in dataset order.",
         "",
         "Judge scores: 1 = invalid/incorrect, 2 = partially correct, 3 = correct.",
         "",
@@ -97,14 +117,9 @@ def make_review(
         summary_path = root / "answers" / stage / "summary.json"
         summary = load_json(summary_path)
         evaluations = evaluation_lookup(root, stage)
-        counts = {condition: 0 for condition in summary["conditions"]}
         lines += [f"## {stage}", ""]
 
         for meeting_id in summary["meeting_ids"]:
-            if samples_per_condition and all(
-                count >= samples_per_condition for count in counts.values()
-            ):
-                break
             meeting = load_meeting(data_dir / f"{meeting_id}.json")
             answers = load_json(summary_path.parent / f"{meeting_id}.json")
             if summary["source"] == "retrieval":
@@ -123,12 +138,6 @@ def make_review(
                 question = meeting.questions[question_index]
                 gold_evidence = render_gold_evidence(question, meeting)[0]
                 for condition, result in question_result["results"].items():
-                    if (
-                        samples_per_condition
-                        and counts[condition] >= samples_per_condition
-                    ):
-                        continue
-                    counts[condition] += 1
                     evaluation = evaluations[(meeting_id, question_index, condition)]
                     judge = evaluation["judge"]
                     bert = evaluation["bertscore"]["f1"]
@@ -175,9 +184,9 @@ def make_report(
         name: load_json(answer_root / name / "summary.json")
         for name in answer_stage_names
     }
-    judge_model = evaluation["evaluation_config"]["judge"]["model"]["name"]
+    judge_model = model_name(evaluation["evaluation_config"]["judge"]["model"])
     candidate_models = {
-        stage["answer_model"]["name"]
+        model_name(stage["answer_model"])
         for stage in evaluation["stages"].values()
     }
     if judge_model in candidate_models:
@@ -198,7 +207,7 @@ def make_report(
         "",
         f"**Scope:** {meeting_count} meeting(s), {question_count} question(s).",
         "",
-        f"Detailed examples for manual inspection: [{review_name}]({review_name})",
+        f"All per-question answers and evidence: [{review_name}]({review_name})",
         "",
     ]
     if meeting_count == 1:
@@ -220,9 +229,11 @@ def make_report(
         if stage["source"] != "oracle":
             continue
         answer = answer_summaries[stage_name]
-        rouge = answer["meeting_average_rouge_f1"]["oracle"]
-        metrics = stage["meeting_average"]["oracle"]
-        distribution_metrics = stage["question_average"]["oracle"]
+        rouge_averages = answer.get(
+            "meeting_average_rouge_f1", answer.get("macro_average_rouge_f1")
+        )
+        rouge = rouge_averages["oracle"]
+        metrics, distribution_metrics = evaluated_metrics(stage, "oracle")
         oracle_rows.append(
             {
                 "name": stage["answer_model"]["tag"],
@@ -249,12 +260,20 @@ def make_report(
         stage for stage in answer_summaries.values()
         if stage["source"] == "retrieval"
     )
+    retrieval_averages = retrieval.get(
+        "meeting_average", retrieval.get("macro_average")
+    )
+    rouge_averages = answer_stage.get(
+        "meeting_average_rouge_f1",
+        answer_stage.get("macro_average_rouge_f1"),
+    )
     rows = []
     for name, config in retrieval["configurations"].items():
-        retrieval_metrics = retrieval["meeting_average"][name]
-        rouge = answer_stage["meeting_average_rouge_f1"][name]
-        answer_metrics = retrieval_stage["meeting_average"][name]
-        distribution_metrics = retrieval_stage["question_average"][name]
+        retrieval_metrics = retrieval_averages[name]
+        rouge = rouge_averages[name]
+        answer_metrics, distribution_metrics = evaluated_metrics(
+            retrieval_stage, name
+        )
         rows.append(
             {
                 "name": name,
@@ -263,7 +282,10 @@ def make_report(
                 "words": config["evidence_words"],
                 "precision": retrieval_metrics["precision"],
                 "recall": retrieval_metrics["recall"],
-                "mrr": retrieval_metrics["first_overlap_reciprocal_rank"],
+                "mrr": retrieval_metrics.get(
+                    "first_overlap_reciprocal_rank",
+                    retrieval_metrics.get("reciprocal_rank"),
+                ),
                 "rouge1": rouge["rouge1"],
                 "rouge2": rouge["rouge2"],
                 "rougeL": rouge["rougeL"],
@@ -277,7 +299,11 @@ def make_report(
         "",
         "## Retrieval and end-to-end comparison",
         "",
-        "Means are meeting-macro averages; judge 1/2/3 counts are question totals. First-overlap MRR is retained only as a size-sensitive diagnostic.",
+        (
+            "Means are meeting-macro averages; judge 1/2/3 counts are question totals."
+            if "meeting_average" in retrieval
+            else "Means are question-macro averages."
+        ) + " First-overlap MRR is retained only as a size-sensitive diagnostic.",
         "",
         "| Chunker | Retriever | Words | Precision | Recall | First-overlap MRR | ROUGE-1 | ROUGE-2 | ROUGE-L | BERTScore F1 | Judge | 1/2/3 |",
         "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
@@ -290,25 +316,26 @@ def make_report(
             f"{number(row['bert'])} | {number(row['judge'])} | {row['scores']} |"
         )
 
-    lines += [
-        "",
-        "## Paired meeting-level Lumber differences",
-        "",
-        "Positive values favour Lumber. Each value is the mean of within-meeting differences.",
-        "",
-        "| Comparison | Precision | Recall | ROUGE-L | BERTScore F1 | Judge |",
-        "|---|---:|---:|---:|---:|---:|",
-    ]
-    for comparison, retrieval_delta in retrieval["paired_meeting_average"].items():
-        rouge_delta = answer_stage["paired_meeting_average"][comparison]
-        evaluation_delta = retrieval_stage["paired_meeting_average"][comparison]
-        lines.append(
-            f"| {comparison} | {number(retrieval_delta['precision'])} | "
-            f"{number(retrieval_delta['recall'])} | "
-            f"{number(rouge_delta['rougeL'])} | "
-            f"{number(evaluation_delta['bertscore_f1'])} | "
-            f"{number(evaluation_delta['judge_mean'])} |"
-        )
+    if retrieval.get("paired_meeting_average"):
+        lines += [
+            "",
+            "## Paired meeting-level Lumber differences",
+            "",
+            "Positive values favour Lumber. Each value is the mean of within-meeting differences.",
+            "",
+            "| Comparison | Precision | Recall | ROUGE-L | BERTScore F1 | Judge |",
+            "|---|---:|---:|---:|---:|---:|",
+        ]
+        for comparison, retrieval_delta in retrieval["paired_meeting_average"].items():
+            rouge_delta = answer_stage["paired_meeting_average"][comparison]
+            evaluation_delta = retrieval_stage["paired_meeting_average"][comparison]
+            lines.append(
+                f"| {comparison} | {number(retrieval_delta['precision'])} | "
+                f"{number(retrieval_delta['recall'])} | "
+                f"{number(rouge_delta['rougeL'])} | "
+                f"{number(evaluation_delta['bertscore_f1'])} | "
+                f"{number(evaluation_delta['judge_mean'])} |"
+            )
 
     lines += ["", "## Best observed configurations", ""]
     for label, metric in (
@@ -327,7 +354,11 @@ def make_report(
         "## Interpretation notes",
         "",
         "- Retrieval precision and recall are word-weighted against QMSum's annotated evidence spans. First-overlap MRR structurally favours larger chunks and is diagnostic only.",
-        "- Retrieval chooses evidence under the budget, then renders selected fragments chronologically for conversational coherence.",
+        (
+            "- Retrieval chooses evidence under the budget, then renders selected fragments chronologically for conversational coherence."
+            if "meeting_average" in retrieval
+            else "- This version-1 run presents evidence in retrieval-ranked order."
+        ),
         "- ROUGE and BERTScore compare generated answers with the reference answers. The judge uses the reference answer and gold transcript evidence on a 1–3 scale.",
         "- The 1–3 judge compresses correctness, completeness, and grounding into one ordinal score; manual review remains necessary.",
         f"- {judge_note}",
@@ -341,15 +372,18 @@ def main() -> None:
     parser.add_argument("--preset", type=Path, required=True)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--review-output", type=Path)
-    parser.add_argument("--samples-per-condition", type=int, default=10)
     args = parser.parse_args()
-    if args.samples_per_condition < 0:
-        parser.error("--samples-per-condition must be zero or greater")
 
     run = load_run_config(args.preset)
     if not run.run_evaluation:
         parser.error("the preset must enable evaluation to generate this report")
     root = run.output_root
+    retrieval_summary = load_json(root / "retrieval" / "summary.json")
+    lumber_dir = (
+        Path("runs/lumber/qmsum")
+        if retrieval_summary.get("experiment_version") == 1
+        else run.lumber_dir
+    )
     answer_stage_names = [stage.name for stage in run.answers]
     output = args.output or root / "report.md"
     review_output = args.review_output or root / "review.md"
@@ -363,9 +397,8 @@ def main() -> None:
         make_review(
             root,
             run.data_dir,
-            run.lumber_dir,
+            lumber_dir,
             answer_stage_names,
-            args.samples_per_condition,
         ),
         encoding="utf-8",
     )

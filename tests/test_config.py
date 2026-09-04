@@ -44,6 +44,8 @@ class ConfigTest(unittest.TestCase):
         meeting_ids = config.meeting_ids(REPOSITORY_ROOT)
         self.assertEqual(len(meeting_ids), 20)
         self.assertEqual(len(meeting_ids), len(set(meeting_ids)))
+        self.assertNotIn("Bed002", meeting_ids)
+        self.assertIn("education_18", meeting_ids)
 
     def test_model_revisions_are_centralized(self) -> None:
         self.assertEqual(

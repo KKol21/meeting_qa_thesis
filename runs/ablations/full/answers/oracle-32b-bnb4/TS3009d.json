@@ -1,0 +1,203 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "TS3009d.json",
+        "sha256": "a5abe0f1bb2043c06a462609e12335293ae6418dd6cf3f849a4af291b54ccdea"
+      }
+    },
+    "input_hash": "cebfea1e5168bfc0194bf0ebb848e5503666b08673832af9dfbe8c27f024d747",
+    "fingerprint": "bfe7586a9f635d1d6b3db414a03cd0c715ea929fe80d5350285bc5740c09cf8f",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "TS3009d",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the presentation on the prototype.",
+      "reference_answer": "The Industrial Designer introduced the prototype of the product. It had not only the round basic shape which was made of hard plastics and titanium using different colors, but also the channel and volume buttons and so on. Basically , bright colours but not black were used, and the lower part of the device was made of titanium. On the side view, the product had the titanium colour and the logo was in the upper corner. Then the buttons like \"okay\", \"volumn\" and \"channel\", was with kind of arrow shapes, which made it more exciting than basic round or square buttons.",
+      "results": {
+        "oracle": {
+          "answer": "The prototype presentation described a device with a round basic shape. The upper part of the front is made of hard plastic and features various bright colors (not black or dark) for the initial launch, with plans for more colorful and patterned covers later. The lower part and the back of the device are made of titanium. The logo, a double \"R,\" is placed in the upper right corner of the front and is also featured prominently in the middle of the back. The device includes oval-shaped channel buttons and arrow-shaped volume and channel control buttons in the middle. There is an \"Okay\" button in the center among the controls, along with a \"Menu\" button and a \"Video\" button. The LCD screen is located in the lower part of the device. The back also features the company's slogan in an arc shape above the logo.",
+          "rouge_f1": {
+            "rouge1": 0.45967741935483863,
+            "rouge2": 0.1869918699186992,
+            "rougeL": 0.2903225806451613
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              50,
+              101
+            ]
+          ],
+          "evidence_words": 789
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the Industrial Designer and the Project Manager discuss about the LCD screen?",
+      "reference_answer": "The User Interface Designer thought it might be in the middle of the product because the way users hold the product wouldn't influence the view to the screen, but the Project Manager and the Marketing thought the screen might be covered when held by hands, so the users couldn't figure out what happened on the screen. Then the Project Manager proposed that it was totally unusable, still needing marketing research.",
+      "results": {
+        "oracle": {
+          "answer": "The Industrial Designer and the Project Manager discussed the placement and usability of the LCD screen. The Industrial Designer suggested placing the LCD screen on the upper side to avoid the hand covering it while using buttons. The Project Manager agreed with this idea but mentioned personal preferences, stating they wouldn't buy it based on their own taste. However, they acknowledged the need to consider the broader market and decided to proceed with the upper placement of the LCD screen for now.",
+          "rouge_f1": {
+            "rouge1": 0.43870967741935485,
+            "rouge2": 0.10457516339869281,
+            "rougeL": 0.23225806451612901
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              144,
+              218
+            ]
+          ],
+          "evidence_words": 622
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Summarize the Project Manager's perspective on the prototype.",
+      "reference_answer": "The Project Manager thought the prototype was basically the same with the former one, and the thickness was not suitable for the target customers. Then the LCD screen might be covered when held by hands, so the users couldn't figure out what happened on the screen. Therefore from this perspective the screen was totally unusable, still needing marketing research.",
+      "results": {
+        "oracle": {
+          "answer": "The Project Manager's perspective on the prototype is largely focused on its usability and design. They express concerns about the side view, noting that the thickness difference between the middle and the ends could make it uncomfortable to hold, stating \"When I look at uh when I look at this side view, I think w when I have that in my hand, it's terrible.\" However, they acknowledge the team's agreement on the LCD screen placement and the overall design, indicating flexibility and willingness to proceed with the current plan, saying \"Alright, if you think that that's the way it should\" and \"let it be like this at uh at this moment.\" Despite these reservations, the Project Manager does not consider the prototype totally unusable, though they personally would not buy it, emphasizing that it's more of a market research issue.",
+          "rouge_f1": {
+            "rouge1": 0.2829268292682927,
+            "rouge2": 0.10837438423645321,
+            "rougeL": 0.2146341463414634
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              50,
+              218
+            ]
+          ],
+          "evidence_words": 1829
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did the User Interface think of using titanium when discussing product cost and quotation?",
+      "reference_answer": "The User Interface thought it was reasonable to replace the titanium with titanium-coloured plastic. When discussing how to reduce the cost of the product, the user interface designer insisted that if they could only choose to save the titanium exterior or the LCD screen, it would be a better choice to save the LCD screen and dump the titanium cover but replacing it with hard plastics. The result was the major of the group including Marketing agreeed the suggestion.",
+      "results": {
+        "oracle": {
+          "answer": "The User Interface initially suggested replacing titanium with plastic-coloured titanium to reduce costs, indicating a preference for cheaper materials when faced with budget constraints. However, the User Interface also acknowledged that changing to plastic would require re-evaluating the product, suggesting some reluctance due to additional work involved. Despite this, the User Interface ultimately agreed to using titanium-coloured plastic to stay within budget, emphasizing that the appearance would remain unchanged and that this decision would allow them to manage costs effectively.",
+          "rouge_f1": {
+            "rouge1": 0.38036809815950917,
+            "rouge2": 0.11180124223602485,
+            "rougeL": 0.25766871165644173
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              567,
+              658
+            ]
+          ],
+          "evidence_words": 784
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Why did the Industrial Designer disagree to replace the titanium when discussing product cost and quotation?",
+      "reference_answer": "The Industrial Designer suggested that the titanium provided the tough look and the strong cover to protect the product. Besides, the older customers would like it much more because it fit their taste. So the titanium was important and shouldn't be replacing by titanium-like plastic or saving the LCD screen but dumping the titanium.",
+      "results": {
+        "oracle": {
+          "answer": "The Industrial Designer disagreed to replace the titanium when discussing product cost and quotation because they believed that the titanium provided a tough look and feel, which was important for the product's appeal, especially to older people. They emphasized that titanium was crucial for maintaining the product's strength and appearance, suggesting that dumping the LCD screen would be a better option to reduce costs instead of replacing the titanium.",
+          "rouge_f1": {
+            "rouge1": 0.5039370078740156,
+            "rouge2": 0.256,
+            "rougeL": 0.3307086614173228
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              580,
+              606
+            ]
+          ],
+          "evidence_words": 258
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "Summarize the discussion about product quotation.",
+      "reference_answer": "When evaluating the cost of the product, the group discussed some details of the components and made some adjustment on the chip, exterior cover material, curve, button and LCD screen. Then they agreed that it could be better changing the titanium to hard a hard kind of plastic looking like titanium than losing the LCD screen. They finally got an estimate of fourteen point one Euros, which was above the budget.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about product quotation revolves around the cost and appearance trade-offs between using titanium and plastic materials. User Interface suggests replacing titanium with plastic to reduce costs, arguing that the look remains the same. However, Project Manager and Industrial Designer disagree, stating that titanium provides a tougher look and feel, which is important for both aesthetic and tactile reasons, especially for older customers. Marketing agrees with keeping the LCD screen and suggests using a titanium-colored plastic as a compromise to maintain the trendy appearance while reducing costs. The team ultimately agrees on using titanium-colored plastic. Project Manager mentions that the lowest price for a trendy remote control is $14.10.",
+          "rouge_f1": {
+            "rouge1": 0.2810810810810811,
+            "rouge2": 0.032786885245901634,
+            "rougeL": 0.15135135135135133
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              567,
+              615
+            ]
+          ],
+          "evidence_words": 451
+        }
+      }
+    }
+  ]
+}

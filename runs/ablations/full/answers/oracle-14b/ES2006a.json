@@ -1,0 +1,211 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "ES2006a.json",
+        "sha256": "18a8e2880abb9baf4ed2c2de1c10195e0c23b67a9d42636f600eb14b00be5504"
+      }
+    },
+    "input_hash": "5cb6f116e47e83b96ac7d22a25d026d80d9f351fa0e839919b5bb35012921fd8",
+    "fingerprint": "fac84e1ceda890a544a209bca1cf22c50ca8a739ae2eaa8f3893f7a019d904ad",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "meeting_id": "ES2006a",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group discuss about the design goal of the remote control?",
+      "reference_answer": "They wanted it to be original, trendy, user-friendly, durable, creative and characteristic, so it can be very intuitive that people could use the product. In addition, the price, cost and expected profit of the remote control were also determined. In the part of creativity, they pointed out that creativity should have its own characteristics and ensure its fashion without affecting its functionality, so as to truly \"introduce fashion into electronics\". In terms of function, it is necessary to simplify the switch and guarantee function.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed that the design goal of the remote control should include unique and trendy features, making it stand out from existing models. They emphasized the importance of being user-friendly and original, suggesting a menu-based system with fewer physical buttons to reduce clutter and confusion. The idea was to focus on essential functions that most users typically perform, such as turning the TV on and watching specified channels, while providing access to more complex functions through a menu accessible via a single button or touchscreen interaction. Additionally, there was a suggestion to ensure the remote control has a good battery life, although this was noted as generally not being a significant issue for remote controls.",
+          "rouge_f1": {
+            "rouge1": 0.3251231527093596,
+            "rouge2": 0.03980099502487563,
+            "rougeL": 0.14778325123152708
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              12,
+              12
+            ],
+            [
+              233,
+              293
+            ]
+          ],
+          "evidence_words": 912
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What are the target price, target cost and target profit of remote control when discussing the design of the remote control?",
+      "reference_answer": "Project Manager wanted to make a profit of 50 million euros for a cost of 12.50 euros for 25 euros worldwide.",
+      "results": {
+        "oracle": {
+          "answer": "The target price of the remote control is 25 Euros each. The target cost is 12.5 Euros each to achieve the desired profit. The target profit per unit is calculated as the difference between the target price and the target cost, which is 12.5 Euros. The overall profit target for sales is 50 million Euros.",
+          "rouge_f1": {
+            "rouge1": 0.3037974683544304,
+            "rouge2": 0.0779220779220779,
+            "rougeL": 0.17721518987341772
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              233,
+              237
+            ]
+          ],
+          "evidence_words": 265
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the Industrial Designer think of fashion design when discussing the design of the remote control?",
+      "reference_answer": "Industrial Designers believed that in the design of remote control, fashion should have individuality and combine with function to achieve a perfect fit between fashion and electronics. Beyond that, it should be original in order to be unique.",
+      "results": {
+        "oracle": {
+          "answer": "The Industrial Designer thought that incorporating fashion design elements into the remote control could make it trendy and user-friendly, aligning with the goal of making the product original and unique. They supported the idea of providing features that are out of the ordinary, consistent with the theme of putting \"fashion in electronics\" discussed by Marketing.",
+          "rouge_f1": {
+            "rouge1": 0.4042553191489362,
+            "rouge2": 0.043478260869565216,
+            "rougeL": 0.23404255319148937
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              234,
+              244
+            ]
+          ],
+          "evidence_words": 218
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about the functional design of the remote control.",
+      "reference_answer": "The group felt that the remote control didn't need a lot of buttons,and on the basis of ensuring originality, it should also ensure conventionality and make it applicable to all kinds of groups.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion focused on simplifying the remote control's design by reducing the number of physical buttons. Marketing suggested a design similar to modern smartphones without physical buttons, proposing a menu-based system accessible via a single button or through a screen interface. This approach aims to declutter the remote while retaining essential functions, such as turning the TV on and off and changing channels, which are frequently used. Less commonly used features would be accessible via the menu. The industrial designer agreed, noting that many functionalities are rarely used. However, concerns were raised about maintaining user-friendliness and avoiding a steep learning curve for new users. The team also briefly touched upon the importance of ensuring the remote has a good battery life.",
+          "rouge_f1": {
+            "rouge1": 0.2012578616352201,
+            "rouge2": 0.03821656050955414,
+            "rougeL": 0.12578616352201258
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              246,
+              271
+            ],
+            [
+              275,
+              298
+            ]
+          ],
+          "evidence_words": 551
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the Marketing think of buttons when discussing the functional design of the remote control?",
+      "reference_answer": "The Marketing thought buttons can be omitted, just like cell phones, because many of the functions of buttons, such as the TV button, are generally not used. But they can set up a menu-style button if they really need to.",
+      "results": {
+        "oracle": {
+          "answer": "Marketing thought that there was no need to have buttons on the remote control for functions that are not frequently used, suggesting that these functions could instead be accessed via a menu on the screen.",
+          "rouge_f1": {
+            "rouge1": 0.368421052631579,
+            "rouge2": 0.08108108108108107,
+            "rougeL": 0.2631578947368421
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              262,
+              278
+            ]
+          ],
+          "evidence_words": 143
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the group think of battery design when discussing the functional design of the remote control?",
+      "reference_answer": "They felt that the battery design should be long-lived, original, and conventional to ensure the battery's innovation, versatility, and durability. It should also not be far from the usual performance, or it may cause problems for new users.",
+      "results": {
+        "oracle": {
+          "answer": "The group did not prioritize battery design extensively during the discussion on the functional design of the remote control. The Industrial Designer mentioned aiming for high battery life but noted it wasn't a significant issue for remote controls, suggesting that battery replacement every now and then is acceptable. There was no further detailed discussion on battery design beyond this point.",
+          "rouge_f1": {
+            "rouge1": 0.21782178217821785,
+            "rouge2": 0.0202020202020202,
+            "rougeL": 0.1386138613861386
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              287,
+              298
+            ]
+          ],
+          "evidence_words": 172
+        }
+      }
+    }
+  ]
+}

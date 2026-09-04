@@ -1,0 +1,2706 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "evaluation",
+    "config": {
+      "experiment_version": 2,
+      "bertscore": {
+        "package_version": "0.3.13",
+        "model": {
+          "tag": "roberta-large",
+          "name": "FacebookAI/roberta-large",
+          "revision": "722cf37b1afa9454edce342e7895e588b6ff1d59",
+          "prequantized": false
+        },
+        "layers": 17,
+        "batch_size": 16,
+        "rescale_with_baseline": false
+      },
+      "judge": {
+        "model": {
+          "tag": "llama-3.3-70b-bnb4",
+          "name": "unsloth/Llama-3.3-70B-Instruct-bnb-4bit",
+          "revision": "74be54198eaf4f3c7fba1f4e9fa63725a810c7eb",
+          "prequantized": true
+        },
+        "max_new_tokens": 192,
+        "temperature": 0.0,
+        "seed": 42,
+        "prompt": "You are evaluating an answer to a meeting question.\nUse the reference answer and gold transcript evidence as complementary sources of truth. Do not require identical wording, and do not reward an answer merely for repeating the question.\n\nFirst identify the important points in the reference answer, then check them against the candidate and transcript. A supported but incomplete answer must receive 2, not 3. Transcript-supported details beyond the reference are allowed, but do not compensate for omitted important reference points.\n\nScore the candidate answer using this scale:\n1 = Invalid or incorrect. It does not answer the question, contradicts the evidence, is mostly unsupported, contains a major unsupported claim, or claims insufficient evidence when the answer is available.\n2 = Partially correct. It gives useful supported information, but omits one or more important points from the reference answer or includes a minor unsupported claim.\n3 = Correct. It covers all or nearly all important points from the reference answer, is supported by the transcript evidence, and contains no material error or unsupported claim.\n\nReturn only a JSON object with an integer score and one short reason:\n{\"score\": 1, \"reason\": \"...\"}"
+      }
+    },
+    "config_hash": "09d95b9b6b254a97435a1587c1d2c53dfa07763e34812caf4a773dd281351504",
+    "inputs": {
+      "answer_summary": {
+        "file": "summary.json",
+        "sha256": "d515af52447a6ae9389175df9e2567d3f963f41ab852183c5d83316a0f73803b"
+      },
+      "answers_Bmr026": {
+        "file": "Bmr026.json",
+        "sha256": "5c54c5f6af9bbddfb9123da0f514110c853f476dceced02fbf5a92fd4a61899b"
+      },
+      "answers_Bro005": {
+        "file": "Bro005.json",
+        "sha256": "53ec29479fb086a275fe411aff2f8d70280e79de0ad63aed2a1e761457e98687"
+      },
+      "answers_Bro022": {
+        "file": "Bro022.json",
+        "sha256": "e000e7b7dbbad5f98dddad59f02381d2be088e1feee7ca52ae2b1a7e6f68c982"
+      },
+      "answers_ES2006a": {
+        "file": "ES2006a.json",
+        "sha256": "5584deaeaf2d3daccef345419424f5291dae5e4a03950fdacca2a6d0ee6069f9"
+      },
+      "answers_ES2006b": {
+        "file": "ES2006b.json",
+        "sha256": "242da88f9194561d23ab64746c7fcc05a8f18b4b92a8002c87ffd4f4199d3e43"
+      },
+      "answers_ES2006c": {
+        "file": "ES2006c.json",
+        "sha256": "e3426501f27b03205e535835163c1a048357bd7c7cf91299af7b41c45a198aa2"
+      },
+      "answers_ES2006d": {
+        "file": "ES2006d.json",
+        "sha256": "929885e55d1f7b2ef67f28a40c16630279fd2a4bab2c8a87443c288cfe38527c"
+      },
+      "answers_ES2009b": {
+        "file": "ES2009b.json",
+        "sha256": "6441320491cc5800c16b98fe163d6f96aa5ef6659b00140e9416207b732f68a5"
+      },
+      "answers_ES2009d": {
+        "file": "ES2009d.json",
+        "sha256": "edc29edf02863886891c4f688bceda3067e0119f9f39c72f023576600c6b887f"
+      },
+      "answers_IS1006c": {
+        "file": "IS1006c.json",
+        "sha256": "94b28978436c4ca1b9c9f15ac76396867017222c34939112a4ee730ed2f8afd1"
+      },
+      "answers_IS1006d": {
+        "file": "IS1006d.json",
+        "sha256": "cc85e3d3e70717b33ca4bb6665a075e911896755ee5103adf93294e2fc10215f"
+      },
+      "answers_TS3009b": {
+        "file": "TS3009b.json",
+        "sha256": "3fcf645ea18e149b12ce8a0d7e7893849422e653512e18d5ad7005d8d7c2ce79"
+      },
+      "answers_TS3009d": {
+        "file": "TS3009d.json",
+        "sha256": "6eb97de478f0fb770b46495d7751c452f857c927cab50f3c131166eb56fab17b"
+      },
+      "answers_TS3010a": {
+        "file": "TS3010a.json",
+        "sha256": "e89d189929da66b2a00821c5054216f98252f192173e78caad3a7a468186c85f"
+      },
+      "answers_TS3010b": {
+        "file": "TS3010b.json",
+        "sha256": "4bf0b21339835fa4ef6a2071dfb179f046f1236aa00f8fc578de2a5c48b18a3c"
+      },
+      "answers_TS3010c": {
+        "file": "TS3010c.json",
+        "sha256": "920eb397edd0c247e6aeed0669a7cb568f67c8d2db6b0c0ceec159696cc565ab"
+      },
+      "answers_covid_2": {
+        "file": "covid_2.json",
+        "sha256": "16f770e4d88745ed3203364d93ca41247c3a6e23da131614b92950475cc7cd01"
+      },
+      "answers_covid_6": {
+        "file": "covid_6.json",
+        "sha256": "db5d5f3f1f15fe110f2bd2094eaece1df8b3ac2bd95379c7a7f0329a831830ef"
+      },
+      "answers_education_0": {
+        "file": "education_0.json",
+        "sha256": "4fbd3f70861600063cb382db15747eeacd8650b06dfc42b7557a04fe3ccaf864"
+      },
+      "answers_education_18": {
+        "file": "education_18.json",
+        "sha256": "c2ebca98333903dffce373ee061bb32ef31c8e9e9e12b9fb9cc2335b519f3b51"
+      },
+      "meeting_Bmr026": {
+        "file": "Bmr026.json",
+        "sha256": "1e878d70ce756408b39334d543a34242dea0ae7003d9c99bb44527a663d3d70f"
+      },
+      "meeting_Bro005": {
+        "file": "Bro005.json",
+        "sha256": "9ae07cf1c17a88eba67baf37b419d555f685230c195356322fed9abfc7eafa7c"
+      },
+      "meeting_Bro022": {
+        "file": "Bro022.json",
+        "sha256": "aa15696864a75fa6f3e55b318dde95bd6773cbfe05f8055e6629eaf46aa40c0c"
+      },
+      "meeting_ES2006a": {
+        "file": "ES2006a.json",
+        "sha256": "18a8e2880abb9baf4ed2c2de1c10195e0c23b67a9d42636f600eb14b00be5504"
+      },
+      "meeting_ES2006b": {
+        "file": "ES2006b.json",
+        "sha256": "6b7ac18c069947da908885a151d2d3ce64b4848ab683f97ab0bba78eac9b14d6"
+      },
+      "meeting_ES2006c": {
+        "file": "ES2006c.json",
+        "sha256": "40ff9696b3958b6ff32e92cd7be836a42f99f44b7b45ed983f400be6aeba6635"
+      },
+      "meeting_ES2006d": {
+        "file": "ES2006d.json",
+        "sha256": "19629ff852fc5b2fe29e4c2e89b9657209dd1e17ef195383ec80a18ffd165a88"
+      },
+      "meeting_ES2009b": {
+        "file": "ES2009b.json",
+        "sha256": "1023ec44f901ec9330ae5c46ecda7510af4d5f7ec72f32eddc57be2f21d1481f"
+      },
+      "meeting_ES2009d": {
+        "file": "ES2009d.json",
+        "sha256": "6f894e9ad1778a9ecee3fe05d7e2f50ba48a25dd0eb56bce20785a72aeeccdb9"
+      },
+      "meeting_IS1006c": {
+        "file": "IS1006c.json",
+        "sha256": "f449ea2bc578d5d7091b90df78465d5c8dc8973db2b40af7ee29d6f66942f1c7"
+      },
+      "meeting_IS1006d": {
+        "file": "IS1006d.json",
+        "sha256": "f42f4b7d9aa3617b74dd1baccf53c2808b33c837f90f53624a169e1773c3f14a"
+      },
+      "meeting_TS3009b": {
+        "file": "TS3009b.json",
+        "sha256": "31868f828f6cf76682e4866c709992137c272b243354ce191698ac9e20c05721"
+      },
+      "meeting_TS3009d": {
+        "file": "TS3009d.json",
+        "sha256": "a5abe0f1bb2043c06a462609e12335293ae6418dd6cf3f849a4af291b54ccdea"
+      },
+      "meeting_TS3010a": {
+        "file": "TS3010a.json",
+        "sha256": "6764f4b9c4ddac869d8b8f08725d9ac338f483013c2d8ba352b9417da3c9c235"
+      },
+      "meeting_TS3010b": {
+        "file": "TS3010b.json",
+        "sha256": "78fe6232a63138ed322178849f1ea5c7c3c102203a6bc617e2f39e0b35cd205c"
+      },
+      "meeting_TS3010c": {
+        "file": "TS3010c.json",
+        "sha256": "6c675f16089561bb8a6684d792482953ca5f8a4527a6a0a37c9c7abcce686768"
+      },
+      "meeting_covid_2": {
+        "file": "covid_2.json",
+        "sha256": "594eefe6146935a4f341bf1280957d8467f98106ef752dcf3f19496e8d86ad34"
+      },
+      "meeting_covid_6": {
+        "file": "covid_6.json",
+        "sha256": "717ab9379731c09a8ad069b23efa00bea4c8c27c01ea8946ac0766014f8d9d3a"
+      },
+      "meeting_education_0": {
+        "file": "education_0.json",
+        "sha256": "0164c80a4a327aea4fc8ee383b8095c8d2574791b1089b8e36b14d865902c195"
+      },
+      "meeting_education_18": {
+        "file": "education_18.json",
+        "sha256": "61abf87198e6046a7e0cf9b274234e7d44ce4507796e7fc02010b1359fa17265"
+      }
+    },
+    "input_hash": "9c3180d6da4430f525fbc5b0da43a1ed89383a323bb04eb7acd35dd6038bc7fd",
+    "fingerprint": "100fe84a4a5f105e3b78d73b890fbd1de8ee208b9728f63e6387c0d8ec1e5e4c",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+    }
+  },
+  "answer_summary": {
+    "experiment_version": 2,
+    "stage": "answers",
+    "source": "oracle",
+    "answer_model": {
+      "tag": "qwen2.5-14b",
+      "name": "Qwen/Qwen2.5-14B-Instruct",
+      "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+      "prequantized": false,
+      "max_new_tokens": 512,
+      "temperature": 0.0,
+      "seed": 42
+    },
+    "meeting_ids": [
+      "ES2006a",
+      "ES2006d",
+      "Bmr026",
+      "IS1006d",
+      "education_0",
+      "TS3009b",
+      "covid_2",
+      "ES2009d",
+      "TS3010b",
+      "TS3009d",
+      "ES2009b",
+      "ES2006b",
+      "ES2006c",
+      "TS3010c",
+      "Bro022",
+      "IS1006c",
+      "covid_6",
+      "Bro005",
+      "TS3010a",
+      "education_18"
+    ],
+    "meeting_count": 20,
+    "question_count": 142,
+    "conditions": {
+      "oracle": {
+        "source": "annotated evidence"
+      }
+    },
+    "question_average_rouge_f1": {
+      "oracle": {
+        "rouge1": 0.36515536716718566,
+        "rouge2": 0.10713478038615194,
+        "rougeL": 0.23183247769665927
+      }
+    },
+    "per_meeting": {
+      "ES2006a": {
+        "oracle": {
+          "rouge1": 0.30344610610962386,
+          "rouge2": 0.05011683260152903,
+          "rougeL": 0.18109981899023792
+        }
+      },
+      "ES2006d": {
+        "oracle": {
+          "rouge1": 0.3266737452726518,
+          "rouge2": 0.08362983471171175,
+          "rougeL": 0.18785581993703987
+        }
+      },
+      "Bmr026": {
+        "oracle": {
+          "rouge1": 0.3130071576315708,
+          "rouge2": 0.07170314326951319,
+          "rougeL": 0.20781545862307363
+        }
+      },
+      "IS1006d": {
+        "oracle": {
+          "rouge1": 0.3784179824223794,
+          "rouge2": 0.11822939223851615,
+          "rougeL": 0.25780890312925486
+        }
+      },
+      "education_0": {
+        "oracle": {
+          "rouge1": 0.34283060300605694,
+          "rouge2": 0.08483700157870838,
+          "rougeL": 0.19735616372202647
+        }
+      },
+      "TS3009b": {
+        "oracle": {
+          "rouge1": 0.38248487406685694,
+          "rouge2": 0.1197365756403379,
+          "rougeL": 0.23443419118469877
+        }
+      },
+      "covid_2": {
+        "oracle": {
+          "rouge1": 0.37001532055527814,
+          "rouge2": 0.10706892452786228,
+          "rougeL": 0.26634077964723907
+        }
+      },
+      "ES2009d": {
+        "oracle": {
+          "rouge1": 0.3327379587073087,
+          "rouge2": 0.08399207119767486,
+          "rougeL": 0.1980157201196863
+        }
+      },
+      "TS3010b": {
+        "oracle": {
+          "rouge1": 0.41699940023726295,
+          "rouge2": 0.13917393102864514,
+          "rougeL": 0.26213392761202586
+        }
+      },
+      "TS3009d": {
+        "oracle": {
+          "rouge1": 0.3990610358310091,
+          "rouge2": 0.1345105038197506,
+          "rougeL": 0.27151293572827156
+        }
+      },
+      "ES2009b": {
+        "oracle": {
+          "rouge1": 0.3597717683741033,
+          "rouge2": 0.09694525453294883,
+          "rougeL": 0.21432808330850187
+        }
+      },
+      "ES2006b": {
+        "oracle": {
+          "rouge1": 0.37446128779025,
+          "rouge2": 0.08968563462062489,
+          "rougeL": 0.20782195837249814
+        }
+      },
+      "ES2006c": {
+        "oracle": {
+          "rouge1": 0.38568636469301604,
+          "rouge2": 0.11449781524666437,
+          "rougeL": 0.22834756878040427
+        }
+      },
+      "TS3010c": {
+        "oracle": {
+          "rouge1": 0.35964699732509137,
+          "rouge2": 0.11258228081611162,
+          "rougeL": 0.22989131802789164
+        }
+      },
+      "Bro022": {
+        "oracle": {
+          "rouge1": 0.36220653463491176,
+          "rouge2": 0.10271851986636614,
+          "rougeL": 0.2658383130429321
+        }
+      },
+      "IS1006c": {
+        "oracle": {
+          "rouge1": 0.4162215113782698,
+          "rouge2": 0.12725551217079223,
+          "rougeL": 0.2664163501198831
+        }
+      },
+      "covid_6": {
+        "oracle": {
+          "rouge1": 0.4050060378006701,
+          "rouge2": 0.14487874021429614,
+          "rougeL": 0.2723518093602886
+        }
+      },
+      "Bro005": {
+        "oracle": {
+          "rouge1": 0.3184508158964167,
+          "rouge2": 0.12274399357682214,
+          "rougeL": 0.23100463793731246
+        }
+      },
+      "TS3010a": {
+        "oracle": {
+          "rouge1": 0.29817750898986595,
+          "rouge2": 0.07735849056603775,
+          "rougeL": 0.17211507028440665
+        }
+      },
+      "education_18": {
+        "oracle": {
+          "rouge1": 0.3611476706188918,
+          "rouge2": 0.10643676296901594,
+          "rougeL": 0.2168548688414998
+        }
+      }
+    },
+    "meeting_average_rouge_f1": {
+      "oracle": {
+        "rouge1": 0.36032253406707426,
+        "rouge2": 0.10440506075969647,
+        "rougeL": 0.22846718483845865
+      }
+    },
+    "paired_meeting_average": {},
+    "model_calls": 136,
+    "cache_hits": 6,
+    "artifact_hashes": {
+      "ES2006a": "5584deaeaf2d3daccef345419424f5291dae5e4a03950fdacca2a6d0ee6069f9",
+      "ES2006d": "929885e55d1f7b2ef67f28a40c16630279fd2a4bab2c8a87443c288cfe38527c",
+      "Bmr026": "5c54c5f6af9bbddfb9123da0f514110c853f476dceced02fbf5a92fd4a61899b",
+      "IS1006d": "cc85e3d3e70717b33ca4bb6665a075e911896755ee5103adf93294e2fc10215f",
+      "education_0": "4fbd3f70861600063cb382db15747eeacd8650b06dfc42b7557a04fe3ccaf864",
+      "TS3009b": "3fcf645ea18e149b12ce8a0d7e7893849422e653512e18d5ad7005d8d7c2ce79",
+      "covid_2": "16f770e4d88745ed3203364d93ca41247c3a6e23da131614b92950475cc7cd01",
+      "ES2009d": "edc29edf02863886891c4f688bceda3067e0119f9f39c72f023576600c6b887f",
+      "TS3010b": "4bf0b21339835fa4ef6a2071dfb179f046f1236aa00f8fc578de2a5c48b18a3c",
+      "TS3009d": "6eb97de478f0fb770b46495d7751c452f857c927cab50f3c131166eb56fab17b",
+      "ES2009b": "6441320491cc5800c16b98fe163d6f96aa5ef6659b00140e9416207b732f68a5",
+      "ES2006b": "242da88f9194561d23ab64746c7fcc05a8f18b4b92a8002c87ffd4f4199d3e43",
+      "ES2006c": "e3426501f27b03205e535835163c1a048357bd7c7cf91299af7b41c45a198aa2",
+      "TS3010c": "920eb397edd0c247e6aeed0669a7cb568f67c8d2db6b0c0ceec159696cc565ab",
+      "Bro022": "e000e7b7dbbad5f98dddad59f02381d2be088e1feee7ca52ae2b1a7e6f68c982",
+      "IS1006c": "94b28978436c4ca1b9c9f15ac76396867017222c34939112a4ee730ed2f8afd1",
+      "covid_6": "db5d5f3f1f15fe110f2bd2094eaece1df8b3ac2bd95379c7a7f0329a831830ef",
+      "Bro005": "53ec29479fb086a275fe411aff2f8d70280e79de0ad63aed2a1e761457e98687",
+      "TS3010a": "e89d189929da66b2a00821c5054216f98252f192173e78caad3a7a468186c85f",
+      "education_18": "c2ebca98333903dffce373ee061bb32ef31c8e9e9e12b9fb9cc2335b519f3b51"
+    }
+  },
+  "judge_model_calls": 142,
+  "judge_cache_hits": 0,
+  "records": [
+    {
+      "meeting_id": "ES2006a",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8609296083450317,
+        "recall": 0.862727165222168,
+        "f1": 0.8618274331092834
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence, including the discussion of unique and trendy features, user-friendliness, and the idea of simplifying the remote control's design.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence, including the discussion of unique and trendy features, user-friendliness, and the idea of simplifying the remote control's design.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006a",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8620143532752991,
+        "recall": 0.9025644659996033,
+        "f1": 0.8818234801292419
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important point that the target profit is for the total sales, not per unit",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important point that the target profit is for the total sales, not per unit\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006a",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8821016550064087,
+        "recall": 0.892574667930603,
+        "f1": 0.8873072862625122
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the point about combining fashion with function",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the point about combining fashion with function\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006a",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8422752022743225,
+        "recall": 0.8660101890563965,
+        "f1": 0.8539778590202332
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about simplifying the remote control's design, reducing physical buttons, and incorporating a menu-based system, while also considering user-friendliness and battery life.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about simplifying the remote control's design, reducing physical buttons, and incorporating a menu-based system, while also considering user-friendliness and battery life.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006a",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8782428503036499,
+        "recall": 0.8761532306671143,
+        "f1": 0.8771967887878418
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately reflects the Marketing's thoughts on omitting buttons for infrequently used functions and potentially using a menu on the screen instead.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately reflects the Marketing's thoughts on omitting buttons for infrequently used functions and potentially using a menu on the screen instead.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006a",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8582465648651123,
+        "recall": 0.8681977391242981,
+        "f1": 0.8631935119628906
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important point about not deviating far from usual performance",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important point about not deviating far from usual performance\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006d",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8458294868469238,
+        "recall": 0.8750587105751038,
+        "f1": 0.8601958751678467
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, providing a comprehensive summary of the presentation on evaluation criteria.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, providing a comprehensive summary of the presentation on evaluation criteria.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006d",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8730443716049194,
+        "recall": 0.8630326986312866,
+        "f1": 0.8680096864700317
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the point about using a finger to scroll instead of a thumb to negate the RSI issue",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the point about using a finger to scroll instead of a thumb to negate the RSI issue\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006d",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8800994157791138,
+        "recall": 0.8869002461433411,
+        "f1": 0.8834866881370544
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures the conclusion of the discussion, including the average score of five and the reasoning behind it.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures the conclusion of the discussion, including the average score of five and the reasoning behind it.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006d",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8623788356781006,
+        "recall": 0.882646381855011,
+        "f1": 0.8723949790000916
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about project finance, covering key points such as the initial inclusion of various components, the removal of items due to budget constraints, and the simplification of the interface to stay within budget.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about project finance, covering key points such as the initial inclusion of various components, the removal of items due to budget constraints, and the simplification of the interface to stay within budget.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006d",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8950254917144775,
+        "recall": 0.8877378106117249,
+        "f1": 0.8913667798042297
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the detail that the scroll wheel is on the remote side",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the detail that the scroll wheel is on the remote side\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006d",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8558588624000549,
+        "recall": 0.877366304397583,
+        "f1": 0.8664791584014893
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures the essence of the disagreement and the subsequent resolution among group mates, aligning with both the reference answer and the gold transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures the essence of the disagreement and the subsequent resolution among group mates, aligning with both the reference answer and the gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bmr026",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8478923439979553,
+        "recall": 0.873658299446106,
+        "f1": 0.8605824708938599
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides useful information about the discussion on storage disks and computer connections, but omits some important points from the reference answer, such as the specific details about the size of the meetings and the amount of space needed.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides useful information about the discussion on storage disks and computer connections, but omits some important points from the reference answer, such as the specific details about the size of the meetings and the amount of space needed.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bmr026",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8861355781555176,
+        "recall": 0.9231111407279968,
+        "f1": 0.9042454957962036
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bmr026",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8548161387443542,
+        "recall": 0.8580803871154785,
+        "f1": 0.8564451336860657
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures the group's surprise and concern about Dave's departure, as well as the potential impact on their work, which is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures the group's surprise and concern about Dave's departure, as well as the potential impact on their work, which is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bmr026",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8667426705360413,
+        "recall": 0.8659294247627258,
+        "f1": 0.8663358688354492
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about scheduling meetings, covering the key points from the reference answer and supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about scheduling meetings, covering the key points from the reference answer and supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bmr026",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8653106689453125,
+        "recall": 0.8842692375183105,
+        "f1": 0.8746871948242188
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer captures the professor's suggestion for flexibility in scheduling meetings but omits details about alternating meeting focus and the consideration of others' opinions.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer captures the professor's suggestion for flexibility in scheduling meetings but omits details about alternating meeting focus and the consideration of others' opinions.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bmr026",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8746323585510254,
+        "recall": 0.8916360139846802,
+        "f1": 0.8830523490905762
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits detail about foul language and transcription bleeping",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits detail about foul language and transcription bleeping\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006d",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8534064292907715,
+        "recall": 0.8776576519012451,
+        "f1": 0.8653621673583984
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including details about the prototype's features, material, and user reactions.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including details about the prototype's features, material, and user reactions.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006d",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8791065216064453,
+        "recall": 0.8689915537834167,
+        "f1": 0.8740197420120239
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006d",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.9215384721755981,
+        "recall": 0.9261575937271118,
+        "f1": 0.9238423109054565
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006d",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8758336305618286,
+        "recall": 0.8962877988815308,
+        "f1": 0.8859426975250244
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, providing a comprehensive summary of the discussion about product evaluation.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, providing a comprehensive summary of the discussion about product evaluation.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006d",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8725371360778809,
+        "recall": 0.8940612077713013,
+        "f1": 0.8831680417060852
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures the reasoning behind the group's decision to give two points on usefulness, aligning with both the reference answer and the gold transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures the reasoning behind the group's decision to give two points on usefulness, aligning with both the reference answer and the gold transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006d",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8628510236740112,
+        "recall": 0.875336229801178,
+        "f1": 0.8690487742424011
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the project manager's belief that usefulness adds to fanciness",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the project manager's belief that usefulness adds to fanciness\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006d",
+      "question_index": 6,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8623992204666138,
+        "recall": 0.8652814626693726,
+        "f1": 0.8638379573822021
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers the main points of the discussion about product quotation, including the initial confusion over the number of batteries, the consideration of removing certain components to reduce costs, and the goal of keeping the total cost under $12. However, it lacks specific details mentioned in the reference answer and transcript, such as the initial total cost of $17.80 and the exact adjustments made to reach the target cost.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers the main points of the discussion about product quotation, including the initial confusion over the number of batteries, the consideration of removing certain components to reduce costs, and the goal of keeping the total cost under $12. However, it lacks specific details mentioned in the reference answer and transcript, such as the initial total cost of $17.80 and the exact adjustments made to reach the target cost.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006d",
+      "question_index": 7,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8595446944236755,
+        "recall": 0.8527533411979675,
+        "f1": 0.8561355471611023
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the transcript.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_0",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8459080457687378,
+        "recall": 0.8415393829345703,
+        "f1": 0.8437180519104004
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including online and telephone support services, monitoring tools, and adapting to family needs.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including online and telephone support services, monitoring tools, and adapting to family needs.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_0",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8685095906257629,
+        "recall": 0.8555133938789368,
+        "f1": 0.8619625568389893
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures Vaughan Gething's concerns and priorities regarding the mental health recovery plan during the lockdown.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures Vaughan Gething's concerns and priorities regarding the mental health recovery plan during the lockdown.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_0",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8561002612113953,
+        "recall": 0.8739590644836426,
+        "f1": 0.8649374842643738
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_0",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8609709739685059,
+        "recall": 0.8680849075317383,
+        "f1": 0.8645133376121521
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_0",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8776305913925171,
+        "recall": 0.8676884174346924,
+        "f1": 0.8726311922073364
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important point about long-term care",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important point about long-term care\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_0",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8661818504333496,
+        "recall": 0.8767170906066895,
+        "f1": 0.8714176416397095
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_0",
+      "question_index": 6,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8494594097137451,
+        "recall": 0.8712395429611206,
+        "f1": 0.8602116107940674
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The answer covers several important points from the reference, including the decline in safeguarding referrals and the efforts to encourage vulnerable children to attend school, but it omits specific details about the support for foster carers and the challenges faced by residential care settings.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The answer covers several important points from the reference, including the decline in safeguarding referrals and the efforts to encourage vulnerable children to attend school, but it omits specific details about the support for foster carers and the challenges faced by residential care settings.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_0",
+      "question_index": 7,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8559438586235046,
+        "recall": 0.8535244464874268,
+        "f1": 0.8547323942184448
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points, such as the challenge of monitoring vulnerable children and the drop in safeguarding referrals, but omits details about the expanded definition for local authorities and the intention to publish it, as mentioned in the reference answer and transcript evidence.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points, such as the challenge of monitoring vulnerable children and the drop in safeguarding referrals, but omits details about the expanded definition for local authorities and the intention to publish it, as mentioned in the reference answer and transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_0",
+      "question_index": 8,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8680174350738525,
+        "recall": 0.863003134727478,
+        "f1": 0.8655030131340027
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits details about the adequate social support and the pandemic context",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits details about the adequate social support and the pandemic context\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_0",
+      "question_index": 9,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8476817607879639,
+        "recall": 0.8515512943267822,
+        "f1": 0.8496121168136597
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The answer provides useful supported information but omits some important points from the reference answer, such as the launch of a survey to gather children's views on the COVID-19 situation.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The answer provides useful supported information but omits some important points from the reference answer, such as the launch of a survey to gather children's views on the COVID-19 situation.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_0",
+      "question_index": 10,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8822120428085327,
+        "recall": 0.8925476670265198,
+        "f1": 0.8873497247695923
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits specific survey questions",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits specific survey questions\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_0",
+      "question_index": 11,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8721599578857422,
+        "recall": 0.8509242534637451,
+        "f1": 0.8614112734794617
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important point about calling for the possibility of losing the law for those involved in childcare and education",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important point about calling for the possibility of losing the law for those involved in childcare and education\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3009b",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8427846431732178,
+        "recall": 0.8894541263580322,
+        "f1": 0.865490734577179
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, with no material errors or unsupported claims.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, with no material errors or unsupported claims.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3009b",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8848364353179932,
+        "recall": 0.8708299398422241,
+        "f1": 0.8777773380279541
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important point about consistency with older remote manual",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important point about consistency with older remote manual\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3009b",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8745876550674438,
+        "recall": 0.8726499080657959,
+        "f1": 0.8736177682876587
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures the group's conclusion on LCD screens and speech recognition.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures the group's conclusion on LCD screens and speech recognition.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3009b",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8582512140274048,
+        "recall": 0.8852788805961609,
+        "f1": 0.8715555667877197
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides a good summary of the discussion about the technical design, covering key points such as the basic functionality of the remote control, the importance of button placement for RSI prevention, and the inclusion of an LCD screen. However, it omits some details from the reference answer, such as the specific discussion about the target audience and the features they are interested in, like L_C_D_ screens and voice recognition.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides a good summary of the discussion about the technical design, covering key points such as the basic functionality of the remote control, the importance of button placement for RSI prevention, and the inclusion of an LCD screen. However, it omits some details from the reference answer, such as the specific discussion about the target audience and the features they are interested in, like L_C_D_ screens and voice recognition.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3009b",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8972547054290771,
+        "recall": 0.9045794010162354,
+        "f1": 0.9009021520614624
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the important point about the maximum number of buttons within ten",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the important point about the maximum number of buttons within ten\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3009b",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8682723641395569,
+        "recall": 0.8822494745254517,
+        "f1": 0.8752050399780273
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence, with no material errors or unsupported claims.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence, with no material errors or unsupported claims.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_2",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.9063510894775391,
+        "recall": 0.9331963658332825,
+        "f1": 0.9195778965950012
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_2",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8698731660842896,
+        "recall": 0.902233898639679,
+        "f1": 0.8857580423355103
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the minister's recognition of seniors' great need and insistence that the payments are not insignificant",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the minister's recognition of seniors' great need and insistence that the payments are not insignificant\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_2",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8814553022384644,
+        "recall": 0.9047679305076599,
+        "f1": 0.892959475517273
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits details about the Canada emergency student benefit",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits details about the Canada emergency student benefit\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_2",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8979028463363647,
+        "recall": 0.8891825675964355,
+        "f1": 0.8935214281082153
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer is partially correct, as it mentions Bains' statement about looking into issues related to business loan eligibility and adjusting the eligibility criteria, but it omits important points from the reference answer, such as the number of loans already distributed through the CEBA program.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer is partially correct, as it mentions Bains' statement about looking into issues related to business loan eligibility and adjusting the eligibility criteria, but it omits important points from the reference answer, such as the number of loans already distributed through the CEBA program.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_2",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8693337440490723,
+        "recall": 0.8939165472984314,
+        "f1": 0.8814537525177002
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important point about strong fiscal position",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important point about strong fiscal position\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_2",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8823392391204834,
+        "recall": 0.9005012512207031,
+        "f1": 0.8913277387619019
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits information about loan refinancing",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits information about loan refinancing\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_2",
+      "question_index": 6,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8987100124359131,
+        "recall": 0.8937374949455261,
+        "f1": 0.896216869354248
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits government's priority on Canadians' health and safety",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits government's priority on Canadians' health and safety\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2009d",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8310081958770752,
+        "recall": 0.8588144183158875,
+        "f1": 0.844682514667511
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers most of the important points from the reference answer and is supported by the transcript evidence, but omits some minor details and does not fully address the budget problem and the compromise reached by the team.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers most of the important points from the reference answer and is supported by the transcript evidence, but omits some minor details and does not fully address the budget problem and the compromise reached by the team.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2009d",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8499597907066345,
+        "recall": 0.8551363348960876,
+        "f1": 0.8525401949882507
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides useful supported information but omits specific details from the reference answer, such as the concerns about the solar cell's reliability and cost.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides useful supported information but omits specific details from the reference answer, such as the concerns about the solar cell's reliability and cost.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2009d",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8650436401367188,
+        "recall": 0.8724920749664307,
+        "f1": 0.8687518835067749
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the Project Manager's plan to include the project process in the presentation",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the Project Manager's plan to include the project process in the presentation\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2009d",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8377271294593811,
+        "recall": 0.8589072823524475,
+        "f1": 0.8481850028038025
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, providing a comprehensive overview of the group's reflection on their project process.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, providing a comprehensive overview of the group's reflection on their project process.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2009d",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8523361682891846,
+        "recall": 0.8724730014801025,
+        "f1": 0.8622870445251465
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer does not address the question about the Industrial Design's thoughts on teamwork.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer does not address the question about the Industrial Design's thoughts on teamwork.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2009d",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8836129903793335,
+        "recall": 0.8804239630699158,
+        "f1": 0.882015585899353
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010b",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8869286179542542,
+        "recall": 0.8974343538284302,
+        "f1": 0.8921505212783813
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010b",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.9048718214035034,
+        "recall": 0.9027866721153259,
+        "f1": 0.9038280844688416
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the discussion about button design",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the discussion about button design\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010b",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.883651852607727,
+        "recall": 0.8673096895217896,
+        "f1": 0.8754044771194458
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits Industrial Designer's suggestion about young people drawing on the cover",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits Industrial Designer's suggestion about young people drawing on the cover\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010b",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8887302875518799,
+        "recall": 0.8946272730827332,
+        "f1": 0.891668975353241
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010b",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8755479454994202,
+        "recall": 0.8738694190979004,
+        "f1": 0.8747078776359558
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010b",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.9109301567077637,
+        "recall": 0.9050910472869873,
+        "f1": 0.9080012440681458
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the team's decision to revisit the discussion later",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the team's decision to revisit the discussion later\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010b",
+      "question_index": 6,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8697301745414734,
+        "recall": 0.8738605380058289,
+        "f1": 0.8717904686927795
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3009d",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8770870566368103,
+        "recall": 0.8677783608436584,
+        "f1": 0.872407853603363
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3009d",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8722747564315796,
+        "recall": 0.876258373260498,
+        "f1": 0.8742620348930359
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers the main discussion about the LCD screen's placement but omits key points such as the concern about the screen being covered when held and the need for marketing research.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers the main discussion about the LCD screen's placement but omits key points such as the concern about the screen being covered when held and the need for marketing research.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3009d",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8674105405807495,
+        "recall": 0.8663110136985779,
+        "f1": 0.8668604493141174
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer, such as the Project Manager's concern about the prototype's design, but it omits key details like the specific issue of the LCD screen being covered when held and the need for further marketing research.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer, such as the Project Manager's concern about the prototype's design, but it omits key details like the specific issue of the LCD screen being covered when held and the need for further marketing research.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3009d",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8922042846679688,
+        "recall": 0.8673667311668396,
+        "f1": 0.8796101808547974
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures the User Interface's suggestion to replace titanium with titanium-coloured plastic to reduce costs, which is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures the User Interface's suggestion to replace titanium with titanium-coloured plastic to reduce costs, which is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3009d",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.9003046751022339,
+        "recall": 0.9000062942504883,
+        "f1": 0.9001554250717163
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3009d",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8607182502746582,
+        "recall": 0.8843588829040527,
+        "f1": 0.8723784685134888
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about product quotation, covering key points from the reference answer and supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about product quotation, covering key points from the reference answer and supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2009b",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.866759181022644,
+        "recall": 0.8721800446510315,
+        "f1": 0.8694611191749573
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including the Industrial Designer's suggestion to use plastic, the User Interface Developer's proposal for simplicity, and Marketing's findings on user preferences and potential future design directions.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including the Industrial Designer's suggestion to use plastic, the User Interface Developer's proposal for simplicity, and Marketing's findings on user preferences and potential future design directions.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2009b",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8774468898773193,
+        "recall": 0.8729104399681091,
+        "f1": 0.8751727938652039
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the detail about the concern of remotes being lost",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the detail about the concern of remotes being lost\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2009b",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8714685440063477,
+        "recall": 0.8750749826431274,
+        "f1": 0.8732680082321167
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the detail about the voice-controlled sticky pad on top of the television",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the detail about the voice-controlled sticky pad on top of the television\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2009b",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8690668344497681,
+        "recall": 0.8786691427230835,
+        "f1": 0.8738416433334351
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2009b",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8670328855514526,
+        "recall": 0.8892456293106079,
+        "f1": 0.8779987692832947
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2009b",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8803008794784546,
+        "recall": 0.8672797679901123,
+        "f1": 0.8737418055534363
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points, such as company colors and the logo, but omits key details like the idea of providing skins for users and the discussion about dormant mode to conserve battery life.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points, such as company colors and the logo, but omits key details like the idea of providing skins for users and the discussion about dormant mode to conserve battery life.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006b",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8371874094009399,
+        "recall": 0.8853472471237183,
+        "f1": 0.8605940937995911
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, providing a comprehensive summary of the presentations on working design, technical functions, and functional requirements.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, providing a comprehensive summary of the presentations on working design, technical functions, and functional requirements.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006b",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.9024231433868408,
+        "recall": 0.870011031627655,
+        "f1": 0.8859207034111023
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the context of Industrial Designer's suggestion to keep the design simple for future upgrades",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the context of Industrial Designer's suggestion to keep the design simple for future upgrades\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006b",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8661377429962158,
+        "recall": 0.8660997152328491,
+        "f1": 0.8661187291145325
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the detail about the locator beeping when users clap and not beeping every five minutes",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the detail about the locator beeping when users clap and not beeping every five minutes\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006b",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8888571262359619,
+        "recall": 0.9090434312820435,
+        "f1": 0.8988369703292847
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers the main points from the reference answer, including the target age group, simplicity, and voice recognition, but omits some details, such as the discussion about the beeper button and the importance of having both key buttons and voice recognition.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers the main points from the reference answer, including the target age group, simplicity, and voice recognition, but omits some details, such as the discussion about the beeper button and the importance of having both key buttons and voice recognition.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006b",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8617229461669922,
+        "recall": 0.8638411164283752,
+        "f1": 0.8627808094024658
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the detail about the 25 to 35 age group's popularity and the discussion about the product's compatibility with old TVs",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the detail about the 25 to 35 age group's popularity and the discussion about the product's compatibility with old TVs\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006b",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8626102209091187,
+        "recall": 0.8722501397132874,
+        "f1": 0.8674033880233765
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including the target demographic and the discussion of implementing a limited voice command system.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including the target demographic and the discussion of implementing a limited voice command system.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006c",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8007463216781616,
+        "recall": 0.8454514741897583,
+        "f1": 0.8224918842315674
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The answer covers most important points from the reference answer and is supported by the transcript evidence, but omits some minor details, such as specific examples of products with scroll wheels and the exact implications of using latex cases with solar cells.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The answer covers most important points from the reference answer and is supported by the transcript evidence, but omits some minor details, such as specific examples of products with scroll wheels and the exact implications of using latex cases with solar cells.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006c",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8730361461639404,
+        "recall": 0.864863932132721,
+        "f1": 0.8689308166503906
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important point about Industrial Designer including the LCD with spinning wheel into the design",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important point about Industrial Designer including the LCD with spinning wheel into the design\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006c",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.869337797164917,
+        "recall": 0.8668702840805054,
+        "f1": 0.8681023120880127
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006c",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8739045858383179,
+        "recall": 0.8791407346725464,
+        "f1": 0.8765147924423218
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, with no material errors or unsupported claims.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, with no material errors or unsupported claims.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006c",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8906040191650391,
+        "recall": 0.8803189992904663,
+        "f1": 0.8854316473007202
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "ES2006c",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8851901292800903,
+        "recall": 0.8725106716156006,
+        "f1": 0.8788046836853027
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits Marketing's conclusion about buttons and menu-driven features",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits Marketing's conclusion about buttons and menu-driven features\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010c",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8903005123138428,
+        "recall": 0.8798894882202148,
+        "f1": 0.885064423084259
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010c",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8645834922790527,
+        "recall": 0.8691980838775635,
+        "f1": 0.8668845891952515
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important points about recommended design details",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important points about recommended design details\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010c",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.856364905834198,
+        "recall": 0.8738585114479065,
+        "f1": 0.8650232553482056
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion about interface concept design, covering key points from the reference answer and transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion about interface concept design, covering key points from the reference answer and transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010c",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8961804509162903,
+        "recall": 0.8657875061035156,
+        "f1": 0.8807218670845032
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits important points about battery options and button preferences",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits important points about battery options and button preferences\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010c",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8929613828659058,
+        "recall": 0.8970462083816528,
+        "f1": 0.894999086856842
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the point about young people being less likely to afford a LCD TV",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the point about young people being less likely to afford a LCD TV\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010c",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8384321331977844,
+        "recall": 0.8121370673179626,
+        "f1": 0.8250751495361328
+      },
+      "judge": {
+        "score": 1,
+        "reason": "claims insufficient evidence when the answer is available",
+        "raw_response": "{\"score\": 1, \"reason\": \"claims insufficient evidence when the answer is available\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010c",
+      "question_index": 6,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8816704750061035,
+        "recall": 0.8814296722412109,
+        "f1": 0.8815500736236572
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points, such as the decision to use a normal battery and the discussion of cost implications, but omits other key points from the reference answer, including the consideration of a joystick and the dependency of the chip choice on the LCD and scroll features.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points, such as the decision to use a normal battery and the discussion of cost implications, but omits other key points from the reference answer, including the consideration of a joystick and the dependency of the chip choice on the LCD and scroll features.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bro022",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8685469627380371,
+        "recall": 0.8901491761207581,
+        "f1": 0.87921541929245
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussion on TORRENT schedule and intermediate categorization, covering key points from the reference answer and supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussion on TORRENT schedule and intermediate categorization, covering key points from the reference answer and supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bro022",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8666804432868958,
+        "recall": 0.9067981243133545,
+        "f1": 0.8862856030464172
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bro022",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8640396595001221,
+        "recall": 0.8989713191986084,
+        "f1": 0.8811594247817993
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bro022",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8283659219741821,
+        "recall": 0.882868230342865,
+        "f1": 0.8547492027282715
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including the discussion of mean subtraction, channel adaptation, and potential solutions like high-pass filtering or VAD-like techniques.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including the discussion of mean subtraction, channel adaptation, and potential solutions like high-pass filtering or VAD-like techniques.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bro022",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8747625350952148,
+        "recall": 0.9125004410743713,
+        "f1": 0.893233060836792
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bro022",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8990141153335571,
+        "recall": 0.9302805662155151,
+        "f1": 0.9143801331520081
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately reflects PhD C's thoughts on the signal-to-noise ratio.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately reflects PhD C's thoughts on the signal-to-noise ratio.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006c",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8262788653373718,
+        "recall": 0.8585618734359741,
+        "f1": 0.8421110510826111
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including the selection of a simple battery, titanium material, push buttons, the consideration of speech recognition, and cost constraints.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including the selection of a simple battery, titanium material, push buttons, the consideration of speech recognition, and cost constraints.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006c",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.9024882316589355,
+        "recall": 0.9128025770187378,
+        "f1": 0.907616138458252
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006c",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.9174212217330933,
+        "recall": 0.9100635051727295,
+        "f1": 0.9137275815010071
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers the key points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers the key points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006c",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8807170391082764,
+        "recall": 0.8941817283630371,
+        "f1": 0.8873983025550842
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including the discussion of a simplified remote control design, customizable color options, glow-in-the-dark features, and the idea of making the remote control smarter with voice recognition and personalization.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including the discussion of a simplified remote control design, customizable color options, glow-in-the-dark features, and the idea of making the remote control smarter with voice recognition and personalization.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006c",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.893288254737854,
+        "recall": 0.9093962907791138,
+        "f1": 0.9012702703475952
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006c",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8806494474411011,
+        "recall": 0.8882791996002197,
+        "f1": 0.8844478726387024
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006c",
+      "question_index": 6,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8738985657691956,
+        "recall": 0.8675078749656677,
+        "f1": 0.8706914782524109
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including the emphasis on making the remote control 'fancy' and innovative, the trends of preferring fruit and vegetable designs, sponginess, and natural shapes, and the consideration of using rubber and painting to achieve the desired look.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence, including the emphasis on making the remote control 'fancy' and innovative, the trends of preferring fruit and vegetable designs, sponginess, and natural shapes, and the consideration of using rubber and painting to achieve the desired look.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006c",
+      "question_index": 7,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8730157017707825,
+        "recall": 0.8697725534439087,
+        "f1": 0.8713910579681396
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures the marketing's findings about the trend, including the inspiration from fruits and vegetables, round shapes, and natural looks, as well as the trend's applicability across various product categories.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures the marketing's findings about the trend, including the inspiration from fruits and vegetables, round shapes, and natural looks, as well as the trend's applicability across various product categories.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "IS1006c",
+      "question_index": 8,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8639698028564453,
+        "recall": 0.8812574148178101,
+        "f1": 0.8725279569625854
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers some important points from the reference answer, such as exploring titanium and spongy options and considering unique features, but omits key details like the project manager's constraint that they cannot have both options and the suggestion to paint the controller to pretend it's titanium.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points from the reference answer, such as exploring titanium and spongy options and considering unique features, but omits key details like the project manager's constraint that they cannot have both options and the suggestion to paint the controller to pretend it's titanium.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_6",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.879585862159729,
+        "recall": 0.8802738189697266,
+        "f1": 0.8799297213554382
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits opposition party's concerns and comments on the rent relief program",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits opposition party's concerns and comments on the rent relief program\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_6",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.860680878162384,
+        "recall": 0.884473443031311,
+        "f1": 0.8724149465560913
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer covers the opposition party's questioning and the Prime Minister's emphasis on supporting workers and organizations, but omits the Prime Minister's explanation that the government recognized companies were facing difficulties due to COVID-19 and his statement that the government's priority was to help workers in difficulty so they do not lose their jobs.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers the opposition party's questioning and the Prime Minister's emphasis on supporting workers and organizations, but omits the Prime Minister's explanation that the government recognized companies were facing difficulties due to COVID-19 and his statement that the government's priority was to help workers in difficulty so they do not lose their jobs.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_6",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8710343837738037,
+        "recall": 0.8719035387039185,
+        "f1": 0.871468722820282
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures the main points of the debate, including the opposition's call for federal leadership and national standards, and the Prime Minister's commitment to support the provinces while respecting their jurisdiction.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures the main points of the debate, including the opposition's call for federal leadership and national standards, and the Prime Minister's commitment to support the provinces while respecting their jurisdiction.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_6",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8571822643280029,
+        "recall": 0.8879631161689758,
+        "f1": 0.8723012804985046
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures the main points of the questioning about the reports on long-term care facilities, including the delay in reporting and acting upon the report, concerns about protocol follow-up, and the minister's accountability.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures the main points of the questioning about the reports on long-term care facilities, including the delay in reporting and acting upon the report, concerns about protocol follow-up, and the minister's accountability.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_6",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.890326976776123,
+        "recall": 0.901531457901001,
+        "f1": 0.8958941698074341
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures the main points of the debate, including the opposition's concerns about the minister's support for the CCP and the minister's responses regarding her use of WeChat and commitment to freedom of expression.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures the main points of the debate, including the opposition's concerns about the minister's support for the CCP and the minister's responses regarding her use of WeChat and commitment to freedom of expression.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_6",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8618836402893066,
+        "recall": 0.8666580319404602,
+        "f1": 0.8642642498016357
+      },
+      "judge": {
+        "score": 1,
+        "reason": "The candidate answer claims insufficient evidence when the answer is available in the reference and transcript.",
+        "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when the answer is available in the reference and transcript.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_6",
+      "question_index": 6,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8658962249755859,
+        "recall": 0.8843125700950623,
+        "f1": 0.8750075101852417
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the opposition party's claim that the government was not cooperating with the UK to protect supply chains and capitalize on opportunities",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the opposition party's claim that the government was not cooperating with the UK to protect supply chains and capitalize on opportunities\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_6",
+      "question_index": 7,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8816630840301514,
+        "recall": 0.877233624458313,
+        "f1": 0.8794427514076233
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_6",
+      "question_index": 8,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.9076762795448303,
+        "recall": 0.9153581857681274,
+        "f1": 0.9115010499954224
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer omits the important point about the government's multiple complementary supply chains operating at the same time for PPE production, as explained by Minister Anita Anand.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer omits the important point about the government's multiple complementary supply chains operating at the same time for PPE production, as explained by Minister Anita Anand.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_6",
+      "question_index": 9,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8636951446533203,
+        "recall": 0.8693729639053345,
+        "f1": 0.8665247559547424
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_6",
+      "question_index": 10,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8726884126663208,
+        "recall": 0.878738522529602,
+        "f1": 0.8757030367851257
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "covid_6",
+      "question_index": 11,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8723179697990417,
+        "recall": 0.8848496675491333,
+        "f1": 0.8785391449928284
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bro005",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8093591332435608,
+        "recall": 0.8631961941719055,
+        "f1": 0.8354111909866333
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The candidate answer provides useful supported information about the discussion on experiment results, but omits some important points from the reference answer, such as the specific details about the baseline performance and the impact of normalization on model performance.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer provides useful supported information about the discussion on experiment results, but omits some important points from the reference answer, such as the specific details about the baseline performance and the impact of normalization on model performance.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bro005",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8622872829437256,
+        "recall": 0.8902862668037415,
+        "f1": 0.8760631680488586
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the point about adding French and Spanish to the multilingual English model hurting the model",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the point about adding French and Spanish to the multilingual English model hurting the model\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bro005",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8648226261138916,
+        "recall": 0.8963617086410522,
+        "f1": 0.8803097605705261
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bro005",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8655778169631958,
+        "recall": 0.8875246047973633,
+        "f1": 0.8764138221740723
+      },
+      "judge": {
+        "score": 2,
+        "reason": "The answer covers some important points from the reference, such as exploring multi-band approaches and combining features with MLPs, but omits key details like the discussion on training targets, noises, and the potential problems with pronunciation models.",
+        "raw_response": "{\"score\": 2, \"reason\": \"The answer covers some important points from the reference, such as exploring multi-band approaches and combining features with MLPs, but omits key details like the discussion on training targets, noises, and the potential problems with pronunciation models.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bro005",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8846612572669983,
+        "recall": 0.8883274793624878,
+        "f1": 0.886490523815155
+      },
+      "judge": {
+        "score": 2,
+        "reason": "omits the professor's conclusion that there were no clear solutions and that there would still be plenty to do",
+        "raw_response": "{\"score\": 2, \"reason\": \"omits the professor's conclusion that there were no clear solutions and that there would still be plenty to do\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "Bro005",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8457015752792358,
+        "recall": 0.8957309126853943,
+        "f1": 0.8699976205825806
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures the team's thoughts on their progress, including the mixed but generally positive sentiment, and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures the team's thoughts on their progress, including the mixed but generally positive sentiment, and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010a",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8784856200218201,
+        "recall": 0.8778958320617676,
+        "f1": 0.8781905770301819
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "TS3010a",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8553279042243958,
+        "recall": 0.8395360708236694,
+        "f1": 0.8473583459854126
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_18",
+      "question_index": 0,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8603602051734924,
+        "recall": 0.8573671579360962,
+        "f1": 0.8588610887527466
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer, including the discussion on teacher recruiting trends, reasons for the trend, and steps taken to address the issue, as well as the specific focus on Welsh language teaching and efforts to enhance Welsh language skills among teachers.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer, including the discussion on teacher recruiting trends, reasons for the trend, and steps taken to address the issue, as well as the specific focus on Welsh language teaching and efforts to enhance Welsh language skills among teachers.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_18",
+      "question_index": 1,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.880084753036499,
+        "recall": 0.8616004586219788,
+        "f1": 0.870744526386261
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_18",
+      "question_index": 2,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.877281665802002,
+        "recall": 0.8609379529953003,
+        "f1": 0.8690329790115356
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately captures Kirsty Williams' response to the doubt, including her acknowledgement of the complexity of the statistics, the need for more work, and the actions being taken to address the issue.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately captures Kirsty Williams' response to the doubt, including her acknowledgement of the complexity of the statistics, the need for more work, and the actions being taken to address the issue.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_18",
+      "question_index": 3,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8548108339309692,
+        "recall": 0.8737159967422485,
+        "f1": 0.8641600012779236
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_18",
+      "question_index": 4,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8613170981407166,
+        "recall": 0.8831413388252258,
+        "f1": 0.8720927238464355
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately reflects Kirsty Williams' opinion and comments on the decision.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately reflects Kirsty Williams' opinion and comments on the decision.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_18",
+      "question_index": 5,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8957561254501343,
+        "recall": 0.890842080116272,
+        "f1": 0.8932923674583435
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes Kirsty Williams' opinion on the geographic spread of provision and its impact on accessibility.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes Kirsty Williams' opinion on the geographic spread of provision and its impact on accessibility.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_18",
+      "question_index": 6,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8652728796005249,
+        "recall": 0.8644698858261108,
+        "f1": 0.8648712038993835
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussions on university mergers, covering key points from the reference answer and supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussions on university mergers, covering key points from the reference answer and supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_18",
+      "question_index": 7,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.884035587310791,
+        "recall": 0.815123438835144,
+        "f1": 0.8481820821762085
+      },
+      "judge": {
+        "score": 1,
+        "reason": "claims insufficient evidence when the answer is available",
+        "raw_response": "{\"score\": 1, \"reason\": \"claims insufficient evidence when the answer is available\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_18",
+      "question_index": 8,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.9024864435195923,
+        "recall": 0.897194504737854,
+        "f1": 0.8998326659202576
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_18",
+      "question_index": 9,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8642774224281311,
+        "recall": 0.8639190196990967,
+        "f1": 0.8640982508659363
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes the discussions on pay dispute situations, covering key points such as the disparity in pay settlements, the potential impact on staff recruitment and retention, the government's role in monitoring negotiations, and the need for pay equality between schoolteachers and FE staff.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the discussions on pay dispute situations, covering key points such as the disparity in pay settlements, the potential impact on staff recruitment and retention, the government's role in monitoring negotiations, and the need for pay equality between schoolteachers and FE staff.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_18",
+      "question_index": 10,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.8812737464904785,
+        "recall": 0.8857239484786987,
+        "f1": 0.8834932446479797
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately summarizes Eluned Morgan's opinion, covering key points from the reference answer and supported by the transcript evidence.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes Eluned Morgan's opinion, covering key points from the reference answer and supported by the transcript evidence.\"}",
+        "cache_hit": false
+      }
+    },
+    {
+      "meeting_id": "education_18",
+      "question_index": 11,
+      "condition": "oracle",
+      "bertscore": {
+        "precision": 0.9166494607925415,
+        "recall": 0.9133641719818115,
+        "f1": 0.9150038957595825
+      },
+      "judge": {
+        "score": 3,
+        "reason": "The candidate answer accurately covers all important points from the reference answer.",
+        "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer.\"}",
+        "cache_hit": false
+      }
+    }
+  ]
+}
