@@ -2,16 +2,24 @@
 
 import argparse
 import html
+import json
 from pathlib import Path
 
 from meeting_qa_chunking.artifacts import write_json
 from meeting_qa_chunking.evidence import render_gold_evidence
+from meeting_qa_chunking.evidence_preparation import prepare_retrieved_evidence
 from meeting_qa_chunking.qmsum import load_meeting
-from tools.report_ablations import load_json, retrieved_evidence
 
 
 DEFAULT_DATA_DIR = Path("data/raw/qmsum/data/ALL/val")
 DEFAULT_RUNS_DIR = Path("runs/ablations")
+STAGES = {"oracle-14b": "oracle", "retrieval-14b": "retrieval"}
+
+
+def load_json(path: Path) -> dict:
+    if not path.exists():
+        raise FileNotFoundError(f"Missing run artifact: {path}")
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def index_by(items: list[dict], *fields: str) -> dict[tuple, dict]:
@@ -21,28 +29,32 @@ def index_by(items: list[dict], *fields: str) -> dict[tuple, dict]:
     return indexed
 
 
-def load_stages(root: Path, meeting_ids: list[str]) -> list[dict]:
+def load_stages(
+    root: Path, meeting_ids: list[str], retrieval_condition: str
+) -> list[dict]:
     answer_root = root / "answers"
-    stage_dirs = sorted(
-        path for path in answer_root.iterdir() if (path / "summary.json").exists()
-    )
-    if not stage_dirs:
-        raise FileNotFoundError(f"No completed answer stages in {answer_root}")
-
     stages = []
-    for answer_dir in stage_dirs:
+    for name, source in STAGES.items():
+        answer_dir = answer_root / name
         summary = load_json(answer_dir / "summary.json")
+        if summary["source"] != source:
+            raise ValueError(f"Unexpected source for answer stage {name}")
         missing = set(meeting_ids) - set(summary["meeting_ids"])
         if missing:
             raise ValueError(
-                f"Answer stage {answer_dir.name} lacks meetings: {sorted(missing)}"
+                f"Answer stage {name} lacks meetings: {sorted(missing)}"
             )
-        evaluation = load_json(root / "evaluation" / f"{answer_dir.name}.json")
+        selected = "oracle" if source == "oracle" else retrieval_condition
+        conditions = summary["conditions"]
+        if selected not in conditions:
+            raise ValueError(f"Unknown {source} condition: {selected}")
+        evaluation = load_json(root / "evaluation" / f"{name}.json")
         stages.append(
             {
-                "name": answer_dir.name,
+                "name": name,
                 "directory": answer_dir,
                 "summary": summary,
+                "conditions": {selected: conditions[selected]},
                 "evaluations": index_by(
                     evaluation["records"],
                     "meeting_id",
@@ -59,16 +71,17 @@ def build_review(
     root: Path,
     data_dir: Path,
     meeting_ids: list[str],
+    retrieval_condition: str,
 ) -> dict:
     if len(set(meeting_ids)) != len(meeting_ids):
         raise ValueError("Meeting IDs must be unique")
 
-    stages = load_stages(root, meeting_ids)
+    stages = load_stages(root, meeting_ids, retrieval_condition)
     stage_metadata = {
         stage["name"]: {
             "source": stage["summary"]["source"],
             "answer_model": stage["summary"]["answer_model"],
-            "conditions": stage["summary"]["conditions"],
+            "conditions": stage["conditions"],
         }
         for stage in stages
     }
@@ -84,23 +97,14 @@ def build_review(
             for stage in stages
         }
 
-        has_retrieval = any(
-            stage["summary"]["source"] == "retrieval" for stage in stages
-        )
-        retrieval = (
-            load_json(root / "retrieval" / f"{meeting_id}.json")
-            if has_retrieval
-            else None
-        )
-        retrieval_questions = (
-            index_by(retrieval["questions"], "question_index")
-            if retrieval
-            else {}
-        )
-        rendered_retrieval = (
-            retrieved_evidence(meeting, retrieval, root / "segmentation")
-            if retrieval
-            else []
+        retrieval_path = root / "retrieval" / f"{meeting_id}.json"
+        retrieval = load_json(retrieval_path)
+        retrieval_questions = index_by(retrieval["questions"], "question_index")
+        _conditions, rendered_retrieval = prepare_retrieved_evidence(
+            meeting,
+            retrieval_path,
+            root / "segmentation",
+            [retrieval_condition],
         )
 
         questions = []
@@ -113,7 +117,8 @@ def build_review(
                     raise ValueError(
                         f"Question mismatch in {stage['name']} Q{question_index}"
                     )
-                for condition, generated in answer["results"].items():
+                for condition in stage["conditions"]:
+                    generated = answer["results"][condition]
                     key = (meeting_id, question_index, condition)
                     evaluation = stage["evaluations"].get(key)
                     if evaluation is None:
@@ -122,14 +127,18 @@ def build_review(
                     retrieval_scores = None
                     retrieved = None
                     if stage["summary"]["source"] == "retrieval":
-                        saved = retrieval_questions[(question_index,)]["results"][condition]
+                        saved = retrieval_questions[(question_index,)]["results"][
+                            condition
+                        ]
                         retrieval_scores = {
                             name: value
                             for name, value in saved.items()
                             if name != "selected_chunk_indices"
                         }
                         retrieved = {
-                            "text": rendered_retrieval[question_index][condition],
+                            "text": rendered_retrieval[question_index][condition][
+                                "text"
+                            ],
                             "evidence_order": retrieval["evidence_order"],
                             "selected_chunk_indices": saved["selected_chunk_indices"],
                         }
@@ -167,6 +176,7 @@ def build_review(
 
     return {
         "run_id": run_id,
+        "retrieval_condition": retrieval_condition,
         "meeting_ids": meeting_ids,
         "answer_stages": stage_metadata,
         "meetings": meetings,
@@ -174,7 +184,8 @@ def build_review(
 
 
 def block(text: str) -> str:
-    return f"<pre>{html.escape(text)}</pre>"
+    cleaned = "\n".join(line.rstrip() for line in text.splitlines())
+    return f"<pre>{html.escape(cleaned)}</pre>"
 
 
 def number(value: float | None) -> str:
@@ -197,7 +208,7 @@ def score_line(scores: dict) -> str:
         f"BERTScore P/R/F1 {number(bert['precision'])}/{number(bert['recall'])}/{number(bert['f1'])}",
         f"judge {scores['judge']}/3",
     ]
-    return " · ".join(parts)
+    return " | ".join(parts)
 
 
 def make_markdown(review: dict) -> str:
@@ -249,14 +260,26 @@ def make_markdown(review: dict) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--run", required=True, help="Run identifier, e.g. full")
-    parser.add_argument("--meetings", nargs="+", required=True)
+    parser.add_argument(
+        "--condition",
+        "--specification",
+        dest="condition",
+        required=True,
+        help="Retrieval condition, e.g. lumber__dense__w512",
+    )
+    parser.add_argument("--meetings", nargs="*")
     parser.add_argument("--runs-dir", type=Path, default=DEFAULT_RUNS_DIR)
     parser.add_argument("--data-dir", type=Path, default=DEFAULT_DATA_DIR)
     parser.add_argument("--output-prefix", type=Path)
     args = parser.parse_args()
 
     root = args.runs_dir / args.run
-    review = build_review(args.run, root, args.data_dir, args.meetings)
+    meeting_ids = args.meetings or load_json(
+        root / "answers" / "retrieval-14b" / "summary.json"
+    )["meeting_ids"]
+    review = build_review(
+        args.run, root, args.data_dir, meeting_ids, args.condition
+    )
     output_prefix = args.output_prefix or root / "review-selection"
     json_output = output_prefix.with_suffix(".json")
     markdown_output = output_prefix.with_suffix(".md")
