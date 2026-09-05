@@ -42,7 +42,10 @@ def preformatted(text: str) -> str:
 def model_name(model: dict[str, object] | str) -> str:
     if isinstance(model, str):
         return model
-    return model.get("name", model.get("model", model["tag"]))
+    for field in ("name", "model", "tag"):
+        if field in model:
+            return str(model[field])
+    raise ValueError("Model record has no name")
 
 
 def evaluated_metrics(stage: dict[str, object], condition: str) -> tuple[dict, dict]:

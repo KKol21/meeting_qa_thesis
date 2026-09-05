@@ -105,6 +105,25 @@ class EvidencePreparationTest(unittest.TestCase):
             "[0] A: alpha beta",
         )
 
+    def test_rejects_missing_retrieval_questions(self) -> None:
+        retrieval = {
+            "meeting_id": "TinyMeeting",
+            "configurations": {},
+            "chunking": {
+                "turn_packed_max_words": 2,
+                "word_packed_max_words": 2,
+            },
+            "evidence_order": "chronological",
+            "questions": [],
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "retrieval.json"
+            path.write_text(json.dumps(retrieval), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "wrong number of questions"):
+                prepare_retrieved_evidence(
+                    self.meeting, path, Path(directory), requested_conditions=None
+                )
+
 
 if __name__ == "__main__":
     unittest.main()

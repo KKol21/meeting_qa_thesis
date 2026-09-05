@@ -1,7 +1,8 @@
 # Experiment pipeline
 
-This is the offline orientation guide for the active QMSum experiment. Start
-here when returning to the code after a break. The short version is:
+This is the offline orientation guide for the active QMSum development
+experiment. Start here when returning to the code after a break. The short
+version is:
 
 ```text
 QMSum JSON
@@ -16,6 +17,11 @@ QMSum JSON
 
 The experiment asks whether semantic chunks improve retrieval and downstream
 meeting-question answering compared with two non-semantic baselines.
+
+This is a LumberChunker **adaptation**, not an exact reproduction: speaker turns
+replace paragraphs, Qwen2.5-7B replaces Gemini 1.0 Pro, and decoding is greedy.
+The current results come from 20 QMSum validation meetings, not a final
+held-out evaluation.
 
 ## Where things live
 
@@ -53,7 +59,7 @@ Entry point: `src/stages/ablation_segment.py`
 2. `lumber.lumber_chunks` builds a **local** window beginning at the next
    unprocessed turn. It never sends the whole transcript to the model.
 3. `lumber_prompt.build_window` adds complete turns until the window exceeds
-   the 550-token target. The token count is the original LumberChunker
+   the 550-token target. The token count uses the LumberChunker
    approximation: `round(1.2 * number_of_words)`.
 4. The prompt in `prompts/lumberchunker.txt` asks Qwen2.5-7B-Instruct for the
    first turn whose content changes relative to the preceding turns.
@@ -83,7 +89,8 @@ For every meeting it constructs three complete, non-overlapping views:
 
 Speaker labels and turn IDs are not charged to either content-word limit. The
 word-packed baseline stores original word offsets so two fragments from the
-same long turn are not accidentally deduplicated.
+same long turn are not accidentally deduplicated. Therefore, equal content-word
+budgets do not guarantee equal tokenizer-length inputs across chunkers.
 
 For each question, every chunk view is ranked three ways:
 
@@ -95,14 +102,17 @@ For each question, every chunk view is ranked three ways:
 
 Ranked chunks are selected under 512- and 1024-word budgets. The chosen content
 is then rendered in chronological transcript order for dialogue coherence.
-Selection may clip the last fragment. This gives 3 chunkers x 3 retrievers x
-2 budgets = 18 conditions.
+Selection may clip the last fragment, including a complete turn from a
+turn-preserving chunker. This gives 3 chunkers x 3 retrievers x 2 budgets = 18
+conditions.
 
 The primary retrieval metrics are evidence precision and recall at equal word
 budgets. First-overlap reciprocal rank is retained as a diagnostic but not
 used for winner claims because larger chunks are more likely to overlap a gold
 turn. Gold relevance is defined by QMSum's annotated inclusive turn ranges.
 Consequently, any selected fragment of a gold-labelled turn counts as relevant.
+Recall is thus coverage of words in annotated turns, not coverage of atomic
+answer facts.
 Chunk embeddings live in
 `.cache/embeddings/`; the question embedding is recomputed for each ranking
 call.
@@ -115,8 +125,9 @@ Entry point: `src/stages/ablation_answer.py`
 
 There are two evidence sources:
 
-- `oracle`: QMSum's annotated evidence turns. This isolates answer-model
-  capacity from retrieval errors.
+- `oracle`: all QMSum-annotated evidence turns, without the 512/1024-word cap.
+  This isolates answer-model capacity from retrieval errors but is not a
+  budget-matched upper bound.
 - `retrieval`: reconstructed stage-2 evidence. This measures the end-to-end
   pipeline.
 
@@ -147,7 +158,9 @@ The evaluator adds two metrics to every saved candidate:
 The judge sees the question, reference answer, gold transcript evidence, and
 candidate answer. Its instruction is `prompts/judge.txt`. Because some QMSum
 reference answers are incomplete or awkward, the gold evidence is included so
-the judge can recognize a supported answer that is phrased differently.
+the judge can recognize a supported answer that is phrased differently. It does
+not see the evidence supplied to the answer model, so it measures
+transcript-aware answer quality rather than retrieval-evidence faithfulness.
 
 BERTScore is loaded first and then explicitly deleted before the 70B judge is
 loaded. This hand-off is why `gc.collect()` and `torch.cuda.empty_cache()` are
@@ -235,9 +248,9 @@ early if PyTorch cannot see CUDA.
 The smoke job is `Bed002` with a four-hour limit. The full job uses 20 meetings
 and 142 questions
 from QMSum's validation/development split, excluding `Bed002` and adding the
-next seed-42 candidate, `education_18`. It has a ten-hour limit. All
-stages are meeting-resumable, so a second submission reuses valid saved files
-and cached model calls if the first job reaches its wall-time limit.
+next seed-42 candidate, `education_18`. It has a ten-hour limit. Segmentation,
+retrieval, and answering resume per meeting. Evaluation writes per answer stage,
+but cached judgments reduce repeated model work after an interrupted run.
 
 ## Caches and invalidation
 
@@ -305,6 +318,17 @@ meeting record or remove that meeting's file and let the stage regenerate it.
 
 Before a full run, run the unit tests, run `ablation-smoke`, inspect its Slurm
 log, regenerate `report.md`/`review.md`, and manually read several examples.
+
+## Decisions for supervisor review
+
+- Is a size-matched baseline required? In this run, mean chunk sizes are 167
+  words for Lumber, 226 for turn-packed, and 252 for word-packed.
+- Should evidence remain budgeted in whitespace-delimited content words, or use
+  answer-model tokens?
+- Is an equally budgeted oracle needed alongside the current uncapped oracle?
+- Should final evaluation run once on the QMSum test split, and is ELITR-Bench
+  still required?
+- Are meeting-clustered confidence intervals required before comparative claims?
 
 ## Offline package references
 

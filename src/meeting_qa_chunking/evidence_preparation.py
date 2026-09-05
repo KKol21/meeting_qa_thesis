@@ -80,6 +80,12 @@ def prepare_retrieved_evidence(
         raise ValueError(f"Unknown retrieval conditions: {', '.join(unknown)}")
     selected_conditions = {name: conditions[name] for name in selected_names}
 
+    saved_questions = retrieval["questions"]
+    if not isinstance(saved_questions, list) or len(saved_questions) != len(
+        meeting.questions
+    ):
+        raise ValueError("Retrieval result has the wrong number of questions")
+
     chunkers = tuple(dict.fromkeys(
         condition["chunker"] for condition in selected_conditions.values()
     ))
@@ -92,7 +98,7 @@ def prepare_retrieved_evidence(
     )
     evidence_order = retrieval["evidence_order"]
     prepared = []
-    for question_index, question_result in enumerate(retrieval["questions"]):
+    for question_index, question_result in enumerate(saved_questions):
         if question_result["question_index"] != question_index:
             raise ValueError("Retrieval question indices are not contiguous")
         if question_result["question"] != meeting.questions[question_index].text:

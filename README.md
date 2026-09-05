@@ -1,8 +1,8 @@
 # Meeting QA chunking
 
-This repository contains a QMSum experiment comparing complete-turn packing,
-strict word packing, and Lumber-style semantic chunking. ELITR-Bench will be
-added after this path is stable.
+This repository contains a QMSum development experiment comparing complete-turn
+packing, strict word packing, and a LumberChunker adaptation. ELITR-Bench is not
+implemented; whether it remains in thesis scope is an open decision.
 
 ## Layout
 
@@ -14,7 +14,8 @@ added after this path is stable.
 - `docs/PIPELINE.md`: offline code and Slurm walkthrough
 - `docs/vendor/`: curated offline dependency documentation
 - `data/`: local source data (ignored by Git)
-- `runs/`: fetched experiment results (ignored by Git)
+- `runs/`: fetched experiment results (new files are ignored; selected ablation
+  results are committed)
 
 ## Ablation workflow
 
@@ -60,3 +61,7 @@ python src/tools/inspect_retrieval_failure.py `
 
 For the complete data flow, caches, commands, failure recovery, and Slurm
 explanation, read [`docs/PIPELINE.md`](docs/PIPELINE.md).
+
+For supervisor review, start with
+[`docs/QUESTION_PIPELINE_REVIEW.md`](docs/QUESTION_PIPELINE_REVIEW.md) and
+[`docs/QUALITATIVE_RECALL_ANALYSIS.md`](docs/QUALITATIVE_RECALL_ANALYSIS.md).

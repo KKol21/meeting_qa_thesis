@@ -10,7 +10,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
 from stages.ablation_retrieval import summarize
-from stages.ablation_evaluate import summarize_stage
+from stages.ablation_evaluate import evaluation_complete, summarize_stage
+from tools.report_ablations import model_name
 
 
 class RetrievalSummaryTest(unittest.TestCase):
@@ -99,6 +100,28 @@ class RetrievalSummaryTest(unittest.TestCase):
 
         self.assertEqual(summary["answer_model"], {"name": "model"})
         self.assertEqual(summary["meeting_average"]["oracle"]["judge_mean"], 3)
+
+    def test_evaluation_reuse_requires_matching_record_identity(self) -> None:
+        expected = [
+            {"meeting_id": "A", "question_index": 0, "condition": "oracle"}
+        ]
+        saved = {
+            "records": [
+                {
+                    **expected[0],
+                    "bertscore": {"precision": 0.7, "recall": 0.8, "f1": 0.75},
+                    "judge": {"score": 3},
+                }
+            ]
+        }
+        self.assertTrue(evaluation_complete(saved, expected))
+        saved["records"][0]["question_index"] = 1
+        self.assertFalse(evaluation_complete(saved, expected))
+
+    def test_report_accepts_current_and_legacy_model_names(self) -> None:
+        self.assertEqual(model_name({"name": "current"}), "current")
+        self.assertEqual(model_name({"model": "legacy"}), "legacy")
+        self.assertEqual(model_name({"tag": "short"}), "short")
 
 
 if __name__ == "__main__":

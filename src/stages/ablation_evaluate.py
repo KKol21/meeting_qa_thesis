@@ -184,11 +184,27 @@ def summarize_stage(result: dict[str, object]) -> dict[str, object]:
     }
 
 
-def evaluation_complete(saved: dict[str, object], record_count: int) -> bool:
+def evaluation_complete(
+    saved: dict[str, object], expected: list[dict[str, object]]
+) -> bool:
     records = saved.get("records")
+    if not isinstance(records, list) or not all(
+        isinstance(record, dict) for record in records
+    ):
+        return False
+
+    fields = ("meeting_id", "question_index", "condition")
+    expected_keys = [
+        tuple(record[field] for field in fields)
+        for record in expected
+    ]
+    saved_keys = [
+        tuple(record.get(field) for field in fields)
+        for record in records
+    ]
     return (
-        isinstance(records, list)
-        and len(records) == record_count
+        saved_keys == expected_keys
+        and len(saved_keys) == len(set(saved_keys))
         and all(
             set(record.get("bertscore", {})) == {"precision", "recall", "f1"}
             and record.get("judge", {}).get("score") in (1, 2, 3)
@@ -225,7 +241,7 @@ def main() -> None:
             if (
                 saved.get("provenance", {}).get("fingerprint")
                 == provenance["fingerprint"]
-                and evaluation_complete(saved, len(records))
+                and evaluation_complete(saved, records)
             ):
                 completed[answer_dir.name] = saved
                 print(f"Evaluation {answer_dir.name}: existing", flush=True)
