@@ -97,8 +97,10 @@ class EvidencePreparationTest(unittest.TestCase):
                 requested_conditions=None,
             )
 
-        self.assertEqual(list(chunks), ["turn_packed", "word_packed", "lumber"])
-        self.assertEqual([len(chunks[name]) for name in chunks], [2, 2, 1])
+        self.assertEqual(
+            list(chunks), ["turn_packed", "word_packed", "lumber", "single_turn"]
+        )
+        self.assertEqual([len(chunks[name]) for name in chunks], [2, 2, 1, 2])
         self.assertEqual(conditions["turn_packed__dense__w2"], condition)
         self.assertEqual(
             prepared[0]["turn_packed__dense__w2"]["text"],

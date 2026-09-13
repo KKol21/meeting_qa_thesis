@@ -15,6 +15,7 @@ from meeting_qa_chunking.artifacts import (
     write_json,
 )
 from meeting_qa_chunking.config import (
+    BASELINE_CHUNKERS,
     ConditionSpec,
     load_run_config,
     retrieval_conditions,
@@ -30,6 +31,16 @@ from meeting_qa_chunking.selection import select_meeting_paths
 
 
 METRICS = ("precision", "recall", "first_overlap_reciprocal_rank")
+RESULT_FIELDS = {
+    "precision",
+    "recall",
+    "first_overlap_rank",
+    "first_overlap_reciprocal_rank",
+    "retrieved_words",
+    "relevant_retrieved_words",
+    "gold_words",
+    "selected_chunk_indices",
+}
 
 
 def configurations(run) -> dict[str, dict[str, object]]:
@@ -78,7 +89,7 @@ def summarize(output_dir: Path, meeting_ids: list[str]) -> dict[str, object]:
         if condition["chunker"] != "lumber":
             continue
         suffix = f"{condition['retriever']}__w{condition['evidence_words']}"
-        for baseline in ("turn_packed", "word_packed"):
+        for baseline in BASELINE_CHUNKERS:
             baseline_name = f"{baseline}__{suffix}"
             if baseline_name not in names:
                 continue
@@ -186,6 +197,7 @@ def main() -> None:
                     meeting.id,
                     [question.text for question in meeting.questions],
                     set(condition_config),
+                    RESULT_FIELDS,
                 )
             ):
                 print(f"Retrieval {path.stem}: existing", flush=True)

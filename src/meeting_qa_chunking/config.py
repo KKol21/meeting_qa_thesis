@@ -13,7 +13,7 @@ class ModelSpec:
     prequantized: bool = False
 
 
-LUMBER_MODEL = ModelSpec(
+QWEN_7B = ModelSpec(
     tag="qwen2.5-7b",
     name="Qwen/Qwen2.5-7B-Instruct",
     revision="a09a35458c702b33eeacc393d103063234e8bc28",
@@ -47,14 +47,17 @@ BERTSCORE_MODEL = ModelSpec(
 )
 
 ANSWER_MODELS = {
-    model.tag: model for model in (LUMBER_MODEL, QWEN_14B, QWEN_32B_BNB4)
+    model.tag: model for model in (QWEN_7B, QWEN_14B, QWEN_32B_BNB4)
 }
-SEGMENTATION_MODELS = {LUMBER_MODEL.tag: LUMBER_MODEL}
+SEGMENTATION_MODELS = {
+    model.tag: model for model in (QWEN_7B, QWEN_14B)
+}
 DENSE_MODELS = {DENSE_RETRIEVER_MODEL.tag: DENSE_RETRIEVER_MODEL}
 JUDGE_MODELS = {JUDGE_MODEL.tag: JUDGE_MODEL}
 BERTSCORE_MODELS = {BERTSCORE_MODEL.tag: BERTSCORE_MODEL}
 
-CHUNKERS = ("turn_packed", "word_packed", "lumber")
+CHUNKERS = ("turn_packed", "word_packed", "lumber", "single_turn")
+BASELINE_CHUNKERS = ("single_turn", "turn_packed", "word_packed")
 RETRIEVERS = ("dense", "bm25", "hybrid")
 EVIDENCE_ORDERS = ("ranked", "chronological")
 

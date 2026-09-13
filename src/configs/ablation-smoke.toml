@@ -8,19 +8,19 @@ run_segmentation = true
 run_evaluation = true
 
 [segmentation]
-model = "qwen2.5-7b"
+model = "qwen2.5-14b"
 target_tokens = 550
-max_new_tokens = 32
+max_new_tokens = 12
 temperature = 0.0
 seed = 42
 
 [retrieval]
 dense_model = "gte-modernbert-base"
-chunkers = ["turn_packed", "word_packed", "lumber"]
+chunkers = ["turn_packed", "word_packed", "lumber", "single_turn"]
 retrievers = ["dense", "bm25", "hybrid"]
 turn_packed_max_words = 256
 word_packed_max_words = 256
-evidence_budgets = [512, 1024]
+evidence_budgets = [512, 1024, 2048]
 evidence_order = "chronological"
 bm25_k1 = 1.5
 bm25_b = 0.75

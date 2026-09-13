@@ -20,19 +20,27 @@ from meeting_qa_chunking.selection import select_meeting_paths
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--preset", type=Path, required=True)
+    parser.add_argument("--target-tokens", type=int)
+    parser.add_argument("--output-dir", type=Path)
     args = parser.parse_args()
 
     from meeting_qa_chunking.local_model import LocalChatModel
 
     run = load_run_config(args.preset)
     spec = run.segmentation
+    target_tokens = (
+        args.target_tokens if args.target_tokens is not None else spec.target_tokens
+    )
+    output_dir = args.output_dir or run.lumber_dir
+    if target_tokens <= 0:
+        raise ValueError("target_tokens must be positive")
     paths = select_meeting_paths(
         run.data_dir, len(run.meeting_ids()), 0, run.meeting_ids()
     )
     effective_config = {
         "experiment_version": EXPERIMENT_VERSION,
         "model": asdict(spec.model),
-        "target_tokens": spec.target_tokens,
+        "target_tokens": target_tokens,
         "max_new_tokens": spec.max_new_tokens,
         "temperature": spec.temperature,
         "seed": spec.seed,
@@ -42,7 +50,7 @@ def main() -> None:
     pending = []
     for path in paths:
         meeting = load_meeting(path)
-        output_path = run.lumber_dir / path.name
+        output_path = output_dir / path.name
         provenance = make_provenance(
             "segmentation", effective_config, {"meeting": path}, args.preset
         )
@@ -92,8 +100,9 @@ def main() -> None:
         chunks = lumber_chunks(
             meeting.turns,
             choose_and_record,
-            target_tokens=spec.target_tokens,
+            target_tokens=target_tokens,
             record_decision=record_decision,
+            discard_invalid_response=model.discard_last_response,
         )
         result = {
             "experiment_version": EXPERIMENT_VERSION,

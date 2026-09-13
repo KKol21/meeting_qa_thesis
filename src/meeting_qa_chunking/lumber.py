@@ -18,6 +18,7 @@ from .qmsum import Meeting, Turn
 
 BoundaryChooser = Callable[[str], str]
 DecisionRecorder = Callable[[str], None]
+InvalidResponseHandler = Callable[[], None]
 
 
 def load_lumber_chunks(path: Path, meeting: Meeting) -> list[Chunk]:
@@ -46,6 +47,7 @@ def lumber_chunks(
     target_tokens: int = 550,
     max_boundaries: int | None = None,
     record_decision: DecisionRecorder | None = None,
+    discard_invalid_response: InvalidResponseHandler | None = None,
 ) -> list[Chunk]:
     """Segment turns, optionally stopping after a number of model decisions."""
 
@@ -69,8 +71,15 @@ def lumber_chunks(
         try:
             boundary = parse_boundary(response, window)
         except ValueError:
+            if discard_invalid_response is not None:
+                discard_invalid_response()
             response = choose_boundary(build_retry_prompt(window, response))
-            boundary = parse_boundary(response, window)
+            try:
+                boundary = parse_boundary(response, window)
+            except ValueError:
+                if discard_invalid_response is not None:
+                    discard_invalid_response()
+                raise
         if record_decision is not None:
             record_decision(response)
         chunks.append(Chunk.from_turns(len(chunks), turns[start:boundary]))

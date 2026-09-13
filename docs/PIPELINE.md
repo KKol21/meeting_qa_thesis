@@ -7,6 +7,7 @@ version is:
 ```text
 QMSum JSON
     |
+    +--> single-turn chunks -------------+
     +--> turn-packed chunks -------------+
     +--> word-packed chunks -------------+--> retrieval --> evidence --> answers
     +--> local Lumber segmentation ------+       |                        |
@@ -16,12 +17,13 @@ QMSum JSON
 ```
 
 The experiment asks whether semantic chunks improve retrieval and downstream
-meeting-question answering compared with two non-semantic baselines.
+meeting-question answering compared with three non-semantic baselines.
 
 This is a LumberChunker **adaptation**, not an exact reproduction: speaker turns
-replace paragraphs, Qwen2.5-7B replaces Gemini 1.0 Pro, and decoding is greedy.
-The current results come from 20 QMSum validation meetings, not a final
-held-out evaluation.
+replace paragraphs, Qwen2.5-14B replaces Gemini 1.0 Pro, and decoding is greedy.
+The checked-in results come from 20 QMSum validation meetings, not a final
+held-out evaluation. They were generated with the previous 7B segmenter and
+must be rerun before they represent the current 14B preset.
 
 ## Where things live
 
@@ -61,15 +63,16 @@ Entry point: `src/stages/ablation_segment.py`
 3. `lumber_prompt.build_window` adds complete turns until the window exceeds
    the 550-token target. The token count uses the LumberChunker
    approximation: `round(1.2 * number_of_words)`.
-4. The prompt in `prompts/lumberchunker.txt` asks Qwen2.5-7B-Instruct for the
+4. The prompt in `prompts/lumberchunker.txt` asks Qwen2.5-14B-Instruct for the
    first turn whose content changes relative to the preceding turns.
 5. That boundary closes one chunk. The next window begins at the boundary and
    the process repeats.
 
 An invalid response is retried once with the same task plus an explicit list
-of valid IDs. The run-scoped `segmentation/<meeting>.json` stores inclusive
+of valid IDs. Malformed attempts are removed from the response cache. The
+run-scoped `segmentation/<meeting>.json` stores inclusive
 turn ranges and raw model decisions. Boundary generation is greedy with at
-most 32 new tokens. Existing files are fingerprinted, validated, and reused,
+most 12 new tokens. Existing files are fingerprinted, validated, and reused,
 so rerunning is resumable at meeting level. Model responses are also cached in
 `.cache/lumber/` by model, revision, generation settings, and full prompt.
 
@@ -80,8 +83,9 @@ size of the final semantic chunks and not the retrieval evidence budget.
 
 Entry point: `src/stages/ablation_retrieval.py`
 
-For every meeting it constructs three complete, non-overlapping views:
+For every meeting it constructs four complete, non-overlapping views:
 
+- `single_turn`: creates one chunk for each complete speaker turn;
 - `turn_packed`: greedily packs complete turns under a soft 256-word limit;
 - `word_packed`: enforces a hard 256-content-word limit, splitting long turns
   and repeating the turn ID and speaker label on each continuation;
@@ -92,6 +96,11 @@ word-packed baseline stores original word offsets so two fragments from the
 same long turn are not accidentally deduplicated. Therefore, equal content-word
 budgets do not guarantee equal tokenizer-length inputs across chunkers.
 
+Dense and BM25 retrieval representations retain speaker labels but omit numeric
+turn IDs, which encode transcript position rather than question-relevant
+content. IDs remain metadata and are restored when evidence is rendered for
+answering and review.
+
 For each question, every chunk view is ranked three ways:
 
 - `dense`: cosine similarity from normalized
@@ -100,10 +109,10 @@ For each question, every chunk view is ranked three ways:
   `retrieval.py` (`k1=1.5`, `b=0.75`);
 - `hybrid`: reciprocal-rank fusion of dense and BM25 ranks (`k=60`).
 
-Ranked chunks are selected under 512- and 1024-word budgets. The chosen content
+Ranked chunks are selected under 512-, 1024-, and 2048-word budgets. The chosen content
 is then rendered in chronological transcript order for dialogue coherence.
 Selection may clip the last fragment, including a complete turn from a
-turn-preserving chunker. This gives 3 chunkers x 3 retrievers x 2 budgets = 18
+turn-preserving chunker. This gives 4 chunkers x 3 retrievers x 3 budgets = 36
 conditions.
 
 The primary retrieval metrics are evidence precision and recall at equal word
@@ -125,14 +134,14 @@ Entry point: `src/stages/ablation_answer.py`
 
 There are two evidence sources:
 
-- `oracle`: all QMSum-annotated evidence turns, without the 512/1024-word cap.
+- `oracle`: all QMSum-annotated evidence turns, without the retrieval word cap.
   This isolates answer-model capacity from retrieval errors but is not a
   budget-matched upper bound.
 - `retrieval`: reconstructed stage-2 evidence. This measures the end-to-end
   pipeline.
 
 The Slurm ablation currently runs oracle evidence with Qwen2.5 7B, 14B, and a
-prequantized 4-bit 32B checkpoint. Qwen2.5-14B answers all 18 retrieved-evidence
+prequantized 4-bit 32B checkpoint. Qwen2.5-14B answers all 36 retrieved-evidence
 conditions. Every model revision is pinned in `config.py`; the preset chooses
 model tags.
 
@@ -150,8 +159,9 @@ Entry point: `src/stages/ablation_evaluate.py`
 
 The evaluator adds two metrics to every saved candidate:
 
-1. BERTScore precision/recall/F1 against the QMSum reference answer, using
-   `FacebookAI/roberta-large` at layer 17.
+1. English-baseline-rescaled BERTScore precision/recall/F1 against the QMSum
+   reference answer, using pinned `FacebookAI/roberta-large` weights at layer
+   17 and BERTScore's packaged `en/roberta-large.tsv` baseline.
 2. A 1--3 judgment from the prequantized 4-bit Llama-3.3-70B-Instruct model:
    1 = invalid/incorrect, 2 = partially correct, 3 = correct.
 
@@ -164,17 +174,19 @@ transcript-aware answer quality rather than retrieval-evidence faithfulness.
 
 BERTScore is loaded first and then explicitly deleted before the 70B judge is
 loaded. This hand-off is why `gc.collect()` and `torch.cuda.empty_cache()` are
-present. Judgments are cached in `.cache/judgments/`.
+present. Malformed judgments are discarded and retried once with a stricter
+JSON-only instruction. Valid judgments are cached in `.cache/judgments/`.
 
 Output: `runs/ablations/<run>/evaluation/<answer-stage>.json`.
 
-## Summaries and manual review
+## Summaries and review
 
 - `src/tools/summarize_ablations.py` collects the small stage summaries into
   the run's top-level `summary.json`.
-- `src/tools/report_ablations.py` writes `report.md` plus `review.md`. The
-  review file includes every question and condition with retrieved span,
-  oracle span, reference, candidate, and metrics.
+- `src/tools/report_ablations.py` writes the aggregate `report.md`.
+- `src/tools/export_review.py` writes JSON and Markdown for one retrieval
+  condition against the 14B oracle. It accepts selected meeting IDs or defaults
+  to the full run.
 - `src/tools/inspect_retrieval_failure.py` prints one retrieval case without
   loading an embedding or language model.
 
@@ -196,6 +208,7 @@ $env:PYTHONPATH = "src"
 python -m unittest discover -s tests -v
 python -m meeting_qa_chunking.run_preset --preset src/configs/ablation-smoke.toml --dry-run
 python src/tools/report_ablations.py --preset src/configs/ablation-smoke.toml
+python src/tools/export_review.py --run full --condition lumber__dense__w512
 python src/tools/inspect_retrieval_failure.py --preset src/configs/ablation-smoke.toml --question-index 3
 ```
 
@@ -248,9 +261,11 @@ early if PyTorch cannot see CUDA.
 The smoke job is `Bed002` with a four-hour limit. The full job uses 20 meetings
 and 142 questions
 from QMSum's validation/development split, excluding `Bed002` and adding the
-next seed-42 candidate, `education_18`. It has a ten-hour limit. Segmentation,
-retrieval, and answering resume per meeting. Evaluation writes per answer stage,
-but cached judgments reduce repeated model work after an interrupted run.
+next seed-42 candidate, `education_18`. It has the cluster's ten-hour limit. Segmentation,
+retrieval, and answering resume per meeting. Evaluation is not meeting-resumable:
+it writes per answer stage, but cached judgments preserve the expensive model
+work after an interrupted run. If the full job reaches the time limit, submit
+the same task again; valid stage artifacts and model-call caches are reused.
 
 ## Caches and invalidation
 
@@ -258,15 +273,15 @@ Cache keys include the inputs that affect their value:
 
 | Cache | Key includes | Safe reason to delete |
 |---|---|---|
-| `.cache/lumber/` | boundary model, revision, settings, prompt | rerun segmentation calls |
-| `.cache/embeddings/` | dense model, revision, chunk texts | force chunk re-embedding |
-| `.cache/answers/` | answer model, revision, settings, prompt | force answer generation |
-| `.cache/judgments/` | judge model, revision, settings, prompt | force re-judging |
+| `.cache/lumber/` | boundary model, revision, settings, prompt, code and model-library versions | rerun segmentation calls |
+| `.cache/embeddings/` | dense model, revision, chunk texts, code and embedding-library versions | force chunk re-embedding |
+| `.cache/answers/` | answer model, revision, settings, prompt, code and model-library versions | force answer generation |
+| `.cache/judgments/` | judge model, revision, settings, prompt, code and model-library versions | force re-judging |
 
 Every stage JSON contains provenance with its resolved effective configuration,
-config hash, input-file hashes, input hash, and final fingerprint. A stage is
-reused only when that fingerprint matches and its structure validates. The
-dependency chain is:
+input-file hashes, executable-source hash, stage entry-point hash, Python and
+relevant package versions, and final fingerprint. A stage is reused only when
+that fingerprint matches and its structure validates. The dependency chain is:
 
 ```text
 meeting -> segmentation
@@ -280,6 +295,12 @@ Raw upstream files are hashed, so hand edits are detected. Prompt text, model
 revision, generation settings, BM25/RRF parameters, chunk limits, and evidence
 ordering all participate in the appropriate fingerprint. The complete preset
 hash is stored for auditing but not used to invalidate unrelated stages.
+
+The source-content hash is used instead of a Git commit, so uncommitted code is
+also detected. GPU model, driver, CUDA version, and operating-system details do
+not invalidate artifacts. The first three are recorded in Slurm logs; exact
+floating-point reproducibility across runtimes and hardware remains a
+limitation.
 
 Do not hand-edit result JSON to make a run resume. Either keep a complete valid
 meeting record or remove that meeting's file and let the stage regenerate it.
@@ -311,13 +332,14 @@ meeting record or remove that meeting's file and let the stage regenerate it.
 - New retrieval condition: change the TOML lists or extend the small validated
   registries in `config.py`. Slurm does not change.
 - Token-budget ablation: add it as a new chunk/evidence accounting method. Do
-  not silently reinterpret the current `w512`/`w1024` word conditions.
+  not silently reinterpret the current `w512`/`w1024`/`w2048` word conditions.
 - New dataset: implement a loader that produces the same small `Meeting`,
   `Turn`, and `Question` structures; keep dataset-specific parsing out of the
   chunking and model modules.
 
 Before a full run, run the unit tests, run `ablation-smoke`, inspect its Slurm
-log, regenerate `report.md`/`review.md`, and manually read several examples.
+log, regenerate `report.md` and a focused review export, and manually read
+several examples.
 
 ## Decisions for supervisor review
 

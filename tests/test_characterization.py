@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 from meeting_qa_chunking.artifacts import read_segmentation
 from meeting_qa_chunking.chunking import (
     Chunk,
+    chunk_single_turn,
     chunk_turn_packed,
     chunk_word_packed,
 )
@@ -52,6 +53,17 @@ class QMSumLoaderTest(unittest.TestCase):
 
 
 class ChunkingCharacterizationTest(unittest.TestCase):
+    def test_single_turn_chunks_preserve_one_turn_each(self) -> None:
+        turns = [Turn(0, "A", "alpha beta"), Turn(1, "B", "gamma")]
+
+        chunks = chunk_single_turn(turns)
+
+        self.assertEqual([chunk.index for chunk in chunks], [0, 1])
+        self.assertEqual(
+            [[part.turn_id for part in chunk.parts] for chunk in chunks],
+            [[0], [1]],
+        )
+
     def test_greedily_packs_complete_turns_and_preserves_rendering(self) -> None:
         turns = [
             Turn(0, "A", "alpha beta"),
@@ -68,6 +80,7 @@ class ChunkingCharacterizationTest(unittest.TestCase):
         self.assertEqual(chunks[1].index, 1)
         self.assertEqual(chunks[1].word_count, 4)
         self.assertEqual(chunks[1].text, "[1] B: gamma delta epsilon\n[2] A: zeta")
+        self.assertEqual(chunks[1].retrieval_text, "B: gamma delta epsilon\nA: zeta")
 
     def test_keeps_an_oversized_turn_intact(self) -> None:
         chunks = chunk_turn_packed(

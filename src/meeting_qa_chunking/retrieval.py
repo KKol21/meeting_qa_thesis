@@ -10,6 +10,7 @@ from collections import Counter
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
+from .artifacts import dependency_context
 from .chunking import Chunk
 from .config import DENSE_RETRIEVER_MODEL
 
@@ -47,7 +48,10 @@ def cache_path(
         {
             "model": model_name,
             "revision": revision,
-            "chunks": [chunk.text for chunk in chunks],
+            "chunks": [chunk.retrieval_text for chunk in chunks],
+            "execution": dependency_context(
+                ("numpy", "sentence-transformers", "torch", "transformers")
+            ),
         },
         ensure_ascii=False,
     ).encode("utf-8")
@@ -66,7 +70,7 @@ def load_or_encode_chunks(
         return np.load(path, allow_pickle=False), True
 
     embeddings = model.encode(
-        [chunk.text for chunk in chunks],
+        [chunk.retrieval_text for chunk in chunks],
         normalize_embeddings=True,
         show_progress_bar=False,
     )
@@ -111,7 +115,9 @@ def rank_chunks_bm25(
 ) -> list[tuple[int, float]]:
     """Rank chunks with a small deterministic Okapi BM25 implementation."""
 
-    documents = [TOKEN_PATTERN.findall(chunk.text.lower()) for chunk in chunks]
+    documents = [
+        TOKEN_PATTERN.findall(chunk.retrieval_text.lower()) for chunk in chunks
+    ]
     query_terms = TOKEN_PATTERN.findall(question.lower())
     document_frequency = Counter(
         term for document in documents for term in set(document)

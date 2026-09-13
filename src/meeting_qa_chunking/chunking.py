@@ -1,4 +1,4 @@
-"""Turn-packed and strictly word-packed meeting baselines."""
+"""Single-turn, turn-packed, and strictly word-packed meeting chunkers."""
 
 from dataclasses import dataclass
 
@@ -67,6 +67,12 @@ class Chunk:
         )
 
     @property
+    def retrieval_text(self) -> str:
+        """Render semantic content and speakers without positional turn IDs."""
+
+        return "\n".join(f"{part.speaker}: {part.text}" for part in self.parts)
+
+    @property
     def word_count(self) -> int:
         return sum(part.word_count for part in self.parts)
 
@@ -74,6 +80,12 @@ class Chunk:
         """Return whether this chunk overlaps an inclusive turn range."""
 
         return any(start_turn <= part.turn_id <= end_turn for part in self.parts)
+
+
+def chunk_single_turn(turns: list[Turn]) -> list[Chunk]:
+    """Create one chunk per speaker turn."""
+
+    return [Chunk.from_turns(index, [turn]) for index, turn in enumerate(turns)]
 
 
 def chunk_turn_packed(turns: list[Turn], max_words: int) -> list[Chunk]:

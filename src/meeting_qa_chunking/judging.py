@@ -24,6 +24,15 @@ def build_judge_prompt(
     )
 
 
+def build_judge_retry_prompt(prompt: str, invalid_response: str) -> str:
+    """Constrain a second attempt after malformed judge output."""
+
+    return (
+        f"{prompt}\n\nYour previous response was invalid: {invalid_response!r}\n"
+        'Return only JSON in this form: {"score": 1, "reason": "..."}'
+    )
+
+
 def parse_judgment(response: str) -> tuple[int, str]:
     decoder = json.JSONDecoder()
     for match in re.finditer(r"\{", response):

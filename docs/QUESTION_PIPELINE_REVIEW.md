@@ -10,9 +10,9 @@ is a LumberChunker adaptation, not a model- and dataset-exact reproduction.
 ```text
 QMSum JSON
   -> Meeting + Question
-  -> three chunk views
+  -> four chunk views
   -> dense, BM25, and hybrid rankings
-  -> 512- and 1024-word evidence selections
+  -> 512-, 1024-, and 2048-word evidence selections
   -> retrieval metrics
   -> Qwen2.5-14B answers
   -> ROUGE + BERTScore + Llama judge
@@ -21,10 +21,10 @@ QMSum JSON
 In parallel: annotated gold turns -> 7B/14B/32B oracle answers -> same metrics
 ```
 
-The full preset fixes the three chunkers, three retrievers, two evidence
+The full preset fixes four chunkers, three retrievers, three evidence
 budgets, generation settings, and evaluation models in
 [`ablation-full.toml:10-61`](../src/configs/ablation-full.toml#L10-L61).
-Consequently, one question produces 18 retrieved-evidence answers. The
+Consequently, one question produces 36 retrieved-evidence answers. The
 `oracle-14b` result is the fairest answer-model control because it uses the
 same Qwen2.5-14B model and prompt; only its evidence source differs.
 
@@ -42,10 +42,16 @@ These ranges are both the oracle evidence and the retrieval relevance labels.
 A bad range therefore affects recall, oracle answering, and the LLM judge's
 gold context.
 
-## 2. Create the three chunk views
+## 2. Create the four chunk views
 
 [`build_chunk_sets()`](../src/meeting_qa_chunking/evidence_preparation.py#L18-L45)
-constructs three non-overlapping views of the same ordered turns.
+constructs four non-overlapping views of the same ordered turns.
+
+### Single-turn baseline
+
+[`chunk_single_turn()`](../src/meeting_qa_chunking/chunking.py) creates exactly
+one chunk per complete speaker turn. It makes no size claim: rare long turns
+remain intact and may be clipped later by the shared evidence budget.
 
 ### Turn-packed baseline
 
@@ -60,8 +66,8 @@ fills hard 256-content-word chunks and splits turns when required. A split
 fragment retains `turn_id`, `speaker`, and `start_word`. Rendering repeats the
 speaker attribution on every fragment
 ([`Chunk.text`](../src/meeting_qa_chunking/chunking.py#L61-L71)). Speaker labels
-and IDs enter the retrieval text but are not charged to the content-word
-budget.
+and IDs remain in chunk metadata but are not charged to the content-word
+budget; numeric IDs are omitted from the retrieval representation.
 
 ### Lumber semantic chunks
 
@@ -72,10 +78,12 @@ Lumber estimate, `round(1.2 * whitespace words)`, exceeds 550 tokens
 ([`estimate_tokens()`](../src/meeting_qa_chunking/lumber_prompt.py#L23-L26)).
 The full transcript is never sent in one prompt.
 
-[`lumber_chunks()`](../src/meeting_qa_chunking/lumber.py#L43-L82) asks
-Qwen2.5-7B for the first turn that begins a new topic. The returned boundary
-starts the next chunk; the preceding turns close the current chunk. One
-constrained retry follows an invalid response. During retrieval,
+[`lumber_chunks()`](../src/meeting_qa_chunking/lumber.py#L43-L82) asks the
+configured segmenter for the first turn that begins a new topic. The active
+preset uses Qwen2.5-14B and requests only the boundary ID; the checked-in
+full-run artifacts still record the previous Qwen2.5-7B segmenter. The returned
+boundary starts the next chunk; the preceding turns close the current chunk.
+One constrained retry follows an invalid response. During retrieval,
 [`load_lumber_chunks()`](../src/meeting_qa_chunking/lumber.py#L23-L40)
 reconstructs the complete-turn chunks and verifies exact transcript coverage.
 
@@ -95,10 +103,12 @@ The question loop and three ranking branches are in
 [`ablation_retrieval.py:210-240`](../src/stages/ablation_retrieval.py#L210-L240).
 
 - [`rank_chunks()`](../src/meeting_qa_chunking/retrieval.py#L80-L103)
-  encodes the question and rendered chunks with GTE-ModernBERT. Normalized
-  embeddings make their dot product cosine similarity.
+  encodes the question and each chunk's `retrieval_text` with GTE-ModernBERT.
+  This representation keeps speaker labels but omits numeric turn IDs;
+  normalized embeddings make their dot product cosine similarity.
 - [`rank_chunks_bm25()`](../src/meeting_qa_chunking/retrieval.py#L106-L142)
-  uses lowercase `\w+` tokens and Okapi BM25 with `k1=1.5`, `b=0.75`.
+  applies lowercase `\w+` tokenization to the same ID-free representation and
+  uses Okapi BM25 with `k1=1.5`, `b=0.75`.
 - [`reciprocal_rank_fusion()`](../src/meeting_qa_chunking/retrieval.py#L145-L155)
   combines dense and BM25 ranks as `1 / (60 + rank)` without mixing their raw
   scores.
@@ -110,7 +120,7 @@ All ties are resolved by the earlier chunk index. A condition name is
 ## 4. Select and score evidence
 
 For each ranking, [`select_evidence()`](../src/meeting_qa_chunking/evidence.py#L119-L164)
-visits chunks in rank order until it has 512 or 1024 content words. It:
+visits chunks in rank order until it has 512, 1024, or 2048 content words. It:
 
 - clips the final `ChunkPart` when the remaining budget is smaller;
 - deduplicates words by `(turn_id, absolute_word_offset)`;
@@ -153,8 +163,8 @@ sorts the selected fragments into chronological transcript order before the
 answer model sees them.
 
 Oracle evidence is different: [`prepare_oracle_evidence()`](../src/meeting_qa_chunking/evidence_preparation.py#L48-L64)
-renders every annotated gold turn in transcript order without a 512- or
-1024-word cap. It is therefore an answer-model control, not a budget-matched
+renders every annotated gold turn in transcript order without any retrieval
+word cap. It is therefore an answer-model control, not a budget-matched
 retrieval condition.
 
 ## 6. Generate and initially score the answer
@@ -195,8 +205,9 @@ candidate with the question, reference, and complete annotated gold evidence.
 
 - [`add_bertscore()`](../src/stages/ablation_evaluate.py#L80-L93) compares only
   candidate and reference with RoBERTa-large. It does not inspect retrieved or
-  gold evidence. Baseline rescaling is disabled
-  ([`ablation_evaluate.py:249-259`](../src/stages/ablation_evaluate.py#L249-L259)).
+  gold evidence. The active evaluator applies BERTScore's packaged English
+  RoBERTa-large baseline; the checked-in evaluation artifacts predate this
+  change and contain unrescaled scores.
 - [`build_judge_prompt()`](../src/meeting_qa_chunking/judging.py#L12-L24) gives
   Llama-3.3-70B the question, reference, annotated gold evidence, and
   candidate, but not the retrieved evidence used to generate that candidate.
@@ -238,10 +249,11 @@ summaries ([`summarize_ablations.py:20-47`](../src/tools/summarize_ablations.py#
 
 1. Budgets use whitespace-delimited content words, while Lumber's window uses
    a `1.2 * words` token approximation.
-2. Turn-packed is soft-sized; word-packed is hard-sized; Lumber preserves
-   complete turns but has unconstrained semantic chunk sizes.
-3. Speaker labels and turn IDs affect retrieval representations but do not
-   consume the content-word budget.
+2. Single-turn has no size target; turn-packed is soft-sized; word-packed is
+   hard-sized; Lumber preserves complete turns but has unconstrained semantic
+   chunk sizes.
+3. Speaker labels affect retrieval representations but numeric turn IDs do
+   not; neither consumes the content-word budget.
 4. Evidence membership is chosen in retrieval order but presented
    chronologically.
 5. Recall is word coverage of annotated turns, not coverage of atomic answer
@@ -252,7 +264,7 @@ summaries ([`summarize_ablations.py:20-47`](../src/tools/summarize_ablations.py#
    annotated evidence.
 8. Meeting-macro and paired within-meeting results are the appropriate primary
    comparisons; pooled question means are descriptive.
-9. Chunking strategy is confounded with granularity in this run: mean chunk
-   sizes are 167 words for Lumber, 226 for turn-packed, and 252 for
-   word-packed. Results compare complete configurations, not semantic boundary
-   quality alone.
+9. Chunking strategy is confounded with granularity: single-turn chunks average
+   about 16 words, while the earlier run averaged 167 for Lumber, 226 for
+   turn-packed, and 252 for word-packed. Results compare complete
+   configurations, not semantic boundary quality alone.

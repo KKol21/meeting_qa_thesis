@@ -21,13 +21,16 @@ from meeting_qa_chunking.artifacts import (
     sha256_file,
     write_json,
 )
-from meeting_qa_chunking.config import load_run_config
+from meeting_qa_chunking.config import BASELINE_CHUNKERS, load_run_config
 from meeting_qa_chunking.evidence_preparation import (
     prepare_oracle_evidence,
     prepare_retrieved_evidence,
 )
 from meeting_qa_chunking.qmsum import load_meeting
 from meeting_qa_chunking.selection import select_meeting_paths
+
+
+RESULT_FIELDS = {"answer", "rouge_f1", "evidence_words"}
 
 
 def summarize(output_dir: Path, meeting_ids: list[str]) -> dict[str, object]:
@@ -55,7 +58,7 @@ def summarize(output_dir: Path, meeting_ids: list[str]) -> dict[str, object]:
             if condition["chunker"] != "lumber":
                 continue
             suffix = f"{condition['retriever']}__w{condition['evidence_words']}"
-            for baseline in ("turn_packed", "word_packed"):
+            for baseline in BASELINE_CHUNKERS:
                 baseline_name = f"{baseline}__{suffix}"
                 if baseline_name not in conditions:
                     continue
@@ -179,6 +182,7 @@ def main() -> None:
                     meeting.id,
                     [question.text for question in meeting.questions],
                     set(conditions),
+                    RESULT_FIELDS,
                 )
             ):
                 print(f"Answers {path.stem}: existing", flush=True)
@@ -217,7 +221,7 @@ def main() -> None:
         scorer = rouge_scorer.RougeScorer(ROUGE_TYPES, use_stemmer=True)
         questions = []
         for question_index, (question, evidence_by_condition) in enumerate(
-            zip(meeting.questions, prepared)
+            zip(meeting.questions, prepared, strict=True)
         ):
             answers = {}
             for condition, evidence in evidence_by_condition.items():

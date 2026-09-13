@@ -5,18 +5,18 @@
     "config": {
       "experiment_version": 2,
       "model": {
-        "tag": "qwen2.5-7b",
-        "name": "Qwen/Qwen2.5-7B-Instruct",
-        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
         "prequantized": false
       },
       "target_tokens": 550,
-      "max_new_tokens": 32,
+      "max_new_tokens": 12,
       "temperature": 0.0,
       "seed": 42,
-      "prompt": "You will receive as input an English document with paragraphs identified by 'ID XXXX: <text>'.\n\nTask: Find the first paragraph (not the first one) where the content clearly changes compared to the previous paragraphs.\n\nOutput: Return the ID of the paragraph with the content shift as in the exemplified format: 'Answer: ID XXXX'.\nAdditional Considerations: Avoid very long groups of paragraphs. Aim for a good balance between identifying content shifts and keeping groups manageable."
+      "prompt": "You will receive as input an English document with paragraphs identified by 'ID XXXX: <text>'.\n\nTask: Find the first paragraph (not the first one) where the content clearly changes compared to the previous paragraphs.\n\nAdditional Considerations: Avoid very long groups of paragraphs. Aim for a good balance between identifying content shifts and keeping groups manageable.\n\nOutput exactly one line in the format 'Answer: ID XXXX'. Do not explain or justify the answer. Do not return any other text."
     },
-    "config_hash": "27c7acc7be3be93ff627d630fe62a2acd05ba528e632e9b767269a2fe36ca95e",
+    "config_hash": "f3b425a45ca4468f79831a1d3aea9f0e663395349d436935ff1b719ec03aca64",
     "inputs": {
       "meeting": {
         "file": "Bed002.json",
@@ -24,15 +24,25 @@
       }
     },
     "input_hash": "98b81c4c7f5bafda99dfcbf000065b51c49d39fe7fea0a005660109a76c5ed4d",
-    "fingerprint": "3f44437ba8bf54fc03b0843680f9c88c66f85629dbd7df25a045e13881c5670f",
+    "execution": {
+      "source_hash": "51bf61c1861a5f07647c85e5897382a43af46d99c0c3fa831519db8149b99db5",
+      "python": "3.11.2",
+      "packages": {
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "c7bef71c39ae03249aede27f605c4d72e33b81d1476b4fc1ac82c55a6e75ed38"
+    },
+    "execution_hash": "7a05ea60f19d4dd64819fbf3bfc7f202dfa7e50b62357bc4cd99dfe155c59a9f",
+    "fingerprint": "dd20f5cae41a73e00a57169e451b83988e0851ec8132c26366859fa58312d45f",
     "preset": {
       "file": "ablation-smoke.toml",
-      "sha256": "8b39ae5d3d717826e07537b9212ed1bbdc8ddbcaaa6569d49a83a2b7896bbbb3"
+      "sha256": "c5d86a37012575dcdc5044549d21f2b55fc2e428a0f65ff1309f14733024797c"
     }
   },
   "meeting_id": "Bed002",
   "turn_count": 533,
-  "model_calls": 71,
+  "model_calls": 69,
   "cache_hits": 0,
   "chunks": [
     {
@@ -62,26 +72,26 @@
     {
       "index": 4,
       "start_turn": 27,
-      "end_turn": 41,
-      "word_count": 207
+      "end_turn": 30,
+      "word_count": 34
     },
     {
       "index": 5,
-      "start_turn": 42,
-      "end_turn": 51,
-      "word_count": 89
+      "start_turn": 31,
+      "end_turn": 47,
+      "word_count": 234
     },
     {
       "index": 6,
-      "start_turn": 52,
-      "end_turn": 60,
-      "word_count": 82
+      "start_turn": 48,
+      "end_turn": 61,
+      "word_count": 113
     },
     {
       "index": 7,
-      "start_turn": 61,
+      "start_turn": 62,
       "end_turn": 64,
-      "word_count": 30
+      "word_count": 27
     },
     {
       "index": 8,
@@ -92,14 +102,14 @@
     {
       "index": 9,
       "start_turn": 66,
-      "end_turn": 83,
-      "word_count": 245
+      "end_turn": 76,
+      "word_count": 177
     },
     {
       "index": 10,
-      "start_turn": 84,
+      "start_turn": 77,
       "end_turn": 90,
-      "word_count": 82
+      "word_count": 150
     },
     {
       "index": 11,
@@ -110,14 +120,14 @@
     {
       "index": 12,
       "start_turn": 93,
-      "end_turn": 96,
-      "word_count": 167
+      "end_turn": 95,
+      "word_count": 159
     },
     {
       "index": 13,
-      "start_turn": 97,
+      "start_turn": 96,
       "end_turn": 97,
-      "word_count": 305
+      "word_count": 313
     },
     {
       "index": 14,
@@ -140,338 +150,326 @@
     {
       "index": 17,
       "start_turn": 119,
-      "end_turn": 123,
-      "word_count": 43
+      "end_turn": 122,
+      "word_count": 21
     },
     {
       "index": 18,
+      "start_turn": 123,
+      "end_turn": 123,
+      "word_count": 22
+    },
+    {
+      "index": 19,
       "start_turn": 124,
       "end_turn": 126,
       "word_count": 381
     },
     {
-      "index": 19,
+      "index": 20,
       "start_turn": 127,
       "end_turn": 131,
       "word_count": 73
     },
     {
-      "index": 20,
-      "start_turn": 132,
-      "end_turn": 133,
-      "word_count": 243
-    },
-    {
       "index": 21,
-      "start_turn": 134,
+      "start_turn": 132,
       "end_turn": 137,
-      "word_count": 83
+      "word_count": 326
     },
     {
       "index": 22,
       "start_turn": 138,
-      "end_turn": 143,
-      "word_count": 210
+      "end_turn": 146,
+      "word_count": 249
     },
     {
       "index": 23,
-      "start_turn": 144,
-      "end_turn": 146,
-      "word_count": 39
-    },
-    {
-      "index": 24,
       "start_turn": 147,
       "end_turn": 148,
       "word_count": 230
     },
     {
-      "index": 25,
+      "index": 24,
       "start_turn": 149,
-      "end_turn": 151,
-      "word_count": 77
+      "end_turn": 161,
+      "word_count": 176
+    },
+    {
+      "index": 25,
+      "start_turn": 162,
+      "end_turn": 175,
+      "word_count": 177
     },
     {
       "index": 26,
-      "start_turn": 152,
-      "end_turn": 175,
-      "word_count": 276
-    },
-    {
-      "index": 27,
       "start_turn": 176,
       "end_turn": 180,
       "word_count": 89
     },
     {
-      "index": 28,
+      "index": 27,
       "start_turn": 181,
-      "end_turn": 187,
-      "word_count": 226
+      "end_turn": 186,
+      "word_count": 207
+    },
+    {
+      "index": 28,
+      "start_turn": 187,
+      "end_turn": 201,
+      "word_count": 334
     },
     {
       "index": 29,
-      "start_turn": 188,
-      "end_turn": 191,
-      "word_count": 202
+      "start_turn": 202,
+      "end_turn": 206,
+      "word_count": 97
     },
     {
       "index": 30,
-      "start_turn": 192,
-      "end_turn": 201,
-      "word_count": 113
+      "start_turn": 207,
+      "end_turn": 214,
+      "word_count": 81
     },
     {
       "index": 31,
-      "start_turn": 202,
-      "end_turn": 213,
-      "word_count": 176
+      "start_turn": 215,
+      "end_turn": 215,
+      "word_count": 312
     },
     {
       "index": 32,
-      "start_turn": 214,
-      "end_turn": 215,
-      "word_count": 314
-    },
-    {
-      "index": 33,
       "start_turn": 216,
       "end_turn": 222,
       "word_count": 151
     },
     {
-      "index": 34,
+      "index": 33,
       "start_turn": 223,
       "end_turn": 237,
       "word_count": 207
     },
     {
-      "index": 35,
+      "index": 34,
       "start_turn": 238,
-      "end_turn": 244,
-      "word_count": 87
-    },
-    {
-      "index": 36,
-      "start_turn": 245,
       "end_turn": 253,
-      "word_count": 171
+      "word_count": 258
     },
     {
-      "index": 37,
+      "index": 35,
       "start_turn": 254,
       "end_turn": 263,
       "word_count": 121
     },
     {
-      "index": 38,
+      "index": 36,
       "start_turn": 264,
       "end_turn": 266,
       "word_count": 184
     },
     {
-      "index": 39,
+      "index": 37,
       "start_turn": 267,
-      "end_turn": 270,
-      "word_count": 110
+      "end_turn": 273,
+      "word_count": 238
+    },
+    {
+      "index": 38,
+      "start_turn": 274,
+      "end_turn": 290,
+      "word_count": 328
+    },
+    {
+      "index": 39,
+      "start_turn": 291,
+      "end_turn": 292,
+      "word_count": 282
     },
     {
       "index": 40,
-      "start_turn": 271,
-      "end_turn": 281,
-      "word_count": 235
+      "start_turn": 293,
+      "end_turn": 296,
+      "word_count": 259
     },
     {
       "index": 41,
-      "start_turn": 282,
-      "end_turn": 290,
-      "word_count": 221
+      "start_turn": 297,
+      "end_turn": 309,
+      "word_count": 130
     },
     {
       "index": 42,
-      "start_turn": 291,
-      "end_turn": 295,
-      "word_count": 297
+      "start_turn": 310,
+      "end_turn": 326,
+      "word_count": 342
     },
     {
       "index": 43,
-      "start_turn": 296,
-      "end_turn": 296,
-      "word_count": 244
+      "start_turn": 327,
+      "end_turn": 332,
+      "word_count": 159
     },
     {
       "index": 44,
-      "start_turn": 297,
-      "end_turn": 316,
-      "word_count": 267
+      "start_turn": 333,
+      "end_turn": 336,
+      "word_count": 51
     },
     {
       "index": 45,
-      "start_turn": 317,
-      "end_turn": 332,
-      "word_count": 364
+      "start_turn": 337,
+      "end_turn": 346,
+      "word_count": 139
     },
     {
       "index": 46,
-      "start_turn": 333,
-      "end_turn": 334,
-      "word_count": 18
-    },
-    {
-      "index": 47,
-      "start_turn": 335,
-      "end_turn": 346,
-      "word_count": 172
-    },
-    {
-      "index": 48,
       "start_turn": 347,
       "end_turn": 351,
       "word_count": 163
     },
     {
-      "index": 49,
+      "index": 47,
       "start_turn": 352,
+      "end_turn": 361,
+      "word_count": 210
+    },
+    {
+      "index": 48,
+      "start_turn": 362,
       "end_turn": 365,
-      "word_count": 235
+      "word_count": 25
+    },
+    {
+      "index": 49,
+      "start_turn": 366,
+      "end_turn": 379,
+      "word_count": 340
     },
     {
       "index": 50,
-      "start_turn": 366,
-      "end_turn": 372,
-      "word_count": 197
+      "start_turn": 380,
+      "end_turn": 385,
+      "word_count": 42
     },
     {
       "index": 51,
-      "start_turn": 373,
-      "end_turn": 385,
-      "word_count": 185
-    },
-    {
-      "index": 52,
       "start_turn": 386,
       "end_turn": 392,
       "word_count": 286
     },
     {
-      "index": 53,
+      "index": 52,
       "start_turn": 393,
-      "end_turn": 396,
-      "word_count": 414
+      "end_turn": 394,
+      "word_count": 46
+    },
+    {
+      "index": 53,
+      "start_turn": 395,
+      "end_turn": 395,
+      "word_count": 364
     },
     {
       "index": 54,
-      "start_turn": 397,
-      "end_turn": 398,
-      "word_count": 128
+      "start_turn": 396,
+      "end_turn": 399,
+      "word_count": 283
     },
     {
       "index": 55,
-      "start_turn": 399,
-      "end_turn": 399,
-      "word_count": 151
-    },
-    {
-      "index": 56,
       "start_turn": 400,
       "end_turn": 416,
       "word_count": 253
     },
     {
-      "index": 57,
+      "index": 56,
       "start_turn": 417,
       "end_turn": 421,
       "word_count": 156
     },
     {
-      "index": 58,
+      "index": 57,
       "start_turn": 422,
       "end_turn": 433,
       "word_count": 380
     },
     {
-      "index": 59,
+      "index": 58,
       "start_turn": 434,
-      "end_turn": 437,
-      "word_count": 138
+      "end_turn": 439,
+      "word_count": 227
+    },
+    {
+      "index": 59,
+      "start_turn": 440,
+      "end_turn": 447,
+      "word_count": 191
     },
     {
       "index": 60,
-      "start_turn": 438,
-      "end_turn": 439,
-      "word_count": 89
+      "start_turn": 448,
+      "end_turn": 458,
+      "word_count": 224
     },
     {
       "index": 61,
-      "start_turn": 440,
-      "end_turn": 443,
-      "word_count": 79
+      "start_turn": 459,
+      "end_turn": 471,
+      "word_count": 186
     },
     {
       "index": 62,
-      "start_turn": 444,
-      "end_turn": 454,
-      "word_count": 272
+      "start_turn": 472,
+      "end_turn": 476,
+      "word_count": 221
     },
     {
       "index": 63,
-      "start_turn": 455,
-      "end_turn": 466,
-      "word_count": 183
-    },
-    {
-      "index": 64,
-      "start_turn": 467,
-      "end_turn": 472,
-      "word_count": 241
-    },
-    {
-      "index": 65,
-      "start_turn": 473,
-      "end_turn": 476,
-      "word_count": 47
-    },
-    {
-      "index": 66,
       "start_turn": 477,
       "end_turn": 477,
       "word_count": 195
     },
     {
-      "index": 67,
+      "index": 64,
       "start_turn": 478,
-      "end_turn": 482,
-      "word_count": 206
+      "end_turn": 483,
+      "word_count": 208
     },
     {
-      "index": 68,
-      "start_turn": 483,
+      "index": 65,
+      "start_turn": 484,
       "end_turn": 486,
-      "word_count": 324
+      "word_count": 322
     },
     {
-      "index": 69,
+      "index": 66,
       "start_turn": 487,
       "end_turn": 501,
       "word_count": 198
     },
     {
-      "index": 70,
+      "index": 67,
       "start_turn": 502,
-      "end_turn": 523,
-      "word_count": 314
+      "end_turn": 507,
+      "word_count": 34
     },
     {
-      "index": 71,
-      "start_turn": 524,
+      "index": 68,
+      "start_turn": 508,
+      "end_turn": 522,
+      "word_count": 249
+    },
+    {
+      "index": 69,
+      "start_turn": 523,
       "end_turn": 532,
-      "word_count": 94
+      "word_count": 125
     }
   ],
   "decisions": [
     {
       "boundary_turn": 14,
-      "raw_response": "Answer: ID 0014\n\nThis paragraph marks a clear shift in the conversation's direction, introducing a new speaker (Professor C) and a different",
+      "raw_response": "Answer: ID 0014",
       "cache_hit": false
     },
     {
@@ -486,22 +484,22 @@
     },
     {
       "boundary_turn": 27,
-      "raw_response": "Answer: ID 0027\n\nThis paragraph introduces a new topic by mentioning Nancy and the meeting location, which is a clear change from the previous instructions",
+      "raw_response": "Answer: ID 0027",
       "cache_hit": false
     },
     {
-      "boundary_turn": 42,
-      "raw_response": "Answer: ID 0042\n\nExplanation: Paragraph ID 0042 marks a clear shift in the discussion's focus from the technical aspects of",
+      "boundary_turn": 31,
+      "raw_response": "Answer: ID 0031",
       "cache_hit": false
     },
     {
-      "boundary_turn": 52,
-      "raw_response": "Answer: ID 0052\n\nExplanation: Paragraph ID 0052 marks a clear shift in content from the previous discussions about aliases and natural",
+      "boundary_turn": 48,
+      "raw_response": "Answer: ID 0048",
       "cache_hit": false
     },
     {
-      "boundary_turn": 61,
-      "raw_response": "Answer: ID 0061",
+      "boundary_turn": 62,
+      "raw_response": "Answer: ID 0062",
       "cache_hit": false
     },
     {
@@ -515,8 +513,8 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 84,
-      "raw_response": "Answer: ID 0084\n\nExplanation: The content of paragraph ID 0084 clearly shifts to a new topic, discussing an email about",
+      "boundary_turn": 77,
+      "raw_response": "Answer: ID 0077",
       "cache_hit": false
     },
     {
@@ -530,13 +528,13 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 97,
-      "raw_response": "Answer: ID 0097",
+      "boundary_turn": 96,
+      "raw_response": "Answer: ID 0096",
       "cache_hit": false
     },
     {
       "boundary_turn": 98,
-      "raw_response": "Answer: ID 0098\n\nThis paragraph introduces a new context involving a professor and a graduate student discussing administrative procedures, which clearly shifts from the previous",
+      "raw_response": "Answer: ID 0098",
       "cache_hit": false
     },
     {
@@ -551,7 +549,12 @@
     },
     {
       "boundary_turn": 119,
-      "raw_response": "Answer: ID 0119\n\nThis paragraph introduces a new topic (mentioning an email) that is different from the previous discussions about the task and",
+      "raw_response": "Answer: ID 0119",
+      "cache_hit": false
+    },
+    {
+      "boundary_turn": 123,
+      "raw_response": "Answer: ID 0123",
       "cache_hit": false
     },
     {
@@ -561,47 +564,37 @@
     },
     {
       "boundary_turn": 127,
-      "raw_response": "Answer: ID 0127\n\nExplanation: The content of paragraph ID 0127 shifts from the ongoing discussion between Professor C and Grad F",
+      "raw_response": "Answer: ID 0127",
       "cache_hit": false
     },
     {
       "boundary_turn": 132,
-      "raw_response": "Answer: ID 0132\n\nExplanation: The content of paragraph ID 0132 marks a clear shift from the previous conversational and somewhat",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 134,
-      "raw_response": "Answer: ID 0134",
+      "raw_response": "Answer: ID 0132",
       "cache_hit": false
     },
     {
       "boundary_turn": 138,
-      "raw_response": "Answer: ID 0138\n\nExplanation: The content shifts significantly starting from ID 0138, where the discussion moves from the importance of",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 144,
-      "raw_response": "Answer: ID 0144\n\nExplanation: The content shifts significantly starting from ID 0144, where the discussion moves from the method of",
+      "raw_response": "Answer: ID 0138",
       "cache_hit": false
     },
     {
       "boundary_turn": 147,
-      "raw_response": "Answer: ID 0147\n\nThe content clearly shifts in paragraph ID 0147, introducing a new topic about deep understanding and modeling,",
+      "raw_response": "Answer: ID 0147",
       "cache_hit": false
     },
     {
       "boundary_turn": 149,
-      "raw_response": "Answer: ID 0149\n\nExplanation: Paragraph ID 0149 introduces a new topic by asking about the source of information, which is",
+      "raw_response": "Answer: ID 0149",
       "cache_hit": false
     },
     {
-      "boundary_turn": 152,
-      "raw_response": "Answer: ID 0152\n\nExplanation: Paragraph ID 0152 introduces new information about the M-three-L being the old SmartKom output",
+      "boundary_turn": 162,
+      "raw_response": "Answer: ID 0162",
       "cache_hit": false
     },
     {
       "boundary_turn": 176,
-      "raw_response": "Answer: ID 0176\n\nThis paragraph introduces a new context and specific scenario (\"if someone says, 'I wanna touch the side of the Powder",
+      "raw_response": "Answer: ID 0176",
       "cache_hit": false
     },
     {
@@ -610,13 +603,8 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 188,
-      "raw_response": "Answer: ID 0188\n\nExplanation: The content of paragraph ID 0188 shifts from discussing the limitations of parsers in interpreting certain queries",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 192,
-      "raw_response": "Answer: ID 0192\n\nExplanation: The content of ID 0192 introduces a new topic related to the granularity of providing directions,",
+      "boundary_turn": 187,
+      "raw_response": "Answer: ID 0187",
       "cache_hit": false
     },
     {
@@ -625,28 +613,28 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 214,
-      "raw_response": "Answer: ID 0214\n\nExplanation: The content of ID 0214 marks a clear shift from the previous discussions about context and terminology",
+      "boundary_turn": 207,
+      "raw_response": "Answer: ID 0207",
+      "cache_hit": false
+    },
+    {
+      "boundary_turn": 215,
+      "raw_response": "Answer: ID 0215",
       "cache_hit": false
     },
     {
       "boundary_turn": 216,
-      "raw_response": "Answer: ID 0216\n\nExplanation: The content of ID 0216 clearly shifts from the previous paragraphs, introducing a new idea about",
+      "raw_response": "Answer: ID 0216",
       "cache_hit": false
     },
     {
       "boundary_turn": 223,
-      "raw_response": "Answer: ID 0223\n\nThis paragraph introduces a new topic or line of discussion by asking about specific factors to be considered, which is a notable",
+      "raw_response": "Answer: ID 0223",
       "cache_hit": false
     },
     {
       "boundary_turn": 238,
-      "raw_response": "Answer: ID 0238\n\nThis paragraph marks a clear shift in the discussion's focus from specific details about the current dataset to considerations about future data",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 245,
-      "raw_response": "Answer: ID 0245",
+      "raw_response": "Answer: ID 0238",
       "cache_hit": false
     },
     {
@@ -661,17 +649,12 @@
     },
     {
       "boundary_turn": 267,
-      "raw_response": "Answer: ID 0267\n\nExplanation: Paragraph ID 0267 introduces a new topic by mentioning concerns about the data collection situation, which",
+      "raw_response": "Answer: ID 0267",
       "cache_hit": false
     },
     {
-      "boundary_turn": 271,
-      "raw_response": "Answer: ID 0271\n\nExplanation: Paragraph ID 0271 introduces a new perspective on the data collection scenario, discussing the situation more",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 282,
-      "raw_response": "Answer: ID 0282",
+      "boundary_turn": 274,
+      "raw_response": "Answer: ID 0274",
       "cache_hit": false
     },
     {
@@ -680,8 +663,8 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 296,
-      "raw_response": "Answer: ID 0296",
+      "boundary_turn": 293,
+      "raw_response": "Answer: ID 0293",
       "cache_hit": false
     },
     {
@@ -690,8 +673,13 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 317,
-      "raw_response": "Answer: ID 0317\n\nThis paragraph marks a clear shift in the discussion from describing the display and map to focusing on the tasks and interactions with",
+      "boundary_turn": 310,
+      "raw_response": "Answer: ID 0310",
+      "cache_hit": false
+    },
+    {
+      "boundary_turn": 327,
+      "raw_response": "Answer: ID 0327",
       "cache_hit": false
     },
     {
@@ -700,33 +688,38 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 335,
-      "raw_response": "Answer: ID 0335\n\nExplanation: The content of ID 0335 shifts from the previous paragraphs by introducing a new topic related to",
+      "boundary_turn": 337,
+      "raw_response": "Answer: ID 0337",
       "cache_hit": false
     },
     {
       "boundary_turn": 347,
-      "raw_response": "Answer: ID 0347\n\nExplanation: The content of ID 0347 clearly shifts from discussing the student Fey Parrill to introducing the",
+      "raw_response": "Answer: ID 0347",
       "cache_hit": false
     },
     {
       "boundary_turn": 352,
-      "raw_response": "Answer: ID 0352\n\nThis paragraph marks a clear shift in the discussion from general planning and updates to specific concerns about the nature and collection of",
+      "raw_response": "Answer: ID 0352",
+      "cache_hit": false
+    },
+    {
+      "boundary_turn": 362,
+      "raw_response": "Answer: ID 0362",
       "cache_hit": false
     },
     {
       "boundary_turn": 366,
-      "raw_response": "Answer: ID 0366\n\nThis paragraph introduces a new scenario and problem statement that differs from the previous discussions, marking a clear content shift.",
+      "raw_response": "Answer: ID 0366",
       "cache_hit": false
     },
     {
-      "boundary_turn": 373,
-      "raw_response": "Answer: ID 0373\n\nExplanation: Paragraph ID 0373 introduces new information about the intentions being \"to View it,\" \"to",
+      "boundary_turn": 380,
+      "raw_response": "Answer: ID 0380",
       "cache_hit": false
     },
     {
       "boundary_turn": 386,
-      "raw_response": "Answer: ID 0386\n\nThis paragraph marks a clear shift in the topic from discussing dance modes (tango vs. waltz) to",
+      "raw_response": "Answer: ID 0386",
       "cache_hit": false
     },
     {
@@ -735,18 +728,18 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 397,
-      "raw_response": "Answer: ID 0397",
+      "boundary_turn": 395,
+      "raw_response": "Answer: ID 0395",
       "cache_hit": false
     },
     {
-      "boundary_turn": 399,
-      "raw_response": "Answer: ID 0399\n\nExplanation: The content of ID 0399 clearly shifts from discussing the concrete aspects of the problem (as",
+      "boundary_turn": 396,
+      "raw_response": "Answer: ID 0396",
       "cache_hit": false
     },
     {
       "boundary_turn": 400,
-      "raw_response": "Answer: ID 0400\n\nExplanation: Paragraph ID 0400 introduces a new topic related to Java libraries, which is a clear shift",
+      "raw_response": "Answer: ID 0400",
       "cache_hit": false
     },
     {
@@ -756,57 +749,47 @@
     },
     {
       "boundary_turn": 422,
-      "raw_response": "Answer: ID 0422\n\nThis paragraph introduces a new topic regarding the commitment to XML as the interchange format, which is a clear shift from the",
+      "raw_response": "Answer: ID 0422",
       "cache_hit": false
     },
     {
       "boundary_turn": 434,
-      "raw_response": "Answer: ID 0434\n\nThe content of paragraph ID 0434 clearly shifts to a different topic, discussing the notion of neural networks",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 438,
-      "raw_response": "Answer: ID 0438\n\nExplanation: The content of ID 0438 clearly shifts from discussing the idea of nets learning probability factors based",
+      "raw_response": "Answer: ID 0434",
       "cache_hit": false
     },
     {
       "boundary_turn": 440,
-      "raw_response": "Answer: ID 0440\n\nExplanation: The content of ID 0440 clearly shifts as it introduces a new speaker (Professor C)",
+      "raw_response": "Answer: ID 0440",
       "cache_hit": false
     },
     {
-      "boundary_turn": 444,
-      "raw_response": "Answer: ID 0444",
+      "boundary_turn": 448,
+      "raw_response": "Answer: ID 0448",
       "cache_hit": false
     },
     {
-      "boundary_turn": 455,
-      "raw_response": "Answer: ID 0455",
+      "boundary_turn": 459,
+      "raw_response": "Answer: ID 0459",
       "cache_hit": false
     },
     {
-      "boundary_turn": 467,
-      "raw_response": "Answer: ID 0467",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 473,
-      "raw_response": "Answer: ID 0473\n\nExplanation: Paragraph ID 0473 introduces a new topic or shift in the discussion, moving from the previous",
+      "boundary_turn": 472,
+      "raw_response": "Answer: ID 0472",
       "cache_hit": false
     },
     {
       "boundary_turn": 477,
-      "raw_response": "Answer: ID 0477\n\nThis paragraph introduces a new topic related to downloading and unpacking software versions, which is a clear shift from the previous",
+      "raw_response": "Answer: ID 0477",
       "cache_hit": false
     },
     {
       "boundary_turn": 478,
-      "raw_response": "Answer: ID 0478\n\nThe content clearly shifts from discussing technical issues with software versions and dates (ID 0477) to a",
+      "raw_response": "Answer: ID 0478",
       "cache_hit": false
     },
     {
-      "boundary_turn": 483,
-      "raw_response": "Answer: ID 0483\n\nExplanation: The content of ID 0483 is a simple acknowledgment (\"OK.\") without adding new information or",
+      "boundary_turn": 484,
+      "raw_response": "Answer: ID 0484",
       "cache_hit": false
     },
     {
@@ -816,12 +799,17 @@
     },
     {
       "boundary_turn": 502,
-      "raw_response": "Answer: ID 0502\n\nThis paragraph introduces a new topic (the Powder-Tower and its material) that clearly shifts from the previous discussion about",
+      "raw_response": "Answer: ID 0502",
       "cache_hit": false
     },
     {
-      "boundary_turn": 524,
-      "raw_response": "Answer: ID 0524\n\nThe content of paragraph ID 0524 shifts from discussing the project and sample data to mentioning historical facts about",
+      "boundary_turn": 508,
+      "raw_response": "Answer: ID 0508",
+      "cache_hit": false
+    },
+    {
+      "boundary_turn": 523,
+      "raw_response": "Answer: ID 0523",
       "cache_hit": false
     }
   ]

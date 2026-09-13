@@ -4,6 +4,7 @@ import argparse
 from collections import Counter
 from dataclasses import asdict
 import gc
+from importlib.resources import files
 import json
 from pathlib import Path
 from statistics import mean
@@ -13,19 +14,22 @@ from meeting_qa_chunking.artifacts import (
     make_provenance,
     read_answers,
     read_answer_summary,
+    sha256_file,
     write_json,
 )
-from meeting_qa_chunking.config import load_run_config
+from meeting_qa_chunking.config import BASELINE_CHUNKERS, load_run_config
 from meeting_qa_chunking.evidence import render_gold_evidence
 from meeting_qa_chunking.judging import (
     JUDGE_INSTRUCTION,
     build_judge_prompt,
+    build_judge_retry_prompt,
     parse_judgment,
 )
 from meeting_qa_chunking.qmsum import load_meeting
 
 
 BERTSCORE_PACKAGE_VERSION = "0.3.13"
+BERTSCORE_LANGUAGE = "en"
 
 
 def evaluation_config(run) -> dict[str, object]:
@@ -37,7 +41,12 @@ def evaluation_config(run) -> dict[str, object]:
             "model": asdict(spec.bertscore_model),
             "layers": spec.bertscore_layers,
             "batch_size": spec.bertscore_batch_size,
-            "rescale_with_baseline": False,
+            "language": BERTSCORE_LANGUAGE,
+            "baseline_file": (
+                f"rescale_baseline/{BERTSCORE_LANGUAGE}/"
+                f"{spec.bertscore_model.tag}.tsv"
+            ),
+            "rescale_with_baseline": True,
         },
         "judge": {
             "model": asdict(spec.judge_model),
@@ -150,7 +159,7 @@ def summarize_stage(result: dict[str, object]) -> dict[str, object]:
             if condition["chunker"] != "lumber":
                 continue
             suffix = f"{condition['retriever']}__w{condition['evidence_words']}"
-            for baseline in ("turn_packed", "word_packed"):
+            for baseline in BASELINE_CHUNKERS:
                 baseline_name = f"{baseline}__{suffix}"
                 if baseline_name not in conditions:
                     continue
@@ -267,11 +276,17 @@ def main() -> None:
             revision=spec.bertscore_model.revision,
             allow_patterns=["*.json", "*.txt", "*.safetensors"],
         )
+        baseline_file = config["bertscore"]["baseline_file"]
+        baseline_path = files("bert_score").joinpath(*baseline_file.split("/"))
+        if not baseline_path.is_file():
+            raise FileNotFoundError(f"Missing BERTScore baseline: {baseline_path}")
         scorer = BERTScorer(
             model_type=model_path,
             num_layers=spec.bertscore_layers,
             device="cuda",
-            rescale_with_baseline=False,
+            lang=BERTSCORE_LANGUAGE,
+            rescale_with_baseline=True,
+            baseline_path=str(baseline_path),
         )
         for stage in pending:
             add_bertscore(scorer, stage["records"], spec.bertscore_batch_size)
@@ -294,15 +309,23 @@ def main() -> None:
             hits_before = judge.cache_hits
             output_records = []
             for index, record in enumerate(stage["records"], start=1):
-                response = judge(
-                    build_judge_prompt(
-                        record["question"],
-                        record["reference_answer"],
-                        record["gold_evidence"],
-                        record["candidate_answer"],
-                    )
+                prompt = build_judge_prompt(
+                    record["question"],
+                    record["reference_answer"],
+                    record["gold_evidence"],
+                    record["candidate_answer"],
                 )
-                score, reason = parse_judgment(response)
+                response = judge(prompt)
+                try:
+                    score, reason = parse_judgment(response)
+                except ValueError:
+                    judge.discard_last_response()
+                    response = judge(build_judge_retry_prompt(prompt, response))
+                    try:
+                        score, reason = parse_judgment(response)
+                    except ValueError:
+                        judge.discard_last_response()
+                        raise
                 output_records.append(
                     {
                         "meeting_id": record["meeting_id"],
@@ -341,6 +364,10 @@ def main() -> None:
         "stages": {
             name: summarize_stage(result)
             for name, result in sorted(completed.items())
+        },
+        "artifact_hashes": {
+            name: sha256_file(run.evaluation_dir / f"{name}.json")
+            for name in sorted(completed)
         },
     }
     write_json(run.evaluation_dir / "summary.json", summary)

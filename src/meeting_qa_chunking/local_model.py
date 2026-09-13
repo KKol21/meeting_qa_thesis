@@ -7,6 +7,8 @@ from pathlib import Path
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+from .artifacts import dependency_context
+
 
 class LocalChatModel:
     def __init__(
@@ -26,9 +28,14 @@ class LocalChatModel:
         self.temperature = temperature
         self.cache_dir = cache_dir
         self.prequantized = prequantized
+        packages = ("torch", "transformers")
+        if prequantized:
+            packages += ("accelerate", "bitsandbytes")
+        self.cache_context = dependency_context(packages)
         self.model_calls = 0
         self.cache_hits = 0
         self.last_cache_hit = False
+        self.last_cache_path: Path | None = None
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         if prequantized and self.device.type != "cuda":
@@ -72,6 +79,7 @@ class LocalChatModel:
             "seed": self.seed,
             "temperature": self.temperature,
             "prompt": prompt,
+            "execution": self.cache_context,
         }
         if self.prequantized:
             record["prequantized"] = True
@@ -80,6 +88,7 @@ class LocalChatModel:
             json.dumps(record, sort_keys=True).encode("utf-8")
         ).hexdigest()
         cache_path = self.cache_dir / f"{cache_key}.json"
+        self.last_cache_path = cache_path
 
         if cache_path.exists():
             self.cache_hits += 1
@@ -119,3 +128,9 @@ class LocalChatModel:
         )
         temporary_path.replace(cache_path)
         return response
+
+    def discard_last_response(self) -> None:
+        """Remove a cached response after a caller rejects its format."""
+
+        if self.last_cache_path is not None:
+            self.last_cache_path.unlink(missing_ok=True)

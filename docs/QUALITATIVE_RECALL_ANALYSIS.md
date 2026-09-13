@@ -26,7 +26,7 @@ Primary artifacts:
 - [retrieval summary](../runs/ablations/full/retrieval/summary.json)
 - [retrieved-answer evaluation](../runs/ablations/full/evaluation/retrieval-14b.json)
 - [oracle-14B evaluation](../runs/ablations/full/evaluation/oracle-14b.json)
-- [full generated review](../runs/ablations/full/review.md)
+- [selected-condition review](../runs/ablations/full/review-selection.md)
 
 ## Aggregate result
 
@@ -83,10 +83,10 @@ Three design facts explain part of this behavior:
    ROUGE only the candidate and reference. Topic words can overlap even when
    the retrieved passage supports the wrong answer.
 3. [`add_bertscore()`](../src/stages/ablation_evaluate.py#L80-L93) likewise
-   compares only candidate and reference. Baseline rescaling is disabled
-   ([`ablation_evaluate.py:249-259`](../src/stages/ablation_evaluate.py#L249-L259)),
-   leaving a high common similarity floor. It measures semantic resemblance,
-   not grounding or complete fact coverage.
+   compares only candidate and reference. Baseline rescaling was disabled in
+   this analyzed run, leaving a high common similarity floor. The active
+   evaluator now enables English baseline rescaling, but it still measures
+   semantic resemblance rather than grounding or complete fact coverage.
 
 Chunk size is an additional confound: Lumber chunks average 167 words in this
 run, compared with 226 for turn-packed and 252 for word-packed. The observed

@@ -6,10 +6,12 @@ from pathlib import Path
 from .artifacts import read_retrieval
 from .chunking import (
     Chunk,
+    chunk_single_turn,
     chunk_turn_packed,
     chunk_word_packed,
     turn_word_count,
 )
+from .config import CHUNKERS
 from .evidence import reconstruct_evidence, render_evidence, render_gold_evidence
 from .lumber import load_lumber_chunks
 from .qmsum import Meeting
@@ -20,11 +22,12 @@ def build_chunk_sets(
     lumber_path: Path | None,
     turn_packed_max_words: int,
     word_packed_max_words: int,
-    chunkers: Iterable[str] = ("turn_packed", "word_packed", "lumber"),
+    chunkers: Iterable[str] = CHUNKERS,
 ) -> dict[str, list[Chunk]]:
     """Build the requested chunk views."""
 
     builders = {
+        "single_turn": lambda: chunk_single_turn(meeting.turns),
         "turn_packed": lambda: chunk_turn_packed(
             meeting.turns, turn_packed_max_words
         ),

@@ -2,8 +2,6 @@
 
 **Scope:** 20 meeting(s), 142 question(s).
 
-All per-question answers and evidence: [review.md](review.md)
-
 ## Oracle answer-model comparison
 
 Gold evidence is supplied here, isolating answer-model performance from retrieval.

@@ -1,7 +1,8 @@
 param(
     [ValidateSet(
         "ablation-smoke",
-        "ablation-full"
+        "ablation-full",
+        "lumber-sweep"
     )]
     [string]$Task = "ablation-smoke",
     [switch]$NoWait,
@@ -21,6 +22,14 @@ $jobs = @{
     "ablation-full" = @{
         Preset = "src/configs/ablation-full.toml"
         WallTime = "10:00:00"
+    }
+    "lumber-sweep" = @{
+        Preset = "src/configs/ablation-full.toml"
+        WallTime = "10:00:00"
+        Slurm = "src/wormulon/lumber_sweep.slurm"
+        JobName = "lumber-sweep"
+        LogPrefix = "slurm-lumber-sweep"
+        Result = "runs/ablations/lumber-sweep"
     }
 }
 
@@ -98,15 +107,21 @@ try {
         throw "Could not read preset: $($job.Preset)"
     }
     $description = ($descriptionJson -join "`n") | ConvertFrom-Json
-    $slurm = "src/wormulon/ablation.slurm"
-    $logPrefix = "slurm-ablation-$($description.name)"
-    $result = $description.output_root
+    $slurm = if ($job.Slurm) { $job.Slurm } else { "src/wormulon/ablation.slurm" }
+    $logPrefix = if ($job.LogPrefix) {
+        $job.LogPrefix
+    } else {
+        "slurm-ablation-$($description.name)"
+    }
+    $result = if ($job.Result) { $job.Result } else { $description.output_root }
+    $jobName = if ($job.JobName) { $job.JobName } else { "ablation-$($description.name)" }
 
     if ($DryRun) {
         Write-Host "Task: $Task"
         Write-Host "Preset: $($job.Preset)"
         Write-Host "Upload: src/"
         Write-Host "Slurm: $slurm ($($job.WallTime))"
+        Write-Host "Job name: $jobName"
         Write-Host "Result: $result"
         Write-Host "Data: $($description.meeting_ids -join ', ')"
         return
@@ -161,7 +176,7 @@ try {
 
         Write-Host "Submitting $Task job..."
         $submission = ssh -o BatchMode=yes $remote `
-            "cd $remoteDirectory && sbatch --job-name=ablation-$($description.name) --time=$($job.WallTime) --output=$logPrefix-%j.out $slurm $($job.Preset)"
+            "cd $remoteDirectory && sbatch --job-name=$jobName --time=$($job.WallTime) --output=$logPrefix-%j.out $slurm $($job.Preset)"
         if ($LASTEXITCODE -ne 0) {
             throw "Job submission failed"
         }
@@ -272,7 +287,7 @@ try {
         $jobId
     Write-Host "Result: $localResult"
 
-    if ($description.run_evaluation) {
+    if ($description.run_evaluation -and $Task -ne "lumber-sweep") {
         $previousPythonPath = $env:PYTHONPATH
         $env:PYTHONPATH = Join-Path $PSScriptRoot "src"
         python src/tools/report_ablations.py --preset $job.Preset

@@ -4,6 +4,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
@@ -16,12 +17,31 @@ class ProvenanceTest(unittest.TestCase):
         artifact = {
             "meeting_id": "M",
             "questions": [
+                {
+                    "question_index": 0,
+                    "question": "Q?",
+                    "results": {"c": {"value": 1}},
+                }
+            ],
+        }
+        self.assertTrue(
+            questions_complete(artifact, "M", ["Q?"], {"c"}, {"value"})
+        )
+        artifact["questions"][0]["results"] = {}
+        self.assertFalse(
+            questions_complete(artifact, "M", ["Q?"], {"c"}, {"value"})
+        )
+
+    def test_rejects_empty_question_results(self) -> None:
+        artifact = {
+            "meeting_id": "M",
+            "questions": [
                 {"question_index": 0, "question": "Q?", "results": {"c": {}}}
             ],
         }
-        self.assertTrue(questions_complete(artifact, "M", ["Q?"], {"c"}))
-        artifact["questions"][0]["results"] = {}
-        self.assertFalse(questions_complete(artifact, "M", ["Q?"], {"c"}))
+        self.assertFalse(
+            questions_complete(artifact, "M", ["Q?"], {"c"}, {"answer"})
+        )
 
     def test_fingerprint_changes_with_config_or_input_not_preset_metadata(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -65,6 +85,31 @@ class ProvenanceTest(unittest.TestCase):
             self.assertNotEqual(
                 original["fingerprint"], changed_input["fingerprint"]
             )
+
+    def test_fingerprint_changes_with_execution_context(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            meeting = root / "meeting.json"
+            preset = root / "preset.toml"
+            meeting.write_text("meeting", encoding="utf-8")
+            preset.write_text("", encoding="utf-8")
+
+            with patch(
+                "meeting_qa_chunking.artifacts.execution_context",
+                return_value={"source_hash": "one", "python": "3.11"},
+            ):
+                original = make_provenance(
+                    "retrieval", {}, {"meeting": meeting}, preset
+                )
+            with patch(
+                "meeting_qa_chunking.artifacts.execution_context",
+                return_value={"source_hash": "two", "python": "3.11"},
+            ):
+                changed = make_provenance(
+                    "retrieval", {}, {"meeting": meeting}, preset
+                )
+
+            self.assertNotEqual(original["fingerprint"], changed["fingerprint"])
 
 
 if __name__ == "__main__":

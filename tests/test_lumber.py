@@ -16,6 +16,7 @@ class LumberChunkerTest(unittest.TestCase):
         responses = iter(["Answer: ID 0000", "Answer: ID 0001"])
         prompts = []
         decisions = []
+        discarded = []
 
         def choose(prompt: str) -> str:
             prompts.append(prompt)
@@ -31,12 +32,27 @@ class LumberChunkerTest(unittest.TestCase):
             target_tokens=1,
             max_boundaries=1,
             record_decision=decisions.append,
+            discard_invalid_response=lambda: discarded.append(True),
         )
 
         self.assertEqual(len(prompts), 2)
         self.assertIn("cannot be selected", prompts[1])
+        self.assertEqual(discarded, [True])
         self.assertEqual(decisions, ["Answer: ID 0001"])
         self.assertEqual((chunks[0].start_turn, chunks[0].end_turn), (0, 0))
+
+    def test_discards_an_invalid_retry(self) -> None:
+        discarded = []
+
+        with self.assertRaises(ValueError):
+            lumber_chunks(
+                [Turn(0, "A", "one"), Turn(1, "B", "two")],
+                lambda _prompt: "invalid",
+                target_tokens=1,
+                discard_invalid_response=lambda: discarded.append(True),
+            )
+
+        self.assertEqual(discarded, [True, True])
 
 
 if __name__ == "__main__":

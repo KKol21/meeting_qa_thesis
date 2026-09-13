@@ -14,7 +14,9 @@
         },
         "layers": 17,
         "batch_size": 16,
-        "rescale_with_baseline": false
+        "language": "en",
+        "baseline_file": "rescale_baseline/en/roberta-large.tsv",
+        "rescale_with_baseline": true
       },
       "judge": {
         "model": {
@@ -29,26 +31,41 @@
         "prompt": "You are evaluating an answer to a meeting question.\nUse the reference answer and gold transcript evidence as complementary sources of truth. Do not require identical wording, and do not reward an answer merely for repeating the question.\n\nFirst identify the important points in the reference answer, then check them against the candidate and transcript. A supported but incomplete answer must receive 2, not 3. Transcript-supported details beyond the reference are allowed, but do not compensate for omitted important reference points.\n\nScore the candidate answer using this scale:\n1 = Invalid or incorrect. It does not answer the question, contradicts the evidence, is mostly unsupported, contains a major unsupported claim, or claims insufficient evidence when the answer is available.\n2 = Partially correct. It gives useful supported information, but omits one or more important points from the reference answer or includes a minor unsupported claim.\n3 = Correct. It covers all or nearly all important points from the reference answer, is supported by the transcript evidence, and contains no material error or unsupported claim.\n\nReturn only a JSON object with an integer score and one short reason:\n{\"score\": 1, \"reason\": \"...\"}"
       }
     },
-    "config_hash": "09d95b9b6b254a97435a1587c1d2c53dfa07763e34812caf4a773dd281351504",
+    "config_hash": "54f3e7750e36bb4fbe093aa79f336dbaa41c6ae19a5619ebff0f6a12136294ad",
     "inputs": {
       "answer_summary": {
         "file": "summary.json",
-        "sha256": "084a4d420d63c4e4263e89903ceb17c2ab0a06f8005794d68b8021f9da84dd58"
+        "sha256": "178ee5333260ee57b7aa6160e492f6df0cf1c52660a0367c019b6d6cd2fa3085"
       },
       "answers_Bed002": {
         "file": "Bed002.json",
-        "sha256": "cdc216bc64d6b8cac5303edd6eeaf0081db37ebf4d988bf08c5ace6d3b7eb8ae"
+        "sha256": "ee0d746d191fcb2b14d8b5e9d1b70fbce46041b64b92e6eb0afb3702e4b072bc"
       },
       "meeting_Bed002": {
         "file": "Bed002.json",
         "sha256": "154dcbab359183b9429d63dccd1c8f0e07260f63a74688ba8435627d0a5111ed"
       }
     },
-    "input_hash": "47909dc426dc99478b3e98d0b995faf210c16656f901aedc088df6f690099b0b",
-    "fingerprint": "1213db98e502d18615b2981eae09c7691b208cd6c31dbc271a8133c448eff892",
+    "input_hash": "ac7528246cdd2087d7163027f5553e1f17fb63115e3cd96213efcd821cfcaa79",
+    "execution": {
+      "source_hash": "51bf61c1861a5f07647c85e5897382a43af46d99c0c3fa831519db8149b99db5",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bert-score": "0.3.13",
+        "bitsandbytes": "0.50.2",
+        "numpy": "2.4.6",
+        "pandas": "3.0.5",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "6f311d58393c3b895fd9f0dd2ddf3a33977a7dc3d0d82e6c99328c657abbe39d"
+    },
+    "execution_hash": "e9cb18daa673b026f3bce036086b0337ee1cce9e55528dc6516de739c8039732",
+    "fingerprint": "40ae9b42d7400e883729d5f6e89d4761128d15b049b9e7b538babcb262c29693",
     "preset": {
       "file": "ablation-smoke.toml",
-      "sha256": "8b39ae5d3d717826e07537b9212ed1bbdc8ddbcaaa6569d49a83a2b7896bbbb3"
+      "sha256": "c5d86a37012575dcdc5044549d21f2b55fc2e428a0f65ff1309f14733024797c"
     }
   },
   "answer_summary": {
@@ -98,29 +115,29 @@
       }
     },
     "paired_meeting_average": {},
-    "model_calls": 0,
-    "cache_hits": 6,
+    "model_calls": 6,
+    "cache_hits": 0,
     "artifact_hashes": {
-      "Bed002": "cdc216bc64d6b8cac5303edd6eeaf0081db37ebf4d988bf08c5ace6d3b7eb8ae"
+      "Bed002": "ee0d746d191fcb2b14d8b5e9d1b70fbce46041b64b92e6eb0afb3702e4b072bc"
     }
   },
-  "judge_model_calls": 0,
-  "judge_cache_hits": 6,
+  "judge_model_calls": 6,
+  "judge_cache_hits": 0,
   "records": [
     {
       "meeting_id": "Bed002",
       "question_index": 0,
       "condition": "oracle",
       "bertscore": {
-        "precision": 0.8233254551887512,
-        "recall": 0.8399239182472229,
-        "f1": 0.831541895866394
+        "precision": -0.04854993149638176,
+        "recall": 0.05002688243985176,
+        "f1": 0.001873171073384583
       },
       "judge": {
         "score": 2,
         "reason": "The candidate answer covers some important points such as the use of wireless microphones, positioning, and the importance of consent forms, but it omits details about the project's purpose, the anonymization of data, and the release of the recordings to the public.",
         "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points such as the use of wireless microphones, positioning, and the importance of consent forms, but it omits details about the project's purpose, the anonymization of data, and the release of the recordings to the public.\"}",
-        "cache_hit": true
+        "cache_hit": false
       }
     },
     {
@@ -128,15 +145,15 @@
       "question_index": 1,
       "condition": "oracle",
       "bertscore": {
-        "precision": 0.8632358312606812,
-        "recall": 0.8544352054595947,
-        "f1": 0.8588129878044128
+        "precision": 0.18831510841846466,
+        "recall": 0.1361442655324936,
+        "f1": 0.16345642507076263
       },
       "judge": {
         "score": 1,
         "reason": "The candidate answer claims insufficient evidence when relevant information is available in the transcript.",
         "raw_response": "{\"score\": 1, \"reason\": \"The candidate answer claims insufficient evidence when relevant information is available in the transcript.\"}",
-        "cache_hit": true
+        "cache_hit": false
       }
     },
     {
@@ -144,15 +161,15 @@
       "question_index": 2,
       "condition": "oracle",
       "bertscore": {
-        "precision": 0.8264696002006531,
-        "recall": 0.8613309264183044,
-        "f1": 0.8435402512550354
+        "precision": -0.02988966926932335,
+        "recall": 0.17706698179244995,
+        "f1": 0.07296431809663773
       },
       "judge": {
         "score": 2,
         "reason": "The candidate answer covers some important points, such as A's involvement in setting up the recording equipment and ensuring its proper functioning, but omits key details like the requirement for participants to sign a consent form and the anonymization of transcripts.",
         "raw_response": "{\"score\": 2, \"reason\": \"The candidate answer covers some important points, such as A's involvement in setting up the recording equipment and ensuring its proper functioning, but omits key details like the requirement for participants to sign a consent form and the anonymization of transcripts.\"}",
-        "cache_hit": true
+        "cache_hit": false
       }
     },
     {
@@ -160,15 +177,15 @@
       "question_index": 3,
       "condition": "oracle",
       "bertscore": {
-        "precision": 0.8703523874282837,
-        "recall": 0.8969813585281372,
-        "f1": 0.8834663033485413
+        "precision": 0.2305513173341751,
+        "recall": 0.3886348307132721,
+        "f1": 0.3095291554927826
       },
       "judge": {
         "score": 3,
         "reason": "The candidate answer accurately summarizes the experimental setup, covering key points such as participant familiarization, task completion, system crash, and human operator takeover, as well as data collection and the use of GPS and map displays.",
         "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately summarizes the experimental setup, covering key points such as participant familiarization, task completion, system crash, and human operator takeover, as well as data collection and the use of GPS and map displays.\"}",
-        "cache_hit": true
+        "cache_hit": false
       }
     },
     {
@@ -176,15 +193,15 @@
       "question_index": 4,
       "condition": "oracle",
       "bertscore": {
-        "precision": 0.8922673463821411,
-        "recall": 0.8968592882156372,
-        "f1": 0.8945574164390564
+        "precision": 0.36061492562294006,
+        "recall": 0.387910395860672,
+        "f1": 0.3752448260784149
       },
       "judge": {
         "score": 3,
         "reason": "The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.",
         "raw_response": "{\"score\": 3, \"reason\": \"The candidate answer accurately covers all important points from the reference answer and is supported by the transcript evidence.\"}",
-        "cache_hit": true
+        "cache_hit": false
       }
     },
     {
@@ -192,15 +209,15 @@
       "question_index": 5,
       "condition": "oracle",
       "bertscore": {
-        "precision": 0.8618714213371277,
-        "recall": 0.8778300285339355,
-        "f1": 0.869777500629425
+        "precision": 0.1802174299955368,
+        "recall": 0.2749810814857483,
+        "f1": 0.22842198610305786
       },
       "judge": {
         "score": 2,
         "reason": "omits details about the first-person perspective and the goal of understanding human reactions",
         "raw_response": "{\"score\": 2, \"reason\": \"omits details about the first-person perspective and the goal of understanding human reactions\"}",
-        "cache_hit": true
+        "cache_hit": false
       }
     }
   ]

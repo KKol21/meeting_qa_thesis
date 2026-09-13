@@ -22,16 +22,25 @@ class RetrievalSummaryTest(unittest.TestCase):
                 "retriever": "dense",
                 "evidence_words": 10,
             }
-            for chunker in ("turn_packed", "word_packed", "lumber")
+            for chunker in (
+                "turn_packed",
+                "word_packed",
+                "lumber",
+                "single_turn",
+            )
         }
 
-        def result(meeting_id: str, values: list[tuple[float, float, float]]):
+        def result(
+            meeting_id: str,
+            values: list[tuple[float, float, float, float]],
+        ):
             questions = []
-            for lumber, turn_packed, word_packed in values:
+            for lumber, turn_packed, word_packed, single_turn in values:
                 scores = {
                     "lumber": lumber,
                     "turn_packed": turn_packed,
                     "word_packed": word_packed,
+                    "single_turn": single_turn,
                 }
                 questions.append(
                     {
@@ -57,8 +66,8 @@ class RetrievalSummaryTest(unittest.TestCase):
             # One perfect Lumber question and three failed Lumber questions.
             # Equal meeting weights give 0.5; question weights give 0.25.
             values = {
-                "A": [(1.0, 0.0, 0.5)],
-                "B": [(0.0, 1.0, 0.5)] * 3,
+                "A": [(1.0, 0.0, 0.5, 0.25)],
+                "B": [(0.0, 1.0, 0.5, 0.75)] * 3,
             }
             for meeting_id, meeting_values in values.items():
                 (output_dir / f"{meeting_id}.json").write_text(
@@ -74,6 +83,12 @@ class RetrievalSummaryTest(unittest.TestCase):
         self.assertEqual(
             summary["paired_meeting_average"][
                 "lumber_minus_turn_packed__dense__w10"
+            ]["precision"],
+            0.0,
+        )
+        self.assertEqual(
+            summary["paired_meeting_average"][
+                "lumber_minus_single_turn__dense__w10"
             ]["precision"],
             0.0,
         )
@@ -103,19 +118,23 @@ class RetrievalSummaryTest(unittest.TestCase):
 
     def test_evaluation_reuse_requires_matching_record_identity(self) -> None:
         expected = [
-            {"meeting_id": "A", "question_index": 0, "condition": "oracle"}
+            {"meeting_id": "A", "question_index": 0, "condition": "first"},
+            {"meeting_id": "A", "question_index": 0, "condition": "second"},
         ]
         saved = {
             "records": [
                 {
-                    **expected[0],
+                    **identity,
                     "bertscore": {"precision": 0.7, "recall": 0.8, "f1": 0.75},
                     "judge": {"score": 3},
                 }
+                for identity in expected
             ]
         }
         self.assertTrue(evaluation_complete(saved, expected))
-        saved["records"][0]["question_index"] = 1
+        saved["records"].reverse()
+        self.assertFalse(evaluation_complete(saved, expected))
+        saved["records"] = [saved["records"][0]] * 2
         self.assertFalse(evaluation_complete(saved, expected))
 
     def test_report_accepts_current_and_legacy_model_names(self) -> None:

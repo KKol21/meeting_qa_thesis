@@ -1,7 +1,7 @@
 # Meeting QA chunking
 
-This repository contains a QMSum development experiment comparing complete-turn
-packing, strict word packing, and a LumberChunker adaptation. ELITR-Bench is not
+This repository contains a QMSum development experiment comparing single turns,
+complete-turn packing, strict word packing, and a LumberChunker adaptation. ELITR-Bench is not
 implemented; whether it remains in thesis scope is an open decision.
 
 ## Layout
@@ -19,10 +19,10 @@ implemented; whether it remains in thesis scope is an open decision.
 
 ## Ablation workflow
 
-The retrieval grid contains 18 conditions: turn-packed/word-packed/Lumber
-chunks, dense/BM25/hybrid retrieval, and 512/1024-word evidence budgets. Oracle answers compare
+The retrieval grid contains 36 conditions: single-turn/turn-packed/word-packed/Lumber
+chunks, dense/BM25/hybrid retrieval, and 512/1024/2048-word evidence budgets. Oracle answers compare
 Qwen2.5 7B, 14B, and a 32B bitsandbytes 4-bit checkpoint. End-to-end answers
-use 14B across all 18 retrieval conditions. Every saved answer is evaluated
+use 14B across all 36 retrieval conditions. Every saved answer is evaluated
 with BERTScore and a 4-bit Llama 3.3 70B judge on a 1--3 scale: invalid/incorrect,
 partially correct, or correct.
 
@@ -40,7 +40,16 @@ development experiment:
 .\run_on_wormulon.ps1 ablation-full
 ```
 
-The TOML preset controls meetings, models, parameters, and output paths. Both
+To select Lumber's target window on the development meetings, run the
+500/750/1000/1250/1500 sweep. It evaluates dense, BM25, and hybrid retrieval
+at 512, 1024, and 2048 evidence words, then downloads `sweep.json` and
+`sweep.md`:
+
+```powershell
+.\run_on_wormulon.ps1 lumber-sweep
+```
+
+The TOML preset controls meetings, models, parameters, and output paths. These
 commands derive their selected QMSum files from that preset, upload them with
 `src/`, wait for Slurm, and download the complete result directory.
 
@@ -59,9 +68,19 @@ python src/tools/inspect_retrieval_failure.py `
     --question-index 3
 ```
 
+Export one retrieval condition against the 14B oracle for manual review:
+
+```powershell
+python src/tools/export_review.py `
+    --run full `
+    --condition lumber__dense__w512
+```
+
 For the complete data flow, caches, commands, failure recovery, and Slurm
 explanation, read [`docs/PIPELINE.md`](docs/PIPELINE.md).
 
 For supervisor review, start with
 [`docs/QUESTION_PIPELINE_REVIEW.md`](docs/QUESTION_PIPELINE_REVIEW.md) and
 [`docs/QUALITATIVE_RECALL_ANALYSIS.md`](docs/QUALITATIVE_RECALL_ANALYSIS.md).
+The chunk-size rationale is in
+[`docs/QMSUM_CHUNKING_PARAMETER_ANALYSIS.md`](docs/QMSUM_CHUNKING_PARAMETER_ANALYSIS.md).

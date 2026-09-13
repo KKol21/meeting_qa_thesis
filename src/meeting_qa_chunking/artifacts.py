@@ -2,12 +2,37 @@
 
 import hashlib
 import json
+import platform
 from dataclasses import dataclass
+from functools import cache
+from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 from typing import Any
 
 
 EXPERIMENT_VERSION = 2
+PACKAGE_ROOT = Path(__file__).resolve().parent
+SOURCE_ROOT = PACKAGE_ROOT.parent
+STAGE_ENTRYPOINTS = {
+    "segmentation": "ablation_segment.py",
+    "retrieval": "ablation_retrieval.py",
+    "answers": "ablation_answer.py",
+    "evaluation": "ablation_evaluate.py",
+}
+STAGE_PACKAGES = {
+    "segmentation": ("torch", "transformers"),
+    "retrieval": ("numpy", "sentence-transformers", "torch", "transformers"),
+    "answers": ("accelerate", "bitsandbytes", "rouge-score", "torch", "transformers"),
+    "evaluation": (
+        "accelerate",
+        "bert-score",
+        "bitsandbytes",
+        "numpy",
+        "pandas",
+        "torch",
+        "transformers",
+    ),
+}
 
 
 @dataclass(frozen=True)
@@ -78,6 +103,54 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+@cache
+def package_source_hash() -> str:
+    """Hash executable package code and prompt files in the working tree."""
+
+    files = sorted(
+        path
+        for path in PACKAGE_ROOT.rglob("*")
+        if path.is_file() and path.suffix in {".py", ".txt"}
+    )
+    return sha256_json(
+        {
+            path.relative_to(SOURCE_ROOT).as_posix(): sha256_file(path)
+            for path in files
+        }
+    )
+
+
+@cache
+def dependency_context(packages: tuple[str, ...]) -> dict[str, object]:
+    """Return the code and installed-package versions that affect cached work."""
+
+    installed = {}
+    for package in sorted(packages):
+        try:
+            installed[package] = version(package)
+        except PackageNotFoundError:
+            installed[package] = None
+    return {
+        "source_hash": package_source_hash(),
+        "python": platform.python_version(),
+        "packages": installed,
+    }
+
+
+def execution_context(stage: str) -> dict[str, object]:
+    """Describe the implementation and runtime used by one pipeline stage."""
+
+    try:
+        entrypoint = SOURCE_ROOT / "stages" / STAGE_ENTRYPOINTS[stage]
+        packages = STAGE_PACKAGES[stage]
+    except KeyError as error:
+        raise ValueError(f"Unknown pipeline stage: {stage}") from error
+    return {
+        **dependency_context(packages),
+        "entrypoint_hash": sha256_file(entrypoint),
+    }
+
+
 def make_provenance(
     stage: str,
     config: dict[str, object],
@@ -92,8 +165,15 @@ def make_provenance(
     }
     config_hash = sha256_json(config)
     input_hash = sha256_json(input_records)
+    execution = execution_context(stage)
+    execution_hash = sha256_json(execution)
     fingerprint = sha256_json(
-        {"stage": stage, "config_hash": config_hash, "input_hash": input_hash}
+        {
+            "stage": stage,
+            "config_hash": config_hash,
+            "input_hash": input_hash,
+            "execution_hash": execution_hash,
+        }
     )
     return {
         "stage": stage,
@@ -101,6 +181,8 @@ def make_provenance(
         "config_hash": config_hash,
         "inputs": input_records,
         "input_hash": input_hash,
+        "execution": execution,
+        "execution_hash": execution_hash,
         "fingerprint": fingerprint,
         # Useful for auditing, but unrelated preset edits do not invalidate work.
         "preset": {"file": preset_path.name, "sha256": sha256_file(preset_path)},
@@ -123,6 +205,7 @@ def questions_complete(
     meeting_id: str,
     question_texts: list[str],
     conditions: set[str],
+    result_fields: set[str],
 ) -> bool:
     """Check the repeated per-question shape used by retrieval and answers."""
 
@@ -132,9 +215,16 @@ def questions_complete(
         and isinstance(questions, list)
         and len(questions) == len(question_texts)
         and all(
-            item.get("question_index") == index
+            isinstance(item, dict)
+            and item.get("question_index") == index
             and item.get("question") == question_texts[index]
-            and set(item.get("results", {})) == conditions
+            and isinstance(item.get("results"), dict)
+            and set(item["results"]) == conditions
+            and all(
+                isinstance(result, dict)
+                and result_fields <= set(result)
+                for result in item["results"].values()
+            )
             for index, item in enumerate(questions)
         )
     )

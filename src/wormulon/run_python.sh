@@ -23,7 +23,9 @@ if ! "$env_dir/bin/python" -c \
     "$env_dir/bin/python" -m pip install "transformers==5.15.1"
 fi
 
-if [[ "$1" == "src/stages/ablation_retrieval.py" ]] && \
+if [[ "$1" == "src/stages/ablation_retrieval.py" || \
+      "$1" == "src/tools/compare_lumber_targets.py" || \
+      "$1" == "src/tools/sweep_lumber_targets.py" ]] && \
     ! "$env_dir/bin/python" -c \
         "import sentence_transformers; assert sentence_transformers.__version__ == '5.7.0'" \
         2>/dev/null; then

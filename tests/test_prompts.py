@@ -24,11 +24,13 @@ class PromptFileTest(unittest.TestCase):
             "7d1b6b471716405dcda36be81089d8ff12b7946dabcfe8030fe45be5dce1e367",
         )
 
-    def test_lumber_prompt_preserves_the_original_instruction(self) -> None:
+    def test_lumber_prompt_requires_only_the_boundary_id(self) -> None:
         self.assertEqual(
             sha256(LUMBERCHUNKER_INSTRUCTIONS),
-            "4167574ef8fa8d78aab7a233cd103f38fd2c8db1ea6f263b69e47ebfe6fe37ed",
+            "885a00a7a6156c7abf63d45fad3ffef85c20cbd27795ed375f629419f3662e99",
         )
+        self.assertIn("Output exactly one line", LUMBERCHUNKER_INSTRUCTIONS)
+        self.assertIn("Do not explain or justify", LUMBERCHUNKER_INSTRUCTIONS)
 
     def test_judge_prompt_is_loaded_from_text(self) -> None:
         self.assertEqual(JUDGE_INSTRUCTION, load_prompt("judge.txt"))
