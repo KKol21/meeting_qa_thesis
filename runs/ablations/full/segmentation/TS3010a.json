@@ -5,18 +5,18 @@
     "config": {
       "experiment_version": 2,
       "model": {
-        "tag": "qwen2.5-7b",
-        "name": "Qwen/Qwen2.5-7B-Instruct",
-        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
         "prequantized": false
       },
       "target_tokens": 550,
-      "max_new_tokens": 32,
+      "max_new_tokens": 12,
       "temperature": 0.0,
       "seed": 42,
-      "prompt": "You will receive as input an English document with paragraphs identified by 'ID XXXX: <text>'.\n\nTask: Find the first paragraph (not the first one) where the content clearly changes compared to the previous paragraphs.\n\nOutput: Return the ID of the paragraph with the content shift as in the exemplified format: 'Answer: ID XXXX'.\nAdditional Considerations: Avoid very long groups of paragraphs. Aim for a good balance between identifying content shifts and keeping groups manageable."
+      "prompt": "You will receive as input an English document with paragraphs identified by 'ID XXXX: <text>'.\n\nTask: Find the first paragraph (not the first one) where the content clearly changes compared to the previous paragraphs.\n\nAdditional Considerations: Avoid very long groups of paragraphs. Aim for a good balance between identifying content shifts and keeping groups manageable.\n\nOutput exactly one line in the format 'Answer: ID XXXX'. Do not explain or justify the answer. Do not return any other text."
     },
-    "config_hash": "27c7acc7be3be93ff627d630fe62a2acd05ba528e632e9b767269a2fe36ca95e",
+    "config_hash": "f3b425a45ca4468f79831a1d3aea9f0e663395349d436935ff1b719ec03aca64",
     "inputs": {
       "meeting": {
         "file": "TS3010a.json",
@@ -24,107 +24,95 @@
       }
     },
     "input_hash": "d90826dedfddb8af38aea50b72be8e44a7f797099fc51c147adca0f747bd7b8b",
-    "fingerprint": "bb6e5525b912d2e83a2345f7585cbb6169dc33ea2a796ebb8ed22cd127bec929",
+    "execution": {
+      "source_hash": "51bf61c1861a5f07647c85e5897382a43af46d99c0c3fa831519db8149b99db5",
+      "python": "3.11.2",
+      "packages": {
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "c7bef71c39ae03249aede27f605c4d72e33b81d1476b4fc1ac82c55a6e75ed38"
+    },
+    "execution_hash": "7a05ea60f19d4dd64819fbf3bfc7f202dfa7e50b62357bc4cd99dfe155c59a9f",
+    "fingerprint": "1c6cde86f9948fd1d78f872b27694070dc7e330d128407d10ca028c7fff2bc39",
     "preset": {
       "file": "ablation-full.toml",
-      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+      "sha256": "8e5aa443eddb505234233ec4652632ead6a4ce00332ccedddfe47e46baae5b58"
     }
   },
   "meeting_id": "TS3010a",
   "turn_count": 168,
-  "model_calls": 9,
+  "model_calls": 7,
   "cache_hits": 0,
   "chunks": [
     {
       "index": 0,
       "start_turn": 0,
-      "end_turn": 33,
-      "word_count": 319
+      "end_turn": 23,
+      "word_count": 272
     },
     {
       "index": 1,
-      "start_turn": 34,
+      "start_turn": 24,
       "end_turn": 42,
-      "word_count": 22
+      "word_count": 69
     },
     {
       "index": 2,
       "start_turn": 43,
-      "end_turn": 90,
-      "word_count": 154
+      "end_turn": 100,
+      "word_count": 181
     },
     {
       "index": 3,
-      "start_turn": 91,
-      "end_turn": 100,
-      "word_count": 27
+      "start_turn": 101,
+      "end_turn": 115,
+      "word_count": 228
     },
     {
       "index": 4,
-      "start_turn": 101,
-      "end_turn": 103,
-      "word_count": 91
-    },
-    {
-      "index": 5,
-      "start_turn": 104,
-      "end_turn": 115,
-      "word_count": 137
-    },
-    {
-      "index": 6,
       "start_turn": 116,
       "end_turn": 123,
       "word_count": 154
     },
     {
-      "index": 7,
+      "index": 5,
       "start_turn": 124,
-      "end_turn": 127,
-      "word_count": 49
+      "end_turn": 128,
+      "word_count": 114
     },
     {
-      "index": 8,
-      "start_turn": 128,
-      "end_turn": 152,
-      "word_count": 312
+      "index": 6,
+      "start_turn": 129,
+      "end_turn": 142,
+      "word_count": 174
     },
     {
-      "index": 9,
-      "start_turn": 153,
+      "index": 7,
+      "start_turn": 143,
       "end_turn": 167,
-      "word_count": 220
+      "word_count": 293
     }
   ],
   "decisions": [
     {
-      "boundary_turn": 34,
-      "raw_response": "Answer: ID 0034",
+      "boundary_turn": 24,
+      "raw_response": "Answer: ID 0024",
       "cache_hit": false
     },
     {
       "boundary_turn": 43,
-      "raw_response": "Answer: ID 0043\n\nExplanation: The content of ID 0043 \"Industrial Designer: What is this, Pictionary.\" clearly",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 91,
-      "raw_response": "Answer: ID 0091\n\nThis paragraph marks a significant shift in the conversation from the previous vocal exchanges to a more structured discussion about budget and product",
+      "raw_response": "Answer: ID 0043",
       "cache_hit": false
     },
     {
       "boundary_turn": 101,
-      "raw_response": "Answer: ID 0101\n\nThe content clearly shifts from general agreement and vocal responses to more substantive discussion about the project and specific design considerations, starting",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 104,
-      "raw_response": "Answer: ID 0104",
+      "raw_response": "Answer: ID 0101",
       "cache_hit": false
     },
     {
       "boundary_turn": 116,
-      "raw_response": "Answer: ID 0116\n\nThis paragraph marks a clear shift in the topic from discussing the Industrial Designer's personal experience with remote controls to the User",
+      "raw_response": "Answer: ID 0116",
       "cache_hit": false
     },
     {
@@ -133,13 +121,13 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 128,
-      "raw_response": "Answer: ID 0128",
+      "boundary_turn": 129,
+      "raw_response": "Answer: ID 0129",
       "cache_hit": false
     },
     {
-      "boundary_turn": 153,
-      "raw_response": "Answer: ID 0153\n\nExplanation: The content shifts from technical and design considerations in the previous paragraphs to a focus on marketing aspects and user experience",
+      "boundary_turn": 143,
+      "raw_response": "Answer: ID 0143",
       "cache_hit": false
     }
   ]

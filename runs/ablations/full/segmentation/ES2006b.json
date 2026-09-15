@@ -5,18 +5,18 @@
     "config": {
       "experiment_version": 2,
       "model": {
-        "tag": "qwen2.5-7b",
-        "name": "Qwen/Qwen2.5-7B-Instruct",
-        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
         "prequantized": false
       },
       "target_tokens": 550,
-      "max_new_tokens": 32,
+      "max_new_tokens": 12,
       "temperature": 0.0,
       "seed": 42,
-      "prompt": "You will receive as input an English document with paragraphs identified by 'ID XXXX: <text>'.\n\nTask: Find the first paragraph (not the first one) where the content clearly changes compared to the previous paragraphs.\n\nOutput: Return the ID of the paragraph with the content shift as in the exemplified format: 'Answer: ID XXXX'.\nAdditional Considerations: Avoid very long groups of paragraphs. Aim for a good balance between identifying content shifts and keeping groups manageable."
+      "prompt": "You will receive as input an English document with paragraphs identified by 'ID XXXX: <text>'.\n\nTask: Find the first paragraph (not the first one) where the content clearly changes compared to the previous paragraphs.\n\nAdditional Considerations: Avoid very long groups of paragraphs. Aim for a good balance between identifying content shifts and keeping groups manageable.\n\nOutput exactly one line in the format 'Answer: ID XXXX'. Do not explain or justify the answer. Do not return any other text."
     },
-    "config_hash": "27c7acc7be3be93ff627d630fe62a2acd05ba528e632e9b767269a2fe36ca95e",
+    "config_hash": "f3b425a45ca4468f79831a1d3aea9f0e663395349d436935ff1b719ec03aca64",
     "inputs": {
       "meeting": {
         "file": "ES2006b.json",
@@ -24,15 +24,25 @@
       }
     },
     "input_hash": "088586759de51bee23f85dd258be046103847bc8014080847022d3748e4a0fb1",
-    "fingerprint": "8314fec2d647bcb4f65b17da640a09b6b90da50a5261da21c954e0b009814b77",
+    "execution": {
+      "source_hash": "51bf61c1861a5f07647c85e5897382a43af46d99c0c3fa831519db8149b99db5",
+      "python": "3.11.2",
+      "packages": {
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "c7bef71c39ae03249aede27f605c4d72e33b81d1476b4fc1ac82c55a6e75ed38"
+    },
+    "execution_hash": "7a05ea60f19d4dd64819fbf3bfc7f202dfa7e50b62357bc4cd99dfe155c59a9f",
+    "fingerprint": "e8688d65200a4adcb4c3fa24dd3cde99a53a72ee8cdbadae4a9a345ec5cbb2f5",
     "preset": {
       "file": "ablation-full.toml",
-      "sha256": "383cfe01020d61c36516f4469f331899d9d7283553bd8995b88f9668ba42c774"
+      "sha256": "8e5aa443eddb505234233ec4652632ead6a4ce00332ccedddfe47e46baae5b58"
     }
   },
   "meeting_id": "ES2006b",
   "turn_count": 541,
-  "model_calls": 49,
+  "model_calls": 40,
   "cache_hits": 0,
   "chunks": [
     {
@@ -44,322 +54,263 @@
     {
       "index": 1,
       "start_turn": 11,
-      "end_turn": 16,
-      "word_count": 123
+      "end_turn": 29,
+      "word_count": 310
     },
     {
       "index": 2,
-      "start_turn": 17,
-      "end_turn": 25,
-      "word_count": 118
+      "start_turn": 30,
+      "end_turn": 41,
+      "word_count": 108
     },
     {
       "index": 3,
-      "start_turn": 26,
-      "end_turn": 36,
-      "word_count": 105
+      "start_turn": 42,
+      "end_turn": 42,
+      "word_count": 149
     },
     {
       "index": 4,
-      "start_turn": 37,
-      "end_turn": 41,
-      "word_count": 72
+      "start_turn": 43,
+      "end_turn": 43,
+      "word_count": 2
     },
     {
       "index": 5,
-      "start_turn": 42,
-      "end_turn": 43,
-      "word_count": 151
-    },
-    {
-      "index": 6,
       "start_turn": 44,
       "end_turn": 44,
       "word_count": 468
     },
     {
-      "index": 7,
+      "index": 6,
       "start_turn": 45,
-      "end_turn": 48,
-      "word_count": 109
-    },
-    {
-      "index": 8,
-      "start_turn": 49,
-      "end_turn": 55,
-      "word_count": 81
-    },
-    {
-      "index": 9,
-      "start_turn": 56,
-      "end_turn": 60,
-      "word_count": 89
-    },
-    {
-      "index": 10,
-      "start_turn": 61,
-      "end_turn": 72,
+      "end_turn": 47,
       "word_count": 106
     },
     {
+      "index": 7,
+      "start_turn": 48,
+      "end_turn": 59,
+      "word_count": 157
+    },
+    {
+      "index": 8,
+      "start_turn": 60,
+      "end_turn": 82,
+      "word_count": 199
+    },
+    {
+      "index": 9,
+      "start_turn": 83,
+      "end_turn": 105,
+      "word_count": 152
+    },
+    {
+      "index": 10,
+      "start_turn": 106,
+      "end_turn": 110,
+      "word_count": 303
+    },
+    {
       "index": 11,
-      "start_turn": 73,
-      "end_turn": 95,
-      "word_count": 159
+      "start_turn": 111,
+      "end_turn": 116,
+      "word_count": 128
     },
     {
       "index": 12,
-      "start_turn": 96,
-      "end_turn": 105,
-      "word_count": 70
+      "start_turn": 117,
+      "end_turn": 121,
+      "word_count": 203
     },
     {
       "index": 13,
-      "start_turn": 106,
-      "end_turn": 109,
-      "word_count": 181
+      "start_turn": 122,
+      "end_turn": 127,
+      "word_count": 125
     },
     {
       "index": 14,
-      "start_turn": 110,
-      "end_turn": 113,
-      "word_count": 151
+      "start_turn": 128,
+      "end_turn": 149,
+      "word_count": 332
     },
     {
       "index": 15,
-      "start_turn": 114,
-      "end_turn": 121,
-      "word_count": 302
-    },
-    {
-      "index": 16,
-      "start_turn": 122,
-      "end_turn": 129,
-      "word_count": 143
-    },
-    {
-      "index": 17,
-      "start_turn": 130,
-      "end_turn": 149,
-      "word_count": 314
-    },
-    {
-      "index": 18,
       "start_turn": 150,
       "end_turn": 171,
       "word_count": 137
     },
     {
-      "index": 19,
+      "index": 16,
       "start_turn": 172,
-      "end_turn": 173,
-      "word_count": 111
+      "end_turn": 180,
+      "word_count": 273
+    },
+    {
+      "index": 17,
+      "start_turn": 181,
+      "end_turn": 197,
+      "word_count": 149
+    },
+    {
+      "index": 18,
+      "start_turn": 198,
+      "end_turn": 211,
+      "word_count": 215
+    },
+    {
+      "index": 19,
+      "start_turn": 212,
+      "end_turn": 222,
+      "word_count": 192
     },
     {
       "index": 20,
-      "start_turn": 174,
-      "end_turn": 175,
-      "word_count": 78
+      "start_turn": 223,
+      "end_turn": 229,
+      "word_count": 187
     },
     {
       "index": 21,
-      "start_turn": 176,
-      "end_turn": 184,
-      "word_count": 125
-    },
-    {
-      "index": 22,
-      "start_turn": 185,
-      "end_turn": 199,
-      "word_count": 111
-    },
-    {
-      "index": 23,
-      "start_turn": 200,
-      "end_turn": 207,
-      "word_count": 136
-    },
-    {
-      "index": 24,
-      "start_turn": 208,
-      "end_turn": 211,
-      "word_count": 76
-    },
-    {
-      "index": 25,
-      "start_turn": 212,
-      "end_turn": 224,
-      "word_count": 195
-    },
-    {
-      "index": 26,
-      "start_turn": 225,
-      "end_turn": 229,
-      "word_count": 184
-    },
-    {
-      "index": 27,
       "start_turn": 230,
-      "end_turn": 231,
-      "word_count": 153
-    },
-    {
-      "index": 28,
-      "start_turn": 232,
-      "end_turn": 259,
+      "end_turn": 241,
       "word_count": 276
     },
     {
-      "index": 29,
+      "index": 22,
+      "start_turn": 242,
+      "end_turn": 254,
+      "word_count": 123
+    },
+    {
+      "index": 23,
+      "start_turn": 255,
+      "end_turn": 259,
+      "word_count": 30
+    },
+    {
+      "index": 24,
       "start_turn": 260,
-      "end_turn": 261,
-      "word_count": 50
+      "end_turn": 276,
+      "word_count": 267
     },
     {
-      "index": 30,
-      "start_turn": 262,
-      "end_turn": 272,
-      "word_count": 178
+      "index": 25,
+      "start_turn": 277,
+      "end_turn": 283,
+      "word_count": 79
     },
     {
-      "index": 31,
-      "start_turn": 273,
+      "index": 26,
+      "start_turn": 284,
       "end_turn": 299,
-      "word_count": 251
+      "word_count": 133
     },
     {
-      "index": 32,
+      "index": 27,
       "start_turn": 300,
-      "end_turn": 311,
-      "word_count": 121
+      "end_turn": 319,
+      "word_count": 205
     },
     {
-      "index": 33,
-      "start_turn": 312,
-      "end_turn": 321,
-      "word_count": 93
-    },
-    {
-      "index": 34,
-      "start_turn": 322,
+      "index": 28,
+      "start_turn": 320,
       "end_turn": 345,
-      "word_count": 196
+      "word_count": 205
     },
     {
-      "index": 35,
+      "index": 29,
       "start_turn": 346,
       "end_turn": 350,
       "word_count": 75
     },
     {
-      "index": 36,
+      "index": 30,
       "start_turn": 351,
-      "end_turn": 357,
-      "word_count": 71
+      "end_turn": 361,
+      "word_count": 102
     },
     {
-      "index": 37,
-      "start_turn": 358,
-      "end_turn": 363,
-      "word_count": 84
+      "index": 31,
+      "start_turn": 362,
+      "end_turn": 382,
+      "word_count": 187
     },
     {
-      "index": 38,
-      "start_turn": 364,
-      "end_turn": 369,
-      "word_count": 60
-    },
-    {
-      "index": 39,
-      "start_turn": 370,
+      "index": 32,
+      "start_turn": 383,
       "end_turn": 399,
-      "word_count": 212
+      "word_count": 138
     },
     {
-      "index": 40,
+      "index": 33,
       "start_turn": 400,
-      "end_turn": 403,
-      "word_count": 70
+      "end_turn": 413,
+      "word_count": 182
     },
     {
-      "index": 41,
-      "start_turn": 404,
-      "end_turn": 414,
-      "word_count": 114
+      "index": 34,
+      "start_turn": 414,
+      "end_turn": 440,
+      "word_count": 325
     },
     {
-      "index": 42,
-      "start_turn": 415,
-      "end_turn": 433,
-      "word_count": 228
-    },
-    {
-      "index": 43,
-      "start_turn": 434,
+      "index": 35,
+      "start_turn": 441,
       "end_turn": 446,
-      "word_count": 140
+      "word_count": 45
     },
     {
-      "index": 44,
+      "index": 36,
       "start_turn": 447,
       "end_turn": 456,
       "word_count": 178
     },
     {
-      "index": 45,
+      "index": 37,
       "start_turn": 457,
-      "end_turn": 473,
-      "word_count": 175
+      "end_turn": 475,
+      "word_count": 195
     },
     {
-      "index": 46,
-      "start_turn": 474,
-      "end_turn": 481,
-      "word_count": 145
+      "index": 38,
+      "start_turn": 476,
+      "end_turn": 498,
+      "word_count": 300
     },
     {
-      "index": 47,
-      "start_turn": 482,
-      "end_turn": 483,
-      "word_count": 55
+      "index": 39,
+      "start_turn": 499,
+      "end_turn": 506,
+      "word_count": 68
     },
     {
-      "index": 48,
-      "start_turn": 484,
-      "end_turn": 514,
-      "word_count": 255
-    },
-    {
-      "index": 49,
-      "start_turn": 515,
+      "index": 40,
+      "start_turn": 507,
       "end_turn": 540,
-      "word_count": 229
+      "word_count": 296
     }
   ],
   "decisions": [
     {
       "boundary_turn": 11,
-      "raw_response": "Answer: ID 0011\n\nThis paragraph marks a clear shift in content from the previous ones, as it introduces the structure and agenda for the meeting",
+      "raw_response": "Answer: ID 0011",
       "cache_hit": false
     },
     {
-      "boundary_turn": 17,
-      "raw_response": "Answer: ID 0017\n\nExplanation: Paragraph ID 0017 marks a clear shift in content from the previous ones, as it introduces",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 26,
-      "raw_response": "Answer: ID 0026\n\nExplanation: The content of ID 0026 clearly shifts from discussing the target group and functions of the remote",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 37,
-      "raw_response": "Answer: ID 0037\n\nExplanation: The content of ID 0037 marks a clear shift from the previous discussions about logistics and planning",
+      "boundary_turn": 30,
+      "raw_response": "Answer: ID 0030",
       "cache_hit": false
     },
     {
       "boundary_turn": 42,
       "raw_response": "Answer: ID 0042",
+      "cache_hit": false
+    },
+    {
+      "boundary_turn": 43,
+      "raw_response": "Answer: ID 0043",
       "cache_hit": false
     },
     {
@@ -373,108 +324,88 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 49,
-      "raw_response": "Answer: ID 0049\n\nExplanation: The content of ID 0049 marks a clear shift from the previous paragraphs, which focused on",
+      "boundary_turn": 48,
+      "raw_response": "Answer: ID 0048",
       "cache_hit": false
     },
     {
-      "boundary_turn": 56,
-      "raw_response": "Answer: ID 0056\n\nExplanation: The content shifts from discussing costs and constraints to focusing on the need for data and moving forward with the project",
+      "boundary_turn": 60,
+      "raw_response": "Answer: ID 0060",
       "cache_hit": false
     },
     {
-      "boundary_turn": 61,
-      "raw_response": "Answer: ID 0061\n\nExplanation: The content of ID 0061 marks a clear shift from the previous discussions about moving forward with",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 73,
-      "raw_response": "Answer: ID 0073\n\nExplanation: The content shifts from discussing design issues and minor adjustments to a technical issue with the computer signal, starting with",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 96,
-      "raw_response": "Answer: ID 0096\n\nExplanation: The content of ID 0096 marks a clear shift from the previous technical troubleshooting dialogue to a",
+      "boundary_turn": 83,
+      "raw_response": "Answer: ID 0083",
       "cache_hit": false
     },
     {
       "boundary_turn": 106,
-      "raw_response": "Answer: ID 0106\n\nThis paragraph marks a clear shift in content from the previous ones, as it introduces a new topic related to the technical",
+      "raw_response": "Answer: ID 0106",
       "cache_hit": false
     },
     {
-      "boundary_turn": 110,
-      "raw_response": "Answer: ID 0110",
+      "boundary_turn": 111,
+      "raw_response": "Answer: ID 0111",
       "cache_hit": false
     },
     {
-      "boundary_turn": 114,
-      "raw_response": "Answer: ID 0114",
+      "boundary_turn": 117,
+      "raw_response": "Answer: ID 0117",
       "cache_hit": false
     },
     {
       "boundary_turn": 122,
-      "raw_response": "Answer: ID 0122\n\nExplanation: The content of ID 0122 shifts from discussing the current design preferences and decisions to introducing a",
+      "raw_response": "Answer: ID 0122",
       "cache_hit": false
     },
     {
-      "boundary_turn": 130,
-      "raw_response": "Answer: ID 0130\n\nThe content clearly shifts in paragraph ID 0130, as it introduces a new topic related to user interface",
+      "boundary_turn": 128,
+      "raw_response": "Answer: ID 0128",
       "cache_hit": false
     },
     {
       "boundary_turn": 150,
-      "raw_response": "Answer: ID 0150\n\nExplanation: The content of ID 0150 marks a clear shift from the technical discussion about user interfaces and",
+      "raw_response": "Answer: ID 0150",
       "cache_hit": false
     },
     {
       "boundary_turn": 172,
-      "raw_response": "Answer: ID 0172\n\nExplanation: The content of paragraph ID 0172 shifts from discussing technical aspects of the project (like function",
+      "raw_response": "Answer: ID 0172",
       "cache_hit": false
     },
     {
-      "boundary_turn": 174,
-      "raw_response": "Answer: ID 0174\n\nThis paragraph introduces new content about the findings of the survey, which is a clear shift from the previous paragraph that describes",
+      "boundary_turn": 181,
+      "raw_response": "Answer: ID 0181",
       "cache_hit": false
     },
     {
-      "boundary_turn": 176,
-      "raw_response": "Answer: ID 0176",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 185,
-      "raw_response": "Answer: ID 0185",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 200,
-      "raw_response": "Answer: ID 0200\n\nExplanation: Paragraph ID 0200 marks a clear shift in content from the previous discussions about the visual representation",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 208,
-      "raw_response": "Answer: ID 0208\n\nExplanation: Paragraph ID 0208 marks a clear shift in content from the previous paragraphs, which primarily discuss",
+      "boundary_turn": 198,
+      "raw_response": "Answer: ID 0198",
       "cache_hit": false
     },
     {
       "boundary_turn": 212,
-      "raw_response": "Answer: ID 0212\n\nExplanation: Paragraph ID 0212 marks a clear shift in content from the previous marketing-related discussions to introducing",
+      "raw_response": "Answer: ID 0212",
       "cache_hit": false
     },
     {
-      "boundary_turn": 225,
-      "raw_response": "Answer: ID 0225",
+      "boundary_turn": 223,
+      "raw_response": "Answer: ID 0223",
       "cache_hit": false
     },
     {
       "boundary_turn": 230,
-      "raw_response": "Answer: ID 0230\n\nThis paragraph introduces a new topic related to personal preferences for the design of a product, which is a clear shift from",
+      "raw_response": "Answer: ID 0230",
       "cache_hit": false
     },
     {
-      "boundary_turn": 232,
-      "raw_response": "Answer: ID 0232\n\nExplanation: The content of ID 0232 shifts from the personal preferences discussed in ID 023",
+      "boundary_turn": 242,
+      "raw_response": "Answer: ID 0242",
+      "cache_hit": false
+    },
+    {
+      "boundary_turn": 255,
+      "raw_response": "Answer: ID 0255",
       "cache_hit": false
     },
     {
@@ -483,33 +414,28 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 262,
-      "raw_response": "Answer: ID 0262",
+      "boundary_turn": 277,
+      "raw_response": "Answer: ID 0277",
       "cache_hit": false
     },
     {
-      "boundary_turn": 273,
-      "raw_response": "Answer: ID 0273\n\nThis paragraph introduces new information about the age bracket where the technology is most popular, which is a clear shift from the",
+      "boundary_turn": 284,
+      "raw_response": "Answer: ID 0284",
       "cache_hit": false
     },
     {
       "boundary_turn": 300,
-      "raw_response": "Answer: ID 0300\n\nExplanation: Paragraph ID 0300 marks a clear shift in content from the previous discussions about age brackets and",
+      "raw_response": "Answer: ID 0300",
       "cache_hit": false
     },
     {
-      "boundary_turn": 312,
-      "raw_response": "Answer: ID 0312\n\nExplanation: Paragraph ID 0312 marks a clear shift in the topic from discussing the financial capabilities of the",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 322,
-      "raw_response": "Answer: ID 0322\n\nThis paragraph introduces a new line of discussion about the necessity and context of having a TV to use the product's full",
+      "boundary_turn": 320,
+      "raw_response": "Answer: ID 0320",
       "cache_hit": false
     },
     {
       "boundary_turn": 346,
-      "raw_response": "Answer: ID 0346\n\nThis paragraph marks a clear shift in content from the previous discussions about the compatibility of the product with existing TV setups and",
+      "raw_response": "Answer: ID 0346",
       "cache_hit": false
     },
     {
@@ -518,18 +444,13 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 358,
-      "raw_response": "Answer: ID 0358\n\nExplanation: The content shifts from discussing age groups and incorporating voice recognition into considering the technical implications and feasibility of voice recognition",
+      "boundary_turn": 362,
+      "raw_response": "Answer: ID 0362",
       "cache_hit": false
     },
     {
-      "boundary_turn": 364,
-      "raw_response": "Answer: ID 0364",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 370,
-      "raw_response": "Answer: ID 0370",
+      "boundary_turn": 383,
+      "raw_response": "Answer: ID 0383",
       "cache_hit": false
     },
     {
@@ -538,23 +459,18 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 404,
-      "raw_response": "Answer: ID 0404\n\nExplanation: The content shifts from discussing age groups and advertising targeting (ID 0400-040",
+      "boundary_turn": 414,
+      "raw_response": "Answer: ID 0414",
       "cache_hit": false
     },
     {
-      "boundary_turn": 415,
-      "raw_response": "Answer: ID 0415",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 434,
-      "raw_response": "Answer: ID 0434",
+      "boundary_turn": 441,
+      "raw_response": "Answer: ID 0441",
       "cache_hit": false
     },
     {
       "boundary_turn": 447,
-      "raw_response": "Answer: ID 0447\n\nThis paragraph introduces a new point about the purpose of keeping the remote control close to the user, which differs from the",
+      "raw_response": "Answer: ID 0447",
       "cache_hit": false
     },
     {
@@ -563,23 +479,18 @@
       "cache_hit": false
     },
     {
-      "boundary_turn": 474,
-      "raw_response": "Answer: ID 0474",
+      "boundary_turn": 476,
+      "raw_response": "Answer: ID 0476",
       "cache_hit": false
     },
     {
-      "boundary_turn": 482,
-      "raw_response": "Answer: ID 0482\n\nExplanation: Paragraph ID 0482 marks a clear shift in the discussion from technical specifications and design details to",
+      "boundary_turn": 499,
+      "raw_response": "Answer: ID 0499",
       "cache_hit": false
     },
     {
-      "boundary_turn": 484,
-      "raw_response": "Answer: ID 0484\n\nExplanation: The content of ID 0484 marks a clear shift from the previous Project Manager's instructions to",
-      "cache_hit": false
-    },
-    {
-      "boundary_turn": 515,
-      "raw_response": "Answer: ID 0515\n\nExplanation: The content of paragraph ID 0515 shifts from discussing the location of project documents and emails to",
+      "boundary_turn": 507,
+      "raw_response": "Answer: ID 0507",
       "cache_hit": false
     }
   ]
