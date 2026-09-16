@@ -220,10 +220,10 @@
       },
       "segmentation": {
         "file": "TS3009b.json",
-        "sha256": "fec817c677c62fc3e9ea753956777363c0b57edfcfabfdcb9bcaa4684e6a0ba5"
+        "sha256": "ed5baca1ddff4f6503deb803dc9500f270d0617eb9c32c046b0af198bf723ad2"
       }
     },
-    "input_hash": "528d697d8f063afcbae3f554aab162820b56e9b2a4255adecece09e308fbad50",
+    "input_hash": "7e4b5355231eaefe3aec7db5ae8e868403e3f401f3f709f38aa030edd6aaf919",
     "execution": {
       "source_hash": "51bf61c1861a5f07647c85e5897382a43af46d99c0c3fa831519db8149b99db5",
       "python": "3.11.2",
@@ -236,10 +236,10 @@
       "entrypoint_hash": "4d8906bc25f1154c60b38a486fd87527f49262e29a854c350c4fb300e7bf24b3"
     },
     "execution_hash": "49db2178c61c374a85a8a10b691f27f48053c42784a13bb51787e79a25c056d0",
-    "fingerprint": "fc25f722c37464775f43c6b7c7c78be546e444c87ff2327862fe99ac4ace2a49",
+    "fingerprint": "56b2afdf9b13315154acd150d5df37245adc26c1b10e806c83023b58b0ec7c43",
     "preset": {
       "file": "ablation-full.toml",
-      "sha256": "8e5aa443eddb505234233ec4652632ead6a4ce00332ccedddfe47e46baae5b58"
+      "sha256": "ba15cf68061fc66d7669aed0a2f8be3b67af4e291c56db35f987bc322a0285fa"
     }
   },
   "meeting_id": "TS3009b",
@@ -448,15 +448,15 @@
     }
   },
   "dense_embeddings_initially_cached": {
-    "turn_packed": false,
-    "word_packed": false,
-    "lumber": false,
-    "single_turn": false
+    "turn_packed": true,
+    "word_packed": true,
+    "lumber": true,
+    "single_turn": true
   },
   "chunk_counts": {
     "turn_packed": 40,
     "word_packed": 38,
-    "lumber": 70,
+    "lumber": 44,
     "single_turn": 943
   },
   "questions": [
@@ -757,6 +757,51 @@
           ]
         },
         "lumber__dense__w512": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 0,
+          "gold_words": 1459,
+          "selected_chunk_indices": [
+            0,
+            1
+          ]
+        },
+        "lumber__dense__w1024": {
+          "precision": 0.353515625,
+          "recall": 0.2481151473612063,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 362,
+          "gold_words": 1459,
+          "selected_chunk_indices": [
+            0,
+            1,
+            4
+          ]
+        },
+        "lumber__dense__w2048": {
+          "precision": 0.27978515625,
+          "recall": 0.39273474982864975,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 573,
+          "gold_words": 1459,
+          "selected_chunk_indices": [
+            0,
+            1,
+            4,
+            38,
+            2,
+            17,
+            37
+          ]
+        },
+        "lumber__bm25__w512": {
           "precision": 0.541015625,
           "recall": 0.18985606579849212,
           "first_overlap_rank": 2,
@@ -766,97 +811,40 @@
           "gold_words": 1459,
           "selected_chunk_indices": [
             0,
-            7
-          ]
-        },
-        "lumber__dense__w1024": {
-          "precision": 0.3798828125,
-          "recall": 0.26662097326936257,
-          "first_overlap_rank": 2,
-          "first_overlap_reciprocal_rank": 0.5,
-          "retrieved_words": 1024,
-          "relevant_retrieved_words": 389,
-          "gold_words": 1459,
-          "selected_chunk_indices": [
-            0,
-            7,
-            1,
-            61,
-            2
-          ]
-        },
-        "lumber__dense__w2048": {
-          "precision": 0.18994140625,
-          "recall": 0.26662097326936257,
-          "first_overlap_rank": 2,
-          "first_overlap_reciprocal_rank": 0.5,
-          "retrieved_words": 2048,
-          "relevant_retrieved_words": 389,
-          "gold_words": 1459,
-          "selected_chunk_indices": [
-            0,
-            7,
-            1,
-            61,
-            2,
-            60,
-            62,
-            36,
-            41,
-            37
-          ]
-        },
-        "lumber__bm25__w512": {
-          "precision": 0.294921875,
-          "recall": 0.10349554489376285,
-          "first_overlap_rank": 3,
-          "first_overlap_reciprocal_rank": 0.3333333333333333,
-          "retrieved_words": 512,
-          "relevant_retrieved_words": 151,
-          "gold_words": 1459,
-          "selected_chunk_indices": [
-            0,
-            30,
-            7
+            4
           ]
         },
         "lumber__bm25__w1024": {
-          "precision": 0.44921875,
-          "recall": 0.315284441398218,
-          "first_overlap_rank": 3,
-          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "precision": 0.5595703125,
+          "recall": 0.39273474982864975,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 1024,
-          "relevant_retrieved_words": 460,
+          "relevant_retrieved_words": 573,
           "gold_words": 1459,
           "selected_chunk_indices": [
             0,
-            30,
-            7,
-            16,
-            41,
-            13
+            4,
+            17
           ]
         },
         "lumber__bm25__w2048": {
-          "precision": 0.33544921875,
-          "recall": 0.4708704592186429,
-          "first_overlap_rank": 3,
-          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "precision": 0.43310546875,
+          "recall": 0.6079506511309116,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 2048,
-          "relevant_retrieved_words": 687,
+          "relevant_retrieved_words": 887,
           "gold_words": 1459,
           "selected_chunk_indices": [
             0,
-            30,
-            7,
-            16,
-            41,
-            13,
-            3,
+            4,
+            17,
+            12,
+            25,
             1,
-            33,
-            34,
-            39
+            9,
+            19
           ]
         },
         "lumber__hybrid__w512": {
@@ -869,43 +857,38 @@
           "gold_words": 1459,
           "selected_chunk_indices": [
             0,
-            7
+            4
           ]
         },
         "lumber__hybrid__w1024": {
-          "precision": 0.3798828125,
-          "recall": 0.26662097326936257,
+          "precision": 0.5595703125,
+          "recall": 0.39273474982864975,
           "first_overlap_rank": 2,
           "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 1024,
-          "relevant_retrieved_words": 389,
+          "relevant_retrieved_words": 573,
           "gold_words": 1459,
           "selected_chunk_indices": [
             0,
-            7,
-            1,
-            41,
-            30
+            4,
+            1
           ]
         },
         "lumber__hybrid__w2048": {
-          "precision": 0.314453125,
-          "recall": 0.44139821795750517,
+          "precision": 0.27978515625,
+          "recall": 0.39273474982864975,
           "first_overlap_rank": 2,
           "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 2048,
-          "relevant_retrieved_words": 644,
+          "relevant_retrieved_words": 573,
           "gold_words": 1459,
           "selected_chunk_indices": [
             0,
-            7,
+            4,
             1,
-            41,
-            30,
+            17,
             2,
-            13,
-            60,
-            33
+            25
           ]
         },
         "single_turn__dense__w512": {
@@ -1830,155 +1813,153 @@
           ]
         },
         "lumber__dense__w512": {
-          "precision": 0.580078125,
-          "recall": 0.8608695652173913,
+          "precision": 0.673828125,
+          "recall": 1.0,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 512,
-          "relevant_retrieved_words": 297,
+          "relevant_retrieved_words": 345,
           "gold_words": 345,
           "selected_chunk_indices": [
-            10,
-            2
+            6,
+            5,
+            32
           ]
         },
         "lumber__dense__w1024": {
-          "precision": 0.2900390625,
-          "recall": 0.8608695652173913,
+          "precision": 0.3369140625,
+          "recall": 1.0,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 1024,
-          "relevant_retrieved_words": 297,
+          "relevant_retrieved_words": 345,
           "gold_words": 345,
           "selected_chunk_indices": [
-            10,
-            2,
+            6,
+            5,
             32,
-            33,
+            1,
             19
           ]
         },
         "lumber__dense__w2048": {
-          "precision": 0.14501953125,
-          "recall": 0.8608695652173913,
+          "precision": 0.16845703125,
+          "recall": 1.0,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 2048,
-          "relevant_retrieved_words": 297,
+          "relevant_retrieved_words": 345,
           "gold_words": 345,
           "selected_chunk_indices": [
-            10,
-            2,
+            6,
+            5,
             32,
-            33,
+            1,
             19,
-            60,
-            68,
-            35,
-            29,
-            41
+            17,
+            37,
+            21,
+            25,
+            36
           ]
         },
         "lumber__bm25__w512": {
-          "precision": 0.580078125,
-          "recall": 0.8608695652173913,
+          "precision": 0.673828125,
+          "recall": 1.0,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 512,
-          "relevant_retrieved_words": 297,
+          "relevant_retrieved_words": 345,
           "gold_words": 345,
           "selected_chunk_indices": [
-            10,
-            5
+            6,
+            5,
+            2
           ]
         },
         "lumber__bm25__w1024": {
-          "precision": 0.2900390625,
-          "recall": 0.8608695652173913,
+          "precision": 0.3369140625,
+          "recall": 1.0,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 1024,
-          "relevant_retrieved_words": 297,
+          "relevant_retrieved_words": 345,
           "gold_words": 345,
           "selected_chunk_indices": [
-            10,
+            6,
             5,
-            55,
-            45,
-            7
+            2,
+            34,
+            4
           ]
         },
         "lumber__bm25__w2048": {
-          "precision": 0.14501953125,
-          "recall": 0.8608695652173913,
+          "precision": 0.16845703125,
+          "recall": 1.0,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 2048,
-          "relevant_retrieved_words": 297,
+          "relevant_retrieved_words": 345,
           "gold_words": 345,
           "selected_chunk_indices": [
-            10,
+            6,
             5,
-            55,
-            45,
-            7,
-            64,
-            51,
-            36,
-            61,
-            33,
-            35
+            2,
+            34,
+            4,
+            38,
+            22,
+            29,
+            17
           ]
         },
         "lumber__hybrid__w512": {
-          "precision": 0.580078125,
-          "recall": 0.8608695652173913,
+          "precision": 0.673828125,
+          "recall": 1.0,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 512,
-          "relevant_retrieved_words": 297,
+          "relevant_retrieved_words": 345,
           "gold_words": 345,
           "selected_chunk_indices": [
-            10,
-            33
+            6,
+            5,
+            2
           ]
         },
         "lumber__hybrid__w1024": {
-          "precision": 0.2900390625,
-          "recall": 0.8608695652173913,
+          "precision": 0.3369140625,
+          "recall": 1.0,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 1024,
-          "relevant_retrieved_words": 297,
+          "relevant_retrieved_words": 345,
           "gold_words": 345,
           "selected_chunk_indices": [
-            10,
-            33,
-            35,
-            60,
-            55
+            6,
+            5,
+            2,
+            17
           ]
         },
         "lumber__hybrid__w2048": {
-          "precision": 0.14501953125,
-          "recall": 0.8608695652173913,
+          "precision": 0.16845703125,
+          "recall": 1.0,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 2048,
-          "relevant_retrieved_words": 297,
+          "relevant_retrieved_words": 345,
           "gold_words": 345,
           "selected_chunk_indices": [
-            10,
-            33,
-            35,
-            60,
-            55,
-            64,
-            41,
-            54,
-            40,
+            6,
+            5,
             2,
-            19
+            17,
+            1,
+            21,
+            37,
+            25,
+            32
           ]
         },
         "single_turn__dense__w512": {
@@ -3359,76 +3340,20 @@
           ]
         },
         "lumber__dense__w512": {
-          "precision": 0.21875,
-          "recall": 0.5656565656565656,
+          "precision": 0.1875,
+          "recall": 0.48484848484848486,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 512,
-          "relevant_retrieved_words": 112,
+          "relevant_retrieved_words": 96,
           "gold_words": 198,
           "selected_chunk_indices": [
-            15,
-            41,
-            13
+            11,
+            25,
+            9
           ]
         },
         "lumber__dense__w1024": {
-          "precision": 0.173828125,
-          "recall": 0.898989898989899,
-          "first_overlap_rank": 1,
-          "first_overlap_reciprocal_rank": 1.0,
-          "retrieved_words": 1024,
-          "relevant_retrieved_words": 178,
-          "gold_words": 198,
-          "selected_chunk_indices": [
-            15,
-            41,
-            13,
-            36,
-            14,
-            37,
-            8
-          ]
-        },
-        "lumber__dense__w2048": {
-          "precision": 0.0869140625,
-          "recall": 0.898989898989899,
-          "first_overlap_rank": 1,
-          "first_overlap_reciprocal_rank": 1.0,
-          "retrieved_words": 2048,
-          "relevant_retrieved_words": 178,
-          "gold_words": 198,
-          "selected_chunk_indices": [
-            15,
-            41,
-            13,
-            36,
-            14,
-            37,
-            8,
-            62,
-            42,
-            1,
-            2,
-            0
-          ]
-        },
-        "lumber__bm25__w512": {
-          "precision": 0.31640625,
-          "recall": 0.8181818181818182,
-          "first_overlap_rank": 1,
-          "first_overlap_reciprocal_rank": 1.0,
-          "retrieved_words": 512,
-          "relevant_retrieved_words": 162,
-          "gold_words": 198,
-          "selected_chunk_indices": [
-            15,
-            14,
-            36,
-            34
-          ]
-        },
-        "lumber__bm25__w1024": {
           "precision": 0.158203125,
           "recall": 0.8181818181818182,
           "first_overlap_rank": 1,
@@ -3437,16 +3362,15 @@
           "relevant_retrieved_words": 162,
           "gold_words": 198,
           "selected_chunk_indices": [
-            15,
-            14,
-            36,
-            34,
-            37,
-            30,
-            69
+            11,
+            25,
+            9,
+            22,
+            10,
+            2
           ]
         },
-        "lumber__bm25__w2048": {
+        "lumber__dense__w2048": {
           "precision": 0.0791015625,
           "recall": 0.8181818181818182,
           "first_overlap_rank": 1,
@@ -3455,76 +3379,120 @@
           "relevant_retrieved_words": 162,
           "gold_words": 198,
           "selected_chunk_indices": [
-            15,
-            14,
-            36,
-            34,
-            37,
-            30,
-            69,
-            61,
-            55,
-            38,
-            7,
-            5,
-            19
+            11,
+            25,
+            9,
+            22,
+            10,
+            2,
+            32,
+            23,
+            26,
+            1
           ]
         },
-        "lumber__hybrid__w512": {
-          "precision": 0.31640625,
-          "recall": 0.8181818181818182,
+        "lumber__bm25__w512": {
+          "precision": 0.28515625,
+          "recall": 0.7373737373737373,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 512,
-          "relevant_retrieved_words": 162,
+          "relevant_retrieved_words": 146,
           "gold_words": 198,
           "selected_chunk_indices": [
-            15,
-            14,
-            36,
-            37
+            11,
+            10,
+            22,
+            20
           ]
         },
-        "lumber__hybrid__w1024": {
-          "precision": 0.158203125,
-          "recall": 0.8181818181818182,
+        "lumber__bm25__w1024": {
+          "precision": 0.142578125,
+          "recall": 0.7373737373737373,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 1024,
-          "relevant_retrieved_words": 162,
+          "relevant_retrieved_words": 146,
           "gold_words": 198,
           "selected_chunk_indices": [
-            15,
-            14,
-            36,
-            37,
-            41,
-            8,
-            13
+            11,
+            10,
+            22,
+            20,
+            23,
+            38
           ]
         },
-        "lumber__hybrid__w2048": {
-          "precision": 0.0869140625,
-          "recall": 0.898989898989899,
+        "lumber__bm25__w2048": {
+          "precision": 0.0712890625,
+          "recall": 0.7373737373737373,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 2048,
-          "relevant_retrieved_words": 178,
+          "relevant_retrieved_words": 146,
           "gold_words": 198,
           "selected_chunk_indices": [
-            15,
-            14,
-            36,
-            37,
-            41,
-            8,
-            13,
-            30,
-            61,
-            39,
-            1,
-            62,
-            34
+            11,
+            10,
+            22,
+            20,
+            23,
+            38,
+            17,
+            24,
+            4
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 0.28515625,
+          "recall": 0.7373737373737373,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 146,
+          "gold_words": 198,
+          "selected_chunk_indices": [
+            11,
+            10,
+            22,
+            23
+          ]
+        },
+        "lumber__hybrid__w1024": {
+          "precision": 0.142578125,
+          "recall": 0.7373737373737373,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 146,
+          "gold_words": 198,
+          "selected_chunk_indices": [
+            11,
+            10,
+            22,
+            23,
+            25,
+            2
+          ]
+        },
+        "lumber__hybrid__w2048": {
+          "precision": 0.07763671875,
+          "recall": 0.803030303030303,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 159,
+          "gold_words": 198,
+          "selected_chunk_indices": [
+            11,
+            10,
+            22,
+            23,
+            25,
+            2,
+            24,
+            17,
+            9
           ]
         },
         "single_turn__dense__w512": {
@@ -4533,171 +4501,141 @@
         "lumber__dense__w512": {
           "precision": 0.166015625,
           "recall": 0.018542757417102967,
-          "first_overlap_rank": 1,
-          "first_overlap_reciprocal_rank": 1.0,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 512,
           "relevant_retrieved_words": 85,
           "gold_words": 4584,
           "selected_chunk_indices": [
-            17,
-            2,
             1,
-            23
+            17
           ]
         },
         "lumber__dense__w1024": {
-          "precision": 0.2783203125,
-          "recall": 0.06217277486910995,
-          "first_overlap_rank": 1,
-          "first_overlap_reciprocal_rank": 1.0,
+          "precision": 0.5830078125,
+          "recall": 0.13023560209424084,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 1024,
-          "relevant_retrieved_words": 285,
+          "relevant_retrieved_words": 597,
           "gold_words": 4584,
           "selected_chunk_indices": [
-            17,
-            2,
             1,
-            23,
-            0,
-            43,
-            59
+            17,
+            13
           ]
         },
         "lumber__dense__w2048": {
-          "precision": 0.5419921875,
-          "recall": 0.24214659685863874,
-          "first_overlap_rank": 1,
-          "first_overlap_reciprocal_rank": 1.0,
+          "precision": 0.408203125,
+          "recall": 0.1823734729493892,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 2048,
-          "relevant_retrieved_words": 1110,
+          "relevant_retrieved_words": 836,
           "gold_words": 4584,
           "selected_chunk_indices": [
-            17,
-            2,
             1,
-            23,
+            17,
+            13,
+            32,
             0,
-            43,
-            59,
-            29,
-            33,
-            19,
-            41,
-            30
+            27,
+            36,
+            2
           ]
         },
         "lumber__bm25__w512": {
-          "precision": 0.216796875,
-          "recall": 0.024214659685863876,
-          "first_overlap_rank": 1,
-          "first_overlap_reciprocal_rank": 1.0,
+          "precision": 0.166015625,
+          "recall": 0.018542757417102967,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 512,
-          "relevant_retrieved_words": 111,
+          "relevant_retrieved_words": 85,
           "gold_words": 4584,
           "selected_chunk_indices": [
-            43,
-            2,
-            17,
-            1
+            1,
+            17
           ]
         },
         "lumber__bm25__w1024": {
-          "precision": 0.267578125,
-          "recall": 0.05977312390924956,
-          "first_overlap_rank": 1,
-          "first_overlap_reciprocal_rank": 1.0,
+          "precision": 0.2763671875,
+          "recall": 0.06173647469458988,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 1024,
-          "relevant_retrieved_words": 274,
+          "relevant_retrieved_words": 283,
           "gold_words": 4584,
           "selected_chunk_indices": [
-            43,
-            2,
-            17,
             1,
-            30,
-            0,
-            4,
-            29
+            17,
+            27,
+            2
           ]
         },
         "lumber__bm25__w2048": {
-          "precision": 0.23095703125,
-          "recall": 0.10318499127399651,
-          "first_overlap_rank": 1,
-          "first_overlap_reciprocal_rank": 1.0,
+          "precision": 0.4384765625,
+          "recall": 0.19589877835951133,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 2048,
-          "relevant_retrieved_words": 473,
+          "relevant_retrieved_words": 898,
           "gold_words": 4584,
           "selected_chunk_indices": [
-            43,
-            2,
-            17,
             1,
-            30,
+            17,
+            27,
+            2,
             0,
-            4,
-            29,
-            16,
-            10,
-            5,
-            64,
-            7
+            13,
+            25,
+            12,
+            6
           ]
         },
         "lumber__hybrid__w512": {
-          "precision": 0.216796875,
-          "recall": 0.024214659685863876,
-          "first_overlap_rank": 1,
-          "first_overlap_reciprocal_rank": 1.0,
+          "precision": 0.166015625,
+          "recall": 0.018542757417102967,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 512,
-          "relevant_retrieved_words": 111,
+          "relevant_retrieved_words": 85,
           "gold_words": 4584,
           "selected_chunk_indices": [
-            17,
-            2,
-            43,
-            1
+            1,
+            17
           ]
         },
         "lumber__hybrid__w1024": {
-          "precision": 0.353515625,
-          "recall": 0.07897033158813263,
-          "first_overlap_rank": 1,
-          "first_overlap_reciprocal_rank": 1.0,
+          "precision": 0.5830078125,
+          "recall": 0.13023560209424084,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 1024,
-          "relevant_retrieved_words": 362,
+          "relevant_retrieved_words": 597,
           "gold_words": 4584,
           "selected_chunk_indices": [
-            17,
-            2,
-            43,
             1,
-            0,
-            29,
-            30
+            17,
+            13
           ]
         },
         "lumber__hybrid__w2048": {
-          "precision": 0.52294921875,
-          "recall": 0.23363874345549737,
-          "first_overlap_rank": 1,
-          "first_overlap_reciprocal_rank": 1.0,
+          "precision": 0.466796875,
+          "recall": 0.20855148342059338,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 2048,
-          "relevant_retrieved_words": 1071,
+          "relevant_retrieved_words": 956,
           "gold_words": 4584,
           "selected_chunk_indices": [
-            17,
-            2,
-            43,
             1,
+            17,
+            13,
+            27,
             0,
-            29,
-            30,
-            41,
-            10,
-            51,
-            33,
-            23
+            2,
+            32,
+            25
           ]
         },
         "single_turn__dense__w512": {
@@ -5683,154 +5621,145 @@
           ]
         },
         "lumber__dense__w512": {
-          "precision": 0.34375,
-          "recall": 1.0,
+          "precision": 0.298828125,
+          "recall": 0.8693181818181818,
           "first_overlap_rank": 2,
           "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 512,
-          "relevant_retrieved_words": 176,
+          "relevant_retrieved_words": 153,
           "gold_words": 176,
           "selected_chunk_indices": [
-            35,
-            33,
-            24,
-            60
+            21,
+            19,
+            16
           ]
         },
         "lumber__dense__w1024": {
-          "precision": 0.171875,
-          "recall": 1.0,
+          "precision": 0.1494140625,
+          "recall": 0.8693181818181818,
           "first_overlap_rank": 2,
           "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 1024,
-          "relevant_retrieved_words": 176,
+          "relevant_retrieved_words": 153,
           "gold_words": 176,
           "selected_chunk_indices": [
-            35,
-            33,
-            24,
-            60,
-            55,
-            29
+            21,
+            19,
+            16,
+            1
           ]
         },
         "lumber__dense__w2048": {
-          "precision": 0.0859375,
-          "recall": 1.0,
+          "precision": 0.07470703125,
+          "recall": 0.8693181818181818,
           "first_overlap_rank": 2,
           "first_overlap_reciprocal_rank": 0.5,
           "retrieved_words": 2048,
-          "relevant_retrieved_words": 176,
+          "relevant_retrieved_words": 153,
           "gold_words": 176,
           "selected_chunk_indices": [
+            21,
+            19,
+            16,
+            1,
             35,
-            33,
-            24,
-            60,
-            55,
-            29,
-            10,
-            2,
-            58,
-            7
+            31,
+            37
           ]
         },
         "lumber__bm25__w512": {
-          "precision": 0.34375,
-          "recall": 1.0,
-          "first_overlap_rank": 2,
-          "first_overlap_reciprocal_rank": 0.5,
+          "precision": 0.298828125,
+          "recall": 0.8693181818181818,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 512,
-          "relevant_retrieved_words": 176,
+          "relevant_retrieved_words": 153,
           "gold_words": 176,
           "selected_chunk_indices": [
-            10,
-            33
+            19,
+            1
           ]
         },
         "lumber__bm25__w1024": {
-          "precision": 0.171875,
-          "recall": 1.0,
-          "first_overlap_rank": 2,
-          "first_overlap_reciprocal_rank": 0.5,
+          "precision": 0.1494140625,
+          "recall": 0.8693181818181818,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 1024,
-          "relevant_retrieved_words": 176,
+          "relevant_retrieved_words": 153,
           "gold_words": 176,
           "selected_chunk_indices": [
-            10,
-            33,
-            35,
-            55,
-            7
+            19,
+            1,
+            21,
+            5,
+            6
           ]
         },
         "lumber__bm25__w2048": {
-          "precision": 0.0859375,
-          "recall": 1.0,
-          "first_overlap_rank": 2,
-          "first_overlap_reciprocal_rank": 0.5,
+          "precision": 0.07470703125,
+          "recall": 0.8693181818181818,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 2048,
-          "relevant_retrieved_words": 176,
+          "relevant_retrieved_words": 153,
           "gold_words": 176,
           "selected_chunk_indices": [
-            10,
-            33,
-            35,
-            55,
-            7,
-            64,
-            2,
-            29,
-            60
+            19,
+            1,
+            21,
+            5,
+            6,
+            4,
+            34,
+            42
           ]
         },
         "lumber__hybrid__w512": {
-          "precision": 0.34375,
-          "recall": 1.0,
-          "first_overlap_rank": 2,
-          "first_overlap_reciprocal_rank": 0.5,
+          "precision": 0.298828125,
+          "recall": 0.8693181818181818,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 512,
-          "relevant_retrieved_words": 176,
+          "relevant_retrieved_words": 153,
           "gold_words": 176,
           "selected_chunk_indices": [
-            35,
-            33,
-            10
+            19,
+            21,
+            1
           ]
         },
         "lumber__hybrid__w1024": {
-          "precision": 0.171875,
-          "recall": 1.0,
-          "first_overlap_rank": 2,
-          "first_overlap_reciprocal_rank": 0.5,
+          "precision": 0.1494140625,
+          "recall": 0.8693181818181818,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 1024,
-          "relevant_retrieved_words": 176,
+          "relevant_retrieved_words": 153,
           "gold_words": 176,
           "selected_chunk_indices": [
-            35,
-            33,
-            10,
-            55,
-            60
+            19,
+            21,
+            1,
+            16
           ]
         },
         "lumber__hybrid__w2048": {
-          "precision": 0.0859375,
-          "recall": 1.0,
-          "first_overlap_rank": 2,
-          "first_overlap_reciprocal_rank": 0.5,
+          "precision": 0.07470703125,
+          "recall": 0.8693181818181818,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 2048,
-          "relevant_retrieved_words": 176,
+          "relevant_retrieved_words": 153,
           "gold_words": 176,
           "selected_chunk_indices": [
+            19,
+            21,
+            1,
+            16,
+            6,
             35,
-            33,
-            10,
-            55,
-            60,
-            29,
-            7,
-            2
+            34
           ]
         },
         "single_turn__dense__w512": {
@@ -6765,17 +6694,18 @@
           ]
         },
         "lumber__dense__w512": {
-          "precision": 0.09375,
-          "recall": 0.09580838323353294,
+          "precision": 0.203125,
+          "recall": 0.20758483033932135,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 512,
-          "relevant_retrieved_words": 48,
+          "relevant_retrieved_words": 104,
           "gold_words": 501,
           "selected_chunk_indices": [
+            25,
+            39,
             41,
-            62,
-            27
+            26
           ]
         },
         "lumber__dense__w1024": {
@@ -6787,13 +6717,11 @@
           "relevant_retrieved_words": 189,
           "gold_words": 501,
           "selected_chunk_indices": [
+            25,
+            39,
             41,
-            62,
-            27,
-            8,
-            42,
-            49,
-            2
+            26,
+            1
           ]
         },
         "lumber__dense__w2048": {
@@ -6805,128 +6733,109 @@
           "relevant_retrieved_words": 189,
           "gold_words": 501,
           "selected_chunk_indices": [
+            25,
+            39,
             41,
-            62,
-            27,
-            8,
-            42,
-            49,
-            2,
-            13,
-            23,
-            55,
-            64,
-            67
+            26,
+            1,
+            4,
+            24,
+            16
           ]
         },
         "lumber__bm25__w512": {
-          "precision": 0.09375,
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 0,
+          "gold_words": 501,
+          "selected_chunk_indices": [
+            41,
+            24
+          ]
+        },
+        "lumber__bm25__w1024": {
+          "precision": 0.046875,
           "recall": 0.09580838323353294,
           "first_overlap_rank": 3,
           "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 48,
+          "gold_words": 501,
+          "selected_chunk_indices": [
+            41,
+            24,
+            25,
+            15
+          ]
+        },
+        "lumber__bm25__w2048": {
+          "precision": 0.06201171875,
+          "recall": 0.25349301397205587,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 127,
+          "gold_words": 501,
+          "selected_chunk_indices": [
+            41,
+            24,
+            25,
+            15,
+            4,
+            9,
+            38,
+            26
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 0.09375,
+          "recall": 0.09580838323353294,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 512,
           "relevant_retrieved_words": 48,
           "gold_words": 501,
           "selected_chunk_indices": [
-            64,
-            23,
+            25,
             41,
-            13
-          ]
-        },
-        "lumber__bm25__w1024": {
-          "precision": 0.1845703125,
-          "recall": 0.3772455089820359,
-          "first_overlap_rank": 3,
-          "first_overlap_reciprocal_rank": 0.3333333333333333,
-          "retrieved_words": 1024,
-          "relevant_retrieved_words": 189,
-          "gold_words": 501,
-          "selected_chunk_indices": [
-            64,
-            23,
-            41,
-            13,
-            42,
-            39
-          ]
-        },
-        "lumber__bm25__w2048": {
-          "precision": 0.1416015625,
-          "recall": 0.5788423153692615,
-          "first_overlap_rank": 3,
-          "first_overlap_reciprocal_rank": 0.3333333333333333,
-          "retrieved_words": 2048,
-          "relevant_retrieved_words": 290,
-          "gold_words": 501,
-          "selected_chunk_indices": [
-            64,
-            23,
-            41,
-            13,
-            42,
-            39,
-            21,
-            36,
-            61,
-            45,
-            55,
-            8
-          ]
-        },
-        "lumber__hybrid__w512": {
-          "precision": 0.369140625,
-          "recall": 0.3772455089820359,
-          "first_overlap_rank": 1,
-          "first_overlap_reciprocal_rank": 1.0,
-          "retrieved_words": 512,
-          "relevant_retrieved_words": 189,
-          "gold_words": 501,
-          "selected_chunk_indices": [
-            41,
-            42,
-            23,
-            64
+            24
           ]
         },
         "lumber__hybrid__w1024": {
-          "precision": 0.1845703125,
-          "recall": 0.3772455089820359,
+          "precision": 0.046875,
+          "recall": 0.09580838323353294,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 1024,
-          "relevant_retrieved_words": 189,
+          "relevant_retrieved_words": 48,
           "gold_words": 501,
           "selected_chunk_indices": [
+            25,
             41,
-            42,
-            23,
-            64,
-            13,
-            8
+            24,
+            4
           ]
         },
         "lumber__hybrid__w2048": {
-          "precision": 0.1416015625,
-          "recall": 0.5788423153692615,
+          "precision": 0.09228515625,
+          "recall": 0.3772455089820359,
           "first_overlap_rank": 1,
           "first_overlap_reciprocal_rank": 1.0,
           "retrieved_words": 2048,
-          "relevant_retrieved_words": 290,
+          "relevant_retrieved_words": 189,
           "gold_words": 501,
           "selected_chunk_indices": [
+            25,
             41,
-            42,
-            23,
-            64,
-            13,
-            8,
-            27,
-            55,
-            39,
-            45,
-            49,
-            67
+            24,
+            4,
+            26,
+            9,
+            15,
+            16
           ]
         },
         "single_turn__dense__w512": {

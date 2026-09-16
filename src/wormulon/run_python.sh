@@ -25,7 +25,9 @@ fi
 
 if [[ "$1" == "src/stages/ablation_retrieval.py" || \
       "$1" == "src/tools/compare_lumber_targets.py" || \
-      "$1" == "src/tools/sweep_lumber_targets.py" ]] && \
+      "$1" == "src/tools/sweep_lumber_targets.py" || \
+      "$1" == "src/tools/sweep_baseline_sizes.py" || \
+      "$1" == "src/tools/boundary_shuffled_control.py" ]] && \
     ! "$env_dir/bin/python" -c \
         "import sentence_transformers; assert sentence_transformers.__version__ == '5.7.0'" \
         2>/dev/null; then

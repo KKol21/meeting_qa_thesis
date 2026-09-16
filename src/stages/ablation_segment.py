@@ -10,7 +10,7 @@ from meeting_qa_chunking.artifacts import (
     read_json_object,
     write_json,
 )
-from meeting_qa_chunking.config import load_run_config
+from meeting_qa_chunking.config import SEGMENTATION_MODELS, load_run_config
 from meeting_qa_chunking.lumber import load_lumber_chunks, lumber_chunks
 from meeting_qa_chunking.lumber_prompt import LUMBERCHUNKER_INSTRUCTIONS
 from meeting_qa_chunking.qmsum import load_meeting
@@ -22,24 +22,30 @@ def main() -> None:
     parser.add_argument("--preset", type=Path, required=True)
     parser.add_argument("--target-tokens", type=int)
     parser.add_argument("--output-dir", type=Path)
+    parser.add_argument("--model", choices=SEGMENTATION_MODELS)
+    parser.add_argument("--meeting-count", type=int)
     args = parser.parse_args()
 
     from meeting_qa_chunking.local_model import LocalChatModel
 
     run = load_run_config(args.preset)
     spec = run.segmentation
+    model_spec = SEGMENTATION_MODELS[args.model] if args.model else spec.model
     target_tokens = (
         args.target_tokens if args.target_tokens is not None else spec.target_tokens
     )
     output_dir = args.output_dir or run.lumber_dir
     if target_tokens <= 0:
         raise ValueError("target_tokens must be positive")
-    paths = select_meeting_paths(
-        run.data_dir, len(run.meeting_ids()), 0, run.meeting_ids()
-    )
+    meeting_ids = run.meeting_ids()
+    if args.meeting_count is not None:
+        if not 0 < args.meeting_count <= len(meeting_ids):
+            raise ValueError("meeting-count must fit within the preset meeting list")
+        meeting_ids = meeting_ids[: args.meeting_count]
+    paths = select_meeting_paths(run.data_dir, len(meeting_ids), 0, meeting_ids)
     effective_config = {
         "experiment_version": EXPERIMENT_VERSION,
-        "model": asdict(spec.model),
+        "model": asdict(model_spec),
         "target_tokens": target_tokens,
         "max_new_tokens": spec.max_new_tokens,
         "temperature": spec.temperature,
@@ -70,13 +76,13 @@ def main() -> None:
         return
 
     model = LocalChatModel(
-        model_name=spec.model.name,
-        revision=spec.model.revision,
+        model_name=model_spec.name,
+        revision=model_spec.revision,
         max_new_tokens=spec.max_new_tokens,
         seed=spec.seed,
         temperature=spec.temperature,
         cache_dir=Path(".cache/lumber"),
-        prequantized=spec.model.prequantized,
+        prequantized=model_spec.prequantized,
     )
     for meeting, output_path, provenance in pending:
         responses: list[str] = []

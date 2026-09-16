@@ -2,7 +2,10 @@ param(
     [ValidateSet(
         "ablation-smoke",
         "ablation-full",
-        "lumber-sweep"
+        "lumber-sweep",
+        "lumber-model-check",
+        "baseline-sweep",
+        "boundary-control"
     )]
     [string]$Task = "ablation-smoke",
     [switch]$NoWait,
@@ -30,6 +33,31 @@ $jobs = @{
         JobName = "lumber-sweep"
         LogPrefix = "slurm-lumber-sweep"
         Result = "runs/ablations/lumber-sweep"
+    }
+    "lumber-model-check" = @{
+        Preset = "src/configs/ablation-full.toml"
+        WallTime = "10:00:00"
+        Slurm = "src/wormulon/lumber_model_check.slurm"
+        JobName = "lumber-model-check"
+        LogPrefix = "slurm-lumber-model-check"
+        Result = "runs/ablations/lumber-model-check"
+    }
+    "baseline-sweep" = @{
+        Preset = "src/configs/ablation-full.toml"
+        WallTime = "04:00:00"
+        Slurm = "src/wormulon/baseline_sweep.slurm"
+        JobName = "baseline-sweep"
+        LogPrefix = "slurm-baseline-sweep"
+        Result = "runs/ablations/baseline-sweep"
+    }
+    "boundary-control" = @{
+        Preset = "src/configs/ablation-full.toml"
+        WallTime = "06:00:00"
+        Slurm = "src/wormulon/boundary_control.slurm"
+        JobName = "boundary-control"
+        LogPrefix = "slurm-boundary-control"
+        Result = "runs/ablations/boundary-control"
+        SegmentationInput = "runs/ablations/lumber-sweep/segmentation/1000"
     }
 }
 
@@ -123,6 +151,9 @@ try {
         Write-Host "Slurm: $slurm ($($job.WallTime))"
         Write-Host "Job name: $jobName"
         Write-Host "Result: $result"
+        if ($job.SegmentationInput) {
+            Write-Host "Segmentation input: $($job.SegmentationInput)"
+        }
         Write-Host "Data: $($description.meeting_ids -join ', ')"
         return
     }
@@ -171,6 +202,26 @@ try {
                 "${remote}:${remoteDataDirectory}/"
             if ($LASTEXITCODE -ne 0) {
                 throw "Could not upload meeting: $meetingId"
+            }
+        }
+
+        if ($job.SegmentationInput) {
+            $remoteInput = "$remoteDirectory/$($job.SegmentationInput)"
+            ssh -o BatchMode=yes $remote "mkdir -p $remoteInput"
+            if ($LASTEXITCODE -ne 0) {
+                throw "Could not create the remote segmentation directory"
+            }
+            Write-Host "Uploading Lumber segmentations..."
+            foreach ($meetingId in $description.meeting_ids) {
+                $localInput = Join-Path $PSScriptRoot `
+                    "$($job.SegmentationInput)\$meetingId.json"
+                if (-not (Test-Path -LiteralPath $localInput)) {
+                    throw "Missing segmentation: $localInput"
+                }
+                scp -o BatchMode=yes $localInput "${remote}:${remoteInput}/"
+                if ($LASTEXITCODE -ne 0) {
+                    throw "Could not upload segmentation: $meetingId"
+                }
             }
         }
 
@@ -287,7 +338,7 @@ try {
         $jobId
     Write-Host "Result: $localResult"
 
-    if ($description.run_evaluation -and $Task -ne "lumber-sweep") {
+    if ($Task -in @("ablation-smoke", "ablation-full")) {
         $previousPythonPath = $env:PYTHONPATH
         $env:PYTHONPATH = Join-Path $PSScriptRoot "src"
         python src/tools/report_ablations.py --preset $job.Preset

@@ -50,7 +50,7 @@ ANSWER_MODELS = {
     model.tag: model for model in (QWEN_7B, QWEN_14B, QWEN_32B_BNB4)
 }
 SEGMENTATION_MODELS = {
-    model.tag: model for model in (QWEN_7B, QWEN_14B)
+    model.tag: model for model in (QWEN_7B, QWEN_14B, QWEN_32B_BNB4)
 }
 DENSE_MODELS = {DENSE_RETRIEVER_MODEL.tag: DENSE_RETRIEVER_MODEL}
 JUDGE_MODELS = {JUDGE_MODEL.tag: JUDGE_MODEL}

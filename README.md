@@ -49,6 +49,47 @@ at 512, 1024, and 2048 evidence words, then downloads `sweep.json` and
 .\run_on_wormulon.ps1 lumber-sweep
 ```
 
+Run a five-meeting retrieval-only diagnostic comparing 7B, 14B, and
+quantized 32B Lumber boundary models at the selected target:
+
+```powershell
+.\run_on_wormulon.ps1 lumber-model-check
+```
+
+Run the retrieval-only 128/256/512-word sensitivity sweep for both packed
+baselines:
+
+```powershell
+.\run_on_wormulon.ps1 baseline-sweep
+```
+
+Compare the selected 1,000-target Lumber segmentation with ten
+geometry-matched random turn-boundary partitions, using retrieval metrics only:
+
+```powershell
+.\run_on_wormulon.ps1 boundary-control
+```
+
+Compare exact evidence clipping with dropping or fully including the final
+chunk using an existing retrieval run (no models required):
+
+```powershell
+$env:PYTHONPATH = "src"
+python src/tools/analyze_clipping_sensitivity.py `
+    --preset src/configs/ablation-full.toml `
+    --output runs/ablations/full/clipping-sensitivity.json
+```
+
+Add meeting-level percentile bootstrap intervals and paired contrasts to a
+completed run (no models required):
+
+```powershell
+$env:PYTHONPATH = "src"
+python src/tools/analyze_uncertainty.py `
+    --preset src/configs/ablation-full.toml `
+    --output runs/ablations/full/uncertainty.json
+```
+
 The TOML preset controls meetings, models, parameters, and output paths. These
 commands derive their selected QMSum files from that preset, upload them with
 `src/`, wait for Slurm, and download the complete result directory.
@@ -82,5 +123,7 @@ explanation, read [`docs/PIPELINE.md`](docs/PIPELINE.md).
 For supervisor review, start with
 [`docs/QUESTION_PIPELINE_REVIEW.md`](docs/QUESTION_PIPELINE_REVIEW.md) and
 [`docs/QUALITATIVE_RECALL_ANALYSIS.md`](docs/QUALITATIVE_RECALL_ANALYSIS.md).
+The thesis-facing design and reporting rationale is summarized in
+[`docs/THESIS_METHODOLOGY.md`](docs/THESIS_METHODOLOGY.md).
 The chunk-size rationale is in
 [`docs/QMSUM_CHUNKING_PARAMETER_ANALYSIS.md`](docs/QMSUM_CHUNKING_PARAMETER_ANALYSIS.md).

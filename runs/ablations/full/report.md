@@ -36,15 +36,15 @@ Means are meeting-macro averages; judge 1/2/3 counts are question totals. First-
 | word_packed | hybrid | 512 | 0.339 | 0.315 | 0.712 | 0.322 | 0.080 | 0.200 | 0.202 | 1.784 | 45/83/14 |
 | word_packed | hybrid | 1024 | 0.274 | 0.475 | 0.712 | 0.339 | 0.089 | 0.207 | 0.219 | 1.892 | 37/83/22 |
 | word_packed | hybrid | 2048 | 0.216 | 0.653 | 0.712 | 0.342 | 0.092 | 0.209 | 0.222 | 1.943 | 36/78/28 |
-| lumber | dense | 512 | 0.368 | 0.350 | 0.696 | 0.324 | 0.084 | 0.201 | 0.210 | 1.740 | 46/85/11 |
-| lumber | dense | 1024 | 0.308 | 0.535 | 0.696 | 0.342 | 0.092 | 0.213 | 0.228 | 2.032 | 24/90/28 |
-| lumber | dense | 2048 | 0.228 | 0.686 | 0.696 | 0.348 | 0.093 | 0.212 | 0.226 | 2.007 | 25/93/24 |
-| lumber | bm25 | 512 | 0.288 | 0.278 | 0.578 | 0.317 | 0.081 | 0.201 | 0.201 | 1.701 | 52/75/15 |
-| lumber | bm25 | 1024 | 0.243 | 0.422 | 0.578 | 0.330 | 0.085 | 0.206 | 0.213 | 1.890 | 42/75/25 |
-| lumber | bm25 | 2048 | 0.188 | 0.581 | 0.578 | 0.339 | 0.092 | 0.210 | 0.218 | 1.957 | 33/87/22 |
-| lumber | hybrid | 512 | 0.350 | 0.337 | 0.708 | 0.330 | 0.084 | 0.205 | 0.212 | 1.791 | 42/84/16 |
-| lumber | hybrid | 1024 | 0.281 | 0.479 | 0.708 | 0.337 | 0.088 | 0.204 | 0.221 | 1.917 | 35/80/27 |
-| lumber | hybrid | 2048 | 0.221 | 0.662 | 0.708 | 0.353 | 0.095 | 0.216 | 0.226 | 2.002 | 32/79/31 |
+| lumber | dense | 512 | 0.386 | 0.332 | 0.641 | 0.318 | 0.078 | 0.197 | 0.201 | 1.696 | 60/67/15 |
+| lumber | dense | 1024 | 0.326 | 0.521 | 0.641 | 0.335 | 0.088 | 0.205 | 0.214 | 1.909 | 41/71/30 |
+| lumber | dense | 2048 | 0.229 | 0.673 | 0.641 | 0.348 | 0.095 | 0.213 | 0.225 | 1.972 | 34/80/28 |
+| lumber | bm25 | 512 | 0.329 | 0.293 | 0.611 | 0.313 | 0.081 | 0.197 | 0.192 | 1.693 | 58/65/19 |
+| lumber | bm25 | 1024 | 0.261 | 0.471 | 0.611 | 0.328 | 0.084 | 0.203 | 0.210 | 1.886 | 40/77/25 |
+| lumber | bm25 | 2048 | 0.207 | 0.620 | 0.611 | 0.345 | 0.094 | 0.214 | 0.225 | 1.981 | 35/77/30 |
+| lumber | hybrid | 512 | 0.349 | 0.305 | 0.650 | 0.314 | 0.078 | 0.195 | 0.198 | 1.742 | 58/62/22 |
+| lumber | hybrid | 1024 | 0.306 | 0.516 | 0.650 | 0.333 | 0.083 | 0.204 | 0.214 | 1.908 | 37/80/25 |
+| lumber | hybrid | 2048 | 0.226 | 0.655 | 0.650 | 0.347 | 0.093 | 0.214 | 0.220 | 1.996 | 34/78/30 |
 | single_turn | dense | 512 | 0.295 | 0.243 | 0.535 | 0.321 | 0.079 | 0.196 | 0.199 | 1.808 | 41/86/15 |
 | single_turn | dense | 1024 | 0.241 | 0.369 | 0.535 | 0.331 | 0.085 | 0.204 | 0.212 | 1.878 | 34/89/19 |
 | single_turn | dense | 2048 | 0.190 | 0.540 | 0.535 | 0.339 | 0.089 | 0.207 | 0.212 | 1.973 | 30/88/24 |
@@ -61,40 +61,40 @@ Positive values favour Lumber. Each value is the mean of within-meeting differen
 
 | Comparison | Precision | Recall | ROUGE-L | BERTScore F1 | Judge |
 |---|---:|---:|---:|---:|---:|
-| lumber_minus_single_turn__dense__w512 | 0.073 | 0.106 | 0.005 | 0.010 | -0.068 |
-| lumber_minus_turn_packed__dense__w512 | 0.005 | 0.025 | 0.002 | 0.005 | -0.002 |
-| lumber_minus_word_packed__dense__w512 | 0.024 | 0.042 | 0.006 | 0.010 | -0.021 |
-| lumber_minus_single_turn__dense__w1024 | 0.067 | 0.166 | 0.010 | 0.017 | 0.154 |
-| lumber_minus_turn_packed__dense__w1024 | 0.014 | 0.048 | 0.002 | 0.011 | 0.143 |
-| lumber_minus_word_packed__dense__w1024 | 0.017 | 0.044 | 0.008 | 0.015 | 0.156 |
-| lumber_minus_single_turn__dense__w2048 | 0.039 | 0.145 | 0.005 | 0.014 | 0.035 |
-| lumber_minus_turn_packed__dense__w2048 | 0.009 | 0.028 | -0.002 | -0.000 | 0.030 |
-| lumber_minus_word_packed__dense__w2048 | 0.003 | 0.010 | 0.002 | 0.007 | 0.077 |
-| lumber_minus_single_turn__bm25__w512 | 0.055 | 0.086 | 0.006 | 0.018 | 0.146 |
-| lumber_minus_turn_packed__bm25__w512 | 0.001 | 0.009 | 0.005 | 0.011 | 0.039 |
-| lumber_minus_word_packed__bm25__w512 | -0.002 | 0.012 | 0.004 | 0.008 | 0.026 |
-| lumber_minus_single_turn__bm25__w1024 | 0.045 | 0.115 | 0.007 | 0.013 | 0.151 |
-| lumber_minus_turn_packed__bm25__w1024 | 0.007 | -0.004 | -0.001 | 0.004 | 0.077 |
-| lumber_minus_word_packed__bm25__w1024 | 0.016 | 0.016 | 0.002 | 0.008 | 0.041 |
-| lumber_minus_single_turn__bm25__w2048 | 0.028 | 0.123 | 0.003 | 0.013 | 0.084 |
-| lumber_minus_turn_packed__bm25__w2048 | -0.002 | 0.005 | 0.001 | 0.003 | 0.042 |
-| lumber_minus_word_packed__bm25__w2048 | -0.004 | 0.007 | -0.003 | -0.001 | -0.001 |
-| lumber_minus_single_turn__hybrid__w512 | 0.061 | 0.101 | 0.007 | 0.015 | 0.130 |
-| lumber_minus_turn_packed__hybrid__w512 | 0.008 | 0.013 | 0.007 | 0.011 | 0.014 |
-| lumber_minus_word_packed__hybrid__w512 | 0.011 | 0.022 | 0.005 | 0.011 | 0.007 |
-| lumber_minus_single_turn__hybrid__w1024 | 0.046 | 0.110 | 0.002 | 0.012 | 0.039 |
-| lumber_minus_turn_packed__hybrid__w1024 | 0.004 | -0.000 | 0.001 | 0.010 | -0.036 |
-| lumber_minus_word_packed__hybrid__w1024 | 0.007 | 0.003 | -0.003 | 0.002 | 0.025 |
-| lumber_minus_single_turn__hybrid__w2048 | 0.041 | 0.140 | 0.006 | 0.010 | 0.080 |
-| lumber_minus_turn_packed__hybrid__w2048 | 0.006 | 0.027 | 0.009 | 0.011 | -0.011 |
-| lumber_minus_word_packed__hybrid__w2048 | 0.005 | 0.010 | 0.007 | 0.005 | 0.060 |
+| lumber_minus_single_turn__dense__w512 | 0.090 | 0.088 | 0.001 | 0.001 | -0.112 |
+| lumber_minus_turn_packed__dense__w512 | 0.022 | 0.008 | -0.002 | -0.004 | -0.046 |
+| lumber_minus_word_packed__dense__w512 | 0.041 | 0.024 | 0.002 | 0.001 | -0.064 |
+| lumber_minus_single_turn__dense__w1024 | 0.085 | 0.152 | 0.001 | 0.003 | 0.031 |
+| lumber_minus_turn_packed__dense__w1024 | 0.032 | 0.034 | -0.006 | -0.002 | 0.021 |
+| lumber_minus_word_packed__dense__w1024 | 0.036 | 0.030 | -0.000 | 0.001 | 0.033 |
+| lumber_minus_single_turn__dense__w2048 | 0.039 | 0.132 | 0.006 | 0.014 | -0.000 |
+| lumber_minus_turn_packed__dense__w2048 | 0.010 | 0.015 | -0.001 | -0.001 | -0.005 |
+| lumber_minus_word_packed__dense__w2048 | 0.003 | -0.003 | 0.003 | 0.006 | 0.042 |
+| lumber_minus_single_turn__bm25__w512 | 0.095 | 0.100 | 0.002 | 0.009 | 0.138 |
+| lumber_minus_turn_packed__bm25__w512 | 0.042 | 0.024 | 0.001 | 0.002 | 0.031 |
+| lumber_minus_word_packed__bm25__w512 | 0.039 | 0.026 | 0.000 | -0.000 | 0.018 |
+| lumber_minus_single_turn__bm25__w1024 | 0.063 | 0.165 | 0.003 | 0.011 | 0.147 |
+| lumber_minus_turn_packed__bm25__w1024 | 0.025 | 0.045 | -0.004 | 0.002 | 0.073 |
+| lumber_minus_word_packed__bm25__w1024 | 0.035 | 0.065 | -0.001 | 0.006 | 0.037 |
+| lumber_minus_single_turn__bm25__w2048 | 0.047 | 0.163 | 0.007 | 0.020 | 0.108 |
+| lumber_minus_turn_packed__bm25__w2048 | 0.018 | 0.045 | 0.005 | 0.010 | 0.067 |
+| lumber_minus_word_packed__bm25__w2048 | 0.015 | 0.047 | 0.001 | 0.006 | 0.024 |
+| lumber_minus_single_turn__hybrid__w512 | 0.060 | 0.069 | -0.003 | 0.000 | 0.081 |
+| lumber_minus_turn_packed__hybrid__w512 | 0.008 | -0.019 | -0.003 | -0.003 | -0.036 |
+| lumber_minus_word_packed__hybrid__w512 | 0.010 | -0.009 | -0.005 | -0.004 | -0.043 |
+| lumber_minus_single_turn__hybrid__w1024 | 0.070 | 0.148 | 0.002 | 0.005 | 0.029 |
+| lumber_minus_turn_packed__hybrid__w1024 | 0.028 | 0.037 | 0.001 | 0.003 | -0.045 |
+| lumber_minus_word_packed__hybrid__w1024 | 0.032 | 0.041 | -0.003 | -0.005 | 0.016 |
+| lumber_minus_single_turn__hybrid__w2048 | 0.046 | 0.133 | 0.004 | 0.004 | 0.073 |
+| lumber_minus_turn_packed__hybrid__w2048 | 0.011 | 0.020 | 0.007 | 0.005 | -0.018 |
+| lumber_minus_word_packed__hybrid__w2048 | 0.010 | 0.003 | 0.005 | -0.002 | 0.053 |
 
 ## Best observed configurations
 
-- **Retrieval recall:** `lumber__dense__w2048` (0.686)
-- **ROUGE-L:** `lumber__hybrid__w2048` (0.216)
-- **BERTScore F1:** `lumber__dense__w1024` (0.228)
-- **LLM judge:** `lumber__dense__w1024` (2.032)
+- **Retrieval recall:** `word_packed__dense__w2048` (0.676)
+- **ROUGE-L:** `lumber__hybrid__w2048` (0.214)
+- **BERTScore F1:** `turn_packed__dense__w2048` (0.227)
+- **LLM judge:** `turn_packed__hybrid__w2048` (2.014)
 
 ## Interpretation notes
 
