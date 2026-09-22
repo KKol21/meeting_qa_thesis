@@ -1,0 +1,1998 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "Bed016.json",
+        "sha256": "2335aef6346d1dd9309cfc0d0784c99f1c7c98dedd06aed34cbb035e776a7a94"
+      },
+      "retrieval": {
+        "file": "Bed016.json",
+        "sha256": "d88061bbacf6952669535a6b7e5faa0f43d14a133a61c73b14e9db7bcde89c00"
+      },
+      "segmentation": {
+        "file": "Bed016.json",
+        "sha256": "9a0efb1d8b789472e01c26d09fe924f8be484f0277973041eeed29be8fd65262"
+      }
+    },
+    "input_hash": "fc7ccb26f6082edee28ed83905d2755926ff64bc7ad80176e8d381d21204166c",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "86c624b1f5e07c6396fe18779fffbf2626700e16c7a801fe43c09631fa80a839",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bed016",
+  "question_count": 3,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 75,
+  "cache_hits": 6,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What’s the thesis about?",
+      "reference_answer": "The thesis proposal presents the idea of \"construal\" and makes claims as to how inferences are drawn in a probabilistic relational model by using information from the ontology, situation, user and discourse models. It was advised that more emphasis should be put on the role of construal in the understanding of metaphor and metonymy.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The evidence provided does not contain any explicit statement about the specific topic of the thesis proposal. Therefore, the evidence is insufficient to determine what the thesis is about.",
+          "rouge_f1": {
+            "rouge1": 0.21686746987951805,
+            "rouge2": 0.04938271604938271,
+            "rougeL": 0.14457831325301204
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            26,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The evidence provided does not contain sufficient details to determine the specific topic or focus of Robert's (Grad C) thesis proposal. The conversation revolves around discussing the proposal and providing feedback, but the actual content or subject of the thesis is not explicitly stated.",
+          "rouge_f1": {
+            "rouge1": 0.2222222222222222,
+            "rouge2": 0.041237113402061855,
+            "rougeL": 0.1818181818181818
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            26,
+            2,
+            21,
+            18
+          ],
+          "retrieval_precision": 0.2333984375,
+          "retrieval_recall": 0.5494252873563218
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The thesis proposal discussed in the meeting excerpts focuses on the analysis and construal of language usage, particularly examining how phrases and words can have multiple meanings depending on context. It involves exploring examples of polysemy and metonymy within specific domains, such as tourist sites and museums, to illustrate how basic cases might not be context-free. The proposal aims to clarify these interactions and provide feedback based on professional linguistic studies and examples from cognitive linguistics.",
+          "rouge_f1": {
+            "rouge1": 0.32061068702290074,
+            "rouge2": 0.07751937984496123,
+            "rougeL": 0.1984732824427481
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            26,
+            2,
+            21,
+            18,
+            30,
+            9,
+            33,
+            29
+          ],
+          "retrieval_precision": 0.11669921875,
+          "retrieval_recall": 0.5494252873563218
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The evidence provided does not contain sufficient information to determine the specific topic or focus of the thesis being discussed. The excerpts mention concerns about spelling errors in the presentation and a suggestion to find an example from their domain to illustrate aspects of the thesis, but they do not provide details about the thesis's main subject or argument.",
+          "rouge_f1": {
+            "rouge1": 0.28070175438596495,
+            "rouge2": 0.03571428571428571,
+            "rougeL": 0.15789473684210525
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            21,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The evidence provided does not contain sufficient details to explicitly state what the thesis is about. However, based on the discussion, it involves analyzing language structures and possibly their interactions with biological or cognitive frameworks, as indicated by mentions of \"context-free\" language constructs and interactions with researchers in fields such as biology (Leipzig connection). The thesis proposal seems to focus on clarifying certain aspects of language analysis and construals within a specific framework, likely involving linguistic examples and mappings.",
+          "rouge_f1": {
+            "rouge1": 0.2835820895522388,
+            "rouge2": 0.04545454545454546,
+            "rougeL": 0.16417910447761197
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            21,
+            2,
+            18,
+            27
+          ],
+          "retrieval_precision": 0.2333984375,
+          "retrieval_recall": 0.5494252873563218
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The thesis proposal discussed in the meeting excerpts focuses on the construction aspect and the Bayes-net, involving issues such as rephrasing problems, preliminary observations, and the interaction between analysis and construal mechanisms. It also mentions the importance of scalability achieved by combining constructions with a general construal mechanism. Additionally, the proposal touches upon the need for clear examples from their specific domain to illustrate these concepts effectively.",
+          "rouge_f1": {
+            "rouge1": 0.34426229508196726,
+            "rouge2": 0.06666666666666667,
+            "rougeL": 0.21311475409836064
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            21,
+            2,
+            18,
+            27,
+            26,
+            15,
+            9,
+            8
+          ],
+          "retrieval_precision": 0.11669921875,
+          "retrieval_recall": 0.5494252873563218
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The evidence provided does not contain sufficient information to determine the specific topic or focus of the thesis being discussed. The excerpts mention concerns about spelling errors in the presentation and a suggestion to find an example from their domain to illustrate aspects of the thesis, but they do not provide details about the thesis's main subject or argument.",
+          "rouge_f1": {
+            "rouge1": 0.28070175438596495,
+            "rouge2": 0.03571428571428571,
+            "rougeL": 0.15789473684210525
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            21,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The evidence provided does not contain sufficient details to determine the specific topic or focus of Robert's (Grad C) thesis proposal. The conversation revolves around discussing the proposal and providing feedback, but the actual content or subject of the thesis is not explicitly stated.",
+          "rouge_f1": {
+            "rouge1": 0.2222222222222222,
+            "rouge2": 0.041237113402061855,
+            "rougeL": 0.1818181818181818
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            21,
+            2,
+            26,
+            18
+          ],
+          "retrieval_precision": 0.2333984375,
+          "retrieval_recall": 0.5494252873563218
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The thesis proposal discussed in the meeting excerpts does not provide a clear statement about its specific topic or focus based on the given text. However, it can be inferred that the thesis involves aspects of linguistic analysis, particularly concerning the construal of language in different contexts, possibly including computational linguistics. The discussion mentions examples like \"walked into the cafe and ordered a drink\" versus \"walked into the cafe and broke his nose,\" indicating an interest in how similar actions can be interpreted differently depending on the context. Additionally, there's a mention of needing to find an illustrative example from their domain, suggesting that the thesis aims to apply theoretical concepts to practical linguistic scenarios.",
+          "rouge_f1": {
+            "rouge1": 0.2823529411764706,
+            "rouge2": 0.047619047619047616,
+            "rougeL": 0.17647058823529416
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            21,
+            2,
+            26,
+            18,
+            9,
+            27,
+            31,
+            7
+          ],
+          "retrieval_precision": 0.11669921875,
+          "retrieval_recall": 0.5494252873563218
+        },
+        "word_packed__dense__w512": {
+          "answer": "The thesis discussed is about the usage and meanings of the phrase \"out\" or \"out of,\" focusing on its various applications and interpretations in language, including its process aspects and final states.",
+          "rouge_f1": {
+            "rouge1": 0.25581395348837205,
+            "rouge2": 0.02380952380952381,
+            "rougeL": 0.18604651162790697
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            31
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The evidence provided does not contain sufficient information to determine the exact thesis topic. However, the discussion suggests that the thesis involves linguistic analysis, possibly focusing on aspects such as human-computer interaction, prosody matching, and the study of certain linguistic phenomena (like \"out of\" or \"out\"). The participants also mention related work, mappings, and polysemy in their discussions.",
+          "rouge_f1": {
+            "rouge1": 0.3008849557522124,
+            "rouge2": 0.018018018018018014,
+            "rougeL": 0.1592920353982301
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            31,
+            7,
+            20
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The evidence provided does not contain sufficient information to determine the exact topic or focus of the thesis being discussed. The excerpts mention various linguistic concepts such as prosody, language learning, and the use of metaphors and fixed expressions, but do not clearly outline a specific thesis topic.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333337,
+            "rouge2": 0.06,
+            "rougeL": 0.19607843137254902
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            31,
+            7,
+            20,
+            13,
+            28,
+            10,
+            30
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The evidence provided does not contain sufficient details to describe the specific content or topic of the thesis proposal being discussed. The excerpts indicate that the participants are discussing aspects of revising and providing feedback on a thesis proposal, but the actual thesis topic or main argument (\"thesis\") is not explicitly stated.",
+          "rouge_f1": {
+            "rouge1": 0.3018867924528302,
+            "rouge2": 0.038461538461538464,
+            "rougeL": 0.16981132075471697
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            2
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.5885057471264368
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The evidence provided does not contain sufficient details to explicitly state what the thesis is about. The discussion revolves around the preparation and feedback for the thesis proposal, mentioning aspects such as computational linguistics, biological connections, and the importance of clear examples and spellings in references, but does not specify the main topic or argument of the thesis itself.",
+          "rouge_f1": {
+            "rouge1": 0.26548672566371684,
+            "rouge2": 0.03603603603603603,
+            "rougeL": 0.1946902654867257
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            2,
+            13,
+            25
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.5885057471264368
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The thesis proposal discussed in the meeting excerpts focuses on construal mechanisms in language processing, particularly how these mechanisms interact with linguistic constructions. It explores scalability achieved by combining constructions with a general construal mechanism and discusses examples of how physical objects and spaces can be construed differently (e.g., a cafe as a container versus an obstacle). The proposal aims to address computational linguists and includes related work and mappings between linguistic constructions and their interpretations.",
+          "rouge_f1": {
+            "rouge1": 0.33587786259541985,
+            "rouge2": 0.04651162790697674,
+            "rougeL": 0.16793893129770993
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            2,
+            13,
+            25,
+            17,
+            24,
+            14,
+            7
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.5885057471264368
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The evidence provided does not contain sufficient information to determine the specific topic or focus of the thesis being discussed. The conversation revolves around feedback and examples for the thesis proposal, particularly mentioning linguistic aspects such as the usage of \"out\" and \"out of,\" but does not explicitly state the main thesis topic.",
+          "rouge_f1": {
+            "rouge1": 0.2990654205607477,
+            "rouge2": 0.0380952380952381,
+            "rougeL": 0.16822429906542055
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            24
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The evidence provided does not contain sufficient details to determine the exact thesis topic. However, based on the discussion, it seems the thesis involves linguistic analysis, possibly focusing on aspects of human-computer interaction and speech patterns, as well as theoretical linguistic concepts such as \"out\" or \"out of.\"",
+          "rouge_f1": {
+            "rouge1": 0.23300970873786409,
+            "rouge2": 0.039603960396039604,
+            "rougeL": 0.15533980582524273
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            24,
+            13,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The thesis proposal discussed in the meeting excerpts focuses on construal mechanisms in language processing, particularly how these mechanisms interact with linguistic constructions. It explores scalability achieved by combining constructions with a general construal mechanism and discusses examples of how physical objects and spaces can be construed differently (e.g., a cafe as a container versus an obstacle). The proposal aims to address computational linguists and includes related work and mappings between linguistic constructions and their interpretations.",
+          "rouge_f1": {
+            "rouge1": 0.33587786259541985,
+            "rouge2": 0.04651162790697674,
+            "rougeL": 0.16793893129770993
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            24,
+            13,
+            7,
+            2,
+            17,
+            14,
+            25
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.5885057471264368
+        },
+        "lumber__dense__w512": {
+          "answer": "The thesis appears to focus on the concept of construal within language, specifically examining how phrases or questions can be interpreted in different ways based on context. An example discussed is the phrase \"Is there a bakery around here?\" which can be construed to mean different things depending on the situation—whether it refers to a physical location where baked goods are sold or if it's related to other contexts such as the local economy or smells. However, there is a suggestion that the thesis should avoid overly complex or \"weird\" construal examples and instead focus more on straightforward, computational aspects of language interpretation.",
+          "rouge_f1": {
+            "rouge1": 0.31446540880503143,
+            "rouge2": 0.038216560509554146,
+            "rougeL": 0.18867924528301885
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The evidence provided does not contain sufficient details to determine the specific topic or focus of the thesis being discussed. The conversation revolves around general feedback and suggestions regarding the thesis proposal, including concerns about spelling errors in references and discussions about potential topics such as construal and pragmatics, but does not explicitly state the thesis's main subject.",
+          "rouge_f1": {
+            "rouge1": 0.2831858407079646,
+            "rouge2": 0.05405405405405405,
+            "rougeL": 0.1415929203539823
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            20,
+            33,
+            29
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The thesis proposal discussed in the meeting excerpts focuses on language understanding, particularly involving construals and metaphors. It includes examining how certain phrases or words are used and understood differently in various contexts, such as the use of \"in\" and \"on\" in relation to \"bus,\" and exploring metonymies and ellipses in language. The proposal aims to incorporate computational approaches and possibly draw from examples within a specific domain to illustrate these linguistic phenomena.",
+          "rouge_f1": {
+            "rouge1": 0.4094488188976378,
+            "rouge2": 0.06399999999999999,
+            "rougeL": 0.23622047244094488
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            20,
+            33,
+            29,
+            37,
+            14,
+            4,
+            30
+          ],
+          "retrieval_precision": 0.0947265625,
+          "retrieval_recall": 0.4459770114942529
+        },
+        "lumber__bm25__w512": {
+          "answer": "The evidence provided does not contain sufficient information to describe the specific topic or content of Robert's thesis proposal. The meeting excerpts indicate discussion around reviewing and providing feedback on the proposal but do not specify its thesis topic.",
+          "rouge_f1": {
+            "rouge1": 0.23404255319148937,
+            "rouge2": 0.043478260869565216,
+            "rougeL": 0.14893617021276598
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            4,
+            29
+          ],
+          "retrieval_precision": 0.37890625,
+          "retrieval_recall": 0.4459770114942529
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The evidence provided does not contain sufficient details to explicitly state what the thesis is about. However, it mentions that the thesis proposal involves computational aspects and discusses linguistic concepts such as the use of prepositions (\"in,\" \"on\") and possibly metaphors within a specific domain. The participants suggest finding concrete examples from their field to illustrate these concepts.",
+          "rouge_f1": {
+            "rouge1": 0.35714285714285715,
+            "rouge2": 0.03636363636363636,
+            "rougeL": 0.16071428571428573
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            4,
+            29,
+            33,
+            35
+          ],
+          "retrieval_precision": 0.189453125,
+          "retrieval_recall": 0.4459770114942529
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The meeting excerpts do not provide a clear and direct statement about the specific topic or focus of Robert's thesis proposal. However, based on the discussion, it appears that the thesis involves aspects of linguistic theory, particularly concerning construal, metaphor, and metonymy within a computational framework. The participants discuss the need for clearer explanations regarding construal in the thesis and suggest incorporating examples relevant to the domain being studied. The exact subject matter of the thesis remains unspecified in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.3649635036496351,
+            "rouge2": 0.10370370370370371,
+            "rougeL": 0.218978102189781
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            4,
+            29,
+            33,
+            35,
+            15,
+            24,
+            16,
+            21
+          ],
+          "retrieval_precision": 0.0947265625,
+          "retrieval_recall": 0.4459770114942529
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The evidence provided does not contain sufficient information to determine the specific topic or focus of the thesis being discussed. The conversation primarily revolves around the presentation's accuracy and some general advice regarding the nature of the thesis, such as it being computational and avoiding certain types of complex linguistic analysis (like construal stuff). However, the exact thesis topic remains unspecified in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.3166666666666667,
+            "rouge2": 0.03389830508474577,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            35
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The meeting excerpts do not provide a direct statement about the specific topic or focus of the thesis proposal. However, based on the discussion, the thesis seems to involve computational aspects and possibly the study of language construal or pragmatics, as indicated by the conversation about examples and construals. The exact thesis topic cannot be definitively stated from the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.3478260869565217,
+            "rouge2": 0.07079646017699115,
+            "rougeL": 0.20869565217391306
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            35,
+            29
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The evidence provided does not contain sufficient details to definitively state what the thesis is about. However, based on the excerpts, it can be inferred that the thesis proposal involves topics such as construal, metonymy, and possibly computational approaches in linguistics, as indicated by discussions around specific linguistic examples and the mention of needing a computational focus.",
+          "rouge_f1": {
+            "rouge1": 0.3963963963963964,
+            "rouge2": 0.05504587155963303,
+            "rougeL": 0.18018018018018017
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            35,
+            29,
+            33,
+            4,
+            14,
+            16,
+            37
+          ],
+          "retrieval_precision": 0.0947265625,
+          "retrieval_recall": 0.4459770114942529
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What was said about EML talk?",
+      "reference_answer": "The talk will present the work that is currently being done at ICSI including examples of inference of user intentions and of the recordings of the on-going data collection. The talk will also outline the theoretical (X-schemas, image schemas, Bayes-nets) and neural background.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Grad C mentioned planning to give a talk at EML (European Medical Laboratory) about their project, focusing on the most relevant aspects of their stay and imagining a scenario in Heidelberg involving The Cave Forty-Five. Additionally, Grad C noted that EML is building a significant presence in Leipzig, particularly in biocomputation.",
+          "rouge_f1": {
+            "rouge1": 0.18367346938775508,
+            "rouge2": 0.0,
+            "rougeL": 0.10204081632653061
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            5,
+            0
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Grad C mentioned giving a talk at EML (European Conference on Machine Learning) about their work, starting with a slide on the most relevant aspects of their stay and imagining a scenario in Heidelberg involving a well-known discotheque. Additionally, Grad C noted that EML is building up a significant presence in Leipzig, focusing on biocomputation.",
+          "rouge_f1": {
+            "rouge1": 0.17647058823529413,
+            "rouge2": 0.0,
+            "rougeL": 0.09803921568627451
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            5,
+            0,
+            10,
+            9
+          ],
+          "retrieval_precision": 0.115234375,
+          "retrieval_recall": 0.16929698708751795
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Grad C mentioned that they would be giving a talk at EML (European Media Laboratory) about their work, including discussing the most relevant aspects of their stay, problems with rephrasing, and preliminary observations. They also planned to talk about the big picture, including the NTL story, the embodied and simulation approach, and possibly mentioning FMRI (functional magnetic resonance imaging) studies on people's brains.",
+          "rouge_f1": {
+            "rouge1": 0.3090909090909091,
+            "rouge2": 0.0,
+            "rougeL": 0.18181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            5,
+            0,
+            10,
+            9,
+            8,
+            1,
+            2,
+            7
+          ],
+          "retrieval_precision": 0.27880859375,
+          "retrieval_recall": 0.8192252510760402
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Grad C mentioned that they would be presenting a talk at EML (European Medical Laboratory) about the work done during their stay, focusing on relevant aspects and including a scenario involving Heidelberg's Cave Forty-Five. Additionally, Grad C noted that EML is building something significant in Leipzig related to biocomputation, though Professor E clarified that it involves a DNA-shaped building rather than biocomputation directly.",
+          "rouge_f1": {
+            "rouge1": 0.21428571428571427,
+            "rouge2": 0.01818181818181818,
+            "rougeL": 0.10714285714285714
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            5,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Grad C mentioned presenting a talk at EML about their work, focusing on the most relevant aspects of their stay, discussing problems with rephrasing and how they were solved, and possibly touching on the NTL story. Additionally, Grad C noted that EML is building something significant in Leipzig related to biocomputation, though the specifics of this project were not extensively detailed.",
+          "rouge_f1": {
+            "rouge1": 0.26168224299065423,
+            "rouge2": 0.0,
+            "rougeL": 0.13084112149532712
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            5,
+            2,
+            36,
+            8
+          ],
+          "retrieval_precision": 0.177734375,
+          "retrieval_recall": 0.2611190817790531
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Grad C mentioned planning to give a talk at EML (European Media Laboratory) about their work, starting with a slide showing the most relevant aspects of their stay, and then asking the audience to imagine being in Heidelberg and receiving a query about The Cave Forty-Five, a well-known discotheque that wouldn't be open at that time. Additionally, Grad C noted that EML is building up a significant presence in Leipzig focused on biocomputation.",
+          "rouge_f1": {
+            "rouge1": 0.21311475409836064,
+            "rouge2": 0.0,
+            "rougeL": 0.11475409836065573
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            5,
+            2,
+            36,
+            8,
+            9,
+            35,
+            14,
+            7
+          ],
+          "retrieval_precision": 0.31787109375,
+          "retrieval_recall": 0.9340028694404591
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Grad C mentioned that they would be presenting a talk at EML (European Medical Laboratory) about the work done during their stay, focusing on relevant aspects and including a scenario involving Heidelberg's Cave Forty-Five. Additionally, Grad C noted that EML is building something significant in Leipzig related to biocomputation, though Professor E clarified that it involves a DNA-shaped building rather than biocomputation directly.",
+          "rouge_f1": {
+            "rouge1": 0.21428571428571427,
+            "rouge2": 0.01818181818181818,
+            "rougeL": 0.10714285714285714
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            5,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Grad C mentioned presenting a talk at EML (European Media Laboratory) about their work, focusing on the most relevant aspects of their stay, discussing problems with rephrasing and how they were solved, and touching upon the NTL story and different approaches to language understanding. Additionally, Grad C noted that EML is building a significant project in Leipzig focused on biocomputation, though it's different from the DNA building project being discussed.",
+          "rouge_f1": {
+            "rouge1": 0.23931623931623933,
+            "rouge2": 0.0,
+            "rougeL": 0.11965811965811966
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            5,
+            2,
+            8,
+            9
+          ],
+          "retrieval_precision": 0.322265625,
+          "retrieval_recall": 0.4734576757532281
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Grad C mentioned presenting a talk at EML (European Media Laboratory) about their work, starting with a slide showing the most relevant aspects of their stay and then asking the audience to imagine being in Heidelberg. Additionally, Grad C noted that EML is building up a significant presence in Leipzig focused on biocomputation.",
+          "rouge_f1": {
+            "rouge1": 0.2424242424242424,
+            "rouge2": 0.0,
+            "rougeL": 0.1212121212121212
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            5,
+            2,
+            8,
+            9,
+            14,
+            7,
+            36,
+            26
+          ],
+          "retrieval_precision": 0.32177734375,
+          "retrieval_recall": 0.945480631276901
+        },
+        "word_packed__dense__w512": {
+          "answer": "Grad C mentioned that EML (European Molecular Laboratory) is building up a huge thing in Leipzig focused on biocomputation. However, Professor E clarified that the current discussion is about DNA building, which is different from EML's focus.",
+          "rouge_f1": {
+            "rouge1": 0.11904761904761904,
+            "rouge2": 0.0,
+            "rougeL": 0.09523809523809525
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.3672883787661406
+        },
+        "word_packed__dense__w1024": {
+          "answer": "Grad C mentioned that EML (Emergent Multilingualism) is building up a huge thing in Leipzig, specifically noting it's on biocomputation.",
+          "rouge_f1": {
+            "rouge1": 0.08955223880597013,
+            "rouge2": 0.0,
+            "rougeL": 0.08955223880597013
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11,
+            0,
+            10
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.3672883787661406
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Grad C mentioned that EML (European Media Laboratory) is building up a huge thing in Leipzig, specifically noting it's on biocomputation. There is no other specific discussion about an EML talk in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.12195121951219512,
+            "rouge2": 0.0,
+            "rougeL": 0.12195121951219512
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11,
+            0,
+            10,
+            1,
+            9,
+            8,
+            14
+          ],
+          "retrieval_precision": 0.32568359375,
+          "retrieval_recall": 0.9569583931133429
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Grad C mentioned that they are going to present a little talk at EML (European Medical Laboratory) about what they have done during their stay, starting with the most relevant aspects of their stay and then asking the audience to imagine scenarios related to ontological knowledge.",
+          "rouge_f1": {
+            "rouge1": 0.21739130434782608,
+            "rouge2": 0.0,
+            "rougeL": 0.10869565217391304
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Grad C mentioned giving a talk at EML about their work, starting with a slide showing the most relevant aspects of their stay, and then asking the audience to imagine scenarios related to ontological knowledge.",
+          "rouge_f1": {
+            "rouge1": 0.17283950617283952,
+            "rouge2": 0.0,
+            "rougeL": 0.12345679012345678
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            5,
+            34,
+            8,
+            12
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.3672883787661406
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Grad C mentioned planning to give a talk at EML (European Media Laboratory) about their work, focusing on the most relevant aspects of their stay, including problems with rephrasing, solutions, and preliminary observations. They also intended to discuss the construction aspect and their Bayes-net, and possibly touch upon future activities such as looking into people's brains directly through FMRI. Additionally, Grad C noted that EML is building a large project in Leipzig focused on biocomputation, though it was clarified that this project is distinct from their own work.",
+          "rouge_f1": {
+            "rouge1": 0.22058823529411767,
+            "rouge2": 0.029850746268656712,
+            "rougeL": 0.1323529411764706
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            5,
+            34,
+            8,
+            12,
+            7,
+            11,
+            33,
+            9
+          ],
+          "retrieval_precision": 0.306640625,
+          "retrieval_recall": 0.9010043041606887
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Grad C mentioned that EML (European Molecular Laboratory) is building up a huge thing in Leipzig focused on biocomputation. However, Professor E clarified that the current discussion is about DNA building, which is different from EML's focus.",
+          "rouge_f1": {
+            "rouge1": 0.11904761904761904,
+            "rouge2": 0.0,
+            "rougeL": 0.09523809523809525
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.3672883787661406
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Grad C mentioned planning to give a talk at EML (European Medical Laboratory) about their work, focusing on aspects such as ontological knowledge, problems with rephrasing, and preliminary observations. They also noted that EML is building up a significant presence in Leipzig focused on biocomputation.",
+          "rouge_f1": {
+            "rouge1": 0.1758241758241758,
+            "rouge2": 0.0,
+            "rougeL": 0.1098901098901099
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11,
+            5,
+            8
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.7345767575322812
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Grad C mentioned that they would present a little talk at EML (European Medical Laboratory) about what they had done during their stay, imagining a scenario where someone in Heidelberg asks about directions or places, and discussing their problems with rephrasing and solutions. They also planned to talk about the big picture, including the NTL story, and possibly mention future activities such as looking at people's brains directly through FMRI.",
+          "rouge_f1": {
+            "rouge1": 0.20512820512820512,
+            "rouge2": 0.0,
+            "rougeL": 0.10256410256410256
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11,
+            5,
+            8,
+            2,
+            9,
+            14,
+            34,
+            1
+          ],
+          "retrieval_precision": 0.32568359375,
+          "retrieval_recall": 0.9569583931133429
+        },
+        "lumber__dense__w512": {
+          "answer": "Grad C mentioned planning to present a talk at EML about the work done during their stay, focusing on motivating points through examples like the Cave Forty-Five discotheque scenario, and discussed challenges and the scope of covering language learning aspects in the presentation.",
+          "rouge_f1": {
+            "rouge1": 0.31111111111111117,
+            "rouge2": 0.022727272727272728,
+            "rougeL": 0.2
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            17,
+            14
+          ],
+          "retrieval_precision": 0.037109375,
+          "retrieval_recall": 0.027259684361549498
+        },
+        "lumber__dense__w1024": {
+          "answer": "Grad C mentioned planning to give a talk at EML about their work, including discussing ontological knowledge and problems with rephrasing, as well as touching upon different approaches to language understanding.",
+          "rouge_f1": {
+            "rouge1": 0.12987012987012986,
+            "rouge2": 0.0,
+            "rougeL": 0.1038961038961039
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            17,
+            14,
+            3
+          ],
+          "retrieval_precision": 0.3291015625,
+          "retrieval_recall": 0.4835007173601148
+        },
+        "lumber__dense__w2048": {
+          "answer": "Grad C mentioned that they would present a little talk at EML (European Media Laboratory) about what they had done during their stay, focusing on motivating points through examples and discussing their problems and solutions related to their project. Additionally, it was noted that EML is building a significant presence in Leipzig, though it was clarified that this is focused on DNA-related research rather than directly related to their work.",
+          "rouge_f1": {
+            "rouge1": 0.18803418803418806,
+            "rouge2": 0.0,
+            "rougeL": 0.08547008547008547
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            17,
+            14,
+            3,
+            19,
+            1,
+            16,
+            4
+          ],
+          "retrieval_precision": 0.24560546875,
+          "retrieval_recall": 0.7216642754662841
+        },
+        "lumber__bm25__w512": {
+          "answer": "Grad C mentioned that EML (likely referring to European Molecular Laboratories) is building up a significant presence in Leipzig, focusing on biocomputation. However, Professor E clarified that EML's project in Leipzig is about DNA building or constructing a structure resembling a double helix, which is a different area of focus compared to the biocomputation discussed by Grad C. The group expressed surprise and commented on the unusual nature of the project, including the idea of a building shaped like DNA.",
+          "rouge_f1": {
+            "rouge1": 0.2047244094488189,
+            "rouge2": 0.016,
+            "rougeL": 0.12598425196850394
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            19
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Grad C mentioned that EML (European Media Laboratory) is building up a huge thing in Leipzig, specifically noting it's focused on biocomputation. However, Professor E clarified that the project in Leipzig involves DNA building or constructing a building in the shape of a double helix, which is different from the biocomputation focus.",
+          "rouge_f1": {
+            "rouge1": 0.14141414141414144,
+            "rouge2": 0.0,
+            "rougeL": 0.10101010101010101
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            19,
+            14,
+            11
+          ],
+          "retrieval_precision": 0.3291015625,
+          "retrieval_recall": 0.4835007173601148
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Grad C mentioned presenting a talk at EML (European Medical Laboratory) about their work, focusing on the most relevant aspects of their stay, and discussing ontological knowledge and direction requests. Additionally, Grad C noted that EML is building a significant project in Leipzig focused on biocomputation.",
+          "rouge_f1": {
+            "rouge1": 0.2391304347826087,
+            "rouge2": 0.0,
+            "rougeL": 0.10869565217391304
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            19,
+            14,
+            11,
+            41,
+            20
+          ],
+          "retrieval_precision": 0.16455078125,
+          "retrieval_recall": 0.4835007173601148
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Grad C mentioned planning to present a talk at EML about their work, including discussing ontological knowledge through examples like a person asking about The Cave Forty-Five, a well-known discotheque in Heidelberg. They also intended to cover problems with rephrasing, preliminary observations, and possibly touch on the NTL story and different approaches to language understanding.",
+          "rouge_f1": {
+            "rouge1": 0.23300970873786409,
+            "rouge2": 0.0,
+            "rougeL": 0.1553398058252427
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            14
+          ],
+          "retrieval_precision": 0.462890625,
+          "retrieval_recall": 0.3400286944045911
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Grad C mentioned planning to present a talk at EML about the work done during their stay, focusing on ontological knowledge and direction inquiries. Additionally, Grad C noted that EML is building a significant project in Leipzig focused on biocomputation.",
+          "rouge_f1": {
+            "rouge1": 0.23255813953488372,
+            "rouge2": 0.023809523809523808,
+            "rougeL": 0.13953488372093023
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            14,
+            19
+          ],
+          "retrieval_precision": 0.3291015625,
+          "retrieval_recall": 0.4835007173601148
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Grad C mentioned planning to present a talk at EML (European Medical Laboratory) about the work done during their stay, focusing on motivating points through examples such as The Cave Forty-Five and discussing the synthesis work, problems with rephrasing, and preliminary observations. Additionally, Grad C noted that EML is building a significant project in Leipzig related to biocomputation.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.01941747572815534,
+            "rougeL": 0.1523809523809524
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            14,
+            19,
+            4,
+            20,
+            13,
+            16,
+            15,
+            3
+          ],
+          "retrieval_precision": 0.34033203125,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What was said about the talk and neurons?",
+      "reference_answer": "As the talk at EML will also refer to a theoretical framework, it was suggested that along with presenting NTL and the piece on mirror neurons, it also alludes to relevant fMRI work. The neural side of the research could be of interest to various groups. The language analysis itself will be introduced in terms of image schemas. On the other hand, it was arranged for more feedback on the thesis proposal to be sent by email. The latest version of the construction formalism will also be needed to complete the presentation.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Grad C mentioned planning to discuss the construction aspect of X-schemas and the team's Bayesian network. They also considered mentioning future activities involving looking at people's brains more directly through fMRI studies. However, there was no specific discussion about neurons in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.2158273381294964,
+            "rouge2": 0.029197080291970802,
+            "rougeL": 0.10071942446043165
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.6376089663760897
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The meeting excerpts provided do not contain any direct statements or discussions specifically about a talk and neurons. However, there is a brief mention of mirror neurons by Professor E in excerpt [208], suggesting that Grad C could discuss recent studies on mirror neurons when talking about future activities. There is no detailed discussion or elaboration on this topic within the given excerpts. Therefore, the evidence is insufficient to provide a detailed answer about what was said regarding a talk and neurons.",
+          "rouge_f1": {
+            "rouge1": 0.20689655172413796,
+            "rouge2": 0.034883720930232565,
+            "rougeL": 0.13793103448275862
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9,
+            7,
+            1,
+            20
+          ],
+          "retrieval_precision": 0.5302734375,
+          "retrieval_recall": 0.676214196762142
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The excerpts do not contain any specific discussion about a talk or neurons. Therefore, the evidence is insufficient to answer the question regarding what was said about the talk and neurons.",
+          "rouge_f1": {
+            "rouge1": 0.16260162601626016,
+            "rouge2": 0.01652892561983471,
+            "rougeL": 0.13008130081300814
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9,
+            7,
+            1,
+            20,
+            29,
+            15,
+            36,
+            6
+          ],
+          "retrieval_precision": 0.26513671875,
+          "retrieval_recall": 0.676214196762142
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Grad C mentioned rehearsing a talk and discussed including information about looking at people's brains more directly, possibly through FMRI, and suggested mentioning this in relation to mirror neurons and recent studies involving kicking.",
+          "rouge_f1": {
+            "rouge1": 0.17322834645669294,
+            "rouge2": 0.016,
+            "rougeL": 0.07874015748031496
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            2,
+            36
+          ],
+          "retrieval_precision": 0.470703125,
+          "retrieval_recall": 0.3001245330012453
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Grad C mentioned rehearsing his talk and discussed including content related to mirror neurons and FMRI studies on brain activity. Specifically, Professor E suggested that when discussing mirror neurons, Grad C should also mention recent findings about kicking, implying a connection between the talk's content and research on neurons.",
+          "rouge_f1": {
+            "rouge1": 0.1971830985915493,
+            "rouge2": 0.04285714285714285,
+            "rougeL": 0.14084507042253522
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            2,
+            36,
+            8,
+            35
+          ],
+          "retrieval_precision": 0.5185546875,
+          "retrieval_recall": 0.6612702366127023
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Grad C mentioned talking about the data and some preliminary observations regarding human-computer interactions, noting that human-human telephone conversations differ from human-computer ones. Additionally, Professor E suggested that Grad C should talk about mirror neurons and the more recent stuff about kicking, linking it to mentioning FMRI (Functional Magnetic Resonance Imaging) and looking at people's brains directly.",
+          "rouge_f1": {
+            "rouge1": 0.18300653594771243,
+            "rouge2": 0.039735099337748346,
+            "rougeL": 0.11764705882352941
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            2,
+            36,
+            8,
+            35,
+            12,
+            14,
+            7,
+            4
+          ],
+          "retrieval_precision": 0.26513671875,
+          "retrieval_recall": 0.676214196762142
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Grad C mentioned planning to discuss the construction aspect of X-schemas, the Bayes-net, and future activities involving looking at people's brains directly through FMRI. Professor E suggested that when discussing mirror neurons, Grad C should also mention recent studies related to kicking.",
+          "rouge_f1": {
+            "rouge1": 0.21897810218978103,
+            "rouge2": 0.044444444444444446,
+            "rougeL": 0.11678832116788322
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.6376089663760897
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Grad C mentioned rehearsing a talk and discussed data related to subjects mimicking synthesis when speaking to a computer. Additionally, Grad C talked about observing differences in human-human and human-computer telephone conversations. Later, Grad C brought up the topic of mirror neurons and suggested looking into people's brains directly through FMRI, indicating future activities involving this technology.",
+          "rouge_f1": {
+            "rouge1": 0.15789473684210528,
+            "rouge2": 0.026666666666666672,
+            "rougeL": 0.10526315789473685
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            7,
+            36,
+            2
+          ],
+          "retrieval_precision": 0.5302734375,
+          "retrieval_recall": 0.676214196762142
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The relevant excerpt regarding the talk and neurons is:\n\n[208] Professor E: Well, the time to mention it, if you mention it, is when you talk about mirror neurons, then you should talk about the more recent stuff, about the kicking\n\nThis indicates that Professor E suggested mentioning mirror neurons during the talk and linking it to recent research involving kicking. However, there is no further elaboration on neurons or the specific content of the talk related to neurons beyond this suggestion.",
+          "rouge_f1": {
+            "rouge1": 0.28735632183908044,
+            "rouge2": 0.034883720930232565,
+            "rougeL": 0.1724137931034483
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            7,
+            36,
+            2,
+            26,
+            1,
+            27,
+            15
+          ],
+          "retrieval_precision": 0.26513671875,
+          "retrieval_recall": 0.676214196762142
+        },
+        "word_packed__dense__w512": {
+          "answer": "Grad C mentioned that they would discuss problems with rephrasing and some preliminary observations. Professor E suggested that Grad C should talk about mirror neurons and recent studies involving them, such as those related to kicking, when discussing future activities. They also planned to investigate whether similar phenomena occur with stories about mirror neurons, indicating an interest in understanding neural activity, possibly through FMRI, in relation to these studies.",
+          "rouge_f1": {
+            "rouge1": 0.19875776397515527,
+            "rouge2": 0.02515723270440252,
+            "rougeL": 0.12422360248447203
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7
+          ],
+          "retrieval_precision": 0.83203125,
+          "retrieval_recall": 0.5305105853051059
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The discussion mentioned that Grad C planned to talk about mirror neurons and future activities involving looking at people's brains directly through FMRI to observe phenomena related to stories and actions such as kicking. However, there were no specific details provided about the talk and neurons beyond this context.",
+          "rouge_f1": {
+            "rouge1": 0.18309859154929578,
+            "rouge2": 0.028571428571428574,
+            "rougeL": 0.11267605633802817
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            8,
+            24
+          ],
+          "retrieval_precision": 0.666015625,
+          "retrieval_recall": 0.8493150684931506
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The excerpts indicate that Grad C mentioned plans to discuss problems with rephrasing, observations, and the concept of mirror neurons. Professor E suggested that Grad C should talk about the more recent studies involving mirror neurons, particularly those related to kicking, and mentioned that they planned to examine brain activity directly to see if similar phenomena occur with stories. Therefore, regarding the talk, it included discussions on rephrasing issues, initial observations, and future plans to study mirror neurons and brain activity. There is no specific mention of neurons outside of the context of mirror neurons and their relation to brain activity studies.",
+          "rouge_f1": {
+            "rouge1": 0.24742268041237112,
+            "rouge2": 0.052083333333333336,
+            "rougeL": 0.16494845360824742
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            8,
+            24,
+            1,
+            25,
+            10,
+            31
+          ],
+          "retrieval_precision": 0.39208984375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Professor E suggested that when Grad C talks about mirror neurons, they should also discuss recent research involving observing brain activity directly, particularly related to phenomena observed during actions like kicking. This discussion is intended to explore whether similar neural responses occur when hearing stories about such actions.",
+          "rouge_f1": {
+            "rouge1": 0.14285714285714285,
+            "rouge2": 0.028985507246376812,
+            "rougeL": 0.11428571428571427
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            2
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.31880448318804483
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Professor E suggested that Grad C should talk about mirror neurons and mentioned plans to examine brain activity related to stories involving actions like kicking. This discussion was framed within the context of Grad C's upcoming talk and research activities.",
+          "rouge_f1": {
+            "rouge1": 0.18045112781954886,
+            "rouge2": 0.03053435114503817,
+            "rougeL": 0.13533834586466165
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            2,
+            34,
+            8,
+            12
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.6376089663760897
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Professor E suggested that Grad C should talk about mirror neurons and mentioned the plan to look at people's brains directly, possibly through FMRI, to see if the same phenomena occur with stories as they do with actions like kicking.",
+          "rouge_f1": {
+            "rouge1": 0.2105263157894737,
+            "rouge2": 0.03053435114503817,
+            "rougeL": 0.12030075187969926
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            2,
+            34,
+            8,
+            12,
+            7,
+            33,
+            4,
+            14
+          ],
+          "retrieval_precision": 0.3330078125,
+          "retrieval_recall": 0.8493150684931506
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Grad C mentioned planning to talk about mirror neurons and future activities involving looking at people's brains directly through fMRI. Professor E suggested that when discussing mirror neurons, Grad C should also mention recent studies related to kicking and the intention to investigate similar phenomena with stories, indicating plans to conduct such research.",
+          "rouge_f1": {
+            "rouge1": 0.2191780821917808,
+            "rouge2": 0.041666666666666664,
+            "rougeL": 0.15068493150684933
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.6376089663760897
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Grad C mentioned rehearsing their talk and discussed including information about mirror neurons and FMRI studies observing brain activity directly. Professor E suggested that when discussing mirror neurons, Grad C should also mention recent studies involving kicking and plans to investigate similar phenomena with stories, relating to observing brain activity through FMRI.",
+          "rouge_f1": {
+            "rouge1": 0.1527777777777778,
+            "rouge2": 0.028169014084507043,
+            "rougeL": 0.1111111111111111
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            7,
+            2
+          ],
+          "retrieval_precision": 0.666015625,
+          "retrieval_recall": 0.8493150684931506
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Grad C mentioned rehearsing their talk and discussed including information about mirror neurons and FMRI studies observing brain activity directly. Professor E suggested mentioning recent findings about mirror neurons, particularly those related to kicking, and the plan to investigate similar phenomena with stories.",
+          "rouge_f1": {
+            "rouge1": 0.14814814814814814,
+            "rouge2": 0.030075187969924814,
+            "rougeL": 0.11851851851851852
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            7,
+            2,
+            34,
+            12,
+            25,
+            24,
+            14
+          ],
+          "retrieval_precision": 0.3330078125,
+          "retrieval_recall": 0.8493150684931506
+        },
+        "lumber__dense__w512": {
+          "answer": "Grad C mentioned planning to talk about mirror neurons and recent studies involving them, specifically referencing research about kicking. Additionally, there was a suggestion to discuss FMRI studies as a way to directly observe people's brains.",
+          "rouge_f1": {
+            "rouge1": 0.20155038759689922,
+            "rouge2": 0.015748031496062992,
+            "rougeL": 0.10852713178294573
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            16,
+            13
+          ],
+          "retrieval_precision": 0.990234375,
+          "retrieval_recall": 0.6313823163138231
+        },
+        "lumber__dense__w1024": {
+          "answer": "Professor E suggested mentioning mirror neurons and discussing recent studies related to them, particularly those involving kicking. Additionally, there is a plan to investigate to what extent similar phenomena occur with stories about mirror neurons, indicating an interest in directly observing brain activity, possibly through FMRI, to understand these processes better.",
+          "rouge_f1": {
+            "rouge1": 0.1818181818181818,
+            "rouge2": 0.014184397163120569,
+            "rougeL": 0.11188811188811189
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            16,
+            13,
+            3,
+            17
+          ],
+          "retrieval_precision": 0.5556640625,
+          "retrieval_recall": 0.7085927770859277
+        },
+        "lumber__dense__w2048": {
+          "answer": "Professor E mentioned that Grad C should talk about mirror neurons and the more recent findings related to them, such as studies involving kicking, when discussing future activities. Additionally, there is a plan to examine people's brains directly to see if similar phenomena occur with stories about mirror neurons.",
+          "rouge_f1": {
+            "rouge1": 0.18309859154929578,
+            "rouge2": 0.028571428571428574,
+            "rougeL": 0.09859154929577466
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            16,
+            13,
+            3,
+            17,
+            35,
+            1,
+            33
+          ],
+          "retrieval_precision": 0.35986328125,
+          "retrieval_recall": 0.9178082191780822
+        },
+        "lumber__bm25__w512": {
+          "answer": "Grad C mentioned planning to discuss problems with rephrasing, preliminary observations, and future activities involving looking at people's brains more directly through FMRI. Professor E suggested that when discussing mirror neurons, Grad C should also mention recent findings related to kicking and the plan to investigate similar phenomena with stories, indicating an interest in linking these discussions to the study of neurons.",
+          "rouge_f1": {
+            "rouge1": 0.24516129032258066,
+            "rouge2": 0.0392156862745098,
+            "rougeL": 0.16774193548387095
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            4,
+            14
+          ],
+          "retrieval_precision": 0.62109375,
+          "retrieval_recall": 0.3960149439601494
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Grad C mentioned rehearsing their talk and discussed including content related to mirror neurons and FMRI studies looking at people's brains directly. Professor E suggested that when discussing mirror neurons, Grad C should also mention recent findings about kicking and the plan to investigate similar phenomena with stories.",
+          "rouge_f1": {
+            "rouge1": 0.18439716312056736,
+            "rouge2": 0.04316546762589928,
+            "rougeL": 0.1276595744680851
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            4,
+            14,
+            41
+          ],
+          "retrieval_precision": 0.4951171875,
+          "retrieval_recall": 0.6313823163138231
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Grad C mentioned rehearsing their talk and discussed including information about mirror neurons and FMRI studies looking at people's brains directly. Specifically, Professor E suggested mentioning the more recent stuff about mirror neurons, such as the kicking studies, and the plan to see if similar phenomena occur with stories about this, in conjunction with discussing mirror neurons.",
+          "rouge_f1": {
+            "rouge1": 0.2,
+            "rouge2": 0.04054054054054054,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            4,
+            14,
+            41,
+            20,
+            13,
+            15,
+            19
+          ],
+          "retrieval_precision": 0.28564453125,
+          "retrieval_recall": 0.7285180572851806
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Grad C mentioned planning to talk about mirror neurons and recent studies involving them, specifically referencing research about kicking. Additionally, there was a suggestion to discuss FMRI studies as a way to directly observe people's brains.",
+          "rouge_f1": {
+            "rouge1": 0.20155038759689922,
+            "rouge2": 0.015748031496062992,
+            "rougeL": 0.10852713178294573
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            14,
+            13
+          ],
+          "retrieval_precision": 0.990234375,
+          "retrieval_recall": 0.6313823163138231
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Grad C mentioned that they would discuss problems with rephrasing and some preliminary observations related to human-computer interactions. Professor E suggested mentioning recent research on mirror neurons, particularly in relation to observing similar phenomena through stories and FMRI studies looking into people's brains directly. No specific details about neurons were provided beyond this suggestion to incorporate mirror neuron research into the talk.",
+          "rouge_f1": {
+            "rouge1": 0.19230769230769232,
+            "rouge2": 0.03896103896103896,
+            "rougeL": 0.1282051282051282
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            14,
+            13,
+            33,
+            41
+          ],
+          "retrieval_precision": 0.5068359375,
+          "retrieval_recall": 0.6463262764632628
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Grad C mentioned talking about the data related to human-computer interactions, noting similarities to human-human interactions. They also discussed problems with rephrasing and preliminary observations. Regarding neurons, Professor E suggested mentioning mirror neurons and recent studies involving them, possibly relating to observing similar phenomena with stories. However, specific details about the content of the talk on neurons were not elaborated upon in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.21383647798742136,
+            "rouge2": 0.03821656050955414,
+            "rougeL": 0.1509433962264151
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            14,
+            13,
+            33,
+            41,
+            35
+          ],
+          "retrieval_precision": 0.25341796875,
+          "retrieval_recall": 0.6463262764632628
+        }
+      }
+    }
+  ]
+}

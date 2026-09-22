@@ -1,0 +1,3789 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "IS1003a.json",
+        "sha256": "81414199f88de17cef5f27e2cc832f333428386ba6b83e64a54561b76725f018"
+      },
+      "retrieval": {
+        "file": "IS1003a.json",
+        "sha256": "9cd90aa74d6b79eb543d63d3cde26af0d5475f5d31f1bed88496551821e3a831"
+      },
+      "segmentation": {
+        "file": "IS1003a.json",
+        "sha256": "677be0c6614fe99deb027c4f1aeb6aad41a3e1f50a8a46f4de8912eff74622d5"
+      }
+    },
+    "input_hash": "78b93749f9ca4c6c73f33751d193257df66a7e324b8579be15511723298f18d7",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "3a5862ce8d0acd1c0b2b47cd66f32998681f8e02b302c262454f477244d35a7a",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "IS1003a",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 103,
+  "cache_hits": 59,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about the product features.",
+      "reference_answer": "The remote control had to be original, trendy, easy to use, international and not too expensive.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The project team discussed creating a new remote control that needs to be original, trendy, and user-friendly. The selling price is set at 25 Euros, which is considered a reasonable price point. The product costs should not exceed 12.50 Euros. The remote control is intended for international sale. Key aspects of the design process include focusing on functional, conceptual, and detailed design phases, as well as considering user requirements and specifications. The team was encouraged to be imaginative and innovative in their designs.",
+          "rouge_f1": {
+            "rouge1": 0.21782178217821782,
+            "rouge2": 0.10101010101010101,
+            "rougeL": 0.1782178217821782
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            1,
+            3
+          ],
+          "retrieval_precision": 0.529296875,
+          "retrieval_recall": 0.5599173553719008
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The project team discussed creating a new remote control that needs to be original, trendy, and user-friendly. Key points included:\n\n- Selling price set at 25 Euros, considered a reasonable price.\n- Product costs should not exceed 12.50 Euros.\n- The remote control should be designed as an international product, avoiding specific cultural elements.\n- The design should focus on simplicity, ease of use, and affordability to maximize benefits.\n- New functionalities should be introduced to attract buyers interested in innovative features not found in current remote controls.",
+          "rouge_f1": {
+            "rouge1": 0.23762376237623764,
+            "rouge2": 0.10101010101010101,
+            "rougeL": 0.19801980198019803
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            1,
+            3,
+            4,
+            7
+          ],
+          "retrieval_precision": 0.47265625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The team discussed creating a new remote control that needs to be original, trendy, and user-friendly. The selling price is set at 25 Euros, with product costs not exceeding 12.50 Euros. The remote control should be an international product, suitable for everyone, and offer new functionalities not found in current remote controls. The design process involves functional design, conceptual design, and detailed design, with each member focusing on their specific roles: Industrial Designer (designing the physical appearance), User Interface Designer (designing the interaction between the user and the remote control), and Marketing Expert (providing insights into market trends and user preferences).",
+          "rouge_f1": {
+            "rouge1": 0.16806722689075632,
+            "rouge2": 0.08547008547008546,
+            "rougeL": 0.16806722689075632
+          },
+          "cache_hit": false,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            1,
+            3,
+            4,
+            7,
+            2,
+            6,
+            5
+          ],
+          "retrieval_precision": 0.2401985111662531,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The discussion focused on the product features of an international remote control. The team agreed on a selling price of 25 Euros and a production cost cap of 12.50 Euros. They emphasized the need for the remote control to be internationally compatible, avoiding specific designs that cater to particular regions. Additionally, they aimed to create a new, innovative product with desirable functionalities that would appeal to users, ensuring it remains simple, easy to use, and affordable.",
+          "rouge_f1": {
+            "rouge1": 0.2150537634408602,
+            "rouge2": 0.10989010989010989,
+            "rougeL": 0.1935483870967742
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            5
+          ],
+          "retrieval_precision": 0.677734375,
+          "retrieval_recall": 0.7169421487603306
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The project team discussed creating a new remote control that needs to be original, trendy, and user-friendly. The selling price is set at 25 Euros, with product costs not exceeding 12.50 Euros. The remote control should cater to an international audience without being too specific to any region, similar to how keyboards vary globally. Key requirements include keeping the design simple, easy to use, and affordable while incorporating new functionalities not found in current remote controls.",
+          "rouge_f1": {
+            "rouge1": 0.2978723404255319,
+            "rouge2": 0.15217391304347827,
+            "rougeL": 0.25531914893617025
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            5,
+            0,
+            3
+          ],
+          "retrieval_precision": 0.47265625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The team discussed creating a new remote control that needs to be original, trendy, and user-friendly. The selling price is set at 25 Euros, with product costs not exceeding 12.50 Euros. The remote control should be an international product, suitable for everyone, and offer new functionalities not found in current remote controls. The design process involves functional design, conceptual design, and detailed design, with each member focusing on their specific roles: Industrial Designer (designing the physical appearance), User Interface Designer (designing the interaction between the user and the remote control), and Marketing Expert (providing insights into market trends and user preferences).",
+          "rouge_f1": {
+            "rouge1": 0.16806722689075632,
+            "rouge2": 0.08547008547008546,
+            "rougeL": 0.16806722689075632
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            5,
+            0,
+            3,
+            7,
+            2,
+            6
+          ],
+          "retrieval_precision": 0.2401985111662531,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The project team discussed creating a new remote control that needs to be original, trendy, and user-friendly. The selling price is set at 25 Euros, which is considered a reasonable price point. The product cost should not exceed 12.50 Euros. The remote control is intended for international sale. Key aspects to consider during design include functionality, user requirements, and innovative features to attract buyers.",
+          "rouge_f1": {
+            "rouge1": 0.2682926829268293,
+            "rouge2": 0.125,
+            "rougeL": 0.2195121951219512
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            4
+          ],
+          "retrieval_precision": 0.552734375,
+          "retrieval_recall": 0.5847107438016529
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team discussed several key features for the new remote control:\n\n- **Originality and Trendiness**: The remote control needs to be unique and appealing to stand out from competitors.\n- **User-Friendliness**: It must be easy to use and intuitive.\n- **International Design**: The design should cater to a global audience without being overly specific to any particular region.\n- **Cost Considerations**: The selling price is set at 25 Euros, with production costs not exceeding 12.50 Euros.\n- **New Functionalities**: The remote control should offer innovative features not found in current models to attract buyers.\n- **Design Roles**: The User Interface Designer focuses on the interaction between the user and the remote control, while the Industrial Designer handles the physical appearance and materials. Marketing will provide insights into consumer preferences and trends.",
+          "rouge_f1": {
+            "rouge1": 0.18181818181818182,
+            "rouge2": 0.07092198581560283,
+            "rougeL": 0.13986013986013984
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            4,
+            3,
+            5
+          ],
+          "retrieval_precision": 0.47265625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team discussed creating a new remote control that needs to be original, trendy, and user-friendly. The selling price is set at 25 Euros, with product costs not exceeding 12.50 Euros. The remote control should be an international product, suitable for everyone, and offer new functionalities not found in current remote controls. The design process involves functional design, conceptual design, and detailed design, with each member focusing on their specific roles: Industrial Designer (designing the physical appearance), User Interface Designer (designing the interaction between the user and the remote control), and Marketing Expert (providing insights into market trends and user preferences).",
+          "rouge_f1": {
+            "rouge1": 0.16806722689075632,
+            "rouge2": 0.08547008547008546,
+            "rougeL": 0.16806722689075632
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            4,
+            3,
+            5,
+            7,
+            2,
+            6
+          ],
+          "retrieval_precision": 0.2401985111662531,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The project team discussed creating a new remote control that needs to be original, trendy, and user-friendly. They emphasized the importance of making the remote control international and affordable, with a target cost not exceeding 12.50 Euros. The goal is to introduce new functionalities that differentiate it from existing remote controls and maximize its appeal to potential buyers. The team also briefly considered using the whiteboard to draw their favorite animals and list their characteristics but did not finalize this activity.",
+          "rouge_f1": {
+            "rouge1": 0.2424242424242424,
+            "rouge2": 0.12371134020618556,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            4
+          ],
+          "retrieval_precision": 0.640625,
+          "retrieval_recall": 0.6776859504132231
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The discussion about the product features focused on creating a new remote control that is original, trendy, and user-friendly. The team agreed on a selling price of 25 Euros, considering it a reasonable price point. They aimed for an international market, ensuring the remote control could be used globally, similar to how different types of keyboards cater to various regions. The product cost was set not to exceed 12 Euros and 50 cents. Additionally, the team emphasized the importance of incorporating new functionalities that do not exist in current remote controls to attract potential buyers. The remote control should be simple, easy to use, and maximize benefits while keeping costs low.",
+          "rouge_f1": {
+            "rouge1": 0.203125,
+            "rouge2": 0.07936507936507936,
+            "rougeL": 0.140625
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            4,
+            1,
+            5
+          ],
+          "retrieval_precision": 0.451171875,
+          "retrieval_recall": 0.9545454545454546
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The discussion about the product features focused on creating a new remote control that is original, trendy, and user-friendly. The team aims to develop an international product that can be used globally without being too specific to any region. The selling price is set at 25 Euros, with product costs not exceeding 12.50 Euros. The remote control should offer new functionalities not found in existing models and be designed to appeal to a broad audience. The team plans to explore innovative designs and ensure the product is affordable and easy to use.",
+          "rouge_f1": {
+            "rouge1": 0.25454545454545446,
+            "rouge2": 0.09259259259259259,
+            "rougeL": 0.14545454545454545
+          },
+          "cache_hit": false,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            4,
+            1,
+            5,
+            2,
+            3,
+            7,
+            6
+          ],
+          "retrieval_precision": 0.2401985111662531,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The discussion about the product features focused on creating a new remote control that is original, trendy, and user-friendly. The team discussed dividing the design process into functional, conceptual, and detailed design phases, with each phase involving individual work and group meetings. There was some confusion regarding the roles of the User Interface Designer and Industrial Designer, with the former focusing on the interaction between the user and the remote control, and the latter on the appearance and possibly the functionality. Marketing suggested providing trends and user preferences to guide the design. The remote control was intended to be an international product.",
+          "rouge_f1": {
+            "rouge1": 0.16806722689075632,
+            "rouge2": 0.06837606837606837,
+            "rougeL": 0.11764705882352942
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            0
+          ],
+          "retrieval_precision": 0.310546875,
+          "retrieval_recall": 0.3285123966942149
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The team discussed several key features for the new remote control:\n\n- **Originality and Trendiness**: The remote control needs to be unique and appealing to stand out in a competitive market.\n- **User-Friendliness**: It must be easy to use and intuitive.\n- **International Compatibility**: Designed to be used globally without specific regional adaptations.\n- **Affordability**: The selling price is set at 25 Euros, with production costs not exceeding 12.50 Euros.\n- **New Functionalities**: To attract buyers, it should offer innovative features not found in current remote controls.\n- **Design Roles**: The Industrial Designer focuses on the physical appearance and materials, while the User Interface Designer handles the interaction design and user experience. Marketing will provide insights into consumer preferences and trends.",
+          "rouge_f1": {
+            "rouge1": 0.19548872180451127,
+            "rouge2": 0.07633587786259542,
+            "rougeL": 0.15037593984962408
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            0,
+            1,
+            4
+          ],
+          "retrieval_precision": 0.47265625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The discussion about the product features focused on creating a new remote control that is original, trendy, and user-friendly. The team aims to develop an international product that can be used globally without being too specific to any region. The selling price is set at 25 Euros, with product costs not exceeding 12.50 Euros. The remote control should offer new functionalities not found in existing models and be designed to appeal to a broad audience. The team plans to explore innovative designs and ensure the product is affordable and easy to use.",
+          "rouge_f1": {
+            "rouge1": 0.25454545454545446,
+            "rouge2": 0.09259259259259259,
+            "rougeL": 0.14545454545454545
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            0,
+            1,
+            4,
+            5,
+            7,
+            2,
+            6
+          ],
+          "retrieval_precision": 0.2401985111662531,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The project team discussed creating a new remote control that needs to be original, trendy, and user-friendly. They emphasized the importance of making the remote control international and affordable, with a target cost not exceeding 12.50 Euros. The goal is to introduce new functionalities that differentiate it from existing remote controls and maximize its appeal to potential buyers. The team also briefly considered using the whiteboard to draw their favorite animals and list their characteristics but did not finalize this activity.",
+          "rouge_f1": {
+            "rouge1": 0.2424242424242424,
+            "rouge2": 0.12371134020618556,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            4
+          ],
+          "retrieval_precision": 0.640625,
+          "retrieval_recall": 0.6776859504132231
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The team discussed several key features for the new remote control:\n\n- **Originality and Trendiness**: The remote control needs to be unique and appealing to stand out in a competitive market.\n- **User-Friendliness**: It must be easy to use and intuitive.\n- **International Compatibility**: Designed to be used globally without specific regional adaptations.\n- **Affordability**: The selling price is set at 25 Euros, with production costs not exceeding 12.50 Euros.\n- **New Functionalities**: To attract buyers, it should offer innovative features not found in current remote controls.\n- **Design Roles**: The Industrial Designer focuses on the physical appearance and materials, while the User Interface Designer handles the interaction design and user experience. Marketing will provide insights into consumer preferences and trends.",
+          "rouge_f1": {
+            "rouge1": 0.19548872180451127,
+            "rouge2": 0.07633587786259542,
+            "rougeL": 0.15037593984962408
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            4,
+            1,
+            3
+          ],
+          "retrieval_precision": 0.47265625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The discussion about the product features focused on creating a new remote control that is original, trendy, and user-friendly. The team aims to develop an international product that can be used globally without being too specific to any region. The selling price is set at 25 Euros, with product costs not exceeding 12.50 Euros. The remote control should offer new functionalities not found in existing models and be designed to appeal to a broad audience. The team plans to explore innovative designs and ensure the product is affordable and easy to use.",
+          "rouge_f1": {
+            "rouge1": 0.25454545454545446,
+            "rouge2": 0.09259259259259259,
+            "rougeL": 0.14545454545454545
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            4,
+            1,
+            3,
+            5,
+            2,
+            7,
+            6
+          ],
+          "retrieval_precision": 0.2401985111662531,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The project team discussed creating a new remote control that needs to be original, trendy, and user-friendly. The remote control should cost no more than 12.50 Euros and be suitable for an international market. Key aspects of the design process included functional design, conceptual design, and detailed design, involving both individual work and collaboration. The team emphasized the importance of innovation and meeting user requirements. The roles were clarified, with the Industrial Designer focusing on the appearance and materials, and the User Interface designer concentrating on the layout and functionality of the buttons and overall user interaction.",
+          "rouge_f1": {
+            "rouge1": 0.1565217391304348,
+            "rouge2": 0.08849557522123894,
+            "rougeL": 0.1565217391304348
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            8,
+            9
+          ],
+          "retrieval_precision": 0.529296875,
+          "retrieval_recall": 0.5599173553719008
+        },
+        "lumber__dense__w1024": {
+          "answer": "The team discussed creating a new remote control that needs to be original, trendy, and user-friendly. It should cater to an international audience without being too specific to any particular region. The cost must not exceed €12.50, and it should offer new functionalities not found in current remote controls. The design process involves functional design, conceptual design, and detailed design, with roles divided among the industrial designer, user interface designer, and marketing expert. The industrial designer focuses on the appearance, the user interface designer on the interaction design, and the marketing expert provides insights into user preferences and market trends.",
+          "rouge_f1": {
+            "rouge1": 0.20338983050847456,
+            "rouge2": 0.06896551724137932,
+            "rougeL": 0.18644067796610167
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            8,
+            9,
+            13
+          ],
+          "retrieval_precision": 0.47265625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team discussed creating a new remote control that needs to be original, trendy, and user-friendly. The selling price is set at 25 Euros, with product costs not exceeding 12.50 Euros. The remote control should be an international product, suitable for everyone, and offer new functionalities not found in current remote controls. The design process involves functional design, conceptual design, and detailed design, with each member focusing on their specific roles: Industrial Designer (designing the physical appearance), User Interface Designer (designing the interaction between the user and the remote control), and Marketing Expert (providing insights into market trends and user preferences).",
+          "rouge_f1": {
+            "rouge1": 0.16806722689075632,
+            "rouge2": 0.08547008547008546,
+            "rougeL": 0.16806722689075632
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            8,
+            9,
+            13,
+            10,
+            6,
+            11,
+            1,
+            7,
+            2,
+            3,
+            12,
+            5
+          ],
+          "retrieval_precision": 0.2401985111662531,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The team discussed designing an international remote control that should be affordable (not more than €12.50), simple, easy to use, and innovative to attract buyers. The Project Manager emphasized the need for the design to cater to a global audience without being overly specific to any particular region. Marketing suggested incorporating current trends to meet user preferences, while the User Interface Designer and Industrial Designer agreed on the importance of keeping the cost low and ensuring the product is accessible and appealing to a wide range of users.",
+          "rouge_f1": {
+            "rouge1": 0.20952380952380953,
+            "rouge2": 0.058252427184466014,
+            "rougeL": 0.15238095238095237
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            4,
+            10
+          ],
+          "retrieval_precision": 0.677734375,
+          "retrieval_recall": 0.7169421487603306
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The discussion about the product features focused on creating a new remote control that is original, trendy, and user-friendly. The team agreed on a selling price of 25 Euros and a product cost not exceeding 12.50 Euros. The remote control should cater to an international audience without being overly specific to any particular region. Additionally, the team emphasized the importance of incorporating new functionalities that do not exist in current remote controls while ensuring the design is simple, easy to use, and affordable.",
+          "rouge_f1": {
+            "rouge1": 0.25742574257425743,
+            "rouge2": 0.10101010101010101,
+            "rougeL": 0.1782178217821782
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            4,
+            10,
+            3,
+            0,
+            13
+          ],
+          "retrieval_precision": 0.47265625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The team discussed creating a new remote control that needs to be original, trendy, and user-friendly. The selling price is set at 25 Euros, with product costs not exceeding 12.50 Euros. The remote control should be an international product, suitable for everyone, and offer new functionalities not found in current remote controls. The design process involves functional design, conceptual design, and detailed design, with each member focusing on their specific roles: Industrial Designer (designing the physical appearance), User Interface Designer (designing the interaction between the user and the remote control), and Marketing Expert (providing insights into market trends and user preferences).",
+          "rouge_f1": {
+            "rouge1": 0.16806722689075632,
+            "rouge2": 0.08547008547008546,
+            "rougeL": 0.16806722689075632
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            4,
+            10,
+            3,
+            0,
+            13,
+            8,
+            7,
+            6,
+            5,
+            12,
+            11,
+            1,
+            2
+          ],
+          "retrieval_precision": 0.2401985111662531,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The project team discussed creating an international remote control that should be affordable (not more than €12.50), simple, easy to use, and innovative with new functionalities. The design must cater to a global audience without being overly specific to any region. Marketing will provide trends and user preferences, which will inform the User Interface Designer and Industrial Designer's work on the remote control's design and technical functions.",
+          "rouge_f1": {
+            "rouge1": 0.2558139534883721,
+            "rouge2": 0.09523809523809525,
+            "rougeL": 0.18604651162790695
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            9,
+            0
+          ],
+          "retrieval_precision": 0.703125,
+          "retrieval_recall": 0.743801652892562
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The team discussed creating a new remote control that needs to be original, trendy, and user-friendly. It should cater to an international audience without being too specific, keeping the cost under €12.50. The remote control should offer new functionalities not found in existing ones and be simple, easy to use, and maximize benefits. The roles were outlined: Industrial Designer focuses on the physical appearance, User Interface Designer on the interaction design, and Marketing provides insights into user preferences and market trends.",
+          "rouge_f1": {
+            "rouge1": 0.2828282828282829,
+            "rouge2": 0.1443298969072165,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            9,
+            0,
+            10,
+            8,
+            13
+          ],
+          "retrieval_precision": 0.47265625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The team discussed creating a new remote control that needs to be original, trendy, and user-friendly. The selling price is set at 25 Euros, with product costs not exceeding 12.50 Euros. The remote control should be an international product, suitable for everyone, and offer new functionalities not found in current remote controls. The design process involves functional design, conceptual design, and detailed design, with each member focusing on their specific roles: Industrial Designer (designing the physical appearance), User Interface Designer (designing the interaction between the user and the remote control), and Marketing Expert (providing insights into market trends and user preferences).",
+          "rouge_f1": {
+            "rouge1": 0.16806722689075632,
+            "rouge2": 0.08547008547008546,
+            "rougeL": 0.16806722689075632
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            9,
+            0,
+            10,
+            8,
+            13,
+            3,
+            6,
+            7,
+            11,
+            1,
+            5,
+            12,
+            2
+          ],
+          "retrieval_precision": 0.2401985111662531,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did Project Manager propose that the product should be international when discussing the product features?",
+      "reference_answer": "Because it would be sold in the entire world and everyone would use it.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Project Manager proposed that the product should be international because they wanted to sell it in the entire world, as stated in excerpt [30]. This implies a desire for a universal appeal and usability across different regions and cultures, avoiding anything too specific to ensure everyone can use it, similar to how various types of keyboards (Qwerty, Azerty) cater to different markets but share basic functionality.",
+          "rouge_f1": {
+            "rouge1": 0.27499999999999997,
+            "rouge2": 0.10256410256410257,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1,
+            0
+          ],
+          "retrieval_precision": 0.30859375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Project Manager proposed that the product should be international because they wanted the remote control to be usable by everyone regardless of their location or specific needs (similar to how different keyboard layouts exist), ensuring it could be sold globally without being too specialized. This aligns with the goal of maximizing benefits and keeping the product cost-effective while appealing to a wide audience.",
+          "rouge_f1": {
+            "rouge1": 0.1794871794871795,
+            "rouge2": 0.02631578947368421,
+            "rougeL": 0.15384615384615383
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1,
+            0,
+            2,
+            7
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Project Manager proposed that the product should be international to ensure that the remote control could be used universally, without being specific to any particular region or culture, similar to how different types of keyboards (Qwerty, Azerty) cater to various regions but a remote control should have a broader appeal across the globe.",
+          "rouge_f1": {
+            "rouge1": 0.08955223880597014,
+            "rouge2": 0.0,
+            "rougeL": 0.08955223880597014
+          },
+          "cache_hit": false,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1,
+            0,
+            2,
+            7,
+            6,
+            3,
+            5
+          ],
+          "retrieval_precision": 0.07841191066997519,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The Project Manager proposed that the product should be international because they wanted to sell it in the entire world, as stated in excerpt [30]. They emphasized the need for the remote control to be usable by everyone without being too specific to any particular region or country, similar to how different types of keyboards (Qwerty, Azerty) cater to various markets but still need to be universally operable. This aligns with the goal of maximizing benefits and ensuring broad appeal across different markets.",
+          "rouge_f1": {
+            "rouge1": 0.18556701030927836,
+            "rouge2": 0.06315789473684211,
+            "rougeL": 0.1443298969072165
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1,
+            5
+          ],
+          "retrieval_precision": 0.30859375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Project Manager proposed that the product should be international because they wanted to sell it in the entire world, as stated in excerpt [28]: \"it will uh be a an international remote control, as we want to sell it in the entire world\". This aligns with the goal of maximizing benefits and ensuring that the remote control can be used universally without being too specific to any particular region or culture.",
+          "rouge_f1": {
+            "rouge1": 0.23529411764705882,
+            "rouge2": 0.07228915662650602,
+            "rougeL": 0.21176470588235297
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1,
+            5,
+            3,
+            6
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Project Manager proposed that the product should be international to ensure that the remote control could be used universally, without being specific to any particular region or culture, similar to how different types of keyboards (Qwerty, Azerty) cater to various regions but a remote control should have a broader appeal across the globe.",
+          "rouge_f1": {
+            "rouge1": 0.08955223880597014,
+            "rouge2": 0.0,
+            "rougeL": 0.08955223880597014
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1,
+            5,
+            3,
+            6,
+            2,
+            0,
+            7
+          ],
+          "retrieval_precision": 0.07841191066997519,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Project Manager proposed that the product should be international because they wanted to sell it in the entire world, as stated in excerpt [30]. This implies a desire for a universal appeal and usability across different regions and cultures, avoiding anything too specific to ensure everyone can use it, similar to how various types of keyboards (Qwerty, Azerty) cater to different markets but share basic functionality.",
+          "rouge_f1": {
+            "rouge1": 0.27499999999999997,
+            "rouge2": 0.10256410256410257,
+            "rougeL": 0.25
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1,
+            0
+          ],
+          "retrieval_precision": 0.30859375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Project Manager proposed that the product should be international because they wanted the remote control to be usable by everyone regardless of their location, similar to how different keyboard layouts (Qwerty, Azerty, etc.) need to accommodate various user needs. This ensures the remote control is not too specific and can be sold globally while maximizing benefits and keeping costs under twelve Euros and fifty centimes.",
+          "rouge_f1": {
+            "rouge1": 0.1518987341772152,
+            "rouge2": 0.025974025974025976,
+            "rougeL": 0.10126582278481013
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1,
+            0,
+            2,
+            5
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Project Manager proposed that the product should be international to ensure that the remote control could be used universally, without being specific to any particular region or culture, similar to how different types of keyboards (Qwerty, Azerty) cater to various regions but a remote control should have a broader appeal across the globe.",
+          "rouge_f1": {
+            "rouge1": 0.08955223880597014,
+            "rouge2": 0.0,
+            "rougeL": 0.08955223880597014
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1,
+            0,
+            2,
+            5,
+            3,
+            6,
+            7
+          ],
+          "retrieval_precision": 0.07841191066997519,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "Project Manager proposed that the product should be international because they wanted to sell it in the entire world, as stated in excerpt [28]: \"it will uh be a an international remote control, as we want to sell it in the entire world\".",
+          "rouge_f1": {
+            "rouge1": 0.2807017543859649,
+            "rouge2": 0.10909090909090909,
+            "rougeL": 0.24561403508771928
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4
+          ],
+          "retrieval_precision": 0.265625,
+          "retrieval_recall": 0.8607594936708861
+        },
+        "word_packed__dense__w1024": {
+          "answer": "Project Manager proposed that the product should be international because they wanted the remote control to be usable by everyone regardless of their location, similar to how different keyboard layouts (Qwerty, Azerty, etc.) still need to cater to a broad audience. This ensures the remote control is not too specific to any particular region and can maximize its market reach globally.",
+          "rouge_f1": {
+            "rouge1": 0.13333333333333333,
+            "rouge2": 0.0,
+            "rougeL": 0.10666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            0,
+            3
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Project Manager proposed that the product should be international because they wanted the remote control to be usable by everyone around the world, similar to how different keyboard layouts (Qwerty, Azerty, etc.) accommodate various user needs while maintaining a universal design. They emphasized that the remote control should not be specific to any particular region or culture to maximize its appeal and usability globally.",
+          "rouge_f1": {
+            "rouge1": 0.15384615384615383,
+            "rouge2": 0.0,
+            "rougeL": 0.12820512820512822
+          },
+          "cache_hit": false,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            0,
+            3,
+            7,
+            2,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.07841191066997519,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Project Manager proposed that the product should be international because they wanted to ensure that everyone could use the remote control, similar to how different keyboard layouts (Qwerty, Azerty, French, and UK) cater to various regions while maintaining usability across borders. The goal was to avoid creating something too specific and to maximize the product's appeal and utility on a global scale.",
+          "rouge_f1": {
+            "rouge1": 0.15584415584415587,
+            "rouge2": 0.0,
+            "rougeL": 0.07792207792207793
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4
+          ],
+          "retrieval_precision": 0.1640625,
+          "retrieval_recall": 0.5316455696202531
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Project Manager proposed that the product should be international because they wanted to sell the remote control in the entire world, as stated in excerpt [28]. This aligns with the goal of creating a product that everyone could use without needing specific regional adaptations, similar to how different types of keyboards (Qwerty, Azerty) cater to various regions while maintaining basic functionality.",
+          "rouge_f1": {
+            "rouge1": 0.21333333333333332,
+            "rouge2": 0.08219178082191782,
+            "rougeL": 0.18666666666666668
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4,
+            5,
+            1
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Project Manager proposed that the product should be international because they wanted the remote control to be usable by everyone around the world, similar to how different keyboard layouts (Qwerty, Azerty, etc.) accommodate various user needs while maintaining a universal design. They emphasized that the remote control should not be specific to any particular region or culture to maximize its appeal and usability globally.",
+          "rouge_f1": {
+            "rouge1": 0.15384615384615383,
+            "rouge2": 0.0,
+            "rougeL": 0.12820512820512822
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4,
+            5,
+            1,
+            0,
+            6,
+            2,
+            7
+          ],
+          "retrieval_precision": 0.07841191066997519,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Project Manager proposed that the product should be international because they wanted to sell it in the entire world, as stated in excerpt [28]: \"it will uh be a an international remote control, as we want to sell it in the entire world\".",
+          "rouge_f1": {
+            "rouge1": 0.2807017543859649,
+            "rouge2": 0.10909090909090909,
+            "rougeL": 0.24561403508771928
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1
+          ],
+          "retrieval_precision": 0.265625,
+          "retrieval_recall": 0.8607594936708861
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Project Manager proposed that the product should be international because they wanted the remote control to be usable by everyone regardless of their location, similar to how different keyboard layouts (Qwerty, Azerty, etc.) still need to cater to a broad audience. This ensures the remote control is not too specific to any particular region and can maximize its market reach globally.",
+          "rouge_f1": {
+            "rouge1": 0.13333333333333333,
+            "rouge2": 0.0,
+            "rougeL": 0.10666666666666666
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1,
+            3,
+            0
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Project Manager proposed that the product should be international because they wanted the remote control to be usable by everyone around the world, similar to how different keyboard layouts (Qwerty, Azerty, etc.) accommodate various user needs while maintaining a universal design. They emphasized that the remote control should not be specific to any particular region or culture to maximize its appeal and usability globally.",
+          "rouge_f1": {
+            "rouge1": 0.15384615384615383,
+            "rouge2": 0.0,
+            "rougeL": 0.12820512820512822
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1,
+            3,
+            0,
+            5,
+            7,
+            2,
+            6
+          ],
+          "retrieval_precision": 0.07841191066997519,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "Project Manager proposed that the product should be international because they wanted the remote control to be usable by everyone regardless of location, similar to how different types of keyboards (Qwerty, Azerty, etc.) need to accommodate various user needs across regions. The goal was to create a universally applicable product without making it too specific to any one region.",
+          "rouge_f1": {
+            "rouge1": 0.136986301369863,
+            "rouge2": 0.0,
+            "rougeL": 0.1095890410958904
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            9,
+            0
+          ],
+          "retrieval_precision": 0.30859375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "Project Manager proposed that the product should be international because they want to sell the remote control in the entire world, as indicated in excerpt [28]: \"it will uh be a an international remote control, as we want to sell it in the entire world\". Additionally, in excerpt [113], Project Manager emphasized that the remote control should cater to everyone without being too specific, similar to how different types of keyboards (Qwerty, Azerty) are designed to be used internationally.",
+          "rouge_f1": {
+            "rouge1": 0.21505376344086025,
+            "rouge2": 0.06593406593406592,
+            "rougeL": 0.1935483870967742
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            9,
+            0,
+            6,
+            3,
+            13
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "Project Manager proposed that the product should be international to ensure that the remote control could be used universally, without being specific to any particular region or culture, similar to how different types of keyboards (Qwerty, Azerty) cater to various regions but a remote control should have a broader appeal across the globe.",
+          "rouge_f1": {
+            "rouge1": 0.08955223880597014,
+            "rouge2": 0.0,
+            "rougeL": 0.08955223880597014
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            9,
+            0,
+            6,
+            3,
+            13,
+            8,
+            5,
+            12,
+            11,
+            2,
+            7,
+            10,
+            1
+          ],
+          "retrieval_precision": 0.07841191066997519,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "Project Manager proposed that the product should be international because they wanted to sell it globally without making it specific to any one region, ensuring that \"everybody\" could use it, similar to how different types of keyboards (Qwerty, Azerty, etc.) need to accommodate various user needs across different countries. The goal was to maximize the potential market reach while keeping the product cost under twelve Euros and fifty centimes.",
+          "rouge_f1": {
+            "rouge1": 0.16867469879518074,
+            "rouge2": 0.024691358024691357,
+            "rougeL": 0.09638554216867469
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            4,
+            10
+          ],
+          "retrieval_precision": 0.30859375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Project Manager proposed that the product should be international because they wanted to sell the remote control in the entire world, as indicated in excerpt [28]. This decision was reinforced by emphasizing that the design should not be too specific to cater to a global audience, similar to how different countries have different keyboard layouts (excerpt [118]).",
+          "rouge_f1": {
+            "rouge1": 0.16901408450704228,
+            "rouge2": 0.08695652173913043,
+            "rougeL": 0.1408450704225352
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            4,
+            10,
+            3,
+            8,
+            12,
+            0
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Project Manager proposed that the product should be international to ensure that the remote control could be used universally, without being specific to any particular region or culture, similar to how different types of keyboards (Qwerty, Azerty) cater to various regions but a remote control should have a broader appeal across the globe.",
+          "rouge_f1": {
+            "rouge1": 0.08955223880597014,
+            "rouge2": 0.0,
+            "rougeL": 0.08955223880597014
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            4,
+            10,
+            3,
+            8,
+            12,
+            0,
+            13,
+            6,
+            5,
+            11,
+            7,
+            2,
+            1
+          ],
+          "retrieval_precision": 0.07841191066997519,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Project Manager proposed that the product should be international because they wanted to sell it in the entire world, as stated in excerpt [28]: \"it will uh be a an international remote control,\" and further elaborated in excerpt [110]: \"as everybody everybody will have to use it.\" The goal was to create a remote control that could be used universally, similar to how different types of keyboards (Qwerty, Azerty) cater to various regions but need a standardized approach for a widely accessible product.",
+          "rouge_f1": {
+            "rouge1": 0.20618556701030924,
+            "rouge2": 0.08421052631578949,
+            "rougeL": 0.18556701030927836
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            9,
+            3
+          ],
+          "retrieval_precision": 0.30859375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Project Manager proposed that the product should be international because they wanted the remote control to be usable by everyone regardless of location, similar to how different keyboard layouts (Qwerty, Azerty, etc.) still need to be universally operable. The goal was to create a product that does not require specific localization while maximizing its appeal and functionality globally.",
+          "rouge_f1": {
+            "rouge1": 0.1388888888888889,
+            "rouge2": 0.0,
+            "rougeL": 0.1111111111111111
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            9,
+            3,
+            0,
+            8,
+            6,
+            13
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Project Manager proposed that the product should be international to ensure that the remote control could be used universally, without being specific to any particular region or culture, similar to how different types of keyboards (Qwerty, Azerty) cater to various regions but a remote control should have a broader appeal across the globe.",
+          "rouge_f1": {
+            "rouge1": 0.08955223880597014,
+            "rouge2": 0.0,
+            "rougeL": 0.08955223880597014
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            9,
+            3,
+            0,
+            8,
+            6,
+            13,
+            12,
+            10,
+            5,
+            11,
+            2,
+            7,
+            1
+          ],
+          "retrieval_precision": 0.07841191066997519,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Summarize the conclusion of the discussion about the product price and cost as a part of the product features.",
+      "reference_answer": "The remote control would be priced at 25 Euros and the product cost would be no more than 12.5 Euros.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The discussion concluded that the product's selling price would be 25 Euros, which was considered a reasonable price. The product cost should not exceed 12.50 Euros to ensure profitability. The team agreed to design an international, affordable, and innovative remote control that meets user requirements while keeping costs within the specified limit.",
+          "rouge_f1": {
+            "rouge1": 0.37333333333333335,
+            "rouge2": 0.13698630136986303,
+            "rougeL": 0.26666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            3
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs must not exceed 12 Euros and 50 centimes to ensure profitability while keeping the price competitive and attractive to potential buyers.",
+          "rouge_f1": {
+            "rouge1": 0.32098765432098764,
+            "rouge2": 0.1518987341772152,
+            "rougeL": 0.2716049382716049
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            3,
+            0,
+            2
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs will not exceed 12 Euros and 50 centimes, ensuring that the product remains affordable while maximizing benefits. The team agreed that the remote control should be designed to be international, user-friendly, and innovative, incorporating new functionalities that differentiate it from existing products.",
+          "rouge_f1": {
+            "rouge1": 0.2718446601941748,
+            "rouge2": 0.1188118811881188,
+            "rougeL": 0.21359223300970875
+          },
+          "cache_hit": false,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            3,
+            0,
+            2,
+            7,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.06352357320099256,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The project team concluded that the product's selling price would be 25 Euros, which was considered a good and reasonable price. The product cost must not exceed 12.50 Euros to ensure profitability. The team emphasized the need for the remote control to be internationally compatible, innovative, and affordable, aiming to maximize benefits while keeping costs low and ensuring user interest in its new functionalities.",
+          "rouge_f1": {
+            "rouge1": 0.3448275862068965,
+            "rouge2": 0.1411764705882353,
+            "rougeL": 0.2528735632183908
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            0
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The discussion concluded that the selling price of the product will be 25 Euros, which is considered a reasonable price. The product costs must not exceed 12 Euros and 50 centimes to ensure profitability while keeping the product affordable and attractive to an international market.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.12500000000000003,
+            "rougeL": 0.27272727272727276
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            0,
+            5,
+            2
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs will not exceed 12 Euros and 50 centimes, ensuring that the product remains affordable while maximizing benefits. The team agreed that the remote control should be designed to be international, user-friendly, and innovative, incorporating new functionalities that differentiate it from existing products.",
+          "rouge_f1": {
+            "rouge1": 0.2718446601941748,
+            "rouge2": 0.1188118811881188,
+            "rougeL": 0.21359223300970875
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            0,
+            5,
+            2,
+            7,
+            3,
+            6
+          ],
+          "retrieval_precision": 0.06352357320099256,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The project team concluded that the product's selling price would be 25 Euros, which was considered a good and reasonable price. The product cost must not exceed 12.50 Euros to ensure profitability. The team emphasized the need for the remote control to be internationally compatible, innovative, and affordable, aiming to maximize benefits while keeping costs low and ensuring user interest in its new functionalities.",
+          "rouge_f1": {
+            "rouge1": 0.3448275862068965,
+            "rouge2": 0.1411764705882353,
+            "rougeL": 0.2528735632183908
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            0
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs must not exceed 12 Euros and 50 centimes to ensure profitability while keeping the price competitive and attractive to potential buyers.",
+          "rouge_f1": {
+            "rouge1": 0.32098765432098764,
+            "rouge2": 0.1518987341772152,
+            "rougeL": 0.2716049382716049
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            0,
+            3,
+            2
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs will not exceed 12 Euros and 50 centimes, ensuring that the product remains affordable while maximizing benefits. The team agreed that the remote control should be designed to be international, user-friendly, and innovative, incorporating new functionalities that differentiate it from existing products.",
+          "rouge_f1": {
+            "rouge1": 0.2718446601941748,
+            "rouge2": 0.1188118811881188,
+            "rougeL": 0.21359223300970875
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            0,
+            3,
+            2,
+            5,
+            7,
+            6
+          ],
+          "retrieval_precision": 0.06352357320099256,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. Additionally, the product costs should not exceed 12 Euros and 50 centimes.",
+          "rouge_f1": {
+            "rouge1": 0.37681159420289856,
+            "rouge2": 0.17910447761194026,
+            "rougeL": 0.31884057971014496
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0
+          ],
+          "retrieval_precision": 0.107421875,
+          "retrieval_recall": 0.4296875
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs must not exceed 12 Euros and 50 centimes to ensure profitability while keeping the price point attractive to consumers.",
+          "rouge_f1": {
+            "rouge1": 0.3291139240506329,
+            "rouge2": 0.1558441558441558,
+            "rougeL": 0.2784810126582279
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            4,
+            3
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs will not exceed 12 Euros and 50 centimes, ensuring that the product remains affordable while maximizing benefits. The team agreed that the remote control should be designed to be international, user-friendly, and innovative, incorporating new functionalities that differentiate it from existing products.",
+          "rouge_f1": {
+            "rouge1": 0.2718446601941748,
+            "rouge2": 0.1188118811881188,
+            "rougeL": 0.21359223300970875
+          },
+          "cache_hit": false,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            4,
+            3,
+            5,
+            2,
+            7,
+            6
+          ],
+          "retrieval_precision": 0.06352357320099256,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. Additionally, the product costs should not exceed 12 Euros and 50 centimes.",
+          "rouge_f1": {
+            "rouge1": 0.37681159420289856,
+            "rouge2": 0.17910447761194026,
+            "rougeL": 0.31884057971014496
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0
+          ],
+          "retrieval_precision": 0.107421875,
+          "retrieval_recall": 0.4296875
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs must not exceed 12 Euros and 50 centimes to ensure profitability while keeping the price point attractive to consumers.",
+          "rouge_f1": {
+            "rouge1": 0.3291139240506329,
+            "rouge2": 0.1558441558441558,
+            "rougeL": 0.2784810126582279
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            4,
+            3
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs will not exceed 12 Euros and 50 centimes, ensuring that the product remains affordable while maximizing benefits. The team agreed that the remote control should be designed to be international, user-friendly, and innovative, incorporating new functionalities that differentiate it from existing products.",
+          "rouge_f1": {
+            "rouge1": 0.2718446601941748,
+            "rouge2": 0.1188118811881188,
+            "rougeL": 0.21359223300970875
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            4,
+            3,
+            5,
+            2,
+            7,
+            6
+          ],
+          "retrieval_precision": 0.06352357320099256,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. Additionally, the product costs should not exceed 12 Euros and 50 centimes.",
+          "rouge_f1": {
+            "rouge1": 0.37681159420289856,
+            "rouge2": 0.17910447761194026,
+            "rougeL": 0.31884057971014496
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0
+          ],
+          "retrieval_precision": 0.107421875,
+          "retrieval_recall": 0.4296875
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs must not exceed 12 Euros and 50 centimes to ensure profitability while keeping the price point attractive to consumers.",
+          "rouge_f1": {
+            "rouge1": 0.3291139240506329,
+            "rouge2": 0.1558441558441558,
+            "rougeL": 0.2784810126582279
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            4,
+            3
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs will not exceed 12 Euros and 50 centimes, ensuring that the product remains affordable while maximizing benefits. The team agreed that the remote control should be designed to be international, user-friendly, and innovative, incorporating new functionalities that differentiate it from existing products.",
+          "rouge_f1": {
+            "rouge1": 0.2718446601941748,
+            "rouge2": 0.1188118811881188,
+            "rougeL": 0.21359223300970875
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            4,
+            3,
+            5,
+            2,
+            7,
+            6
+          ],
+          "retrieval_precision": 0.06352357320099256,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The project team concluded that the product's selling price would be 25 Euros, which was considered a reasonable price. They emphasized that the product cost should not exceed 12 Euros and 50 centimes to ensure profitability and affordability. The team agreed to design an international, user-friendly remote control that incorporates innovative features while adhering to the specified cost constraints.",
+          "rouge_f1": {
+            "rouge1": 0.34146341463414637,
+            "rouge2": 0.15,
+            "rougeL": 0.24390243902439024
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4,
+            9
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a good and reasonable price. The product costs will not exceed 12 Euros and 50 centimes, emphasizing the need to keep costs low while ensuring the product remains attractive and beneficial to potential buyers.",
+          "rouge_f1": {
+            "rouge1": 0.29545454545454547,
+            "rouge2": 0.13953488372093023,
+            "rougeL": 0.2727272727272727
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4,
+            9,
+            8,
+            0,
+            10
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs will not exceed 12 Euros and 50 centimes, ensuring that the product remains affordable while maximizing benefits. The team agreed that the remote control should be designed to be international, user-friendly, and innovative, incorporating new functionalities that differentiate it from existing products.",
+          "rouge_f1": {
+            "rouge1": 0.2718446601941748,
+            "rouge2": 0.1188118811881188,
+            "rougeL": 0.21359223300970875
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4,
+            9,
+            8,
+            0,
+            10,
+            6,
+            1,
+            13,
+            11,
+            7,
+            5,
+            2,
+            12
+          ],
+          "retrieval_precision": 0.06352357320099256,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features was that the selling price of the product would be 25 Euros, while the product costs should not exceed 12 Euros and 50 centimes. The team agreed that the price was reasonable and that the design should maximize benefits, be simple, easy to use, and innovative to attract buyers. The project manager emphasized keeping the cost under the specified limit to ensure profitability.",
+          "rouge_f1": {
+            "rouge1": 0.25742574257425743,
+            "rouge2": 0.10101010101010102,
+            "rougeL": 0.19801980198019803
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            9,
+            4
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, while the product costs will not exceed 12 Euros and 50 cents. The team agreed that this pricing strategy is reasonable and within budget constraints, aiming to maximize benefits while ensuring the product remains affordable and attractive to an international market.",
+          "rouge_f1": {
+            "rouge1": 0.2826086956521739,
+            "rouge2": 0.13333333333333333,
+            "rougeL": 0.23913043478260868
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            9,
+            4,
+            0,
+            10,
+            13
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs will not exceed 12 Euros and 50 centimes, ensuring that the product remains affordable while maximizing benefits. The team agreed that the remote control should be designed to be international, user-friendly, and innovative, incorporating new functionalities that differentiate it from existing products.",
+          "rouge_f1": {
+            "rouge1": 0.2718446601941748,
+            "rouge2": 0.1188118811881188,
+            "rougeL": 0.21359223300970875
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            9,
+            4,
+            0,
+            10,
+            13,
+            6,
+            7,
+            2,
+            8,
+            12,
+            11,
+            5,
+            1
+          ],
+          "retrieval_precision": 0.06352357320099256,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The project team concluded that the product's selling price would be 25 Euros, which was considered a reasonable price. They emphasized that the product cost should not exceed 12 Euros and 50 centimes to ensure profitability and affordability. The team agreed to design an international, user-friendly remote control that incorporates innovative features while adhering to the specified cost constraints.",
+          "rouge_f1": {
+            "rouge1": 0.34146341463414637,
+            "rouge2": 0.15,
+            "rougeL": 0.24390243902439024
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4,
+            9
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, while the product cost will not exceed 12 Euros and 50 cents. The team agreed that these pricing points were reasonable and aimed to maximize benefits while ensuring the product remains affordable and competitive internationally.",
+          "rouge_f1": {
+            "rouge1": 0.3023255813953489,
+            "rouge2": 0.14285714285714285,
+            "rougeL": 0.2558139534883721
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4,
+            9,
+            0,
+            10,
+            8
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features is that the selling price of the remote control will be 25 Euros, which is considered a reasonable price. The product costs will not exceed 12 Euros and 50 centimes, ensuring that the product remains affordable while maximizing benefits. The team agreed that the remote control should be designed to be international, user-friendly, and innovative, incorporating new functionalities that differentiate it from existing products.",
+          "rouge_f1": {
+            "rouge1": 0.2718446601941748,
+            "rouge2": 0.1188118811881188,
+            "rougeL": 0.21359223300970875
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4,
+            9,
+            0,
+            10,
+            8,
+            6,
+            13,
+            7,
+            1,
+            2,
+            11,
+            12,
+            5
+          ],
+          "retrieval_precision": 0.06352357320099256,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about the work division of the project.",
+      "reference_answer": "Project manager would manage the whole group. Industrial Designer would think of the functions of the product. User interface designer would concentrate on the users' requirement and the relation between the users and the remote control. Marketing would give interface designer and industrial designer some trends about what should be done and what the users would like to have.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The project division of labor was discussed where the Project Manager (Ada Longmund) would manage the entire group, the Industrial Designer would handle the industrial design aspects including transforming designs into an industrial product, and the User Interface Designer would focus on designing the user interface. Marketing Expert took on the role of marketing for the project. Each member would engage in individual work and collaborate during meetings for functional, conceptual, and detailed design phases. However, specific tasks and responsibilities beyond these broad roles were not clearly defined or agreed upon during the meeting excerpts provided.",
+          "rouge_f1": {
+            "rouge1": 0.46451612903225803,
+            "rouge2": 0.16993464052287585,
+            "rougeL": 0.3225806451612903
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            7
+          ],
+          "retrieval_precision": 0.482421875,
+          "retrieval_recall": 0.43716814159292033
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The project involves three roles: Project Manager (Ada Longmund), Industrial Designer, and User Interface Designer (UID) with Marketing Expert. The Industrial Designer focuses on the physical appearance and functionality of the remote control, while the UID designs the interaction between the user and the remote control. Marketing Expert provides trends and user preferences that converge into the designs by the UID and Industrial Designer. The team agreed on these roles and responsibilities without further division of tasks within the project phases mentioned (functional, conceptual, and detailed design).",
+          "rouge_f1": {
+            "rouge1": 0.45205479452054786,
+            "rouge2": 0.2361111111111111,
+            "rougeL": 0.3424657534246575
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            7,
+            3,
+            1
+          ],
+          "retrieval_precision": 0.490234375,
+          "retrieval_recall": 0.8884955752212389
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The project team discussed their roles and responsibilities in the project to create a new remote control. The Project Manager (Ada Longmund) will manage the group. The Industrial Designer will focus on the physical design and functionality of the remote control, ensuring it meets user requirements and is manufacturable. The User Interface Designer will concentrate on the interaction design, making sure the user interface is intuitive and user-friendly. The Marketing Expert will provide insights into market trends and ensure the product appeals to potential buyers. The team agreed to work individually and collaboratively during the functional, conceptual, and detailed design phases, aiming to produce an original, trendy, and user-friendly remote control that sells internationally for €25, with production costs not exceeding €12.50.",
+          "rouge_f1": {
+            "rouge1": 0.41304347826086957,
+            "rouge2": 0.1978021978021978,
+            "rougeL": 0.29347826086956524
+          },
+          "cache_hit": false,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            7,
+            3,
+            1,
+            4,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.2803970223325062,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The project manager outlined the work division for the project, stating that each phase (functional design, conceptual design, and detailed design) involves both individual work and collaborative meetings. Specifically, the Industrial Designer will focus on the design and technical functions of the remote control, considering user requirements. The exact roles for Marketing and User Interface were not explicitly detailed beyond confirming they understood their responsibilities.",
+          "rouge_f1": {
+            "rouge1": 0.4516129032258065,
+            "rouge2": 0.1639344262295082,
+            "rougeL": 0.25806451612903225
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            2
+          ],
+          "retrieval_precision": 0.146484375,
+          "retrieval_recall": 0.13274336283185842
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The project involves creating a new remote control that is original, trendy, and user-friendly. The work division includes:\n\n- **Project Manager (Ada Longmund)**: Manages the entire group.\n- **Industrial Designer**: Designs the industrial aspects and ensures the transformation into a physical product.\n- **User Interface Designer**: Focuses on the user interface design.\n- **Marketing Expert**: Handles marketing aspects.\n\nEach member will work individually and collaboratively during meetings. The remote control must cater to an international audience, be affordable (selling price of 25 Euros, product costs not exceeding 12.50 Euros), and offer new functionalities that differentiate it from existing products.",
+          "rouge_f1": {
+            "rouge1": 0.4487179487179487,
+            "rouge2": 0.15584415584415587,
+            "rougeL": 0.28205128205128205
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            2,
+            4,
+            7
+          ],
+          "retrieval_precision": 0.302734375,
+          "retrieval_recall": 0.5486725663716814
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The project team discussed their roles and responsibilities in the project to create a new remote control. The Project Manager (Ada Longmund) will manage the group. The Industrial Designer will focus on the physical design and functionality of the remote control, ensuring it meets user requirements and is manufacturable. The User Interface Designer will concentrate on the interaction design, making sure the user interface is intuitive and user-friendly. The Marketing Expert will provide insights into market trends and ensure the product appeals to potential buyers. The team agreed to work individually and collaboratively during the functional, conceptual, and detailed design phases, aiming to produce an original, trendy, and user-friendly remote control that sells internationally for €25, with production costs not exceeding €12.50.",
+          "rouge_f1": {
+            "rouge1": 0.41304347826086957,
+            "rouge2": 0.1978021978021978,
+            "rougeL": 0.29347826086956524
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            2,
+            4,
+            7,
+            3,
+            6,
+            5
+          ],
+          "retrieval_precision": 0.2803970223325062,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The project involves creating a new remote control, with roles divided among participants based on their expertise:\n\n- **Project Manager (Ada Longmund)**: Manages the entire group.\n- **Industrial Designer**: Responsible for designing the remote control and handling the industrial process to transform the design into a product.\n- **User Interface Designer**: Focuses on the user interface aspects of the remote control.\n- **Marketing Expert**: Handles marketing-related tasks.\n\nEach participant is expected to work individually and collaboratively during meetings to complete the project phases including functional design, conceptual design, and detailed design.",
+          "rouge_f1": {
+            "rouge1": 0.4625850340136054,
+            "rouge2": 0.19310344827586207,
+            "rougeL": 0.3129251700680272
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            1
+          ],
+          "retrieval_precision": 0.482421875,
+          "retrieval_recall": 0.43716814159292033
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The project division of work discussed includes:\n\n- **Project Manager (Ada Longmund)**: Manages the entire group.\n- **Industrial Designer**: Designs the industrial aspects and transforms the design into a manufacturable product.\n- **User Interface Designer**: Focuses on designing the user interface and implementing core functions.\n- **Marketing Expert**: Handles marketing-related tasks.\n\nEach member will work individually and collaborate during meetings to finalize the design of a new, original, and user-friendly remote control. The selling price is set at 25 Euros, with product costs not exceeding 12.50 Euros.",
+          "rouge_f1": {
+            "rouge1": 0.496551724137931,
+            "rouge2": 0.1258741258741259,
+            "rougeL": 0.31724137931034485
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            1,
+            7,
+            3
+          ],
+          "retrieval_precision": 0.328125,
+          "retrieval_recall": 0.5946902654867257
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The project team discussed their roles and responsibilities in the project to create a new remote control. The Project Manager (Ada Longmund) will manage the group. The Industrial Designer will focus on the physical design and functionality of the remote control, ensuring it meets user requirements and is manufacturable. The User Interface Designer will concentrate on the interaction design, making sure the user interface is intuitive and user-friendly. The Marketing Expert will provide insights into market trends and ensure the product appeals to potential buyers. The team agreed to work individually and collaboratively during the functional, conceptual, and detailed design phases, aiming to produce an original, trendy, and user-friendly remote control that sells internationally for €25, with production costs not exceeding €12.50.",
+          "rouge_f1": {
+            "rouge1": 0.41304347826086957,
+            "rouge2": 0.1978021978021978,
+            "rougeL": 0.29347826086956524
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            1,
+            7,
+            3,
+            4,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.2803970223325062,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The project manager, Ada Longmund, outlined the work division where she would manage the entire group. The Industrial Designer would handle the industrial design aspects, including transforming the design into an industrial product. The User Interface Designer would focus on designing the user interface and implementing core functions. Marketing Expert would manage marketing-related tasks. Each member would engage in individual work and collaborate during meetings for functional, conceptual, and detailed designs.",
+          "rouge_f1": {
+            "rouge1": 0.5343511450381679,
+            "rouge2": 0.17054263565891473,
+            "rougeL": 0.366412213740458
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.45309734513274336
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The project manager outlined the roles for the team members: the Industrial Designer (ID) is responsible for designing and managing the industrial aspects of transforming the design into a product, the User Interface Designer (UID) focuses on implementing the core functions of the remote control, and the Marketing Expert handles marketing-related tasks. Each member will work individually and collaboratively during the functional, conceptual, and detailed design phases. The project manager will oversee the entire group.",
+          "rouge_f1": {
+            "rouge1": 0.4888888888888889,
+            "rouge2": 0.19548872180451127,
+            "rougeL": 0.32592592592592595
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            7,
+            1,
+            4
+          ],
+          "retrieval_precision": 0.3232421875,
+          "retrieval_recall": 0.5858407079646017
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The project division of work discussed includes:\n\n- **Project Manager (Ada Longmund)**: Manages the overall group and presents the project.\n- **Industrial Designer**: Designs the physical appearance and industrial aspects of the remote control.\n- **User Interface Designer**: Designs the interaction between the user and the remote control, focusing on the functionality and user interface.\n- **Marketing Expert**: Provides insights on market trends and ensures the product meets user preferences, aiming to make it appealing and affordable.\n\nEach member will individually work on their designated tasks and collaborate during meetings to integrate their contributions into the final product. The goal is to create an innovative, user-friendly, and internationally appealing remote control that does not exceed a product cost of twelve Euros and fifty centimes.",
+          "rouge_f1": {
+            "rouge1": 0.4333333333333333,
+            "rouge2": 0.17977528089887643,
+            "rougeL": 0.3
+          },
+          "cache_hit": false,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            7,
+            1,
+            4,
+            3,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.2803970223325062,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The project manager outlined the work division for the project, which involves three main phases: functional design, conceptual design, and detailed design. Each phase requires individual work and collaboration through meetings. The industrial designer and user interface specialist will focus on designing the remote control, including its technical functions and user requirements. Marketing will handle aspects related to pricing and sales strategy. The selling price is set at 25 Euros, with product costs not exceeding 12.50 Euros. The team will aim to create an innovative and user-friendly remote control for international markets.",
+          "rouge_f1": {
+            "rouge1": 0.4052287581699346,
+            "rouge2": 0.09271523178807947,
+            "rougeL": 0.24836601307189543
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0
+          ],
+          "retrieval_precision": 0.146484375,
+          "retrieval_recall": 0.13274336283185842
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The project involves creating a new remote control that must be original, trendy, and user-friendly. The work division includes:\n\n- **Project Manager (Ada Longmund)**: Manages the group and presents the project.\n- **Industrial Designer**: Designs the physical appearance and functionality of the remote control.\n- **User Interface Designer**: Designs the interaction between the user and the remote control.\n- **Marketing Expert**: Provides trends and user preferences to guide the design process.\n\nEach team member will work individually and collaboratively during the functional, conceptual, and detailed design phases.",
+          "rouge_f1": {
+            "rouge1": 0.4895104895104895,
+            "rouge2": 0.21276595744680854,
+            "rougeL": 0.3776223776223776
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            2,
+            3
+          ],
+          "retrieval_precision": 0.5517578125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The project division of work discussed includes:\n\n- **Project Manager (Ada Longmund)**: Manages the overall group and presents the project.\n- **Industrial Designer**: Designs the physical appearance and industrial aspects of the remote control.\n- **User Interface Designer**: Designs the interaction between the user and the remote control, focusing on the functionality and user interface.\n- **Marketing Expert**: Provides insights on market trends and ensures the product meets user preferences, aiming to make it appealing and affordable.\n\nEach member will individually work on their designated tasks and collaborate during meetings to integrate their contributions into the final product. The goal is to create an innovative, user-friendly, and internationally appealing remote control that does not exceed a product cost of twelve Euros and fifty centimes.",
+          "rouge_f1": {
+            "rouge1": 0.4333333333333333,
+            "rouge2": 0.17977528089887643,
+            "rougeL": 0.3
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            2,
+            3,
+            7,
+            4,
+            6,
+            5
+          ],
+          "retrieval_precision": 0.2803970223325062,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The project manager, Ada Longmund, outlined the work division where she would manage the entire group. The Industrial Designer would handle the industrial design aspects, including transforming the design into an industrial product. The User Interface Designer would focus on designing the user interface and implementing core functions. Marketing Expert would manage marketing-related tasks. Each member would engage in individual work and collaborate during meetings for functional, conceptual, and detailed designs.",
+          "rouge_f1": {
+            "rouge1": 0.5343511450381679,
+            "rouge2": 0.17054263565891473,
+            "rougeL": 0.366412213740458
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.45309734513274336
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The project manager outlined the roles for the team members: the Industrial Designer (ID) is responsible for designing the industrial aspects and transforming the design into a manufacturable product, the User Interface Designer (UID) focuses on designing the interaction between the user and the remote control, and Marketing is tasked with marketing expertise. The project involves three phases—functional design, conceptual design, and detailed design—where each phase requires both individual work and collaboration through meetings. The team agreed on these roles without further elaboration or questioning.",
+          "rouge_f1": {
+            "rouge1": 0.4246575342465754,
+            "rouge2": 0.16666666666666666,
+            "rougeL": 0.3561643835616438
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            1,
+            7,
+            3
+          ],
+          "retrieval_precision": 0.35546875,
+          "retrieval_recall": 0.6442477876106195
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The project division of work discussed includes:\n\n- **Project Manager (Ada Longmund)**: Manages the overall group and presents the project.\n- **Industrial Designer**: Designs the physical appearance and industrial aspects of the remote control.\n- **User Interface Designer**: Designs the interaction between the user and the remote control, focusing on the functionality and user interface.\n- **Marketing Expert**: Provides insights on market trends and ensures the product meets user preferences, aiming to make it appealing and affordable.\n\nEach member will individually work on their designated tasks and collaborate during meetings to integrate their contributions into the final product. The goal is to create an innovative, user-friendly, and internationally appealing remote control that does not exceed a product cost of twelve Euros and fifty centimes.",
+          "rouge_f1": {
+            "rouge1": 0.4333333333333333,
+            "rouge2": 0.17977528089887643,
+            "rougeL": 0.3
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            1,
+            7,
+            3,
+            4,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.2803970223325062,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The Project Manager, identified as Ada Longmund, outlined the project to create a new remote control that must be original, trendy, and user-friendly, with a cost limit of 12.50 Euros. The work division involves three roles: Industrial Designer, Marketing, and User Interface (UI) Designer. \n\n- **Industrial Designer**: Responsible for the visual appearance (\"how the object will look like\") and possibly the functional design of the remote control.\n- **Marketing**: Likely involved in promoting the remote control but specific tasks were not detailed.\n- **User Interface Designer**: Focused on the user interaction aspects and possibly the functional design of the remote control.\n\nThe Project Manager will oversee the entire group, ensuring coordination between these roles during the functional, conceptual, and detailed design phases. Each member was expected to understand their specific role and responsibilities.",
+          "rouge_f1": {
+            "rouge1": 0.4083769633507854,
+            "rouge2": 0.13756613756613756,
+            "rougeL": 0.24083769633507854
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            4,
+            0,
+            8
+          ],
+          "retrieval_precision": 0.392578125,
+          "retrieval_recall": 0.35575221238938054
+        },
+        "lumber__dense__w1024": {
+          "answer": "The project manager, Ada Longmund, outlined the work division during the meeting. The Industrial Designer is responsible for designing the physical appearance and functionality of the remote control, including the industrial aspects of transforming the design into a product. The User Interface designer focuses on the interaction between the user and the remote control, designing how users will interact with it. Marketing's role was not explicitly detailed, but it was implied they would handle aspects related to selling the remote control internationally for under €12.50, ensuring it is trendy and user-friendly.",
+          "rouge_f1": {
+            "rouge1": 0.47058823529411764,
+            "rouge2": 0.18543046357615894,
+            "rougeL": 0.33986928104575165
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            4,
+            0,
+            8,
+            7,
+            13
+          ],
+          "retrieval_precision": 0.4541015625,
+          "retrieval_recall": 0.8230088495575221
+        },
+        "lumber__dense__w2048": {
+          "answer": "The project team discussed their roles and responsibilities in the project to create a new remote control. The Project Manager (Ada Longmund) will manage the group. The Industrial Designer will focus on the physical design and functionality of the remote control, ensuring it meets user requirements and is manufacturable. The User Interface Designer will concentrate on the interaction design, making sure the user interface is intuitive and user-friendly. The Marketing Expert will provide insights into market trends and ensure the product appeals to potential buyers. The team agreed to work individually and collaboratively during the functional, conceptual, and detailed design phases, aiming to produce an original, trendy, and user-friendly remote control that sells internationally for €25, with production costs not exceeding €12.50.",
+          "rouge_f1": {
+            "rouge1": 0.41304347826086957,
+            "rouge2": 0.1978021978021978,
+            "rougeL": 0.29347826086956524
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            4,
+            0,
+            8,
+            7,
+            13,
+            5,
+            12,
+            9,
+            10,
+            3,
+            11,
+            2,
+            1
+          ],
+          "retrieval_precision": 0.2803970223325062,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The project manager, Ada Longmund, outlined the work division for the project to create a new remote control. Each participant was expected to work individually and collaboratively during the functional, conceptual, and detailed design phases. Specifically:\n\n- **Project Manager (Ada Longmund)**: Will manage the entire group.\n- **Industrial Designer**: Will work on the design and technical functions of the remote control, considering user requirements.\n- **Marketing Expert**: Will provide trends and insights on what users would like, aiming to make the product appealing and marketable.\n- **User Interface Designer**: Will focus on the user interface design aspects of the remote control.\n\nThe team will meet again in 30 minutes to further discuss their roles and responsibilities.",
+          "rouge_f1": {
+            "rouge1": 0.4795321637426901,
+            "rouge2": 0.2366863905325444,
+            "rougeL": 0.26900584795321636
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            6,
+            9
+          ],
+          "retrieval_precision": 0.392578125,
+          "retrieval_recall": 0.35575221238938054
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The project involves creating a new remote control that must be original, trendy, and user-friendly. The work division includes:\n\n- **Project Manager (Ada Longmund)**: Manages the entire group and presents the project.\n- **Industrial Designer**: Works on the design and technical functions of the remote control, considering user requirements.\n- **Marketing Expert**: Provides trends and insights on what users would like, converging these ideas with the User Interface Designer and Industrial Designer.\n- **User Interface Designer**: Collaborates with the Industrial Designer to ensure the design meets the specified criteria of being international, affordable, simple, and easy to use.\n\nEach team member will engage in both individual work and collaborative meetings to progress through the functional, conceptual, and detailed design phases.",
+          "rouge_f1": {
+            "rouge1": 0.47727272727272735,
+            "rouge2": 0.21839080459770113,
+            "rougeL": 0.27272727272727276
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            6,
+            9,
+            10,
+            3
+          ],
+          "retrieval_precision": 0.2216796875,
+          "retrieval_recall": 0.40176991150442476
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The project team discussed their roles and responsibilities in the project to create a new remote control. The Project Manager (Ada Longmund) will manage the group. The Industrial Designer will focus on the physical design and functionality of the remote control, ensuring it meets user requirements and is manufacturable. The User Interface Designer will concentrate on the interaction design, making sure the user interface is intuitive and user-friendly. The Marketing Expert will provide insights into market trends and ensure the product appeals to potential buyers. The team agreed to work individually and collaboratively during the functional, conceptual, and detailed design phases, aiming to produce an original, trendy, and user-friendly remote control that sells internationally for €25, with production costs not exceeding €12.50.",
+          "rouge_f1": {
+            "rouge1": 0.41304347826086957,
+            "rouge2": 0.1978021978021978,
+            "rougeL": 0.29347826086956524
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            6,
+            9,
+            10,
+            3,
+            7,
+            13,
+            8,
+            12,
+            5,
+            11,
+            2,
+            1
+          ],
+          "retrieval_precision": 0.2803970223325062,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The Project Manager, identified as Ada Longmund, outlined the project to create a new remote control that needs to be original, trendy, and user-friendly, with a cost limit of €12.50. The work division involves three roles:\n\n- **Project Manager (Ada Longmund)**: Manages the entire group.\n- **Industrial Designer**: Works on the design and technical functions of the remote control, considering user requirements.\n- **User Interface Designer**: Focuses on the user interface aspects of the remote control.\n\nMarketing did not specify a distinct role but acknowledged the division of labor. The team was expected to collaborate through individual work and meetings, covering functional, conceptual, and detailed design phases.",
+          "rouge_f1": {
+            "rouge1": 0.4484848484848485,
+            "rouge2": 0.19631901840490798,
+            "rougeL": 0.2787878787878788
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            6,
+            0,
+            7
+          ],
+          "retrieval_precision": 0.392578125,
+          "retrieval_recall": 0.35575221238938054
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The project involves three main roles: Project Manager (Ada Longmund), Industrial Designer, and Marketing Expert. The Industrial Designer is responsible for the physical design and functionality of the remote control, ensuring it is user-friendly and meets industrial standards. The Marketing Expert provides insights into market trends and user preferences to guide the design process. The User Interface Designer focuses on the interaction between the user and the remote control, including layout and usability aspects. The Project Manager oversees the entire project, ensuring coordination among team members and adherence to the budget constraint of not exceeding 12.50 Euros.",
+          "rouge_f1": {
+            "rouge1": 0.4556962025316456,
+            "rouge2": 0.20512820512820512,
+            "rougeL": 0.3037974683544304
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            6,
+            0,
+            7,
+            8,
+            9
+          ],
+          "retrieval_precision": 0.513671875,
+          "retrieval_recall": 0.9309734513274336
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The project team discussed their roles and responsibilities in the project to create a new remote control. The Project Manager (Ada Longmund) will manage the group. The Industrial Designer will focus on the physical design and functionality of the remote control, ensuring it meets user requirements and is manufacturable. The User Interface Designer will concentrate on the interaction design, making sure the user interface is intuitive and user-friendly. The Marketing Expert will provide insights into market trends and ensure the product appeals to potential buyers. The team agreed to work individually and collaboratively during the functional, conceptual, and detailed design phases, aiming to produce an original, trendy, and user-friendly remote control that sells internationally for €25, with production costs not exceeding €12.50.",
+          "rouge_f1": {
+            "rouge1": 0.41304347826086957,
+            "rouge2": 0.1978021978021978,
+            "rougeL": 0.29347826086956524
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            6,
+            0,
+            7,
+            8,
+            9,
+            13,
+            10,
+            3,
+            5,
+            12,
+            11,
+            2,
+            1
+          ],
+          "retrieval_precision": 0.2803970223325062,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What was the industrial designer's opinion about the job of user interface designer when discussing the work division?",
+      "reference_answer": "Industrial designer thought user interface designer's job was to focus on the relation between the users and the remote control and decide how the object looks – for example, where the button would be.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user interacts with the product, specifically mentioning the placement of buttons as an example. The industrial designer also acknowledged that the user interface designer focuses on the relationship between the user and the product, such as a remote control.",
+          "rouge_f1": {
+            "rouge1": 0.5,
+            "rouge2": 0.30232558139534876,
+            "rougeL": 0.38636363636363635
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            7
+          ],
+          "retrieval_precision": 0.275390625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the product, such as determining where buttons will be placed. The industrial designer also clarified that their own role focuses on how the object will look and its physical design.",
+          "rouge_f1": {
+            "rouge1": 0.5301204819277109,
+            "rouge2": 0.2222222222222222,
+            "rougeL": 0.3614457831325301
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            7,
+            5,
+            0
+          ],
+          "retrieval_precision": 0.1376953125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the remote control, focusing on the relationship between the user and the remote control. The industrial designer also mentioned that the user interface designer would determine where buttons and other interactive elements would be placed.",
+          "rouge_f1": {
+            "rouge1": 0.5681818181818182,
+            "rouge2": 0.3488372093023256,
+            "rougeL": 0.5
+          },
+          "cache_hit": false,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            7,
+            5,
+            0,
+            6,
+            4,
+            1
+          ],
+          "retrieval_precision": 0.06997518610421836,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The industrial designer did not explicitly state an opinion about the job of the user interface designer during the discussion on work division. The closest statement is from line 80 where the Industrial Designer says \"You know very soon,\" which could imply an acknowledgment of the user interface designer's role without providing a clear opinion. Therefore, the evidence is insufficient to determine the industrial designer's opinion about the job of the user interface designer.",
+          "rouge_f1": {
+            "rouge1": 0.2909090909090909,
+            "rouge2": 0.1111111111111111,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            2,
+            4
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The industrial designer did not explicitly state an opinion about the job of the user interface designer when discussing the work division. The closest related statement is when the user interface designer asked about the difference between user interface design and industrial design, to which the industrial designer responded, \"It's difficult,\" indicating some level of complexity or challenge but not specifically addressing the nature of the user interface designer's job.",
+          "rouge_f1": {
+            "rouge1": 0.32075471698113206,
+            "rouge2": 0.11538461538461538,
+            "rougeL": 0.2452830188679245
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            2,
+            4,
+            1,
+            0
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the remote control, focusing on the relationship between the user and the remote control. The industrial designer also mentioned that the user interface designer would determine where buttons and other interactive elements would be placed.",
+          "rouge_f1": {
+            "rouge1": 0.5681818181818182,
+            "rouge2": 0.3488372093023256,
+            "rougeL": 0.5
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            2,
+            4,
+            1,
+            0,
+            3,
+            6,
+            5
+          ],
+          "retrieval_precision": 0.06997518610421836,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The industrial designer did not explicitly state an opinion about the job of the user interface designer during the discussion on work division. The closest statement is from line 88 where the industrial designer says \"It's difficult,\" in response to the general topic of knowing their roles, but this does not specifically address the user interface designer's job. Therefore, the evidence is insufficient to determine the industrial designer's opinion about the user interface designer's job.",
+          "rouge_f1": {
+            "rouge1": 0.2831858407079646,
+            "rouge2": 0.12612612612612611,
+            "rougeL": 0.23008849557522124
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            2,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the remote control, specifically mentioning where buttons would be placed. The industrial designer also acknowledged that the user interface designer focuses on the relationship between the user and the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.5714285714285713,
+            "rouge2": 0.3902439024390244,
+            "rougeL": 0.40476190476190477
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            2,
+            3,
+            4,
+            0
+          ],
+          "retrieval_precision": 0.1376953125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the remote control, focusing on the relationship between the user and the remote control. The industrial designer also mentioned that the user interface designer would determine where buttons and other interactive elements would be placed.",
+          "rouge_f1": {
+            "rouge1": 0.5681818181818182,
+            "rouge2": 0.3488372093023256,
+            "rougeL": 0.5
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            2,
+            3,
+            4,
+            0,
+            1,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.06997518610421836,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user interacts with the product, specifically mentioning the placement of buttons as an example of the user interface designer's responsibilities. The industrial designer also acknowledged that there might be overlap or confusion regarding the exact division of labor between the two roles, indicating a somewhat nuanced understanding that the user interface designer focuses on the interaction aspects while the industrial designer deals more with the physical appearance and possibly the functional design of the object.",
+          "rouge_f1": {
+            "rouge1": 0.352,
+            "rouge2": 0.17886178861788615,
+            "rougeL": 0.256
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3
+          ],
+          "retrieval_precision": 0.275390625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the remote control, specifically mentioning where buttons would be placed. The industrial designer also clarified that their own role focuses on how the object will look like.",
+          "rouge_f1": {
+            "rouge1": 0.6,
+            "rouge2": 0.3333333333333333,
+            "rougeL": 0.425
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            5,
+            7,
+            4
+          ],
+          "retrieval_precision": 0.1376953125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the remote control, focusing on the relationship between the user and the remote control, such as determining where buttons will be placed.",
+          "rouge_f1": {
+            "rouge1": 0.6133333333333334,
+            "rouge2": 0.3835616438356164,
+            "rougeL": 0.5333333333333332
+          },
+          "cache_hit": false,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            5,
+            7,
+            4,
+            1,
+            6,
+            0
+          ],
+          "retrieval_precision": 0.06997518610421836,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user interacts with the product, such as determining the placement of buttons on a remote control. The industrial designer also acknowledged that the user interface designer focuses on the relationship between the user and the product, while the industrial designer's role is more about the physical appearance and possibly the function of the object.",
+          "rouge_f1": {
+            "rouge1": 0.44230769230769235,
+            "rouge2": 0.2745098039215686,
+            "rougeL": 0.34615384615384615
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            7,
+            2
+          ],
+          "retrieval_precision": 0.2734375,
+          "retrieval_recall": 0.9929078014184397
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the remote control, specifically mentioning where buttons will be placed. The industrial designer also noted that the user interface designer focuses on the relationship between the user and the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.5476190476190477,
+            "rouge2": 0.34146341463414637,
+            "rougeL": 0.40476190476190477
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            7,
+            2,
+            1,
+            0
+          ],
+          "retrieval_precision": 0.1376953125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the remote control, focusing on the relationship between the user and the remote control, such as determining where buttons will be placed.",
+          "rouge_f1": {
+            "rouge1": 0.6133333333333334,
+            "rouge2": 0.3835616438356164,
+            "rougeL": 0.5333333333333332
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            7,
+            2,
+            1,
+            0,
+            6,
+            4,
+            5
+          ],
+          "retrieval_precision": 0.06997518610421836,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user interacts with the product, specifically mentioning the placement of buttons as an example of the user interface designer's responsibilities. The industrial designer also acknowledged that there might be overlap or confusion regarding the exact division of labor between the two roles, indicating a somewhat nuanced understanding that the user interface designer focuses on the interaction aspects while the industrial designer deals more with the physical appearance and possibly the functional design of the object.",
+          "rouge_f1": {
+            "rouge1": 0.352,
+            "rouge2": 0.17886178861788615,
+            "rougeL": 0.256
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2
+          ],
+          "retrieval_precision": 0.275390625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The industrial designer's opinion about the job of the user interface designer was that the user interface designer would focus on how the user interacts with the remote control, specifically designing the relationship between the user and the remote control, such as determining the placement of buttons. The industrial designer acknowledged this role while also clarifying their own responsibility for the physical appearance and possibly the functional design of the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.4672897196261682,
+            "rouge2": 0.2285714285714286,
+            "rougeL": 0.3551401869158879
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            7,
+            1,
+            5
+          ],
+          "retrieval_precision": 0.1376953125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the remote control, focusing on the relationship between the user and the remote control, such as determining where buttons will be placed.",
+          "rouge_f1": {
+            "rouge1": 0.6133333333333334,
+            "rouge2": 0.3835616438356164,
+            "rougeL": 0.5333333333333332
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            7,
+            1,
+            5,
+            4,
+            0,
+            6
+          ],
+          "retrieval_precision": 0.06997518610421836,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The industrial designer's opinion about the job of the user interface designer was that the user interface designer would focus on designing how the user interacts with the product, such as determining the placement of buttons. The industrial designer also acknowledged that they themselves would handle the physical appearance and possibly the functional design of the object.",
+          "rouge_f1": {
+            "rouge1": 0.4565217391304348,
+            "rouge2": 0.17777777777777776,
+            "rougeL": 0.3043478260869565
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            6,
+            7,
+            13
+          ],
+          "retrieval_precision": 0.275390625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user interacts with the product, specifically mentioning where buttons would be placed. The industrial designer also acknowledged that the user interface designer focuses on the relationship between the user and the product, such as a remote control, while the industrial designer's role is more about the physical appearance and material aspects of the object.",
+          "rouge_f1": {
+            "rouge1": 0.5,
+            "rouge2": 0.3137254901960784,
+            "rougeL": 0.3846153846153846
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            6,
+            7,
+            13,
+            11,
+            9
+          ],
+          "retrieval_precision": 0.1376953125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the remote control, focusing on the relationship between the user and the remote control. The industrial designer also mentioned that the user interface designer would determine where buttons and other interactive elements would be placed.",
+          "rouge_f1": {
+            "rouge1": 0.5681818181818182,
+            "rouge2": 0.3488372093023256,
+            "rougeL": 0.5
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            6,
+            7,
+            13,
+            11,
+            9,
+            10,
+            4,
+            12,
+            1,
+            0,
+            2,
+            3
+          ],
+          "retrieval_precision": 0.06997518610421836,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The evidence is insufficient to determine the industrial designer's opinion about the job of the user interface designer when discussing the work division.",
+          "rouge_f1": {
+            "rouge1": 0.44827586206896547,
+            "rouge2": 0.17857142857142858,
+            "rougeL": 0.2413793103448276
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            4
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The industrial designer's opinion about the job of the user interface designer was that they would design how the user interacts with the product. This is evident from excerpt [89], where the Industrial Designer states, \"I think the user the user interface design is...he will design how the user will you know...\"",
+          "rouge_f1": {
+            "rouge1": 0.38636363636363635,
+            "rouge2": 0.1627906976744186,
+            "rougeL": 0.27272727272727276
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            4,
+            9,
+            7
+          ],
+          "retrieval_precision": 0.0205078125,
+          "retrieval_recall": 0.14893617021276595
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the remote control, focusing on the relationship between the user and the remote control. The industrial designer also mentioned that the user interface designer would determine where buttons and other interactive elements would be placed.",
+          "rouge_f1": {
+            "rouge1": 0.5681818181818182,
+            "rouge2": 0.3488372093023256,
+            "rougeL": 0.5
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            4,
+            9,
+            7,
+            0,
+            12,
+            10,
+            6,
+            8,
+            3,
+            5,
+            11,
+            2,
+            1
+          ],
+          "retrieval_precision": 0.06997518610421836,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The industrial designer expressed that distinguishing between user interface design and industrial design is difficult. When directly asked about knowing the job of a user interface designer, the industrial designer responded with uncertainty, indicating they would soon understand (\"You know very soon.\") and later confirmed having an idea about their own role but did not explicitly state a clear opinion on the specific tasks or responsibilities of the user interface designer beyond acknowledging the distinction is challenging.",
+          "rouge_f1": {
+            "rouge1": 0.3063063063063063,
+            "rouge2": 0.09174311926605505,
+            "rougeL": 0.1981981981981982
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the remote control, focusing on the relationship between the user and the remote control, specifically mentioning where buttons will be placed.",
+          "rouge_f1": {
+            "rouge1": 0.6216216216216216,
+            "rouge2": 0.3888888888888889,
+            "rougeL": 0.5405405405405405
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            7,
+            8,
+            9,
+            4
+          ],
+          "retrieval_precision": 0.1376953125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The industrial designer thought that the user interface designer's job involves designing how the user will interact with the remote control, focusing on the relationship between the user and the remote control. The industrial designer also mentioned that the user interface designer would determine where buttons and other interactive elements would be placed.",
+          "rouge_f1": {
+            "rouge1": 0.5681818181818182,
+            "rouge2": 0.3488372093023256,
+            "rougeL": 0.5
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            7,
+            8,
+            9,
+            4,
+            6,
+            5,
+            10,
+            12,
+            0,
+            11,
+            3,
+            1,
+            2
+          ],
+          "retrieval_precision": 0.06997518610421836,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What was the conclusion of the discussion about the difference between the industrial designer and user interface designer?",
+      "reference_answer": "Industrial Designer would design the functions and figure out the industrial way to implement it while the user interface designer's job was to decide how the object looked. In short, the two were like the inside and the outside.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the product, while the user interface designer concentrates on how the user interacts with the product, such as designing the layout and functionality of controls. The team acknowledged these roles but did not reach a fully clear consensus, with some confusion and overlapping descriptions.",
+          "rouge_f1": {
+            "rouge1": 0.3478260869565218,
+            "rouge2": 0.1592920353982301,
+            "rougeL": 0.2956521739130435
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            7
+          ],
+          "retrieval_precision": 0.576171875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and functionality of the product (how the object will look like and the function design), while the user interface designer concentrates on the interaction between the user and the product (designing how the user will interact with the remote control). There was some confusion initially, but they clarified these roles towards the end of the conversation.",
+          "rouge_f1": {
+            "rouge1": 0.37398373983739835,
+            "rouge2": 0.1652892561983471,
+            "rougeL": 0.2764227642276423
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            7,
+            0,
+            5
+          ],
+          "retrieval_precision": 0.2880859375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the object, while the user interface designer focuses on how the user interacts with the object, such as the placement of buttons and the ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.41237113402061853,
+            "rouge2": 0.18947368421052632,
+            "rougeL": 0.35051546391752575
+          },
+          "cache_hit": false,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            7,
+            0,
+            5,
+            6,
+            4,
+            1
+          ],
+          "retrieval_precision": 0.14640198511166252,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the product (\"how the object will look like\" and \"the industrial way to transform it\"), while the user interface designer concentrates on the interaction between the user and the product, such as the placement of buttons and the functionality of the interface (\"design how the user will use it\" and \"core functions in the interface\").",
+          "rouge_f1": {
+            "rouge1": 0.42857142857142855,
+            "rouge2": 0.20967741935483872,
+            "rougeL": 0.31746031746031744
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            1
+          ],
+          "retrieval_precision": 0.576171875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the remote control, while the user interface designer focuses on how the user interacts with the remote control, including the layout and functionality of its buttons and features. The team acknowledged these roles but had some confusion about the exact responsibilities, particularly regarding the placement of buttons and the overall design process.",
+          "rouge_f1": {
+            "rouge1": 0.3252032520325203,
+            "rouge2": 0.13223140495867766,
+            "rougeL": 0.2764227642276423
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            1,
+            4,
+            6
+          ],
+          "retrieval_precision": 0.2880859375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the object, while the user interface designer focuses on how the user interacts with the object, such as the placement of buttons and the ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.41237113402061853,
+            "rouge2": 0.18947368421052632,
+            "rougeL": 0.35051546391752575
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            1,
+            4,
+            6,
+            0,
+            7,
+            5
+          ],
+          "retrieval_precision": 0.14640198511166252,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the product, while the user interface designer concentrates on how the user interacts with the product, such as designing the layout and functionality of controls. The team acknowledged these roles but did not reach a fully clear consensus, with some confusion and overlapping descriptions.",
+          "rouge_f1": {
+            "rouge1": 0.3478260869565218,
+            "rouge2": 0.1592920353982301,
+            "rougeL": 0.2956521739130435
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            7
+          ],
+          "retrieval_precision": 0.576171875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and functionality of the object (how the remote control will look and function), while the user interface designer focuses on the interaction between the user and the remote control (designing how the user will interact with the remote control, such as the placement of buttons).",
+          "rouge_f1": {
+            "rouge1": 0.39285714285714285,
+            "rouge2": 0.16363636363636364,
+            "rougeL": 0.26785714285714285
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            7,
+            0,
+            1
+          ],
+          "retrieval_precision": 0.2880859375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the object, while the user interface designer focuses on how the user interacts with the object, such as the placement of buttons and the ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.41237113402061853,
+            "rouge2": 0.18947368421052632,
+            "rougeL": 0.35051546391752575
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            7,
+            0,
+            1,
+            4,
+            6,
+            5
+          ],
+          "retrieval_precision": 0.14640198511166252,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the object, while the user interface designer concentrates on how the user interacts with the object, such as the placement of buttons and the overall user experience. The industrial designer also clarified their role as distinct from the user interface designer, emphasizing the design of the object itself rather than its interaction elements.",
+          "rouge_f1": {
+            "rouge1": 0.3225806451612903,
+            "rouge2": 0.14754098360655737,
+            "rougeL": 0.27419354838709675
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3
+          ],
+          "retrieval_precision": 0.576171875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and functionality of the object, while the user interface designer focuses on the interaction between the user and the object, such as the placement of buttons and the overall user experience.",
+          "rouge_f1": {
+            "rouge1": 0.40816326530612246,
+            "rouge2": 0.16666666666666666,
+            "rougeL": 0.32653061224489793
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            5,
+            7,
+            4
+          ],
+          "retrieval_precision": 0.2880859375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the object, while the user interface designer concentrates on how the user interacts with the object, such as the placement of buttons and the ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.41237113402061853,
+            "rouge2": 0.18947368421052632,
+            "rougeL": 0.35051546391752575
+          },
+          "cache_hit": false,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            5,
+            7,
+            4,
+            0,
+            1,
+            6
+          ],
+          "retrieval_precision": 0.14640198511166252,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the object, while the user interface designer concentrates on how the user interacts with the object, such as the placement of buttons and the overall user experience. The industrial designer also clarified their role as distinct from the user interface designer, emphasizing the design of the object itself rather than its interaction elements.",
+          "rouge_f1": {
+            "rouge1": 0.3225806451612903,
+            "rouge2": 0.14754098360655737,
+            "rougeL": 0.27419354838709675
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3
+          ],
+          "retrieval_precision": 0.576171875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and functionality of the object (how the object will look like and its material), while the user interface designer focuses on the interaction between the user and the object (designing how the user will interact with the remote control, such as where buttons will be placed).",
+          "rouge_f1": {
+            "rouge1": 0.4070796460176991,
+            "rouge2": 0.16216216216216217,
+            "rougeL": 0.2831858407079646
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            6,
+            1
+          ],
+          "retrieval_precision": 0.2880859375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the object, while the user interface designer concentrates on how the user interacts with the object, such as the placement of buttons and the ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.41237113402061853,
+            "rouge2": 0.18947368421052632,
+            "rougeL": 0.35051546391752575
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            6,
+            1,
+            4,
+            0,
+            7,
+            5
+          ],
+          "retrieval_precision": 0.14640198511166252,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the object, while the user interface designer concentrates on how the user interacts with the object, such as the placement of buttons and the overall user experience. The industrial designer also clarified their role as distinct from the user interface designer, emphasizing the design of the object itself rather than its interaction elements.",
+          "rouge_f1": {
+            "rouge1": 0.3225806451612903,
+            "rouge2": 0.14754098360655737,
+            "rougeL": 0.27419354838709675
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3
+          ],
+          "retrieval_precision": 0.576171875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the object, while the user interface designer concentrates on how the user interacts with the object, such as the placement of buttons and the ease of use. The industrial designer mentioned designing how the object will look like, whereas the user interface designer is responsible for designing the interaction between the user and the object, such as the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.3358778625954198,
+            "rouge2": 0.15503875968992248,
+            "rougeL": 0.2900763358778626
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "retrieval_precision": 0.2880859375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the object, while the user interface designer concentrates on how the user interacts with the object, such as the placement of buttons and the ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.41237113402061853,
+            "rouge2": 0.18947368421052632,
+            "rougeL": 0.35051546391752575
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            1,
+            7,
+            0
+          ],
+          "retrieval_precision": 0.14640198511166252,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the product, while the user interface designer concentrates on how users interact with the product, such as the placement of buttons and the visual layout. The industrial designer is concerned with the \"outside\" and \"function design,\" whereas the user interface designer deals more with the \"inside\" and the interaction between the user and the product.",
+          "rouge_f1": {
+            "rouge1": 0.34920634920634924,
+            "rouge2": 0.16129032258064516,
+            "rougeL": 0.28571428571428575
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            7,
+            6,
+            11
+          ],
+          "retrieval_precision": 0.576171875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and user interface designer was that the industrial designer focuses on the physical appearance and functionality of the product, while the user interface designer concentrates on how the user interacts with the product, such as designing the layout and controls.",
+          "rouge_f1": {
+            "rouge1": 0.4347826086956522,
+            "rouge2": 0.17777777777777776,
+            "rougeL": 0.34782608695652173
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            7,
+            6,
+            11,
+            13,
+            9
+          ],
+          "retrieval_precision": 0.2880859375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the object, while the user interface designer focuses on how the user interacts with the object, such as the placement of buttons and the ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.41237113402061853,
+            "rouge2": 0.18947368421052632,
+            "rougeL": 0.35051546391752575
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            7,
+            6,
+            11,
+            13,
+            9,
+            10,
+            0,
+            4,
+            1,
+            12,
+            2,
+            3
+          ],
+          "retrieval_precision": 0.14640198511166252,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical design and manufacturing process of the remote control, while the user interface designer focuses on designing how users interact with the remote control, including the layout and functionality of its controls. The exact roles were clarified through dialogue where the Industrial Designer mentioned designing \"how the user will you know\" interact with the remote control, and the User Interface confirmed they would be working on \"the relation between the user and you know the remote control.\"",
+          "rouge_f1": {
+            "rouge1": 0.30985915492957744,
+            "rouge2": 0.11428571428571427,
+            "rougeL": 0.25352112676056343
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            10
+          ],
+          "retrieval_precision": 0.326171875,
+          "retrieval_recall": 0.5661016949152542
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical design and manufacturing aspects of the remote control, while the user interface designer focuses on the interaction between the user and the remote control, including the design of how users will interact with it.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.14285714285714288,
+            "rougeL": 0.3
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            10,
+            12,
+            9,
+            13
+          ],
+          "retrieval_precision": 0.1630859375,
+          "retrieval_recall": 0.5661016949152542
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the object, while the user interface designer focuses on how the user interacts with the object, such as the placement of buttons and the ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.41237113402061853,
+            "rouge2": 0.18947368421052632,
+            "rougeL": 0.35051546391752575
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            10,
+            12,
+            9,
+            13,
+            8,
+            6,
+            0,
+            3,
+            5,
+            11,
+            2,
+            1
+          ],
+          "retrieval_precision": 0.14640198511166252,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer is that the user interface designer focuses on designing how users interact with the product (the relation between the user and the remote control, placing buttons), while the industrial designer focuses on the physical appearance and material aspects of the product. The project manager summarized this distinction as \"maybe, it is the outside and the inside.\"",
+          "rouge_f1": {
+            "rouge1": 0.37168141592920356,
+            "rouge2": 0.16216216216216217,
+            "rougeL": 0.26548672566371684
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8,
+            10
+          ],
+          "retrieval_precision": 0.576171875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and the user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the remote control, while the user interface designer focuses on how the user interacts with the remote control, including the layout and functionality of its buttons and features.",
+          "rouge_f1": {
+            "rouge1": 0.40404040404040403,
+            "rouge2": 0.16494845360824742,
+            "rougeL": 0.3232323232323232
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8,
+            10,
+            4,
+            6,
+            9
+          ],
+          "retrieval_precision": 0.2880859375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The conclusion of the discussion about the difference between the industrial designer and user interface designer was that the industrial designer focuses on the physical appearance and material aspects of the object, while the user interface designer focuses on how the user interacts with the object, such as the placement of buttons and the ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.41237113402061853,
+            "rouge2": 0.18947368421052632,
+            "rougeL": 0.35051546391752575
+          },
+          "cache_hit": true,
+          "evidence_words": 2015,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8,
+            10,
+            4,
+            6,
+            9,
+            13,
+            5,
+            12,
+            11,
+            0,
+            3,
+            1,
+            2
+          ],
+          "retrieval_precision": 0.14640198511166252,
+          "retrieval_recall": 1.0
+        }
+      }
+    }
+  ]
+}

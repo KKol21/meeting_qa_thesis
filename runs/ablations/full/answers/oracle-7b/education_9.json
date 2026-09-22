@@ -1,0 +1,354 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "education_9.json",
+        "sha256": "9330123018459a4f0ad9f46340e8e74ba044e90cae12cf353901a9717b66c3ff"
+      }
+    },
+    "input_hash": "80a91de5d63a176c6d687c9409d6eb4905ec0e5a909b342de20651dccab0baa8",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "87b5a202171d63b953168489de26c03efdf03198831c6bf0314232c0d8af0726",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "education_9",
+  "question_count": 12,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 12,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What were the specific aspects of the framework of the curriculum that would be included in the primary legislation?",
+      "reference_answer": "Kirsty Williams AM introduced that first of all, the four purposes would be set out in the legislation—as well as putting in learning and experience. Second, the government also intended to legislate for a number of the cross-curricular aspects like literacy, the numeracy and the digital competency. Third, a statutory provision for the 'what matters' statements would also be included.",
+      "results": {
+        "oracle": {
+          "answer": "The specific aspects of the framework of the curriculum that would be included in the primary legislation are:\n\n1. The 'what matters' statements within the Areas of Learning and Experience (AoLE).\n2. A statutory framework setting out the approach to progression in each AoLE area.",
+          "rouge_f1": {
+            "rouge1": 0.5233644859813085,
+            "rouge2": 0.20952380952380953,
+            "rougeL": 0.24299065420560745
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              10,
+              10
+            ]
+          ],
+          "evidence_words": 425
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What would be added to the legislation?",
+      "reference_answer": "Kirsty Williams AM explained that the area of learning and experience for well-being was already there, and what would be included was the things that matter in the area of learning, and it was going to be put into the legislation. Lynne Neagle AM added that every school would have to teach mental health by law since the 'what matters' referred to both physical and mental health, and the government intended to legislate to ensure that the 'what matters' statements were a set given in the system.",
+      "results": {
+        "oracle": {
+          "answer": "Based on the meeting excerpts, the legislation would include the \"what matters\" statements related to the area of learning and experience for well-being, which encompasses both physical and mental health. Specifically, mental health and well-being will be included in the legislation, meaning that every school would have to teach mental health by law.",
+          "rouge_f1": {
+            "rouge1": 0.5734265734265734,
+            "rouge2": 0.41134751773049644,
+            "rougeL": 0.36363636363636365
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              13,
+              18
+            ]
+          ],
+          "evidence_words": 209
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the meeting discuss about the 'what matters'?",
+      "reference_answer": "The 'what matters' was the articulation of the big ideas and it was to make sure that essence of the core content was consistent. The actual wording of the 'what matters' statements would be in the secondary legislation. At that time, the need to deliver and the legal requirement to deliver the 'what matters' statement would be on the face of the Bill. As a result, mental health would be put in an important place.",
+      "results": {
+        "oracle": {
+          "answer": "The meeting discussed that the 'what matters' statements are the core content essence, representing the essential learning every learner should receive. These statements are not literal in the Bill but will be covered in subordinate legislation. The 'what matters' statements must be delivered, with the requirement to deliver them being on the face of the Bill. The wording of these statements can change over time through secondary legislation, allowing for updates based on evolving societal understanding and needs, such as including mental health topics that were not previously considered.",
+          "rouge_f1": {
+            "rouge1": 0.5365853658536585,
+            "rouge2": 0.24691358024691357,
+            "rougeL": 0.3292682926829269
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              21,
+              23
+            ]
+          ],
+          "evidence_words": 391
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What value the government placed on different sectors?",
+      "reference_answer": "Kirsty Williams AM suggested that Welsh Government had always been big supporters of WISERD (WalesInstitute of Social and Economic Research, Data and Methods). More research into Welsh education would always be needed. As a Government, all aspects of concerns of Welsh education should be taken into consideration as the government was planning the new curriculum. For instance,  empowering teachers to be able to be more flexible in what they teached their children actually gave the government an opportunity to deliver lessons that could be much more engaging and much more relevant to some of the school children than what they had at the moment.",
+      "results": {
+        "oracle": {
+          "answer": "The government places significant value on research institutions like WISERD and their contributions to informing educational policies. Specifically, the government supports the importance of research into Welsh education and aims to enhance equity and close the attainment gap. The government recognizes the potential for unintended consequences in new educational policies and emphasizes the need for careful consideration based on research. While the curriculum itself is seen as a tool for engagement and relevance, its effectiveness depends on several factors including strong school leadership, excellent teaching, effective assessment methods, and addressing the well-being of students. The government believes that the four enabling purposes of the curriculum, when combined with these supportive elements, will have the greatest impact on educational outcomes and equity.",
+          "rouge_f1": {
+            "rouge1": 0.36283185840707965,
+            "rouge2": 0.07142857142857142,
+            "rougeL": 0.18584070796460175
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              46,
+              49
+            ]
+          ],
+          "evidence_words": 996
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the WISERD research suggest about the distinction in schools?",
+      "reference_answer": "Hefin David AM introduced that the WISERD research suggested that the senior management teams and classroom teachers would share different views towards the change since classroom teachers would be more sceptical. Kirsty Williams AM explained that classroom teachers were absolutely crucial to this, as a result, difficult step had been taken to delay the implementation of the curriculum to same some amount of time to make sure that it was not just school leaders but individual classroom practitioners who had the skills that they would need to make the most of the opportunity that the curriculum allowed them. To ensure this process, different accountability frameworks to the aims and objectives of the new curriculum would be incorporated.",
+      "results": {
+        "oracle": {
+          "answer": "The WISERD research suggested that there would be no consistency across all schools in how the new curriculum is delivered, which could affect outcomes. Classroom teachers were particularly skeptical about this, fearing that it would lead to a different accountability framework than the aims and objectives of the new curriculum.",
+          "rouge_f1": {
+            "rouge1": 0.3592814371257485,
+            "rouge2": 0.20606060606060606,
+            "rougeL": 0.311377245508982
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              50,
+              55
+            ]
+          ],
+          "evidence_words": 431
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the meeting talk about the model of Scotland?",
+      "reference_answer": "Hefin David AM asked about what lessons could be learned from the introduction of the Scotish curriculum. Kirsty Williams AM explained some of the challenges that they had faced in introducing their curriculum, including assessment and content, which had been a crucial part of the process. Also, professional learning, ensuring that the profession was properly prepared for the changes was an alert to the Welsh government. Steve Davies added that one of the critical elements was the extent to which assessment was considered at the outset alongside the curriculum content and it could be a fit for the new curriculum.",
+      "results": {
+        "oracle": {
+          "answer": "The meeting discussed the lessons learned from Scotland's curriculum reform process. It was noted that while Wales' curriculum is not a direct copy of Scotland's, there are valuable insights to be gained. Scotland faced challenges particularly in assessment, having initially focused too much on content and neglecting assessment considerations. Additionally, professional learning and engagement of the middle tier (local authorities and regions) were areas where improvements could be made. Wales has incorporated some of these lessons through expert involvement in curriculum and assessment groups, and has also benefited from feedback from seven other countries during a conference.",
+          "rouge_f1": {
+            "rouge1": 0.3417085427135678,
+            "rouge2": 0.06091370558375635,
+            "rougeL": 0.1708542713567839
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              64,
+              66
+            ]
+          ],
+          "evidence_words": 463
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "How would the money for supporting teachers help in the preparation of the implementation?",
+      "reference_answer": "To answer Dawn Bowden AM's question, Kirsty Williams AM first indicated that the money was not an insignificant amount but the largest investment in professional learning since the history of devolution. The money was being made available to each and every school and had empowered head teachers to think about the professional needs of the school and the practitioners in the school. Also it was aimed at a national level, but to start with, schools would be assessed individually.",
+      "results": {
+        "oracle": {
+          "answer": "The money allocated for supporting teachers to prepare for the implementation of the new curriculum has been utilized in several ways:\n\n1. **Individual School Needs**: Headteachers have been empowered to identify the specific professional development needs of their schools and staff. This allows for tailored support based on the unique circumstances of each institution.\n\n2. **National Headteacher Program**: A national program has been developed in collaboration with the National Academy for Educational Leadership to provide guidance and support to headteachers.\n\n3. **Regional Consortia**: Four regional consortia are working together to provide a consistent approach for classroom teachers and teaching assistants, focusing initially on general curriculum implementation strategies.\n\n4. **Subject-Specific Professional Learning**: As the process progresses, there will be more focused professional learning opportunities for subject-specific areas.\n\n5. **New Teacher Support**: Efforts are being made to develop better support for newly qualified teachers entering the profession, recognizing that consistent support has not been a strong point in Wales.\n\n6. **Coaching and Mentoring Schemes**: Improvements are being made to existing coaching and mentoring schemes to better support teachers.\n\n7. **Schools as Learning Organizations**: Schools are being encouraged to adopt a culture of self-evaluation and continuous improvement, inspired by successful education systems in other parts of the world. This involves working with the Organisation for Economic Co-operation and Development (OECD) to support these efforts.\n\nThese initiatives aim to ensure that teachers are adequately prepared to effectively implement the new curriculum, thereby maximizing its potential impact.",
+          "rouge_f1": {
+            "rouge1": 0.25153374233128833,
+            "rouge2": 0.04938271604938273,
+            "rougeL": 0.12883435582822086
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              90,
+              93
+            ]
+          ],
+          "evidence_words": 724
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "What was the money like in the professional development preparation?",
+      "reference_answer": "The money that was agreed was for a two-year period and continuously, cooperation with the Minister for Finance and the First Minister around future allocations for professional learning would be included to campaign for more money allocated specifically beyond the two years.",
+      "results": {
+        "oracle": {
+          "answer": "The money allocated for professional development preparation was for a two-year period. Beyond this two-year period, additional funding would need to be negotiated with colleagues, as the existing allocation was seen as sufficient for the initial development and preparation needs.",
+          "rouge_f1": {
+            "rouge1": 0.5647058823529412,
+            "rouge2": 0.24096385542168675,
+            "rougeL": 0.3058823529411765
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              94,
+              95
+            ]
+          ],
+          "evidence_words": 155
+        }
+      }
+    },
+    {
+      "question_index": 8,
+      "question": "What did the meeting discuss about the innovation schools?",
+      "reference_answer": "Kirsty Williams AM pointed out that all schools that had previously been pioneers were invited to apply to morph into innovation schools, as the next phase. There would be both a downside and an upside for the programme of innovation schools. At this stage, it should be better to move away from the original 's AM concluded that pioneers were looking at specific aspects of the curriculum. In this case, school with a specific aspect of strength should be encouraged to apply.",
+      "results": {
+        "oracle": {
+          "answer": "The meeting discussed that the innovation schools were selected from previous pioneer schools to help refine the curriculum content, address assessment issues, and ensure accountability. There were 16 innovation schools, four per region, chosen for their ability to practically implement the curriculum in various types of schools, including secondary, primary, faith-based, and linguistically diverse settings. These schools were asked to reflect on how they would apply the curriculum guidance in their schools and produce reports on their findings. The innovation schools met to discuss their practical approaches and provided invaluable insights, which were compiled into an overall report by Wavehill, a research company. The goal is to ensure that the finalized curriculum can be effectively implemented by all schools moving forward.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333326,
+            "rouge2": 0.0495049504950495,
+            "rougeL": 0.1764705882352941
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              97,
+              100
+            ]
+          ],
+          "evidence_words": 703
+        }
+      }
+    },
+    {
+      "question_index": 9,
+      "question": "How was awareness and understanding of human rights embedded in the new curriculum?",
+      "reference_answer": "Kirsty Williams AM explained that children's rights and human rights had been key considerations throughout the design, and this was currently set out in overarching guidance and the government continued to work with the children's commissioner's office to map the rights of the child across each area of learning and experience. And initial assessment from the children's commissioner's office had demonstrated that what was proposed in the new curriculum was a big stepforward. Also, the current existing output of that engagement and feedback had been drawn together into a report exploring learners' views about schools and learning, which was certainly a powerful contribution.",
+      "results": {
+        "oracle": {
+          "answer": "Awareness and understanding of human rights, including children's rights, are being embedded in the new curriculum through overarching guidance and collaboration with the children's commissioner's office to map the rights of the child across each area of learning and experience. The Welsh Government also engaged in a specific programme of engagement with children and young people, involving over 20 events with focus groups and feedback from children, which contributed to a report on learners' views about schools and learning.",
+          "rouge_f1": {
+            "rouge1": 0.5999999999999999,
+            "rouge2": 0.3723404255319149,
+            "rougeL": 0.45263157894736844
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              151,
+              154
+            ]
+          ],
+          "evidence_words": 253
+        }
+      }
+    },
+    {
+      "question_index": 10,
+      "question": "What should be included in the implementation of the Welsh dimension?",
+      "reference_answer": "Sian Gwenllian AM pointed out that the Learned Society of Wales had said that there should be a directory of resources to implement that Welsh dimension. Kirsty Williams AM introduced that there was a separate programme of work that was looking at resources needed to support the curriculum and it certainly would be a must.",
+      "results": {
+        "oracle": {
+          "answer": "According to the meeting excerpts, the implementation of the Welsh dimension should include a directory of resources as proposed by the Learned Society of Wales. This suggestion will be considered as part of an ongoing piece of work that Kirsty Williams AM mentioned, which aims to identify the necessary resources to support the curriculum, avoiding previous issues where supporting resources were not available.",
+          "rouge_f1": {
+            "rouge1": 0.44067796610169485,
+            "rouge2": 0.27586206896551724,
+            "rougeL": 0.27118644067796605
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              157,
+              158
+            ]
+          ],
+          "evidence_words": 145
+        }
+      }
+    },
+    {
+      "question_index": 11,
+      "question": "What did the meeting talk about the single continuum of learning with regard to the Welsh language?",
+      "reference_answer": "Kirsty Williams AM suggested that it was really important that whatever resources there were to support the Welsh dimensionare in a broad level and not confined to specific areas. Regardless of the type of schools, attention to the Welsh language should always be included. However, there might be change towards this implementation this year and it was unclear whether it would be discussed by different sectors.",
+      "results": {
+        "oracle": {
+          "answer": "The meeting discussed the single continuum of learning with regard to the Welsh language, emphasizing that progression steps and achievement outcomes in Welsh-medium and English-medium schools would be contextually different. Children learning Welsh in a Welsh-medium school would progress more quickly compared to those in an English-medium school by the end of primary school. Conversely, a child moving into a Welsh-medium school from an English-medium one would show different progress in English by age seven, though both would be expected to be at the same level by age 11. The focus was on integrating the Welsh dimension across the curriculum, not just in specific subjects like history. The discussion also touched on the Welsh Government's decision to opt out of the creative thinking tests for PISA 2020 due to the timing of curriculum implementation, despite the new curriculum placing emphasis on creative thinking.",
+          "rouge_f1": {
+            "rouge1": 0.2685185185185185,
+            "rouge2": 0.06542056074766356,
+            "rougeL": 0.12962962962962965
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              159,
+              171
+            ]
+          ],
+          "evidence_words": 725
+        }
+      }
+    }
+  ]
+}

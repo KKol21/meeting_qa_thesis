@@ -1,0 +1,2524 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "TS3004b.json",
+        "sha256": "3411f5ba0e7bba31c172489ecd4ed6ca3c04a61583c15893892e7ec47eb234ac"
+      },
+      "retrieval": {
+        "file": "TS3004b.json",
+        "sha256": "b0860a89ce7a99c27d75e93f1a163f33e535afd69cac78e8024d3f7d66a325c0"
+      },
+      "segmentation": {
+        "file": "TS3004b.json",
+        "sha256": "12469fdf4613991ba30928665f768e142d7cd40bca9870e08da0e72584f0f1c3"
+      }
+    },
+    "input_hash": "51114aa69b1a4ee5c8e32d2258a8b896a7b888ca54f3e6aed8bb640ef7d59093",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "b9a89e612ef18cf8c00110a78412aacba32ae144a7a806178296bdc8d738a975",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "TS3004b",
+  "question_count": 4,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 100,
+  "cache_hits": 8,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the presentation and discussion on functional requirements.",
+      "reference_answer": "Marketing gave some suggestions on the remote functional requirements based on marketing reports, which included a fancy look of the remote control, ease of use for elderly people, a button on the home station to trace its position, and speech recognition. So finally, the group mates suggested the usability and the color of the remote control based on Marketing's presentation.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The presentation and discussion on functional requirements focused on creating a TV remote control specifically for older users (forty plus) and children. Key points included ensuring the remote control met the needs of its primary user group, which might involve features such as larger buttons for ease of use by elderly individuals. The team also discussed maintaining the focus on a TV remote control after an email clarification from the personal coach, deviating from an initial idea of a universal remote control.",
+          "rouge_f1": {
+            "rouge1": 0.46153846153846156,
+            "rouge2": 0.0851063829787234,
+            "rougeL": 0.2517482517482517
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            1,
+            26
+          ],
+          "retrieval_precision": 0.955078125,
+          "retrieval_recall": 0.2534992223950233
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The presentation and discussion on functional requirements focused on creating a TV remote control primarily for elderly users and children. Key points included:\n\n- The remote control should cater to older individuals, possibly with larger buttons.\n- Initial plans for a universal remote were revised to focus solely on TV controls.\n- Considerations were made for integrating Bluetooth and speech recognition if feasible.\n- Teletext functionality was debated but ultimately deemed unnecessary due to its obsolescence.\n- The team aimed to ensure the remote was not too small to avoid frequent loss.",
+          "rouge_f1": {
+            "rouge1": 0.36486486486486486,
+            "rouge2": 0.1095890410958904,
+            "rougeL": 0.22972972972972974
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            1,
+            26,
+            28,
+            16
+          ],
+          "retrieval_precision": 0.4775390625,
+          "retrieval_recall": 0.2534992223950233
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control primarily for elderly users and children. Key points included:\n\n- The remote should be simple to use, with larger buttons for easier handling.\n- It should include basic functions such as switching channels and adjusting volume.\n- There was consideration for adding a menu button, though its necessity was debated.\n- A mute button was also suggested.\n- Bluetooth integration was proposed but not extensively discussed.\n- Teletext functionality was deemed outdated and potentially unnecessary.\n- Speech recognition was considered as an innovative feature, but concerns were raised about its practicality, usability, and implementation complexity, leading to a decision against including it due to time constraints and potential language limitations.",
+          "rouge_f1": {
+            "rouge1": 0.28089887640449435,
+            "rouge2": 0.06818181818181818,
+            "rougeL": 0.19101123595505617
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            1,
+            26,
+            28,
+            16,
+            29,
+            14,
+            7,
+            30,
+            9
+          ],
+          "retrieval_precision": 0.36376953125,
+          "retrieval_recall": 0.38621047174701917
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a remote control primarily for elderly users, emphasizing larger buttons for better usability. The team also considered integrating Bluetooth and discussed the potential removal of the teletext feature due to its declining relevance compared to internet options. However, there was disagreement regarding the necessity of retaining the teletext function, with some arguing it remains useful despite being a single-button operation on televisions.",
+          "rouge_f1": {
+            "rouge1": 0.41791044776119396,
+            "rouge2": 0.0606060606060606,
+            "rougeL": 0.26865671641791045
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            26,
+            8
+          ],
+          "retrieval_precision": 0.625,
+          "retrieval_recall": 0.16588906168999482
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The presentation and discussion on functional requirements focused on creating a TV remote control primarily for elderly users and children. Key points included:\n\n- The remote control should cater to older individuals, possibly featuring larger buttons.\n- Usability was emphasized over aesthetic appeal for the target demographic.\n- The team considered integrating Bluetooth functionality.\n- Teletext options were debated due to its declining relevance in the age of the internet, with a decision to likely exclude it.\n- Marketing provided insights from user experiments indicating that most users found existing remote controls unattractive, suggesting a need for a visually distinctive design.",
+          "rouge_f1": {
+            "rouge1": 0.3821656050955414,
+            "rouge2": 0.07741935483870968,
+            "rougeL": 0.22929936305732485
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            26,
+            8,
+            1,
+            3
+          ],
+          "retrieval_precision": 0.7685546875,
+          "retrieval_recall": 0.407983411093831
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control primarily for elderly users and children. Key points included:\n\n- **User Preferences**: Based on a marketing report, 75% of users find most remote controls ugly, and 80% would spend more on a fancy-looking remote. Additionally, 75% of users frequently change channels (zap), indicating the importance of good zap buttons. Only 50% of users utilize 10% of the buttons, suggesting a simplified design with essential features prominently accessible.\n\n- **Design Considerations**: The remote should be simple, with large, clearly labeled buttons for ease of use. Standardized methods were suggested to avoid clutter. Features such as volume control, channel switching, and basic on-off functions were prioritized. Favourites functionality was discussed but deemed potentially complex.\n\n- **Additional Features**: Bluetooth integration was proposed, though not fully explored due to time constraints. Teletext was considered outdated and possibly unnecessary. Light-up buttons were agreed upon, lighting up briefly after pressing to indicate function and visibility in low-light conditions.\n\n- **Usability Focus**: Emphasis was placed on making the remote control user-friendly, especially for elderly users, with considerations for larger buttons and intuitive design. The team aimed to balance simplicity with standout aesthetics to differentiate their product in the market.",
+          "rouge_f1": {
+            "rouge1": 0.3134328358208955,
+            "rouge2": 0.09774436090225565,
+            "rougeL": 0.17910447761194032
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            26,
+            8,
+            1,
+            3,
+            9,
+            4,
+            10,
+            31
+          ],
+          "retrieval_precision": 0.54052734375,
+          "retrieval_recall": 0.5738724727838258
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a remote control primarily for elderly users and children. Key points included the need for larger buttons for older users and the consideration of integrating Bluetooth functionality. There was also debate over retaining a teletext option, with the Project Manager suggesting its potential obsolescence due to internet popularity, while others argued for its continued relevance.",
+          "rouge_f1": {
+            "rouge1": 0.36507936507936506,
+            "rouge2": 0.06451612903225808,
+            "rougeL": 0.2380952380952381
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            26,
+            1
+          ],
+          "retrieval_precision": 0.625,
+          "retrieval_recall": 0.16588906168999482
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control primarily for elderly users and children. Key points included:\n\n- Simplifying the design to accommodate elderly users with larger, clearly labeled buttons.\n- Ensuring the remote includes basic functions such as number keys and an on-off button.\n- Considering user feedback through surveys or direct questioning to determine necessary features.\n- Potentially integrating Bluetooth functionality.\n- Deciding against including a teletext option due to its obsolescence compared to internet access.",
+          "rouge_f1": {
+            "rouge1": 0.3120567375886525,
+            "rouge2": 0.07194244604316548,
+            "rougeL": 0.19858156028368795
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            26,
+            1,
+            9,
+            8
+          ],
+          "retrieval_precision": 0.5849609375,
+          "retrieval_recall": 0.31052358735095903
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control primarily for elderly users. Key points included:\n\n- The remote should be aesthetically pleasing, as 75% of users find existing remotes ugly.\n- It should support frequent zapping, with emphasis on making zap buttons user-friendly.\n- Standardized methods should be used to keep the design simple, avoiding unnecessary complexity.\n- Basic functions such as numbers and essential buttons (on/off) should be prioritized.\n- Big buttons and clear labeling were suggested for ease of use.\n- Additional features like a menu button, navigation arrows, and a mute button were considered.\n- Integration of Bluetooth and potential inclusion of speech recognition were discussed but deemed less feasible due to cost and usability concerns.\n- A backlight feature was agreed upon to help users identify buttons in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.32653061224489793,
+            "rouge2": 0.08247422680412371,
+            "rougeL": 0.16326530612244897
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            26,
+            1,
+            9,
+            8,
+            3,
+            28,
+            14,
+            31
+          ],
+          "retrieval_precision": 0.44970703125,
+          "retrieval_recall": 0.4774494556765163
+        },
+        "word_packed__dense__w512": {
+          "answer": "The presentation and discussion focused on the functional requirements for a TV remote control designed primarily for elderly users and children. Key points included:\n\n- The product must be a TV remote control only, not a universal remote control.\n- It needs to cater to the needs of elderly users, possibly including features such as bigger buttons.\n- The team reviewed previous meeting notes and discussed the target demographic being 40+ years old.\n- There was confusion regarding a marketing report that only one member (Jens Damman) had access to, which contained findings from user experiments with statistical proof.",
+          "rouge_f1": {
+            "rouge1": 0.358974358974359,
+            "rouge2": 0.0779220779220779,
+            "rougeL": 0.2051282051282051
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            1
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.2654224987039917
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control primarily for elderly users and children. Key points included:\n\n- The remote control should be simple to use, possibly featuring larger buttons for ease of operation by elderly users.\n- Standardized methods across remote controls were suggested to maintain simplicity.\n- A two-level remote control might not be necessary since most functions could be integrated into the menu system.\n- Essential buttons discussed included a menu button for accessing various settings, navigation arrows, and volume control.\n- The team considered integrating frequently used functions (like switching channels and adjusting volume) with less frequently used ones (like navigating menus) to streamline the design.\n- The remote control should stand out visually to differentiate itself from existing products.",
+          "rouge_f1": {
+            "rouge1": 0.31182795698924737,
+            "rouge2": 0.08695652173913043,
+            "rougeL": 0.21505376344086025
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            1,
+            7,
+            12
+          ],
+          "retrieval_precision": 0.6337890625,
+          "retrieval_recall": 0.33644375324002074
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control specifically for elderly users. Key points included:\n\n- The remote control should be simple and user-friendly, with large buttons for ease of use.\n- Standardized methods should be used to ensure familiarity across all remote controls.\n- Basic functions such as numbers, on-off button, volume, channels, and text service options were highlighted.\n- Additional features like favorites and navigation buttons (previous and next channels) were considered but deemed potentially unnecessary due to complexity.\n- A menu button was suggested for accessing additional settings, though its frequent use was questioned.\n- Voice command functionality was briefly discussed but dismissed due to potential complexity and limited time for development.\n\nThe team aimed to create a unique and usable product that stands out in the market while catering to the specific needs of elderly users.",
+          "rouge_f1": {
+            "rouge1": 0.3251231527093596,
+            "rouge2": 0.06965174129353235,
+            "rougeL": 0.18719211822660098
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            1,
+            7,
+            12,
+            8,
+            10,
+            6,
+            26
+          ],
+          "retrieval_precision": 0.44189453125,
+          "retrieval_recall": 0.4691550025920166
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The presentation and discussion on functional requirements focused on user preferences and behaviors derived from a marketing report. Key points included:\n\n- Seventy-five percent of users find most remote controls ugly, indicating a need for a visually appealing design.\n- Eighty percent of users would be willing to spend more on a stylish remote control, especially older users who are less critical about spending.\n- Seventy-five percent of users frequently change channels (zap), suggesting the importance of effective zap buttons.\n- Fifty percent of users only use ten percent of the buttons, implying that commonly used functions should be easily accessible, possibly through a fold-open system or placing these buttons on top.",
+          "rouge_f1": {
+            "rouge1": 0.3372093023255814,
+            "rouge2": 0.08235294117647059,
+            "rougeL": 0.20930232558139536
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.2654224987039917
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The presentation and discussion on functional requirements focused on creating a user-friendly remote control based on a marketing report. Key points included:\n\n- 75% of users find most remote controls ugly, indicating a need for a visually appealing design.\n- 80% of users would be willing to pay more for a stylish remote control, especially older users who are less critical about spending.\n- Users frequently \"zap\" channels, suggesting the importance of effective zap buttons.\n- Only 50% of users utilize 10% of the available buttons, implying that essential functions should be easily accessible.\n- The team agreed on simplifying the design while incorporating standard methods found on most remote controls to cater to a broad audience, including elderly users.\n- Additional features such as Bluetooth integration were suggested, though non-essential functions might be minimized to reduce costs.\n- The relevance of teletext functionality was questioned due to its declining usage, with a suggestion to possibly exclude it from the final design.",
+          "rouge_f1": {
+            "rouge1": 0.33944954128440374,
+            "rouge2": 0.07407407407407407,
+            "rougeL": 0.20183486238532108
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            7,
+            23
+          ],
+          "retrieval_precision": 0.6337890625,
+          "retrieval_recall": 0.33644375324002074
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control primarily for elderly users. Key points included:\n\n- The remote control should be simple and user-friendly, with large, clearly labeled buttons.\n- Only essential functions should be included, based on user surveys indicating that 75% of users \"zap\" frequently and only 10% of buttons are commonly used.\n- Basic functions such as numbers, on-off, volume, channel changing, and text services were highlighted.\n- Additional features like favorites and automatic search functions for compatibility with various TVs were suggested.\n- The team discussed integrating a rechargeable battery and possibly a Bluetooth integration.\n- The color scheme and indicator lights (initially proposed as red, later discussed as green) were considered for functionality and aesthetics.\n- The team debated the inclusion of teletext, ultimately deciding it might be outdated due to internet popularity.",
+          "rouge_f1": {
+            "rouge1": 0.33,
+            "rouge2": 0.0808080808080808,
+            "rougeL": 0.18000000000000002
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            7,
+            23,
+            1,
+            8,
+            16,
+            17
+          ],
+          "retrieval_precision": 0.44189453125,
+          "retrieval_recall": 0.4691550025920166
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a user interface suitable for a broad audience, particularly older individuals. Key points included:\n\n- Ensuring usability and simplicity, possibly incorporating larger buttons for elderly users.\n- Keeping the design simple and standardized, similar to existing remote controls.\n- Emphasizing better usability and distinct visual elements (like color or shape) to differentiate the product from others in the market.\n- Utilizing findings from a marketing report that included statistical analysis from user experiments.\n\nNo specific technical functions were detailed beyond the emphasis on usability and simplicity.",
+          "rouge_f1": {
+            "rouge1": 0.35294117647058826,
+            "rouge2": 0.0662251655629139,
+            "rougeL": 0.19607843137254902
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            7
+          ],
+          "retrieval_precision": 0.767578125,
+          "retrieval_recall": 0.20373250388802489
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control primarily for elderly users and children. Key points included:\n\n- The remote control should be simple to use, with standardized methods similar to existing remote controls.\n- Big buttons were suggested for easier operation by elderly users.\n- Basic functions such as numbers, on-off button, volume, channels, and text services were emphasized.\n- Additional features like favorites could be included to reduce the need for multiple clicks.\n- Usability and simplicity were highlighted as crucial factors to differentiate the product from others in the market.",
+          "rouge_f1": {
+            "rouge1": 0.358974358974359,
+            "rouge2": 0.0779220779220779,
+            "rougeL": 0.24358974358974356
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            7,
+            1,
+            8
+          ],
+          "retrieval_precision": 0.6337890625,
+          "retrieval_recall": 0.33644375324002074
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control primarily for elderly users. Key points included:\n\n- The remote control should cater to elderly users with larger, easily identifiable buttons.\n- Only essential functions should be included based on user studies indicating that 75% of users \"zap\" frequently and only 10% of buttons are commonly used.\n- Basic functions such as numbers, on-off, volume, channels, and text services were highlighted.\n- Additional features like favorites and a back button for channels were suggested but debated due to complexity.\n- Extras like Bluetooth integration were considered but deemed unnecessary given the target demographic's preference for simplicity.\n- Features like LCD screens and speech recognition were ruled out due to cost and complexity.\n- Usability and simplicity were emphasized over advanced functionalities to ensure the remote control stands out positively in terms of ease of use and aesthetics.",
+          "rouge_f1": {
+            "rouge1": 0.357487922705314,
+            "rouge2": 0.11707317073170731,
+            "rougeL": 0.20289855072463767
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            7,
+            1,
+            8,
+            23,
+            10,
+            3,
+            5
+          ],
+          "retrieval_precision": 0.56689453125,
+          "retrieval_recall": 0.6018662519440124
+        },
+        "lumber__dense__w512": {
+          "answer": "The presentation and discussion on functional requirements focused on refining the design of a TV remote control specifically for older users (forty plus) and children. Key points included:\n\n- The product will be a TV remote control only, not a universal remote control.\n- Features need to accommodate elderly users, possibly including larger buttons.\n- Modern elements, such as making it resemble a mobile phone, were suggested to enhance usability and appeal.\n- There was mention of cost constraints, with LCD potentially being too expensive at €12.50.",
+          "rouge_f1": {
+            "rouge1": 0.3586206896551724,
+            "rouge2": 0.055944055944055944,
+            "rougeL": 0.19310344827586207
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            23
+          ],
+          "retrieval_precision": 0.859375,
+          "retrieval_recall": 0.22809745982374288
+        },
+        "lumber__dense__w1024": {
+          "answer": "The presentation and discussion focused on refining the functional requirements for a TV remote control designed primarily for elderly users and children. Key points included:\n\n- The remote control will specifically function as a TV remote control, not a universal one.\n- Features need to cater to older individuals, possibly including larger buttons.\n- Modern features such as making it resemble a mobile phone were suggested to enhance appeal.\n- LCD screens were deemed impractical due to cost and usability concerns.\n- Integration of voice command functionality was discussed but met with skepticism regarding its practicality and implementation complexity within the given timeframe.",
+          "rouge_f1": {
+            "rouge1": 0.3270440251572327,
+            "rouge2": 0.06369426751592357,
+            "rougeL": 0.2012578616352201
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            23,
+            25,
+            21
+          ],
+          "retrieval_precision": 0.4296875,
+          "retrieval_recall": 0.22809745982374288
+        },
+        "lumber__dense__w2048": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control primarily for elderly users. Key points included:\n\n- Simplifying the design to accommodate elderly users, possibly incorporating larger buttons.\n- Incorporating a feature where pressing buttons causes the remote to light up, aiding visibility in low-light conditions.\n- Adding a call function to the home station that beeps to locate the remote.\n- Considering Bluetooth integration and voice command functionality, though feasibility and cost were concerns.\n- Deciding against including teletext due to its obsolescence.\n- Ensuring the remote is affordable at €25 while offering unique features to enhance marketability.\n- Discussing the inclusion of an LCD screen, ultimately deciding against it due to usability and cost considerations.\n- Finalizing the inclusion of basic functions such as number keys and an on-off button, aiming for a user-friendly interface similar to mobile phones.",
+          "rouge_f1": {
+            "rouge1": 0.3366336633663366,
+            "rouge2": 0.1,
+            "rougeL": 0.22772277227722773
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            23,
+            25,
+            21,
+            20,
+            5,
+            8
+          ],
+          "retrieval_precision": 0.36181640625,
+          "retrieval_recall": 0.38413685847589424
+        },
+        "lumber__bm25__w512": {
+          "answer": "The meeting began with the Project Manager noting that they had forty minutes for the session and that the focus would be on ensuring clarity about the product design. The Project Manager then presented notes from the previous meeting, clarifying that the product should be a TV remote control specifically for kids and elderly users, rather than a universal remote control as previously discussed. They emphasized the importance of considering the needs of older users, possibly including features such as larger buttons. The discussion then moved towards presentations, with Marketing giving a presentation on functional requirements, though specific details of the functional requirements were not elaborated upon in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.32558139534883723,
+            "rouge2": 0.047058823529411764,
+            "rougeL": 0.16279069767441862
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            7,
+            21
+          ],
+          "retrieval_precision": 0.89453125,
+          "retrieval_recall": 0.23742871954380507
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control primarily for elderly and children. Key points included:\n\n- The remote control should cater to older individuals, possibly featuring larger buttons.\n- Based on user studies, 75% of users find current remote controls unattractive, indicating a need for a visually appealing design.\n- Users frequently change channels (zap), suggesting the importance of effective zap buttons.\n- Only 10% of buttons are used by 50% of users, implying a simplified layout might be beneficial.\n- Solutions were proposed to address common issues such as losing remote controls, including a home station for recharging and a potential clap activation system.\n- Teletext functionality was debated due to its declining relevance with internet usage, but ultimately deemed unnecessary.",
+          "rouge_f1": {
+            "rouge1": 0.3478260869565218,
+            "rouge2": 0.0989010989010989,
+            "rougeL": 0.1739130434782609
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            7,
+            21,
+            3
+          ],
+          "retrieval_precision": 0.8251953125,
+          "retrieval_recall": 0.4380508035251426
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control primarily for elderly users. Key points included:\n\n- The remote control should be aesthetically pleasing, as 75% of users find current remote controls ugly.\n- It should facilitate frequent channel changes (\"zapping\"), as 75% of users frequently change channels.\n- Only 10% of buttons are commonly used, suggesting a simplified layout with essential functions like numbers, on-off, volume, and channel changing.\n- Big buttons and clear labeling (icons or text) were suggested for ease of use.\n- Favorite channels could be accessed via dedicated buttons, though this feature's complexity was debated.\n- Teletext functionality was considered outdated and possibly unnecessary.\n- Features like backlighting for buttons and a home station for recharging were discussed to aid visibility and prevent loss.\n- Speech recognition was ruled out as a feature.\n\nThe team aimed to ensure the remote was intuitive and user-friendly, especially for elderly users who may be less familiar with complex technology.",
+          "rouge_f1": {
+            "rouge1": 0.32432432432432434,
+            "rouge2": 0.09090909090909091,
+            "rougeL": 0.19819819819819823
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            7,
+            21,
+            3,
+            8,
+            27
+          ],
+          "retrieval_precision": 0.501953125,
+          "retrieval_recall": 0.5329186106791084
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The meeting began with logistical issues such as time constraints and technical difficulties with the presentation. The Project Manager then presented notes from the previous meeting, clarifying that the product should be a TV remote control specifically for kids and elderly users, emphasizing the need for features suitable for older individuals, possibly including larger buttons. The team discussed the necessity of reviewing updated project requirements, noting that teletext might be outdated due to internet popularity. The User Interface and Marketing agreed to proceed with presentations on functional requirements, though the specific details of these requirements were not fully elaborated in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.29268292682926833,
+            "rouge2": 0.024691358024691357,
+            "rougeL": 0.17073170731707318
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            21
+          ],
+          "retrieval_precision": 0.859375,
+          "retrieval_recall": 0.22809745982374288
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control primarily for elderly users and children. Key points included:\n\n- Simplifying the design to accommodate elderly users, possibly with larger buttons and clear labeling.\n- Considering standard functionalities such as number keys and basic operation buttons.\n- Evaluating the necessity of certain features, such as teletext, which may be outdated due to internet popularity.\n- Incorporating modern elements to appeal to a broader audience while maintaining usability.\n- Deciding against LCD screens due to cost and limited utility for a TV-only remote control.\n- Emphasizing user feedback through surveys or direct questioning to refine feature inclusion.",
+          "rouge_f1": {
+            "rouge1": 0.28915662650602414,
+            "rouge2": 0.04878048780487805,
+            "rougeL": 0.20481927710843376
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            21,
+            23,
+            8
+          ],
+          "retrieval_precision": 0.4296875,
+          "retrieval_recall": 0.22809745982374288
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The presentation and discussion on functional requirements focused on designing a TV remote control primarily for elderly users and children. Key points included:\n\n- Simplifying the remote control to standardize methods used across all remote controls, avoiding unnecessary complexity.\n- Incorporating basic functions such as numbers, on-off button, volume, channels, and text service options.\n- Considering the inclusion of a favorites feature where pressing one button would directly access frequently used channels.\n- Implementing a light-up function similar to mobile phones to help locate the remote in the dark.\n- Adding a sound device that beeps when called from a home station.\n- Discussing the feasibility of integrating Bluetooth and considering the removal of outdated features like teletext.\n- Ensuring the design remains affordable, aiming for a production cost of around 12.5 Euros.\n- Emphasizing the importance of making the remote more modern and user-friendly, particularly for elderly users with larger, clearer buttons and simplified functionality.",
+          "rouge_f1": {
+            "rouge1": 0.30985915492957744,
+            "rouge2": 0.07582938388625593,
+            "rougeL": 0.1971830985915493
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            21,
+            23,
+            8,
+            7,
+            20,
+            27
+          ],
+          "retrieval_precision": 0.2236328125,
+          "retrieval_recall": 0.23742871954380507
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did Marketing suggest giving up on speech recognition when presenting the functional requirements?",
+      "reference_answer": "When Marketing mentioned that their target group should be both young people and people above forty who were not keen on new features, Marketing thought it would be too expensive to have the speech recognition and not reachable for twenty-five Euros. Also, Marketing suggested a DVD player, stereo, and VCR for television.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost (it's not reachable for 25 Euros) and the complexity and specificity required for accurate commands, which made it less useful and not worth the effort for the target audience.",
+          "rouge_f1": {
+            "rouge1": 0.3789473684210526,
+            "rouge2": 0.10752688172043012,
+            "rougeL": 0.21052631578947367
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            30,
+            6,
+            28
+          ],
+          "retrieval_precision": 0.412109375,
+          "retrieval_recall": 0.6828478964401294
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost and complexity. Specifically, Marketing mentioned that speech recognition was \"not reachable for twenty-five Euros,\" indicating that it was too expensive for their budget. Additionally, there were concerns about the usability and the difficulty of implementing speech recognition, especially considering the need for it to work in multiple languages. These factors led Marketing to propose skipping speech recognition as a feature.",
+          "rouge_f1": {
+            "rouge1": 0.4285714285714285,
+            "rouge2": 0.16129032258064516,
+            "rougeL": 0.20634920634920634
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            30,
+            6,
+            28,
+            29,
+            31
+          ],
+          "retrieval_precision": 0.2060546875,
+          "retrieval_recall": 0.6828478964401294
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost and complexity, especially considering the target audience of forty-plus individuals who prefer simpler features over advanced functionalities. Additionally, the team discussed the difficulty of implementing speech recognition within the budget constraints and the limited utility of such a feature compared to the effort required to design and test it.",
+          "rouge_f1": {
+            "rouge1": 0.27826086956521745,
+            "rouge2": 0.035398230088495575,
+            "rougeL": 0.19130434782608696
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            30,
+            6,
+            28,
+            29,
+            31,
+            25,
+            2,
+            26,
+            3
+          ],
+          "retrieval_precision": 0.10302734375,
+          "retrieval_recall": 0.6828478964401294
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Marketing suggested giving up on speech recognition due to the difficulty in handling multiple languages and the complexity of ensuring accurate commands (e.g., distinguishing between \"one Coke\" and \"TV channel one\"). They concluded it wasn't useful enough to justify the effort required for design and implementation.",
+          "rouge_f1": {
+            "rouge1": 0.2376237623762376,
+            "rouge2": 0.0404040404040404,
+            "rougeL": 0.13861386138613863
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            30,
+            6
+          ],
+          "retrieval_precision": 0.01953125,
+          "retrieval_recall": 0.032362459546925564
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost (it's not reachable for 25 Euros) and because older people, who are the primary target audience, prefer familiar features over new ones and are less interested in advanced functionalities like speech recognition. Additionally, implementing speech recognition was deemed not useful enough to justify the design effort required.",
+          "rouge_f1": {
+            "rouge1": 0.35398230088495575,
+            "rouge2": 0.07207207207207207,
+            "rougeL": 0.1592920353982301
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            30,
+            6,
+            2,
+            24
+          ],
+          "retrieval_precision": 0.2060546875,
+          "retrieval_recall": 0.6828478964401294
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost and the fact that older people, who are the primary target audience, prefer simpler and more familiar features over new and complex ones. Specifically, Marketing stated, \"because it's not reachable for twenty five Euros,\" indicating that implementing speech recognition would exceed the budget. Additionally, Marketing noted that older people are less interested in new features and prefer to stick with traditional methods, making speech recognition less suitable for their product aimed at a forty-plus demographic.",
+          "rouge_f1": {
+            "rouge1": 0.43661971830985913,
+            "rouge2": 0.1142857142857143,
+            "rougeL": 0.22535211267605634
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            30,
+            6,
+            2,
+            24,
+            28,
+            11,
+            12,
+            15
+          ],
+          "retrieval_precision": 0.10302734375,
+          "retrieval_recall": 0.6828478964401294
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost (it's not reachable for 25 Euros) and the difficulty in designing a useful feature given the variety of languages. Additionally, there was concern over the complexity and specificity required for commands, making it challenging for speech recognition technology to accurately interpret user requests.",
+          "rouge_f1": {
+            "rouge1": 0.3119266055045871,
+            "rouge2": 0.07476635514018691,
+            "rougeL": 0.2018348623853211
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            30,
+            6,
+            31
+          ],
+          "retrieval_precision": 0.412109375,
+          "retrieval_recall": 0.6828478964401294
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost and complexity. Specifically, Marketing stated, \"because it's not reachable for twenty-five Euros,\" indicating that implementing speech recognition would exceed the budget. Additionally, Marketing highlighted the difficulty of designing effective speech recognition commands, noting that \"it becomes very hard for speech recognition\" and questioning its usefulness, as echoed by User Interface who said, \"I don't think it's useful enough to take the effort to design something with speech recognition.\"",
+          "rouge_f1": {
+            "rouge1": 0.32116788321167883,
+            "rouge2": 0.11851851851851854,
+            "rougeL": 0.18978102189781024
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            30,
+            6,
+            31,
+            28,
+            2
+          ],
+          "retrieval_precision": 0.2060546875,
+          "retrieval_recall": 0.6828478964401294
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Marketing suggested giving up on speech recognition when presenting the functional requirements because the experiment reported that older people, who are the main target audience of the company, prefer familiar features over new ones and are less inclined to adopt advanced technologies like speech recognition. Additionally, implementing speech recognition within the budget constraints and time frame was deemed challenging and not sufficiently useful.",
+          "rouge_f1": {
+            "rouge1": 0.31034482758620685,
+            "rouge2": 0.05263157894736842,
+            "rougeL": 0.1724137931034483
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            30,
+            6,
+            31,
+            28,
+            2,
+            29,
+            3,
+            26,
+            11
+          ],
+          "retrieval_precision": 0.10302734375,
+          "retrieval_recall": 0.6828478964401294
+        },
+        "word_packed__dense__w512": {
+          "answer": "Marketing suggested giving up on speech recognition because it was deemed not useful enough and too expensive to implement within the budget constraints, specifically mentioning it wasn't feasible for a price point of twenty-five Euros. Additionally, there was concern over the complexity and specificity required for accurate speech commands, which made it challenging for speech recognition technology to be practical in this context.",
+          "rouge_f1": {
+            "rouge1": 0.3559322033898305,
+            "rouge2": 0.10344827586206896,
+            "rougeL": 0.22033898305084745
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            5
+          ],
+          "retrieval_precision": 0.490234375,
+          "retrieval_recall": 0.8122977346278317
+        },
+        "word_packed__dense__w1024": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost and complexity. Specifically, Marketing stated, \"because it's not reachable for twenty-five Euros,\" indicating that implementing speech recognition would exceed the budget constraints. Additionally, there were concerns about the feasibility and usability of speech recognition within the given timeframe and across different languages, leading to the decision to exclude it from the functional requirements.",
+          "rouge_f1": {
+            "rouge1": 0.35000000000000003,
+            "rouge2": 0.11864406779661019,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            5,
+            25,
+            26
+          ],
+          "retrieval_precision": 0.2451171875,
+          "retrieval_recall": 0.8122977346278317
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Marketing suggested giving up on speech recognition when presenting the functional requirements because the feature was deemed too costly and not feasible within the given budget and timeline. Additionally, the team believed that older users, who were the primary target audience, would not be interested in such advanced features. Specifically, Marketing stated, \"because it's not reachable for twenty five Euros,\" indicating cost concerns, and later concluded, \"Okay, no speech recognition,\" after discussing usability and complexity issues related to implementing speech recognition functionality.",
+          "rouge_f1": {
+            "rouge1": 0.4117647058823529,
+            "rouge2": 0.13432835820895522,
+            "rougeL": 0.22058823529411764
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            5,
+            25,
+            26,
+            2,
+            23,
+            6,
+            12
+          ],
+          "retrieval_precision": 0.15087890625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Marketing suggested giving up on speech recognition due to the complexity and difficulty associated with implementing it across multiple languages, as well as questioning its usefulness and practicality. Specifically, User Interface stated, \"I don't think it's uh useful enough to take the effort to design something with uh speech recognition,\" and later reinforced this by saying, \"it just ain't useful enough.\" Additionally, Marketing acknowledged the challenge of speech recognition by noting, \"that's very hard for uh speech recognition,\" which contributed to the decision to abandon the feature.",
+          "rouge_f1": {
+            "rouge1": 0.20833333333333331,
+            "rouge2": 0.04225352112676056,
+            "rougeL": 0.1388888888888889
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            25
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost and limited usefulness, especially considering the target audience. Specifically, Marketing stated, \"it's not reachable for twenty five Euros,\" indicating that implementing speech recognition would exceed the budget constraints. Additionally, User Interface expressed doubt about the utility of speech recognition, saying, \"I don't think it's uh useful enough to take the effort to design something with uh speech recognition.\" These points led to the decision to exclude speech recognition from the functional requirements.",
+          "rouge_f1": {
+            "rouge1": 0.27142857142857146,
+            "rouge2": 0.10144927536231885,
+            "rougeL": 0.15714285714285714
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            25,
+            5,
+            21
+          ],
+          "retrieval_precision": 0.2451171875,
+          "retrieval_recall": 0.8122977346278317
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Marketing suggested giving up on speech recognition due to its limited appeal to the target demographic (older individuals) and the complexity involved in implementing it effectively. Specifically, Marketing noted that older people prefer familiar features and are less inclined towards new technologies, making speech recognition less suitable given the project's focus on a user base primarily consisting of individuals aged 40 and above. Additionally, Marketing highlighted that speech recognition would be costly to implement within the budget constraints, particularly aiming for a product priced at €25.",
+          "rouge_f1": {
+            "rouge1": 0.32857142857142857,
+            "rouge2": 0.04347826086956522,
+            "rougeL": 0.17142857142857143
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            25,
+            5,
+            21,
+            2,
+            10,
+            28,
+            13
+          ],
+          "retrieval_precision": 0.12255859375,
+          "retrieval_recall": 0.8122977346278317
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Marketing suggested giving up on speech recognition because it was deemed not useful enough and too expensive to implement within the budget constraints, specifically mentioning it wasn't feasible for a price point of twenty-five Euros. Additionally, there was concern over the complexity and specificity required for accurate speech commands, which made it challenging for speech recognition technology to be practical in this context.",
+          "rouge_f1": {
+            "rouge1": 0.3559322033898305,
+            "rouge2": 0.10344827586206896,
+            "rougeL": 0.22033898305084745
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            5
+          ],
+          "retrieval_precision": 0.490234375,
+          "retrieval_recall": 0.8122977346278317
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Marketing suggested giving up on speech recognition because the experiment's findings indicated that the target audience, primarily consisting of older individuals over the age of forty-five, were less interested in new features like speech recognition. Additionally, Marketing believed that implementing speech recognition would increase costs beyond the budget limit of twenty-five Euros, making it impractical for the project.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.08928571428571427,
+            "rougeL": 0.2456140350877193
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            5,
+            25,
+            2
+          ],
+          "retrieval_precision": 0.2451171875,
+          "retrieval_recall": 0.8122977346278317
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Marketing suggested giving up on speech recognition when presenting the functional requirements because the experiment showed that older people, who were the primary target audience, were less interested in new features and preferred simpler designs. Additionally, Marketing mentioned that speech recognition was not affordable within the budget of €25. Therefore, based on these factors, Marketing concluded that incorporating speech recognition was not feasible or desirable for their product.",
+          "rouge_f1": {
+            "rouge1": 0.36363636363636365,
+            "rouge2": 0.10084033613445378,
+            "rougeL": 0.21487603305785125
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            5,
+            25,
+            2,
+            23,
+            10,
+            13,
+            3
+          ],
+          "retrieval_precision": 0.12255859375,
+          "retrieval_recall": 0.8122977346278317
+        },
+        "lumber__dense__w512": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost and the difficulty in making it useful across multiple languages. Specifically, Marketing mentioned that speech recognition was \"not reachable for twenty-five Euros\" ([87]), indicating cost concerns. Additionally, User Interface ([573]) and Marketing ([585]) highlighted the challenge of designing a useful speech recognition feature given the complexity of different languages.",
+          "rouge_f1": {
+            "rouge1": 0.3826086956521739,
+            "rouge2": 0.1592920353982301,
+            "rougeL": 0.24347826086956523
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            4,
+            25
+          ],
+          "retrieval_precision": 0.412109375,
+          "retrieval_recall": 0.6828478964401294
+        },
+        "lumber__dense__w1024": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost and difficulty in implementation within the budget constraints. Specifically, Marketing stated, \"it's not reachable for twenty-five Euros,\" indicating that incorporating speech recognition would exceed the price point of twenty-five Euros. Additionally, there were concerns about the complexity and usability of speech recognition, particularly regarding language limitations and the need for extensive testing before market release.",
+          "rouge_f1": {
+            "rouge1": 0.37398373983739835,
+            "rouge2": 0.11570247933884298,
+            "rougeL": 0.2113821138211382
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            4,
+            25,
+            27
+          ],
+          "retrieval_precision": 0.2060546875,
+          "retrieval_recall": 0.6828478964401294
+        },
+        "lumber__dense__w2048": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost and the difficulty in making it user-friendly for the target audience, particularly older individuals who prefer simpler, more traditional features. Additionally, Marketing believed that speech recognition might not be sufficiently useful or easy to implement within the given budget constraints and time frame.",
+          "rouge_f1": {
+            "rouge1": 0.3302752293577982,
+            "rouge2": 0.037383177570093455,
+            "rougeL": 0.1651376146788991
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            4,
+            25,
+            27,
+            1,
+            24,
+            21,
+            5,
+            20
+          ],
+          "retrieval_precision": 0.15087890625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "Marketing suggested giving up on speech recognition due to the difficulty in accurately interpreting commands, especially considering the variety of languages involved. They highlighted that speech recognition would require precise commands like \"TV channel one\" instead of just \"one,\" which complicates its implementation and reduces its usefulness. Therefore, they concluded that it was not worth the effort and decided against including speech recognition in the functional requirements.",
+          "rouge_f1": {
+            "rouge1": 0.21666666666666665,
+            "rouge2": 0.03389830508474576,
+            "rougeL": 0.14999999999999997
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            26,
+            4
+          ],
+          "retrieval_precision": 0.0078125,
+          "retrieval_recall": 0.012944983818770227
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost (not being \"reachable for twenty five Euros\") and the complexity and unreliability of implementing it effectively, especially considering the difficulty in designing commands that are clear and unambiguous for speech recognition systems. Additionally, Marketing believed that the feature might not be useful enough to justify the effort required for its implementation.",
+          "rouge_f1": {
+            "rouge1": 0.4137931034482758,
+            "rouge2": 0.10526315789473684,
+            "rougeL": 0.2068965517241379
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            26,
+            4,
+            24,
+            9,
+            12
+          ],
+          "retrieval_precision": 0.2060546875,
+          "retrieval_recall": 0.6828478964401294
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost and limited usefulness for the target demographic. Specifically, Marketing stated that speech recognition was \"not reachable for twenty five Euros\" and that it wasn't \"useful enough to take the effort to design something with uh speech recognition,\" especially considering the complexity involved in accurately interpreting commands like \"T_V_ channel one.\"",
+          "rouge_f1": {
+            "rouge1": 0.3418803418803419,
+            "rouge2": 0.1217391304347826,
+            "rougeL": 0.2222222222222222
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            26,
+            4,
+            24,
+            9,
+            12,
+            1,
+            20
+          ],
+          "retrieval_precision": 0.10302734375,
+          "retrieval_recall": 0.6828478964401294
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Marketing suggested giving up on speech recognition due to the difficulty in accurately interpreting commands, especially considering the variety of languages involved. They highlighted that speech recognition would require precise commands like \"TV channel one\" instead of just \"one,\" which complicates its implementation and reduces its usefulness. Therefore, they concluded that it was not worth the effort and decided against including speech recognition in the functional requirements.",
+          "rouge_f1": {
+            "rouge1": 0.21666666666666665,
+            "rouge2": 0.03389830508474576,
+            "rougeL": 0.14999999999999997
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            27,
+            4
+          ],
+          "retrieval_precision": 0.0078125,
+          "retrieval_recall": 0.012944983818770227
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost and complexity. Specifically, Marketing stated, \"because it's not reachable for twenty five Euros\" and noted that speech recognition commands need to be precise (e.g., \"T_V_ channel one\" instead of just \"one\"), which makes it challenging and less useful for the intended product.",
+          "rouge_f1": {
+            "rouge1": 0.38181818181818183,
+            "rouge2": 0.12962962962962965,
+            "rougeL": 0.23636363636363636
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            27,
+            4,
+            24,
+            1
+          ],
+          "retrieval_precision": 0.2060546875,
+          "retrieval_recall": 0.6828478964401294
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Marketing suggested giving up on speech recognition due to its high cost and complexity. Specifically, Marketing mentioned that speech recognition was not feasible within the budget of 25 Euros (\"because it's not reachable for twenty five Euros\") and expressed concerns about the difficulty of implementing it given the limited time available before the product could be brought to market (\"Maybe maybe it's too hard to uh to realise that\" and \"We have short time to to put it on the market\"). Additionally, Marketing noted that older users preferred simpler features over complex ones (\"older people uh want to spend uh more money . But uh they uh they don't want to uh have a lot of uh new features\").",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.11627906976744184,
+            "rougeL": 0.14942528735632182
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            27,
+            4,
+            24,
+            1,
+            25,
+            21,
+            20
+          ],
+          "retrieval_precision": 0.10302734375,
+          "retrieval_recall": 0.6828478964401294
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did User Interface think of Marketing's suggestion on the ease of use when presenting the functional requirements?",
+      "reference_answer": "When Marketing mentioned that they should make a new product that looked fancy, fashionable, and was easy to use for elderly users, User Interface suggested making sure that the remote control had better usability and could stand out by just being watched. Also, Marketing suggested a different color or different shape.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The meeting excerpts provided do not contain any direct statement or reaction from User Interface regarding Marketing's (Jens Damman) suggestion on the ease of use when presenting the functional requirements. Therefore, the evidence is insufficient to determine User Interface's thoughts on this specific aspect of Marketing's suggestion.",
+          "rouge_f1": {
+            "rouge1": 0.2376237623762376,
+            "rouge2": 0.0202020202020202,
+            "rougeL": 0.1188118811881188
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            28
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "User Interface did not explicitly state an opinion on Marketing's suggestion regarding ease of use when presenting the functional requirements. However, User Interface did express concerns about the practicality and usefulness of incorporating speech recognition into the remote control, suggesting a focus on usability might not be prioritized if such features are deemed less useful. This implies User Interface may lean towards ensuring basic usability over complex, potentially less effective features.",
+          "rouge_f1": {
+            "rouge1": 0.24390243902439027,
+            "rouge2": 0.06611570247933884,
+            "rougeL": 0.14634146341463414
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            28,
+            30,
+            14
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "User Interface did not explicitly state an opinion on Marketing's suggestion regarding the ease of use when presenting the functional requirements. However, User Interface focused on keeping the design simple and standard, especially for elderly users, which aligns with ensuring ease of use. User Interface emphasized the importance of big buttons and clear labeling to ensure that the remote control is easy to understand and operate, particularly for older users. This suggests that User Interface agreed with the general principle of ease of use promoted by Marketing but did not directly comment on Marketing's specific suggestion.",
+          "rouge_f1": {
+            "rouge1": 0.28187919463087246,
+            "rouge2": 0.09523809523809523,
+            "rougeL": 0.20134228187919465
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            28,
+            30,
+            14,
+            12,
+            32,
+            9,
+            27
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The evidence provided does not contain any direct statement or suggestion from Marketing regarding the ease of use when presenting the functional requirements, nor does User Interface provide any feedback or thoughts on such a suggestion. Therefore, the evidence is insufficient to determine User Interface's thoughts on Marketing's suggestion concerning ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.24528301886792453,
+            "rouge2": 0.01923076923076923,
+            "rougeL": 0.1509433962264151
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            26,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "User Interface did not explicitly state their thoughts on Marketing's suggestion regarding ease of use. However, User Interface later emphasized simplicity and standard features, particularly for elderly users, which aligns with the consideration of ease of use discussed by Marketing. User Interface agreed with the Project Manager that features should be kept simple and standard, especially for elderly people, indicating a supportive stance towards ensuring the product is easy to use for the target demographic.",
+          "rouge_f1": {
+            "rouge1": 0.31496062992125984,
+            "rouge2": 0.09599999999999999,
+            "rougeL": 0.15748031496062992
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            26,
+            3,
+            12,
+            11
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "User Interface did not explicitly state their thoughts on Marketing's suggestion regarding the ease of use when presenting the functional requirements. However, User Interface focused on keeping the design simple and standard, especially for elderly users, which aligns with Marketing's emphasis on simplicity and ease of use. User Interface mentioned the importance of big buttons and clear labeling to ensure that the remote control is easy to use, particularly for elderly people. This suggests that User Interface likely agreed with Marketing's focus on ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.3,
+            "rouge2": 0.11594202898550725,
+            "rougeL": 0.17142857142857143
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            26,
+            3,
+            12,
+            11,
+            4,
+            9,
+            31,
+            33
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The meeting excerpts provided do not contain any direct statement from User Interface regarding their thoughts on Marketing's (Jens Damman) suggestion on the ease of use when presenting the functional requirements. Therefore, the evidence is insufficient to determine User Interface's thoughts on this specific aspect of Marketing's suggestion.",
+          "rouge_f1": {
+            "rouge1": 0.21568627450980393,
+            "rouge2": 0.02,
+            "rougeL": 0.11764705882352941
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            12
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "User Interface did not explicitly state their thoughts on Marketing's suggestion regarding ease of use. However, User Interface focused on keeping the design simple and standard for elderly users, which aligns with Marketing's emphasis on making the remote control easy and appealing for users. User Interface's comments about using standard buttons and keeping the design simple suggest agreement with the goal of improving ease of use for the target demographic.",
+          "rouge_f1": {
+            "rouge1": 0.27419354838709675,
+            "rouge2": 0.11475409836065574,
+            "rougeL": 0.1774193548387097
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            12,
+            14,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "User Interface did not explicitly state an opinion on Marketing's suggestion regarding the ease of use when presenting the functional requirements. However, User Interface focused on keeping the design simple and standard, especially for elderly users, which aligns with Marketing's emphasis on making the remote control easy to use and appealing. User Interface's approach to designing large, clear buttons and ensuring that the remote control is straightforward to operate supports Marketing's suggestion implicitly.",
+          "rouge_f1": {
+            "rouge1": 0.31249999999999994,
+            "rouge2": 0.12698412698412698,
+            "rougeL": 0.21875000000000003
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            12,
+            14,
+            9,
+            28,
+            11,
+            32,
+            33
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The evidence is insufficient to determine what User Interface thought of Marketing's suggestion on the ease of use when presenting the functional requirements. The provided excerpts do not contain any statements from User Interface directly responding to or evaluating Marketing's specific suggestion regarding ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.24242424242424243,
+            "rouge2": 0.020618556701030927,
+            "rougeL": 0.14141414141414144
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            12
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "User Interface agreed with Marketing's suggestion on the ease of use when presenting the functional requirements, emphasizing the importance of simplicity and clarity for elderly users. User Interface mentioned making buttons big and clear, ensuring that the functions are easy to understand without requiring much time to figure out how to use them.",
+          "rouge_f1": {
+            "rouge1": 0.34285714285714286,
+            "rouge2": 0.13592233009708737,
+            "rougeL": 0.2095238095238095
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            12,
+            7,
+            8
+          ],
+          "retrieval_precision": 0.1337890625,
+          "retrieval_recall": 0.408955223880597
+        },
+        "word_packed__dense__w2048": {
+          "answer": "User Interface agreed with Marketing's suggestion on the ease of use for elderly people, emphasizing the importance of good usability and simplicity. User Interface stated, \"Yeah, but good usability, so you can use it,\" in response to Marketing's mention of making the home station simple for elderly users. Additionally, User Interface reiterated the need for simplicity and ease of use throughout the discussion, suggesting large buttons and standard methods used across all remote controls to ensure that the product is user-friendly for elderly individuals.",
+          "rouge_f1": {
+            "rouge1": 0.3043478260869565,
+            "rouge2": 0.10294117647058824,
+            "rougeL": 0.15942028985507248
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            12,
+            7,
+            8,
+            10,
+            6,
+            25,
+            29
+          ],
+          "retrieval_precision": 0.16357421875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The evidence is insufficient to determine what User Interface thought of Marketing's suggestion on the ease of use when presenting the functional requirements.",
+          "rouge_f1": {
+            "rouge1": 0.21333333333333332,
+            "rouge2": 0.0273972602739726,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "User Interface did not explicitly state their thoughts on Marketing's suggestion regarding ease of use. However, User Interface did mention losing about ninety percent of the options, suggesting a focus on simplicity and usability, which aligns with Marketing's emphasis on making the remote control easier to use for older people. User Interface seemed supportive of simplifying the design to cater to the needs of the majority of users, as indicated by Marketing's findings.",
+          "rouge_f1": {
+            "rouge1": 0.2992125984251969,
+            "rouge2": 0.09599999999999999,
+            "rougeL": 0.1889763779527559
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            10,
+            3,
+            23
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "User Interface responded positively to Marketing's suggestion on the ease of use when presenting the functional requirements. Specifically, User Interface agreed with Marketing's point that only ten percent of the buttons are used frequently, suggesting that the design should focus on making essential functions easy to use, such as having big buttons for elderly users and ensuring that the functions are clearly labeled with icons or text. User Interface also mentioned that the design should prioritize basic functions like numbers, volume, channels, and on-off buttons, leaving space for additional features that are easy to understand and use.",
+          "rouge_f1": {
+            "rouge1": 0.3178807947019867,
+            "rouge2": 0.09395973154362416,
+            "rougeL": 0.21192052980132448
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            10,
+            3,
+            23,
+            8,
+            18,
+            4,
+            28
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The evidence is insufficient to determine what User Interface thought of Marketing's suggestion on the ease of use when presenting the functional requirements.",
+          "rouge_f1": {
+            "rouge1": 0.21333333333333332,
+            "rouge2": 0.0273972602739726,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "User Interface agreed with Marketing's suggestion regarding the ease of use, particularly noting that only ten percent of the buttons are frequently used. User Interface suggested focusing on basic functions such as numbers, on-off buttons, and ensuring these are easy to use, especially for elderly people, with big buttons and clear labeling.",
+          "rouge_f1": {
+            "rouge1": 0.28571428571428575,
+            "rouge2": 0.09708737864077671,
+            "rougeL": 0.17142857142857143
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            10,
+            8,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "User Interface agreed with Marketing's suggestion on the ease of use when presenting the functional requirements, particularly noting the importance of simplicity and the usability of the remote control for elderly users. User Interface mentioned keeping the design simple and ensuring that the buttons are easy to use, which aligns with Marketing's emphasis on making the remote control user-friendly based on the findings from the marketing report.",
+          "rouge_f1": {
+            "rouge1": 0.34710743801652894,
+            "rouge2": 0.1512605042016807,
+            "rougeL": 0.19834710743801653
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            10,
+            8,
+            3,
+            7,
+            23,
+            12,
+            30
+          ],
+          "retrieval_precision": 0.06689453125,
+          "retrieval_recall": 0.408955223880597
+        },
+        "lumber__dense__w512": {
+          "answer": "The evidence is insufficient to determine User Interface's thoughts on Marketing's suggestion regarding the ease of use when presenting the functional requirements.",
+          "rouge_f1": {
+            "rouge1": 0.21333333333333332,
+            "rouge2": 0.0273972602739726,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The evidence is insufficient to determine User Interface's thoughts on Marketing's suggestion regarding the ease of use when presenting the functional requirements. There are no direct statements or questions from User Interface that specifically address Marketing's input on ease of use in this context.",
+          "rouge_f1": {
+            "rouge1": 0.24489795918367344,
+            "rouge2": 0.020833333333333332,
+            "rougeL": 0.12244897959183672
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            28
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The evidence is insufficient to determine User Interface's thoughts on Marketing's suggestion regarding the ease of use when presenting the functional requirements.",
+          "rouge_f1": {
+            "rouge1": 0.21333333333333332,
+            "rouge2": 0.0273972602739726,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            28,
+            23,
+            26,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The evidence is insufficient to determine what User Interface thought about Marketing's suggestion on the ease of use when presenting the functional requirements. User Interface only briefly agreed with the Project Manager regarding the inclusion of a teletext option, which does not address Marketing's earlier points about ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.21359223300970875,
+            "rouge2": 0.0198019801980198,
+            "rougeL": 0.11650485436893204
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The evidence is insufficient to determine User Interface's thoughts on Marketing's suggestion regarding the ease of use when presenting the functional requirements.",
+          "rouge_f1": {
+            "rouge1": 0.21333333333333332,
+            "rouge2": 0.0273972602739726,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            3,
+            9,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The evidence is insufficient to determine User Interface's thoughts on Marketing's suggestion regarding the ease of use when presenting the functional requirements.",
+          "rouge_f1": {
+            "rouge1": 0.21333333333333332,
+            "rouge2": 0.0273972602739726,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            3,
+            9,
+            1,
+            10,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The evidence is insufficient to determine User Interface's thoughts on Marketing's suggestion regarding the ease of use when presenting the functional requirements.",
+          "rouge_f1": {
+            "rouge1": 0.21333333333333332,
+            "rouge2": 0.0273972602739726,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The evidence is insufficient to determine User Interface's thoughts on Marketing's suggestion regarding the ease of use when presenting the functional requirements. There are no direct statements or questions from User Interface that specifically address Marketing's input on ease of use in this context.",
+          "rouge_f1": {
+            "rouge1": 0.24489795918367344,
+            "rouge2": 0.020833333333333332,
+            "rougeL": 0.12244897959183672
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            28
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The evidence is insufficient to determine User Interface's thoughts on Marketing's suggestion regarding the ease of use when presenting the functional requirements.",
+          "rouge_f1": {
+            "rouge1": 0.21333333333333332,
+            "rouge2": 0.0273972602739726,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            28,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the presentation and discussion on technical function design.",
+      "reference_answer": "Firstly, User Interface suggested the group should stand up with a unique design like different shapes than usual. User Interface also suggested a new option for favorite channels and a menu button that could integrate with volume, the previous and next buttons. The group agreed to make the remote a bit smaller and would like to look at mobile phones when designing it.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The presentation and discussion focused on designing technical functions for a remote control intended for a broad audience, particularly emphasizing simplicity for elderly users. Key points included:\n\n- Using standardized methods similar to existing remote controls.\n- Limiting functions to essential ones such as numbers and basic operations (on-off, volume).\n- Incorporating large, clearly labeled buttons for ease of use.\n- Including a menu button for accessing additional features.\n- Dividing functions into frequently used (e.g., channel switching, volume) and less frequently used (e.g., menu navigation).\n- Considering the inclusion of a mute button but its placement was uncertain.\n- Planning to gather user preferences through questionnaires or direct feedback from elderly users.",
+          "rouge_f1": {
+            "rouge1": 0.24418604651162792,
+            "rouge2": 0.023529411764705882,
+            "rougeL": 0.15116279069767444
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            14,
+            1
+          ],
+          "retrieval_precision": 0.880859375,
+          "retrieval_recall": 0.24712328767123287
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The presentation and discussion focused on designing a TV remote control for a younger target market. Key points included:\n\n- Simplifying the design for ease of use, especially for elderly users, with large, clearly labeled buttons for basic functions like numbers and on/off.\n- Incorporating standard methods found on most remote controls to avoid overwhelming users.\n- Considering user feedback through surveys or direct questioning to determine commonly used features.\n- Including essential buttons such as volume, channel switching, and a menu button for navigating TV menus.\n- Debating the inclusion of less frequently used features like a mute button.\n- Exploring advanced features like voice command functionality if feasible and cost-effective.\n- Emphasizing a flashy and trendy design over extensive usability for the new, younger market.",
+          "rouge_f1": {
+            "rouge1": 0.30270270270270266,
+            "rouge2": 0.032786885245901634,
+            "rougeL": 0.16216216216216217
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            14,
+            1,
+            28,
+            27
+          ],
+          "retrieval_precision": 0.4404296875,
+          "retrieval_recall": 0.24712328767123287
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The presentation and discussion focused on designing a TV remote control with a simplified interface for elderly users, emphasizing standardization and ease of use. Key points included:\n\n- Limiting the remote to basic functions such as numbers and essential buttons for simplicity.\n- Incorporating a menu button for navigating additional features.\n- Considering a mute button and integrating navigation functions with existing buttons.\n- Implementing an intelligent chip capable of automatically configuring the correct signal pattern for various TV brands.\n- Adjusting the target market to younger users, necessitating flashier designs and potentially advanced features like speech recognition.\n- Exploring options for a see-through design and customizable colors and fonts.\n- Placing less frequently used functions on secondary levels of the remote control interface.\n\nThe team acknowledged the need for user feedback through surveys and considered modernizing the remote to appeal to a broader audience while maintaining usability.",
+          "rouge_f1": {
+            "rouge1": 0.28292682926829266,
+            "rouge2": 0.04926108374384237,
+            "rougeL": 0.17560975609756097
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            14,
+            1,
+            28,
+            27,
+            21,
+            20,
+            32,
+            33
+          ],
+          "retrieval_precision": 0.22021484375,
+          "retrieval_recall": 0.24712328767123287
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The presentation and discussion on technical function design focused on creating a user-friendly remote control for a broad audience, particularly emphasizing simplicity for elderly users. Key points included:\n\n- Using standardized methods similar to existing remote controls.\n- Incorporating basic functions such as numbers and an on/off button with large, clearly labeled buttons.\n- Utilizing questionnaires or direct feedback from elderly users to determine preferred features.\n- Explaining the technical functionality where pressing a button closes a circuit, triggering a specific signal (akin to Morse code) sent via infrared light to the TV, with a visible LED indicating activity.\n- Considering the inclusion of a visible LED light and ensuring compatibility with a recharger within the design.",
+          "rouge_f1": {
+            "rouge1": 0.2598870056497175,
+            "rouge2": 0.011428571428571427,
+            "rougeL": 0.1694915254237288
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            17,
+            19
+          ],
+          "retrieval_precision": 0.455078125,
+          "retrieval_recall": 0.12767123287671234
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The presentation and discussion on technical function design focused on creating a user-friendly remote control, particularly for elderly users. Key points included:\n\n- Simplifying the design by using standardized methods found on typical remote controls.\n- Limiting the number of buttons to essential functions such as numbers and on/off.\n- Ensuring large, clearly labeled buttons for ease of use.\n- Incorporating a visible LED indicator (color debated between green and red) to show the device is active.\n- Designing the remote to produce specific patterns (akin to Morse code) recognized by televisions via infrared signals.\n- Adapting the remote to work universally across different TV brands by correctly configuring the signal patterns.\n- Using batteries as the primary power source, with potential for integration of a rechargeable component.",
+          "rouge_f1": {
+            "rouge1": 0.24731182795698922,
+            "rouge2": 0.010869565217391304,
+            "rougeL": 0.12903225806451615
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            17,
+            19,
+            21,
+            8
+          ],
+          "retrieval_precision": 0.2275390625,
+          "retrieval_recall": 0.12767123287671234
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The presentation and discussion on technical function design focused on creating a TV remote control tailored for elderly users. Key points included:\n\n- Simplifying the remote by using standardized methods and limiting features to commonly used functions such as numbers, on-off button, channel switching, and volume control.\n- Incorporating large, clearly labeled buttons for ease of use.\n- Including a menu button for accessing additional functions, though its placement and integration were debated.\n- Ensuring the remote includes a mute button.\n- Implementing a design that integrates buttons seamlessly into the overall design while keeping the interface simple.\n- Using infrared technology for communication, with a visible LED indicator to show the remote is functioning.\n- Configuring the remote to produce specific patterns recognized by various TV models to ensure universality.\n- Considering the inclusion of teletext options directly accessible on the primary level of the remote, acknowledging its frequent use among elderly users.",
+          "rouge_f1": {
+            "rouge1": 0.2761904761904762,
+            "rouge2": 0.03846153846153846,
+            "rougeL": 0.16190476190476188
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            17,
+            19,
+            21,
+            8,
+            2,
+            33,
+            1,
+            14
+          ],
+          "retrieval_precision": 0.2109375,
+          "retrieval_recall": 0.23671232876712328
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The presentation and discussion focused on designing a user-friendly technical function for a remote control, particularly for an elderly audience. Key points included:\n\n- Keeping the design simple with standardized methods similar to existing remote controls.\n- Incorporating basic functions such as numbers and an on-off button with large, clearly labeled buttons.\n- Including a menu button for accessing additional features integrated with navigation controls like volume and channel selection.\n- Ensuring compatibility across different TV models by correctly configuring the signal patterns.\n- Using batteries as the energy source connected to all components.\n\nParticipants suggested using questionnaires to determine which functions elderly users prefer and utilize most frequently.",
+          "rouge_f1": {
+            "rouge1": 0.3431952662721894,
+            "rouge2": 0.035928143712574856,
+            "rougeL": 0.1893491124260355
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            21,
+            14
+          ],
+          "retrieval_precision": 0.58203125,
+          "retrieval_recall": 0.1632876712328767
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The presentation and discussion on technical function design focused on designing a TV remote control for an elderly audience, emphasizing simplicity and ease of use. Key points included:\n\n- The remote would feature basic functions such as numbers and an on-off button, with large, clearly labeled buttons.\n- Additional features discussed were a menu button for accessing more functions, navigation arrows, and a mute button.\n- The team considered integrating less frequently used functions into the menu system.\n- They also discussed the inclusion of a rechargeable component and a light indicator to show the remote is functioning.\n- Technical considerations involved ensuring the remote control works across different TV brands by correctly configuring infrared signal patterns.",
+          "rouge_f1": {
+            "rouge1": 0.2727272727272727,
+            "rouge2": 0.0574712643678161,
+            "rougeL": 0.17045454545454547
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            21,
+            14,
+            1,
+            19
+          ],
+          "retrieval_precision": 0.4404296875,
+          "retrieval_recall": 0.24712328767123287
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The presentation and discussion focused on designing a TV remote control primarily for elderly users. Key points included:\n\n- Simplifying the design by using standardized methods and limiting functionality to commonly used features.\n- Ensuring large, clearly labeled buttons for ease of use.\n- Incorporating a menu button for additional functions, though its placement and necessity were debated.\n- Considering unique design elements to differentiate the product, such as color variations and innovative shapes.\n- Exploring advanced features like automatic search functions for compatibility with various TV models and potential voice recognition capabilities.\n- Discussing the integration of less frequently used features like teletext options into the design without cluttering the interface.",
+          "rouge_f1": {
+            "rouge1": 0.3195266272189349,
+            "rouge2": 0.035928143712574856,
+            "rougeL": 0.16568047337278108
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            21,
+            14,
+            1,
+            19,
+            33,
+            15,
+            28,
+            2
+          ],
+          "retrieval_precision": 0.3388671875,
+          "retrieval_recall": 0.3802739726027397
+        },
+        "word_packed__dense__w512": {
+          "answer": "The presentation and discussion on technical function design focused on creating a user-friendly remote control, particularly for an elderly audience. The key points included:\n\n- Keeping the design simple and standardized to ensure usability.\n- Considering a single button with multiple stripes for quick access to common functions, allowing users up to five seconds to press the correct sequence.\n- Debating the necessity of a two-level remote control, ultimately deciding against it since most functions are accessible via the TV menu.\n- Incorporating a menu button alongside navigation controls (arrows) and integrating these with volume and channel change functions.\n- Separating frequently used functions from less commonly used ones, such as the menu button, to enhance ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.3240223463687151,
+            "rouge2": 0.033898305084745756,
+            "rougeL": 0.1564245810055866
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            12
+          ],
+          "retrieval_precision": 0.732421875,
+          "retrieval_recall": 0.2054794520547945
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The presentation and discussion on technical function design focused on creating a user-friendly and distinctive TV remote control. Key points included:\n\n- Keeping the design simple, especially for elderly users, by adopting standardized methods found in other remote controls.\n- Considering a single-button approach with dual functionality (e.g., two stripes) for ease of use.\n- Incorporating a menu button for accessing additional features while integrating navigation controls like volume and channel selection.\n- Dividing frequently used functions from less frequent ones, such as separating channel switching and volume control from the menu button.\n- Drawing inspiration from mobile phones for design and usability, aiming for a compact yet functional form factor.\n- Targeting a younger demographic with a more modern and visually appealing design.\n- Deciding against including LCD screens due to cost and usability concerns, focusing instead on making the remote control more like a mobile phone in terms of modernity and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.29107981220657275,
+            "rouge2": 0.05687203791469194,
+            "rougeL": 0.18779342723004697
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            12,
+            24,
+            14
+          ],
+          "retrieval_precision": 0.5322265625,
+          "retrieval_recall": 0.29863013698630136
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The presentation and discussion focused on designing a TV remote control primarily for elderly and children users, emphasizing simplicity and usability. Key points included:\n\n- Limiting the remote to basic functions such as numbers, on-off, volume, channels, and text services.\n- Incorporating large, clearly labeled buttons for ease of use.\n- Considering user feedback through surveys to determine frequently used functions.\n- Including features like favorites and a back button for channel navigation.\n- Integrating a menu button for accessing additional settings.\n- Designing the remote to resemble modern mobile phones for a sleek appearance and to avoid looking cheap.\n- Ensuring the remote uses standard IR patterns to be compatible with various TVs.\n- Adjusting the target market to focus on younger customers, necessitating more modern and attractive designs.\n\nThe team agreed on the importance of simplicity and user-friendly design while considering the shift towards a younger demographic, which influenced the inclusion of more modern features.",
+          "rouge_f1": {
+            "rouge1": 0.2990654205607477,
+            "rouge2": 0.05660377358490566,
+            "rougeL": 0.1588785046728972
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            12,
+            24,
+            14,
+            1,
+            10,
+            17,
+            8
+          ],
+          "retrieval_precision": 0.51611328125,
+          "retrieval_recall": 0.5791780821917808
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The presentation and discussion on technical function design focused on creating a user-friendly and distinctive TV remote control. Key points included:\n\n- Keeping the design simple and standardized to cater to a broad audience, especially the elderly.\n- Avoiding overly complex features to ensure usability.\n- Drawing inspiration from mobile phone designs for simplicity and effective functionality.\n- Ensuring the remote does not look cheap despite its lower price point.\n- Using basic technical methods such as circuits and chips to recognize button presses.\n\nThe team emphasized the importance of usability and differentiation through design rather than extensive feature sets.",
+          "rouge_f1": {
+            "rouge1": 0.2641509433962264,
+            "rouge2": 0.025477707006369425,
+            "rougeL": 0.16352201257861632
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            14
+          ],
+          "retrieval_precision": 0.564453125,
+          "retrieval_recall": 0.15835616438356165
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The presentation and discussion on technical function design focused on creating a user-friendly and distinctive remote control. Key points included:\n\n- Emphasizing usability over extensive functionality to cater to a broad audience, particularly the elderly.\n- Adopting standardized methods similar to existing remote controls to ensure simplicity.\n- Drawing inspiration from mobile phone designs for compactness and effective design.\n- Ensuring the remote control works universally with various TV models by understanding and implementing correct signal patterns.\n- Considering the integration of a universal search function for TV compatibility.\n- Deciding to keep teletext options on one level due to varying usage among different age groups.\n- Prioritizing design aesthetics over button quantity to maintain simplicity and clarity.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.023121387283236997,
+            "rougeL": 0.13714285714285712
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            14,
+            17,
+            30
+          ],
+          "retrieval_precision": 0.2822265625,
+          "retrieval_recall": 0.15835616438356165
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The presentation and discussion on technical function design focused on designing a TV remote control primarily for elderly users. Key points included:\n\n- Keeping the design simple and standardized to ensure ease of use for elderly individuals.\n- Incorporating a mute button and considering different colors and shapes to make the remote stand out aesthetically.\n- Using standard methods found on existing remote controls to avoid overcrowding the device.\n- Ensuring the remote includes a search function to automatically detect and work with various TV models.\n- Utilizing a battery as the energy source, connected to components such as buttons, chips, and infrared bulbs for signal transmission.\n- Considering the integration of teletext features but limiting them to one level due to infrequent usage.\n- Emphasizing the importance of design over functionality given the limited number of buttons available.",
+          "rouge_f1": {
+            "rouge1": 0.2666666666666667,
+            "rouge2": 0.031088082901554404,
+            "rougeL": 0.1641025641025641
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            14,
+            17,
+            30,
+            19,
+            13,
+            2,
+            1
+          ],
+          "retrieval_precision": 0.26611328125,
+          "retrieval_recall": 0.29863013698630136
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The presentation and discussion on technical function design focused on creating a user-friendly and distinctive TV remote control. Key points included:\n\n- Keeping the design simple and standardized to cater to a broad audience, especially the elderly.\n- Avoiding overly complex features to ensure usability.\n- Drawing inspiration from mobile phone designs for simplicity and effective functionality.\n- Ensuring the remote does not look cheap despite its lower price point.\n- Using basic technical methods such as circuits and chips to recognize button presses.\n\nThe team emphasized the importance of usability and differentiation through design rather than extensive feature sets.",
+          "rouge_f1": {
+            "rouge1": 0.2641509433962264,
+            "rouge2": 0.025477707006369425,
+            "rougeL": 0.16352201257861632
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            14
+          ],
+          "retrieval_precision": 0.564453125,
+          "retrieval_recall": 0.15835616438356165
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The presentation and discussion on technical function design focused on creating a TV remote control for a broad audience, particularly kids and the elderly. Key points included:\n\n- Simplifying the design for ease of use, possibly adopting standardized methods found on existing remote controls.\n- Considering the design of mobile phones as an example of good design principles that could be applied.\n- Exploring the technical aspects of remote control functionality, such as how pressing a button closes a circuit, which is sensed by a chip to identify the button pressed.\n- Understanding and implementing universal patterns to ensure compatibility with various TV models.\n- Discussing the possibility of incorporating an automatic search function for each television to enhance usability.",
+          "rouge_f1": {
+            "rouge1": 0.2696629213483146,
+            "rouge2": 0.022727272727272724,
+            "rougeL": 0.14606741573033705
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            14,
+            17,
+            1
+          ],
+          "retrieval_precision": 0.2822265625,
+          "retrieval_recall": 0.15835616438356165
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The presentation and discussion on technical function design focused on designing a TV remote control primarily for elderly users but later adjusted to target a broader audience including younger people. Key points included:\n\n- Keeping the design simple and standardized to cater to elderly users.\n- Incorporating unique design elements such as different colors or shapes to stand out in the market.\n- Considering the inclusion of a mute button and ensuring the remote control is not overly complex.\n- Utilizing standard methods found on most remote controls to ensure ease of use.\n- Exploring the possibility of integrating modern features similar to those found in mobile phones to attract younger users.\n- Ensuring the remote control can work universally with various TV models through specific pattern recognition technology.\n- Deciding against incorporating less frequently used features like teletext to maintain simplicity and usability.",
+          "rouge_f1": {
+            "rouge1": 0.28,
+            "rouge2": 0.030303030303030304,
+            "rougeL": 0.15
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            14,
+            17,
+            1,
+            13,
+            2,
+            30,
+            24
+          ],
+          "retrieval_precision": 0.26611328125,
+          "retrieval_recall": 0.29863013698630136
+        },
+        "lumber__dense__w512": {
+          "answer": "The presentation and discussion on technical function design focused on designing a TV remote control primarily for elderly users and children. The team aimed to simplify the design by using standardized methods common across other remote controls. Key points included ensuring the product met the needs of its target demographic, particularly older individuals who might require larger, more accessible buttons. However, the meeting was marked by technical difficulties and time constraints, leading to some confusion and interruptions during the presentations and discussions.",
+          "rouge_f1": {
+            "rouge1": 0.2206896551724138,
+            "rouge2": 0.0,
+            "rougeL": 0.15172413793103448
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            8
+          ],
+          "retrieval_precision": 0.140625,
+          "retrieval_recall": 0.03945205479452055
+        },
+        "lumber__dense__w1024": {
+          "answer": "The presentation and discussion focused on designing a TV remote control primarily for elderly users. Key points included:\n\n- Simplifying the design by using standardized methods common across remote controls.\n- Ensuring the remote is easy to use with large, clearly labeled buttons.\n- Considering basic functions such as numbers, on-off, volume, and channel changing.\n- Exploring additional features like favorites, which could allow users to access frequently watched channels with a single button press.\n- Debating the feasibility of favorite buttons due to potential difficulty in remembering which button corresponds to which channel.\n- Confirming that the remote control would send basic commands to the television, such as switching to a specific channel.",
+          "rouge_f1": {
+            "rouge1": 0.32558139534883723,
+            "rouge2": 0.023529411764705882,
+            "rougeL": 0.1744186046511628
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            8
+          ],
+          "retrieval_precision": 0.5703125,
+          "retrieval_recall": 0.32
+        },
+        "lumber__dense__w2048": {
+          "answer": "The presentation and discussion on technical function design focused on designing a TV remote control primarily for elderly users. Key points included:\n\n- Simplifying the design by using standardized methods and ensuring ease of use with large, clearly labeled buttons.\n- Considering basic functions such as numbers, on-off, volume, and channel controls.\n- Exploring additional features like favorites and automatic search functions for TVs.\n- Deciding against overly complex features due to potential difficulty in remembering settings.\n- Discussing the possibility of incorporating a more intelligent chip to enable advanced functionalities.\n- Debating the inclusion of modern elements like LCD screens and see-through designs, ultimately deciding on simplicity and usability over flashiness.\n- Arranging buttons with simpler functions on top and more complex ones below, keeping teletext options on the primary level due to frequent use by elderly users.\n- Emphasizing the importance of design integration given the limited number of buttons.",
+          "rouge_f1": {
+            "rouge1": 0.2679425837320574,
+            "rouge2": 0.0,
+            "rougeL": 0.1339712918660287
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            8,
+            23,
+            16,
+            28
+          ],
+          "retrieval_precision": 0.3134765625,
+          "retrieval_recall": 0.35178082191780824
+        },
+        "lumber__bm25__w512": {
+          "answer": "The presentation and discussion focused on the technical function design of a remote control device. The Industrial Designer described the mechanism where pressing a button closes a circuit, signaling the chip which then generates a pattern (like Morse code) sent to an LED producing infrared light, invisible to the human eye, and transmitted to the TV. Additionally, there is a visible red LED that blinks to indicate transmission. The team discussed the possibility of using a green LED instead. Marketing mentioned an automatic search function for each television, where typing \"search\" causes the LED to blink until the correct TV responds, indicating successful pairing.",
+          "rouge_f1": {
+            "rouge1": 0.2275449101796407,
+            "rouge2": 0.0,
+            "rougeL": 0.1437125748502994
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            16
+          ],
+          "retrieval_precision": 0.087890625,
+          "retrieval_recall": 0.024657534246575342
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The presentation and discussion focused on designing a TV remote control primarily for elderly users and children. Key points included:\n\n- The remote control should have larger buttons for ease of use by older individuals.\n- The technical function involves pressing a button which closes a circuit, signaling a specific pattern (like Morse code) to an LED that emits infrared light to communicate with the TV.\n- There was a suggestion for an LED indicator to show when the remote is transmitting signals.\n- A feature discussed was an automatic search function for identifying the correct TV, where the remote would blink and confirm once it finds the right device, eliminating the need for manual code entry.\n\nDetails about the exact implementation and further design specifics were somewhat vague due to incomplete explanations and discussions.",
+          "rouge_f1": {
+            "rouge1": 0.28865979381443296,
+            "rouge2": 0.010416666666666666,
+            "rougeL": 0.16494845360824742
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            16,
+            1,
+            8
+          ],
+          "retrieval_precision": 0.044921875,
+          "retrieval_recall": 0.025205479452054796
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The presentation and discussion on technical function design focused on designing a TV remote control primarily for elderly users. Key points included:\n\n- Simplifying the remote control by using standardized methods and ensuring it is easy to use, with large, clearly labeled buttons.\n- Considering basic functions such as numbers, volume, channels, and on-off buttons.\n- Exploring the possibility of adding a favorites feature for quick access to frequently used channels.\n- Discussing the technical aspects of the remote control, including how pressing a button closes a circuit, which triggers a chip to produce a pattern sent via infrared light to the TV.\n- Mentioning the need for a visible LED indicator to show when the remote is transmitting signals.\n- Considering the implementation of an automatic search function to match the remote with various TV models, requiring a more intelligent chip capable of recognizing different signal patterns for different TV brands.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.01923076923076923,
+            "rougeL": 0.15238095238095237
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            16,
+            1,
+            8,
+            17,
+            12
+          ],
+          "retrieval_precision": 0.3388671875,
+          "retrieval_recall": 0.3802739726027397
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The presentation and discussion on technical function design focused on designing a TV remote control primarily for elderly users and children. The team aimed to simplify the design by using standardized methods common across other remote controls. Key points included ensuring the product met the needs of its target demographic, particularly older individuals who might require larger, more accessible buttons. However, the meeting was marked by technical difficulties and time constraints, leading to some confusion and interruptions during the presentations and discussions.",
+          "rouge_f1": {
+            "rouge1": 0.2206896551724138,
+            "rouge2": 0.0,
+            "rougeL": 0.15172413793103448
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            8
+          ],
+          "retrieval_precision": 0.140625,
+          "retrieval_recall": 0.03945205479452055
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The presentation and discussion focused on designing a TV remote control primarily for elderly users. Key points included:\n\n- Simplifying the design by using standardized methods common across remote controls.\n- Ensuring the remote is easy to use with large, clearly labeled buttons.\n- Considering basic functions such as numbers, on-off, volume, and channel changing.\n- Exploring additional features like favorites, which could allow users to access frequently watched channels with a single button press.\n- Debating the feasibility of favorite buttons due to potential difficulty in remembering which button corresponds to which channel.\n- Confirming that the remote control would send basic commands to the television, such as switching to a specific channel.",
+          "rouge_f1": {
+            "rouge1": 0.32558139534883723,
+            "rouge2": 0.023529411764705882,
+            "rougeL": 0.1744186046511628
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            8
+          ],
+          "retrieval_precision": 0.5703125,
+          "retrieval_recall": 0.32
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The presentation and discussion on technical function design focused on designing a TV remote control primarily for elderly users. Key points included:\n\n- Simplifying the design by using standardized methods and ensuring the remote control is easy to use with large, clearly labeled buttons.\n- Considering basic functions such as numbers, on-off button, volume, channels, and text services.\n- Exploring the possibility of including a favorites feature where pressing one button would directly access frequently used channels, though this was met with skepticism regarding memorability.\n- Discussing the integration of an automatic search function for televisions to ensure compatibility without manual input.\n- Deciding on a design that stands out in shops, possibly through unique shapes and colors, and considering a see-through option similar to an iPod or iMac.\n- Arranging buttons in a logical manner, placing simpler functions at the top and more complex ones lower down, while keeping teletext options accessible on the primary level due to frequent use by elderly people.\n- Emphasizing the importance of design over functionality given the limited number of buttons, allowing for creative integration of buttons into the overall design.",
+          "rouge_f1": {
+            "rouge1": 0.2682926829268293,
+            "rouge2": 0.01639344262295082,
+            "rougeL": 0.13008130081300814
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            8,
+            16,
+            28,
+            12
+          ],
+          "retrieval_precision": 0.41162109375,
+          "retrieval_recall": 0.4619178082191781
+        }
+      }
+    }
+  ]
+}

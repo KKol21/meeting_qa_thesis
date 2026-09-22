@@ -44,6 +44,7 @@ def evaluated_metrics(stage: dict[str, object], condition: str) -> tuple[dict, d
 def make_report(
     root: Path,
     answer_stage_names: list[str],
+    dataset_split: str,
 ) -> str:
     retrieval = load_json(root / "retrieval" / "summary.json")
     evaluation = load_json(root / "evaluation" / "summary.json")
@@ -72,6 +73,8 @@ def make_report(
     question_count = retrieval["question_count"]
     lines = [
         "# Ablation report",
+        "",
+        f"**Dataset split:** QMSum {dataset_split}.",
         "",
         f"**Scope:** {meeting_count} meeting(s), {question_count} question(s).",
         "",
@@ -247,7 +250,11 @@ def main() -> None:
     output = args.output or root / "report.md"
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(
-        make_report(root, answer_stage_names),
+        make_report(
+            root,
+            answer_stage_names,
+            "validation" if run.data_dir.name == "val" else run.data_dir.name,
+        ),
         encoding="utf-8",
     )
     print(f"Ablation report: {output}")

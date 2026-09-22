@@ -1,0 +1,309 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "IS1003c.json",
+        "sha256": "30ed73f9fac668c02269a374461145d7402b36919085f7a44d5ea26843279d8c"
+      }
+    },
+    "input_hash": "6e38d5f98b8a374d988f6a2fbd36db90a917e7adf2c0cab182ad6695b344e23a",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "347fa106b37886608ef88d2e470f722228f87875f6843086ef5ca0251a3e7344",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "IS1003c",
+  "question_count": 9,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 9,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about the user interface design.",
+      "reference_answer": "The user interface designer introduced three concepts in the user interface - Google controller, fancy controller, and intelligent controller. The three meant that the product would be simple but powerful, attractive and recognizable, and loaded with speech recognition technology and gesture recognition technology. The first two were approved by the project manager, but the last one was seriously questioned. After a lot of discussions, the group finally decided to mix the Google controller and fancy controller with some simple vocal commands.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the user interface design centered around three concepts for the controller: Google controller, fancy controller, and intelligent controller. \n\n- **Google Controller**: Emphasizes ease of use combined with sophisticated functions.\n- **Fancy Controller**: Focuses on making the controller visually attractive and easily recognizable, aiming to stand out among competitors.\n- **Intelligent Controller**: Incorporates advanced technologies like speech recognition and gesture recognition to make the controller smart and user-friendly. However, concerns were raised about practicality, including potential repetitive strain injuries from frequent gestures and the reliability of voice commands in noisy environments. Additionally, the team discussed the cost implications and the complexity of adapting the controller for different languages and markets.\n\nUltimately, the team considered combining elements of the Google and fancy controllers, possibly incorporating simple voice commands as an optional feature, while focusing on maintaining simplicity, reliability, and affordability.",
+          "rouge_f1": {
+            "rouge1": 0.410958904109589,
+            "rouge2": 0.1751152073732719,
+            "rougeL": 0.32876712328767127
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              20,
+              316
+            ],
+            [
+              530,
+              575
+            ]
+          ],
+          "evidence_words": 3540
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did the user interface designer propose the concept of intelligent controller?",
+      "reference_answer": "The user interface designer believed a controller with speech recognition technology and gesture recognition technology would be convenient when you couldn't find it. More importantly, although the feature was not one hundred percent reliable, it was a feature to distinguish the new product from traditional ones. And there's not enough motivation for users to replace their old controller with a new one if there's no key feature in the new controller.",
+      "results": {
+        "oracle": {
+          "answer": "The user interface designer proposed the concept of an intelligent controller because they believed that voice and gesture interfaces could be more convenient than using buttons. However, they also acknowledged that the controller needed distinguishing features to motivate users to replace their existing controllers. The discussion highlighted that while features like voice recognition might not be used frequently, they serve as selling points to differentiate the product from others in the market. The designer emphasized the importance of having reliable and unique features to justify the replacement of an old controller with a new one.",
+          "rouge_f1": {
+            "rouge1": 0.44970414201183434,
+            "rouge2": 0.17964071856287422,
+            "rougeL": 0.29585798816568043
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              61,
+              61
+            ],
+            [
+              252,
+              316
+            ]
+          ],
+          "evidence_words": 763
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Why did the project manager disapprove of the concept of intelligent controller?",
+      "reference_answer": "The project manager put forward that the speech recognition wouldn't work when several persons wanted to change the channel at the same time, and the cost would surely rise if adding the two technologies. In response to that, the user interface designer said they would just cooperate with some research institute and the vocabulary was limited, so it wouldn't cost much. Then the project manager posed the language problem. The user interface designer answered they would have some language adaptations so the product could be used by people from all countries. Finally, there were still problems with the microphone and camera that were necessary for the two technologies.",
+      "results": {
+        "oracle": {
+          "answer": "The project manager disapproved of the concept of the intelligent controller due to several concerns:\n\n1. **Usability Concerns**: The project manager questioned whether users would prefer using gestures or voice commands over traditional remote controls, especially considering repetitive gestures might cause physical strain (e.g., getting injuries from repeated gestures).\n\n2. **Practicality Issues**: The project manager pointed out potential problems with simultaneous use by multiple family members, suggesting that everyone speaking or gesturing at once could lead to confusion and inefficiency.\n\n3. **Cost and Complexity**: There was concern about the cost and complexity involved in developing a universal remote control capable of recognizing multiple languages, which would require adaptations for different countries and potentially increase production costs.\n\n4. **Functionality Doubts**: The project manager questioned the practicality of embedding microphones and cameras into the remote control and whether these features would be necessary if users still preferred having a physical remote control for convenience.\n\nOverall, the project manager felt that the intelligent controller concept might introduce unnecessary complexity and potential usability issues without clear advantages over traditional remote controls.",
+          "rouge_f1": {
+            "rouge1": 0.3611111111111111,
+            "rouge2": 0.06993006993006992,
+            "rougeL": 0.17361111111111113
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              52,
+              236
+            ]
+          ],
+          "evidence_words": 1783
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about product industrial design.",
+      "reference_answer": "The discussion about product industrial design covered three aspects —material, alimentation, and chip. The industrial designer suggested using wood instead of plastic to make the controller more fashionable and having buttons with LCD so that people could see the controller in dark. In terms of the alimentation, it would be good to have both the classical battery and solar energy alimentation. Considering that the product was supposed to be easy to use, the industrial designer thought some low level chip would be enough, which was agreed by the group.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about product industrial design focused on several aspects:\n\n1. **Material Choices**: The team discussed whether to use wooden or plastic materials for the remote control. Wooden material was considered for its high-class appeal, while plastic was noted for its common usage and resistance.\n\n2. **Button Types**: The Industrial Designer suggested options such as classic pushbuttons or LCD buttons that light up at night, making the remote easier to use in the dark. The preference was for LCD buttons due to their fashionable appearance and practicality.\n\n3. **Alimentation Options**: There was consideration of using either solar energy or traditional batteries for powering the remote control. The suggestion was to offer both options, particularly for areas without reliable electricity, such as rural regions. This dual option was seen as an added value and potentially appealing to eco-conscious consumers.\n\n4. **Circuitry Level**: The team agreed on using low-level integrated circuits (chips) to keep costs down, aiming for a final price point of around twelve Euros.\n\n5. **Touch Screen Consideration**: While a touch screen was mentioned, it was noted that it might be as expensive as the LCD buttons and was considered another design possibility.\n\nOverall, the discussion aimed to balance functionality, cost, and market appeal in the design choices for the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.3815789473684211,
+            "rouge2": 0.07947019867549668,
+            "rougeL": 0.23684210526315785
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              386,
+              451
+            ]
+          ],
+          "evidence_words": 906
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Why did the group decide to use both the classical battery and solar energy alimentation when discussing the industrial design?",
+      "reference_answer": "With the solar energy alimentation, people in remote areas could recharge the controller more conveniently. Plus, it might attract some ecologists to purchase. Although the design would increase the production cost, it would be added value that can be compensated.",
+      "results": {
+        "oracle": {
+          "answer": "The group decided to use both the classical battery and solar energy alimentation because:\n\n1. It provides flexibility for users in remote areas without easy access to electricity, such as in rural Senegal, where solar energy can be used to recharge the device.\n2. It can serve as a marketing advantage, attracting eco-conscious consumers who prefer sustainable options.\n3. While it would slightly increase the production cost, the added value would compensate for the price increase, making it an attractive feature for potential buyers.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.17886178861788618,
+            "rougeL": 0.304
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              396,
+              414
+            ]
+          ],
+          "evidence_words": 314
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What was the decision of discussion about the material when talking about industrial design?",
+      "reference_answer": "The group decided to use wood partly instead of plastic because they wanted to put fashion in electronics and wood was a good option. By contrast, the plastic material was more common, impersonal, and not so high class as wood.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the material for the industrial design considered both wooden and plastic options for the remote control. The team discussed the characteristics of each material, noting that plastic is more common and resistant, while wood offers a higher-class feel. The Project Manager suggested incorporating wood to add a fashionable element to the electronics, even if only partially. The final decision indicated an interest in exploring the use of wood, though no definitive choice was made beyond showing interest in its potential use.",
+          "rouge_f1": {
+            "rouge1": 0.36800000000000005,
+            "rouge2": 0.016260162601626015,
+            "rougeL": 0.15999999999999998
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              386,
+              395
+            ],
+            [
+              415,
+              429
+            ]
+          ],
+          "evidence_words": 284
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "Summarize the discussion about user requirements.",
+      "reference_answer": "The marketing expert gave three points from the market analysis. Users would like to have a fancy look and feel rather than a functional one. Apart from that, they still wanted the product to be technologically innovative. At the same time, being user-friendly was also important. Then the group discussed how to make these requirements into practice.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about user requirements focused on three main points:\n\n1. **Fancy Look and Feel**: Users prefer a stylish appearance over functional complexity. Marketing noted that users are not interested in remote controls with numerous buttons, even if it sounds good technically.\n\n2. **Technological Innovation**: Users desire technological advancements such as speech recognition features.\n\n3. **Ease of Use**: The remote control must be user-friendly.\n\nAdditionally, there was a brief discussion on material choices for the remote control, where Marketing suggested a combination of wood (for the base) and rubber (for the buttons) to balance a natural feel and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.34177215189873417,
+            "rouge2": 0.07692307692307693,
+            "rougeL": 0.24050632911392403
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              452,
+              463
+            ],
+            [
+              500,
+              529
+            ]
+          ],
+          "evidence_words": 423
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "What did the marketing recommend to do when discussing the problem of fashion?",
+      "reference_answer": "That year everything from clothes to shoes and furniture was inspired by fruits and vegetables so the marketing suggested taking that into account. The marketing also mentioned that people wanted a spongy touch which meant the product might be partly wooden and partly rubber-made.",
+      "results": {
+        "oracle": {
+          "answer": "The marketing recommended incorporating the current fashion trend of fruits and vegetables into the design of the remote control. They emphasized that the \"fancy look and feel\" is the most important factor, followed by technological innovation and ease of use. Additionally, they suggested that the remote control should have a spongy touch, possibly using rubber-like materials for the buttons while potentially keeping a wooden base for a natural feel and eco-friendly marketing angle.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333337,
+            "rouge2": 0.08474576271186442,
+            "rougeL": 0.21666666666666665
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              464,
+              485
+            ],
+            [
+              500,
+              529
+            ]
+          ],
+          "evidence_words": 533
+        }
+      }
+    },
+    {
+      "question_index": 8,
+      "question": "What was the decision of the discussion about fulfilling user requirements?",
+      "reference_answer": "To meet the requirements of being fashionable and spongy, the group decided to use wood and rubber to make the controller. Maybe the part that users touched, such as the buttons, would be rubber, and the rest would be wooden, which would feel natural.",
+      "results": {
+        "oracle": {
+          "answer": "The decision of the discussion about fulfilling user requirements was to incorporate both wood and rubber materials. Specifically, they considered using wood for parts of the device that are not frequently touched and rubber for the parts that require a spongy touch, such as buttons. This approach aims to meet the user preference for a natural feel while also addressing the desire for a spongy texture.",
+          "rouge_f1": {
+            "rouge1": 0.49090909090909096,
+            "rouge2": 0.16666666666666669,
+            "rougeL": 0.3090909090909091
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              472,
+              485
+            ],
+            [
+              500,
+              529
+            ]
+          ],
+          "evidence_words": 336
+        }
+      }
+    }
+  ]
+}

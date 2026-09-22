@@ -88,33 +88,31 @@ overlap at least one annotated evidence turn.
 
 ## 3. Evidence-clipping sensitivity
 
-The [clipping analysis](../runs/ablations/full/clipping-sensitivity.md) holds
+The [clipping analysis](../runs/ablations/validation-full/clipping-sensitivity.md) holds
 rankings fixed and compares three policies:
 
 - `clip`: include exactly the available word budget, clipping the final chunk;
 - `drop_partial`: stop before the final chunk if it would be partial;
 - `expand_partial`: include that chunk in full and permit budget overflow.
 
-For Lumber with dense retrieval in the existing 550-target full validation
-run:
+For Lumber with dense retrieval in the selected 1,000-target validation run:
 
 | Budget | Clip recall/F1 | Drop change in recall/F1 | Expand change in recall/F1 | Mean underfill/overflow |
 |---:|---:|---:|---:|---:|
-| 512 | 0.350/0.310 | -0.068/-0.022 | +0.050/+0.015 | 131/111 words |
-| 1,024 | 0.535/0.332 | -0.035/-0.001 | +0.035/-0.001 | 113/127 words |
-| 2,048 | 0.686/0.292 | -0.003/+0.008 | +0.009/-0.005 | 133/91 words |
+| 512 | 0.332/0.315 | -0.146/-0.126 | +0.088/+0.018 | 225/197 words |
+| 1,024 | 0.521/0.344 | -0.052/-0.002 | +0.043/-0.009 | 182/194 words |
+| 2,048 | 0.673/0.293 | -0.018/+0.010 | +0.026/-0.008 | 215/175 words |
 
 Clipping is nearly universal for Lumber and turn-packed chunks because their
 sizes do not divide the evidence budgets evenly. It is uncommon for strict
 word-packed chunks because 512, 1,024, and 2,048 are multiples of the 256-word
 chunk size.
 
-The policy materially changes recall at the smallest budget, but F1 differences
-are usually small. Dropping the partial chunk wastes capacity, while expanding
+The policy materially changes both recall and F1 at the smallest Lumber
+budget. Dropping the partial chunk wastes substantial capacity, while expanding
 it violates equal evidence budgets. Exact clipping is therefore retained as
-the fairest primary policy. The analysis does not test downstream answer
-generation, and its Lumber rows characterize the earlier 550-target run rather
-than the subsequently selected 1,000-target segmentation.
+the fairest primary policy. The sensitivity analysis itself evaluates
+retrieval metrics, not downstream answer generation.
 
 ## 4. Boundary-shuffled Lumber control
 
@@ -172,18 +170,16 @@ decision to treat MRR as a secondary, size-sensitive diagnostic.
 
 ## Relation to the main validation run
 
-The earlier [full ablation report](../runs/ablations/full/report.md) used the
-550-target Lumber segmentation, before target 1,000 was selected. In that run,
-Lumber with dense retrieval and a 1,024-word evidence budget produced the best
-LLM-judge mean (2.032) and BERTScore F1 (0.228). Lumber with dense retrieval at
-2,048 words produced the highest retrieval recall (0.686), while Lumber with
-hybrid retrieval at 2,048 words produced the highest ROUGE-L (0.216).
+The [validation ablation report](../runs/ablations/validation-full/report.md)
+uses the selected 1,000-target Lumber segmentation. Across all validation
+conditions, word-packed dense retrieval at 2,048 words produced the highest
+retrieval recall (0.676), Lumber hybrid at 2,048 words produced the highest
+ROUGE-L (0.214), turn-packed dense at 2,048 words produced the highest
+BERTScore F1 (0.227), and turn-packed hybrid at 2,048 words produced the best
+judge mean (2.014).
 
-This pattern motivates 1,024 words as the primary operating point: increasing
-the budget to 2,048 improves evidence coverage but does not improve the best
-answer-quality results. Because the run used target 550, its answer results
-should not be presented as a held-out evaluation of the subsequently selected
-1,000-target configuration.
+These remain validation results used to characterize trade-offs and freeze the
+test design; they are not the held-out test estimate.
 
 ## Integrated interpretation
 
@@ -213,16 +209,17 @@ retrieval and constrained context, but its benefit is configuration-dependent.
 - Evidence selection: **exact-budget clipping**.
 - Boundary-shuffled controls: **secondary retrieval analysis only**.
 
-No additional broad validation sweeps are necessary. The next methodological
-step should be to freeze these decisions and run the held-out test evaluation
-once. Repeating analyses after observing test results would weaken the
-validation/test separation.
+These decisions were frozen before the completed held-out test evaluation.
+The validation analyses should remain parameter-selection evidence and should
+not be revised in response to the test outcomes.
 
 ## Limitations
 
 - All selections and sensitivity checks reuse one 20-meeting validation subset.
 - Boundary-control intervals are exploratory and are not corrected for nine
   comparisons.
+- Seeded bootstrap endpoints can vary slightly across Python patch versions;
+  the checked-in control used Python 3.11.2. Point estimates are unaffected.
 - The shuffled control exactly preserves chunk count and turns-per-chunk
   distribution, but matches word sizes approximately; its median is ten words
   below Lumber's.
@@ -233,3 +230,7 @@ validation/test separation.
   overflow and therefore do not offer perfectly equivalent comparisons.
 - Retrieval-only sensitivity results do not directly establish effects on
   generated answers.
+- The validation pipeline artifacts predate the preset rename and therefore
+  record `ablation-full.toml` in their audit-only `provenance.preset` field.
+  Their effective configurations and upstream hashes remain valid; use
+  `ablation-validation-full.toml` to reproduce the validation run now.

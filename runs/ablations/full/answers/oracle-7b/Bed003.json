@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "Bed003.json",
+        "sha256": "44a40d13c4f485240dc60acc5531374b4979f9ccc9b9415da059a13747754122"
+      }
+    },
+    "input_hash": "30006890b71eaaaae069fb6eb05f05385dd54d5d465acb4f4f2ca2de704b097f",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "2400d3ca4b5921bb38364b0d04c5e932c4e7d1613fc14b7aa1ceb65002604252",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bed003",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did Grad B say about the structure of the belief net?",
+      "reference_answer": "It is necessary for the belief-net to have at least one layer of nodes between the features and the final output. This makes the structure more flexible in terms of coding feature-layer probabilities. ",
+      "results": {
+        "oracle": {
+          "answer": "Grad B mentioned that setting up probabilities for a belief net would be a significant challenge due to the exponential growth in complexity with the number of features. Grad B also suggested adding a middle layer to the belief net to handle hidden variables such as whether someone was on a tour, running an errand, or in a hurry. These hidden variables were proposed to help extract concepts that might not be directly observable from the data.",
+          "rouge_f1": {
+            "rouge1": 0.23214285714285718,
+            "rouge2": 0.05454545454545454,
+            "rougeL": 0.1607142857142857
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              137,
+              150
+            ]
+          ],
+          "evidence_words": 513
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What was the next step on features?",
+      "reference_answer": "The next stage is to refine the set of feature nodes and identify possible clusters. Although, in theory, traditional AI plan recognition techniques could also be helpful for inferring intentions, the schemas involved are too elaborate for this task. ",
+      "results": {
+        "oracle": {
+          "answer": "The next step on features, according to the meeting excerpts, involves considering the plans and schemas that participants might be following, such as visiting a place as a tourist or for business purposes. Specifically, Grad D suggests looking at plan schemas to understand the context and potential steps involved in discussions about admission fees or similar topics.",
+          "rouge_f1": {
+            "rouge1": 0.2708333333333333,
+            "rouge2": 0.02127659574468085,
+            "rougeL": 0.18749999999999997
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              778,
+              820
+            ]
+          ],
+          "evidence_words": 1464
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Summarize what was said on intentionality",
+      "reference_answer": "There was a demonstration of the structure and the function of a toy version of the belief-net for the intentionality task. The features nodes include things like prosody, discourse, verb choice, \"landmark-iness\" of a building, time of day and whether the admission fee was discussed.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion on intentionality was not explicitly addressed in the provided excerpts. The participants primarily focused on adjusting the presentation window and discussing features related to building descriptions, such as prosody, discourse, verb choice, and landmark-iness. There were no clear statements or questions regarding intentionality.",
+          "rouge_f1": {
+            "rouge1": 0.3870967741935484,
+            "rouge2": 0.0879120879120879,
+            "rougeL": 0.23655913978494622
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              54,
+              76
+            ]
+          ],
+          "evidence_words": 420
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "How would the middle layer work?",
+      "reference_answer": "The values these nodes take feed into the middle layer nodes identified as hidden variables of the user/device interaction, such as whether the user is on tour, running an errand or in a hurry. These, in turn, help infer whether the user wants to see, enter or simply approach a building.",
+      "results": {
+        "oracle": {
+          "answer": "The middle layer would work by identifying hidden variables such as whether someone is a tourist, running an errand, or in a hurry. These variables help determine the context of the user's intent based on their previous communications and desired destinations. For instance, if a user is in a hurry, they are less likely to spend time viewing things, and their destination might serve as a navigational point to another location.",
+          "rouge_f1": {
+            "rouge1": 0.46774193548387094,
+            "rouge2": 0.24590163934426232,
+            "rougeL": 0.3709677419354838
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              141,
+              148
+            ]
+          ],
+          "evidence_words": 330
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What was the importance of SmartKom?",
+      "reference_answer": "SmartKom, although it does not code for intentions as specified in this task, provides a model of the discourse, which can be useful for the detection of features through querying and anaphora resolution. ",
+      "results": {
+        "oracle": {
+          "answer": "SmartKom's importance lies in its ability to handle discourse processing, particularly through its elaborate discourse history module. This module acts as the system's memory, storing information from previous turns of conversation to aid in tasks such as anaphora resolution and coordinating gestures with the screen. Specifically, it allows the system to remember details from earlier parts of a conversation, such as admission fees discussed in previous turns, and provides a clear interface for querying this information. This feature is crucial for maintaining context and coherence in multi-turn dialogues.",
+          "rouge_f1": {
+            "rouge1": 0.33870967741935487,
+            "rouge2": 0.03278688524590164,
+            "rougeL": 0.14516129032258063
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              782,
+              796
+            ]
+          ],
+          "evidence_words": 652
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What was said about hiring?",
+      "reference_answer": "Experiments for the collection of new data will start soon, since someone who will recruit subjects and help run the experiments has already been hired and the designing of the experiments has also progressed significantly.",
+      "results": {
+        "oracle": {
+          "answer": "Regarding hiring, Grad A mentioned interviewing Fey, who is willing to serve as the wizard for data collection, transcribe, and recruit subjects. Jerry suggested a trial run to assess Fey's ability to perform spontaneously and creatively. Grad A also noted that Liz volunteered to be the first trial run subject, which was considered better than using the team members themselves. The team discussed the possibility of one of them stepping in for technical support if needed.",
+          "rouge_f1": {
+            "rouge1": 0.3214285714285714,
+            "rouge2": 0.01818181818181818,
+            "rougeL": 0.1607142857142857
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              944,
+              960
+            ]
+          ],
+          "evidence_words": 401
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "IS1003d.json",
+        "sha256": "3ab9267840db923f9a5e85116d4672d517baeba9439110b9108c0c491bc816fd"
+      }
+    },
+    "input_hash": "c5af2ba3ad325df58222a37b61211c90bfe8a88c2f8df5c2c71043c7daea64f5",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "1a498901a806b6a2c0970b8ae67f9c1b12a75f40ee633dda5aac847d852ffcc0",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "IS1003d",
+  "question_count": 9,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 9,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about product appearance.",
+      "reference_answer": "The user interface designer put forward that the basic colour would be red and yellow and there would be two basic shapes - circle and triangle, which was called a mushroom design. Specifically, the prototype had 3 key features - a fuzzy look, a spherical channel selection and a stable triangle base. However, the marketing thought mushroom was not in the trends so the group decided to change it into a pineapple.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the product appearance includes the following points:\n\n- The prototype is made of clay and has a basic color scheme of yellow (the company color) and red, which is considered more attractive.\n- The shapes include a circular and triangular design, referred to as a \"mushroom design\" due to its resemblance to mushrooms.\n- The product features a fuzzy design intended to be unique in the market.\n- It includes a circular channel selection mechanism instead of traditional buttons for convenience.\n- The base is a stable triangle shape.\n- Buttons are shaped like mushrooms.\n- There was a brief debate about whether the product should be called a mushroom or if it should incorporate fruit and vegetable themes, with the consensus leaning towards considering the design as inspired by colorful and sophisticated materials rather than strictly mushrooms.",
+          "rouge_f1": {
+            "rouge1": 0.4019607843137255,
+            "rouge2": 0.10891089108910891,
+            "rougeL": 0.23529411764705882
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              45,
+              116
+            ]
+          ],
+          "evidence_words": 721
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did the user interface think the basic colour should be yellow and red when talking about the product appearance?",
+      "reference_answer": "Because yellow was their company colour and red was more attractive, which met the product requirement that the remote control should have a fancy look to attract the customers.",
+      "results": {
+        "oracle": {
+          "answer": "The User Interface stated that the basic colours chosen for the product were yellow and red because yellow is the company colour and red is more attractive. Therefore, they used these two colours in the product's appearance.",
+          "rouge_f1": {
+            "rouge1": 0.3880597014925373,
+            "rouge2": 0.2153846153846154,
+            "rougeL": 0.2985074626865672
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              45,
+              60
+            ]
+          ],
+          "evidence_words": 147
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Why did the marketing disagree with the user interface designer on the shape of the product when discussing product appearance?",
+      "reference_answer": "In the user interface designer's design, the shape of the product and the buttons were all mushrooms, but the marketing thought mushroom was not in the trends because mushroom was neither a vegetable nor a fruit.",
+      "results": {
+        "oracle": {
+          "answer": "The marketing disagreed with the user interface designer on the shape of the product when discussing product appearance because the marketing believed that the \"mushroom\" design was not trendy. Instead, they suggested that fruits were more in trend, indicating that the product's appearance should align with current fashion or consumer preferences rather than a mushroom shape.",
+          "rouge_f1": {
+            "rouge1": 0.5319148936170213,
+            "rouge2": 0.1956521739130435,
+            "rougeL": 0.36170212765957444
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              51,
+              106
+            ]
+          ],
+          "evidence_words": 581
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about product evaluation.",
+      "reference_answer": "The marketing suggested measuring how good the design was instead of just talking about it so the group started to judge the design in three aspects on a scale of one to seven, one being true and seven being false. The criterion was how fancy, technologically innovative, and easy-to-use the remote control was and it got three, two, and four in separate aspects, which meant it was acceptable.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed evaluating the remote control based on three criteria: fancy look and feel, technological innovation, and ease of use. They used a 1-7 scale where 1 indicated \"true\" and 7 indicated \"false.\"\n\nFor the fancy look and feel, they agreed the color was acceptable but noted there was too much red. They gave it a score of 3, indicating it was acceptable but not outstanding.\n\nRegarding technological innovation, they acknowledged the embedded microphone array and the ability to recognize vocal commands. However, they were unsure if it was truly innovative enough. They scored it a 2, suggesting it was somewhat acceptable but not highly innovative.\n\nFinally, for ease of use, they debated the intuitiveness of turning the remote to change channels versus using vocal commands. While they found the vocal commands easy, they were concerned about the practicality of turning the remote while holding it. They ultimately scored it a 4, indicating it was reasonably easy to use but needed further refinement.\n\nOverall, the project was accepted but with the suggestion for further work, particularly on making it more user-friendly and transforming its design into a more fruit-like shape, such as a pineapple.",
+          "rouge_f1": {
+            "rouge1": 0.29104477611940294,
+            "rouge2": 0.06766917293233082,
+            "rougeL": 0.15671641791044774
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              143,
+              538
+            ]
+          ],
+          "evidence_words": 3138
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Why did the group think the design was technologically innovative?",
+      "reference_answer": "The controller had an embedded microphone array which could recognise simple vocal commands and the four microphones could capture voice from different directions. It also had tactile buttons, which was a really good point.",
+      "results": {
+        "oracle": {
+          "answer": "The group thought the design was technologically innovative because it included an embedded microphone array with four microphones capable of capturing voice commands from different directions. This feature allowed for advanced voice recognition capabilities, which was seen as a unique and innovative aspect of the design. Additionally, the round shape of the remote control was noted as something not commonly seen before, adding to its perceived technological novelty.",
+          "rouge_f1": {
+            "rouge1": 0.3921568627450981,
+            "rouge2": 0.16,
+            "rougeL": 0.29411764705882354
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              260,
+              298
+            ]
+          ],
+          "evidence_words": 299
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "Why did the marketing and the industrial designer disagree with the user interface designer when judging whether the controller was easy to use?",
+      "reference_answer": "The user interface designer thought it was easier than a traditional controller because you didn't have to press a button, just turn the ball to a certain angle to select channels. However, the marketing and the industrial designer thought it was quite difficult because users didn't know the angle was the correct one and they had to go through all the channels if they wanted to jump from channel one to twenty.",
+      "results": {
+        "oracle": {
+          "answer": "The marketing and the industrial designer disagreed with the user interface designer when judging whether the controller was easy to use because they found it difficult to intuitively turn the controller to change channels, especially when jumping from one specific channel to another far apart (e.g., from channel one to channel twenty). They questioned how users would know the exact angle needed to reach a specific channel without counting degrees, which they felt was impractical. Additionally, they noted that the controller had to remain stationary on a flat surface while being used, which limited its portability compared to traditional controllers that could be easily held and operated with one hand. These factors made them less convinced of the controller's ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.45454545454545453,
+            "rouge2": 0.16326530612244897,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              299,
+              525
+            ]
+          ],
+          "evidence_words": 1988
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "Summarize the discussion about industrial design and quotation.",
+      "reference_answer": "The group decided that the product would have a low level chip, one button with LCD, a scroll wheel with a push button on it, a battery in the base, a single curve, and solar cells and it would be plastic instead of wooden so that the costs were 12.5 Euros which was within the budget. Furthermore, they came up with some new ideas about future products, such as a fruit collection of electronic devices or a customizable TV that followed the trend and people's moods.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about industrial design and quotation focused on the components and cost of a remote control. The remote control includes a low-level chip, LCD button, battery located in the base, and solar cells. Initially, there was consideration of using multiple solar cells, but it was decided to reduce the number to one due to cost concerns. The design included a double-curved case, which was later simplified to a single curve to reduce costs. The team discussed removing the sample sensor and keeping voice recognition. They also considered changing the material from wood to plastic to save costs. The final design included one button and an integrated scroll wheel with a push button. The total cost was set at twelve and a half Euros, with the solar cells being the most expensive component. The team acknowledged that the solar cells were costly but believed they added value for marketing purposes.",
+          "rouge_f1": {
+            "rouge1": 0.4083333333333334,
+            "rouge2": 0.14285714285714285,
+            "rougeL": 0.225
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              117,
+              142
+            ],
+            [
+              539,
+              882
+            ]
+          ],
+          "evidence_words": 2879
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "Why did the group decide to keep the solar cells when discussing the industrial design?",
+      "reference_answer": "Although solar cell was the most expensive part of the whole product, it still played a crucial role in making the controller technologically innovative. Plus, it would be interesting for their marketing team to make a lot of advertisements to sell it.",
+      "results": {
+        "oracle": {
+          "answer": "The group decided to keep the solar cells despite their high cost because the Project Manager suggested that they would be an interesting feature for marketing purposes and would make the product technologically innovative. The Marketing team agreed that highlighting the solar cells could be a strong selling point.",
+          "rouge_f1": {
+            "rouge1": 0.41758241758241765,
+            "rouge2": 0.11235955056179774,
+            "rougeL": 0.24175824175824176
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              730,
+              770
+            ]
+          ],
+          "evidence_words": 287
+        }
+      }
+    },
+    {
+      "question_index": 8,
+      "question": "Why did the industrial designer disagree with the marketing when talking about some new ideas about future products?",
+      "reference_answer": "The marketing thought they should not trust too much the trend because it wouldn't last long - fruits and vegetables were in fashion this year but maybe next year it would be insects. However, the industrial designer believed it was good to follow the flow now and then since electronic devices were not long life products: if people changed, the product appearance should change as well.",
+      "results": {
+        "oracle": {
+          "answer": "The industrial designer disagreed with the marketing team about following trends in product design. The marketing team was skeptical about trends, noting that they may not last long (e.g., \"fruit and vegetables it won't last for ten years\" [814], \"Maybe two years it's dead\" [817]). In contrast, the industrial designer believed it was beneficial to follow trends and adapt products accordingly (\"But I think it's good to follow the f flow and you know make it now and after, you know, if the people change their mind you change also the product\" [820]). The industrial designer suggested making customizable products that could be updated to match changing consumer preferences over time (\"you just change the appearance, and y y you can keep\" [831]).",
+          "rouge_f1": {
+            "rouge1": 0.4248704663212435,
+            "rouge2": 0.18848167539267013,
+            "rougeL": 0.3316062176165803
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              806,
+              847
+            ]
+          ],
+          "evidence_words": 360
+        }
+      }
+    }
+  ]
+}

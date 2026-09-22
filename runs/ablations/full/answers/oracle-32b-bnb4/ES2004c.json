@@ -1,0 +1,339 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "ES2004c.json",
+        "sha256": "bf806cd5ea87dd518c0391f74817ddadf22710e8c1425760faa8e649a9528c67"
+      }
+    },
+    "input_hash": "a270da50b109944c970fcb2f4dd7decdc6056d9e943411e857ad37651293805c",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "7c877415874813bb3826181b51fd7df14afca5ec08bf9b092be88e18911de68c",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "ES2004c",
+  "question_count": 11,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 11,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the team decide on in the last meeting?",
+      "reference_answer": "Teletext will not be used and there will not be a control for everything. The buttons should be easy to find. The image of the company is to be incorporated in the design and a flip design is decided. Voice recognition is left out. The shape of the remote will be different than normal, like a shell or something along those lines. An alarm will be added in case the remote is lost. The target market will be young business people.",
+      "results": {
+        "oracle": {
+          "answer": "The team decided on the following in the last meeting:\n\n1. Leaving out voice recognition.\n2. Implementing a flip design.\n3. Using a different shape, such as a shell-like design.\n4. Incorporating the company's image into the product.\n5. Considering rechargeable batteries.\n6. Thinking about adding a port and an alarm feature to prevent loss.\n7. Targeting the market towards young business users.",
+          "rouge_f1": {
+            "rouge1": 0.4657534246575342,
+            "rouge2": 0.11111111111111112,
+            "rougeL": 0.2191780821917808
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              23,
+              29
+            ]
+          ],
+          "evidence_words": 174
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Summarize the discussion about the feedback on the design of the remote control device.",
+      "reference_answer": "Market research was done with a hundred subjects and Marketing concluded the most important aspect required in the device is a fancy look and feel. The second and third important aspects are technologically innovative and being easy to use. Fruits and vegetables can be taken into consideration when thinking about design themes as they were the themes of fashion fairs in Paris and Milan. There is also a trend towards a spongy feel to materials.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the feedback on the design of the remote control device highlighted several key points:\n\n1. Market research with 100 subjects indicated that users prioritize a \"fancy look and feel\" over technological innovation and ease of use.\n2. The fancy look and feel was deemed twice as important as technological innovation, which itself was twice as important as ease of use.\n3. Fashion trends from Paris and Milan consultants suggested themes of fruit and vegetables for clothing, shoes, and furniture, raising the possibility of incorporating similar themes into the remote control design.\n4. There is also a trend towards a spongy feel in materials, contrasting with previous years, which could influence the remote control's tactile design.\n\nThese insights aim to guide the design team in creating a remote control that aligns with current market and fashion trends.",
+          "rouge_f1": {
+            "rouge1": 0.48372093023255813,
+            "rouge2": 0.18779342723004694,
+            "rougeL": 0.27906976744186046
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              37,
+              44
+            ]
+          ],
+          "evidence_words": 454
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What are the actual components found in most remote controls that will be included in this remote design?",
+      "reference_answer": "Industrial Designer explained that TA11835 is a chip used in pretty much every remote control to send out standard signals based on the input. On the other hand, most current remotes use a silicone printed circuit board (PCB board) which connects the circuits so that the messages would be sent to the chip. The size should be decided as the board can be custom made.",
+      "results": {
+        "oracle": {
+          "answer": "The actual components found in most remote controls that will be included in this remote design are:\n\n1. **T_A_ double one eight three five chip**: This chip sends out standard signals based on user input and is commonly used in TV remotes.\n2. **Silicone P_C_B_ (Printed Circuit Board)**: This board has closely spaced contacts that connect circuits when pressed, with each switch connected to two different legs on the chip to send unique messages.\n3. **L_E_D_ (Light Emitting Diode)**: This component translates the chip's code into a sequence of on and off bursts to transmit signals.\n\nThese components are essential for the functionality and design of the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.4222222222222222,
+            "rouge2": 0.1348314606741573,
+            "rougeL": 0.26666666666666666
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              64,
+              64
+            ],
+            [
+              197,
+              202
+            ]
+          ],
+          "evidence_words": 345
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What are the benefits and drawbacks for each battery option mentioned and what did Industrial Manager suggest to conserve battery life when discussing the design and availability of actual components?",
+      "reference_answer": "Standard AA and AAA are bulky but the cheapest. Dynamo and dual charging with normal batteries and solar charging take up too much space. Solar charging is the second cheapest but not resistant to dropping. Also, Project Manager believed it would limit the market. Kinetic charging is small and portable but market research should be done first. No rechargeable battery options were available. The remote could have a standby mode and the lights behind the buttons would be switched off after five or ten seconds when not in use.",
+      "results": {
+        "oracle": {
+          "answer": "The battery options discussed are:\n\n1. **Standard Double A and Triple A Batteries**:\n   - **Benefits**: Cheapest option.\n   - **Drawbacks**: Bulky and not rechargeable.\n\n2. **Dynamo Charging (Wind-Up)**:\n   - **Benefits**: No need for external power sources.\n   - **Drawbacks**: Requires manual winding, bulky due to the need for a physical handle, and may not be practical for frequent use.\n\n3. **Solar Charging**:\n   - **Benefits**: Can charge during the day for use at night.\n   - **Drawbacks**: Expensive, not resistant to drops, and may affect exterior design due to the size of solar cells needed. Also, not suitable for environments without sunlight.\n\n4. **Kinetic Charging**:\n   - **Benefits**: Charges through movement, no manual intervention required, and can last long periods without needing to be shaken.\n   - **Drawbacks**: Uncertainty about its effectiveness in a remote control context compared to a wristwatch.\n\nIndustrial Manager suggested conserving battery life by having the remote control enter a standby mode when not in use. Specifically, they proposed turning off lights behind the buttons after five or ten seconds of inactivity.",
+          "rouge_f1": {
+            "rouge1": 0.43650793650793646,
+            "rouge2": 0.152,
+            "rougeL": 0.2698412698412698
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              66,
+              193
+            ],
+            [
+              203,
+              207
+            ]
+          ],
+          "evidence_words": 1718
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Summarize the discussion of the design of actual components regarding case material.",
+      "reference_answer": "Titanium is too expensive, would be easily dented and could only do a standard box shape whereas plastic could be made into different curved shapes. Marketing suggested making the basic mould out of plastic with a rubber cover, which would give a spongy feel and be a cheap way to change the look of the device. Industrial Designer, User Interface and Project Manager quickly jumped on board with this idea.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion on the design of actual components regarding case material focused on several options:\n\n- **Plastic**: Preferred for its flexibility in design, allowing for curved shapes and ease of manufacturing. Plastic is seen as the main case housing material.\n- **Wood**: Considered impractical due to its nature.\n- **Titanium**: Expensive to process and manufacture, limiting design to a standard box shape. It was noted that titanium marks easily if dropped and is costly for customers to replace, making it less viable for frequent changes in appearance.\n- **Rubber**: Suggested for its spongy feel, preferred for buttons to reduce repetitive strain injury (RSI). The idea of a rubber cover over a plastic base was proposed to allow for easy color changes and a customizable look, similar to mobile phone skins or pen grips.\n\nMarketing suggested a plastic base with a removable rubber cover for a customizable and comfortable feel, which was agreed upon as a feasible and cost-effective solution.",
+          "rouge_f1": {
+            "rouge1": 0.33628318584070793,
+            "rouge2": 0.08035714285714286,
+            "rougeL": 0.16814159292035397
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              208,
+              257
+            ]
+          ],
+          "evidence_words": 662
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "Summarize the discussion of the design of actual components regarding interface design.",
+      "reference_answer": "The team planned to do touch screen and there are two options to choose from, a bare PCB circuit board which could be in different colours and making a connection by the touch of fingers, and anti RSI rubber buttons with a LCD type of screen. Industrial Designer doubted whether a LCD screen is wanted as it would only be in black and white but have not thought out how to distinguish where to press if the bare PCB circuit board is used.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion centered around the design options for the device's interface, specifically focusing on touch screens and button alternatives. The Industrial Designer proposed two main options: a bare PCB circuit board with touch connections and an LCD screen. The LCD screen was noted for its thinness, ability to arrange buttons in an array, and touch functionality. However, concerns were raised about the flat nature of the LCD screen limiting curved designs. The Project Manager suggested that a flat screen could still work within a curved shell. The LCD screen would be black and white with touch buttons, contrasting with the exterior rubber buttons designed to be anti-RSI. The Project Manager favored a visually distinct interior to enhance user experience. The Industrial Designer acknowledged the challenge of distinguishing touch areas on a bare PCB without visual markers.",
+          "rouge_f1": {
+            "rouge1": 0.4253393665158371,
+            "rouge2": 0.11872146118721459,
+            "rougeL": 0.28054298642533937
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              260,
+              292
+            ]
+          ],
+          "evidence_words": 503
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "What did the team think about Marketing's suggestion of a sort of stylus to press the touch screen on the device when discussing the design of actual components?",
+      "reference_answer": "Industrial Designer thought it would be lost easily and Marketing responded that it would be easy and cheap to replace or a pencil or pen could be used instead. User Interface pointed out that a person who switches channels often or uses a particular function will find it irritating to use and might spoil the touchpad more easily compared to a button. Industrial Designer agreed with User Interface.",
+      "results": {
+        "oracle": {
+          "answer": "The team had mixed thoughts about Marketing's suggestion of a sort of stylus to press the touch screen on the device. The Industrial Designer agreed that it was possible to have such a stylus but noted that it could easily get lost. The Project Manager suggested that it would have to be attached to prevent loss, and Marketing added that replacements could be cheap and easy. However, User Interface expressed concerns that frequent users might find it irritating and could potentially damage the touchpad more quickly than using buttons. Marketing also considered that users might not need a dedicated stylus since they could use any available object like a pencil or pen.",
+          "rouge_f1": {
+            "rouge1": 0.4861878453038674,
+            "rouge2": 0.1564245810055866,
+            "rougeL": 0.26519337016574585
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              294,
+              312
+            ]
+          ],
+          "evidence_words": 235
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "What did the team think of Marketing's idea of putting mirrors on the device when discussing the design of actual components?",
+      "reference_answer": "Project Manager believed that it would not appeal to men as they were unlikely to use it when watching television. Marketing responded by leaving this idea on the side, and Industrial Designer and Project Manager agreed. In the end, Marketing gave up on the idea.",
+      "results": {
+        "oracle": {
+          "answer": "The team had mixed reactions to Marketing's idea of incorporating mirrors into the device. The Project Manager expressed skepticism, questioning its practicality and relevance, especially for male users. The Industrial Designer seemed uncertain about the technical feasibility of achieving a mirror effect on an LCD display. Ultimately, Marketing decided to set aside the idea, considering it a \"very quick passing thought.\"",
+          "rouge_f1": {
+            "rouge1": 0.29906542056074764,
+            "rouge2": 0.05714285714285714,
+            "rougeL": 0.20560747663551404
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              327,
+              351
+            ]
+          ],
+          "evidence_words": 350
+        }
+      }
+    },
+    {
+      "question_index": 8,
+      "question": "Summarize the design and availability of actual components.",
+      "reference_answer": "The chip TA11835 and PCB board will be used in the device. The use of kinetic charging was agreed by the team with a standby mode to save battery. The case of the device would be in plastic and would have a changeable rubber cover. LCD screens will be adopted. The idea of adding a stylus or a mirror to the device was rejected.",
+      "results": {
+        "oracle": {
+          "answer": "The design and availability of actual components include:\n\n- **Chip**: The T_A_ double one eight three five (TA1835) chip is used, which is standard for TV remotes and sends out standard signals based on user input.\n- **Battery Options**: \n  - Standard AA and AAA batteries are available but considered too bulky.\n  - Rechargeable options are not available.\n  - Dynamo charging (wind-up) is considered impractical.\n  - Solar charging is feasible but limited by artificial light and cost.\n  - Kinetic charging (like wristwatches) is preferred due to its convenience and minimal space requirement.\n- **Case Material**:\n  - Plastic is the primary choice for the case due to its flexibility in design and cost-effectiveness.\n  - Wood and titanium are impractical due to cost and design limitations.\n  - Rubber is suggested for the buttons to provide an anti-RSI feel.\n- **Interface Design**:\n  - Bare PCB circuit board with close contacts for button presses.\n  - LCD screen option for touch buttons, though it would be black and white.\n  - Rubber buttons made of anti-RSI material are also an option.\n- **Circuit Board**:\n  - Silicone PCB board with closely spaced contacts for buttons.\n  - Two separate circuit boards for the flip-top design, connected by wires or cabling.\n- **Additional Features**:\n  - Standby mode to conserve battery life.\n  - Potential for a stylus for precise button pressing, though it could be easily lost.\n  - Customizable fascia (cover) for color changes, likely using a rubber sleeve for comfort and ease of replacement.",
+          "rouge_f1": {
+            "rouge1": 0.273972602739726,
+            "rouge2": 0.05517241379310345,
+            "rougeL": 0.13013698630136986
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              62,
+              351
+            ]
+          ],
+          "evidence_words": 4115
+        }
+      }
+    },
+    {
+      "question_index": 9,
+      "question": "What are the designs of normal remotes and how can the new remote be different from the normal ones?",
+      "reference_answer": "Mostly black and white colours, the normal ones are monotonous without consistency between models, and the buttons are very disorganized. The new remote will have a graphic user interface in the middle of the flip top and certain standard buttons with vibrant fruit colours. A newly developed speech recognition feature can be incorporated in the device and the idea was endorsed by customers. User Interface gave an example of using the feature - locating the remote. The idea was well-received by the team.",
+      "results": {
+        "oracle": {
+          "answer": "Normal remotes typically have a rectangular shape with a monotonous design, often black and white. They usually feature a cluttered arrangement of buttons, including repetitive functions such as volume and channel control, which are inconsistent across different models. \n\nThe new remote can differ by incorporating a GUI (Graphic User Interface) with icons or a touchpad, simplifying the layout and reducing button clutter. It will have a flip-top design with an LCD screen displaying buttons that can be touched for control. Additionally, it may include voice recognition features, allowing users to locate the remote through voice commands. The design will draw inspiration from vibrant colors, similar to fruits, making it more trendy and visually appealing. The standard central pattern for volume and channel control will remain consistent for user familiarity.",
+          "rouge_f1": {
+            "rouge1": 0.4225352112676056,
+            "rouge2": 0.12322274881516589,
+            "rougeL": 0.22535211267605634
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              353,
+              430
+            ]
+          ],
+          "evidence_words": 1186
+        }
+      }
+    },
+    {
+      "question_index": 10,
+      "question": "How can the cost be cut down if the speech recognition feature is adopted?",
+      "reference_answer": "Industrial Designer said that it would be cheaper to re-manufacture if these parts were already in stock. Project Manager pointed out that the other materials used were relatively cheap and simple. Though the LCD would be expensive, it would be cheaper with black and white than full colour so User Interface suggested that they could start off with black and white and upgrade later.",
+      "results": {
+        "oracle": {
+          "answer": "The excerpts provided do not contain any specific details on how adopting the speech recognition feature can directly cut down costs. The discussion revolves around the cost implications of other components like LCD screens and the potential to start with cheaper black and white displays. Therefore, based on the given excerpts, there is insufficient evidence to answer how the cost can be cut down specifically if the speech recognition feature is adopted.",
+          "rouge_f1": {
+            "rouge1": 0.20437956204379565,
+            "rouge2": 0.029629629629629627,
+            "rougeL": 0.13138686131386862
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              432,
+              448
+            ]
+          ],
+          "evidence_words": 171
+        }
+      }
+    }
+  ]
+}

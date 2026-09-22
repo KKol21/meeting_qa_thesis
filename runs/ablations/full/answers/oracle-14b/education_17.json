@@ -1,0 +1,354 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "education_17.json",
+        "sha256": "2005e2e6d6d77c5abdd30aec3f46cf097ae1ed26b497b4dce5500e88ed28c618"
+      }
+    },
+    "input_hash": "487d6d7f1cc229057f9e172d6508ccc63732152db11ab5b6a3ecbe03bc5be4ff",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "b87a4db9482508fe5ae7a3c91fcc57ed548d336a9f3dad421273c682fd6cacc3",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "education_17",
+  "question_count": 12,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 12,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group discuss about how much employers understood the meaning of Welsh bac?",
+      "reference_answer": "They all agreed that most employers did not have a clear understanding of what Welsh bac means or what it includes, which was a big problem not only for employers, but also for parents and young people. Though some small engaged employers did understand it, the vast majority focused more on running the business without a clear understanding.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed that employers do not have a clear understanding of the Welsh bac's meaning or its contents. Dafydd Evans stated that employers do not understand the value or purpose of the Welsh bac. Dr. Rachel Bowen noted that larger employers might have more capacity to stay informed about educational changes, but smaller businesses are often too focused on daily operations to fully grasp what the Welsh bac offers. Nick Brazil mentioned that few employers understand the Welsh bac and questioned whether it provides necessary professional skills. Kay Martin agreed, adding that employers prioritize specific professional qualifications and digital skills, which may not be adequately covered by the Welsh bac. Ed Evans suggested that if employers were more engaged and supportive of the Welsh bac, they would likely appreciate its benefits, especially for students from less academic backgrounds.",
+          "rouge_f1": {
+            "rouge1": 0.3232323232323232,
+            "rouge2": 0.07142857142857144,
+            "rougeL": 0.21212121212121213
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              2,
+              12
+            ]
+          ],
+          "evidence_words": 909
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Ed Evans (director and secretary of the Civil Engineering Contractors Association) think about employers' understanding of Welsh bac?",
+      "reference_answer": "Ed Evans thought employers did not understand it, but they would appreciate it if they do. This was particularly true for his own sector, the civil engineering sector, and particularly contracting sector. Because pupils usually did not have a very strong academic background in this sector, and Welsh bac gave them the opportunity to not pursue that much of academic, but tested them in terms of the challenges. Therefore, the growth of the Welsh bac would be valued at least for this sector.",
+      "results": {
+        "oracle": {
+          "answer": "Ed Evans thinks that employers currently do not understand the Welsh bac, but if they did, they would appreciate it, especially in the civil engineering sector where it can benefit pupils from less academic backgrounds by providing practical challenges and industry engagement. He believes that the Welsh bac has not been effectively marketed to employers to encourage their involvement.",
+          "rouge_f1": {
+            "rouge1": 0.4788732394366197,
+            "rouge2": 0.18571428571428572,
+            "rougeL": 0.30985915492957744
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              9,
+              12
+            ]
+          ],
+          "evidence_words": 234
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did they decide on how to improve employers' understanding of the Welsh bac?",
+      "reference_answer": "They proposed that the voice of employers should be a key part of reviewing the qualification. Instead of colleges or qualifications boards doing this, employers themselves should do this qualification, which accorded to the vision of the Welsh baccalaureate, to improve skills for employment. They really should join employers and schools and education facilities together more in the future.",
+      "results": {
+        "oracle": {
+          "answer": "They decided to increase employer involvement in the Welsh bac by making employers feel more ownership over the qualification, likely through more structured and coordinated methods such as linking social value-type contracts to school and college inputs, and possibly integrating successful existing programs like Career Ready that effectively engage employers.",
+          "rouge_f1": {
+            "rouge1": 0.3090909090909091,
+            "rouge2": 0.07407407407407408,
+            "rougeL": 0.14545454545454545
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              14,
+              18
+            ]
+          ],
+          "evidence_words": 593
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the views about how well the Welsh bac helped to prepare learners for employment.",
+      "reference_answer": "One thing needing to be cleared was that Welsh bac was a combination of qualifications, but not just one qualification. To develop the employability skills was obviously a key part of it, but not all of it. It obviously worked well to help prepare for employment, but was not for everyone, because some people had to do the other things. It helped prepare some people, such as the A level students for university, but did not help health and social care people become more skilled and employable.",
+      "results": {
+        "oracle": {
+          "answer": "The views expressed suggest that the Welsh bac has mixed effectiveness in preparing learners for employment. Dafydd Evans and Nick Brazil indicate that the emphasis on resitting GCSEs often takes precedence over the Welsh bac, particularly at levels 1 and 2, reducing its implementation. They argue that this prioritization limits the time and resources available for the Welsh bac, potentially diminishing its role in developing employability skills. Kay Martin acknowledges that while the Welsh bac can help prepare some learners, especially those pursuing A-levels for university, it may not be effective for others, such as those in vocational programs who already struggle with foundational skills like literacy and numeracy. Overall, there is a consensus that the current structure and prioritization of the Welsh bac need review to better align with the goal of enhancing employability.",
+          "rouge_f1": {
+            "rouge1": 0.3139013452914798,
+            "rouge2": 0.07239819004524886,
+            "rougeL": 0.17040358744394618
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              27,
+              31
+            ]
+          ],
+          "evidence_words": 582
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Summarize Kay Martin (principal of Cardiff and Vale College) opinion on how well the Welsh bac helped to prepare learners for employment.",
+      "reference_answer": "Kay Martin agreed with other people's opinion. They tried their best to help learners to develop skills and employable people. Welsh bac worked well for preparing employment for some people, but not for everybody. Because some people came to school with very few GCSAs, or were lacking literacy or numeracy skills. Kay Martin thought this needed to be reviewed, to look at how they could actually make skilled and employable people.",
+      "results": {
+        "oracle": {
+          "answer": "Kay Martin believes that the Welsh bac helps prepare some learners for employment, particularly those pursuing A-levels for university, but it is not effective for all learners, especially those in vocational programs like health and social care. She suggests that it needs to be reviewed to better prepare skilled and employable individuals across different educational paths.",
+          "rouge_f1": {
+            "rouge1": 0.3565891472868217,
+            "rouge2": 0.1259842519685039,
+            "rougeL": 0.27906976744186046
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              31,
+              31
+            ]
+          ],
+          "evidence_words": 175
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "Summarize Dafydd Evans' (chair of ColegauCymru) and Nick Brazil's (deputy principal) opinion on how well the Welsh bac helped to prepare for employment?",
+      "reference_answer": "Dafydd Evans though that one of the problems was that there were a number of priorities. For example, there were a number of students who needed to resit their GCSE. It was important for everybody to get a C grade in those core subjects, but that would take some time from them teaching young people. Therefore, there were fewer and fewer doing level 1 and 2 in the baccalaureate because they were resitting their GCSEs. Nick Brazil added that Welsh bac was a combination of qualifications, and developing the employment was one of the key parts, but not all of it.",
+      "results": {
+        "oracle": {
+          "answer": "Dafydd Evans and Nick Brazil both expressed concerns about the Welsh bac's ability to prepare students for employment due to competing priorities and resource constraints. Evans noted that the emphasis on GCSE resits leaves little room for the Welsh bac, especially at levels 1 and 2. Brazil highlighted that while the Welsh bac aims to develop employability skills, the pressure to achieve specific qualifications often overshadows the focus on these skills, leading to potential neglect of the bac's intended benefits for employability.",
+          "rouge_f1": {
+            "rouge1": 0.32432432432432434,
+            "rouge2": 0.07650273224043716,
+            "rougeL": 0.2054054054054054
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              28,
+              30
+            ]
+          ],
+          "evidence_words": 361
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "Summarize the views to what extent they believe that universities understood the value of the Welsh bac.",
+      "reference_answer": "They thought most universities did not understand, based on some experience they had with some of their learners that went to Russell Group universities. But this depended on the admission tutors and the areas that they were going. Some areas valued it more, but some others did not.",
+      "results": {
+        "oracle": {
+          "answer": "The participants believe that the understanding of the value of the Welsh bac among universities is mixed. Local universities like the University of South Wales and Cardiff Metropolitan University value it significantly, particularly in subjects such as sport and business studies. However, Russell Group universities often do not value the Welsh bac as highly, sometimes requiring it as an additional qualification rather than substituting for an A-level. Admissions tutors generally prefer traditional A-levels over the Welsh bac, especially for facilitating subjects. The perception varies widely depending on the specific university and subject area, with some institutions being more receptive than others.",
+          "rouge_f1": {
+            "rouge1": 0.2913907284768212,
+            "rouge2": 0.09395973154362416,
+            "rougeL": 0.17218543046357615
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              47,
+              58
+            ]
+          ],
+          "evidence_words": 706
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "What did Nick Brazil (deputy principal) think about to what extent that universities understood the value of the Welsh bac?",
+      "reference_answer": "Nick Brazil proposed an example of the institution himself was in. They had a long track record of getting learners into top universities. 50 percent of those Russell Group universities did not value Welsh bac for sure. But there were some offering an option with the Welsh bac, and those said it was on top of three A2 level grades.",
+      "results": {
+        "oracle": {
+          "answer": "Nick Brazil thought that the understanding of the value of the Welsh bac among universities was variable. He noted that while some universities do not value the Welsh bac, others offer it as an additional qualification on top of three A2-level grades. Brazil highlighted that this variability affects Welsh students competing for places in top universities against students from other regions who study fewer subjects. He also mentioned that the Welsh bac is currently not considered a facilitating subject by the Russell Group.",
+          "rouge_f1": {
+            "rouge1": 0.4444444444444444,
+            "rouge2": 0.19718309859154928,
+            "rougeL": 0.2777777777777778
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              52,
+              52
+            ]
+          ],
+          "evidence_words": 294
+        }
+      }
+    },
+    {
+      "question_index": 8,
+      "question": "What was the situation in north Wales when discussing to what extent that universities understood the value of the Welsh bac?",
+      "reference_answer": "Welsh universities were much more willing to recognize the bac. Therefore, it was not a huge problem there. However, students who were looking to go out to universities in England encountered some problems. But in terms of Bangor and Glyndŵr University, there was no problem.",
+      "results": {
+        "oracle": {
+          "answer": "In north Wales, universities like Bangor and Glyndŵr were fully recognizing the Welsh bac without any problems. However, for students applying to universities outside Wales, particularly in the Russell Group, there were inconsistencies between the stated policies and actual practices during student interviews.",
+          "rouge_f1": {
+            "rouge1": 0.4222222222222222,
+            "rouge2": 0.11363636363636365,
+            "rougeL": 0.2666666666666666
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              54,
+              58
+            ]
+          ],
+          "evidence_words": 146
+        }
+      }
+    },
+    {
+      "question_index": 9,
+      "question": "Summarize their opinions on introducing a specialist teacher-training qualification to deliver the Welsh bac.",
+      "reference_answer": "They thought that a lot of skills and challenges that were done within the Welsh bac were very similar with the vocational qualification. Therefore, a number of those staff had already got those skills. Besides, for the vocational lecturers to do that, they had invested heavily in training those vocational lecturers to understand how to deliver the Welsh bac and got positive outcomes of the Welsh bac, which had been an intensive staff development process.",
+      "results": {
+        "oracle": {
+          "answer": "Dafydd Evans believes that introducing a specialist teacher-training qualification for the Welsh bac may not be effective, suggesting that vocational lecturers who contextualize the Welsh bac within their subjects have seen better results. Nick Brazil agrees that staff already possess many of the necessary skills due to similarities with vocational qualifications, and he worries that such a qualification might duplicate efforts. Kay Martin confirms that lecturers have dedicated time on their timetables to deliver the Welsh bac, and Ed Evans supports involving industry specialists to enhance the qualification's credibility and appeal to parents.",
+          "rouge_f1": {
+            "rouge1": 0.4235294117647059,
+            "rouge2": 0.16666666666666666,
+            "rougeL": 0.23529411764705882
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              119,
+              125
+            ]
+          ],
+          "evidence_words": 589
+        }
+      }
+    },
+    {
+      "question_index": 10,
+      "question": "What did Dafydd Evans (chair of ColegauCymru) think of introducing a specialist teacher training qualification?",
+      "reference_answer": "Dafydd Evans thought that if it were going to be a success, it would be contextualised. For the vocational lecturers to do that, they had to invest heavily in training those vocational lecturers to understand how to deliver the Welsh bac and get positive outcomes of the Welsh bac. And this had been an intensive staff development process.",
+      "results": {
+        "oracle": {
+          "answer": "Dafydd Evans does not think that introducing a specialist teacher-training qualification to deliver the Welsh bac would be effective. He believes it works better when vocational lecturers incorporate the Welsh bac into their existing curriculum after being trained extensively to understand how to deliver it effectively.",
+          "rouge_f1": {
+            "rouge1": 0.4571428571428571,
+            "rouge2": 0.23300970873786409,
+            "rougeL": 0.26666666666666666
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              119,
+              120
+            ]
+          ],
+          "evidence_words": 187
+        }
+      }
+    },
+    {
+      "question_index": 11,
+      "question": "What did Nick Brazil (deputy principal) think of introducing a specialist teacher training qualification?",
+      "reference_answer": "Nick Brazil thought the number of the skills and the number of challenges that were done within the Welsh bac were done very similarly within the vocational qualification. Therefore, a number of those staff had already got those skills and they had undertaken that.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence is insufficient to determine Nick Brazil's specific thoughts on introducing a specialist teacher training qualification. His comments focused on the skills of current staff and potential repetition of work due to existing vocational qualifications, rather than directly addressing a new specialist teacher training qualification.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.06741573033707865,
+            "rougeL": 0.21978021978021978
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              121,
+              121
+            ]
+          ],
+          "evidence_words": 133
+        }
+      }
+    }
+  ]
+}

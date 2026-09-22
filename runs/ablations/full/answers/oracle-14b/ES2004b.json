@@ -1,0 +1,220 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "ES2004b.json",
+        "sha256": "ffb37665e90baaaf7d8a7a2d3a6311d7458425f45f4082682ee9e5df1d7ca0bb"
+      }
+    },
+    "input_hash": "eebeea36dcd5e2d760032b82ef91cbe61108468a8ce1386f9e302691c0e58063",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "7474242a2838b3745a936da4f43a1d4f20bfac7b4b3706f6dc37b4d1d71f86cc",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "ES2004b",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group discuss about battery issues and flip top design?",
+      "reference_answer": "On battery issue, Industrial Designer expressed a desire to minimize the size of the battery. Meanwhile, cost, power consumption, wireless range and data transmission were supposed to be considered. User Interface's presentation followed. The remote control design would be simplified and user-friendly. To make the style more trendy, User Interface decided on a flip-top model.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed battery issues related to the size of the batteries and their impact on the overall size of the remote control. The Industrial Designer mentioned that most remote controls use triple-A batteries, which can be bulky and contribute to the larger size of the device. There was consideration given to exploring alternatives to reduce the size of the remote control.\n\nRegarding the flip-top design, the User Interface suggested a concept where the main frequently used functions would be on the top of the flip-top model, while more complex functions could be placed in the middle section. This design aimed to cater to a wide range of users, including younger generations who might want to program their favorite channels, while keeping the remote control user-friendly and simple to use.",
+          "rouge_f1": {
+            "rouge1": 0.37500000000000006,
+            "rouge2": 0.13684210526315788,
+            "rougeL": 0.23958333333333334
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              21,
+              85
+            ]
+          ],
+          "evidence_words": 1730
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Industrial Designer think of triple A batteries when discussing battery issues and flip top design?",
+      "reference_answer": "Industrial Designer admitted that current remote controls were mostly powered by triple A batteries. However, Industrial Designer also pointed out that they were bulky, although they had been the smallest fit-in batteries at present. Industrial Designer expressed a desire to find a smaller alternative for triple A batteries.",
+      "results": {
+        "oracle": {
+          "answer": "Industrial Designer thought that triple A batteries were bulky and contributed to the overall chunkiness of remote controls. They suggested considering other battery options to potentially shrink the size of the control.",
+          "rouge_f1": {
+            "rouge1": 0.345679012345679,
+            "rouge2": 0.12658227848101267,
+            "rougeL": 0.2716049382716049
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              31,
+              47
+            ]
+          ],
+          "evidence_words": 474
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Summarize the discussion about market research and adjustments due to new project requirements.",
+      "reference_answer": "The market research presented by Marketing implicated that the remote control design was expected to be more stylish and less complicated. Project Manager added that an ideal model would be for TV only and have a corporate logo incorporated. To meet the requirements above, Industrial Designer recommended a touch screen panel. Marketing suggested that the remote control size could be adjusted due to physical differences among international users. The team gave up speech recognition, for it would cost a lot. An alarm would be incorporated for detection in case the remote control was lost in the house.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion centered around market research findings indicating that users dislike the look and feel of current remote controls, with 75% finding them ugly and 80% willing to spend more for a fancier design. Users also frequently lose remote controls, use only 10% of the buttons, and find programming videos challenging. Due to new project requirements, the team decided to focus on a TV-only remote control, eliminating teletext and combining functions to reduce costs and improve user understanding. They considered incorporating a LCD screen and speech recognition but opted for simpler solutions due to budget constraints. Ergonomic concerns, especially related to repetitive strain injury, were noted, leading to discussions on touch screens and varying designs for different age groups and countries. The team agreed on designing one product adaptable for various markets, emphasizing a user-friendly manual and exploring rechargeable options. Design ideas included a flip-screen, ergonomic shapes, and integrating company logos subtly into the design.",
+          "rouge_f1": {
+            "rouge1": 0.35294117647058826,
+            "rouge2": 0.07114624505928856,
+            "rougeL": 0.19607843137254902
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              117,
+              478
+            ]
+          ],
+          "evidence_words": 5005
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Why did Industrial Designer think of incorporating an alarm when discussing market research and adjustments due to new project requirements?",
+      "reference_answer": "The market research implicated that users' biggest frustration was their failure in finding the remote control once it was lost in the house. To solve the problem, Industrial Designer suggested that a button could be added on the TV; when the user pressed the button, the remote control would beep to let the user know its location. Meanwhile, such a solution would be within budget.",
+      "results": {
+        "oracle": {
+          "answer": "Industrial Designer thought of incorporating an alarm because Marketing mentioned that fifty percent of users were frustrated by losing the remote control. The Industrial Designer suggested that, similar to keychains that emit a loud noise when whistled at, the remote could have a feature that emits a sound or signal to help locate it when lost. This suggestion aligns with the market research findings indicating user frustration with losing remote controls.",
+          "rouge_f1": {
+            "rouge1": 0.4117647058823529,
+            "rouge2": 0.13432835820895522,
+            "rougeL": 0.27941176470588236
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              119,
+              119
+            ],
+            [
+              171,
+              188
+            ]
+          ],
+          "evidence_words": 564
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Why did Industrial Designer think of physically different designs when discussing market research and adjustments due to new project requirements?",
+      "reference_answer": "Industrial Designer was inspired by the design of Xbox and gave an example of Japanese people's small hands compared to the big controller. Out of ergonomic considerations, Industrial Designer encouraged the team to notice the physical differences among users all over the world when deciding the remote control size.",
+      "results": {
+        "oracle": {
+          "answer": "Industrial Designer thought of physically different designs when discussing market research and adjustments due to new project requirements because of ergonomic considerations, specifically noting that Japanese people generally have smaller hands compared to those in other countries like the U.S., which affects how products are used and accepted in different markets. This led to the suggestion of potentially having differently sized controllers or buttons for various countries to accommodate users' physical differences.",
+          "rouge_f1": {
+            "rouge1": 0.3902439024390244,
+            "rouge2": 0.13223140495867766,
+            "rougeL": 0.24390243902439024
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              229,
+              248
+            ]
+          ],
+          "evidence_words": 278
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What's the conclusion of the remote control style when discussing market research and adjustments due to new project requirements?",
+      "reference_answer": "Overall, the model style was expected to be trendy and appealing. Marketing and Project Manager agreed on User Interface's design of a flip-screen. Marketing also hoped that the remote control would be slightly curved. User Interface added that the remote control would curl up to users' hands so that their thumbs did not have to press. The corporate logo would be put in the corner. The model would be made of lightweight plastic with a smooth bottom and a nice scallop shell exterior.",
+      "results": {
+        "oracle": {
+          "answer": "The conclusion regarding the remote control style when discussing market research and adjustments due to new project requirements is to design a remote that is distinct from existing designs, particularly avoiding the typical brown rectangle style. The team agreed on incorporating ergonomic features such as a curved shape that reduces strain on the user's thumb. Additionally, they considered integrating the company logo into the design in a subtle yet noticeable way, possibly resembling a shell-like form that opens up into a flip-top mechanism. This design aims to be lightweight, easy to hold, and visually appealing, potentially reducing the risk of loss and increasing its market appeal.",
+          "rouge_f1": {
+            "rouge1": 0.4226804123711341,
+            "rouge2": 0.052083333333333336,
+            "rougeL": 0.20618556701030927
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              414,
+              478
+            ]
+          ],
+          "evidence_words": 867
+        }
+      }
+    }
+  ]
+}

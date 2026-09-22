@@ -1,0 +1,220 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "ES2004a.json",
+        "sha256": "306606690af5a0e20323a8c017467ee01d2181b7b5b2971ec3bd9ed3544a1129"
+      }
+    },
+    "input_hash": "8e8ba21c67f267141efc02a582670eb5c21d92045bd96e38653a920c5bafe0f2",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "cc53818286d6c6aab448116b7fadec7252046313b53ceed8e7360f2487c27589",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "ES2004a",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group discuss about remote control style and design optimization?",
+      "reference_answer": "Industrial Designer desired to integrate remote controls for different appliances into one. Marketing pointed out that such integration would lead to too many buttons, which was not user-friendly enough. Instead, Marketing suggested that a menu display should be incorporated. Project Manager and User Interface agreed and added that basic buttons could remain. User Interface and Industrial Designer refused the flip top, however, for it costs a lot. The team temporarily chose lightweight plastic to be the material.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed optimizing the remote control style and design to ensure it is accessible and usable by all age groups in the international market. They emphasized the importance of simplicity, suggesting that the remote should have basic functions prominently displayed and more complex functions hidden behind a menu system. They also considered incorporating an LCD display with menu options similar to those found on mobile phones. Additionally, they proposed including a feature for larger text for the older generation and debated whether the design needed to be fashionable or could be made from lightweight, easily molded materials to reduce costs.",
+          "rouge_f1": {
+            "rouge1": 0.3575418994413408,
+            "rouge2": 0.04519774011299435,
+            "rougeL": 0.1564245810055866
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              173,
+              311
+            ]
+          ],
+          "evidence_words": 1625
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did the group decide to incorporate a menu display when discussing remote control style and design optimization?",
+      "reference_answer": "Marketing believed that most of the market would want convenient channel browsing and volume adjustment features instead of any tampering or programming with too many buttons. User Interface agreed with the simplification of symbols. The team came up with a menu display to make the remote more user-friendly.",
+      "results": {
+        "oracle": {
+          "answer": "The group decided to incorporate a menu display because they wanted to simplify the remote control's design, making it less cluttered with numerous small buttons and more intuitive for users. Marketing suggested using a menu display similar to those found on mobile phones, which could help users navigate through various functions without overwhelming them with too many physical buttons. This idea was supported by the User Interface designer, who agreed that a menu-driven system with an LCD display could make browsing and navigating easier for users.",
+          "rouge_f1": {
+            "rouge1": 0.3649635036496351,
+            "rouge2": 0.1037037037037037,
+            "rougeL": 0.21897810218978103
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              203,
+              232
+            ],
+            [
+              246,
+              248
+            ]
+          ],
+          "evidence_words": 488
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did Industrial Designer think of the older generation when discussing remote control style and design optimization?",
+      "reference_answer": "Industrial Designer initially worried about the replacement of buttons. Industrial Designer was soon convinced by Marketing that the age gap was a problem regardless of any design modifications and insisted on the incorporation of a menu display, however.",
+      "results": {
+        "oracle": {
+          "answer": "Industrial Designer acknowledged that the older generation, like his grandfather, could be proficient in certain technologies (e.g., using teletext) but generally struggled with more complex features such as programming remote controls or using advanced phone functionalities. The Industrial Designer agreed that the design should be simple and intuitive to accommodate this demographic.",
+          "rouge_f1": {
+            "rouge1": 0.21978021978021978,
+            "rouge2": 0.06741573033707865,
+            "rougeL": 0.19780219780219777
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              233,
+              246
+            ]
+          ],
+          "evidence_words": 191
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did Industrial Designer think of plastic when discussing remote control style and design optimization?",
+      "reference_answer": "Industrial Designer was uncertain about whether the remote could look fashionable with plastic at first. Marketing and Project Manager exemplified other remote controls to make Industrial Designer believe that silver plastic could look smart.",
+      "results": {
+        "oracle": {
+          "answer": "Industrial Designer expressed disagreement with the idea of making the remote control less fashionable and initially seemed opposed to the notion of using plastic, indicated by their \"No uh uh\" response (Excerpt 289). However, they later acknowledged that plastic could still be used and could look good, suggesting some flexibility in their stance (Excerpts 298-300).",
+          "rouge_f1": {
+            "rouge1": 0.35555555555555557,
+            "rouge2": 0.11363636363636363,
+            "rougeL": 0.2444444444444444
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              282,
+              315
+            ]
+          ],
+          "evidence_words": 339
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Summarize the discussion about price issues and target groups of remote control.",
+      "reference_answer": "Project Manager proposed to price each remote control at 25 Euros, considering the 12.5-Euro production cost. The profit aim for the team would be 50 million Euros in the first year. The market range would be international and over all age groups.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed the pricing of a remote control, initially noting a selling price of 25 Euros (approximately 17 Pounds). They acknowledged this as expensive but justified it by comparing it to similar products on the market priced around 20 Pounds. The project manager mentioned a production cost of 12.50 Euros, indicating a significant profit margin. The marketing representative questioned whether underpricing could make their product seem low-quality. The profit aim for the first year was set at 50 million Euros.",
+          "rouge_f1": {
+            "rouge1": 0.4409448818897638,
+            "rouge2": 0.224,
+            "rougeL": 0.2677165354330709
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              131,
+              171
+            ]
+          ],
+          "evidence_words": 316
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did Project Manager think of the market range when discussing price issues and target groups of the remote control?",
+      "reference_answer": "Project Manager hoped to make the market range international, covering all age groups, instead of focusing solely on the business market. Project Manager highlighted that the team should not worry about the language differences and the big target group would be achievable.",
+      "results": {
+        "oracle": {
+          "answer": "Project Manager agreed with the idea of an international market range and a broad target group, emphasizing usability and accessibility for all age groups without focusing on specific languages as a primary concern.",
+          "rouge_f1": {
+            "rouge1": 0.4266666666666667,
+            "rouge2": 0.136986301369863,
+            "rougeL": 0.29333333333333333
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              173,
+              183
+            ]
+          ],
+          "evidence_words": 118
+        }
+      }
+    }
+  ]
+}

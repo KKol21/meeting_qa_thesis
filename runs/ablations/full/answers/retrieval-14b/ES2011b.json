@@ -1,0 +1,2486 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "ES2011b.json",
+        "sha256": "9e157437f6da86c4a9251cdf9be5c6f22a657c5ca3f5070d320fee0cdd519939"
+      },
+      "retrieval": {
+        "file": "ES2011b.json",
+        "sha256": "5e249915528f293ae720c19bd213b9f04d0c44205f1709dc9972eef5045d8620"
+      },
+      "segmentation": {
+        "file": "ES2011b.json",
+        "sha256": "ffb2acabbfaa19986ca77c5345ed5c9ce50b715ed85b79af92f80f719f12b4e7"
+      }
+    },
+    "input_hash": "563047f4e84713e95fa770564ccf6d3e8a3683611e83e6716052343d9edb38f9",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "68b28a3da8da71739e7dbef582e3725ff381d469cc694e0acca9857b0cfc4cf2",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "ES2011b",
+  "question_count": 4,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 97,
+  "cache_hits": 11,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group discuss the functional design on the remote control?",
+      "reference_answer": "Project Manager stated the meeting topic on function design. Firstly, Marketing concluded a study on user needs, including buttons for channel selection according to the frequency of use and the relevance of each button, and suggested targeting on the nineteen to thirty-five years old age group to design functions. Next, User Interface presented on the technical effect on what functions users need and how to make the best functions for users. Then, Industrial Designer presented the working design, including input a channel or volume setting and output the location function to the television.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group discussed the functional design of the remote control, focusing on its basic functions (channel and volume settings) and a location function. They considered components such as an energy source (battery), input methods (buttons and potentially voice recognition), a processor, a transmitter for communication with the TV (infrared bulb), and a receiver for the location signal (radio). The location function would involve a sender on the TV emitting a signal, which the remote would detect and respond to with a beep or vibration.",
+          "rouge_f1": {
+            "rouge1": 0.37078651685393255,
+            "rouge2": 0.07954545454545454,
+            "rougeL": 0.19101123595505615
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            2
+          ],
+          "retrieval_precision": 0.09375,
+          "retrieval_recall": 0.04853387259858443
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The group discussed the functional design of the remote control, focusing on incorporating basic remote functions such as channel and volume settings, and adding a location function. The location function would involve pressing a button on the TV to send a signal to the remote, causing it to beep, flash, or vibrate to indicate its location. They considered using radio signals over infrared for the location feature due to better range and convenience. Additionally, they decided against including internet functionalities and emphasized the importance of integrating their corporate image into the design, aiming for a fashionable appearance with specific color schemes (silver and gold/yellow).",
+          "rouge_f1": {
+            "rouge1": 0.4221105527638191,
+            "rouge2": 0.07106598984771574,
+            "rougeL": 0.20100502512562815
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            2,
+            8,
+            12
+          ],
+          "retrieval_precision": 0.1630859375,
+          "retrieval_recall": 0.16885743174924167
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The group discussed the functional design of the remote control, focusing on user needs, technical effects, and the working design. Key points included:\n\n- Incorporating findings from usability tests where users preferred fewer buttons and disliked losing the remote.\n- Designing basic functions such as channel and volume settings.\n- Adding a location function where pressing a button on the TV would send a signal to the remote to beep, flash, or vibrate.\n- Deciding against including teletext and internet features, focusing solely on television functions.\n- Considering the integration of their corporate image into the design.\n- Discussing the feasibility of voice recognition based on budget constraints.\n- Finalizing the decision to use a radio signal for the location function rather than infrared due to line-of-sight limitations.\n- Determining the remote would be a two-part package, including a separate base unit for the location function.\n- Targeting the design towards teenagers and young professionals.\n- Deciding against incorporating VCR capabilities due to varying standards internationally and the prevalence of DVD technology among the target demographic.",
+          "rouge_f1": {
+            "rouge1": 0.42585551330798477,
+            "rouge2": 0.09961685823754789,
+            "rougeL": 0.22053231939163498
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            2,
+            8,
+            12,
+            0,
+            11,
+            10,
+            13
+          ],
+          "retrieval_precision": 0.20556640625,
+          "retrieval_recall": 0.4256825075834176
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The group discussed user needs and the working design of the remote control based on a usability laboratory test involving 100 participants. They noted that customers and users dislike the appearance and feel of remote controls, find them mismatched with their operating behavior, and primarily use only 10% of the buttons. The suggestion was made to design the remote control according to the most frequently used buttons to address these issues. Additionally, concerns were raised about remotes being easy to lose and causing RSI (likely referring to Repetitive Strain Injury). However, specific details about the technical effects or further aspects of the functional design were not extensively covered in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.37864077669902907,
+            "rouge2": 0.10784313725490198,
+            "rougeL": 0.1941747572815534
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            8
+          ],
+          "retrieval_precision": 0.822265625,
+          "retrieval_recall": 0.4256825075834176
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The group discussed the functional design of the remote control by considering user needs, technical effects, and the working design. They noted that customers and users dislike the appearance and feel of remote controls and suggested designing based on the most frequently used buttons. The team also decided to remove features such as teletext and internet functionalities, focusing solely on television operations. Additionally, they agreed to incorporate their corporate image into the design, emphasizing colors like silver and gold/yellow. The group aimed to create a remote control that appeals to their target demographic (ages 19-35) and included a finder button feature. They dismissed the idea of incorporating speech recognition due to implementation difficulties.",
+          "rouge_f1": {
+            "rouge1": 0.430622009569378,
+            "rouge2": 0.07729468599033816,
+            "rougeL": 0.2296650717703349
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            8,
+            9,
+            11
+          ],
+          "retrieval_precision": 0.4111328125,
+          "retrieval_recall": 0.4256825075834176
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The group discussed the functional design of the remote control by considering user needs, technical effects, and the working design. Marketing presented findings from usability tests indicating that customers prefer remotes with fewer, more frequently used buttons, suggesting a focus on channel selection, teletext, volume, and power. Industrial Designer outlined the mechanical functions, proposing a basic remote with additional features like a location function using radio signals for finding the remote. The team agreed to target the 19-35 age group and incorporate their corporate image into the design, emphasizing simplicity and fashionability. They decided against including speech recognition and screen functionalities due to implementation challenges and user demographics.",
+          "rouge_f1": {
+            "rouge1": 0.47290640394088673,
+            "rouge2": 0.09950248756218906,
+            "rougeL": 0.21674876847290642
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            8,
+            9,
+            11,
+            3,
+            7,
+            12
+          ],
+          "retrieval_precision": 0.37158203125,
+          "retrieval_recall": 0.7694641051567239
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The group discussed the functional design of the remote control by considering user needs, technical effects, and the working design. They noted that customers and users dislike the appearance and feel of remote controls, find them difficult to operate according to their behavior, and often only use 10% of the buttons. The remote should focus on essential functions, be used exclusively for television without additional internet features, and reflect the company's image with specific color schemes (silver and gold/yellow). The Project Manager suggested brainstorming ideas for the remote control functions.",
+          "rouge_f1": {
+            "rouge1": 0.41935483870967744,
+            "rouge2": 0.08695652173913045,
+            "rougeL": 0.2043010752688172
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            8,
+            0
+          ],
+          "retrieval_precision": 0.498046875,
+          "retrieval_recall": 0.25783619817997977
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The group discussed the functional design of the remote control by considering user needs, technical effects, and the working design. They explored incorporating basic remote functions such as channel and volume settings, as well as a location function that could help locate the remote. The Industrial Designer proposed components including an energy source, input (buttons), a processor, transmission to the TV, and a receiver for location signals. Additionally, the Project Manager mentioned new requirements, such as excluding teletext functionality and focusing solely on television operations, while also integrating the company’s fashion-oriented corporate image into the design.",
+          "rouge_f1": {
+            "rouge1": 0.4583333333333333,
+            "rouge2": 0.11578947368421054,
+            "rougeL": 0.20833333333333334
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            8,
+            0,
+            7
+          ],
+          "retrieval_precision": 0.4111328125,
+          "retrieval_recall": 0.4256825075834176
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The group discussed the functional design of the remote control by considering user needs, technical effects, and the working design. Marketing presented findings from usability tests indicating that customers prefer remotes with fewer, more frequently used buttons, suggesting a focus on channel selection, teletext, volume, and power. Industrial Designer outlined the mechanical functions, proposing a basic remote with additional features like a location function using radio signals for finding lost remotes. The team also discussed incorporating their corporate image into the design and decided against including teletext and speech recognition due to cost and market trends. They agreed to target teenagers and young professionals and finalized the inclusion of a beep for the location function over a light.",
+          "rouge_f1": {
+            "rouge1": 0.4528301886792453,
+            "rouge2": 0.09523809523809525,
+            "rougeL": 0.20754716981132076
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            8,
+            0,
+            7,
+            11,
+            12,
+            3,
+            10
+          ],
+          "retrieval_precision": 0.37158203125,
+          "retrieval_recall": 0.7694641051567239
+        },
+        "word_packed__dense__w512": {
+          "answer": "The group discussed incorporating basic remote functions such as channel and volume settings, and a location function where pressing a button on the TV would trigger a response (beep, flash, or vibration) from the remote to help locate it. They considered implementing these features for their target group, identified as individuals aged 19 to 35, including teenagers and young professionals. The discussion also touched upon the possibility of adding voice recognition functionality, though concerns were raised about its implementation difficulty and potential interference from TV sounds.",
+          "rouge_f1": {
+            "rouge1": 0.3222222222222222,
+            "rouge2": 0.0449438202247191,
+            "rougeL": 0.15555555555555556
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The group discussed the functional design of the remote control, focusing on basic functions such as channel and volume settings, and additional features like a location function (beep, flash, or vibration) to locate the remote. They also considered incorporating voice recognition as an input method but noted its complexity. The discussion included considerations for the target age group (nineteen to thirty-five years old) and the incorporation of the company's corporate image into the design.",
+          "rouge_f1": {
+            "rouge1": 0.45882352941176474,
+            "rouge2": 0.13095238095238096,
+            "rougeL": 0.22352941176470587
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8,
+            1,
+            7
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.25884732052578363
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The group discussed the functional design of the remote control by considering user needs, technical effects, and the working design. Marketing presented findings from usability tests indicating that customers prefer remote controls with fewer buttons, focusing on frequently used functions such as channel selection, teletext, volume, and power. The team also discussed incorporating a location function where pressing a button on the TV would trigger a signal to the remote, causing it to beep or vibrate, helping users locate the remote. Additionally, the team considered integrating speech recognition and a screen display but ultimately decided against these features due to implementation difficulties and budget constraints. The final design would include a buzzer for the location function and would align with the company's corporate image, emphasizing fashion in electronics.",
+          "rouge_f1": {
+            "rouge1": 0.42152466367713004,
+            "rouge2": 0.0995475113122172,
+            "rougeL": 0.242152466367713
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8,
+            1,
+            7,
+            9,
+            0,
+            11,
+            2
+          ],
+          "retrieval_precision": 0.3740234375,
+          "retrieval_recall": 0.7745197168857432
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The group discussed the functional design of the remote control, focusing on features such as a finder button (referred to as a locator) and speech recognition. They considered the implementation ease and the target age group for these features, aiming to appeal to individuals aged 19 to 35, including teenagers and young professionals. The discussion also touched upon the challenges associated with implementing speech recognition due to programming difficulties and potential interference from TV sounds.",
+          "rouge_f1": {
+            "rouge1": 0.3431952662721893,
+            "rouge2": 0.03592814371257485,
+            "rougeL": 0.21301775147928995
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            8
+          ],
+          "retrieval_precision": 0.49609375,
+          "retrieval_recall": 0.2568250758341759
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The group discussed the functional design of the remote control by considering user needs and the frequency of button usage. Marketing presented a list prioritizing buttons based on their importance and usage frequency, suggesting that channel selection, teletext, volume, and power were the most frequently used. They also touched upon the idea of incorporating a button for all settings, speech recognition, and a locator function. The team debated the feasibility and implementation details of the locator feature, deciding it might need to be sold as a separate component. Additionally, they agreed that their target demographic should be teenagers and young professionals.",
+          "rouge_f1": {
+            "rouge1": 0.4102564102564102,
+            "rouge2": 0.10362694300518135,
+            "rougeL": 0.21538461538461537
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            8,
+            2,
+            10
+          ],
+          "retrieval_precision": 0.498046875,
+          "retrieval_recall": 0.5156723963599595
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The group discussed the functional design of the remote control by considering user needs, technical effects, and the working design based on usability lab tests involving 100 participants. Marketing presented findings indicating that customers prefer remotes with fewer, more frequently used buttons such as channel selection, teletext, volume, and power. Less frequently used buttons could potentially be combined into a single \"settings\" button. Additionally, the team considered incorporating features like speech recognition and screens, particularly appealing to younger demographics (ages 15-35), but decided against integrating internet functionalities. They also discussed the feasibility of adding a locator function, possibly as a two-part system including a base unit for the TV, to assist in finding misplaced remotes.",
+          "rouge_f1": {
+            "rouge1": 0.38862559241706157,
+            "rouge2": 0.07655502392344499,
+            "rougeL": 0.1895734597156398
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            8,
+            2,
+            10,
+            3,
+            1,
+            7,
+            11
+          ],
+          "retrieval_precision": 0.48291015625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The group discussed the functional design of the remote control, focusing on features such as a finder button (referred to as a locator) and speech recognition. They considered the implementation ease and the target age group for these features, aiming to appeal to individuals aged 19 to 35, including teenagers and young professionals. The discussion also touched upon the challenges associated with implementing speech recognition due to programming difficulties and potential interference from TV sounds.",
+          "rouge_f1": {
+            "rouge1": 0.3431952662721893,
+            "rouge2": 0.03592814371257485,
+            "rougeL": 0.21301775147928995
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            0
+          ],
+          "retrieval_precision": 0.49609375,
+          "retrieval_recall": 0.2568250758341759
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The group discussed the functional design of the remote control by considering user needs, technical effects, and the working design. They explored basic functions such as channel and volume settings, as well as additional features like a location function where pressing a button on the TV would trigger a response (beep, flash, or vibration) from the remote to indicate its location. They also touched upon incorporating voice recognition and a screen for speech recognition, though they noted these features were challenging to implement. The team aimed to design the remote control to appeal to their target group, primarily aged between 19 to 35 years old, focusing on simplicity and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.45098039215686275,
+            "rouge2": 0.10891089108910892,
+            "rougeL": 0.18627450980392157
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            0,
+            1,
+            5
+          ],
+          "retrieval_precision": 0.498046875,
+          "retrieval_recall": 0.5156723963599595
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The group discussed the functional design of the remote control by considering user needs, technical effects, and the working design. Marketing presented findings from usability tests indicating that customers prefer remote controls with fewer buttons, focusing on frequently used functions such as channel selection, teletext, volume, and power. The team also discussed incorporating a location function where pressing a button on the TV would trigger a signal to the remote, causing it to beep or vibrate, helping users locate the remote. Additionally, the team decided against including teletext due to its obsolescence and agreed to focus on designing a remote that appeals to their target demographic of 19-35-year-olds, emphasizing simplicity and functionality over advanced features like speech recognition.",
+          "rouge_f1": {
+            "rouge1": 0.4930232558139534,
+            "rouge2": 0.10328638497652581,
+            "rougeL": 0.21395348837209302
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            0,
+            1,
+            5,
+            2,
+            7,
+            10,
+            11
+          ],
+          "retrieval_precision": 0.3740234375,
+          "retrieval_recall": 0.7745197168857432
+        },
+        "lumber__dense__w512": {
+          "answer": "The group discussed the functional design of the remote control, focusing on basic remote functions such as channel and volume settings, and a location function where pressing a button on the TV would send a signal to the remote to indicate its location via beeping, flashing, or vibrating. The components needed included an energy source (battery), input buttons, a processor, a transmitter to send signals to the TV, a receiver for the location signal, and an output mechanism like a buzzer or vibration. They also considered a separate sender for the location signal that users could attach to their TV or wall.",
+          "rouge_f1": {
+            "rouge1": 0.41836734693877553,
+            "rouge2": 0.09278350515463918,
+            "rougeL": 0.22448979591836735
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1
+          ],
+          "retrieval_precision": 0.06640625,
+          "retrieval_recall": 0.034378159757330634
+        },
+        "lumber__dense__w1024": {
+          "answer": "The group discussed the functional design of the remote control focusing on the most frequently used buttons (channel selection, teletext, volume, and power) based on a usability study. They also considered incorporating a location function that would allow users to locate the remote via a signal from the TV. The industrial designer proposed a design that included components such as a battery for power, buttons for input, a processor, an infrared bulb for transmitting signals to the TV, and a radio receiver for the location function.",
+          "rouge_f1": {
+            "rouge1": 0.4333333333333333,
+            "rouge2": 0.10112359550561799,
+            "rougeL": 0.25555555555555554
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1,
+            0
+          ],
+          "retrieval_precision": 0.53125,
+          "retrieval_recall": 0.5500505561172901
+        },
+        "lumber__dense__w2048": {
+          "answer": "The group discussed the functional design of the remote control by focusing on user needs, technical effects, and the working design. Marketing presented findings from usability tests indicating that customers prefer remotes with fewer buttons, emphasizing channel selection, teletext, volume, and power as the most frequently used functions. User Interface suggested designing the remote to be user-friendly and fashionable, proposing to keep commonly used buttons close together and minimize the number of buttons. Industrial Designer detailed the mechanical functions required, including an energy source, input (buttons), processor, transmitter, and a location function involving a sender and receiver for finding the remote. The team agreed on incorporating a two-part system for the location function, consisting of a base unit attached to the TV and a receiver on the remote.",
+          "rouge_f1": {
+            "rouge1": 0.5,
+            "rouge2": 0.13513513513513514,
+            "rougeL": 0.2767857142857143
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            1,
+            0,
+            7,
+            3
+          ],
+          "retrieval_precision": 0.44873046875,
+          "retrieval_recall": 0.9292214357937311
+        },
+        "lumber__bm25__w512": {
+          "answer": "The group discussed the functional design of the remote control in terms of incorporating their corporate image, focusing on simplicity and eliminating unnecessary features. They aimed to design a remote that would appeal to their target group (ages 19-35) by including essential functions such as a finder button. The discussion also touched upon the importance of making the remote control user-friendly based on previous usability studies which indicated that users only utilize a small percentage of the available buttons.",
+          "rouge_f1": {
+            "rouge1": 0.34285714285714286,
+            "rouge2": 0.03468208092485548,
+            "rougeL": 0.18285714285714283
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            1
+          ],
+          "retrieval_precision": 0.24609375,
+          "retrieval_recall": 0.12740141557128412
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The group discussed the functional design of the remote control based on user needs and technical effects. Marketing presented findings from a usability laboratory test involving 100 participants, highlighting that customers prefer remotes with fewer, more frequently used buttons such as channel selection, teletext, volume, and power. Teletext was later removed from consideration due to its outdated nature. The team also considered incorporating features like speech recognition, which was more appealing to younger demographics (ages 15-35). Additionally, the Project Manager suggested focusing the remote's functionality solely on television operations and integrating the company’s fashion-oriented brand image into the design. The group briefly discussed implementing a locator button, noting its ease of implementation and appeal to their target age group (19-35).",
+          "rouge_f1": {
+            "rouge1": 0.4200913242009132,
+            "rouge2": 0.07373271889400922,
+            "rougeL": 0.2100456621004566
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            1,
+            0
+          ],
+          "retrieval_precision": 0.62109375,
+          "retrieval_recall": 0.6430738119312437
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The group discussed the functional design of the remote control by considering user needs, technical effects, and the working design. Marketing presented findings from usability tests indicating that customers prefer remotes with fewer, more frequently used buttons, such as channel selection, teletext, volume, and power. Teletext was removed from the list due to its outdated nature. The team also discussed incorporating a locator feature for finding lost remotes, suggesting a two-part system where pressing a button on the TV sends a signal to the remote, causing it to beep. The target age group for the remote was identified as 19 to 35-year-olds, focusing on teenagers and young professionals.",
+          "rouge_f1": {
+            "rouge1": 0.44878048780487806,
+            "rouge2": 0.10837438423645321,
+            "rougeL": 0.1951219512195122
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            1,
+            0,
+            8,
+            7,
+            4
+          ],
+          "retrieval_precision": 0.44873046875,
+          "retrieval_recall": 0.9292214357937311
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The group discussed the functional design of the remote control based on a usability study involving 100 participants. Key points included:\n\n- Users primarily use only about 10% of the buttons.\n- The most frequently used functions are channel selection (about 160 times per hour), teletext, volume, and power.\n- Less frequently used functions (settings) could potentially be combined into fewer buttons or accessed via a single button leading to a menu.\n- There was consideration for incorporating speech recognition, which was more appealing to younger demographics (15-35 years old).\n- The discussion highlighted user preferences regarding ease of use, aesthetics, and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.37305699481865284,
+            "rouge2": 0.0418848167539267,
+            "rougeL": 0.18652849740932642
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.5176946410515673
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The group discussed the functional design of the remote control by considering user needs and technical effects based on a usability laboratory test involving 100 participants. Marketing highlighted that customers primarily use only about 10% of the buttons, with channel selection being the most frequently used, followed by teletext, volume, and power. Marketing suggested focusing on these key buttons and possibly consolidating less-used settings into a single button. Additionally, the discussion touched upon the potential inclusion of features like speech recognition, which showed varying levels of interest among different age groups. Industrial Designer contributed by discussing the mechanical functions of the remote, emphasizing the need for basic functionalities and possibly incorporating a location feature.",
+          "rouge_f1": {
+            "rouge1": 0.41148325358851673,
+            "rouge2": 0.07729468599033816,
+            "rougeL": 0.2200956937799043
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            4
+          ],
+          "retrieval_precision": 0.8974609375,
+          "retrieval_recall": 0.9292214357937311
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The group discussed the functional design of the remote control by considering user needs, technical effects, and the working design. Marketing presented findings from usability tests indicating that customers prefer remotes with fewer, more frequently used buttons, suggesting a focus on channel selection, teletext, volume, and power. Industrial Designer outlined the mechanical functions, proposing basic remote functions and a location feature using signals between the TV and remote. The team agreed to include a buzzer for the location function and discussed the feasibility of implementing a separate device for sending location signals. They also decided to exclude teletext due to its obsolescence and focused on designing a remote for television use, incorporating their company's color scheme and targeting the 19-35 age group.",
+          "rouge_f1": {
+            "rouge1": 0.47706422018348627,
+            "rouge2": 0.10185185185185186,
+            "rougeL": 0.2110091743119266
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            4,
+            5,
+            7
+          ],
+          "retrieval_precision": 0.44873046875,
+          "retrieval_recall": 0.9292214357937311
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the group discuss the finder button and call button?",
+      "reference_answer": "At the first beginning of the discussion, Industrial Designer mentioned that it would be easy to implement something like a buzzer to trace the remote location. Project Manager suggested a two-part package - on one hand, users could click the button on the TV to send out the signal; on the other hand, the remote base could beep probably so that users could know where the remote control has gone.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group discussed the finder button and call button indirectly through a broader conversation about button implementation and design. Specifically:\n\n- User Interface asked if they should design the product with a finder button ([80], [81]).\n- Project Manager agreed that designing with a finder button seemed appropriate ([81]).\n- The discussion then shifted towards implementing a buzzer/locator function ([85]-[88]).\n- There was no explicit mention of a \"call button\" in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.2676056338028169,
+            "rouge2": 0.04285714285714286,
+            "rougeL": 0.15492957746478875
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            15,
+            12
+          ],
+          "retrieval_precision": 0.236328125,
+          "retrieval_recall": 0.15942028985507245
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The group discussed the finder button and call button in the context of designing a remote control. They agreed on implementing a finder button (referred to as a locator or buzzer) that would emit a sound to help locate the remote, rather than a light. The call button concept was mentioned in relation to finding the remote via a phone call, which would make the remote ring, helping users locate it if it was hidden, such as under a couch. There was no specific discussion about a \"call button\" beyond this context.",
+          "rouge_f1": {
+            "rouge1": 0.3580246913580247,
+            "rouge2": 0.049999999999999996,
+            "rougeL": 0.20987654320987656
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            15,
+            12,
+            2,
+            16
+          ],
+          "retrieval_precision": 0.30078125,
+          "retrieval_recall": 0.4057971014492754
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The group discussed the finder button (referred to as a \"locator\" or \"buzzer\") and agreed it was easy to implement and would be useful for their target age group (nineteen to thirty-five years old). They decided on a radio beep rather than a light for the finder functionality. The call button was not explicitly discussed, but the concept of a finder button was confirmed to be included in the design.",
+          "rouge_f1": {
+            "rouge1": 0.3404255319148936,
+            "rouge2": 0.04316546762589928,
+            "rougeL": 0.1843971631205674
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            15,
+            12,
+            2,
+            16,
+            5,
+            4,
+            13,
+            18
+          ],
+          "retrieval_precision": 0.150390625,
+          "retrieval_recall": 0.4057971014492754
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The group discussed the finder button and call button in the context of designing a device to help locate a remote control. The finder button would be used to locate the remote, and the call button would presumably be used to initiate communication or an action related to the device. They agreed that the finder button could be implemented easily and decided it would be part of a two-part package, including a component attached to the TV and another on the remote. The call button's specific function wasn't detailed beyond its role in initiating actions related to finding the remote. The discussion also touched upon the idea of integrating speech recognition, which was deemed challenging due to potential interference from TV sounds. The target group for this product was identified as teenagers and young professionals aged between 19 to 35.",
+          "rouge_f1": {
+            "rouge1": 0.3192488262910798,
+            "rouge2": 0.1137440758293839,
+            "rougeL": 0.18779342723004694
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            12
+          ],
+          "retrieval_precision": 0.732421875,
+          "retrieval_recall": 0.49407114624505927
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The group discussed the finder button as a feature to help locate the remote, suggesting it could be implemented as a separate device that emits a sound when activated. They decided against including speech recognition due to implementation difficulties. The call button was mentioned in the context of using a sound (like a beep) rather than a light to locate the remote, similar to how a phone rings when called.",
+          "rouge_f1": {
+            "rouge1": 0.37142857142857144,
+            "rouge2": 0.057971014492753624,
+            "rougeL": 0.20000000000000004
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            12,
+            2,
+            3
+          ],
+          "retrieval_precision": 0.5478515625,
+          "retrieval_recall": 0.7391304347826086
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The group discussed the finder button and call button in the context of designing a remote control. They considered implementing a finder button (referred to as a \"locator\" or \"buzzer\") that would emit a sound to help locate the remote. This feature was deemed easy to implement and would involve a two-part system: a component on the remote and another attached to the TV. They also mentioned that the call button functionality, similar to finding a lost phone, would trigger the sound. However, they decided against including speech recognition due to programming difficulties and potential misinterpretations.",
+          "rouge_f1": {
+            "rouge1": 0.39520958083832336,
+            "rouge2": 0.12121212121212123,
+            "rougeL": 0.2155688622754491
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            12,
+            2,
+            3,
+            8,
+            0,
+            14,
+            10
+          ],
+          "retrieval_precision": 0.291015625,
+          "retrieval_recall": 0.7852437417654808
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The group discussed the finder button and call button in the context of designing a remote control for their target age group (nineteen to thirty-five years old). They considered implementing a finder button to help locate the device, suggesting that pressing the button would cause the phone to ring, allowing users to identify its location based on sound rather than light. The call button was mentioned in relation to the functionality of the finder button, where calling the phone would initiate a ring, helping users locate it when misplaced.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.0379746835443038,
+            "rougeL": 0.225
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            12,
+            2
+          ],
+          "retrieval_precision": 0.6015625,
+          "retrieval_recall": 0.4057971014492754
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The group discussed the finder button as a feature to help locate the remote, suggesting it could be implemented as a separate device that emits a sound when activated. They decided against including speech recognition due to implementation difficulties. The call button was mentioned in the context of using a sound (like a beep) rather than a light to locate the remote, similar to how a phone rings when called.",
+          "rouge_f1": {
+            "rouge1": 0.37142857142857144,
+            "rouge2": 0.057971014492753624,
+            "rougeL": 0.20000000000000004
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            12,
+            2,
+            11,
+            3
+          ],
+          "retrieval_precision": 0.5478515625,
+          "retrieval_recall": 0.7391304347826086
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The group discussed the finder button and call button as follows:\n\n- They agreed to include a finder button (referred to as a \"locator\" or \"buzzer\") which would emit a sound (beep) when pressed to help locate the remote control. This feature would be implemented as a two-part system, with a receiver placed on the TV.\n- There was no specific mention of a \"call button,\" but the discussion around the finder button functioned similarly to a call button, where pressing the button on the remote would trigger a response (sound) from the receiver on the TV, similar to how a phone call works.\n- The group considered their target demographic to be between 19 to 35 years old, particularly teenagers and young professionals, who would be more inclined to use such features.",
+          "rouge_f1": {
+            "rouge1": 0.3383084577114427,
+            "rouge2": 0.1206030150753769,
+            "rougeL": 0.20895522388059698
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            12,
+            2,
+            11,
+            3,
+            16,
+            18,
+            0,
+            15
+          ],
+          "retrieval_precision": 0.27392578125,
+          "retrieval_recall": 0.7391304347826086
+        },
+        "word_packed__dense__w512": {
+          "answer": "The group discussed the finder button (referred to as the \"locator\" or \"buzzer\") and agreed it was easy to implement and suitable for their target age group of nineteen to thirty-five-year-olds. There was no specific mention of a \"call button\" in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.2905982905982906,
+            "rouge2": 0.034782608695652174,
+            "rougeL": 0.17094017094017092
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2
+          ],
+          "retrieval_precision": 0.294921875,
+          "retrieval_recall": 0.19894598155467721
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The group discussed the finder button and call button as part of designing a remote control. They agreed on implementing a finder button (locator) that would emit a beep or similar signal to help locate the remote. This feature was deemed easy to implement and appealing to their target age group of 19 to 35-year-olds. Regarding the call button, they considered it in the context of calling the remote to make it ring or beep, similar to finding a phone, ensuring it could be heard even if the remote was under something like a couch. However, they decided against including a light for the finder function, opting instead for an audible signal.",
+          "rouge_f1": {
+            "rouge1": 0.3804347826086956,
+            "rouge2": 0.0879120879120879,
+            "rougeL": 0.1956521739130435
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2,
+            11,
+            5
+          ],
+          "retrieval_precision": 0.3740234375,
+          "retrieval_recall": 0.5046113306982872
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The group discussed implementing a finder button that would cause the remote to beep, flash, or vibrate when a corresponding button on the TV was pressed. There was no specific mention of a \"call button\" in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.33027522935779813,
+            "rouge2": 0.07476635514018691,
+            "rougeL": 0.2201834862385321
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2,
+            11,
+            5,
+            14,
+            4,
+            1,
+            12
+          ],
+          "retrieval_precision": 0.18701171875,
+          "retrieval_recall": 0.5046113306982872
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The group discussed the finder button and call button in the context of designing a remote control for their target audience, which includes teenagers and young professionals aged 19 to 35. They considered implementing a finder button (referred to as a \"locator\" or \"buzzer\") that would emit a sound (described as a \"beep\" or \"ringing\") to help locate the remote, similar to how a phone might ring when called. The call button was mentioned in relation to the finder functionality, where calling the remote would trigger the sound to help users locate it, especially in situations where visibility might be obstructed (e.g., under a couch).",
+          "rouge_f1": {
+            "rouge1": 0.3636363636363636,
+            "rouge2": 0.034482758620689655,
+            "rougeL": 0.21590909090909088
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            11
+          ],
+          "retrieval_precision": 0.748046875,
+          "retrieval_recall": 0.5046113306982872
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The group discussed the finder button and call button as part of designing a remote control. They decided to include a finder button (referred to as a \"locator\" or \"buzzer\") which would work in conjunction with a base unit attached to the TV. When pressed, the remote would emit a sound to help locate it. They agreed that a light might not be necessary since a sound would be sufficient to locate the remote even if it were hidden, similar to how a phone can be located by calling it. There was no specific mention of a call button in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.3352601156069364,
+            "rouge2": 0.05847953216374269,
+            "rougeL": 0.17341040462427745
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            11,
+            2,
+            10
+          ],
+          "retrieval_precision": 0.6240234375,
+          "retrieval_recall": 0.841897233201581
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The group discussed the finder button and call button in the context of designing a remote control. They agreed to include a finder button (referred to as a \"buzzer\" or \"locator\") which would emit a sound to help locate the remote. This feature would involve a two-part system: a button on the TV or wall to initiate the signal, and a receiver on the remote that would respond with a beep. They decided against including speech recognition due to programming difficulties and cost concerns. The call button concept was not explicitly discussed beyond the context of finding the remote similar to how a phone is located by receiving a call.",
+          "rouge_f1": {
+            "rouge1": 0.36464088397790057,
+            "rouge2": 0.1340782122905028,
+            "rougeL": 0.27624309392265195
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            11,
+            2,
+            10,
+            3,
+            0,
+            9,
+            13
+          ],
+          "retrieval_precision": 0.37060546875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The group discussed the finder button (referred to as the \"locator\" or \"buzzer\") and agreed it was easy to implement and suitable for their target age group of nineteen to thirty-five-year-olds. There was no specific mention of a \"call button\" in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.2905982905982906,
+            "rouge2": 0.034782608695652174,
+            "rougeL": 0.17094017094017092
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2
+          ],
+          "retrieval_precision": 0.294921875,
+          "retrieval_recall": 0.19894598155467721
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The group discussed the finder button and call button as part of designing a remote control. They agreed on implementing a finder button (locator) that would emit a beep or similar signal to help locate the remote. This feature was deemed easy to implement and appealing to their target age group of 19 to 35-year-olds. Regarding the call button, they considered it in the context of calling the remote to make it ring or beep, similar to finding a phone, ensuring it could be heard even if the remote was under something like a couch. However, they decided against including a light for the finder function, opting instead for an audible signal.",
+          "rouge_f1": {
+            "rouge1": 0.3804347826086956,
+            "rouge2": 0.0879120879120879,
+            "rougeL": 0.1956521739130435
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2,
+            11,
+            5
+          ],
+          "retrieval_precision": 0.3740234375,
+          "retrieval_recall": 0.5046113306982872
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The group discussed the finder button (locator function) and agreed to include it as part of the remote control design, with a separate base component that would send a signal to the remote, causing it to beep or vibrate to help locate it. They also mentioned that the call button concept, similar to finding a lost phone by receiving a call, would be implemented on the TV side, sending a signal to the remote to alert its location. However, there was no specific discussion about a \"call button\" in the context of traditional telephonic calls.",
+          "rouge_f1": {
+            "rouge1": 0.43636363636363634,
+            "rouge2": 0.11042944785276074,
+            "rougeL": 0.2545454545454545
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2,
+            11,
+            5,
+            13,
+            17,
+            0,
+            10
+          ],
+          "retrieval_precision": 0.31201171875,
+          "retrieval_recall": 0.841897233201581
+        },
+        "lumber__dense__w512": {
+          "answer": "The group discussed the finder button (referred to as a \"locator\" or \"buzzer\") and agreed it was easy to implement and suitable for their target age group of 19 to 35. They did not specifically discuss a \"call button.\"",
+          "rouge_f1": {
+            "rouge1": 0.27522935779816515,
+            "rouge2": 0.037383177570093455,
+            "rougeL": 0.16513761467889906
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            10
+          ],
+          "retrieval_precision": 0.294921875,
+          "retrieval_recall": 0.19894598155467721
+        },
+        "lumber__dense__w1024": {
+          "answer": "The group discussed the finder button (referred to as a \"locator\" or \"buzzer\") and agreed it was easy to implement and suitable for their target age group of 19 to 35-year-olds. They also considered reducing the number of buttons, suggesting a scrolling method similar to the iPod's interface instead of individual number buttons from one to nine. However, there was no specific discussion about a \"call button.\"",
+          "rouge_f1": {
+            "rouge1": 0.2714285714285714,
+            "rouge2": 0.043478260869565216,
+            "rougeL": 0.18571428571428572
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            10,
+            3,
+            8
+          ],
+          "retrieval_precision": 0.19140625,
+          "retrieval_recall": 0.25823451910408435
+        },
+        "lumber__dense__w2048": {
+          "answer": "The group discussed incorporating a finder button (referred to as a \"locator\" or \"buzzer\") that would emit a sound (described as a \"beep\" or \"ringing\") to help locate the remote control. They decided against including a light for the finder functionality, opting for a sound-based solution similar to how a phone can be located by calling it. Regarding the call button, the discussion did not explicitly mention a specific call button feature, but the context suggests they were considering functionalities related to finding the remote rather than making calls.",
+          "rouge_f1": {
+            "rouge1": 0.3375,
+            "rouge2": 0.050632911392405056,
+            "rougeL": 0.2
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            10,
+            3,
+            8,
+            1,
+            2,
+            0
+          ],
+          "retrieval_precision": 0.2294921875,
+          "retrieval_recall": 0.619235836627141
+        },
+        "lumber__bm25__w512": {
+          "answer": "The group discussed the finder button (referred to as a \"locator\" or \"buzzer\") and agreed it was easy to implement and suitable for their target age group of 19 to 35-year-olds. They did not specifically discuss a \"call button.\"",
+          "rouge_f1": {
+            "rouge1": 0.27027027027027023,
+            "rouge2": 0.03669724770642201,
+            "rougeL": 0.16216216216216217
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8
+          ],
+          "retrieval_precision": 0.541015625,
+          "retrieval_recall": 0.36495388669301715
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The group discussed the finder button and call button as part of designing a more user-friendly remote control based on customer habits and preferences. They decided to include a finder button (referred to as a \"locator\" or \"buzzer\") which would emit a sound (beep) to help locate the remote, rather than a light. This decision was influenced by the idea that a sound would be more effective in locating the remote, especially if it were hidden under furniture. The call button concept was similarly discussed in the context of functionality, with the team deciding against additional internet features and focusing on essential television-related functions. The target age group for the remote was identified as nineteen to thirty-five-year-olds, including teenagers and young professionals.",
+          "rouge_f1": {
+            "rouge1": 0.3451776649746193,
+            "rouge2": 0.05128205128205128,
+            "rougeL": 0.18274111675126903
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8,
+            1
+          ],
+          "retrieval_precision": 0.458984375,
+          "retrieval_recall": 0.619235836627141
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The group discussed the finder button and agreed to include it as a feature to help locate the remote. They decided it would involve a two-part system where one part would be attached to the TV and the other would be on the remote. When activated, the remote would emit a sound (beep) rather than a light, making it easier to locate even if it was under furniture or out of sight. They also mentioned that this feature would appeal to their target age group of 19 to 35-year-olds. There was no specific discussion about a \"call button\" in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.3885714285714286,
+            "rouge2": 0.12716763005780346,
+            "rougeL": 0.24
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8,
+            1,
+            0,
+            7,
+            9
+          ],
+          "retrieval_precision": 0.37060546875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The group discussed the finder button (referred to as a \"locator\" or \"buzzer\") and agreed it was easy to implement and suitable for their target age group of 19 to 35-year-olds. They did not specifically discuss a \"call button.\"",
+          "rouge_f1": {
+            "rouge1": 0.27027027027027023,
+            "rouge2": 0.03669724770642201,
+            "rougeL": 0.16216216216216217
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8
+          ],
+          "retrieval_precision": 0.541015625,
+          "retrieval_recall": 0.36495388669301715
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The group discussed the finder button and call button as part of designing a more user-friendly remote control based on customer habits and preferences. They decided to include a finder button (referred to as a \"locator\" or \"buzzer\") which would emit a sound (beep) to help locate the remote, rather than a light. This decision was influenced by the idea that a sound would be more effective in locating the remote, especially if it were hidden under furniture. The call button concept was similarly discussed in the context of functionality, with the team deciding against additional internet features and focusing on essential television-related functions. The target age group for the remote was identified as nineteen to thirty-five-year-olds, including teenagers and young professionals.",
+          "rouge_f1": {
+            "rouge1": 0.3451776649746193,
+            "rouge2": 0.05128205128205128,
+            "rougeL": 0.18274111675126903
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8,
+            1
+          ],
+          "retrieval_precision": 0.458984375,
+          "retrieval_recall": 0.619235836627141
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The group discussed the finder button (referred to as a \"locator\" or \"buzzer\") and agreed it should be included as it is easy to implement and useful for finding the remote, similar to how a phone can be located by making a call. They decided on a radio signal (beep) rather than a light for the finder functionality. There was no specific discussion about a call button.",
+          "rouge_f1": {
+            "rouge1": 0.3065693430656934,
+            "rouge2": 0.04444444444444444,
+            "rougeL": 0.21897810218978103
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8,
+            1,
+            0,
+            10,
+            3
+          ],
+          "retrieval_precision": 0.2294921875,
+          "retrieval_recall": 0.619235836627141
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did group members think of the speech recognition design suggested by Marketing?",
+      "reference_answer": "Marketing suggested the speech recognition design is for user groups aged from nineteen to thirty-five. Industrial Designer supplemented the feature design that if the TV is on and somebody says like one, then the TV would switch itself to channel one. However, Project Manager illustrated that considering the budget, to have the speech recognition programmed in every single remote might be expensive. And this ended up was commonly agreed by other group mates.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group members expressed concerns about the speech recognition design suggested by Marketing. The Industrial Designer noted that speech recognition is \"really hard to program\" and mentioned potential issues with background noise from the TV interfering with commands. They were unsure about how to implement it effectively. Despite these reservations, Marketing seemed supportive of incorporating speech recognition into the design, suggesting it could be implemented as an additional feature that plugs into the TV. However, the exact placement and integration of this feature remained undecided.",
+          "rouge_f1": {
+            "rouge1": 0.4150943396226415,
+            "rouge2": 0.089171974522293,
+            "rougeL": 0.21383647798742136
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            10
+          ],
+          "retrieval_precision": 0.279296875,
+          "retrieval_recall": 0.6412556053811659
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Group members thought that the speech recognition design suggested by Marketing was challenging to implement due to programming difficulties and potential interference from TV sounds. Specifically, Industrial Designer expressed concerns about the feasibility of programming speech recognition within the budget constraints and the risk of误操作 (misoperation) if the TV is playing audio. Despite these challenges, Marketing remained satisfied with the inclusion of speech recognition and the screen feature, while acknowledging the practical limitations discussed. The group ultimately decided to focus on designing a two-part system for locating the remote, rather than fully implementing speech recognition.",
+          "rouge_f1": {
+            "rouge1": 0.43529411764705883,
+            "rouge2": 0.10714285714285714,
+            "rougeL": 0.22352941176470587
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            10,
+            0,
+            2
+          ],
+          "retrieval_precision": 0.2177734375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Group members expressed concerns about the feasibility and practicality of incorporating speech recognition into the remote control design. Specifically:\n\n- **Industrial Designer** noted that programming speech recognition is challenging and could lead to unintended channel changes if TV audio interferes with commands.\n- **Project Manager** mentioned budget constraints, suggesting that including speech recognition in every remote might be too expensive.\n- **Marketing** agreed with the decision to exclude speech recognition, indicating satisfaction with the alternative design direction.\n\nOverall, the group thought the speech recognition design was impractical due to technical difficulties and cost considerations.",
+          "rouge_f1": {
+            "rouge1": 0.49696969696969695,
+            "rouge2": 0.11042944785276074,
+            "rougeL": 0.29090909090909095
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            10,
+            0,
+            2,
+            12,
+            15,
+            16,
+            8
+          ],
+          "retrieval_precision": 0.10888671875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Group members had mixed thoughts on the speech recognition design suggested by Marketing. The Industrial Designer expressed concerns about the difficulty of programming speech recognition and potential issues with false commands from TV audio (excerpts 97-102). However, Marketing and the Project Manager seemed supportive of the idea, acknowledging its complexity but suggesting it could be implemented as an additional feature that plugs into the TV (excerpts 135-146). User Interface agreed to design it as a two-part package. Overall, while there were technical reservations, the group did not outright reject the idea and considered it feasible as a supplementary feature.",
+          "rouge_f1": {
+            "rouge1": 0.40909090909090917,
+            "rouge2": 0.08045977011494254,
+            "rougeL": 0.19318181818181818
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            2
+          ],
+          "retrieval_precision": 0.267578125,
+          "retrieval_recall": 0.6143497757847534
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Group members had mixed thoughts on the speech recognition design suggested by Marketing. User Interface and the Project Manager seemed open to the idea, aligning it with their target demographic (nineteen to thirty-five-year-olds). However, the Industrial Designer expressed concerns about the implementation difficulty and potential interference issues due to ambient TV sounds. Despite these reservations, the group decided to move forward with designing a two-part package for the speech recognition feature, acknowledging its appeal to their target group.",
+          "rouge_f1": {
+            "rouge1": 0.44871794871794873,
+            "rouge2": 0.12987012987012986,
+            "rougeL": 0.2564102564102564
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            2,
+            3,
+            10
+          ],
+          "retrieval_precision": 0.14453125,
+          "retrieval_recall": 0.6636771300448431
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Group members thought that the speech recognition design suggested by Marketing was challenging to implement due to programming difficulties and potential interference from TV sounds. Additionally, they considered it expensive within their budget constraints. However, they acknowledged that it appealed to their target demographic (ages 15-35) and expressed willingness to discuss its inclusion further.",
+          "rouge_f1": {
+            "rouge1": 0.372093023255814,
+            "rouge2": 0.047244094488188976,
+            "rougeL": 0.17054263565891475
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            2,
+            3,
+            10,
+            0,
+            12,
+            4,
+            7
+          ],
+          "retrieval_precision": 0.10888671875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Group members had mixed thoughts on the speech recognition design suggested by Marketing. The Industrial Designer expressed concerns about the difficulty of programming speech recognition and potential issues with false commands from TV audio (excerpts 97-102). However, Marketing and the Project Manager seemed supportive of the idea, acknowledging its complexity but suggesting it could be implemented as an additional feature that plugs into the TV (excerpts 135-146). User Interface agreed to design it as a two-part package. Overall, while there were technical reservations, the group did not outright reject the idea and considered it feasible as a supplementary feature.",
+          "rouge_f1": {
+            "rouge1": 0.40909090909090917,
+            "rouge2": 0.08045977011494254,
+            "rougeL": 0.19318181818181818
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            2
+          ],
+          "retrieval_precision": 0.267578125,
+          "retrieval_recall": 0.6143497757847534
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Group members expressed mixed reactions to the speech recognition design suggested by Marketing. The Industrial Designer noted that implementing speech recognition is challenging due to programming difficulties and potential interference from TV sounds, suggesting it might be costly and impractical within their budget constraints. However, Marketing seemed content with the decision to exclude speech recognition, agreeing with the practical concerns raised.",
+          "rouge_f1": {
+            "rouge1": 0.4444444444444445,
+            "rouge2": 0.09022556390977443,
+            "rougeL": 0.23703703703703705
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            2,
+            10,
+            0
+          ],
+          "retrieval_precision": 0.2177734375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Group members expressed concerns about the feasibility and cost-effectiveness of implementing speech recognition. Specifically:\n\n- **Industrial Designer**: Noted that programming speech recognition is challenging and could lead to unintended actions (e.g., changing TV channels based on spoken numbers).\n- **Project Manager** and **Industrial Designer**: Agreed that considering the budget, incorporating speech recognition into every remote might be too expensive.\n- **Marketing**: Was initially supportive of speech recognition but ultimately aligned with the team's decision to prioritize other features based on the target demographic's preferences and budget constraints.\n\nThe group concluded that while speech recognition was an appealing feature, practical and financial considerations made it less viable for immediate implementation.",
+          "rouge_f1": {
+            "rouge1": 0.4347826086956522,
+            "rouge2": 0.09890109890109891,
+            "rougeL": 0.28260869565217395
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            2,
+            10,
+            0,
+            12,
+            3,
+            4,
+            14
+          ],
+          "retrieval_precision": 0.10888671875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "Group members thought that the speech recognition design suggested by Marketing was challenging to implement due to programming difficulties and potential interference from TV sounds. Additionally, considering the budget constraints, implementing speech recognition in every remote might be too expensive. However, Marketing seemed content with these limitations.",
+          "rouge_f1": {
+            "rouge1": 0.4628099173553719,
+            "rouge2": 0.15126050420168066,
+            "rougeL": 0.29752066115702475
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9
+          ],
+          "retrieval_precision": 0.435546875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "Group members were generally cautious about the speech recognition design suggested by Marketing. Industrial Designer expressed concerns about the difficulty of programming speech recognition and potential issues with background noise interfering with commands. Project Manager agreed that considering their budget, implementing speech recognition in every remote might be too expensive. Despite these reservations, Marketing seemed content with the decision to not prioritize speech recognition based on the group's discussion.",
+          "rouge_f1": {
+            "rouge1": 0.4444444444444445,
+            "rouge2": 0.14084507042253525,
+            "rougeL": 0.3055555555555555
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9,
+            10,
+            2
+          ],
+          "retrieval_precision": 0.2177734375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Group members thought that incorporating speech recognition into the remote control design was challenging and potentially problematic. Specifically:\n\n- **Industrial Designer** expressed concerns about programming difficulties and the risk of misinterpreting commands, especially when the TV is on and making sounds.\n- **Project Manager** noted that including speech recognition in every remote might be expensive given their budget constraints.\n- **Marketing** initially suggested speech recognition but later agreed with the concerns raised and seemed content with the decision to exclude it based on the feedback from the team.\n\nThe group ultimately decided against implementing speech recognition due to technical challenges and cost considerations.",
+          "rouge_f1": {
+            "rouge1": 0.4482758620689655,
+            "rouge2": 0.13953488372093023,
+            "rougeL": 0.27586206896551724
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9,
+            10,
+            2,
+            5,
+            0,
+            11,
+            7
+          ],
+          "retrieval_precision": 0.10888671875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Group members had mixed thoughts on the speech recognition design suggested by Marketing. Marketing proposed incorporating speech recognition based on market research indicating varying willingness among different age groups to pay for it, particularly highlighting interest from 15 to 35-year-olds. However, the Industrial Designer expressed concerns about the difficulty in programming speech recognition accurately, especially given potential background noise from the TV. The Project Manager acknowledged these challenges but did not explicitly reject the idea. Overall, while there was some support for exploring speech recognition, practical implementation hurdles were noted.",
+          "rouge_f1": {
+            "rouge1": 0.3734939759036145,
+            "rouge2": 0.08536585365853659,
+            "rougeL": 0.21686746987951808
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2
+          ],
+          "retrieval_precision": 0.169921875,
+          "retrieval_recall": 0.3901345291479821
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Group members were generally cautious about the speech recognition design suggested by Marketing. Industrial Designer expressed concerns about the difficulty of programming speech recognition and potential issues with background noise interfering with commands. Project Manager agreed that considering their budget, implementing speech recognition in every remote might be too expensive. Despite these reservations, Marketing seemed content with the decision to not prioritize speech recognition based on the group's discussion.",
+          "rouge_f1": {
+            "rouge1": 0.4444444444444445,
+            "rouge2": 0.14084507042253525,
+            "rougeL": 0.3055555555555555
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2,
+            10,
+            9
+          ],
+          "retrieval_precision": 0.2177734375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Group members thought that the speech recognition design suggested by Marketing was potentially costly and complex to implement. Specifically, the Industrial Designer expressed concerns about programming difficulties and the risk of misinterpreting commands due to background noise from the TV. Additionally, the Project Manager noted that incorporating speech recognition into every remote might be expensive given their budget constraints. Despite these challenges, Marketing remained supportive of the idea, suggesting that the target demographic (ages 15-35) would be willing to pay extra for such features. However, the group ultimately decided to prioritize other functionalities over speech recognition due to practical implementation issues and budget considerations.",
+          "rouge_f1": {
+            "rouge1": 0.48044692737430167,
+            "rouge2": 0.11299435028248589,
+            "rougeL": 0.2458100558659218
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2,
+            10,
+            9,
+            5,
+            11,
+            0,
+            3
+          ],
+          "retrieval_precision": 0.10888671875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Group members had mixed thoughts on the speech recognition design suggested by Marketing. Marketing proposed incorporating speech recognition based on market research indicating varying willingness among different age groups to pay for it, particularly highlighting interest from 15 to 35-year-olds. However, the Industrial Designer expressed concerns about the difficulty in programming speech recognition accurately, especially given potential background noise from the TV. The Project Manager acknowledged these challenges but did not explicitly reject the idea. Overall, while there was some support for exploring speech recognition, practical implementation hurdles were noted.",
+          "rouge_f1": {
+            "rouge1": 0.3734939759036145,
+            "rouge2": 0.08536585365853659,
+            "rougeL": 0.21686746987951808
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2
+          ],
+          "retrieval_precision": 0.169921875,
+          "retrieval_recall": 0.3901345291479821
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Group members were generally cautious about the speech recognition design suggested by Marketing. Industrial Designer expressed concerns about the difficulty of programming speech recognition and potential issues with background noise interfering with commands. Project Manager agreed that considering their budget, implementing speech recognition in every remote might be too expensive. Despite these reservations, Marketing seemed content with the decision to not prioritize speech recognition based on the group's discussion.",
+          "rouge_f1": {
+            "rouge1": 0.4444444444444445,
+            "rouge2": 0.14084507042253525,
+            "rougeL": 0.3055555555555555
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2,
+            9,
+            10
+          ],
+          "retrieval_precision": 0.2177734375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Group members expressed concerns about the feasibility and cost-effectiveness of implementing speech recognition. Specifically:\n\n- **Industrial Designer** noted that programming speech recognition is challenging and could lead to unintended commands (e.g., switching channels based on TV dialogue).\n- **Project Manager** mentioned that incorporating speech recognition into every remote might be expensive given their budget constraints.\n- **Marketing** agreed with the decision to exclude speech recognition, indicating satisfaction with this choice.\n\nThese points reflect a general skepticism towards integrating speech recognition due to technical difficulties and financial considerations.",
+          "rouge_f1": {
+            "rouge1": 0.4125,
+            "rouge2": 0.08860759493670886,
+            "rougeL": 0.2625
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2,
+            9,
+            10,
+            5,
+            0,
+            11,
+            13
+          ],
+          "retrieval_precision": 0.10888671875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "Group members expressed concerns about the speech recognition design suggested by Marketing. The Industrial Designer noted that programming speech recognition could be challenging and mentioned potential issues with false commands due to background noise from the TV. Additionally, the Project Manager pointed out budget constraints, suggesting that incorporating speech recognition into every remote might be too expensive. Despite these reservations, Marketing remained satisfied with the idea, while User Interface agreed with the Industrial Designer's points.",
+          "rouge_f1": {
+            "rouge1": 0.4666666666666666,
+            "rouge2": 0.12162162162162161,
+            "rougeL": 0.27999999999999997
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8
+          ],
+          "retrieval_precision": 0.380859375,
+          "retrieval_recall": 0.874439461883408
+        },
+        "lumber__dense__w1024": {
+          "answer": "Group members thought that the speech recognition design suggested by Marketing was challenging to implement due to programming difficulties and potential interference from TV sounds. They acknowledged it as a cool idea but expressed concerns about its feasibility within their budget constraints. Specifically, Industrial Designer noted the difficulty in programming speech recognition and the risk of misinterpretation when the TV is on. Project Manager agreed, suggesting that incorporating speech recognition into every remote might be too expensive given their budget. Despite these challenges, Marketing remained positive about the concept.",
+          "rouge_f1": {
+            "rouge1": 0.4785276073619632,
+            "rouge2": 0.13664596273291926,
+            "rougeL": 0.26993865030674846
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            1
+          ],
+          "retrieval_precision": 0.1904296875,
+          "retrieval_recall": 0.874439461883408
+        },
+        "lumber__dense__w2048": {
+          "answer": "Group members expressed concerns about the feasibility and cost of implementing speech recognition. Specifically:\n\n- **Industrial Designer**: Thought speech recognition was \"really hard to program\" and questioned how it would be implemented, especially considering background noise from the TV.\n- **Project Manager** and **User Interface**: Agreed that incorporating speech recognition into every remote might be too expensive given their budget constraints.\n- **Marketing**: Was initially supportive of speech recognition but ultimately aligned with the team's decision based on budget considerations.\n\nThe group concluded that their target demographic (teenagers and young professionals) might prefer such features, but practical limitations led them to prioritize other functionalities.",
+          "rouge_f1": {
+            "rouge1": 0.4318181818181818,
+            "rouge2": 0.08045977011494254,
+            "rougeL": 0.2272727272727273
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            1,
+            5,
+            10,
+            0
+          ],
+          "retrieval_precision": 0.1025390625,
+          "retrieval_recall": 0.9417040358744395
+        },
+        "lumber__bm25__w512": {
+          "answer": "The meeting excerpts do not contain any specific feedback from group members regarding the speech recognition design suggested by Marketing. Therefore, the evidence is insufficient to determine what group members thought about the speech recognition design.",
+          "rouge_f1": {
+            "rouge1": 0.3272727272727273,
+            "rouge2": 0.09259259259259259,
+            "rougeL": 0.18181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Group members thought that the speech recognition design suggested by Marketing was challenging to implement due to potential interference from TV sounds and the difficulty in programming it accurately. However, they agreed that the target demographic (teenagers and young professionals) would be more willing to pay for such features, indicating a mixed reception with concerns over practicality but acknowledgment of market interest.",
+          "rouge_f1": {
+            "rouge1": 0.411764705882353,
+            "rouge2": 0.04477611940298507,
+            "rougeL": 0.1764705882352941
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            1,
+            6
+          ],
+          "retrieval_precision": 0.095703125,
+          "retrieval_recall": 0.43946188340807174
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Group members thought that incorporating speech recognition into the remote control design was challenging and potentially costly. Specifically, the Industrial Designer mentioned that programming speech recognition was difficult and could lead to unintended channel changes if the TV was already producing sound. Additionally, the Project Manager noted that including speech recognition in every remote might be too expensive given their budget constraints. Despite these concerns, Marketing highlighted that the target demographic (ages 15-35) was more willing to pay for such features, indicating a potential market interest despite the technical and financial hurdles.",
+          "rouge_f1": {
+            "rouge1": 0.45508982035928147,
+            "rouge2": 0.1090909090909091,
+            "rougeL": 0.2634730538922156
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            1,
+            6,
+            5,
+            3,
+            4
+          ],
+          "retrieval_precision": 0.1025390625,
+          "retrieval_recall": 0.9417040358744395
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The group members expressed concerns about the speech recognition design suggested by Marketing. The Industrial Designer specifically mentioned that speech recognition is difficult to program and could lead to unintended consequences, such as accidentally changing TV channels when the TV is on. The User Interface agreed with these points. However, there were no further detailed discussions or alternative suggestions provided by the group regarding the implementation of speech recognition.",
+          "rouge_f1": {
+            "rouge1": 0.44755244755244755,
+            "rouge2": 0.11347517730496454,
+            "rougeL": 0.23776223776223776
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            6
+          ],
+          "retrieval_precision": 0.23046875,
+          "retrieval_recall": 0.5291479820627802
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Group members thought that the speech recognition design suggested by Marketing was challenging to implement due to programming difficulties and potential interference from TV sounds. They acknowledged it as a cool idea but expressed concerns about its feasibility within their budget constraints. Specifically, Industrial Designer noted the difficulty in programming speech recognition and the risk of misinterpretation when the TV is on. Project Manager agreed, suggesting that incorporating speech recognition into every remote might be too expensive given their budget. Despite these challenges, Marketing remained positive about the concept.",
+          "rouge_f1": {
+            "rouge1": 0.4785276073619632,
+            "rouge2": 0.13664596273291926,
+            "rougeL": 0.26993865030674846
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            6,
+            1
+          ],
+          "retrieval_precision": 0.1904296875,
+          "retrieval_recall": 0.874439461883408
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Group members thought that incorporating speech recognition into the remote control design was challenging and potentially costly. Specifically, the Industrial Designer expressed concerns about programming difficulties and potential interference from TV sounds, suggesting it was \"really hard to program.\" Additionally, the Project Manager noted that including speech recognition in every remote might be expensive given their budget constraints. Despite these challenges, Marketing highlighted that younger individuals (ages 15-35) were more willing to pay extra for such features, indicating a desire to cater to this demographic. However, the group ultimately decided to prioritize other aspects of the design over implementing speech recognition due to these practical considerations.",
+          "rouge_f1": {
+            "rouge1": 0.4751381215469613,
+            "rouge2": 0.08938547486033521,
+            "rougeL": 0.23204419889502761
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            6,
+            1,
+            5,
+            3,
+            0
+          ],
+          "retrieval_precision": 0.1025390625,
+          "retrieval_recall": 0.9417040358744395
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about the VCR / VHR / DVD capability button.",
+      "reference_answer": "Project Manager mentioned that the group needed to decide on the VCR capabilities and answered Industrial Designer's question on whether VCRs were the same across the world. So Industrial Designer suggested a whole different set of buttons for individual VCRs. Project Manager suggested DVD type if considering the target group as young professionals and teenagers.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button focused on the complexity and variability of VCR functionalities across different regions, which would require a different set of buttons for each type of VCR. The team considered reducing the number of buttons and possibly implementing a menu button or a scrolling option to manage different functionalities like switching channels or tracks on DVDs. The Project Manager suggested focusing on DVD technology for their target audience of young professionals and teenagers, indicating a preference towards simplifying the remote control design while considering the integration of DVD functionality.",
+          "rouge_f1": {
+            "rouge1": 0.4342105263157895,
+            "rouge2": 0.15999999999999998,
+            "rougeL": 0.3026315789473684
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            22,
+            5
+          ],
+          "retrieval_precision": 0.4453125,
+          "retrieval_recall": 0.7102803738317757
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button focused on the complexity and necessity of including specific functionality for VCRs and DVDs. The team acknowledged that VCRs have varying button requirements internationally, complicating design. In contrast, DVDs were considered less critical as they often come with their own remotes. The group suggested simplifying the remote by potentially incorporating a function switch button to toggle between TV, DVD, and VCR functionalities, reducing the overall number of buttons. This approach aimed to enhance usability and minimize the learning curve for users.",
+          "rouge_f1": {
+            "rouge1": 0.3424657534246575,
+            "rouge2": 0.05555555555555555,
+            "rougeL": 0.1917808219178082
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            22,
+            5,
+            21,
+            20
+          ],
+          "retrieval_precision": 0.22265625,
+          "retrieval_recall": 0.7102803738317757
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button focused on whether to include specific functionality for VCRs and DVDs on the remote control. Marketing highlighted that younger users prefer DVD technology over VCRs, and noted that VCRs have varying button requirements internationally. User Interface suggested reducing the number of buttons by incorporating a function switch button that allows users to toggle between TV, DVD, and VCR functionalities. This switch would enable the remote to perform different tasks based on the device being used, such as changing channels on a TV or switching tracks on a DVD player. However, the team acknowledged that implementing VCR-specific features might complicate the design due to differing standards across regions.",
+          "rouge_f1": {
+            "rouge1": 0.3005780346820809,
+            "rouge2": 0.04678362573099415,
+            "rougeL": 0.16184971098265896
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            22,
+            5,
+            21,
+            20,
+            16,
+            3,
+            12,
+            18
+          ],
+          "retrieval_precision": 0.13916015625,
+          "retrieval_recall": 0.8878504672897196
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button focused on the idea proposed by User Interface at [369], suggesting a button that changes functionality based on the device being used (TV, DVD). This button would allow channel switching when on TV and track switching when on DVD. The Project Manager agreed to consider this idea, indicating its potential implementation. However, specific details on how this feature would be integrated or its priority were not extensively discussed.",
+          "rouge_f1": {
+            "rouge1": 0.30075187969924816,
+            "rouge2": 0.061068702290076333,
+            "rougeL": 0.1804511278195489
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            11,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button focused on whether a single button could serve multiple functions based on the device being used (TV, DVD). User Interface suggested that a button could switch functionality depending on whether the user was watching TV or playing a DVD, allowing for channel switching on TV and track switching on DVDs. The team agreed to consider this idea further but did not make a final decision.",
+          "rouge_f1": {
+            "rouge1": 0.2923076923076924,
+            "rouge2": 0.04687500000000001,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            11,
+            3,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button focused on adapting the remote control to better suit user needs based on usability studies. User Interface suggested considering a button that could adapt its functionality based on whether the user was watching TV or using a DVD player, implying that the button could switch between channel selection and track navigation depending on the device being used. However, the specific implementation details were left open for further consideration as the team aimed to finalize the design within the constraints of their target demographic (ages 19-35).",
+          "rouge_f1": {
+            "rouge1": 0.3311258278145695,
+            "rouge2": 0.053691275167785234,
+            "rougeL": 0.15894039735099338
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            11,
+            3,
+            7,
+            9,
+            2,
+            4,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button focused on integrating functionality in a user-friendly manner. User Interface suggested having a versatile button that adapts its function based on the device being used (e.g., switching channels on TV and tracks on DVD). This idea was met with agreement from the Project Manager and Industrial Designer, who indicated they would consider implementing such a feature. However, specific details regarding the implementation were not provided beyond the suggestion itself.",
+          "rouge_f1": {
+            "rouge1": 0.338235294117647,
+            "rouge2": 0.05970149253731344,
+            "rougeL": 0.1764705882352941
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            3,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button focused on the complexity and relevance of including such features given the varying usage patterns and technological preferences among different age groups. User Interface suggested consolidating settings into fewer buttons, possibly through a menu system, to maintain simplicity and user-friendliness. However, the team acknowledged the challenge of accommodating diverse VCR and DVD functionalities across regions and technologies. There was agreement that if targeting younger audiences, DVD functionality might be prioritized over VCR capabilities due to current technological trends. The group concluded that further consideration was needed regarding how to integrate these functionalities without overwhelming users.",
+          "rouge_f1": {
+            "rouge1": 0.3354037267080745,
+            "rouge2": 0.050314465408805034,
+            "rougeL": 0.18633540372670807
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            3,
+            5,
+            13,
+            11
+          ],
+          "retrieval_precision": 0.22265625,
+          "retrieval_recall": 0.7102803738317757
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button focused on simplifying the remote control design to cater to user preferences and behaviors. Participants agreed that customers primarily use a limited number of buttons and suggested consolidating settings into fewer, more accessible buttons. There was consideration for including functionality for DVD and possibly VCR, but it was noted that VCRs have varying button requirements internationally, complicating design. The team proposed a function switch button to allow users to toggle between TV, DVD, and potentially VCR functionalities, aiming for a user-friendly and fashionable design that reduces complexity and learning time.",
+          "rouge_f1": {
+            "rouge1": 0.28205128205128205,
+            "rouge2": 0.025974025974025976,
+            "rougeL": 0.1794871794871795
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            3,
+            5,
+            13,
+            11,
+            20,
+            2,
+            16,
+            21
+          ],
+          "retrieval_precision": 0.111328125,
+          "retrieval_recall": 0.7102803738317757
+        },
+        "word_packed__dense__w512": {
+          "answer": "The team discussed the inclusion of a VCR/DVD capability button on a general remote control. The Project Manager noted that VCRs vary internationally, making it challenging to include specific VCR buttons. Instead, they considered having a function switch button to toggle between TV, DVD, and VCR modes. This would allow users to switch functionalities based on the device being used, such as changing channels on TV and navigating tracks on DVDs. The team agreed this approach could simplify the design while accommodating multiple devices.",
+          "rouge_f1": {
+            "rouge1": 0.3404255319148936,
+            "rouge2": 0.028776978417266185,
+            "rougeL": 0.1702127659574468
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            20
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.7975077881619937
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button centered around the complexity and relevance of including specific buttons for VCR functions versus a more generalized approach. The team acknowledged that VCRs have varying button sets internationally, making it challenging to standardize. In contrast, DVD functionality was noted to be simpler, typically involving play, pause, and eject buttons. There was consideration given to having a function switch button to toggle between TV, DVD, and VCR modes, allowing users to control different functionalities based on the device being used. However, the decision was deferred pending clarification on project requirements regarding compatibility with devices beyond just television.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.03773584905660378,
+            "rougeL": 0.13664596273291926
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            20,
+            19,
+            2
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.7975077881619937
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button centered around whether to include specific functionality for VCRs and DVDs on the remote control. Marketing suggested reducing the number of buttons and possibly having a single menu button to navigate options. However, the team acknowledged that VCRs and DVDs have different button requirements across regions, complicating the design. User Interface proposed a function switch button to allow users to toggle between TV, DVD, and VCR modes, enabling the same buttons to serve different functions based on the selected mode. The team agreed that this approach could simplify the remote while maintaining necessary functionalities.",
+          "rouge_f1": {
+            "rouge1": 0.3270440251572327,
+            "rouge2": 0.050955414012738856,
+            "rougeL": 0.1761006289308176
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            20,
+            19,
+            2,
+            4,
+            5,
+            13,
+            15
+          ],
+          "retrieval_precision": 0.14501953125,
+          "retrieval_recall": 0.9252336448598131
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The meeting excerpts provided do not contain any specific discussion about the VCR/VHR/DVD capability button. The conversation primarily revolves around the design and functionality of a remote control, including a location-finding feature, but does not mention the VCR/VHR/DVD capability button directly. Therefore, the evidence is insufficient to summarize the discussion about the VCR/VHR/DVD capability button.",
+          "rouge_f1": {
+            "rouge1": 0.28813559322033894,
+            "rouge2": 0.01724137931034483,
+            "rougeL": 0.1864406779661017
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button centered around the idea of incorporating a function switch button to allow users to toggle between TV, DVD, and VCR modes. This would change the functionality of certain buttons, such as the circular disc/touchpad, to suit the specific needs of each device (e.g., switching channels on TV, changing tracks on DVD). However, there was some debate regarding the necessity of this feature, particularly concerning DVD functionality where channel switching might not be applicable. The team agreed to consider this further before finalizing the design.",
+          "rouge_f1": {
+            "rouge1": 0.2649006622516556,
+            "rouge2": 0.013422818791946308,
+            "rougeL": 0.15894039735099338
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            5,
+            20,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button centered around the idea proposed by User Interface (UI) suggesting a function switch button to change the functionality of the remote control between TV, DVD, and VCR modes. UI believed this would allow users to switch between different devices easily without needing multiple remotes. However, Industrial Designer (ID) pointed out that DVD functionality might not require as many buttons since it primarily involves track navigation rather than channel switching. Despite this, ID agreed to consider UI’s suggestion for a function switch button to accommodate different device functionalities.",
+          "rouge_f1": {
+            "rouge1": 0.32679738562091504,
+            "rouge2": 0.039735099337748346,
+            "rougeL": 0.1437908496732026
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            5,
+            20,
+            2,
+            8,
+            4,
+            7,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button centered around the idea proposed by User Interface (UI) suggesting the need for a function switch button to change the functionality of the remote control between TV, DVD, and VCR modes. This would allow users to switch between different functionalities such as changing channels or tracks based on the device being used. The Industrial Designer noted that while DVD mode requires fewer buttons, the team should consider how the channel function applies differently across devices. The Project Manager agreed to think further about this idea before concluding the meeting.",
+          "rouge_f1": {
+            "rouge1": 0.3506493506493506,
+            "rouge2": 0.05263157894736842,
+            "rougeL": 0.18181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button centered around the idea of incorporating a function switch button on the remote control. This button would allow users to switch between TV, DVD, and VCR functionalities. User Interface suggested that such a button would enable the touchpad or specific regions of the remote to perform different actions based on the selected device (e.g., switching channels on TV but switching tracks on DVD). The team agreed to consider this approach further to ensure the remote is user-friendly and functional across multiple devices.",
+          "rouge_f1": {
+            "rouge1": 0.2953020134228188,
+            "rouge2": 0.0272108843537415,
+            "rougeL": 0.17449664429530198
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            5,
+            2,
+            4
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button involved deciding whether to include specific functionality for VCRs and DVDs on the remote. Marketing and the Project Manager noted that VCRs are not universal across regions, complicating the inclusion of dedicated buttons. However, since the target audience consists of young professionals and teenagers who likely prefer DVD technology, the team considered simplifying the remote by possibly including a function switch button to toggle between TV, DVD, and VCR modes. This would allow users to access necessary functions without cluttering the remote with numerous buttons. The team agreed that further consideration was needed before finalizing this feature.",
+          "rouge_f1": {
+            "rouge1": 0.3703703703703703,
+            "rouge2": 0.08750000000000001,
+            "rougeL": 0.20987654320987653
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            5,
+            2,
+            4,
+            19,
+            8,
+            10,
+            12
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.7975077881619937
+        },
+        "lumber__dense__w512": {
+          "answer": "The team discussed the inclusion of VCR/VHS/DVD capability buttons, noting significant differences in VCR functionality across international markets, making it impractical to include specific VCR buttons due to varying standards. They agreed that targeting younger audiences meant prioritizing DVD compatibility. The consensus was to simplify the remote control by reducing the number of dedicated buttons, possibly using a single menu button for accessing various functions, and keeping essential buttons like power, volume, and channel selection straightforward and intuitive.",
+          "rouge_f1": {
+            "rouge1": 0.3088235294117648,
+            "rouge2": 0.01492537313432836,
+            "rougeL": 0.16176470588235292
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            15
+          ],
+          "retrieval_precision": 0.48046875,
+          "retrieval_recall": 0.7663551401869159
+        },
+        "lumber__dense__w1024": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button centered around the complexity of integrating various functionalities into a single remote control. The team acknowledged that VCRs have inconsistent button layouts internationally, making it challenging to standardize. In contrast, DVDs were noted to have simpler controls (play, pause, eject). There was a suggestion to include a function switch button to toggle between TV, DVD, and VCR modes, allowing users to access specific functionalities relevant to each device. However, concerns were raised about the potential confusion this might cause for users. The team agreed to consider this approach further but needed to finalize the project requirements to ensure compatibility and usability.",
+          "rouge_f1": {
+            "rouge1": 0.27710843373493976,
+            "rouge2": 0.024390243902439025,
+            "rougeL": 0.1566265060240964
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            15,
+            3
+          ],
+          "retrieval_precision": 0.240234375,
+          "retrieval_recall": 0.7663551401869159
+        },
+        "lumber__dense__w2048": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button focused on the complexity and usability concerns related to integrating multiple device functionalities into a single remote control. The team acknowledged that including specific buttons for VCRs was impractical due to varying international standards and low usage frequency. Instead, they considered designing a function switch button to allow users to toggle between TV, DVD, and potentially VCR functions, simplifying the interface and reducing the number of dedicated buttons. However, the exact implementation details were left unresolved pending further clarification on project requirements.",
+          "rouge_f1": {
+            "rouge1": 0.32653061224489793,
+            "rouge2": 0.041379310344827586,
+            "rougeL": 0.17687074829931973
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            15,
+            3,
+            1,
+            8
+          ],
+          "retrieval_precision": 0.1201171875,
+          "retrieval_recall": 0.7663551401869159
+        },
+        "lumber__bm25__w512": {
+          "answer": "The meeting excerpts do not contain any specific discussion about the VCR/VHR/DVD capability button. The evidence is insufficient to summarize the discussion regarding this particular button.",
+          "rouge_f1": {
+            "rouge1": 0.2142857142857143,
+            "rouge2": 0.024390243902439022,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button centered around the idea of creating a function switch button that would allow users to toggle between TV, DVD, and VCR functionalities without needing to switch remotes. Marketing highlighted user preference for simplicity and ease of use, suggesting that integrating multiple functions into one remote could enhance user satisfaction. User Interface proposed a function switch button to manage different device modes (TV, DVD, VCR), while Industrial Designer noted that DVD functionality is simpler and primarily involves play, pause, and menu options. The team acknowledged the potential benefit of having a single remote for multiple devices but also considered the practicality and necessity of such a feature.",
+          "rouge_f1": {
+            "rouge1": 0.29239766081871343,
+            "rouge2": 0.047337278106508875,
+            "rougeL": 0.16374269005847952
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            15
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button centered around whether to include a function switch button on the remote control to allow users to switch between TV, DVD, and VCR functionalities without needing multiple remotes. Marketing suggested that users prefer simplicity and ease of use, while User Interface proposed having a function switch button to accommodate different device operations. The team agreed that incorporating such a feature could enhance user experience but needed further consideration to ensure it aligns with the project requirements and target demographic.",
+          "rouge_f1": {
+            "rouge1": 0.3194444444444444,
+            "rouge2": 0.02816901408450704,
+            "rougeL": 0.1527777777777778
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            15,
+            4,
+            5,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button centered around simplifying the remote control to reduce user confusion and learning time. The team considered having a function switch button to change between TV, DVD, and VCR modes, allowing users to perform specific functions relevant to each mode (e.g., channel switching for TV, track switching for DVD). However, there was acknowledgment that DVD players typically have their own remotes, and concerns were raised about the applicability of certain buttons across different devices. The idea of integrating all functionalities onto one remote was seen as potentially convenient but required careful design to ensure usability and relevance across TV, DVD, and VCR operations.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.012048192771084336,
+            "rougeL": 0.15476190476190477
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button centered around the idea of creating a function switch button on the remote control. This button would allow users to switch between TV, DVD, and VCR functions without needing to switch remotes. The team considered the simplicity of DVD player remotes, which typically only require play, pause, and eject buttons, contrasting with the complexity of TV remotes. There was agreement that integrating these functionalities into one remote could enhance user convenience, though specific details on implementation were left unresolved due to time constraints.",
+          "rouge_f1": {
+            "rouge1": 0.28378378378378377,
+            "rouge2": 0.0547945205479452,
+            "rougeL": 0.14864864864864866
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The discussion about the VCR/VHR/DVD capability button centered around the complexity and necessity of including specific buttons for these functionalities. Marketing highlighted that customers prefer simplicity and ease of use, suggesting that having a single function switch button could manage different device functionalities (TV, DVD, VCR) rather than dedicated buttons for each. User Interface proposed a function switch button to toggle between TV, DVD, and VCR modes, allowing the same buttons to serve multiple purposes based on the selected mode. However, there was concern about the varying button requirements across different devices and regions, particularly noting that VCRs have different button sets internationally compared to DVDs. The team agreed that focusing on simplicity and user-friendly design was crucial, considering the target audience of young professionals and teenagers who predominantly use DVD technology.",
+          "rouge_f1": {
+            "rouge1": 0.33507853403141363,
+            "rouge2": 0.09523809523809523,
+            "rougeL": 0.19895287958115188
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            1,
+            3,
+            9,
+            4
+          ],
+          "retrieval_precision": 0.1201171875,
+          "retrieval_recall": 0.7663551401869159
+        }
+      }
+    }
+  ]
+}

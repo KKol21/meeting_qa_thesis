@@ -1,0 +1,3666 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "Bed003.json",
+        "sha256": "44a40d13c4f485240dc60acc5531374b4979f9ccc9b9415da059a13747754122"
+      },
+      "retrieval": {
+        "file": "Bed003.json",
+        "sha256": "2a75cac26ee0bccefc53c67e2a51d24f47d0ad588f095d4ddd34949dabc32aeb"
+      },
+      "segmentation": {
+        "file": "Bed003.json",
+        "sha256": "ea16f28edad58d07f2a6d34998f3b31e8eceff4ba368e791d7b43e81237ccdf2"
+      }
+    },
+    "input_hash": "772410fdd372b9d97b50d66b8289f06611766bcb64cfdc5dae8340f73ad7aa64",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "59d779d90b7e85dd8b8406a8cff42344a18529bde98dce479a4269a4ee188b96",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bed003",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 153,
+  "cache_hits": 9,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did Grad B say about the structure of the belief net?",
+      "reference_answer": "It is necessary for the belief-net to have at least one layer of nodes between the features and the final output. This makes the structure more flexible in terms of coding feature-layer probabilities. ",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Grad B mentioned that setting up all the probabilities for the belief net would be a pain and that moving on to the next step of learning would handicap them since he doesn't know belief nets very well. He also noted that adding more nodes would slow down the process of setting probabilities tremendously rather than expediting it. Additionally, Grad B agreed that the current setup averages over possibilities due to lack of observation and acknowledged issues with how probabilities were set in their belief net.",
+          "rouge_f1": {
+            "rouge1": 0.26229508196721313,
+            "rouge2": 0.05,
+            "rougeL": 0.18032786885245902
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            19,
+            22
+          ],
+          "retrieval_precision": 0.228515625,
+          "retrieval_recall": 0.22807017543859648
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Grad B commented that adding more nodes to the belief net would slow down the process of setting up probabilities tremendously, indicating a concern about the complexity and setup difficulty of the belief net's structure. He also mentioned not knowing belief nets very well, suggesting uncertainty about optimal structural practices.",
+          "rouge_f1": {
+            "rouge1": 0.32558139534883723,
+            "rouge2": 0.04761904761904763,
+            "rougeL": 0.18604651162790697
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            19,
+            22,
+            17,
+            52
+          ],
+          "retrieval_precision": 0.1142578125,
+          "retrieval_recall": 0.22807017543859648
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Grad B commented that setting up all the probabilities for the belief net would be a pain and that moving onto the next step and doing learning of some sort would handicap them, as he doesn't know belief-nets very well. Additionally, Grad B noted that the actual parse is somewhere up around in the belief-net, but they haven't managed to have nodes for \"discourse\" and \"parse,\" although these are parts of the belief-net. He also mentioned that the demo doesn't work very well because they couldn't figure out how to turn off the bias towards \"Tango.\"",
+          "rouge_f1": {
+            "rouge1": 0.23188405797101447,
+            "rouge2": 0.058823529411764705,
+            "rougeL": 0.14492753623188404
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            19,
+            22,
+            17,
+            52,
+            10,
+            18,
+            56,
+            11,
+            34
+          ],
+          "retrieval_precision": 0.05712890625,
+          "retrieval_recall": 0.22807017543859648
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The evidence is insufficient to determine what Grad B said about the structure of the belief net. The provided excerpts do not contain any statements from Grad B that directly address or describe the structure of the belief net.",
+          "rouge_f1": {
+            "rouge1": 0.29729729729729726,
+            "rouge2": 0.08333333333333334,
+            "rougeL": 0.2162162162162162
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            35,
+            8
+          ],
+          "retrieval_precision": 0.1015625,
+          "retrieval_recall": 0.10136452241715399
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Grad B mentioned that setting up all the probabilities for the belief net would be a pain and that moving onto the next step and doing learning of some sort would handicap them, as per Bhaskara's suggestion. Grad B also noted that the belief-net wouldn't look pretty if they had N features, as it would be exponential in N, and all nodes would be pointing to one node. Additionally, Grad B suggested that the belief-net might use the place someone wants to go to as a navigational point to another place, and that the destination might not always be the final destination. Grad B also indicated that the belief-net was still in a toy version due to the unknown probabilities and that the mode had three different outputs based on the context and verb used.",
+          "rouge_f1": {
+            "rouge1": 0.2057142857142857,
+            "rouge2": 0.046242774566473986,
+            "rougeL": 0.16000000000000003
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            35,
+            8,
+            6,
+            10
+          ],
+          "retrieval_precision": 0.251953125,
+          "retrieval_recall": 0.5029239766081871
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Grad B commented that setting up all the probabilities for the belief net would be a pain and that moving to the next step of learning would handicap them since he doesn't know belief nets very well. He also noted that the belief net wouldn't look pretty if many nodes pointed to one node. Additionally, Grad B mentioned that the belief net had a toy version and that the probabilities weren't known yet. He suggested switching to another program to view the belief net better.",
+          "rouge_f1": {
+            "rouge1": 0.21138211382113822,
+            "rouge2": 0.04958677685950413,
+            "rougeL": 0.17886178861788618
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            35,
+            8,
+            6,
+            10,
+            28,
+            22,
+            52,
+            57,
+            58
+          ],
+          "retrieval_precision": 0.1259765625,
+          "retrieval_recall": 0.5029239766081871
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Grad B mentioned that setting up all the probabilities for the belief net would be a pain and that moving to the next step with learning would handicap them since they don't know belief nets very well. Additionally, Grad B agreed that the actual parse is somewhere in the structure discussed but noted that they haven't managed to include nodes for \"discourse\" and \"parse\" explicitly in the belief net, even though these could be considered part of it.",
+          "rouge_f1": {
+            "rouge1": 0.2782608695652174,
+            "rouge2": 0.07079646017699115,
+            "rougeL": 0.19130434782608696
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            22,
+            10
+          ],
+          "retrieval_precision": 0.228515625,
+          "retrieval_recall": 0.22807017543859648
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Grad B commented that setting up all the probabilities for the belief net would be a pain and that moving to the next step of learning would handicap them, as they wouldn't have properly set up the initial structure. He also noted that he does not know belief nets very well. Additionally, Grad B agreed with Grad C's point that the actual parse is somewhere in the belief net but they haven't managed to create nodes for \"discourse\" and \"parse\" since they wouldn't perform inference on them anyway.",
+          "rouge_f1": {
+            "rouge1": 0.2519685039370078,
+            "rouge2": 0.047999999999999994,
+            "rougeL": 0.14173228346456693
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            22,
+            10,
+            52,
+            17
+          ],
+          "retrieval_precision": 0.1142578125,
+          "retrieval_recall": 0.22807017543859648
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Grad B commented that setting up all the probabilities for the belief net would be a pain and that moving onto the next step without properly setting up the initial structure would handicap their learning process. He also expressed uncertainty about belief nets, stating, \"I don't know belief-nets very well.\" Additionally, Grad B agreed with Grad C's suggestion that adding more nodes would slow down the process of setting up probabilities significantly.",
+          "rouge_f1": {
+            "rouge1": 0.2363636363636364,
+            "rouge2": 0.055555555555555566,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            22,
+            10,
+            52,
+            17,
+            19,
+            49,
+            28,
+            57,
+            29
+          ],
+          "retrieval_precision": 0.05712890625,
+          "retrieval_recall": 0.22807017543859648
+        },
+        "word_packed__dense__w512": {
+          "answer": "Grad B did not explicitly state any thoughts or opinions about the structure of the belief net in the provided excerpts. The evidence is insufficient to determine what Grad B thought about the structure of the belief net.",
+          "rouge_f1": {
+            "rouge1": 0.3287671232876712,
+            "rouge2": 0.08450704225352113,
+            "rougeL": 0.21917808219178084
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            16
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The evidence provided does not contain any direct statement from Grad B about the structure of the belief net. Therefore, the evidence is insufficient to answer the question.",
+          "rouge_f1": {
+            "rouge1": 0.3174603174603175,
+            "rouge2": 0.09836065573770492,
+            "rougeL": 0.15873015873015875
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            16,
+            9,
+            47
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The evidence is insufficient to determine what Grad B specifically said about the structure of the belief net.",
+          "rouge_f1": {
+            "rouge1": 0.33962264150943394,
+            "rouge2": 0.11764705882352942,
+            "rougeL": 0.18867924528301885
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            16,
+            9,
+            47,
+            33,
+            17,
+            54,
+            0,
+            28
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Grad B mentioned that their initial idea for the structure of the belief net was \"a big flat structure\" where all the features pointed to the output node. This structure was deemed unsatisfactory due to the complexity of setting up probabilities and potential handicaps during learning processes. Grad B then suggested adding a middle layer as an alternative approach.",
+          "rouge_f1": {
+            "rouge1": 0.38297872340425526,
+            "rouge2": 0.10869565217391305,
+            "rougeL": 0.25531914893617025
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            32,
+            5
+          ],
+          "retrieval_precision": 0.259765625,
+          "retrieval_recall": 0.25925925925925924
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Grad B mentioned that their initial idea for the structure of the belief net was a \"big flat structure\" where all the features pointed to the output node. However, this structure was deemed unsatisfactory due to the difficulty in setting up all the necessary probabilities and the potential handicap it would pose for further learning processes. Grad B then suggested adding a middle layer to improve the structure.",
+          "rouge_f1": {
+            "rouge1": 0.38834951456310673,
+            "rouge2": 0.1188118811881188,
+            "rougeL": 0.23300970873786409
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            32,
+            5,
+            7,
+            20
+          ],
+          "retrieval_precision": 0.2509765625,
+          "retrieval_recall": 0.5009746588693957
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Grad B commented that their initial idea for the structure of the belief net was a \"big flat structure\" where all the features pointed to the output node. He noted this structure would be unsatisfactory due to the difficulty in setting up probabilities and the complexity it would introduce. Grad B then suggested adding a middle layer to improve the structure.",
+          "rouge_f1": {
+            "rouge1": 0.39583333333333337,
+            "rouge2": 0.12765957446808512,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            32,
+            5,
+            7,
+            20,
+            44,
+            9,
+            52,
+            53
+          ],
+          "retrieval_precision": 0.12548828125,
+          "retrieval_recall": 0.5009746588693957
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Grad B mentioned that their initial idea for the structure of the belief net was a \"big flat structure\" where all the features pointed to the output node. This structure was deemed unsatisfactory due to the complexity of setting up probabilities and potential handicaps during learning processes. Grad B suggested adding a middle layer as an alternative idea.",
+          "rouge_f1": {
+            "rouge1": 0.38709677419354843,
+            "rouge2": 0.10989010989010989,
+            "rougeL": 0.2580645161290323
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            5
+          ],
+          "retrieval_precision": 0.259765625,
+          "retrieval_recall": 0.25925925925925924
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Grad B said that their initial idea for the structure of the belief net was not very satisfying because it involved all the features pointing to the output node, creating a \"big flat structure.\" This structure would be difficult to set up due to the need to define all probabilities and would be less effective for further learning processes. Therefore, they considered adding a middle layer to improve the structure.",
+          "rouge_f1": {
+            "rouge1": 0.3428571428571428,
+            "rouge2": 0.09708737864077668,
+            "rougeL": 0.2095238095238095
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            5,
+            16,
+            47
+          ],
+          "retrieval_precision": 0.1298828125,
+          "retrieval_recall": 0.25925925925925924
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Grad B said that their initial idea for the structure of the belief net was \"a big flat structure\" where all the features pointed to the output node, which they found unsatisfying due to setup difficulties and potential handicaps in learning processes. They then suggested adding a middle layer to improve the structure.",
+          "rouge_f1": {
+            "rouge1": 0.3636363636363636,
+            "rouge2": 0.11627906976744186,
+            "rougeL": 0.2272727272727273
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            5,
+            16,
+            47,
+            20,
+            15,
+            52,
+            44
+          ],
+          "retrieval_precision": 0.06494140625,
+          "retrieval_recall": 0.25925925925925924
+        },
+        "lumber__dense__w512": {
+          "answer": "Grad B said that their initial idea for the structure of the belief net was unsatisfactory because it involved all the features pointing directly to the output node, which would be difficult to set up and could handicap further learning processes. They also noted that such a structure wouldn't look aesthetically pleasing.",
+          "rouge_f1": {
+            "rouge1": 0.3409090909090909,
+            "rouge2": 0.11627906976744186,
+            "rougeL": 0.20454545454545453
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            6,
+            45,
+            56
+          ],
+          "retrieval_precision": 0.228515625,
+          "retrieval_recall": 0.22807017543859648
+        },
+        "lumber__dense__w1024": {
+          "answer": "Grad B said that their initial idea for the structure of the belief net was unsatisfactory because it involved all the features pointing directly to the output node, which would be difficult to set up and would handicap further steps such as learning. Grad B suggested that they should have exponentially more middle nodes than extracted features to improve the structure.",
+          "rouge_f1": {
+            "rouge1": 0.37499999999999994,
+            "rouge2": 0.10638297872340424,
+            "rougeL": 0.20833333333333334
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            6,
+            45,
+            56,
+            23,
+            21,
+            33
+          ],
+          "retrieval_precision": 0.1142578125,
+          "retrieval_recall": 0.22807017543859648
+        },
+        "lumber__dense__w2048": {
+          "answer": "Grad B commented that their initial idea for the structure of the belief net was unsatisfactory because it involved all features pointing to the output node, creating a \"big flat structure.\" This structure would be difficult to set up due to the need to define numerous probabilities and would be less flexible for future learning steps. Additionally, Grad B suggested that the belief net should ideally have exponentially more middle nodes than extracted features to improve its functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3716814159292035,
+            "rouge2": 0.07207207207207207,
+            "rougeL": 0.19469026548672563
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            6,
+            45,
+            56,
+            23,
+            21,
+            33,
+            59,
+            11,
+            9,
+            32,
+            62
+          ],
+          "retrieval_precision": 0.05712890625,
+          "retrieval_recall": 0.22807017543859648
+        },
+        "lumber__bm25__w512": {
+          "answer": "Grad B said that the initial structure of the belief net had all the features pointing to the output node, which was considered unsatisfactory due to the complexity of setting up probabilities and potential handicaps during learning processes. They also noted that such a structure would not look aesthetically pleasing.",
+          "rouge_f1": {
+            "rouge1": 0.3529411764705882,
+            "rouge2": 0.07228915662650602,
+            "rougeL": 0.23529411764705882
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            27,
+            54
+          ],
+          "retrieval_precision": 0.228515625,
+          "retrieval_recall": 0.22807017543859648
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Grad B stated that their initial idea for the belief net's structure was unsatisfactory because it involved all features pointing directly to the output node, which would be difficult to set up and limit future learning capabilities. They suggested adding a middle layer to improve the structure, implying that this layer would help in handling the complexity and dependencies between features more effectively.",
+          "rouge_f1": {
+            "rouge1": 0.42424242424242425,
+            "rouge2": 0.08247422680412371,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            27,
+            54,
+            10,
+            7
+          ],
+          "retrieval_precision": 0.236328125,
+          "retrieval_recall": 0.47173489278752434
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Grad B stated that their initial idea for the belief net's structure was unsatisfactory because it involved all features pointing directly to the output node, which would be difficult to set up and would limit flexibility during learning phases. They suggested adding a middle layer to address these issues, proposing that this layer could represent hidden variables such as whether someone is a tourist, running an errand, or in a hurry, which would influence the final destination and mode of transportation.",
+          "rouge_f1": {
+            "rouge1": 0.358974358974359,
+            "rouge2": 0.06956521739130435,
+            "rougeL": 0.17094017094017094
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            27,
+            54,
+            10,
+            7,
+            41,
+            31,
+            56
+          ],
+          "retrieval_precision": 0.25048828125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Grad B said that their initial idea for the structure of the belief net was unsatisfactory because it involved all the features pointing directly to the output node, which would be difficult to set up and would handicap further steps such as learning processes. Additionally, Grad B noted that such a structure wouldn't look aesthetically pleasing.",
+          "rouge_f1": {
+            "rouge1": 0.32608695652173914,
+            "rouge2": 0.11111111111111112,
+            "rougeL": 0.1956521739130435
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            27,
+            56
+          ],
+          "retrieval_precision": 0.228515625,
+          "retrieval_recall": 0.22807017543859648
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Grad B said that their initial idea for the structure of the belief net was unsatisfactory because it involved all the features pointing to the output node, which would be difficult to set up and would handicap further steps such as learning. He also noted that this structure wouldn't look pretty.",
+          "rouge_f1": {
+            "rouge1": 0.36781609195402304,
+            "rouge2": 0.11764705882352941,
+            "rougeL": 0.2298850574712644
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            27,
+            56,
+            10,
+            54
+          ],
+          "retrieval_precision": 0.1142578125,
+          "retrieval_recall": 0.22807017543859648
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Grad B said that their initial idea for the structure of the belief net was unsatisfactory because it involved all the features pointing directly to the output node, which would be difficult to set up and would handicap further steps such as learning processes. They also noted that such a structure would not look aesthetically pleasing.",
+          "rouge_f1": {
+            "rouge1": 0.32967032967032966,
+            "rouge2": 0.11235955056179776,
+            "rougeL": 0.1978021978021978
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            27,
+            56,
+            10,
+            54,
+            62,
+            32,
+            61
+          ],
+          "retrieval_precision": 0.05712890625,
+          "retrieval_recall": 0.22807017543859648
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What was the next step on features?",
+      "reference_answer": "The next stage is to refine the set of feature nodes and identify possible clusters. Although, in theory, traditional AI plan recognition techniques could also be helpful for inferring intentions, the schemas involved are too elaborate for this task. ",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The next step on features involved adding a middle layer to categorize the abstract ideas communicated by users into concepts such as whether they are tourists, running errands, or in a hurry. This would help in extracting hidden variables from the data. Additionally, the team planned to refine observable \"outer layer\" nodes by identifying four regions and creating features for each, which would then connect to a more plan-based deep space.",
+          "rouge_f1": {
+            "rouge1": 0.3063063063063063,
+            "rouge2": 0.03669724770642201,
+            "rougeL": 0.14414414414414414
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            50,
+            6
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The next step on features involved adding a middle layer to categorize hidden variables such as whether someone was on a tour, running an errand, or in a hurry. This would help in understanding the context better without setting up all the probabilities for each feature individually, thus avoiding complexity and maintaining simplicity in the model's structure.",
+          "rouge_f1": {
+            "rouge1": 0.268041237113402,
+            "rouge2": 0.021052631578947368,
+            "rougeL": 0.18556701030927833
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            50,
+            6,
+            3,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The next step on features involved refining the observable nodes (evidence nodes) and creating some toy observable \"nodes\" to identify four regions, making up features for each region, and establishing a middle layer for those features. This would then connect to a more plan-based deeper structure.",
+          "rouge_f1": {
+            "rouge1": 0.3255813953488372,
+            "rouge2": 0.07142857142857144,
+            "rougeL": 0.23255813953488375
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            50,
+            6,
+            3,
+            5,
+            1,
+            23,
+            0,
+            43
+          ],
+          "retrieval_precision": 0.103515625,
+          "retrieval_recall": 0.1448087431693989
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The next step on features involved adding a middle layer to represent hidden variables such as whether someone was on a tour, running an errand, or in a hurry. This middle layer aimed to capture abstract concepts beyond just the explicit features derived from communication.",
+          "rouge_f1": {
+            "rouge1": 0.19047619047619047,
+            "rouge2": 0.024390243902439025,
+            "rougeL": 0.11904761904761904
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            43
+          ],
+          "retrieval_precision": 0.26953125,
+          "retrieval_recall": 0.0942622950819672
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The next step on features involved adding a middle layer to the existing setup. This middle layer aimed to identify hidden variables such as whether someone was on a tour, running an errands, or in a hurry, based on the communicated abstract ideas or intentions. The intention was to have exponentially more middle nodes than extracted features to better capture these hidden variables.",
+          "rouge_f1": {
+            "rouge1": 0.23529411764705882,
+            "rouge2": 0.039999999999999994,
+            "rougeL": 0.1568627450980392
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            43,
+            57,
+            20
+          ],
+          "retrieval_precision": 0.224609375,
+          "retrieval_recall": 0.15710382513661203
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The next step on features involved refining the observable nodes (features) by identifying four regions and creating features for each region. This would then connect to a more plan-based deep space, with the goal of refining more general nodes and potentially involving the wizard in the ultimate definition probe if they approve of the direction.",
+          "rouge_f1": {
+            "rouge1": 0.3368421052631579,
+            "rouge2": 0.06451612903225806,
+            "rougeL": 0.18947368421052632
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            43,
+            57,
+            20,
+            10,
+            50,
+            2,
+            5,
+            34
+          ],
+          "retrieval_precision": 0.1123046875,
+          "retrieval_recall": 0.15710382513661203
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The next step on features involved adding a middle layer to represent hidden variables such as whether someone was on a tour, running an errand, or in a hurry. This middle layer aimed to capture abstract concepts that could not be directly extracted from the data.",
+          "rouge_f1": {
+            "rouge1": 0.23529411764705882,
+            "rouge2": 0.024096385542168672,
+            "rougeL": 0.16470588235294117
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            6,
+            50
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The next step on features involved adding a middle layer to categorize concepts such as whether someone was on a tour, running an errand, or in a hurry. This middle layer aimed to extract hidden variables from the data, which would then connect to observable features and possibly lead to more refined sub-layers based on cues. The team planned to further discuss and segment different regions, creating some toy observable \"nodes\" and making up features for each region over the coming week.",
+          "rouge_f1": {
+            "rouge1": 0.2459016393442623,
+            "rouge2": 0.03333333333333333,
+            "rougeL": 0.1639344262295082
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            6,
+            50,
+            43,
+            5
+          ],
+          "retrieval_precision": 0.224609375,
+          "retrieval_recall": 0.15710382513661203
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The next step on features involved refining the observable nodes (features) for four identified regions and creating a middle layer for these features. The participants planned to discuss and define these features further, possibly involving the wizard in the process if they agreed on their approach.",
+          "rouge_f1": {
+            "rouge1": 0.3764705882352941,
+            "rouge2": 0.048192771084337345,
+            "rougeL": 0.21176470588235294
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            6,
+            50,
+            43,
+            5,
+            57,
+            2,
+            1,
+            20,
+            31
+          ],
+          "retrieval_precision": 0.1123046875,
+          "retrieval_recall": 0.15710382513661203
+        },
+        "word_packed__dense__w512": {
+          "answer": "The next step on features involved adding a middle layer to the existing structure. This middle layer aimed to identify hidden variables such as whether the person was on a tour, running an errand, or in a hurry, based on the communicated abstract idea and previous interactions.",
+          "rouge_f1": {
+            "rouge1": 0.2558139534883721,
+            "rouge2": 0.02380952380952381,
+            "rougeL": 0.1627906976744186
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The next step on features was to add a middle layer to address the complexity of connecting all features directly to the output node. This middle layer would help in identifying hidden variables such as whether someone was on a tour, running an errand, or in a hurry, which would influence their behavior or preferences.",
+          "rouge_f1": {
+            "rouge1": 0.25531914893617025,
+            "rouge2": 0.021739130434782608,
+            "rougeL": 0.19148936170212766
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            5,
+            3,
+            0
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The next step on features involved adding a middle layer to the structure, aiming to categorize concepts such as whether someone is a tourist, running an errand, or in a hurry, rather than having all features point directly to the output node. This was intended to simplify the model and make it more manageable for learning processes. However, the group acknowledged that this approach would still require significant work and complexity.",
+          "rouge_f1": {
+            "rouge1": 0.23636363636363636,
+            "rouge2": 0.018518518518518517,
+            "rougeL": 0.1818181818181818
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            5,
+            3,
+            0,
+            2,
+            27,
+            52,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The next step on features discussed was to add a middle layer to the structure, as the initial idea of having all features point directly to the output node was deemed unsatisfactory due to complexity and aesthetic concerns.",
+          "rouge_f1": {
+            "rouge1": 0.23376623376623376,
+            "rouge2": 0.02666666666666667,
+            "rougeL": 0.2077922077922078
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            39
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.17486338797814208
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The next step on features involved adding a middle layer to the structure. This middle layer aimed to identify hidden variables such as whether someone was on a tour, running an errand, or in a hurry, based on the communicated abstract ideas and previous statements.",
+          "rouge_f1": {
+            "rouge1": 0.2619047619047619,
+            "rouge2": 0.024390243902439025,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            39,
+            32,
+            6
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.17486338797814208
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The next step on features involved adding a middle layer to the existing structure. This middle layer aimed to introduce hidden variables such as whether someone was on a tour, running an errand, or in a hurry, which would influence the final output. The team recognized that having all features point directly to the output node would be impractical due to complexity and inefficiency, leading them to consider this layered approach for better organization and potential future learning capabilities.",
+          "rouge_f1": {
+            "rouge1": 0.22033898305084745,
+            "rouge2": 0.01724137931034483,
+            "rougeL": 0.13559322033898305
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            39,
+            32,
+            6,
+            52,
+            9,
+            2,
+            46
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.17486338797814208
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The next step on features involved adding a middle layer to the existing structure. This middle layer aimed to identify hidden variables such as whether the person was on a tour, running an errand, or in a hurry, based on the communicated abstract idea and previous interactions.",
+          "rouge_f1": {
+            "rouge1": 0.2558139534883721,
+            "rouge2": 0.02380952380952381,
+            "rougeL": 0.1627906976744186
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            6
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The next step on features involved adding a middle layer to the structure. This middle layer aimed to identify hidden variables such as whether the user was on a tour, running an errand, or in a hurry, based on the communicated abstract ideas and the means used to convey them.",
+          "rouge_f1": {
+            "rouge1": 0.24719101123595508,
+            "rouge2": 0.022988505747126436,
+            "rougeL": 0.15730337078651685
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            6,
+            2,
+            52
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The next step on features involved adding a middle layer to address the limitations of having all features point directly to the output node. This middle layer aimed to capture hidden variables such as whether someone was on a tour, running an errand, or in a hurry, to better inform the final output.",
+          "rouge_f1": {
+            "rouge1": 0.2391304347826087,
+            "rouge2": 0.022222222222222223,
+            "rougeL": 0.19565217391304346
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            6,
+            2,
+            52,
+            46,
+            27,
+            39,
+            28
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.17486338797814208
+        },
+        "lumber__dense__w512": {
+          "answer": "The next step on features was to add a middle layer to represent hidden variables such as whether the person was on a tour, running an errand, or in a hurry. These hidden variables would help determine the underlying concept of the user's intent, such as being a tourist or needing to run an errand, based on their communicated abstract idea and previous statements.",
+          "rouge_f1": {
+            "rouge1": 0.23076923076923078,
+            "rouge2": 0.0196078431372549,
+            "rougeL": 0.13461538461538464
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The next step on features involved adding a middle layer to the model. This middle layer aimed to identify hidden variables such as whether the user was on a tour, running an errand, or in a hurry, based on the communicated abstract idea (e.g., \"I am a tourist who wants to go to this place\"). The team considered these hidden variables to refine the understanding of user intent before reaching the output node.",
+          "rouge_f1": {
+            "rouge1": 0.24778761061946902,
+            "rouge2": 0.05405405405405406,
+            "rougeL": 0.1415929203539823
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            3,
+            6,
+            54
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The next step on features involved adding a middle layer to the model. This middle layer aimed to identify hidden variables such as whether the user was on a tour, running an errand, or in a hurry, which would influence their actions and decisions within the system. The team also discussed refining observable features and segmenting off different regions to create more detailed and task-based layers.",
+          "rouge_f1": {
+            "rouge1": 0.2641509433962264,
+            "rouge2": 0.019230769230769232,
+            "rougeL": 0.15094339622641506
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            3,
+            6,
+            54,
+            0,
+            62
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The next step on features involved adding a middle layer to the structure. This middle layer aimed to identify hidden variables such as whether someone was on a tour, running an errand, or in a hurry, based on the communicated abstract ideas and previous statements.",
+          "rouge_f1": {
+            "rouge1": 0.2619047619047619,
+            "rouge2": 0.024390243902439025,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The next step on features involved adding a middle layer to the structure. This middle layer aimed to identify hidden variables such as whether someone was on a tour, running an errand, or in a hurry, based on the communicated abstract idea and previous statements.",
+          "rouge_f1": {
+            "rouge1": 0.2619047619047619,
+            "rouge2": 0.024390243902439025,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            49
+          ],
+          "retrieval_precision": 0.4599609375,
+          "retrieval_recall": 0.32172131147540983
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The next step on features involved adding a middle layer to the existing structure. This middle layer aimed to capture hidden variables such as whether someone was on a tour, running an errand, or in a hurry, which would influence the final destination and mode of travel. The team planned to proceed by refining and segmenting off different regions, creating observable \"nodes\" and identifying features for these regions.",
+          "rouge_f1": {
+            "rouge1": 0.29906542056074764,
+            "rouge2": 0.05714285714285714,
+            "rougeL": 0.16822429906542055
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            49,
+            41,
+            54,
+            35,
+            10,
+            3
+          ],
+          "retrieval_precision": 0.29931640625,
+          "retrieval_recall": 0.4187158469945355
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The next step on features involved adding a middle layer to the structure. This middle layer aimed to identify hidden variables such as whether someone was on a tour, running an errand, or in a hurry, based on the communicated abstract ideas and previous data. The team considered these hidden variables to better understand the context behind the user's actions and destinations.",
+          "rouge_f1": {
+            "rouge1": 0.2156862745098039,
+            "rouge2": 0.019999999999999997,
+            "rougeL": 0.13725490196078433
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            6
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The next step on features involved adding a middle layer to the existing structure. This middle layer aimed to identify hidden variables such as whether someone was on a tour, running an errand, or in a hurry, based on the communicated abstract idea. The group also discussed refining observable \"outer layer\" features and segmenting off different regions to better organize the variables into a belief-net structure.",
+          "rouge_f1": {
+            "rouge1": 0.2452830188679245,
+            "rouge2": 0.019230769230769232,
+            "rougeL": 0.15094339622641506
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            6,
+            54,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The next step on features involved adding a middle layer to the model to represent hidden variables such as whether someone was on a tour, running an errand, or in a hurry. This middle layer aimed to capture abstract ideas communicated by the user, such as their intent or urgency, before reaching the output node. The team also discussed refining observable features and possibly involving more detailed segmentation of tasks and conditions.",
+          "rouge_f1": {
+            "rouge1": 0.3063063063063063,
+            "rouge2": 0.018348623853211007,
+            "rougeL": 0.16216216216216217
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            6,
+            54,
+            3,
+            61,
+            23,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Summarize what was said on intentionality",
+      "reference_answer": "There was a demonstration of the structure and the function of a toy version of the belief-net for the intentionality task. The features nodes include things like prosody, discourse, verb choice, \"landmark-iness\" of a building, time of day and whether the admission fee was discussed.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Grad A suggested including tasks where intentions are more explicitly stated to create a labeled corpus. Specifically, they mentioned having at least one navigational task where it's clear the person wants to enter somewhere, and another task where the intention to take a picture is more or less explicit. This approach aims to provide clearer cues about participants' intentions compared to unstructured data collection.",
+          "rouge_f1": {
+            "rouge1": 0.14285714285714285,
+            "rouge2": 0.0,
+            "rougeL": 0.10714285714285714
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            59,
+            35,
+            11
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The participants discussed the intentionality behind user actions, focusing on cues that indicate specific intentions such as entering a place or taking a picture. Grad A suggested including tasks where the intention is more explicit to create a labeled corpus. The group acknowledged that without clear cues, understanding user intentions would be challenging. They also touched upon the idea of recognizing broader plans or schemas users might follow, such as visiting somewhere as a tourist or conducting business, based on the steps and information sought during interactions.",
+          "rouge_f1": {
+            "rouge1": 0.2238805970149254,
+            "rouge2": 0.015151515151515152,
+            "rougeL": 0.13432835820895522
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            59,
+            35,
+            11,
+            45,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The participants discussed intentionality in the context of extracting features and making inferences from user utterances. They noted that certain cues, such as discussing admission fees, strongly indicate specific intentions like entering a place. Intentionality was also addressed in terms of probabilistic modeling, where they manually tuned probabilities to reflect different actions or states (e.g., \"Tango\" or \"Vista\"). Additionally, they considered the need for a hidden middle layer to better capture the nuances of user intentions, though they acknowledged that adding more nodes would complicate the model. Grad A suggested including tasks with explicit intentions to create a labeled corpus for further analysis.",
+          "rouge_f1": {
+            "rouge1": 0.3046357615894039,
+            "rouge2": 0.013422818791946308,
+            "rougeL": 0.1456953642384106
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            59,
+            35,
+            11,
+            45,
+            9,
+            42,
+            10,
+            19,
+            36
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The participants discussed intentionality in terms of understanding the underlying purpose or context of a user's communication. Grad B mentioned setting up features based on the user's expressed desires (e.g., wanting to go somewhere) and determining hidden variables such as whether the person is a tourist, running an errand, or in a hurry. Grad A elaborated that the system initially tries to parse the intention directly from the input, distinguishing between different types of intentions (like going somewhere), and uses a discourse history module to maintain context and resolve anaphora, ensuring that previous information remains relevant throughout the conversation.",
+          "rouge_f1": {
+            "rouge1": 0.2684563758389261,
+            "rouge2": 0.027210884353741496,
+            "rougeL": 0.1610738255033557
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The discussion on intentionality focused on how the system interprets user intentions through parsing and maintaining a discourse history. Grad A explained that the system initially parses the user's input to determine their basic intention, such as wanting to go somewhere. This parsed information is then passed to a discourse history module, which acts as the system's memory, tracking who said what and ensuring that previous information remains accessible throughout the conversation. This module aids in resolving anaphora and coordinating gestures with screen interactions, allowing the system to maintain context across multiple dialogue steps.",
+          "rouge_f1": {
+            "rouge1": 0.1958041958041958,
+            "rouge2": 0.0,
+            "rougeL": 0.11188811188811189
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            7,
+            3,
+            43,
+            31
+          ],
+          "retrieval_precision": 0.2255859375,
+          "retrieval_recall": 0.55
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Grad A discussed the intentionality aspect, explaining that the system initially tries to parse the user's input to determine their intention. However, the parser alone cannot differentiate between all modes, so the parsed information is passed to the discourse history module, which acts as the memory of the system, storing who said what and when. This module helps in resolving anaphora and filling in omitted structures, ensuring that previous information remains accessible throughout the conversation. The discourse model also assists in coordinating gesture and screen issues, storing what was presented on the screen during the interaction.",
+          "rouge_f1": {
+            "rouge1": 0.20833333333333334,
+            "rouge2": 0.028169014084507043,
+            "rougeL": 0.1527777777777778
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            7,
+            3,
+            43,
+            31,
+            47,
+            48,
+            1,
+            36
+          ],
+          "retrieval_precision": 0.11279296875,
+          "retrieval_recall": 0.55
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Grad A discussed the system's approach to identifying intentionality through parsing user input. The system initially determines a general intention (e.g., someone wanting to go somewhere) and then relies on the discourse history module to fill in details and resolve anaphora. Grad A also suggested including tasks where intentions are more explicit (like taking a picture) to create a labeled corpus, contrasting this with unstructured data where user intentions might be unclear.",
+          "rouge_f1": {
+            "rouge1": 0.23140495867768596,
+            "rouge2": 0.0,
+            "rougeL": 0.13223140495867766
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            59
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The participants discussed intentionality in the context of parsing and understanding discourse. Grad A mentioned that the initial intention can be identified by parsing, but differentiating between all modes isn't immediate. The system's discourse history module aids in resolving anaphora and ensuring previous information remains accessible. Grad A also suggested including tasks with both implicit and explicit intentions (e.g., entering somewhere or taking a picture) to create a labeled corpus for better understanding human-machine pragmatics.",
+          "rouge_f1": {
+            "rouge1": 0.25396825396825395,
+            "rouge2": 0.0,
+            "rougeL": 0.14285714285714288
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            59,
+            36,
+            35,
+            11
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The participants discussed intentionality in terms of inferring hidden variables from discourse features. These hidden variables included whether someone was on a tour, running an errand, or in a hurry, which influenced their mode of action. Intentionality was also linked to specific cues in the discourse, such as discussing admission fees or time of day, which helped infer the user's underlying purpose or goal. Grad A suggested explicitly including tasks with clear intentions (e.g., entering a place, taking pictures) to create a labeled corpus for better understanding human-machine interaction.",
+          "rouge_f1": {
+            "rouge1": 0.33093525179856115,
+            "rouge2": 0.0437956204379562,
+            "rougeL": 0.15827338129496404
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            59,
+            36,
+            35,
+            11,
+            49,
+            10,
+            7,
+            41
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "Grad A mentioned that the system initially tries to determine the intention simply by parsing the input. However, it does not differentiate between all modes but provides a basic understanding of the user's intent, such as wanting to go somewhere. This parsed information is then passed to the discourse history module, which acts as the system's memory to track the conversation flow. Grad A also suggested including tasks with both implicit and explicit intentions to create a labeled corpus for better understanding of user intents.",
+          "rouge_f1": {
+            "rouge1": 0.23880597014925373,
+            "rouge2": 0.015151515151515152,
+            "rougeL": 0.16417910447761197
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            54,
+            38,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The excerpts indicate that the participants discussed the extraction of certain elements from utterances, distinguishing between directly extracted items and those inferred from context or world knowledge. Grad A specifically mentioned the importance of understanding the user's intention, noting that the system initially tries to determine the intention by parsing the input. However, the exact details of how intentionality was handled or defined in their project are not explicitly detailed beyond this. There is a suggestion to include tasks with varying levels of explicitness regarding user intentions (e.g., entering somewhere, taking pictures) to create a labeled corpus.",
+          "rouge_f1": {
+            "rouge1": 0.273972602739726,
+            "rouge2": 0.0,
+            "rougeL": 0.1506849315068493
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            54,
+            38,
+            8,
+            10,
+            32
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The meeting excerpts provided do not contain specific discussions about intentionality. The participants mainly talked about simplifying the number of verbs used, discussing inferred information from utterances, and considering context cues such as whether someone is a tourist or not. There is no detailed discussion on the concept of intentionality itself. Therefore, the evidence is insufficient to summarize what was said on intentionality.",
+          "rouge_f1": {
+            "rouge1": 0.27272727272727276,
+            "rouge2": 0.0,
+            "rougeL": 0.14545454545454542
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            54,
+            38,
+            8,
+            10,
+            32,
+            40,
+            33,
+            12,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The discussion focused on setting up features based on a user's communicated abstract ideas, such as travel intentions, and identifying hidden variables like whether the user is a tourist, running an errand, or in a hurry. Grad A mentioned the importance of maintaining context throughout dialogues to ensure continuity and coherence, noting that not every module retains all previous information, thus requiring a discourse model to manage anaphora resolution and coordination of gestures and screen interactions.",
+          "rouge_f1": {
+            "rouge1": 0.24193548387096772,
+            "rouge2": 0.01639344262295082,
+            "rougeL": 0.14516129032258066
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            39,
+            6
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The discussion on intentionality focused on categorizing user intentions based on hidden variables such as whether the user is on a tour, running an errand, or in a hurry. Grad B explained that the intention was to infer these hidden variables from the data to better understand the context and intent behind user actions or queries. This understanding would help in tailoring responses and features accordingly, such as determining if a user would prefer to \"Vista\" (likely meaning to take in a broad view or sightsee) based on their inferred state of being in a hurry or not.",
+          "rouge_f1": {
+            "rouge1": 0.23448275862068962,
+            "rouge2": 0.013986013986013986,
+            "rougeL": 0.13793103448275862
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            39,
+            6,
+            3,
+            28
+          ],
+          "retrieval_precision": 0.0966796875,
+          "retrieval_recall": 0.2357142857142857
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The discussion on intentionality revolved around the participants' efforts to categorize and understand the underlying intentions or purposes of individuals based on their discourse and actions. Grad B explained that the team aimed to identify features communicated by a person, such as whether they were a tourist or running an errand, and considered hidden variables like urgency or leisure. These intentions were inferred from explicit mentions in the conversation (e.g., \"admission fee\") and contextual cues, suggesting a layered approach to modeling discourse where observed phenomena influence hidden nodes representing broader intentions or states.",
+          "rouge_f1": {
+            "rouge1": 0.2836879432624113,
+            "rouge2": 0.014388489208633093,
+            "rougeL": 0.15602836879432624
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            39,
+            6,
+            3,
+            28,
+            44,
+            33,
+            42,
+            10
+          ],
+          "retrieval_precision": 0.04833984375,
+          "retrieval_recall": 0.2357142857142857
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The participants discussed the intentionality behind certain cues in discourse, particularly noting that some cues are strongly lexical or topic-based, while others derive from world knowledge or situational context. There was an acknowledgment of the need to distinguish between different types of cues and to ensure agreement on their meanings. Grad A suggested observing specific discourse phenomena, such as the mention of an \"admission fee,\" to better understand underlying intentions and structures within the conversation. The group considered these phenomena as potential indicators influencing hidden nodes of discourse, representing more generalized versions of observed phenomena.",
+          "rouge_f1": {
+            "rouge1": 0.3356643356643357,
+            "rouge2": 0.07092198581560284,
+            "rougeL": 0.16783216783216784
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            33
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The discussion on intentionality focused on how the system initially parses input to determine an intention without differentiating between specific modes. Grad A mentioned that the parser tries to figure out the intention simply by parsing the input, indicating that while it won't differentiate between all modes, it will identify that someone wants to go somewhere. Further details about how the system processes this intention were not extensively elaborated upon in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.14754098360655737,
+            "rouge2": 0.0,
+            "rougeL": 0.11475409836065575
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            33,
+            38,
+            32
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The participants discussed intentionality in the context of understanding the underlying purpose or goal of a person's actions or communications within a discourse. Specifically, they considered how to identify whether a person is a tourist, running an errand, or in a hurry based on their communication. They aimed to extract hidden variables or abstract ideas from the data, such as the concept of being a tourist or being in a hurry, which influences the features and means used in communication. Additionally, they noted the importance of distinguishing between lexical cues, topic-based concepts, and situational factors in determining the intention behind a person's discourse. Grad A emphasized the role of the discourse model in parsing and storing information to aid in resolving anaphora and coordinating gestures and screen interactions, highlighting its utility in understanding deeper layers of intentionality in dialogue.",
+          "rouge_f1": {
+            "rouge1": 0.22222222222222218,
+            "rouge2": 0.0320855614973262,
+            "rougeL": 0.12698412698412698
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            33,
+            38,
+            32,
+            40,
+            6,
+            54,
+            39,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w512": {
+          "answer": "Grad A expressed that the intention was to collect richer language data without constraining participants too much, aiming to discover phenomena that might help solve issues with whatever engine they develop. Additionally, Grad A suggested including tasks where intentions are more explicit, such as wanting to enter somewhere or take a picture, to create a corpus that can be labeled.",
+          "rouge_f1": {
+            "rouge1": 0.1308411214953271,
+            "rouge2": 0.0,
+            "rougeL": 0.09345794392523364
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            45,
+            62
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "Grad A suggested including tasks where the user's intentions are more explicit to create a corpus that can be labeled. This includes tasks where it is clear that the person wants to enter somewhere or take a picture, ensuring that there are cues indicating the user's intentions. The intention is to gather richer and more informative data that reflects the actual goals of the participants, moving away from ambiguous data collection methods.",
+          "rouge_f1": {
+            "rouge1": 0.23140495867768596,
+            "rouge2": 0.01680672268907563,
+            "rougeL": 0.14876033057851237
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            45,
+            62,
+            43,
+            49
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The participants discussed intentionality in the context of discourse analysis and modeling. Grad A mentioned that the initial parsing of the dialogue tries to determine the intention, such as someone wanting to go somewhere, but further details about the specific intention require additional discourse analysis. Grad A also noted the importance of collecting data that elicits richer language to understand different phenomena and human-machine interactions better. Additionally, Grad A suggested including tasks where intentions are more explicit (e.g., entering a place or taking a picture) to create a labeled corpus for analysis.",
+          "rouge_f1": {
+            "rouge1": 0.2836879432624113,
+            "rouge2": 0.014388489208633093,
+            "rougeL": 0.17021276595744678
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            45,
+            62,
+            43,
+            49,
+            12,
+            21,
+            44
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "Grad A discussed the system's approach to handling intentionality in dialogue. Initially, the system parses the input to determine the basic intention, such as someone wanting to go somewhere, without differentiating between specific modes of transportation. This parsed information is then passed to the discourse history module, which acts as the system's memory, tracking who said what and maintaining context across multiple turns of dialogue. This module aids in resolving anaphora and filling in omitted structures, ensuring that previous information remains accessible throughout the conversation. Grad A emphasized that not every module retains all past information, but the discourse model ensures that consistent and relevant details are stored and can be queried based on the depth of the search required.",
+          "rouge_f1": {
+            "rouge1": 0.20118343195266272,
+            "rouge2": 0.011976047904191617,
+            "rougeL": 0.1301775147928994
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The participants discussed intentionality primarily through the lens of identifying underlying intentions or hidden variables in user communications. Grad B mentioned setting up features based on the abstract ideas communicated by users, such as being a tourist or running an errand, and suggested that these intentions could influence the actions taken (e.g., choosing a route or destination). Additionally, Grad A explained that the system attempts to parse the initial intention from the user's input and uses a discourse history module to maintain context and resolve anaphora, ensuring that the system understands the evolving intentions throughout the conversation. This module keeps track of previous interactions and updates its understanding based on new information provided by the user.",
+          "rouge_f1": {
+            "rouge1": 0.20606060606060606,
+            "rouge2": 0.0,
+            "rougeL": 0.14545454545454548
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            7,
+            3
+          ],
+          "retrieval_precision": 0.0146484375,
+          "retrieval_recall": 0.03571428571428571
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The discussion on intentionality focused on determining the underlying intentions of users based on their interactions and the features extracted from their communications. Grad A mentioned that the initial parsing of user input helps identify basic intentions, such as wanting to go somewhere, but further analysis is required to understand the specific nature of these intentions (e.g., tourism vs. running errands). The discourse history module plays a crucial role in maintaining context and resolving anaphora, ensuring that previous information is retained throughout the conversation. Additionally, Grad D suggested considering broader schemas or plans that users might follow, where cues from individual actions could indicate adherence to a larger plan or intention.",
+          "rouge_f1": {
+            "rouge1": 0.22641509433962265,
+            "rouge2": 0.025477707006369428,
+            "rougeL": 0.13836477987421386
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            7,
+            3,
+            35,
+            52,
+            1,
+            50
+          ],
+          "retrieval_precision": 0.1484375,
+          "retrieval_recall": 0.7238095238095238
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Grad A discussed the system's approach to handling intentionality in dialogue. Initially, the system parses the input to determine the basic intention, such as someone wanting to go somewhere, without differentiating between specific modes of transportation. This parsed information is then passed to the discourse history module, which acts as the system's memory, tracking who said what and maintaining context across multiple turns of dialogue. This module aids in resolving anaphora and filling in omitted structures, ensuring that previous information remains accessible throughout the conversation. Grad A emphasized that not every module retains all past information, but the discourse model ensures that consistent and relevant details are stored and can be queried based on the depth of the search required.",
+          "rouge_f1": {
+            "rouge1": 0.20118343195266272,
+            "rouge2": 0.011976047904191617,
+            "rougeL": 0.1301775147928994
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Grad A discussed the system's approach to handling intentionality, noting that the initial parsing phase attempts to identify the user's intention, though it doesn't differentiate between all modes. The parsed information is then passed to the discourse history module, which acts as the system's memory, storing details such as who said what and what was presented. This module aids in resolving anaphora and filling in omitted structures, ensuring that previous information remains accessible throughout the conversation. Grad A emphasized the importance of setting reasonable limits for how far back the system searches for relevant information, suggesting that the goal is to balance thoroughness with practicality. Additionally, Grad A mentioned collecting data to understand richer language use and human-machine interaction, including tasks that involve both implicit and explicit intentions.",
+          "rouge_f1": {
+            "rouge1": 0.22222222222222224,
+            "rouge2": 0.0,
+            "rougeL": 0.12222222222222222
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            62
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The participants discussed intentionality in the context of discourse analysis and modeling. Grad A emphasized that the initial intention can be inferred by parsing the dialogue, and the system's discourse model helps maintain context and resolve anaphora. Grad D suggested considering the plans or schemas that participants might follow, noting that cues within the dialogue could provide evidence for these broader intentions. Grad A also mentioned the importance of collecting data that elicits richer language to understand various phenomena, including human-machine pragmatics, and proposed including tasks with both implicit and explicit intentions to create a labeled corpus.",
+          "rouge_f1": {
+            "rouge1": 0.2602739726027397,
+            "rouge2": 0.01388888888888889,
+            "rougeL": 0.1506849315068493
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            62,
+            43,
+            50
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "How would the middle layer work?",
+      "reference_answer": "The values these nodes take feed into the middle layer nodes identified as hidden variables of the user/device interaction, such as whether the user is on tour, running an errand or in a hurry. These, in turn, help infer whether the user wants to see, enter or simply approach a building.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The middle layer works by identifying hidden variables such as whether someone is on a tour, running an errand, or in a hurry, based on the communication of abstract ideas and previous statements. It aims to categorize intentions or contexts (tourist vs. running an errand) before connecting to specific means or actions. Sub-middle layers, more cue-based, feed into this layer, though the exact structure and terminology (e.g., \"observable nodes\" or \"features\") are still under discussion and refinement.",
+          "rouge_f1": {
+            "rouge1": 0.4242424242424242,
+            "rouge2": 0.2153846153846154,
+            "rougeL": 0.33333333333333337
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            50,
+            1
+          ],
+          "retrieval_precision": 0.498046875,
+          "retrieval_recall": 0.7727272727272727
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The middle layer works by identifying hidden variables or concepts that act as intermediaries between the observable features (like where someone wants to go or what they've said) and the actions or means they might use (like choosing a mode of transportation). These hidden variables represent underlying states such as whether the person is a tourist, running an errand, or in a hurry. The middle layer helps infer these states from the observable data, which in turn influences the selection of appropriate actions or responses.",
+          "rouge_f1": {
+            "rouge1": 0.4782608695652174,
+            "rouge2": 0.22058823529411767,
+            "rougeL": 0.3478260869565218
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            50,
+            1,
+            37,
+            49
+          ],
+          "retrieval_precision": 0.2490234375,
+          "retrieval_recall": 0.7727272727272727
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The middle layer works by identifying hidden variables or concepts that cannot be directly extracted from the data, such as whether someone is a tourist, running an errand, or in a hurry. These hidden variables serve as an intermediary between observed features (like discourse phenomena or syntactic information) and the final outcomes (such as the mode of travel or final destination). The team considered creating separate regions within the network, each with its own middle layer focusing on specific aspects like discourse cues or syntactic information, which would then connect to a more generalized hidden layer representing broader concepts. This approach allows for a more nuanced understanding of the underlying intentions or contexts in the communication.",
+          "rouge_f1": {
+            "rouge1": 0.3571428571428572,
+            "rouge2": 0.15662650602409636,
+            "rougeL": 0.2738095238095238
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            50,
+            1,
+            37,
+            49,
+            14,
+            38,
+            36,
+            6
+          ],
+          "retrieval_precision": 0.12451171875,
+          "retrieval_recall": 0.7727272727272727
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The middle layer works by aggregating specific discourse phenomena (such as mentions of \"admission fee,\" \"how much to enter,\" \"opening hours,\" etc.) into broader categories (like \"entrance requirements\"). These aggregated categories then influence hidden nodes representing more generalized versions of observable phenomena, such as \"final destination,\" \"doing business,\" and \"tourist hurry.\" This layer serves as an intermediary between observed discourse cues and higher-level discourse acts or intentions.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.05084745762711864,
+            "rougeL": 0.16666666666666669
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            37,
+            36,
+            45
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The middle layer works by incorporating probabilistic distributions over various discourse phenomena and cues observed in the conversation. These cues, such as mentions of \"admission fee,\" \"opening hours,\" or specific verbs, are indicators of underlying intentions or plans (e.g., visiting as a tourist or conducting business). The middle layer processes these cues to infer the likelihood of different contexts or modes (binary or multi-valued) such as \"final destination,\" \"doing business,\" or \"tourist hurry.\" This inference is not binary but rather probabilistic, allowing for nuanced understanding based on the accumulation of evidence from multiple discourse acts.",
+          "rouge_f1": {
+            "rouge1": 0.30872483221476504,
+            "rouge2": 0.04081632653061224,
+            "rougeL": 0.16107382550335572
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            37,
+            36,
+            45,
+            14,
+            19
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The middle layer works by having observed nodes (such as discourse phenomena and syntactic information) that may have their own hidden layers pointing to a general hidden layer. These observed nodes can be expanded into smaller Bayesian networks of their own, providing cues that influence the final output categories like \"final destination,\" \"doing business,\" and \"tourist hurry.\" The goal is to create a structured network where specific cues from the discourse and syntax contribute probabilistically to the middle layer, which in turn influences the final decision-making process.",
+          "rouge_f1": {
+            "rouge1": 0.3142857142857143,
+            "rouge2": 0.057971014492753624,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            37,
+            36,
+            45,
+            14,
+            19,
+            38,
+            50,
+            18,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The middle layer works by identifying observable \"nodes\" or features from discourse-related cues. These nodes represent specific states or intentions such as \"final destination,\" \"doing business,\" or \"tourist hurry.\" The participants aim to segment different regions and create features for each, connecting them to a deeper, plan-based layer. This process involves refining general nodes into more specific, ad-hoc features over time.",
+          "rouge_f1": {
+            "rouge1": 0.27586206896551724,
+            "rouge2": 0.07017543859649122,
+            "rougeL": 0.1896551724137931
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            37,
+            50,
+            36
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The middle layer works by observing specific discourse phenomena (such as mentions of \"admission fee\" or \"opening hours\") and grouping them into higher-level categories (like \"entrance requirements\"). These categories serve as nodes that influence the deeper layers of the model, which are more focused on plan recognition and broader intentions (e.g., \"final destination,\" \"doing business,\" \"tourist hurry\"). This structure allows the model to capture both detailed linguistic cues and more abstract communicative goals.",
+          "rouge_f1": {
+            "rouge1": 0.2677165354330709,
+            "rouge2": 0.064,
+            "rougeL": 0.17322834645669294
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            37,
+            50,
+            36,
+            14,
+            7
+          ],
+          "retrieval_precision": 0.052734375,
+          "retrieval_recall": 0.16363636363636364
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The middle layer works by identifying hidden variables or concepts that act as intermediaries between observable features (like specific verbs or objects) and the final outcomes (such as the mode of travel or urgency). These hidden variables, such as whether someone is a tourist or running an errand, are inferred probabilistically based on the observed data. The team considered these hidden variables as part of a Bayesian network, where different regions of discourse or syntactic information could have their own sub-middle layers that feed into the broader middle layer. This approach allows for a more nuanced understanding of the underlying intentions or contexts that guide the observable actions or communications.",
+          "rouge_f1": {
+            "rouge1": 0.3680981595092025,
+            "rouge2": 0.12422360248447205,
+            "rougeL": 0.2331288343558282
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            37,
+            50,
+            36,
+            14,
+            7,
+            38,
+            19,
+            1,
+            49
+          ],
+          "retrieval_precision": 0.12451171875,
+          "retrieval_recall": 0.7727272727272727
+        },
+        "word_packed__dense__w512": {
+          "answer": "The middle layer works by introducing intermediate nodes to address the issue of having a big flat structure where all features point directly to the output node. This approach aims to simplify the setup of probabilities and potentially improve the model's performance during learning phases, avoiding the exponential complexity associated with a fully connected network.",
+          "rouge_f1": {
+            "rouge1": 0.2592592592592593,
+            "rouge2": 0.03773584905660377,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            5
+          ],
+          "retrieval_precision": 0.080078125,
+          "retrieval_recall": 0.12424242424242424
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The middle layer works by introducing intermediate nodes that serve as a bridge between input features and output nodes. These intermediate nodes aggregate various cues or conditions (such as entrance requirements, discourse acts, and task-based indicators) to form a more structured and manageable network. The goal is to avoid a large, flat structure where all features point directly to the output node, thereby simplifying the setup and potentially improving the efficiency of learning processes. This layer could further细分，形成基于线索的子层，这些子层再汇总到主要的任务相关的中间层。",
+          "rouge_f1": {
+            "rouge1": 0.2900763358778626,
+            "rouge2": 0.04651162790697675,
+            "rougeL": 0.16793893129770993
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            5,
+            34,
+            45
+          ],
+          "retrieval_precision": 0.0400390625,
+          "retrieval_recall": 0.12424242424242424
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The middle layer works by having intermediate nodes that process inputs from observed features or discourse phenomena. These intermediate nodes can form their own smaller Bayesian networks, allowing for a more organized and manageable structure compared to a large, flat network where all features point directly to an output node. This layered approach helps in handling complex relationships and reduces the complexity of setting up probabilities for a large number of features pointing directly to the output. The middle layer can be further divided into sub-layers based on specific tasks or cues, feeding into a more generalized hidden layer that connects to the final output or deeper planning-based layers.",
+          "rouge_f1": {
+            "rouge1": 0.294478527607362,
+            "rouge2": 0.037267080745341616,
+            "rougeL": 0.147239263803681
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            5,
+            34,
+            45,
+            33,
+            46,
+            35,
+            11
+          ],
+          "retrieval_precision": 0.02001953125,
+          "retrieval_recall": 0.12424242424242424
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The middle layer works by aggregating specific discourse phenomena (such as mentions of \"admission fee,\" \"how much to enter,\" \"opening hours\") into higher-level concepts (like \"entrance requirements\"). These aggregated concepts then influence hidden nodes representing more generalized versions of observable phenomena, such as \"final destination\" or \"doing business.\" This layer serves as an intermediary between detailed observations and broader discourse intentions or plans.",
+          "rouge_f1": {
+            "rouge1": 0.27586206896551724,
+            "rouge2": 0.05263157894736842,
+            "rougeL": 0.1724137931034483
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            34,
+            33
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The middle layer works by aggregating specific cues or features from the discourse into broader categories or nodes. For instance, mentions of \"admission fee,\" \"how much to enter,\" \"opening hours,\" etc., are funneled into a more generalized node such as \"entrance requirements.\" These aggregated nodes then serve as inputs to a more abstract level that considers overall intentions or plans, such as being a tourist, conducting business, or hurrying through a location. This hierarchical structure allows for the identification of underlying purposes or goals based on the observed discourse acts.",
+          "rouge_f1": {
+            "rouge1": 0.30985915492957744,
+            "rouge2": 0.04285714285714286,
+            "rougeL": 0.16901408450704225
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            34,
+            33,
+            18,
+            41
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The middle layer works probabilistically, connecting observed features (like discourse phenomena and syntactic information) to higher-level concepts (such as \"final destination\" or \"doing business\"). It potentially includes its own hidden layers for specific categories of information, allowing for a nuanced interpretation of the input data. However, the exact structure and probabilities within this layer are currently ad-hoc and require further refinement based on data analysis.",
+          "rouge_f1": {
+            "rouge1": 0.2184873949579832,
+            "rouge2": 0.06837606837606838,
+            "rougeL": 0.15126050420168066
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            34,
+            33,
+            18,
+            41,
+            31,
+            35,
+            13,
+            46
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The middle layer works by aggregating specific discourse phenomena (such as mentions of \"admission fee,\" \"how much to enter,\" \"opening hours\") into higher-level concepts (like \"entrance requirements\"). These aggregated concepts then influence hidden nodes representing more generalized versions of observable phenomena, such as \"final destination\" or \"doing business.\" This layer serves as an intermediary between detailed observations and broader discourse intentions or plans.",
+          "rouge_f1": {
+            "rouge1": 0.27586206896551724,
+            "rouge2": 0.05263157894736842,
+            "rougeL": 0.1724137931034483
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            34,
+            33
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The middle layer works by observing specific discourse phenomena (such as mentions of \"admission fee\" or \"opening hours\") and grouping them into nodes that represent broader concepts (like \"entrance requirements\"). These nodes then form a task-based middle layer, which can further be segmented into sub-layers based on cues from the discourse. This structure aims to capture the underlying intentions or tasks of the speakers, such as being a tourist or conducting business, by analyzing the context and content of their conversations.",
+          "rouge_f1": {
+            "rouge1": 0.3111111111111111,
+            "rouge2": 0.07518796992481204,
+            "rougeL": 0.16296296296296298
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            34,
+            33,
+            18,
+            45
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The middle layer works by introducing intermediate nodes between the observed features and the output nodes. These intermediate nodes help manage the complexity of connecting numerous features directly to the output, making the network structure less flat and more hierarchical. Each region can have its own hidden layer that points to a more general hidden layer, allowing for a more nuanced representation of discourse phenomena, syntactic information, and context. This approach aims to simplify the setup of probabilities and facilitate learning processes, although it may require more manual editing initially.",
+          "rouge_f1": {
+            "rouge1": 0.2394366197183099,
+            "rouge2": 0.02857142857142857,
+            "rougeL": 0.15492957746478872
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            34,
+            33,
+            18,
+            45,
+            35,
+            46,
+            0,
+            5
+          ],
+          "retrieval_precision": 0.02001953125,
+          "retrieval_recall": 0.12424242424242424
+        },
+        "lumber__dense__w512": {
+          "answer": "The middle layer works by identifying hidden variables such as whether the person is a tourist, running an errand, or in a hurry, based on their communicated abstract ideas and previous statements. These hidden variables help determine the context of their travel intentions, distinguishing between the destination being a final destination or merely a navigational point towards another location. The team aimed to conceptualize this layer rather than finalize probabilities, planning to refine it further with more data analysis.",
+          "rouge_f1": {
+            "rouge1": 0.42748091603053434,
+            "rouge2": 0.186046511627907,
+            "rougeL": 0.3511450381679389
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            23
+          ],
+          "retrieval_precision": 0.595703125,
+          "retrieval_recall": 0.9242424242424242
+        },
+        "lumber__dense__w1024": {
+          "answer": "The middle layer works by identifying hidden variables or concepts that act as intermediaries between the input features (like user intentions or actions) and the output actions or decisions. Specifically, it aims to determine underlying states such as whether the user is a tourist, running an errand, or in a hurry. These hidden variables help infer the user's true intent from their communicated abstract ideas and previous interactions. For instance, if a user expresses interest in visiting a place, the middle layer would consider whether this visit is their final destination or merely a waypoint to another location, based on inferred states like being in a hurry or not.",
+          "rouge_f1": {
+            "rouge1": 0.4320987654320988,
+            "rouge2": 0.2125,
+            "rougeL": 0.345679012345679
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            23,
+            44,
+            1
+          ],
+          "retrieval_precision": 0.2978515625,
+          "retrieval_recall": 0.9242424242424242
+        },
+        "lumber__dense__w2048": {
+          "answer": "The middle layer works by introducing hidden variables that represent underlying concepts or states not directly observable, such as whether someone is a tourist, running an errand, or in a hurry. These hidden variables help simplify the model by reducing the complexity compared to having all features directly connected to the output node. The team considered various hidden variables including the urgency of the person's travel, their final destination, and whether the destination is closed. The goal was to capture the essence of the communication, such as the abstract idea being conveyed, through these intermediary nodes, which would then influence the final output.",
+          "rouge_f1": {
+            "rouge1": 0.39743589743589747,
+            "rouge2": 0.1818181818181818,
+            "rougeL": 0.2692307692307692
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            23,
+            44,
+            1,
+            54,
+            6,
+            61,
+            43
+          ],
+          "retrieval_precision": 0.1611328125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The middle layer works by incorporating various discourse-related cues as observed nodes. These cues act as indicators for underlying intentions or contexts, such as \"final destination,\" \"doing business,\" or \"tourist hurry.\" Grad A suggests that these observed nodes might point to a hidden layer, which could be more generalized and complex, potentially requiring many more nodes than the initial features extracted. This structure aims to capture the nuances of communication beyond surface-level observations, though it may become intricate and require significant manual refinement.",
+          "rouge_f1": {
+            "rouge1": 0.291970802919708,
+            "rouge2": 0.044444444444444446,
+            "rougeL": 0.17518248175182483
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            23,
+            43
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The middle layer works by incorporating multiple nodes that represent different discourse phenomena observed in the conversation. These phenomena, such as mentions of \"admission fee\" or \"opening hours,\" are aggregated into broader categories (e.g., \"entrance requirements\"). Each category can have its own hidden layer that influences the general hidden layer, which represents more abstract concepts like \"final destination\" or \"doing business.\" This structure allows for a nuanced understanding of the conversation's context and flow, though it may become complex and require careful design to avoid clutter.",
+          "rouge_f1": {
+            "rouge1": 0.2571428571428571,
+            "rouge2": 0.057971014492753624,
+            "rougeL": 0.1714285714285714
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            23,
+            43,
+            40,
+            17
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The middle layer works by having binary nodes that represent extracted features from the data, which are influenced by lower-level observations and can point to higher-level concepts like \"mode\" or \"final destination.\" Participants discussed adding more complex structures, such as additional middle nodes to capture discourse phenomena like \"admission fee\" or \"opening hours,\" which would funnel into broader categories influencing the overall model's output. This allows for a more nuanced representation of the data, capturing intermediate levels of abstraction between raw observations and final conclusions.",
+          "rouge_f1": {
+            "rouge1": 0.2285714285714286,
+            "rouge2": 0.057971014492753624,
+            "rougeL": 0.14285714285714285
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            23,
+            43,
+            40,
+            17,
+            2,
+            13,
+            18,
+            28,
+            20
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The middle layer works by incorporating various discourse-related cues as observed nodes. These cues act as indicators for underlying intentions or contexts, such as \"final destination,\" \"doing business,\" or \"tourist hurry.\" Grad A suggests that these observed nodes might point to a hidden layer, which could be more generalized and complex, potentially requiring many more nodes than the initial features extracted. This structure aims to capture the nuances of communication beyond surface-level observations, though it may become intricate and require significant manual refinement.",
+          "rouge_f1": {
+            "rouge1": 0.291970802919708,
+            "rouge2": 0.044444444444444446,
+            "rougeL": 0.17518248175182483
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            23,
+            43
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The middle layer works by identifying and categorizing underlying concepts or contexts from the communicated features. Specifically, it aims to discern broader ideas or intentions, such as whether the communicator is a tourist or running an errand, based on the extracted features like desired destinations and previous communications. This layer includes multiple nodes that aggregate specific cues (e.g., \"admission fee,\" \"opening hours\") into more generalized categories (e.g., \"entrance requirements\"). These generalized categories then contribute to a higher-level, more abstract understanding of the communication's intent, such as the final destination or the nature of the interaction (tourist activity vs. business).",
+          "rouge_f1": {
+            "rouge1": 0.34838709677419355,
+            "rouge2": 0.10457516339869281,
+            "rougeL": 0.20645161290322578
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            23,
+            43,
+            7
+          ],
+          "retrieval_precision": 0.1650390625,
+          "retrieval_recall": 0.5121212121212121
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The middle layer works by identifying hidden variables or concepts that act as intermediaries between the initial features (such as where someone wants to go or what they've said) and the final outcomes (like whether they are a tourist, running an errand, or in a hurry). These hidden variables help determine the underlying reasons for the actions or statements made by individuals, such as distinguishing between someone who is merely passing through a location versus someone whose destination is their final goal. The team considered examples like whether someone is on a tour, running an errand, or in a hurry, as potential hidden variables. Additionally, they discussed the possibility of having multiple levels within the middle layer, including task-based and cue-based sub-layers, to capture more nuanced aspects of the discourse.",
+          "rouge_f1": {
+            "rouge1": 0.3548387096774193,
+            "rouge2": 0.16304347826086957,
+            "rougeL": 0.24731182795698928
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            23,
+            43,
+            7,
+            54,
+            13,
+            1
+          ],
+          "retrieval_precision": 0.14892578125,
+          "retrieval_recall": 0.9242424242424242
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What was the importance of SmartKom?",
+      "reference_answer": "SmartKom, although it does not code for intentions as specified in this task, provides a model of the discourse, which can be useful for the detection of features through querying and anaphora resolution. ",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The importance of SmartKom, as indicated by the excerpts, lies in its dependency on network capabilities to function properly. Specifically, it requires a network to obtain an IP address and to perform certain operations that rely on network configurations provided by the operating system, such as DHCP requests. Without these, SmartKom cannot start or operate correctly.",
+          "rouge_f1": {
+            "rouge1": 0.2247191011235955,
+            "rouge2": 0.0,
+            "rougeL": 0.11235955056179775
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            53,
+            41,
+            52
+          ],
+          "retrieval_precision": 0.158203125,
+          "retrieval_recall": 0.12423312883435583
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The evidence provided does not contain sufficient information to determine the specific importance of SmartKom beyond its technical requirement for a network to initialize and look up certain operational details such as IP addresses. The excerpts focus more on technical difficulties and setup issues rather than discussing the broader significance or functionality of SmartKom.",
+          "rouge_f1": {
+            "rouge1": 0.27586206896551724,
+            "rouge2": 0.023529411764705882,
+            "rougeL": 0.16091954022988506
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            53,
+            41,
+            52,
+            7,
+            31
+          ],
+          "retrieval_precision": 0.0791015625,
+          "retrieval_recall": 0.12423312883435583
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The excerpts provided do not contain any direct statements about the importance of SmartKom. Therefore, the evidence is insufficient to determine the importance of SmartKom based solely on the given meeting excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.21538461538461537,
+            "rouge2": 0.0,
+            "rougeL": 0.15384615384615385
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            53,
+            41,
+            52,
+            7,
+            31,
+            17,
+            1,
+            0,
+            59,
+            13
+          ],
+          "retrieval_precision": 0.03955078125,
+          "retrieval_recall": 0.12423312883435583
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The importance of SmartKom, as indicated by the excerpts, lies in its dependency on network capabilities to function properly. Specifically, it requires a network to obtain an IP address and to perform certain operations that rely on network configurations provided by the operating system, such as DHCP requests. Without these, SmartKom cannot start or operate correctly.",
+          "rouge_f1": {
+            "rouge1": 0.2247191011235955,
+            "rouge2": 0.0,
+            "rougeL": 0.11235955056179775
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            53,
+            52
+          ],
+          "retrieval_precision": 0.158203125,
+          "retrieval_recall": 0.12423312883435583
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The importance of SmartKom, as discussed, lies in its role as a comprehensive system with an elaborate discourse processing module. This module serves as the memory of the entire system, tracking who said what and what was presented, aiding in anaphora resolution, filling in omitted structures, and coordinating gesture-screen interactions. Additionally, SmartKom requires a network to boot up and obtain necessary information such as IP addresses from the operating system.",
+          "rouge_f1": {
+            "rouge1": 0.25,
+            "rouge2": 0.0392156862745098,
+            "rougeL": 0.19230769230769232
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            53,
+            52,
+            43,
+            42
+          ],
+          "retrieval_precision": 0.53515625,
+          "retrieval_recall": 0.8404907975460123
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The importance of SmartKom, as discussed, lies in its role as a comprehensive system that includes an elaborate discourse processing module. This module helps in understanding user intentions through parsing, maintains a discourse history that acts as the memory of the system, assists in anaphora resolution, and coordinates gesture and screen issues during interactions. It provides a clear interface for querying information from previous dialogue steps, making it crucial for managing complex dialogues effectively.",
+          "rouge_f1": {
+            "rouge1": 0.3738317757009346,
+            "rouge2": 0.05714285714285714,
+            "rougeL": 0.1869158878504673
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            53,
+            52,
+            43,
+            42,
+            27,
+            31,
+            47,
+            1,
+            8
+          ],
+          "retrieval_precision": 0.2890625,
+          "retrieval_recall": 0.9079754601226994
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The importance of SmartKom, as indicated by the excerpts, lies in its dependency on network capabilities to function properly. Specifically, it requires a network to obtain an IP address and to perform certain operations that rely on network configurations provided by the operating system, such as DHCP requests. Without these, SmartKom cannot start or operate correctly.",
+          "rouge_f1": {
+            "rouge1": 0.2247191011235955,
+            "rouge2": 0.0,
+            "rougeL": 0.11235955056179775
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            53,
+            52
+          ],
+          "retrieval_precision": 0.158203125,
+          "retrieval_recall": 0.12423312883435583
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The evidence provided does not contain sufficient information to determine the specific importance of SmartKom as described by the participants' thoughts or discussions. The excerpts mention SmartKom in the context of needing a network to start and issues related to its operation, but do not elaborate on its broader significance or purpose.",
+          "rouge_f1": {
+            "rouge1": 0.28235294117647064,
+            "rouge2": 0.024096385542168676,
+            "rougeL": 0.16470588235294117
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            53,
+            52,
+            31,
+            7
+          ],
+          "retrieval_precision": 0.0791015625,
+          "retrieval_recall": 0.12423312883435583
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The importance of SmartKom, as discussed, lies in its role as a discourse model that helps in anaphora resolution and coordinating gesture-screen issues. It maintains a representation of dialogue steps, storing information presented on the screen and assisting in determining what was discussed in previous turns. Additionally, SmartKom requires a network to boot up and obtain its IP address, though it can function offline once started.",
+          "rouge_f1": {
+            "rouge1": 0.3,
+            "rouge2": 0.020408163265306124,
+            "rougeL": 0.16
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            53,
+            52,
+            31,
+            7,
+            1,
+            43,
+            49,
+            8,
+            17
+          ],
+          "retrieval_precision": 0.15185546875,
+          "retrieval_recall": 0.47699386503067487
+        },
+        "word_packed__dense__w512": {
+          "answer": "The importance of SmartKom lies in its role as a system that processes user intentions and maintains a discourse history, which acts as the memory of the entire system, tracking interactions and information over multiple turns of conversation. Additionally, SmartKom requires a network initially to look up certain information provided by the operating system, though it can operate offline once started.",
+          "rouge_f1": {
+            "rouge1": 0.3191489361702127,
+            "rouge2": 0.02173913043478261,
+            "rougeL": 0.17021276595744678
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            38
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.39263803680981596
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The importance of SmartKom lies in its ability to process discourse and parse intentions, serving as a central module that understands user intents and maintains system memory. It aids in distinguishing different types of user interactions, such as whether a user is a tourist or running an errand, based on previous communications and current inputs. Additionally, while it requires a network to initialize due to dependencies on network services like DHCP, once started, it operates independently of the network.",
+          "rouge_f1": {
+            "rouge1": 0.21428571428571427,
+            "rouge2": 0.018181818181818184,
+            "rougeL": 0.125
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            38,
+            6,
+            27
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.39263803680981596
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The evidence provided does not contain sufficient information to determine the importance of SmartKom.",
+          "rouge_f1": {
+            "rouge1": 0.2978723404255319,
+            "rouge2": 0.044444444444444446,
+            "rougeL": 0.1702127659574468
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            38,
+            6,
+            27,
+            0,
+            5,
+            18,
+            28
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.39263803680981596
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The importance of SmartKom lies in its role as a system that processes user intentions and maintains a discourse history, which acts as the memory of the entire system, tracking interactions and information over multiple turns of conversation. Additionally, SmartKom requires a network initially to look up certain information provided by the operating system, though it can operate offline once started.",
+          "rouge_f1": {
+            "rouge1": 0.3191489361702127,
+            "rouge2": 0.02173913043478261,
+            "rougeL": 0.17021276595744678
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            38
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.39263803680981596
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The importance of SmartKom, as discussed, lies in its role as a comprehensive system that processes discourse, maintaining a memory of the dialogue's history and aiding in tasks such as anaphora resolution and coordinating gestures with screen interactions. It acts as a central module that integrates various aspects of dialogue understanding and management, ensuring continuity and coherence in the conversation.",
+          "rouge_f1": {
+            "rouge1": 0.29787234042553196,
+            "rouge2": 0.04347826086956522,
+            "rougeL": 0.19148936170212766
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            38,
+            39,
+            10
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.7852760736196319
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The excerpts indicate that SmartKom is an important system for discourse processing and managing dialogue interactions. Specifically, it includes modules for parsing intentions, maintaining discourse history, resolving anaphora, and coordinating gestures and screen issues. Additionally, it seems to require a network to look up certain information provided by the operating system in response to DHCP requests. However, once started, it can operate without continuous network access. The exact nature and full extent of its importance are not fully detailed in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.27586206896551724,
+            "rouge2": 0.0,
+            "rougeL": 0.15517241379310343
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            38,
+            39,
+            10,
+            28,
+            25,
+            7,
+            32
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.7852760736196319
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The importance of SmartKom lies in its role as a system that processes user intentions and maintains a discourse history, which acts as the memory of the entire system, tracking interactions and information over multiple turns of conversation. Additionally, SmartKom requires a network initially to look up certain information provided by the operating system, though it can operate offline once started.",
+          "rouge_f1": {
+            "rouge1": 0.3191489361702127,
+            "rouge2": 0.02173913043478261,
+            "rougeL": 0.17021276595744678
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            38
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.39263803680981596
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The importance of SmartKom lies in its role as a system that processes user intentions and maintains a discourse history, which acts as the memory of the entire system, tracking interactions and understanding the context of communications. It requires a network initially to look up certain information but can operate offline after startup.",
+          "rouge_f1": {
+            "rouge1": 0.3255813953488372,
+            "rouge2": 0.02380952380952381,
+            "rougeL": 0.18604651162790697
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            38,
+            28,
+            6
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.39263803680981596
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The excerpts provided do not contain specific statements about the importance of SmartKom. However, it can be inferred that SmartKom is a system integral to their project, possibly related to discourse processing and navigation tasks, based on mentions such as its role in handling intentions and discourse history, and needing a network to start. The exact importance is not explicitly detailed in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.326530612244898,
+            "rouge2": 0.020833333333333332,
+            "rougeL": 0.14285714285714288
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            38,
+            28,
+            6,
+            54,
+            0,
+            5,
+            7,
+            10
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.39263803680981596
+        },
+        "lumber__dense__w512": {
+          "answer": "The evidence provided does not contain any statements or discussions directly addressing the importance of SmartKom. Therefore, the importance of SmartKom cannot be determined from the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.2950819672131148,
+            "rouge2": 0.03389830508474576,
+            "rougeL": 0.19672131147540986
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            57,
+            56,
+            48
+          ],
+          "retrieval_precision": 0.0703125,
+          "retrieval_recall": 0.05521472392638037
+        },
+        "lumber__dense__w1024": {
+          "answer": "The importance of SmartKom, as discussed, lies in its role for collecting richer and more diverse linguistic data compared to the simpler command-line data received from Munich. This data collection aims to uncover various phenomena and differences in human-machine interaction, such as the distinctions between speaking to a computer versus a human. Additionally, SmartKom requires a network connection initially to obtain an IP address but can operate offline once started.",
+          "rouge_f1": {
+            "rouge1": 0.20952380952380956,
+            "rouge2": 0.0,
+            "rougeL": 0.1142857142857143
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            57,
+            56,
+            48,
+            62
+          ],
+          "retrieval_precision": 0.1044921875,
+          "retrieval_recall": 0.16411042944785276
+        },
+        "lumber__dense__w2048": {
+          "answer": "The importance of SmartKom, as discussed, lies in its role as a tool for collecting richer and more varied linguistic data compared to existing command-line interactions. This data collection aims to uncover phenomena related to human-machine interaction, particularly focusing on pragmatic aspects and differences in user behavior when interacting with computers versus humans. Additionally, SmartKom requires a network connection initially to obtain an IP address but can operate offline afterward.",
+          "rouge_f1": {
+            "rouge1": 0.1904761904761905,
+            "rouge2": 0.0,
+            "rougeL": 0.1142857142857143
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            57,
+            56,
+            48,
+            62,
+            7,
+            33,
+            54,
+            17
+          ],
+          "retrieval_precision": 0.05224609375,
+          "retrieval_recall": 0.16411042944785276
+        },
+        "lumber__bm25__w512": {
+          "answer": "The evidence provided does not contain sufficient information to determine the specific importance of SmartKom beyond mentioning its role in discourse processing and its functionality related to network requirements for booting up computers with networking enabled.",
+          "rouge_f1": {
+            "rouge1": 0.31884057971014496,
+            "rouge2": 0.02985074626865672,
+            "rougeL": 0.14492753623188404
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            57,
+            56
+          ],
+          "retrieval_precision": 0.208984375,
+          "retrieval_recall": 0.16411042944785276
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The excerpts indicate that SmartKom is an important tool for discourse processing and understanding user intentions in dialogue systems. Specifically, Grad A mentions that SmartKom includes an elaborate module for discourse history that helps in interpreting user intentions and handling multi-turn dialogues. Additionally, the necessity of a network for initializing SmartKom highlights its complexity and reliance on system resources for proper functioning.",
+          "rouge_f1": {
+            "rouge1": 0.22916666666666666,
+            "rouge2": 0.0,
+            "rougeL": 0.18749999999999997
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            57,
+            56,
+            11,
+            35,
+            49
+          ],
+          "retrieval_precision": 0.2548828125,
+          "retrieval_recall": 0.4003067484662577
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The importance of SmartKom, as discussed, lies in its role as a comprehensive system for discourse processing. It includes an elaborate module that serves as the memory of the entire system, tracking who said what and maintaining the context necessary for anaphora resolution and filling in omitted structures. This allows SmartKom to handle multi-turn dialogues effectively, ensuring that information from previous turns remains accessible and relevant throughout the conversation. Additionally, SmartKom aids in coordinating gesture and screen issues by storing what was presented on the screen during interactions.",
+          "rouge_f1": {
+            "rouge1": 0.2622950819672131,
+            "rouge2": 0.03333333333333333,
+            "rougeL": 0.1639344262295082
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            57,
+            56,
+            11,
+            35,
+            49,
+            31,
+            50
+          ],
+          "retrieval_precision": 0.3017578125,
+          "retrieval_recall": 0.9478527607361963
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The evidence provided does not contain sufficient information to determine the specific importance of SmartKom beyond mentioning its role in discourse processing and its functionality related to network requirements for booting up computers with networking enabled.",
+          "rouge_f1": {
+            "rouge1": 0.31884057971014496,
+            "rouge2": 0.02985074626865672,
+            "rougeL": 0.14492753623188404
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            57,
+            48,
+            56
+          ],
+          "retrieval_precision": 0.208984375,
+          "retrieval_recall": 0.16411042944785276
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The importance of SmartKom, as indicated by the excerpts, lies in its role as a tool for discourse processing and potentially for handling Bayesian networks within the project. Specifically, Grad A mentions the intention to look at the SmartKom tables and shows interest in demonstrating aspects of SmartKom to the team, indicating its significance in their work. Additionally, the discussion around its network requirements suggests it performs functions that necessitate initial network access for certain operations, such as looking up information provided by the operating system.",
+          "rouge_f1": {
+            "rouge1": 0.25210084033613445,
+            "rouge2": 0.0,
+            "rougeL": 0.13445378151260504
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            57,
+            48,
+            56,
+            7,
+            11
+          ],
+          "retrieval_precision": 0.1044921875,
+          "retrieval_recall": 0.16411042944785276
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The importance of SmartKom, as discussed, lies in its role as a tool for collecting richer and more varied linguistic data compared to the simpler command-line data from Munich. This data collection aims to uncover phenomena that could help develop a better understanding of human-machine interaction, including differences in how people communicate with computers versus humans. Additionally, SmartKom requires a network connection to initialize but can operate offline afterward.",
+          "rouge_f1": {
+            "rouge1": 0.23076923076923075,
+            "rouge2": 0.0,
+            "rougeL": 0.1346153846153846
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            57,
+            48,
+            56,
+            7,
+            11,
+            62,
+            54
+          ],
+          "retrieval_precision": 0.05224609375,
+          "retrieval_recall": 0.16411042944785276
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What was said about hiring?",
+      "reference_answer": "Experiments for the collection of new data will start soon, since someone who will recruit subjects and help run the experiments has already been hired and the designing of the experiments has also progressed significantly.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The discussion about hiring focused on recruiting Fey as the \"wizard\" for data collection, including interviewing, transcription, and subject recruitment. There was a suggestion to conduct a trial run with Fey to assess her spontaneity, eloquence, and creativity. Liz volunteered to be the first subject for this trial run. The participants debated whether the trial subject should be familiar with the data to challenge Fey or if a completely unfamiliar subject would provide a more realistic test scenario.",
+          "rouge_f1": {
+            "rouge1": 0.23008849557522126,
+            "rouge2": 0.018018018018018018,
+            "rougeL": 0.1415929203539823
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            54,
+            55,
+            52
+          ],
+          "retrieval_precision": 0.689453125,
+          "retrieval_recall": 0.8802992518703242
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The evidence is insufficient to determine what was said about hiring.",
+          "rouge_f1": {
+            "rouge1": 0.08695652173913043,
+            "rouge2": 0.0,
+            "rougeL": 0.08695652173913043
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            54,
+            55,
+            52,
+            19,
+            11
+          ],
+          "retrieval_precision": 0.3447265625,
+          "retrieval_recall": 0.8802992518703242
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The excerpts provided do not contain any specific discussion about hiring. Therefore, the evidence is insufficient to answer the question regarding what was said about hiring.",
+          "rouge_f1": {
+            "rouge1": 0.13114754098360656,
+            "rouge2": 0.0,
+            "rougeL": 0.13114754098360656
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            54,
+            55,
+            52,
+            19,
+            11,
+            34,
+            57,
+            6,
+            59
+          ],
+          "retrieval_precision": 0.17236328125,
+          "retrieval_recall": 0.8802992518703242
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The meeting excerpts provided do not contain any direct statements, questions, or suggestions related to hiring. Therefore, the evidence is insufficient to answer the question about what was said regarding hiring.",
+          "rouge_f1": {
+            "rouge1": 0.12121212121212123,
+            "rouge2": 0.0,
+            "rougeL": 0.12121212121212123
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The meeting excerpts do not contain any direct statements about hiring. The discussion revolves around the structure of a model involving layers and variables related to user intentions and tasks, such as whether someone is a tourist or in a hurry. Therefore, the evidence is insufficient to answer the question about hiring.",
+          "rouge_f1": {
+            "rouge1": 0.20689655172413793,
+            "rouge2": 0.0,
+            "rougeL": 0.13793103448275865
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            7,
+            1,
+            49,
+            12
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The excerpts do not contain any direct statements or discussions specifically about hiring. Therefore, the evidence is insufficient to answer the question about what was said regarding hiring.",
+          "rouge_f1": {
+            "rouge1": 0.12698412698412698,
+            "rouge2": 0.0,
+            "rougeL": 0.12698412698412698
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            7,
+            1,
+            49,
+            12,
+            8,
+            26,
+            52,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The excerpts provided do not contain any direct discussion about hiring. Therefore, the evidence is insufficient to answer the question about what was said regarding hiring.",
+          "rouge_f1": {
+            "rouge1": 0.13114754098360656,
+            "rouge2": 0.0,
+            "rougeL": 0.13114754098360656
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            52,
+            19,
+            34
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The meeting excerpts provided do not contain any direct discussion about hiring. Therefore, the evidence is insufficient to answer the question about what was said regarding hiring.",
+          "rouge_f1": {
+            "rouge1": 0.12903225806451613,
+            "rouge2": 0.0,
+            "rougeL": 0.12903225806451613
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            52,
+            19,
+            34,
+            59,
+            49
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The excerpts do not contain any direct statements or discussions specifically about hiring. Therefore, the evidence is insufficient to answer the question about what was said regarding hiring.",
+          "rouge_f1": {
+            "rouge1": 0.12698412698412698,
+            "rouge2": 0.0,
+            "rougeL": 0.12698412698412698
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            52,
+            19,
+            34,
+            59,
+            49,
+            1,
+            7,
+            36,
+            11
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The excerpts do not contain any direct discussion about hiring. The conversation appears to be focused on technical aspects of a project, including discourse analysis, probability tuning, and system biases related to terms like \"Tango.\" There is no mention of hiring processes or personnel decisions.",
+          "rouge_f1": {
+            "rouge1": 0.15,
+            "rouge2": 0.0,
+            "rougeL": 0.1
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The meeting excerpts provided do not contain any discussion about hiring. The conversation revolves around technical aspects of a project, including tasks, probabilities, and demonstrations, but there is no mention of hiring processes or personnel recruitment.",
+          "rouge_f1": {
+            "rouge1": 0.19718309859154928,
+            "rouge2": 0.0,
+            "rougeL": 0.11267605633802817
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            10,
+            54,
+            0,
+            50
+          ],
+          "retrieval_precision": 0.01953125,
+          "retrieval_recall": 0.04987531172069826
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The meeting excerpts provided do not contain any discussion about hiring. Therefore, the evidence is insufficient to answer the question about what was said regarding hiring.",
+          "rouge_f1": {
+            "rouge1": 0.13114754098360656,
+            "rouge2": 0.0,
+            "rougeL": 0.13114754098360656
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            10,
+            54,
+            0,
+            50,
+            47,
+            44,
+            12,
+            52
+          ],
+          "retrieval_precision": 0.0791015625,
+          "retrieval_recall": 0.40399002493765584
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The evidence is insufficient to determine what was said about hiring.",
+          "rouge_f1": {
+            "rouge1": 0.08695652173913043,
+            "rouge2": 0.0,
+            "rougeL": 0.08695652173913043
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            39,
+            6
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The excerpts provided do not contain any direct discussion about hiring. The conversation appears to revolve around features, suggestions, architectural significance, and dialogue models, but there is no mention of hiring processes or related topics.",
+          "rouge_f1": {
+            "rouge1": 0.14285714285714285,
+            "rouge2": 0.0,
+            "rougeL": 0.11428571428571428
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            39,
+            6,
+            3,
+            44
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The excerpts provided do not contain any direct statements or discussions about hiring. Therefore, the evidence is insufficient to answer the question about what was said regarding hiring.",
+          "rouge_f1": {
+            "rouge1": 0.12698412698412698,
+            "rouge2": 0.0,
+            "rougeL": 0.12698412698412698
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            39,
+            6,
+            3,
+            44,
+            25,
+            40,
+            33,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The excerpts provided do not contain any direct discussion about hiring. The conversation appears to revolve around cues, discourse analysis, and possibly a project or research related to understanding context and meaning in communication, but there is no mention of hiring practices or related topics.",
+          "rouge_f1": {
+            "rouge1": 0.15,
+            "rouge2": 0.0,
+            "rougeL": 0.1
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            44
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The meeting excerpts provided do not contain any direct discussion about hiring. The conversation appears to revolve around other topics such as architectural features, discourse analysis, and travel experiences, without mentioning hiring processes or related matters. Therefore, the evidence is insufficient to answer the question regarding what was said about hiring.",
+          "rouge_f1": {
+            "rouge1": 0.16279069767441862,
+            "rouge2": 0.0,
+            "rougeL": 0.13953488372093026
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            44,
+            33,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The meeting excerpts provided do not contain any direct discussion about hiring. Therefore, the evidence is insufficient to answer the question regarding what was said about hiring.",
+          "rouge_f1": {
+            "rouge1": 0.12903225806451613,
+            "rouge2": 0.0,
+            "rougeL": 0.12903225806451613
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            44,
+            33,
+            3,
+            0,
+            6,
+            40,
+            47
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The excerpts provided do not contain any direct discussion about hiring. Therefore, the evidence is insufficient to answer the question about what was said regarding hiring.",
+          "rouge_f1": {
+            "rouge1": 0.13114754098360656,
+            "rouge2": 0.0,
+            "rougeL": 0.13114754098360656
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            59,
+            21,
+            33,
+            42,
+            58
+          ],
+          "retrieval_precision": 0.525390625,
+          "retrieval_recall": 0.6708229426433915
+        },
+        "lumber__dense__w1024": {
+          "answer": "The excerpts provided do not contain any direct discussion about hiring. The conversation revolves around probabilities tuning, software interfaces, scheduling meetings, and preparing for a trial run with a new data collector (\"the wizard\"). Therefore, the evidence is insufficient to answer the question about what was said about hiring.",
+          "rouge_f1": {
+            "rouge1": 0.23809523809523808,
+            "rouge2": 0.024390243902439022,
+            "rougeL": 0.14285714285714288
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            59,
+            21,
+            33,
+            42,
+            58,
+            56,
+            60
+          ],
+          "retrieval_precision": 0.3447265625,
+          "retrieval_recall": 0.8802992518703242
+        },
+        "lumber__dense__w2048": {
+          "answer": "The evidence is insufficient to determine what was said about hiring.",
+          "rouge_f1": {
+            "rouge1": 0.08695652173913043,
+            "rouge2": 0.0,
+            "rougeL": 0.08695652173913043
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            59,
+            21,
+            33,
+            42,
+            58,
+            56,
+            60,
+            11,
+            4,
+            53,
+            52,
+            32,
+            9,
+            43
+          ],
+          "retrieval_precision": 0.17236328125,
+          "retrieval_recall": 0.8802992518703242
+        },
+        "lumber__bm25__w512": {
+          "answer": "The excerpts provided do not contain any statements, questions, or suggestions related to hiring. Therefore, the evidence is insufficient to answer the question about what was said regarding hiring.",
+          "rouge_f1": {
+            "rouge1": 0.125,
+            "rouge2": 0.0,
+            "rougeL": 0.125
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            49
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The meeting excerpts provided do not contain any direct discussion about hiring. Therefore, the evidence is insufficient to answer the question about what was said regarding hiring.",
+          "rouge_f1": {
+            "rouge1": 0.12903225806451613,
+            "rouge2": 0.0,
+            "rougeL": 0.12903225806451613
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            49,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The excerpts provided do not contain any direct statements or discussions specifically about hiring. The conversation revolves around features, layers, and concepts related to a project, but there is no mention of hiring processes or decisions. Therefore, the evidence is insufficient to answer the question about what was said about hiring.",
+          "rouge_f1": {
+            "rouge1": 0.16279069767441862,
+            "rouge2": 0.0,
+            "rougeL": 0.11627906976744186
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            49,
+            3,
+            1,
+            41,
+            13,
+            54
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The evidence is insufficient to determine what was said about hiring.",
+          "rouge_f1": {
+            "rouge1": 0.08695652173913043,
+            "rouge2": 0.0,
+            "rougeL": 0.08695652173913043
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            56,
+            11,
+            41
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The meeting excerpts provided do not contain any direct discussion about hiring. Therefore, the evidence is insufficient to answer the question regarding what was said about hiring.",
+          "rouge_f1": {
+            "rouge1": 0.12903225806451613,
+            "rouge2": 0.0,
+            "rougeL": 0.12903225806451613
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            56,
+            11,
+            41,
+            42,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The excerpts do not contain any specific statements or discussions about hiring. Therefore, the evidence is insufficient to answer the question about what was said regarding hiring.",
+          "rouge_f1": {
+            "rouge1": 0.12903225806451613,
+            "rouge2": 0.0,
+            "rougeL": 0.12903225806451613
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            56,
+            11,
+            41,
+            42,
+            3,
+            1,
+            9,
+            58,
+            43,
+            4
+          ],
+          "retrieval_precision": 0.0859375,
+          "retrieval_recall": 0.4389027431421446
+        }
+      }
+    }
+  ]
+}

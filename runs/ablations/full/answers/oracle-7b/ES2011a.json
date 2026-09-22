@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "ES2011a.json",
+        "sha256": "9e6bed229d25214a7eab84a370e5cc159ee10e4a908dac8e5b8bf7a801cf9ead"
+      }
+    },
+    "input_hash": "f7054c84a0b365aa830982bd3caa28e19dbb59fd4ca25a965c81712c86df7e19",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "0563c7f416da70d77327a1422c6b0085a8bec2a69d5d6d3c3f16da17942bf31b",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "ES2011a",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group discuss about animal characteristics?",
+      "reference_answer": "User Interface and Industrial designer drawn dolphin and pig, which the two animals have smart and easy-to-draw features. Marketing suggested a horse and Project Manager thought they should design a remote control that's water resistant, strong and furry. Also he mentioned that remote control will be priced at 25 Euros and aimed to earn a revenue of fifty million Euros. Therefore, Project Manager encouraged teammates to reflect on experience when designing its function and format.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed the characteristics of animals that could influence the design of a remote control. Specifically, they drew and discussed the following animals:\n\n1. **Dolphin**:\n   - Tail\n   - Graceful movement\n   - Sleek appearance\n   - Intelligence (binocular vision)\n   - Happy and playful nature\n\n2. **Cat**:\n   - Pretty and easy to draw\n   - Soft and furry texture\n\n3. **Horse**:\n   - Pretty and sturdy\n   - Running and feeling under the hand\n\n4. **Pig**:\n   - Not explicitly discussed, but mentioned by the Project Manager as an idea for the remote control design.\n\nFrom these discussions, the group decided that the remote control should be:\n- Water-resistant\n- Strong\n- Furry (soft and tactile)\n- Aimed at a selling price of 25 Euros and a profit goal of 50 million Euros\n- Expected to sell between 2 to 4 million units internationally.",
+          "rouge_f1": {
+            "rouge1": 0.45544554455445546,
+            "rouge2": 0.13,
+            "rougeL": 0.27722772277227725
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              10,
+              97
+            ]
+          ],
+          "evidence_words": 1107
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Project Manager think of the call button suggested by User Interface?",
+      "reference_answer": "The initial feature suggested by Marketing was easy to find and User Interface suggested a call button on the television. And Marketing wanted something that could vibrate or had a signal if it had no sound. However, they were not sure whether it is expensive to design it. So Project Manager suggested designing a magnet or portable phone based couch for the remote control, which people no need to walk over the TV to find it.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence is insufficient to determine what the Project Manager specifically thought of the call button suggested by User Interface. The Project Manager acknowledged the idea and agreed with the need for an easily accessible call button on the TV, but there are no direct statements indicating the Project Manager's personal thoughts or opinions on the suggestion.",
+          "rouge_f1": {
+            "rouge1": 0.3283582089552239,
+            "rouge2": 0.10606060606060606,
+            "rougeL": 0.208955223880597
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              98,
+              138
+            ]
+          ],
+          "evidence_words": 449
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Summarize the discussion about the remote control size.",
+      "reference_answer": "Project Manager asked if the remote control needed to be made larger to avoid losing it. At the first beginning, User Interface suggested bigger, while Project Manager suggested a hand-sized device. Considering the light feature and putting noise on it, User Interface thought it would be feasible to make it mobile with a target price at 25 Euros.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the remote control size centered around making it hand-held sized and not too large. Marketing suggested attaching a small, possibly decorative object to the wall, but acknowledged this would increase costs. The team agreed the remote should not be huge, aiming for a manageable hand-held size. User Interface proposed adding features like sound or a light to enhance usability. There was also a brief mention of making the remote mobile and able to find the user, though this idea was not fully developed.",
+          "rouge_f1": {
+            "rouge1": 0.3401360544217687,
+            "rouge2": 0.05517241379310345,
+            "rougeL": 0.17687074829931973
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              139,
+              169
+            ]
+          ],
+          "evidence_words": 241
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did Project Manager think of the cost constraints on the telly screen with the programming function?",
+      "reference_answer": "Since User Interface initially suggested less button feature on the remote control, so Project Manager suggested a telly screen like what phones have. And User Interface mentioned about the master control in electronic houses. However, User Interface thought it is a bit expensive to create this feature, but Marketing mentioned the similar screen in phones is in the acceptable cost range. So, Project Manager agreed and suggested further discussion in the coming meeting.",
+      "results": {
+        "oracle": {
+          "answer": "The Project Manager thought that using the television screen for the programming function could be expensive, given the budget constraint of twelve point five thousand dollars for making the device. However, the Project Manager also considered it an option worth exploring further.",
+          "rouge_f1": {
+            "rouge1": 0.2608695652173913,
+            "rouge2": 0.035398230088495575,
+            "rougeL": 0.19130434782608693
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              173,
+              215
+            ]
+          ],
+          "evidence_words": 583
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Why did Project Manager suggest having a clip on the remote control?",
+      "reference_answer": "User Interface reiterated that the remote control should have a robust and water resistant function. Marketing also mentioned a good tactile feel for the remote control function, which doesn't make hand sweat a lot. Therefore, Project Manager suggested a clip feature on the remote control so that people can clip it to their device.",
+      "results": {
+        "oracle": {
+          "answer": "The Project Manager suggested having a clip on the remote control to allow users to clip it to their keychains or bags, as mentioned in excerpt [233]: \"Maybe um just like a simple thing to have a clip on it, like so you can clip it to your {disfmarker}\" and excerpt [235]: \"like that's another {disfmarker}\".",
+          "rouge_f1": {
+            "rouge1": 0.4107142857142857,
+            "rouge2": 0.19999999999999998,
+            "rougeL": 0.26785714285714285
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              219,
+              236
+            ]
+          ],
+          "evidence_words": 119
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the group discuss about the project plan and target revenue?",
+      "reference_answer": "The selling price goal is 25 Euros and profit aim is fifty million Euros. Selling target is four million and the profit goal is fifty percent. So Project Manager mentioned that the group hopes to sell the remote control device internationally, instead of in Scotland or some European country.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed the project plan and target revenue, setting a selling price goal of 25 Euros and a profit aim of 50 million Euros. They also estimated they needed to sell between 2 million and 4 million units to achieve the profit goal of 12.50 Euros per unit.",
+          "rouge_f1": {
+            "rouge1": 0.46464646464646464,
+            "rouge2": 0.22680412371134018,
+            "rougeL": 0.3636363636363636
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              84,
+              96
+            ]
+          ],
+          "evidence_words": 172
+        }
+      }
+    }
+  ]
+}

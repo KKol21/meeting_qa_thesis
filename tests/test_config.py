@@ -44,15 +44,30 @@ class ConfigTest(unittest.TestCase):
         self.assertEqual(len(config.answers), 4)
         self.assertTrue(config.answers[2].model.prequantized)
 
-    def test_full_preset_uses_the_checked_in_meeting_manifest(self) -> None:
+    def test_validation_preset_uses_the_checked_in_meeting_manifest(self) -> None:
         config = load_run_config(
-            REPOSITORY_ROOT / "src/configs/ablation-full.toml"
+            REPOSITORY_ROOT / "src/configs/ablation-validation-full.toml"
         )
         meeting_ids = config.meeting_ids(REPOSITORY_ROOT)
         self.assertEqual(len(meeting_ids), 20)
         self.assertEqual(len(meeting_ids), len(set(meeting_ids)))
         self.assertNotIn("Bed002", meeting_ids)
         self.assertIn("education_18", meeting_ids)
+
+    def test_full_preset_uses_all_test_meetings_without_single_turn(self) -> None:
+        config = load_run_config(
+            REPOSITORY_ROOT / "src/configs/ablation-full.toml"
+        )
+        meeting_ids = config.meeting_ids(REPOSITORY_ROOT)
+        self.assertEqual(len(meeting_ids), 35)
+        self.assertEqual(len(meeting_ids), len(set(meeting_ids)))
+        self.assertEqual(config.data_dir, Path("data/raw/qmsum/data/ALL/test"))
+        self.assertEqual(
+            config.retrieval.chunkers,
+            ("turn_packed", "word_packed", "lumber"),
+        )
+        self.assertIn("Bed003", meeting_ids)
+        self.assertIn("TS3011d", meeting_ids)
 
     def test_model_revisions_are_centralized(self) -> None:
         self.assertEqual(

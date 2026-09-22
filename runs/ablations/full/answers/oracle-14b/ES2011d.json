@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "ES2011d.json",
+        "sha256": "d418eefcc0967cfc981ef6c113508251132fa6460aefc3770e8f7863275882fd"
+      }
+    },
+    "input_hash": "02f62082d1af98796f845500e3bbe71ffe9534549a5c65acde865a90be80f805",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "c183f711cdac136264c3829cbb1a61751ce817bb8fcf98e758711d1b6ddd0ae8",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "ES2011d",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about detailed design of the remote control.",
+      "reference_answer": "There were two main parts in the detailed design. Firstly, the prototype presentation, Industrial Designer presented the design on the wheel, the button, and the base of the remote control. Secondly, Marketing presented eleven points to be evaluated based on the findings in marketing trend reports and company strategy marketing. Besides, the group had a point calculation on each evaluation criterion.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the detailed design of the remote control included several key points:\n\n- The remote control features a wheel for changing channels or volume, a power button that also functions as a menu button when tapped, and a base with a squishy, spongy rubbery feel that is interchangeable and available in different colors and trendy fruit designs (e.g., broccoli, mango).\n- The base is not to scale and would contain the battery inside it.\n- The remote control includes a locator chip and a beeper, both housed internally.\n- The team discussed the difficulty in ensuring the remote is hand-holdable and not too large.\n- The remote control's design aims to be technologically innovative, easy to use, and aesthetically pleasing, aligning with user requirements and market trends.\n- The team evaluated the design based on predefined criteria, scoring various aspects on a scale from 1 (true) to 7 (false), though there was confusion regarding the direction of the scale initially.",
+          "rouge_f1": {
+            "rouge1": 0.3090909090909091,
+            "rouge2": 0.09174311926605504,
+            "rougeL": 0.1818181818181818
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              1,
+              238
+            ]
+          ],
+          "evidence_words": 2180
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Summarize the discussion about changing an aspect of the remote.",
+      "reference_answer": "Project Manager suggested that the group might need to discuss changing an aspect of the remote. According to the previous evaluation, the worst one was material. Thus, the group gave suggestions on the smallish size, smashed or resembled fruit shape, and printed patterns on rubber design. The group also suggested changing batteries, but they ended up agreeing that there were no problems in battery design.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion centered around changing the shape of the remote control to improve its comfort and usability. Participants initially considered various fruit shapes but found many impractical due to comfort issues. They eventually agreed that changing the shape to a more ergonomic design, possibly resembling a joystick, could be beneficial. Additionally, they discussed using color patterns instead of specific fruit shapes to maintain the theme while ensuring comfort and ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.32116788321167883,
+            "rouge2": 0.059259259259259255,
+            "rougeL": 0.20437956204379565
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              239,
+              398
+            ]
+          ],
+          "evidence_words": 1425
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Summarize the discussion about the process of the project.",
+      "reference_answer": "Firstly, Project Manager asked about the room for creativity in fruit and squishiness. User Interface thought the prototype making was creatively stimulating and the product has met all the criteria. Next, Project Manager reflected on his leadership and management role in the group. Other members gave recognition to his performance and everyone's cooperation. Then, Project Manager asked about the convenience of the means for the materials and the pen used in the presentation. Group evaluated based on the user-friendly and the working efficiency.",
+      "results": {
+        "oracle": {
+          "answer": "The participants discussed the project process, highlighting several aspects:\n\n- Creativity: There was ample room for creativity, especially during prototype making.\n- Leadership and Teamwork: The project manager felt their leadership was lacking, but others felt it was adequate and democratic. Teamwork was generally positive with no significant conflicts.\n- Materials and Tools: There were mixed feelings about the tools used, such as pens and whiteboards. Some preferred alternative software like WordPerfect over Microsoft products.\n- Information Accessibility: There were issues with accessing necessary information, leading to some members feeling disconnected from the project's progress.\n- Technology Use: The group expressed skepticism about the usefulness of advanced technologies like video recordings of meetings, suggesting they might be overkill for most situations.\n- Product Satisfaction: The team was satisfied with the product, considering it met budget and trend requirements.",
+          "rouge_f1": {
+            "rouge1": 0.36697247706422015,
+            "rouge2": 0.09259259259259259,
+            "rougeL": 0.20183486238532108
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              399,
+              598
+            ]
+          ],
+          "evidence_words": 1927
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Why did the group decide to choose the aspect of the shape of the remote to change?",
+      "reference_answer": "Instead of changing the shape of the remote, the group first discussed changing the batteries because some group mates gave a point under three. However, Marketing thought batteries were easy to insert so it would not be a problem anymore. In addition, all the group members gave the shape of the remote only two points. And they needed to change the most critical one. The shape and the squishiness of the remote were an innovation in terms of technology. Therefore, they all agreed to change the shape.",
+      "results": {
+        "oracle": {
+          "answer": "The group decided to choose the aspect of the shape of the remote to change because they found that the current shape, particularly the small and awkward sizes, was not comfortable for users to hold. They discussed various shapes, including a broccoli-shaped remote, which was noted to be comfortable and resembled a joystick. The decision was influenced by the desire to improve user comfort while holding the remote, and they agreed that changing the shape could address this issue effectively.",
+          "rouge_f1": {
+            "rouge1": 0.4285714285714286,
+            "rouge2": 0.13253012048192772,
+            "rougeL": 0.27380952380952384
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              239,
+              398
+            ]
+          ],
+          "evidence_words": 1425
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the group think of the leadership in the process of the project?",
+      "reference_answer": "Project Manager thought his leadership was crap personally and he never did a management position. While Industrial Designer thought Project Manager did tell them when to start and when to end, which was important in good leadership. And User Interface thought Project Manager did a good job in leadership because they didn't have set roles so much, which was a democratic process. Marketing supplemented that everyone got blended quite well.",
+      "results": {
+        "oracle": {
+          "answer": "The group generally thought positively of the leadership in the project process. Industrial Designer and User Interface both explicitly stated that the leadership was \"good\" and \"fine,\" respectively. User Interface also mentioned that the Project Manager did a \"good job leading.\" Despite the Project Manager's self-criticism, the team appreciated the democratic approach and the ability to contribute freely.",
+          "rouge_f1": {
+            "rouge1": 0.41221374045801523,
+            "rouge2": 0.15503875968992245,
+            "rougeL": 0.25954198473282436
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              414,
+              434
+            ]
+          ],
+          "evidence_words": 196
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the group think of the convenience of presentation materials?",
+      "reference_answer": "Both User Interface and Industrial Designer thought it was not helpful to use PowerPoint to present. Instead, they preferred writing notes for massive information, while Marketing and Project Manager thought PowerPoint materials were quite useful. Specifically, Project Manager mentioned that he felt ignorant when the group was explaining things.",
+      "results": {
+        "oracle": {
+          "answer": "The group had mixed thoughts on the convenience of the presentation materials. The Industrial Designer expressed dissatisfaction with Microsoft products and preferred Unix-based software, finding them inconvenient due to compatibility issues. The User Interface also disliked PowerPoint, finding the information provided unhelpful and resorting to making personal notes instead. The Marketing member, however, found their materials helpful, suggesting that the usefulness of the materials may depend on individual roles within the project.",
+          "rouge_f1": {
+            "rouge1": 0.3770491803278688,
+            "rouge2": 0.05,
+            "rougeL": 0.1639344262295082
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              435,
+              480
+            ]
+          ],
+          "evidence_words": 476
+        }
+      }
+    }
+  ]
+}

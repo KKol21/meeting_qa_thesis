@@ -1,0 +1,193 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "TS3004d.json",
+        "sha256": "a4a47efdaf4932827d700fbb805b76ad4bb916e2156106e4788e2ada684b4237"
+      }
+    },
+    "input_hash": "af5bd09d617b286b042115246db09a32b05884e7c6f9973df631899d19cad0c4",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "13a936d2b8ca961c3b6a8bbd719dcbd64973f5264a17a5e98af659b0d8ddb26a",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "TS3004d",
+  "question_count": 5,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 5,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about the evaluation criteria.",
+      "reference_answer": "Marketing set the criteria for evaluation. The group gave two points on the fancy look and feel, three points on the ease of use and learnable, and two points on technological innovation because the group thought new features were not all extraordinary. Besides, they gave two points on the target market trend which said that the products with fruit and vegetables in different colors might be popular. Lastly, they gave high marks on the room for creativity and leadership.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed several evaluation criteria including:\n\n1. **Beautiful Look-and-Feel**: They decided to rate it a 1, focusing on the design being similar to an iPod, with basic colors like black and a touch of yellow or white. The team agreed that the design was subjective but considered it beautiful.\n\n2. **Fancy Look-and-Feel**: This was rated a 1 as well, emphasizing the use of backlighting and color-changing features which they deemed fancy.\n\n3. **Learnability and Ease of Use**: They gave it a 2, acknowledging that while the remote was easy to use initially, learning additional features like speech and scrolling might take time.\n\n4. **Technological Innovation**: Rated a 2, highlighting new features such as speech functionality, the scroll wheel, and the slide mechanism. However, the slide feature was debated since it wasn’t entirely novel.\n\n5. **Targeted Audience**: They aimed for a younger demographic under forty and felt they had successfully designed for this group, rating themselves a 3.\n\nOverall, the team evaluated their project positively, aiming for innovation and appealing aesthetics while considering practical usability.",
+          "rouge_f1": {
+            "rouge1": 0.3076923076923077,
+            "rouge2": 0.08527131782945736,
+            "rougeL": 0.1846153846153846
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              299,
+              673
+            ]
+          ],
+          "evidence_words": 3337
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What's the conclusion on the discussion about the criteria of ease of use and learnable?",
+      "reference_answer": "Project Manager thought the second layer of the remote was not easy to learn but Industrial Designer responded that users would not need to pay attention to that part. The group reached a consensus that the scroll wheel was much better than average. So they gave a two on this criterion.",
+      "results": {
+        "oracle": {
+          "answer": "The conclusion from the discussion is that the product is considered very easy to use overall, with some difficulty noted in using the second layer and learning how to use the scroll wheel and other new features like speech functionality. However, the consensus is that these new features are not as immediately learnable as traditional remote controls, leading to a lower rating for learnability compared to ease of use. The final ratings suggested were a 3 for learnability and a higher score (implied to be closer to 4 or 5) for ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.28965517241379307,
+            "rouge2": 0.0839160839160839,
+            "rougeL": 0.16551724137931031
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              410,
+              450
+            ]
+          ],
+          "evidence_words": 458
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did Marketing recommend to do when discussing the evaluation criteria of market trend?",
+      "reference_answer": "Project Manager thought they should skip the speaker when User Interface mentioned the power indicator. Marketing recommended that they need a button to beep for calling and they should include the speaker because it was usable and small enough. Also, Marketing supplemented that the production cost has been considered and within 12.3 Euros.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence provided does not contain any relevant information about what Marketing recommended regarding the evaluation criteria of market trends. The excerpts focus on discussions about product features such as a power indicator, a beeping function, and production costs, but do not address market trend evaluation criteria.",
+          "rouge_f1": {
+            "rouge1": 0.25742574257425743,
+            "rouge2": 0.0606060606060606,
+            "rougeL": 0.17821782178217818
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              573,
+              604
+            ]
+          ],
+          "evidence_words": 313
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about the project finance and the use of the drawing board.",
+      "reference_answer": "The remote price would be at twenty Euros. And the production cost would be twelve point three Euros. And the group thought that the use of both the board and the pen to draw on the remote prototype was stupid and not handy enough.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed issues with project finance, specifically mentioning that they received incorrect financial information at the wrong time which slowed down their decision-making process. They noted that the prices could have been significantly different (e.g., 20 Euros vs. 15 Euros), impacting their decisions. Despite these challenges, they managed to complete the project within the budget and even developed a remote control. Regarding the use of the drawing board, participants expressed dissatisfaction with the digital pen, noting that it was slow and inaccurate, making it less effective for drawing compared to traditional methods. They suggested improvements such as better accuracy and the ability to edit drawings from a seated position using a mouse rather than the digital pen.",
+          "rouge_f1": {
+            "rouge1": 0.2804878048780488,
+            "rouge2": 0.04938271604938272,
+            "rougeL": 0.18292682926829268
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              674,
+              922
+            ]
+          ],
+          "evidence_words": 1806
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did User Interface say was the biggest problem when discussing the project finance?",
+      "reference_answer": "User Interface mentioned that they got the wrong information at the wrong time, and it was the biggest problem. Otherwise, the group could finish the finance discussion earlier, and they should have had discussions quicker.",
+      "results": {
+        "oracle": {
+          "answer": "User Interface said that getting the wrong information at the wrong time was the biggest problem when discussing the project finance. Specifically, they mentioned that knowing the prices earlier would have allowed for quicker discussions.",
+          "rouge_f1": {
+            "rouge1": 0.6857142857142857,
+            "rouge2": 0.3235294117647059,
+            "rougeL": 0.5428571428571428
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              674,
+              690
+            ]
+          ],
+          "evidence_words": 170
+        }
+      }
+    }
+  ]
+}

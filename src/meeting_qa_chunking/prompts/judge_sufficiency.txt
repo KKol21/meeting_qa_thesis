@@ -1,0 +1,11 @@
+Judge only whether the evidence supplied to the answering model contains the information needed to answer the question as represented by the reference answer. Ignore unrelated retrieved passages and ignore what the candidate answer said.
+
+Score:
+1 = most essential reference-answer information is unavailable;
+2 = the evidence supports a useful but incomplete answer because at least one important reference point is unavailable;
+3 = every important reference point is supported.
+
+List the important reference points that are unavailable in the supplied evidence. The score must be 3 exactly when unavailable_reference_points is empty.
+
+Return only JSON:
+{"score": 1, "unavailable_reference_points": ["Important unavailable point"], "reason": "One short explanation."}

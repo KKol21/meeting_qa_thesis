@@ -1,0 +1,3668 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "ES2011a.json",
+        "sha256": "9e6bed229d25214a7eab84a370e5cc159ee10e4a908dac8e5b8bf7a801cf9ead"
+      },
+      "retrieval": {
+        "file": "ES2011a.json",
+        "sha256": "080c1b6077f7f5ccfdd63c2f225c2e724d413e84077e2a3ee32de6e80cd2b73e"
+      },
+      "segmentation": {
+        "file": "ES2011a.json",
+        "sha256": "8017744bcc82e1948a3195dc33283ae4610b256356fd0d3b90a5e19cd5b8467e"
+      }
+    },
+    "input_hash": "267c4169b77e2f7f567cd47122cfb70065db23a50b474cbb813c34017bcc36eb",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "c4a947383aabccb0bf6ae6b1495bd4bec7933f5b238dcaba9ac371665db3f6cf",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "ES2011a",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 146,
+  "cache_hits": 16,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group discuss about animal characteristics?",
+      "reference_answer": "User Interface and Industrial designer drawn dolphin and pig, which the two animals have smart and easy-to-draw features. Marketing suggested a horse and Project Manager thought they should design a remote control that's water resistant, strong and furry. Also he mentioned that remote control will be priced at 25 Euros and aimed to earn a revenue of fifty million Euros. Therefore, Project Manager encouraged teammates to reflect on experience when designing its function and format.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group discussed that dolphins are smart, cute, graceful, sleek, and look intelligent. They also mentioned that dolphins like swimming and have binocular vision. Additionally, they noted that people find dolphins appealing because they interact joyfully in the water despite being mammals that swim.",
+          "rouge_f1": {
+            "rouge1": 0.21311475409836064,
+            "rouge2": 0.016666666666666663,
+            "rougeL": 0.13114754098360654
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            12
+          ],
+          "retrieval_precision": 0.806640625,
+          "retrieval_recall": 0.37308039747064137
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and mentioned characteristics such as being smart, cute, graceful, sleek, and having binocular vision. Industrial Designer drew a cat, noting that they sleep all day and are easy to draw. Marketing drew a horse, highlighting that horses are pretty, sturdy, and nice, and enjoy how they run and feel under the hand.",
+          "rouge_f1": {
+            "rouge1": 0.4054054054054054,
+            "rouge2": 0.0821917808219178,
+            "rougeL": 0.2162162162162162
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            12,
+            1,
+            4
+          ],
+          "retrieval_precision": 0.7548828125,
+          "retrieval_recall": 0.6982836495031617
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and highlighted its intelligence, cuteness, swimming ability, gracefulness, and sleekness. Industrial Designer drew a cat, mentioning its ease of drawing and sleeping habits. Marketing drew a horse, emphasizing its beauty, compatibility with the environment, and sturdy nature. These discussions aimed to extract desirable traits for designing a remote control that could incorporate features such as being water-resistant, strong, and having a tactile surface similar to fur.",
+          "rouge_f1": {
+            "rouge1": 0.4294478527607362,
+            "rouge2": 0.14906832298136646,
+            "rougeL": 0.25766871165644173
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            12,
+            1,
+            4,
+            0,
+            11,
+            8,
+            5,
+            13
+          ],
+          "retrieval_precision": 0.54052734375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The group discussed that User Interface's favorite animal was a dolphin, which they liked for its gracefulness, sleekness, intelligence, and ability to swim. The discussion focused on the positive characteristics of the dolphin, such as being smart, cute, graceful, and having binocular vision.",
+          "rouge_f1": {
+            "rouge1": 0.3114754098360656,
+            "rouge2": 0.016666666666666663,
+            "rougeL": 0.14754098360655737
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            2,
+            13
+          ],
+          "retrieval_precision": 0.822265625,
+          "retrieval_recall": 0.3803071364046974
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and mentioned characteristics such as being smart, cute, graceful, sleek, and having binocular vision. Industrial Designer drew a cat, noting that cats sleep all day and are easy to draw. Marketing drew a horse, though they were unsure about the leg placement. The discussion focused on summarizing key traits of each animal to relate them to the design of a remote control that is original, trendy, and user-friendly.",
+          "rouge_f1": {
+            "rouge1": 0.41212121212121217,
+            "rouge2": 0.11042944785276074,
+            "rougeL": 0.23030303030303031
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            2,
+            13,
+            3,
+            11,
+            12
+          ],
+          "retrieval_precision": 0.646484375,
+          "retrieval_recall": 0.5980126467931346
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and mentioned its gracefulness, sleekness, intelligence, and binocular vision. Industrial Designer drew a cat, noting its ease of drawing and sleeping habits. Marketing drew a horse, highlighting its beauty, environmental harmony, and sturdy nature. These discussions aimed to extract desirable traits for designing a remote control that could be water-resistant, strong, and tactile, inspired by the animals' features.",
+          "rouge_f1": {
+            "rouge1": 0.4258064516129032,
+            "rouge2": 0.1568627450980392,
+            "rougeL": 0.24516129032258063
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            2,
+            13,
+            3,
+            11,
+            12,
+            0,
+            4,
+            5,
+            9
+          ],
+          "retrieval_precision": 0.54052734375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The group discussed that User Interface's favorite animal, a dolphin, has characteristics such as a graceful and sleek appearance, being intelligent and cute, and having a fondness for swimming. The discussion highlighted the dolphin's interactive nature and the joy it brings to observers, particularly noting its ability to jump and play in the water.",
+          "rouge_f1": {
+            "rouge1": 0.31343283582089554,
+            "rouge2": 0.015151515151515152,
+            "rougeL": 0.1791044776119403
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            1,
+            3
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.46251129177958444
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and mentioned characteristics such as its tail, gracefulness, sleekness, intelligence, and binocular vision. Industrial Designer drew a cat, noting that cats sleep all day and are easy to draw. Marketing drew a horse, though they struggled with the leg details. The discussion focused on summarizing the traits of each animal through visual representation and verbal description.",
+          "rouge_f1": {
+            "rouge1": 0.34210526315789475,
+            "rouge2": 0.08,
+            "rougeL": 0.19736842105263158
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            1,
+            3,
+            12,
+            11
+          ],
+          "retrieval_precision": 0.646484375,
+          "retrieval_recall": 0.5980126467931346
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and mentioned its gracefulness, intelligence, and sleekness. Industrial Designer drew a cat, noting its ease of drawing and sleeping habits. Marketing drew a horse, highlighting its beauty, environmental harmony, and sturdy nature. These discussions aimed to extract desirable traits for designing a remote control that could incorporate elements like being water-resistant, strong, and having a tactile surface similar to fur.",
+          "rouge_f1": {
+            "rouge1": 0.43312101910828027,
+            "rouge2": 0.15483870967741936,
+            "rougeL": 0.2675159235668789
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            1,
+            3,
+            12,
+            11,
+            13,
+            4,
+            0,
+            5,
+            8
+          ],
+          "retrieval_precision": 0.54052734375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and mentioned characteristics such as its tail, gracefulness, sleekness, intelligence, and binocular vision. The Industrial Designer drew a cat, noting that cats sleep all day and are easy to draw.",
+          "rouge_f1": {
+            "rouge1": 0.31746031746031744,
+            "rouge2": 0.08064516129032256,
+            "rougeL": 0.15873015873015872
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            2
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.46251129177958444
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and mentioned its gracefulness, sleekness, intelligence, and binocular vision. Industrial Designer drew a cat, noting its ease of drawing and sleeping habits. Marketing drew a horse, highlighting its beauty, environmental fit, and sturdy nature. These discussions were part of a broader activity aimed at summarizing animal characteristics to inform the design of a water-resistant, strong, and tactile remote control.",
+          "rouge_f1": {
+            "rouge1": 0.3974358974358974,
+            "rouge2": 0.1038961038961039,
+            "rougeL": 0.23076923076923078
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            2,
+            10,
+            3
+          ],
+          "retrieval_precision": 0.75,
+          "retrieval_recall": 0.6937669376693767
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The group discussed characteristics of animals through drawing exercises aimed at summarizing traits of their favorite animals. User Interface drew a dolphin and highlighted its intelligence, cuteness, swimming ability, gracefulness, and sleekness. Industrial Designer drew a cat, noting its ease of drawing and sleeping habits. Marketing drew a horse, emphasizing its beauty, compatibility with the environment, and sturdy nature. These discussions were intended to inspire design concepts for a remote control, focusing on attributes such as being water-resistant, strong, and having a tactile surface similar to fur.",
+          "rouge_f1": {
+            "rouge1": 0.3975903614457831,
+            "rouge2": 0.10975609756097561,
+            "rougeL": 0.24096385542168672
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            2,
+            10,
+            3,
+            0,
+            7,
+            11,
+            12,
+            4
+          ],
+          "retrieval_precision": 0.51318359375,
+          "retrieval_recall": 0.9494128274616079
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The group discussed drawing their favorite animals to sum up the characteristics of those animals as part of an exercise to think about the characteristics of the remote control they were designing. The Project Manager suggested that each person draw their favorite animal and then discuss its characteristics. User Interface drew a dolphin and mentioned its fin as a characteristic. However, specific animal characteristics beyond the dolphin's fin were not elaborated upon in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.3096774193548387,
+            "rouge2": 0.05228758169934641,
+            "rougeL": 0.11612903225806452
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0
+          ],
+          "retrieval_precision": 0.642578125,
+          "retrieval_recall": 0.2971996386630533
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and mentioned characteristics such as being smart, cute, graceful, sleek, and having binocular vision. Industrial Designer drew a cat, noting that they sleep all day and are easy to draw. The discussion focused on traits like intelligence, appearance, and behavior rather than specific functional aspects related to the remote control project.",
+          "rouge_f1": {
+            "rouge1": 0.40816326530612246,
+            "rouge2": 0.08275862068965519,
+            "rougeL": 0.17687074829931973
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            12,
+            2,
+            10
+          ],
+          "retrieval_precision": 0.5712890625,
+          "retrieval_recall": 0.5284552845528455
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The group discussed characteristics of animals through drawing exercises. User Interface drew a dolphin and mentioned its intelligence, cuteness, gracefulness, sleekness, and binocular vision. Industrial Designer drew a cat, noting that they sleep all day and are easy to draw. The discussion focused on summarizing the characteristics of the animals drawn by each participant.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333337,
+            "rouge2": 0.07692307692307693,
+            "rougeL": 0.16666666666666669
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            12,
+            2,
+            10,
+            11,
+            4,
+            8,
+            9
+          ],
+          "retrieval_precision": 0.41064453125,
+          "retrieval_recall": 0.7597109304426377
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and mentioned characteristics such as its tail, gracefulness, sleekness, intelligence, and binocular vision. The Industrial Designer drew a cat, noting that cats sleep all day and are easy to draw.",
+          "rouge_f1": {
+            "rouge1": 0.31746031746031744,
+            "rouge2": 0.08064516129032256,
+            "rougeL": 0.15873015873015872
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            2
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.46251129177958444
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and mentioned its intelligence, cuteness, swimming ability, gracefulness, and sleekness. Industrial Designer drew a cat, noting that cats sleep all day and are easy to draw. The discussion focused on traits such as intelligence, appearance, and behavior of the animals, rather than specific functional aspects related to the remote control project.",
+          "rouge_f1": {
+            "rouge1": 0.36734693877551017,
+            "rouge2": 0.08275862068965519,
+            "rougeL": 0.17687074829931973
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            2,
+            0,
+            10
+          ],
+          "retrieval_precision": 0.5712890625,
+          "retrieval_recall": 0.5284552845528455
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The group discussed characteristics of animals through drawing exercises aimed at summarizing traits of their favorite animals. User Interface drew a dolphin and highlighted its intelligence, cuteness, swimming ability, gracefulness, and sleekness. Industrial Designer drew a cat, noting its ease of drawing and sleeping habits. Marketing drew a horse, emphasizing its beauty, compatibility with the environment, and sturdy nature. These discussions were intended to inspire design concepts for a remote control, focusing on attributes such as being water-resistant, strong, and having a tactile surface similar to fur.",
+          "rouge_f1": {
+            "rouge1": 0.3975903614457831,
+            "rouge2": 0.10975609756097561,
+            "rougeL": 0.24096385542168672
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            2,
+            0,
+            10,
+            12,
+            11,
+            3,
+            7,
+            4
+          ],
+          "retrieval_precision": 0.51318359375,
+          "retrieval_recall": 0.9494128274616079
+        },
+        "lumber__dense__w512": {
+          "answer": "The group discussed that dolphins are smart, cute, graceful, and sleek. They also mentioned that dolphins look intelligent due to their binocular vision and that people find them appealing because they interact joyfully with humans while swimming. Additionally, the discussion touched upon cats being easy to draw and sleeping all day. The conversation then shifted towards designing a water-resistant, strong, and furry (tactile) remote control inspired by animal characteristics.",
+          "rouge_f1": {
+            "rouge1": 0.35135135135135137,
+            "rouge2": 0.1232876712328767,
+            "rougeL": 0.22972972972972971
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            4,
+            11
+          ],
+          "retrieval_precision": 0.939453125,
+          "retrieval_recall": 0.43450767841011745
+        },
+        "lumber__dense__w1024": {
+          "answer": "The group discussed several characteristics of animals, focusing primarily on dolphins and horses. For dolphins, User Interface mentioned they are smart, cute, graceful, sleek, and have binocular vision. For horses, Marketing noted they are pretty, fit well with the environment, and are admired for how they run. Additionally, the discussion included mentions of cats and pigs, though less detail was provided about these animals' characteristics.",
+          "rouge_f1": {
+            "rouge1": 0.25174825174825183,
+            "rouge2": 0.0425531914893617,
+            "rougeL": 0.13986013986013987
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            4,
+            11,
+            3
+          ],
+          "retrieval_precision": 0.533203125,
+          "retrieval_recall": 0.4932249322493225
+        },
+        "lumber__dense__w2048": {
+          "answer": "The group discussed characteristics of animals through drawing exercises aimed at summarizing traits of their favorite animals. User Interface drew a dolphin and highlighted its gracefulness, sleekness, intelligence, and binocular vision. Industrial Designer drew a cat, noting its ease of drawing and sleeping habits. Marketing drew a horse, emphasizing its beauty, compatibility with the environment, and sturdy nature. These discussions were intended to inspire design concepts for a remote control that could incorporate desirable features such as being water-resistant, strong, and having a tactile surface.",
+          "rouge_f1": {
+            "rouge1": 0.40243902439024387,
+            "rouge2": 0.12345679012345678,
+            "rougeL": 0.24390243902439024
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            4,
+            11,
+            3,
+            1,
+            0,
+            7,
+            10,
+            8
+          ],
+          "retrieval_precision": 0.4130859375,
+          "retrieval_recall": 0.7642276422764228
+        },
+        "lumber__bm25__w512": {
+          "answer": "The group discussed that User Interface's favorite animal, a dolphin, has characteristics such as a graceful and sleek appearance, being intelligent and cute, and having a fondness for swimming. The discussion highlighted the dolphin's interactive nature and the joy it brings to observers, particularly noting its ability to jump and play in the water.",
+          "rouge_f1": {
+            "rouge1": 0.31343283582089554,
+            "rouge2": 0.015151515151515152,
+            "rougeL": 0.1791044776119403
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            2
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.46251129177958444
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and mentioned characteristics such as its tail, gracefulness, sleekness, intelligence, and binocular vision. Industrial Designer drew a cat, noting that cats sleep all day and are easy to draw. Marketing suggested that the tactile feel of the animal (referring metaphorically to the product) should be considered, mentioning features like being water-resistant, having a good tactile feel, not making hands sweat, and including a clip feature.",
+          "rouge_f1": {
+            "rouge1": 0.39506172839506165,
+            "rouge2": 0.0875,
+            "rougeL": 0.19753086419753083
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            2,
+            11
+          ],
+          "retrieval_precision": 0.623046875,
+          "retrieval_recall": 0.5763324299909666
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The group discussed characteristics of animals through drawing exercises aimed at summarizing traits of their favorite animals. User Interface drew a dolphin and highlighted its gracefulness, sleekness, intelligence, and binocular vision. Industrial Designer drew a cat, noting its ease of drawing and habit of sleeping all day. These discussions were part of a broader exercise to brainstorm characteristics that could be applied to the design of a remote control.",
+          "rouge_f1": {
+            "rouge1": 0.3401360544217687,
+            "rouge2": 0.06896551724137931,
+            "rougeL": 0.16326530612244897
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            2,
+            11,
+            5,
+            0,
+            10,
+            8,
+            9
+          ],
+          "retrieval_precision": 0.3955078125,
+          "retrieval_recall": 0.7317073170731707
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The group discussed that dolphins are smart, cute, graceful, sleek, and look intelligent. They also mentioned that dolphins interact with people in a way that makes them appealing, such as jumping around in the water and being mammals that swim. The discussion on animal characteristics was primarily focused on the dolphin drawn by User Interface.",
+          "rouge_f1": {
+            "rouge1": 0.27067669172932335,
+            "rouge2": 0.030534351145038167,
+            "rougeL": 0.15037593984962405
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            1
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.46251129177958444
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and mentioned characteristics such as its tail, gracefulness, sleekness, intelligence, and binocular vision. Industrial Designer drew a cat, noting that cats sleep all day and are easy to draw. Marketing suggested that the tactile feel of the animal (referring metaphorically to the product) should be considered, mentioning features like being water-resistant, having a good tactile feel, not making hands sweat, and including a clip feature.",
+          "rouge_f1": {
+            "rouge1": 0.39506172839506165,
+            "rouge2": 0.0875,
+            "rougeL": 0.19753086419753083
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            1,
+            11
+          ],
+          "retrieval_precision": 0.623046875,
+          "retrieval_recall": 0.5763324299909666
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The group discussed characteristics of animals through drawing and describing their favorite animals. User Interface drew a dolphin and mentioned its gracefulness, sleekness, intelligence, and cuteness. Industrial Designer drew a cat, noting its ease of drawing and sleeping habits. Marketing drew a horse, highlighting its beauty, environmental harmony, and sturdy nature. These discussions aimed to extract desirable traits for designing a remote control that could be water-resistant, strong, and tactile, similar to the fur of a cat.",
+          "rouge_f1": {
+            "rouge1": 0.4230769230769231,
+            "rouge2": 0.15584415584415584,
+            "rougeL": 0.2692307692307692
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            1,
+            11,
+            0,
+            4,
+            5,
+            10,
+            3,
+            8
+          ],
+          "retrieval_precision": 0.4970703125,
+          "retrieval_recall": 0.919602529358627
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Project Manager think of the call button suggested by User Interface?",
+      "reference_answer": "The initial feature suggested by Marketing was easy to find and User Interface suggested a call button on the television. And Marketing wanted something that could vibrate or had a signal if it had no sound. However, they were not sure whether it is expensive to design it. So Project Manager suggested designing a magnet or portable phone based couch for the remote control, which people no need to walk over the TV to find it.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Project Manager seemed to agree with the call button suggestion made by User Interface, as indicated by his response \"Yeah\" in line [109], where he stated, \"I mean you have it for the portable phone, so why not.\" This shows that Project Manager found the idea reasonable and worth considering.",
+          "rouge_f1": {
+            "rouge1": 0.3174603174603174,
+            "rouge2": 0.08064516129032258,
+            "rougeL": 0.1587301587301587
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            6,
+            9
+          ],
+          "retrieval_precision": 0.447265625,
+          "retrieval_recall": 0.5100222717149221
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface, as indicated by his affirmative response \"Yeah\" in line [106] and his follow-up comment \"I mean you have it for the portable phone, so why not\" in line [109].",
+          "rouge_f1": {
+            "rouge1": 0.288135593220339,
+            "rouge2": 0.10344827586206898,
+            "rougeL": 0.15254237288135591
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            6,
+            9,
+            13,
+            11
+          ],
+          "retrieval_precision": 0.2236328125,
+          "retrieval_recall": 0.5100222717149221
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface, agreeing with the idea and suggesting that it could work similarly to how it does on portable phones.",
+          "rouge_f1": {
+            "rouge1": 0.3773584905660377,
+            "rouge2": 0.09615384615384616,
+            "rougeL": 0.24528301886792456
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            6,
+            9,
+            13,
+            11,
+            1,
+            10,
+            12,
+            7
+          ],
+          "retrieval_precision": 0.2060546875,
+          "retrieval_recall": 0.9398663697104677
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Project Manager seemed to agree with the call button suggested by User Interface, as indicated by their statement \"Yeah. I mean you have it for the portable phone, so why not [call button], yeah.\" This shows support for the idea of incorporating a call button on the television to locate the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.3875968992248062,
+            "rouge2": 0.18897637795275593,
+            "rougeL": 0.23255813953488372
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            9,
+            13
+          ],
+          "retrieval_precision": 0.447265625,
+          "retrieval_recall": 0.5100222717149221
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface, as indicated by her response \"Yeah\" in excerpt [109], agreeing with the idea of having a call button on the television similar to a portable phone.",
+          "rouge_f1": {
+            "rouge1": 0.3157894736842105,
+            "rouge2": 0.1607142857142857,
+            "rougeL": 0.26315789473684215
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            9,
+            13,
+            10,
+            0
+          ],
+          "retrieval_precision": 0.2236328125,
+          "retrieval_recall": 0.5100222717149221
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface, agreeing with the idea and suggesting that having a call button on a TV is similar to having one on a portable phone.",
+          "rouge_f1": {
+            "rouge1": 0.3963963963963964,
+            "rouge2": 0.12844036697247707,
+            "rougeL": 0.2882882882882883
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            9,
+            13,
+            10,
+            0,
+            12,
+            8,
+            1,
+            4,
+            7
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.5701559020044543
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Project Manager seemed to agree with the call button suggested by User Interface, as indicated by their statement \"Yeah. I mean you have it for the portable phone, so why not [call button], yeah.\" This shows support for the idea of incorporating a call button on the television to locate the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.3875968992248062,
+            "rouge2": 0.18897637795275593,
+            "rougeL": 0.23255813953488372
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            9,
+            13
+          ],
+          "retrieval_precision": 0.447265625,
+          "retrieval_recall": 0.5100222717149221
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface, agreeing that having a call button on the television could help locate the remote control, similar to how a call button works for a portable phone.",
+          "rouge_f1": {
+            "rouge1": 0.42105263157894735,
+            "rouge2": 0.19642857142857145,
+            "rougeL": 0.2807017543859649
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            9,
+            13,
+            8,
+            10
+          ],
+          "retrieval_precision": 0.2236328125,
+          "retrieval_recall": 0.5100222717149221
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface, agreeing with the idea and suggesting that having a call button on the TV to locate the remote control is feasible since similar functionality exists in portable phones.",
+          "rouge_f1": {
+            "rouge1": 0.41379310344827586,
+            "rouge2": 0.2105263157894737,
+            "rougeL": 0.2586206896551724
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            9,
+            13,
+            8,
+            10,
+            1,
+            12,
+            0,
+            11,
+            7
+          ],
+          "retrieval_precision": 0.146484375,
+          "retrieval_recall": 0.6681514476614699
+        },
+        "word_packed__dense__w512": {
+          "answer": "Project Manager agreed with the call button suggested by User Interface, as indicated by his responses \"Yeah\" in lines [106] and [109].",
+          "rouge_f1": {
+            "rouge1": 0.2040816326530612,
+            "rouge2": 0.08333333333333333,
+            "rougeL": 0.12244897959183672
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            5
+          ],
+          "retrieval_precision": 0.48046875,
+          "retrieval_recall": 0.5478841870824054
+        },
+        "word_packed__dense__w1024": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface. This is evident from Project Manager's affirmative response \"Yeah\" (excerpt 109) and further agreement with the idea of having a call button on the television to locate the remote control (excerpts 110 and 112).",
+          "rouge_f1": {
+            "rouge1": 0.34146341463414637,
+            "rouge2": 0.1652892561983471,
+            "rougeL": 0.24390243902439027
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            5,
+            8,
+            0
+          ],
+          "retrieval_precision": 0.240234375,
+          "retrieval_recall": 0.5478841870824054
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface. She agreed with the idea multiple times, saying \"Yeah\" after User Interface proposed the concept of a call button on the TV to locate the remote control (Excerpts 106, 109).",
+          "rouge_f1": {
+            "rouge1": 0.30508474576271183,
+            "rouge2": 0.18965517241379312,
+            "rougeL": 0.23728813559322035
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            5,
+            8,
+            0,
+            10,
+            11,
+            9,
+            12,
+            3
+          ],
+          "retrieval_precision": 0.1201171875,
+          "retrieval_recall": 0.5478841870824054
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Project Manager agreed with the call button suggested by User Interface, as indicated by his affirmative responses (\"Yeah.\") in lines [106] and [109].",
+          "rouge_f1": {
+            "rouge1": 0.20202020202020202,
+            "rouge2": 0.08247422680412372,
+            "rougeL": 0.12121212121212123
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8
+          ],
+          "retrieval_precision": 0.48046875,
+          "retrieval_recall": 0.5478841870824054
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface, as indicated by her response \"Yeah\" in excerpt [106]. She further supported the idea by suggesting that since a call button exists for portable phones, it could also be useful for televisions to help locate remote controls, as stated in excerpt [109].",
+          "rouge_f1": {
+            "rouge1": 0.3384615384615384,
+            "rouge2": 0.10937499999999999,
+            "rougeL": 0.2153846153846154
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8,
+            12,
+            9,
+            0
+          ],
+          "retrieval_precision": 0.240234375,
+          "retrieval_recall": 0.5478841870824054
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface. She responded with \"Yeah\" (excerpt 109) and agreed that having a call button on the television to locate the remote control is a reasonable idea, similar to how portable phones work.",
+          "rouge_f1": {
+            "rouge1": 0.4033613445378151,
+            "rouge2": 0.18803418803418803,
+            "rougeL": 0.2689075630252101
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8,
+            12,
+            9,
+            0,
+            11,
+            7,
+            3,
+            1
+          ],
+          "retrieval_precision": 0.1201171875,
+          "retrieval_recall": 0.5478841870824054
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Project Manager agreed with the call button suggested by User Interface, as indicated by his affirmative responses (\"Yeah.\") in lines [106] and [109].",
+          "rouge_f1": {
+            "rouge1": 0.20202020202020202,
+            "rouge2": 0.08247422680412372,
+            "rougeL": 0.12121212121212123
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8
+          ],
+          "retrieval_precision": 0.48046875,
+          "retrieval_recall": 0.5478841870824054
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface. This is evident from Project Manager's affirmative response \"Yeah\" (excerpt 109) and further agreement with the idea of having a call button on the television to locate the remote control (excerpts 110 and 112).",
+          "rouge_f1": {
+            "rouge1": 0.34146341463414637,
+            "rouge2": 0.1652892561983471,
+            "rougeL": 0.24390243902439027
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8,
+            7,
+            0
+          ],
+          "retrieval_precision": 0.240234375,
+          "retrieval_recall": 0.5478841870824054
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface. She agreed with the idea multiple times, saying \"Yeah\" after User Interface proposed the concept of a call button on the TV to locate the remote control (Excerpts 106, 109).",
+          "rouge_f1": {
+            "rouge1": 0.30508474576271183,
+            "rouge2": 0.18965517241379312,
+            "rougeL": 0.23728813559322035
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8,
+            7,
+            0,
+            12,
+            9,
+            11,
+            10,
+            3
+          ],
+          "retrieval_precision": 0.1201171875,
+          "retrieval_recall": 0.5478841870824054
+        },
+        "lumber__dense__w512": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface, as indicated by his affirmative response \"Yeah\" in excerpt [106]. He further supported the idea by comparing it to having a call button on a portable phone in excerpt [109].",
+          "rouge_f1": {
+            "rouge1": 0.288135593220339,
+            "rouge2": 0.1206896551724138,
+            "rougeL": 0.2033898305084746
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            6
+          ],
+          "retrieval_precision": 0.322265625,
+          "retrieval_recall": 0.3674832962138085
+        },
+        "lumber__dense__w1024": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface, as indicated by his response \"Yeah\" in excerpt [109], agreeing with the idea of incorporating a call button similar to those found in portable phones to help locate the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.3025210084033613,
+            "rouge2": 0.13675213675213674,
+            "rougeL": 0.2352941176470588
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            6,
+            1,
+            7
+          ],
+          "retrieval_precision": 0.40625,
+          "retrieval_recall": 0.9265033407572383
+        },
+        "lumber__dense__w2048": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface, agreeing with the idea and suggesting it was similar to having a call feature on a portable phone.",
+          "rouge_f1": {
+            "rouge1": 0.39622641509433965,
+            "rouge2": 0.11538461538461539,
+            "rougeL": 0.22641509433962267
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            6,
+            1,
+            7,
+            4,
+            11,
+            9,
+            0
+          ],
+          "retrieval_precision": 0.21923828125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "Project Manager seemed to agree with the call button suggested by User Interface, as indicated by his responses \"Yeah\" (excerpt 106) and \"I mean you have it for the portable phone, so why not\" (excerpt 109).",
+          "rouge_f1": {
+            "rouge1": 0.32142857142857145,
+            "rouge2": 0.10909090909090909,
+            "rougeL": 0.16071428571428573
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8
+          ],
+          "retrieval_precision": 0.810546875,
+          "retrieval_recall": 0.9242761692650334
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface, as indicated by his affirmative responses (\"Yeah.\") and agreement with the idea of having a call button on the television to locate the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.33628318584070793,
+            "rouge2": 0.18018018018018017,
+            "rougeL": 0.2654867256637168
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            9,
+            11
+          ],
+          "retrieval_precision": 0.4052734375,
+          "retrieval_recall": 0.9242761692650334
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface, agreeing with the idea and suggesting it could work similarly to a portable phone feature.",
+          "rouge_f1": {
+            "rouge1": 0.36893203883495146,
+            "rouge2": 0.09900990099009901,
+            "rougeL": 0.23300970873786406
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            9,
+            11,
+            0,
+            1,
+            4,
+            2
+          ],
+          "retrieval_precision": 0.20263671875,
+          "retrieval_recall": 0.9242761692650334
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Project Manager seemed to agree with the call button suggested by User Interface, as indicated by his responses \"Yeah\" (excerpt 106) and \"I mean you have it for the portable phone, so why not\" (excerpt 109).",
+          "rouge_f1": {
+            "rouge1": 0.32142857142857145,
+            "rouge2": 0.10909090909090909,
+            "rougeL": 0.16071428571428573
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8
+          ],
+          "retrieval_precision": 0.810546875,
+          "retrieval_recall": 0.9242761692650334
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Project Manager agreed with the call button suggested by User Interface, as indicated by his response \"Yeah\" in excerpt [109].",
+          "rouge_f1": {
+            "rouge1": 0.1875,
+            "rouge2": 0.08510638297872342,
+            "rougeL": 0.10416666666666667
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            1,
+            9
+          ],
+          "retrieval_precision": 0.4052734375,
+          "retrieval_recall": 0.9242761692650334
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Project Manager thought positively of the call button suggested by User Interface, agreeing with the idea and suggesting that it could work similarly to a portable phone's functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3619047619047619,
+            "rouge2": 0.09708737864077668,
+            "rougeL": 0.24761904761904763
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            1,
+            9,
+            11,
+            4,
+            0,
+            7
+          ],
+          "retrieval_precision": 0.21923828125,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Summarize the discussion about the remote control size.",
+      "reference_answer": "Project Manager asked if the remote control needed to be made larger to avoid losing it. At the first beginning, User Interface suggested bigger, while Project Manager suggested a hand-sized device. Considering the light feature and putting noise on it, User Interface thought it would be feasible to make it mobile with a target price at 25 Euros.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The participants discussed the remote control size, agreeing that it should be hand-sized to avoid losing it easily. They did not favor making it huge but acknowledged it needed to be noticeable, possibly through features like a magnet, noise, or light. The exact dimensions were not specified beyond being described as \"hand-held size\" and \"hand-sized.\"",
+          "rouge_f1": {
+            "rouge1": 0.4102564102564103,
+            "rouge2": 0.15652173913043477,
+            "rougeL": 0.20512820512820515
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            7
+          ],
+          "retrieval_precision": 0.34765625,
+          "retrieval_recall": 0.7385892116182573
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The discussion about the remote control size concluded that the remote should be hand-sized, not huge, and big enough to avoid losing easily. There was no specific mention of exact dimensions, but the consensus was that it should be practical and easy to locate.",
+          "rouge_f1": {
+            "rouge1": 0.2884615384615385,
+            "rouge2": 0.09803921568627451,
+            "rougeL": 0.21153846153846156
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            7,
+            9,
+            6
+          ],
+          "retrieval_precision": 0.2353515625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The participants discussed the remote control size, with Marketing suggesting it should be \"hand-sized\" and not huge, while User Interface agreed that making it bigger might help prevent losing it. However, they also noted that it shouldn't be too large, implying a balance between being easily noticeable and manageable.",
+          "rouge_f1": {
+            "rouge1": 0.4181818181818182,
+            "rouge2": 0.11111111111111112,
+            "rougeL": 0.2181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            7,
+            9,
+            6,
+            4,
+            10,
+            1,
+            12
+          ],
+          "retrieval_precision": 0.11767578125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The participants discussed making the remote control hand-sized to ensure it is not easily lost. Marketing suggested it should not be huge, while User Interface emphasized it shouldn't have too many buttons. The exact dimensions were not specified beyond being \"hand-held\" or \"hand-sized.\"",
+          "rouge_f1": {
+            "rouge1": 0.339622641509434,
+            "rouge2": 0.07692307692307693,
+            "rougeL": 0.20754716981132076
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            4,
+            1
+          ],
+          "retrieval_precision": 0.34765625,
+          "retrieval_recall": 0.7385892116182573
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The discussion about the remote control size focused on making it hand-sized and not too big to avoid losing it. The participants agreed that it should be neither huge nor tiny, aiming for a size that is easy to locate and handle comfortably. They also suggested incorporating features such as a magnet on the back for placement or adding a noise or light to help locate the remote.",
+          "rouge_f1": {
+            "rouge1": 0.39062499999999994,
+            "rouge2": 0.11111111111111112,
+            "rougeL": 0.20312499999999997
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            4,
+            1,
+            5,
+            7
+          ],
+          "retrieval_precision": 0.173828125,
+          "retrieval_recall": 0.7385892116182573
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The discussion about the remote control size included the following points:\n\n- The remote control should be hand-held size, not huge.\n- It should be big enough to not easily get lost but not excessively large.\n- Suggestions were made to incorporate features like a call button, light, vibration, and magnet to help locate the remote control more easily.",
+          "rouge_f1": {
+            "rouge1": 0.3275862068965517,
+            "rouge2": 0.03508771929824562,
+            "rougeL": 0.17241379310344826
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            4,
+            1,
+            5,
+            7,
+            10,
+            6,
+            0,
+            11
+          ],
+          "retrieval_precision": 0.11767578125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The participants discussed that the remote control should be hand-sized, not too big, and easy to find. They considered adding features like noise or light signals to help locate it but ultimately focused on keeping it practical and not overly large.",
+          "rouge_f1": {
+            "rouge1": 0.33663366336633666,
+            "rouge2": 0.060606060606060594,
+            "rougeL": 0.21782178217821782
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            4
+          ],
+          "retrieval_precision": 0.34765625,
+          "retrieval_recall": 0.7385892116182573
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The discussion about the remote control size focused on making it hand-held and not too large to avoid losing it easily. Marketing suggested it should be \"hand-sized\" and not huge, while the User Interface agreed, emphasizing it shouldn't be too big. There was also a suggestion to add features like a noise or light to help locate the remote if lost.",
+          "rouge_f1": {
+            "rouge1": 0.5203252032520326,
+            "rouge2": 0.13223140495867766,
+            "rougeL": 0.2764227642276423
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            4,
+            7,
+            1
+          ],
+          "retrieval_precision": 0.2353515625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The participants discussed that the remote control should be hand-sized, not huge, and not too small to avoid losing it. They agreed that it should be easy to find and considered adding features such as a call button, light, vibration, and possibly a screen for fewer buttons but more functionality. The group did not settle on an exact size but emphasized balance between being easily locatable and not overly large.",
+          "rouge_f1": {
+            "rouge1": 0.3384615384615385,
+            "rouge2": 0.09375,
+            "rougeL": 0.2
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            4,
+            7,
+            1,
+            6,
+            10,
+            9,
+            0
+          ],
+          "retrieval_precision": 0.11767578125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The participants discussed that the remote control should be hand-held sized, not too big to avoid losing it, and not excessively small either. They did not settle on a specific size but agreed it should be practical and convenient.",
+          "rouge_f1": {
+            "rouge1": 0.3232323232323232,
+            "rouge2": 0.10309278350515465,
+            "rougeL": 0.24242424242424246
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4
+          ],
+          "retrieval_precision": 0.3671875,
+          "retrieval_recall": 0.7800829875518672
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The participants discussed the remote control size, agreeing that it should be hand-held size, not huge, but big enough to not easily get lost. Marketing suggested it should be \"sort of\" larger, while the Project Manager agreed it should be \"hand-sized.\" There was no specific measurement or exact size mentioned, but the consensus was that it needed to be noticeable and practical without being overly large.",
+          "rouge_f1": {
+            "rouge1": 0.3464566929133858,
+            "rouge2": 0.096,
+            "rougeL": 0.22047244094488191
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            6,
+            5
+          ],
+          "retrieval_precision": 0.2353515625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The participants discussed that the remote control should be hand-held sized, not huge, and definitely not smaller than necessary to avoid losing it easily. They agreed that it should not be excessively large either. The idea was to ensure it is neither too small nor too big, aiming for a size that is easy to locate and handle comfortably.",
+          "rouge_f1": {
+            "rouge1": 0.31932773109243695,
+            "rouge2": 0.08547008547008547,
+            "rougeL": 0.21848739495798322
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            6,
+            5,
+            8,
+            0,
+            9,
+            3
+          ],
+          "retrieval_precision": 0.11767578125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The participants discussed that the remote control should be hand-held sized, not too big to avoid losing it, and not excessively small either. They did not settle on a specific size but agreed it should be practical and convenient.",
+          "rouge_f1": {
+            "rouge1": 0.3232323232323232,
+            "rouge2": 0.10309278350515465,
+            "rougeL": 0.24242424242424246
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4
+          ],
+          "retrieval_precision": 0.3671875,
+          "retrieval_recall": 0.7800829875518672
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The discussion about the remote control size focused on making it hand-held and not too large to avoid losing it. The participants agreed that it should not be huge but rather hand-sized, with suggestions to include features like a noise or light to help locate it easily.",
+          "rouge_f1": {
+            "rouge1": 0.4814814814814815,
+            "rouge2": 0.13207547169811323,
+            "rougeL": 0.25925925925925924
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            0,
+            3
+          ],
+          "retrieval_precision": 0.18359375,
+          "retrieval_recall": 0.7800829875518672
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The participants discussed that the remote control should be hand-sized, not huge, and not too small to avoid losing it. They agreed it should be neither big nor tiny, aiming for a size that is easily manageable and less likely to get misplaced.",
+          "rouge_f1": {
+            "rouge1": 0.3300970873786408,
+            "rouge2": 0.1188118811881188,
+            "rougeL": 0.23300970873786409
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            0,
+            3,
+            6,
+            9,
+            1,
+            10
+          ],
+          "retrieval_precision": 0.11767578125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The participants discussed that the remote control should be hand-held sized, not too big to avoid losing it, and not excessively small either. They did not settle on a specific size but agreed it should be practical and convenient.",
+          "rouge_f1": {
+            "rouge1": 0.3232323232323232,
+            "rouge2": 0.10309278350515465,
+            "rougeL": 0.24242424242424246
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4
+          ],
+          "retrieval_precision": 0.3671875,
+          "retrieval_recall": 0.7800829875518672
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The discussion about the remote control size focused on making it hand-held and noticeable. Marketing suggested it should be bigger to avoid losing it, while the Project Manager agreed it should be handheld size but not huge. The team also considered adding features like noise or light signals to help locate the remote.",
+          "rouge_f1": {
+            "rouge1": 0.5132743362831859,
+            "rouge2": 0.12612612612612611,
+            "rougeL": 0.2831858407079646
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            6,
+            0
+          ],
+          "retrieval_precision": 0.2353515625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The participants discussed that the remote control should be hand-held sized, not huge, and definitely not smaller than necessary to avoid losing it easily. They agreed that it should not be excessively large either. The idea was to ensure it is neither too small nor too big, aiming for a size that is easy to locate and handle comfortably.",
+          "rouge_f1": {
+            "rouge1": 0.31932773109243695,
+            "rouge2": 0.08547008547008547,
+            "rougeL": 0.21848739495798322
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            6,
+            0,
+            3,
+            5,
+            9,
+            8
+          ],
+          "retrieval_precision": 0.11767578125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The meeting participants did not specifically discuss the size of the remote control. The conversation focused on features to help locate the remote control, such as a call button, a light, or a vibration feature, and the idea of a magnet to attach it to a surface. There were no mentions of the remote control's dimensions or size preferences.",
+          "rouge_f1": {
+            "rouge1": 0.2689075630252101,
+            "rouge2": 0.05128205128205129,
+            "rougeL": 0.20168067226890757
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The participants discussed the remote control size, agreeing that it should be hand-held size, not too big, and easy to locate. They suggested features such as a call button, light, vibration, and possibly a magnet on the back for attachment purposes. The group did not focus extensively on the exact dimensions but emphasized convenience and practicality.",
+          "rouge_f1": {
+            "rouge1": 0.2931034482758621,
+            "rouge2": 0.03508771929824562,
+            "rougeL": 0.17241379310344826
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            7
+          ],
+          "retrieval_precision": 0.22265625,
+          "retrieval_recall": 0.946058091286307
+        },
+        "lumber__dense__w2048": {
+          "answer": "The participants discussed the remote control size, with Marketing suggesting it should be \"hand-sized\" and not huge, while User Interface agreed that it shouldn't be too big to avoid losing it. They concluded that the remote control should be handheld size, neither too large nor too small.",
+          "rouge_f1": {
+            "rouge1": 0.38888888888888884,
+            "rouge2": 0.13207547169811323,
+            "rougeL": 0.24074074074074076
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            7,
+            9,
+            4,
+            1,
+            10,
+            11
+          ],
+          "retrieval_precision": 0.11767578125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The discussion about the remote control size focused on making it hand-held and not too big to avoid losing it. Marketing suggested it should be bigger to prevent loss, while the Project Manager agreed it shouldn't be huge but rather hand-sized. The team also briefly considered adding features like noise or light indicators to help locate the remote.",
+          "rouge_f1": {
+            "rouge1": 0.4999999999999999,
+            "rouge2": 0.13559322033898305,
+            "rougeL": 0.30000000000000004
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            1
+          ],
+          "retrieval_precision": 0.470703125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The discussion about the remote control size indicated that the participants thought the remote control should be hand-sized, not huge, and definitely not small to the point of being easily lost. Marketing suggested it needed to be \"sort of\" a handheld size, and the Project Manager agreed, stating it should be \"hand hand held size, yeah.\" User Interface also concurred, saying \"Hand-sized.\"",
+          "rouge_f1": {
+            "rouge1": 0.3577235772357723,
+            "rouge2": 0.11570247933884298,
+            "rougeL": 0.21138211382113822
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            1,
+            6
+          ],
+          "retrieval_precision": 0.2353515625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The participants discussed that the remote control should be hand-sized, not huge, and bigger than usual to avoid losing it easily. They agreed that it should not be excessively large but rather a comfortable handheld size.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333337,
+            "rouge2": 0.1276595744680851,
+            "rougeL": 0.22916666666666669
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            1,
+            6,
+            4,
+            10,
+            8,
+            0,
+            9,
+            5
+          ],
+          "retrieval_precision": 0.11767578125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The meeting participants did not specifically discuss the size of the remote control. The conversation focused on features to help locate the remote control, such as a call button, a light, or a vibration feature, and the idea of a magnetic back to attach it to a designated spot. There were no mentions of the remote control's dimensions or size preferences.",
+          "rouge_f1": {
+            "rouge1": 0.2644628099173554,
+            "rouge2": 0.05042016806722689,
+            "rougeL": 0.19834710743801656
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The discussion about the remote control size focused on making it hand-sized and not huge. Participants agreed that the remote should be big enough to not easily lose it but not excessively large. Marketing suggested it should be \"sort of\" hand-held size, and the Project Manager reiterated it should be \"hand-sized,\" not huge, but with some flexibility in size.",
+          "rouge_f1": {
+            "rouge1": 0.36363636363636365,
+            "rouge2": 0.10084033613445378,
+            "rougeL": 0.23140495867768596
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            1
+          ],
+          "retrieval_precision": 0.2353515625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The participants discussed that the remote control should be hand-sized, not huge, and not too small to avoid losing it. They agreed that it should be easy to find, possibly incorporating features such as a call button, a light, or a vibration mechanism. The industrial designer and marketing expert also suggested that the remote should have a good tactile feel and be water-resistant.",
+          "rouge_f1": {
+            "rouge1": 0.33870967741935487,
+            "rouge2": 0.09836065573770493,
+            "rougeL": 0.2096774193548387
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            1,
+            8,
+            4,
+            9,
+            10,
+            0,
+            11
+          ],
+          "retrieval_precision": 0.11767578125,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did Project Manager think of the cost constraints on the telly screen with the programming function?",
+      "reference_answer": "Since User Interface initially suggested less button feature on the remote control, so Project Manager suggested a telly screen like what phones have. And User Interface mentioned about the master control in electronic houses. However, User Interface thought it is a bit expensive to create this feature, but Marketing mentioned the similar screen in phones is in the acceptable cost range. So, Project Manager agreed and suggested further discussion in the coming meeting.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Project Manager acknowledged the potential cost concerns related to adding a screen to the telly for programming functions but did not explicitly state a negative view towards the cost constraints. Instead, they seemed open to the idea, suggesting that a small screen could reduce the number of buttons needed while retaining functionality, and agreed with the idea of using the existing TV screen for displaying information, which could help manage costs.",
+          "rouge_f1": {
+            "rouge1": 0.27777777777777773,
+            "rouge2": 0.014084507042253521,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            9,
+            5
+          ],
+          "retrieval_precision": 0.951171875,
+          "retrieval_recall": 0.8353344768439108
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Project Manager acknowledged the potential cost constraints on incorporating a screen with programming functions into the remote control, noting the budget limit of twelve and a half Euros per device. However, they also expressed openness to considering such features, suggesting that the feasibility and cost of implementing a screen on the telly for programming functions would need further evaluation.",
+          "rouge_f1": {
+            "rouge1": 0.34848484848484845,
+            "rouge2": 0.061538461538461535,
+            "rougeL": 0.19696969696969696
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            9,
+            5,
+            8,
+            11
+          ],
+          "retrieval_precision": 0.5693359375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The Project Manager acknowledged the idea of incorporating a screen on the remote control for programming functions but expressed that they need to consider the cost implications. When Marketing suggested using the TV screen instead of adding a screen to the remote control to avoid additional expenses, the Project Manager agreed, indicating awareness of the cost constraints. However, the Project Manager also noted that they would need to investigate further to determine the feasibility and cost of such features within their budget.",
+          "rouge_f1": {
+            "rouge1": 0.36129032258064514,
+            "rouge2": 0.07843137254901962,
+            "rougeL": 0.2193548387096774
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            9,
+            5,
+            8,
+            11,
+            7,
+            6,
+            1,
+            12
+          ],
+          "retrieval_precision": 0.28466796875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The evidence is insufficient to determine what Project Manager thought specifically about the cost constraints on the telly screen with the programming function. While there are mentions of potential costs and feasibility from other participants, the Project Manager's responses (\"Yeah,\" \"Right,\" \"Mm.\") do not provide insight into their thoughts on the cost constraints.",
+          "rouge_f1": {
+            "rouge1": 0.31496062992125984,
+            "rouge2": 0.08,
+            "rougeL": 0.1889763779527559
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            12,
+            13
+          ],
+          "retrieval_precision": 0.49609375,
+          "retrieval_recall": 0.43567753001715265
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The Project Manager did not explicitly state their thoughts on the cost constraints of the telly screen with the programming function. However, the Project Manager agreed with Marketing's suggestion to potentially use the TV screen itself for the programming function rather than adding an additional screen to the remote control, indicating a consideration for cost efficiency. This agreement suggests that the Project Manager is mindful of cost constraints.",
+          "rouge_f1": {
+            "rouge1": 0.3661971830985915,
+            "rouge2": 0.09999999999999999,
+            "rougeL": 0.19718309859154928
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            12,
+            13,
+            9,
+            5
+          ],
+          "retrieval_precision": 0.4755859375,
+          "retrieval_recall": 0.8353344768439108
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The Project Manager acknowledged the idea of incorporating a screen on the remote control for programming functions but did not explicitly express a stance on the cost constraints related to implementing such a feature on the telly screen. When Marketing suggested that using the TV screen itself might be cheaper than adding a screen to the remote, the Project Manager agreed (\"Yeah. Yeah.\") but did not provide further comments on the cost implications. Therefore, based on the provided excerpts, there is insufficient evidence to determine the Project Manager's thoughts specifically on the cost constraints of the telly screen with the programming function.",
+          "rouge_f1": {
+            "rouge1": 0.30681818181818177,
+            "rouge2": 0.09195402298850575,
+            "rougeL": 0.21590909090909094
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            12,
+            13,
+            9,
+            5,
+            4,
+            8,
+            7,
+            1
+          ],
+          "retrieval_precision": 0.2529296875,
+          "retrieval_recall": 0.888507718696398
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Project Manager acknowledged the potential cost concerns related to adding a screen to the telly for programming functions but did not explicitly state a negative view towards the cost constraints. Instead, they seemed open to the idea, suggesting that a small screen could reduce the number of buttons needed while retaining functionality, and agreed with the idea of using the existing TV screen for displaying information, which could help manage costs.",
+          "rouge_f1": {
+            "rouge1": 0.27777777777777773,
+            "rouge2": 0.014084507042253521,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            9,
+            5
+          ],
+          "retrieval_precision": 0.951171875,
+          "retrieval_recall": 0.8353344768439108
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The Project Manager did not explicitly state their thoughts on the cost constraints of the telly screen with the programming function. However, the Project Manager agreed with Marketing's suggestion that using the TV screen itself for the programming function rather than adding a screen to the remote control could be a cost-effective solution (\"Project Manager: Yeah. Yeah.\"). This implies that the Project Manager considered the cost implications and found the idea of utilizing the existing TV screen to be feasible within the cost constraints.",
+          "rouge_f1": {
+            "rouge1": 0.3270440251572327,
+            "rouge2": 0.08917197452229299,
+            "rougeL": 0.20125786163522014
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            9,
+            5,
+            12,
+            8
+          ],
+          "retrieval_precision": 0.4755859375,
+          "retrieval_recall": 0.8353344768439108
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The Project Manager acknowledged the cost constraints on the telly screen with the programming function but did not explicitly express an opinion about them. They agreed with the idea of using the TV screen for displaying the programming function rather than adding a screen to the remote control itself, likely due to budget considerations. When Marketing mentioned that using the TV screen might be cheaper, the Project Manager responded affirmatively (\"Yeah.\") indicating agreement without directly addressing the cost constraints.",
+          "rouge_f1": {
+            "rouge1": 0.3157894736842105,
+            "rouge2": 0.09333333333333332,
+            "rougeL": 0.2236842105263158
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            9,
+            5,
+            12,
+            8,
+            13,
+            7,
+            11,
+            4,
+            6
+          ],
+          "retrieval_precision": 0.28466796875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The Project Manager acknowledged the potential cost constraints related to adding a screen with programming functions to the telly. They agreed with Marketing's concern that using the existing TV screen for such functions might be more cost-effective than adding an additional screen. The Project Manager also mentioned that the budget for making the device is twelve point five million (assuming \"twelve fifty\" refers to 12.5 million), indicating awareness of the need to manage costs carefully.",
+          "rouge_f1": {
+            "rouge1": 0.2516556291390728,
+            "rouge2": 0.026845637583892617,
+            "rougeL": 0.17218543046357615
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.8782161234991424
+        },
+        "word_packed__dense__w1024": {
+          "answer": "Project Manager acknowledged the potential for incorporating a screen on the remote control for programming functions but was concerned about the cost. When Marketing suggested using the TV screen instead to avoid additional expenses, Project Manager agreed, showing consideration for the cost constraints. Project Manager later reiterated the budget constraint of 12.50 Euros per device, indicating a cautious approach towards adding features that could increase costs.",
+          "rouge_f1": {
+            "rouge1": 0.35714285714285715,
+            "rouge2": 0.10144927536231883,
+            "rougeL": 0.21428571428571427
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            7,
+            4
+          ],
+          "retrieval_precision": 0.529296875,
+          "retrieval_recall": 0.9296740994854202
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The Project Manager did not explicitly state their thoughts on the cost constraints of the telly screen with the programming function. However, when discussing the inclusion of a screen on the remote control, the Project Manager mentioned the budget constraint of 12.50 Euros per unit, indicating an awareness of cost limitations. When Marketing suggested using the TV screen instead of adding a screen to the remote control due to potential expense, the Project Manager agreed, showing consideration for cost constraints. Therefore, while not directly addressing the specific feature, the Project Manager's response suggests concern for maintaining the budget while incorporating features.",
+          "rouge_f1": {
+            "rouge1": 0.35227272727272724,
+            "rouge2": 0.09195402298850575,
+            "rougeL": 0.20454545454545453
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            7,
+            4,
+            5,
+            6,
+            0,
+            11
+          ],
+          "retrieval_precision": 0.2646484375,
+          "retrieval_recall": 0.9296740994854202
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The evidence from the meeting excerpts indicates that the Project Manager acknowledged the discussion about incorporating a programming function on the telly screen but did not explicitly express a specific opinion regarding the cost constraints. However, the Project Manager did mention the budget constraint of twelve point five for making the device, suggesting an awareness of financial limitations. Therefore, while the Project Manager did not directly comment on the cost constraints of the telly screen with the programming function, they showed consideration for the overall budget during the meeting.",
+          "rouge_f1": {
+            "rouge1": 0.2839506172839506,
+            "rouge2": 0.0625,
+            "rougeL": 0.18518518518518515
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.4391080617495712
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The evidence provided does not contain a direct statement from the Project Manager regarding their thoughts on the cost constraints of the telly screen with the programming function. However, the Project Manager mentions the budget constraint of twelve point five for making the device, which suggests awareness of cost limitations. When Marketing expresses concern about the expense of adding a screen to the telly, the Project Manager acknowledges the idea without explicitly rejecting or endorsing it, indicating consideration of cost implications. Therefore, while the Project Manager recognizes budget constraints, there is insufficient evidence to determine their specific thoughts on the cost constraints of the telly screen with the programming function.",
+          "rouge_f1": {
+            "rouge1": 0.28415300546448086,
+            "rouge2": 0.06629834254143648,
+            "rougeL": 0.17486338797814208
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            8,
+            12,
+            3
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.8782161234991424
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The Project Manager mentioned the budget constraint of 12.50 Euros per device and acknowledged that incorporating a screen on the remote control might be an option to consider, but noted that its feasibility would depend on the cost. When Marketing suggested using the TV screen for programming functions instead of adding a screen to the remote control, the Project Manager agreed, indicating a consideration for cost constraints. However, the Project Manager did not explicitly state a negative opinion about the cost constraints on the telly screen with the programming function; rather, they seemed open to the idea but recognized the need to evaluate costs.",
+          "rouge_f1": {
+            "rouge1": 0.3146067415730337,
+            "rouge2": 0.10227272727272727,
+            "rougeL": 0.19101123595505617
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            8,
+            12,
+            3,
+            4,
+            10,
+            7,
+            1
+          ],
+          "retrieval_precision": 0.28466796875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The Project Manager acknowledged the potential cost constraints related to adding a screen with programming functions to the telly. They agreed with Marketing's concern that using the existing TV screen for such functions might be more cost-effective than adding an additional screen. The Project Manager also mentioned that the budget for making the device is twelve point five million (assuming \"twelve fifty\" refers to 12.5 million), indicating awareness of the need to manage costs carefully.",
+          "rouge_f1": {
+            "rouge1": 0.2516556291390728,
+            "rouge2": 0.026845637583892617,
+            "rougeL": 0.17218543046357615
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.8782161234991424
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The Project Manager mentioned the budget constraint of twelve and a half Euro per device during the discussion about incorporating a screen and programming function into the remote control. However, regarding the specific cost constraints on the telly screen with the programming function, the evidence provided does not contain explicit statements from the Project Manager about these constraints. Therefore, the evidence is insufficient to determine the Project Manager's thoughts on the cost constraints specifically related to the telly screen with the programming function.",
+          "rouge_f1": {
+            "rouge1": 0.3439490445859873,
+            "rouge2": 0.0903225806451613,
+            "rougeL": 0.20382165605095542
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            11,
+            4
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.8782161234991424
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The Project Manager did not explicitly state an opinion on the cost constraints of the telly screen with the programming function. However, when discussing the inclusion of a screen on the remote control, the Project Manager agreed with the idea of using the TV screen for displaying the programming function, likely due to cost considerations. When addressing the overall budget, the Project Manager mentioned that the budget is twelve point five Euros per unit, indicating awareness of cost constraints. Therefore, while not directly commenting on the specific cost of the telly screen feature, the Project Manager's agreement to use the TV screen instead of adding another screen to the remote control suggests consideration of cost constraints.",
+          "rouge_f1": {
+            "rouge1": 0.28421052631578947,
+            "rouge2": 0.07446808510638298,
+            "rougeL": 0.17894736842105266
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            11,
+            4,
+            7,
+            3,
+            12,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.2646484375,
+          "retrieval_recall": 0.9296740994854202
+        },
+        "lumber__dense__w512": {
+          "answer": "The evidence from the meeting excerpts indicates that Project Manager acknowledged the cost constraints on the telly screen with the programming function. When Marketing mentioned that using the TV screen itself might be expensive, Project Manager agreed and later stated that their budget was twelve point five for making the device, implying that any additional costs need to be considered within this budget. Project Manager also noted that they would have to see how much incorporating such a feature would cost.",
+          "rouge_f1": {
+            "rouge1": 0.3246753246753247,
+            "rouge2": 0.09210526315789472,
+            "rougeL": 0.19480519480519481
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            10,
+            8
+          ],
+          "retrieval_precision": 0.849609375,
+          "retrieval_recall": 0.7461406518010292
+        },
+        "lumber__dense__w1024": {
+          "answer": "Project Manager acknowledged the potential cost constraints on incorporating a screen with programming functions on the telly, indicating agreement with Marketing's concern about expense. However, Project Manager also expressed openness to considering the idea, suggesting that the feasibility and cost would need further evaluation within their budget constraints.",
+          "rouge_f1": {
+            "rouge1": 0.3442622950819672,
+            "rouge2": 0.05,
+            "rougeL": 0.18032786885245902
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            10,
+            8,
+            6
+          ],
+          "retrieval_precision": 0.5693359375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The Project Manager acknowledged the potential cost implications of incorporating a programming function onto the TV screen but did not explicitly state a negative opinion. Instead, they agreed with the idea (Excerpts 189-196) and noted the need to consider the budget constraints (Excerpts 210-215). Therefore, it can be inferred that while aware of the cost constraints, the Project Manager did not dismiss the idea outright and suggested further consideration of its feasibility within the budget.",
+          "rouge_f1": {
+            "rouge1": 0.27999999999999997,
+            "rouge2": 0.05405405405405406,
+            "rougeL": 0.22666666666666663
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            10,
+            8,
+            6,
+            7,
+            1,
+            5,
+            11
+          ],
+          "retrieval_precision": 0.28466796875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The evidence is insufficient to determine what Project Manager thought specifically about the cost constraints on the telly screen with the programming function. While there are mentions of the telly screen and its potential integration with a programming function, the Project Manager’s comments do not explicitly address any cost concerns related to this feature.",
+          "rouge_f1": {
+            "rouge1": 0.37500000000000006,
+            "rouge2": 0.09523809523809525,
+            "rougeL": 0.18750000000000003
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11
+          ],
+          "retrieval_precision": 0.30078125,
+          "retrieval_recall": 0.2641509433962264
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The evidence provided does not contain a direct statement from the Project Manager regarding their thoughts on the cost constraints of the telly screen with the programming function. Therefore, the evidence is insufficient to determine the Project Manager's specific thoughts on this matter.",
+          "rouge_f1": {
+            "rouge1": 0.3076923076923077,
+            "rouge2": 0.06956521739130433,
+            "rougeL": 0.18803418803418803
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            6
+          ],
+          "retrieval_precision": 0.150390625,
+          "retrieval_recall": 0.2641509433962264
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The Project Manager acknowledged the cost constraints on the telly screen with the programming function, stating \"we have to remember our budget is twelve point {disfmarker} twelve fifty for {disfmarker} to actually make the device\" and agreeing with the idea of using the TV screen itself for the programming function rather than adding a screen to the remote, noting \"That's something we could decide.\" When Marketing mentioned that using the TV screen might be expensive, the Project Manager responded positively to the idea but emphasized the need to consider costs, saying \"Um but it's something to think about, yeah.\"",
+          "rouge_f1": {
+            "rouge1": 0.31034482758620696,
+            "rouge2": 0.06976744186046512,
+            "rougeL": 0.20689655172413793
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            6,
+            8,
+            10,
+            3,
+            2
+          ],
+          "retrieval_precision": 0.28466796875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Project Manager acknowledged the potential cost concerns related to incorporating a programming function on the telly screen but did not explicitly state an opinion on the cost constraints. He noted that the budget for making the device is twelve point five million (likely currency omitted) and suggested that the feasibility of including such features needs further consideration regarding costs.",
+          "rouge_f1": {
+            "rouge1": 0.30303030303030304,
+            "rouge2": 0.061538461538461535,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            10,
+            6
+          ],
+          "retrieval_precision": 0.708984375,
+          "retrieval_recall": 0.6226415094339622
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The Project Manager acknowledged the potential cost constraints associated with incorporating a screen on the telly for a programming function, stating, \"we have to remember our budget is twelve point... twelve fifty for... to actually make the device.\" However, they also noted that it's something to consider further, indicating an open but cautious stance towards the idea due to budget limitations.",
+          "rouge_f1": {
+            "rouge1": 0.2962962962962963,
+            "rouge2": 0.03007518796992481,
+            "rougeL": 0.17777777777777778
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            10,
+            6,
+            8
+          ],
+          "retrieval_precision": 0.4326171875,
+          "retrieval_recall": 0.7598627787307033
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The Project Manager acknowledged the idea of incorporating a screen on the remote control for programming functions but noted that they would have to consider the cost implications since their budget is twelve point five for making the device. He expressed that it's something to think about and that they would have to see how much it would cost. Therefore, the Project Manager thought that while the feature could be beneficial, cost constraints needed careful consideration.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.06756756756756756,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            10,
+            6,
+            8,
+            11,
+            7,
+            1
+          ],
+          "retrieval_precision": 0.28466796875,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Why did Project Manager suggest having a clip on the remote control?",
+      "reference_answer": "User Interface reiterated that the remote control should have a robust and water resistant function. Marketing also mentioned a good tactile feel for the remote control function, which doesn't make hand sweat a lot. Therefore, Project Manager suggested a clip feature on the remote control so that people can clip it to their device.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Project Manager suggested having a clip on the remote control to provide a convenient place to store it, preventing it from being misplaced, such as in a couch, which aligns with the goal of making the remote control practical and easy to find.",
+          "rouge_f1": {
+            "rouge1": 0.42857142857142855,
+            "rouge2": 0.1875,
+            "rougeL": 0.22448979591836737
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            5,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Project Manager suggested having a clip on the remote control so that users could clip it to themselves, ensuring it is easily accessible and reducing the likelihood of losing it.",
+          "rouge_f1": {
+            "rouge1": 0.4235294117647059,
+            "rouge2": 0.2650602409638554,
+            "rougeL": 0.32941176470588235
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            5,
+            8,
+            11,
+            9
+          ],
+          "retrieval_precision": 0.1162109375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Project Manager suggested having a clip on the remote control so that users can clip it to their clothing, making it easier to carry and less likely to be misplaced.",
+          "rouge_f1": {
+            "rouge1": 0.4705882352941177,
+            "rouge2": 0.3132530120481928,
+            "rougeL": 0.3764705882352941
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            5,
+            8,
+            11,
+            9,
+            4,
+            6,
+            10,
+            1
+          ],
+          "retrieval_precision": 0.05810546875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Project Manager suggested having a clip on the remote control so that users could clip it to their clothing or somewhere easily accessible, reducing the need to leave it on the TV or couch, thereby addressing the issue of convenience and ensuring the remote is readily available without requiring users to walk over to the TV.",
+          "rouge_f1": {
+            "rouge1": 0.3783783783783784,
+            "rouge2": 0.2385321100917431,
+            "rougeL": 0.2702702702702703
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11,
+            13
+          ],
+          "retrieval_precision": 0.232421875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Project Manager suggested having a clip on the remote control so that users can clip it to themselves or their clothing, ensuring it is easily accessible and less likely to be misplaced.",
+          "rouge_f1": {
+            "rouge1": 0.43678160919540227,
+            "rouge2": 0.2823529411764706,
+            "rougeL": 0.367816091954023
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11,
+            13,
+            6,
+            1
+          ],
+          "retrieval_precision": 0.1162109375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Project Manager suggested having a clip on the remote control so that it could be clipped to the user's clothing or another item, ensuring it is not easily misplaced.",
+          "rouge_f1": {
+            "rouge1": 0.39999999999999997,
+            "rouge2": 0.21686746987951805,
+            "rougeL": 0.3058823529411765
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11,
+            13,
+            6,
+            1,
+            5,
+            4,
+            10,
+            8,
+            9
+          ],
+          "retrieval_precision": 0.05810546875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Project Manager suggested having a clip on the remote control so that users could clip it to themselves, ensuring it is easily accessible without having to search for it, addressing the issue of remotes often being misplaced in couches or left atop TVs.",
+          "rouge_f1": {
+            "rouge1": 0.3877551020408163,
+            "rouge2": 0.22916666666666666,
+            "rougeL": 0.2857142857142857
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11,
+            5
+          ],
+          "retrieval_precision": 0.232421875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Project Manager suggested having a clip on the remote control so that users can clip it to themselves or their clothing, ensuring it is easily accessible and less likely to be misplaced.",
+          "rouge_f1": {
+            "rouge1": 0.43678160919540227,
+            "rouge2": 0.2823529411764706,
+            "rougeL": 0.367816091954023
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11,
+            5,
+            6,
+            8
+          ],
+          "retrieval_precision": 0.1162109375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Project Manager suggested having a clip on the remote control so that users can clip it to themselves or their clothing, ensuring it is not easily misplaced.",
+          "rouge_f1": {
+            "rouge1": 0.43902439024390244,
+            "rouge2": 0.3,
+            "rougeL": 0.39024390243902435
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11,
+            5,
+            6,
+            8,
+            4,
+            13,
+            1,
+            9,
+            10
+          ],
+          "retrieval_precision": 0.05810546875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The evidence provided does not contain a specific statement from the Project Manager suggesting having a clip on the remote control. Therefore, the evidence is insufficient to answer why the Project Manager suggested having a clip on the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.1935483870967742,
+            "rougeL": 0.3368421052631579
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The evidence provided does not contain a specific statement from the Project Manager suggesting having a clip on the remote control. The closest related discussion was about having a magnet on the back of the remote control to provide a place to store it conveniently. Therefore, the evidence is insufficient to answer the question as posed.",
+          "rouge_f1": {
+            "rouge1": 0.3603603603603604,
+            "rouge2": 0.16513761467889906,
+            "rougeL": 0.25225225225225223
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            6,
+            0
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Project Manager suggested having a clip on the remote control so that it could be clipped to the user's clothing, making it easier to locate and reducing the likelihood of losing it.",
+          "rouge_f1": {
+            "rouge1": 0.45454545454545453,
+            "rouge2": 0.20930232558139536,
+            "rougeL": 0.3181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            6,
+            0,
+            10,
+            5,
+            9,
+            8
+          ],
+          "retrieval_precision": 0.05810546875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Project Manager suggested having a clip on the remote control because they wanted to provide a convenient place to store the remote besides placing it on top of the TV or in the couch, aiming to reduce the inconvenience of having to walk over to the TV to retrieve it.",
+          "rouge_f1": {
+            "rouge1": 0.3047619047619048,
+            "rouge2": 0.15533980582524273,
+            "rougeL": 0.20952380952380953
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            10
+          ],
+          "retrieval_precision": 0.232421875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Project Manager suggested having a clip on the remote control so that users could clip it to themselves or objects, ensuring the remote wouldn't easily get lost.",
+          "rouge_f1": {
+            "rouge1": 0.45783132530120485,
+            "rouge2": 0.2962962962962963,
+            "rougeL": 0.3373493975903614
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            10,
+            12,
+            5,
+            4
+          ],
+          "retrieval_precision": 0.1162109375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Project Manager suggested having a clip on the remote control so that it could be clipped to the user's clothing, making it easier to locate and less likely to be misplaced.",
+          "rouge_f1": {
+            "rouge1": 0.43678160919540227,
+            "rouge2": 0.2117647058823529,
+            "rougeL": 0.3218390804597701
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            10,
+            12,
+            5,
+            4,
+            9,
+            3,
+            1,
+            7
+          ],
+          "retrieval_precision": 0.05810546875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Project Manager suggested having a clip on the remote control to provide a designated place for users to store it, preventing them from misplacing it, as evidenced by the discussion around finding a \"home\" for the remote control and addressing the issue of remotes being left on TVs or found in couches.",
+          "rouge_f1": {
+            "rouge1": 0.4112149532710281,
+            "rouge2": 0.19047619047619044,
+            "rougeL": 0.20560747663551404
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            4
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Project Manager suggested having a clip on the remote control so that users could clip it to themselves or objects, ensuring the remote is easily accessible and less likely to be misplaced.",
+          "rouge_f1": {
+            "rouge1": 0.43678160919540227,
+            "rouge2": 0.2823529411764706,
+            "rougeL": 0.3218390804597701
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            4,
+            10,
+            7
+          ],
+          "retrieval_precision": 0.1162109375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Project Manager suggested having a clip on the remote control so that it can be clipped to the user's clothing, ensuring it is not easily misplaced.",
+          "rouge_f1": {
+            "rouge1": 0.43902439024390244,
+            "rouge2": 0.225,
+            "rougeL": 0.3414634146341463
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            4,
+            10,
+            7,
+            5,
+            12,
+            9,
+            0,
+            3
+          ],
+          "retrieval_precision": 0.05810546875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The Project Manager suggested having a clip on the remote control to provide a designated place to store the remote, similar to how a portable phone has a base. This idea was proposed to address the issue of the remote often being misplaced, such as under the sofa, thereby making it difficult to locate.",
+          "rouge_f1": {
+            "rouge1": 0.3669724770642202,
+            "rouge2": 0.16822429906542055,
+            "rougeL": 0.2201834862385321
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "Project Manager suggested having a clip on the remote control to provide a designated place to attach it, preventing it from being misplaced, such as under the sofa. The idea was to ensure the remote control remains easily accessible without requiring users to search for it.",
+          "rouge_f1": {
+            "rouge1": 0.37623762376237624,
+            "rouge2": 0.1818181818181818,
+            "rougeL": 0.21782178217821782
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "Project Manager suggested having a clip on the remote control so that it can be clipped to the user's clothing, making it easier to locate and reducing the likelihood of losing it.",
+          "rouge_f1": {
+            "rouge1": 0.47727272727272735,
+            "rouge2": 0.20930232558139536,
+            "rougeL": 0.3409090909090909
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            7,
+            4,
+            9,
+            1,
+            10,
+            11
+          ],
+          "retrieval_precision": 0.05810546875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The Project Manager suggested having a clip on the remote control to provide a designated place to attach or store the remote, similar to how a portable phone might have a base or clip. This suggestion was made to address the issue of the remote often being misplaced, such as under the sofa, making it difficult to locate.",
+          "rouge_f1": {
+            "rouge1": 0.3716814159292036,
+            "rouge2": 0.16216216216216214,
+            "rougeL": 0.23008849557522126
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            11
+          ],
+          "retrieval_precision": 0.015625,
+          "retrieval_recall": 0.06722689075630252
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Project Manager suggested having a clip on the remote control so that users could clip it to themselves or their clothing, ensuring they always have the remote control handy without having to search for it.",
+          "rouge_f1": {
+            "rouge1": 0.4666666666666667,
+            "rouge2": 0.29545454545454547,
+            "rougeL": 0.33333333333333326
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            11,
+            1
+          ],
+          "retrieval_precision": 0.0986328125,
+          "retrieval_recall": 0.8487394957983193
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Project Manager suggested having a clip on the remote control so that users can clip it to themselves or their clothing, ensuring it is not easily misplaced.",
+          "rouge_f1": {
+            "rouge1": 0.43902439024390244,
+            "rouge2": 0.3,
+            "rougeL": 0.39024390243902435
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            11,
+            1,
+            7,
+            4,
+            8,
+            9,
+            10
+          ],
+          "retrieval_precision": 0.04931640625,
+          "retrieval_recall": 0.8487394957983193
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The Project Manager suggested having a clip on the remote control to provide a designated place to attach the remote, preventing it from being misplaced, such as under the sofa. This idea was discussed in relation to making the remote control easier to find and more conveniently located.",
+          "rouge_f1": {
+            "rouge1": 0.38834951456310685,
+            "rouge2": 0.19801980198019803,
+            "rougeL": 0.23300970873786409
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Project Manager suggested having a clip on the remote control to ensure it has a designated place, preventing it from being misplaced, especially under the sofa. This idea arose from discussions about making the remote control easier to locate and more convenient to use.",
+          "rouge_f1": {
+            "rouge1": 0.3838383838383838,
+            "rouge2": 0.18556701030927836,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Project Manager suggested having a clip on the remote control so that users can clip it to themselves or their clothing, ensuring it is not easily misplaced.",
+          "rouge_f1": {
+            "rouge1": 0.43902439024390244,
+            "rouge2": 0.3,
+            "rougeL": 0.39024390243902435
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            8,
+            1,
+            4,
+            11,
+            9,
+            10
+          ],
+          "retrieval_precision": 0.04931640625,
+          "retrieval_recall": 0.8487394957983193
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the group discuss about the project plan and target revenue?",
+      "reference_answer": "The selling price goal is 25 Euros and profit aim is fifty million Euros. Selling target is four million and the profit goal is fifty percent. So Project Manager mentioned that the group hopes to sell the remote control device internationally, instead of in Scotland or some European country.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group discussed setting a target revenue based on a selling price of 25 Euros per unit and aiming for a total profit of 50 million Euros. They calculated that they needed to sell approximately 4 million units to achieve this profit goal, assuming a profit margin of 12.5 Euros per unit. The discussion about the project plan was limited to initial ideas for designing a user-friendly remote control, focusing on ease of use and practicality.",
+          "rouge_f1": {
+            "rouge1": 0.3937007874015748,
+            "rouge2": 0.112,
+            "rougeL": 0.2834645669291339
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            0,
+            12
+          ],
+          "retrieval_precision": 0.208984375,
+          "retrieval_recall": 0.622093023255814
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The group discussed that the selling price of the product would be 25 Euros and the profit aim was set at 50 million Euros. They calculated that they needed to sell four million units to achieve this profit goal, assuming a profit of 12.50 Euros per unit. The discussion about the project plan focused on the design aspects of the remote control, including its ease of use, size, and features such as being handheld, water-resistant, and having a good tactile feel. They also briefly touched upon the possibility of adding features like a clip and considering the budget constraints for making the device.",
+          "rouge_f1": {
+            "rouge1": 0.3506493506493506,
+            "rouge2": 0.19736842105263155,
+            "rougeL": 0.27272727272727276
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            0,
+            12,
+            11,
+            8
+          ],
+          "retrieval_precision": 0.1044921875,
+          "retrieval_recall": 0.622093023255814
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The group discussed that the project plan involves designing a remote control that is original, trendy, and user-friendly, considering aspects such as functional design, conceptual design, and detailed design. They aimed to produce a remote control that is water-resistant, strong, and has a tactile feel. Regarding target revenue, the selling price goal was set at twenty-five Euro per unit, with a profit aim of fifty million Euro. To achieve the profit aim, they estimated needing to sell approximately four million units.",
+          "rouge_f1": {
+            "rouge1": 0.43609022556390975,
+            "rouge2": 0.18320610687022898,
+            "rougeL": 0.2105263157894737
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            0,
+            12,
+            11,
+            8,
+            1,
+            13,
+            4,
+            10,
+            9
+          ],
+          "retrieval_precision": 0.083984375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The group discussed the project plan by outlining the need to consider functional aspects, conceptual design, and detailed design of the remote control. They aimed to create an original, trendy, and user-friendly product. Regarding target revenue or budget, the Project Manager mentioned a budget of twelve point five for making the device, but no specific target revenue was discussed.",
+          "rouge_f1": {
+            "rouge1": 0.3302752293577982,
+            "rouge2": 0.09345794392523364,
+            "rougeL": 0.18348623853211007
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            13,
+            11
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The group discussed the project plan by outlining the aim to produce an original, trendy, and user-friendly remote control. They planned to cover functional design, conceptual design, and detailed design in upcoming meetings. Regarding target revenue, there was no specific discussion about target revenue figures. However, the Project Manager mentioned a budget of $12.5 for making the device, suggesting considerations around costs.",
+          "rouge_f1": {
+            "rouge1": 0.31858407079646023,
+            "rouge2": 0.07207207207207209,
+            "rougeL": 0.15929203539823011
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            13,
+            11,
+            12,
+            0,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The group discussed that their selling price goal is 25 Euros and their profit aim is 50 million Euros. They aimed to sell four million units to achieve this profit goal. Regarding the project plan, they covered tool training, discussed the project plan, and began considering the design features of the remote control, such as making it water-resistant, strong, and tactile. They also reflected on their experiences with remote controls to decide what they would like to see in a convenient, practical, and nice remote control.",
+          "rouge_f1": {
+            "rouge1": 0.44117647058823534,
+            "rouge2": 0.22388059701492538,
+            "rougeL": 0.35294117647058826
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            13,
+            11,
+            12,
+            0,
+            2,
+            4,
+            5,
+            9,
+            10
+          ],
+          "retrieval_precision": 0.083984375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The group discussed the project plan which involves producing a remote control that is original, trendy, and user-friendly, considering aspects of functional design, conceptual design, and detailed design over their next meetings. Regarding target revenue, there was no specific discussion about target revenue. However, the Project Manager mentioned a budget of $12.5 for making the device, suggesting this as a financial constraint to keep in mind.",
+          "rouge_f1": {
+            "rouge1": 0.3247863247863248,
+            "rouge2": 0.06956521739130435,
+            "rougeL": 0.18803418803418806
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            11
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The group discussed that the project plan aimed to produce a remote control that is original, trendy, and user-friendly, considering functional aspects and conceptual design. Regarding target revenue, the Project Manager mentioned a selling price of 25 Euros per unit and a profit aim of 50 million Euros. Marketing suggested selling four million units to achieve the profit goal, as each unit would contribute a profit of 12.50 Euros, assuming a fifty percent profit margin.",
+          "rouge_f1": {
+            "rouge1": 0.5079365079365079,
+            "rouge2": 0.2096774193548387,
+            "rougeL": 0.2857142857142857
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            11,
+            12,
+            5
+          ],
+          "retrieval_precision": 0.1044921875,
+          "retrieval_recall": 0.622093023255814
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The group discussed that their selling price goal for the remote control is 25 Euros and their profit aim is 50 million Euros. They aimed to sell four million units to achieve this profit goal. Additionally, they considered designing a remote control that is water-resistant, strong, and has a tactile feel, possibly incorporating features like a small screen for fewer buttons, programmable functions, and a clip for convenience.",
+          "rouge_f1": {
+            "rouge1": 0.4406779661016949,
+            "rouge2": 0.2413793103448276,
+            "rougeL": 0.33898305084745767
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            11,
+            12,
+            5,
+            13,
+            4,
+            8,
+            9,
+            10
+          ],
+          "retrieval_precision": 0.083984375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The group discussed the project plan by outlining the aim to produce an original, trendy, and user-friendly remote control, considering aspects such as functionality, conceptual design, and features like water resistance and tactile feel. Regarding target revenue, the evidence is insufficient as there were no specific discussions about financial targets or revenue goals in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.3177570093457944,
+            "rouge2": 0.0380952380952381,
+            "rougeL": 0.1495327102803738
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            12,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The group discussed that the project plan includes producing an original, trendy, and user-friendly remote control. They aimed for a selling price of twenty-five Euro and a profit aim of fifty million Euro. To achieve the profit aim, they estimated needing to sell four million units, assuming a profit of twelve and a half Euro per unit. The team also briefly touched upon design considerations such as size, functionality, and user experience, including the idea of incorporating features like a clip and ensuring a good tactile feel.",
+          "rouge_f1": {
+            "rouge1": 0.36231884057971014,
+            "rouge2": 0.16176470588235295,
+            "rougeL": 0.2463768115942029
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            12,
+            10,
+            4,
+            7
+          ],
+          "retrieval_precision": 0.16796875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The group discussed that the project plan includes producing a remote control that is original, trendy, and user-friendly, considering functional aspects, conceptual design, and detailed design. They aimed for a selling price of twenty-five Euro and a profit aim of fifty million Euro, estimating they would need to sell approximately four million units to achieve this profit goal. The team also briefly touched upon the idea of incorporating a small screen on the remote control to reduce the number of buttons while maintaining functionality, similar to how mobile phones operate.",
+          "rouge_f1": {
+            "rouge1": 0.3829787234042554,
+            "rouge2": 0.17266187050359713,
+            "rougeL": 0.28368794326241137
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            12,
+            10,
+            4,
+            7,
+            8,
+            11,
+            9,
+            1
+          ],
+          "retrieval_precision": 0.083984375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The group discussed the project plan by outlining the aim to produce a remote control that is original, trendy, and user-friendly. They planned to cover functional design, conceptual design, and detailed design over their next few meetings. Regarding target revenue, there was no discussion in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.32653061224489793,
+            "rouge2": 0.041666666666666664,
+            "rougeL": 0.16326530612244897
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            12,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The group discussed the project plan by outlining the aim to produce an original, trendy, and user-friendly remote control. They planned to cover functional design, conceptual design, and detailed design in upcoming meetings. Regarding target revenue, the discussion was insufficiently detailed in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.29473684210526313,
+            "rouge2": 0.043010752688172046,
+            "rougeL": 0.16842105263157894
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            12,
+            1,
+            10,
+            11
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The group discussed that their selling price goal for the remote control is 25 Euros and their profit aim is 50 million Euros. They aimed to sell approximately 4 million units to achieve this profit, assuming a profit margin of 12.5 Euros per unit. The team also brainstormed ideas for the remote control's design, focusing on making it user-friendly, functional, and trendy, with considerations for features such as a small screen, robustness, and tactile feel.",
+          "rouge_f1": {
+            "rouge1": 0.4094488188976378,
+            "rouge2": 0.192,
+            "rougeL": 0.3149606299212598
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            12,
+            1,
+            10,
+            11,
+            4,
+            8,
+            9,
+            7
+          ],
+          "retrieval_precision": 0.083984375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The group discussed the project plan by outlining the aim to produce an original, trendy, and user-friendly remote control, considering aspects such as functionality, conceptual design, and features like water resistance and tactile feel. Regarding target revenue, the evidence is insufficient as there were no specific discussions about financial targets or revenue goals in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.3177570093457944,
+            "rouge2": 0.0380952380952381,
+            "rougeL": 0.1495327102803738
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            12,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The group discussed that the project plan includes producing a remote control that is original, trendy, and user-friendly, considering functional aspects, conceptual design, and detailed design. Regarding target revenue, the Project Manager mentioned a selling price goal of twenty-five Euro and a profit aim of fifty million Euro. To achieve the profit aim, Marketing suggested selling four million units, assuming a profit of twelve and a half Euro per unit.",
+          "rouge_f1": {
+            "rouge1": 0.4958677685950413,
+            "rouge2": 0.2184873949579832,
+            "rougeL": 0.2644628099173553
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            12,
+            10,
+            4,
+            1
+          ],
+          "retrieval_precision": 0.16796875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The group discussed that their selling price goal for the remote control is 25 Euros and their profit aim is 50 million Euros. They aimed to sell approximately 4 million units to achieve this profit goal. Additionally, they considered the remote control should be hand-held sized, not lose easily, and ideally have fewer buttons with a potential integrated screen for additional functionality.",
+          "rouge_f1": {
+            "rouge1": 0.4464285714285714,
+            "rouge2": 0.2363636363636364,
+            "rougeL": 0.35714285714285715
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            12,
+            10,
+            4,
+            1,
+            11,
+            8,
+            7,
+            9
+          ],
+          "retrieval_precision": 0.083984375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The group discussed that the selling price goal for the remote control was set at twenty-five Euros, with a profit aim of fifty million Euros. They also estimated they needed to sell four million units to achieve this profit target.",
+          "rouge_f1": {
+            "rouge1": 0.5111111111111111,
+            "rouge2": 0.2727272727272727,
+            "rougeL": 0.31111111111111117
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            0,
+            1
+          ],
+          "retrieval_precision": 0.3359375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The group discussed the project plan by outlining the aim to produce an original, trendy, and user-friendly remote control, considering aspects of functional design, conceptual design, and detailed design over their next meetings. Regarding target revenue, the Project Manager mentioned a selling price goal of twenty-five Euros and a profit aim of fifty million Euros, leading to a discussion where the Marketing expert suggested selling four million units to achieve the profit goal.",
+          "rouge_f1": {
+            "rouge1": 0.46774193548387094,
+            "rouge2": 0.21311475409836064,
+            "rougeL": 0.27419354838709675
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            0,
+            1,
+            10,
+            11
+          ],
+          "retrieval_precision": 0.16796875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The group discussed that the project plan involves producing a remote control that is original, trendy, and user-friendly, considering functional aspects and conceptual design. They aimed for a selling price of twenty-five Euro and a profit aim of fifty million Euro, estimating they would need to sell approximately four million units to achieve this profit goal.",
+          "rouge_f1": {
+            "rouge1": 0.4672897196261682,
+            "rouge2": 0.2095238095238095,
+            "rougeL": 0.2803738317757009
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            0,
+            1,
+            10,
+            11,
+            7,
+            8,
+            9,
+            4
+          ],
+          "retrieval_precision": 0.083984375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The group discussed the project plan by outlining the focus areas as functional design, conceptual design, and detailed design. They planned to cover these topics in upcoming meetings. Regarding target revenue, there was no discussion about it in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.22222222222222224,
+            "rouge2": 0.022727272727272724,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            11
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The group discussed that the selling price goal for the remote control is 25 Euros and the profit aim is 50 million Euros. They estimated they need to sell four million units to achieve this profit, assuming a profit per unit of 12.5 Euros.",
+          "rouge_f1": {
+            "rouge1": 0.5531914893617021,
+            "rouge2": 0.3695652173913044,
+            "rougeL": 0.3829787234042553
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            11,
+            5,
+            0
+          ],
+          "retrieval_precision": 0.16796875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The group discussed that their selling price goal is 25 Euro and their profit aim is 50 million Euro. They aimed to sell four million units to achieve this profit goal. Regarding the project plan, they briefly touched upon the need for a remote control that is original, trendy, and user-friendly, with considerations for functional aspects and conceptual design. They also discussed incorporating a small screen on the remote control to reduce the number of buttons while retaining functionality, similar to how mobile phones operate. The team planned to explore further details and finalize ideas in subsequent meetings.",
+          "rouge_f1": {
+            "rouge1": 0.4189189189189189,
+            "rouge2": 0.20547945205479454,
+            "rougeL": 0.33783783783783783
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            11,
+            5,
+            0,
+            2,
+            10,
+            8,
+            9
+          ],
+          "retrieval_precision": 0.083984375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The group discussed that the selling price goal for the remote control is 25 Euros and the profit aim is 50 million Euros. They also estimated that to achieve the profit aim, they need to sell around 4 million units, as calculated by Marketing, with a profit of 12.50 Euros per unit.",
+          "rouge_f1": {
+            "rouge1": 0.49019607843137253,
+            "rouge2": 0.32,
+            "rougeL": 0.3529411764705882
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            5,
+            0
+          ],
+          "retrieval_precision": 0.3359375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The group discussed that the selling price goal for the remote control is 25 Euros and the profit aim is 50 million Euros. They estimated that to achieve this profit, they need to sell approximately 4 million units, assuming a profit per unit of 12.50 Euros.",
+          "rouge_f1": {
+            "rouge1": 0.5208333333333334,
+            "rouge2": 0.3404255319148936,
+            "rougeL": 0.35416666666666663
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            5,
+            0,
+            11
+          ],
+          "retrieval_precision": 0.16796875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The group discussed that the selling price goal for the remote control is 25 Euro and the profit aim is 50 million Euro. They aimed to sell four million units to achieve this profit, assuming a profit per unit of 12.50 Euro. Additionally, they briefly touched upon the idea of incorporating a small screen on the remote control to reduce the number of buttons while maintaining functionality, similar to how mobile phones operate. However, they acknowledged that the feasibility and cost of such a feature needed further investigation.",
+          "rouge_f1": {
+            "rouge1": 0.391304347826087,
+            "rouge2": 0.25,
+            "rougeL": 0.31884057971014496
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            5,
+            0,
+            11,
+            10,
+            8,
+            9,
+            2
+          ],
+          "retrieval_precision": 0.083984375,
+          "retrieval_recall": 1.0
+        }
+      }
+    }
+  ]
+}

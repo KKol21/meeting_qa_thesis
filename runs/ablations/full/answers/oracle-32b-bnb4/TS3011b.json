@@ -1,0 +1,224 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "TS3011b.json",
+        "sha256": "cdafb0032b35be25cf414d1adc3c5c96f7489faeb2980108f0823808d5e3b966"
+      }
+    },
+    "input_hash": "d7fec207ce85cf8d033240a1797055fc8bd6e3295cfea34d55a8234cf66ea9be",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "cfc52af80e4b8dd38806b3a929e19725d4d86b717e706664c3ab5be743cb920c",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "TS3011b",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about user interface design of remote control.",
+      "reference_answer": "User Interface introduced a remote control easy to use and a multi-functional one and preferred the former as it was more user-friendly. Industrial Designer agreed and proposed that a stick or round button for volume control and channel selection could be used and also suggested that the ten digits could be substituted by voice recognition.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the user interface design of the remote control focused on balancing functionality and user-friendliness. The team considered two types of remote controls: a multi-function remote with many possibilities but lacking in tactile satisfaction, and an ease-of-use remote with fewer possibilities but better tactile feedback. The preference was for the ease-of-use remote due to its user-friendliness and trendiness, especially since the target audience was under forty years old. However, the team acknowledged the market's interest in advanced features among younger users.\n\nThe team agreed to prioritize essential functions such as channel selection and volume control, while considering innovative features like speech recognition to appeal to younger audiences. They decided against including teletext functions and debated the inclusion of ten-digit buttons, ultimately leaning towards retaining them for broader usability despite potential design challenges. The design would aim for a trendy look with minimal buttons, possibly incorporating a round button for directional input over a stick, to enhance durability and user experience. The final design would emphasize simplicity and cost-effectiveness while maintaining attractiveness and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3057851239669422,
+            "rouge2": 0.09166666666666666,
+            "rougeL": 0.1735537190082645
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              57,
+              84
+            ],
+            [
+              272,
+              481
+            ]
+          ],
+          "evidence_words": 2773
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Industrial Designer think about the ten digits when discussing interface design of remote control?",
+      "reference_answer": "Industrial Designer thought the ten buttons looked a bit dull so speech recognition could be added to solve this problem. But he was concerned that power saving could be difficult when implementing speech recognition.",
+      "results": {
+        "oracle": {
+          "answer": "Industrial Designer was uncertain about including the ten digits on the remote control interface. They expressed doubt about its necessity, stating it was complicated and questioned its relevance for regular TV users. Industrial Designer suggested that for typical Dutch TV networks, fewer buttons could suffice. However, they acknowledged the potential need for ten-digit buttons for users with satellite decoders and many channels. Industrial Designer also commented that the ten buttons might look \"dull\" and proposed that the design could be made fancier through adjustments in shape, size, or color. Overall, Industrial Designer was open to the idea of incorporating speech recognition as an alternative, recognizing its advantages in ease of use and finding the remote control, though they noted concerns about cost and battery life.",
+          "rouge_f1": {
+            "rouge1": 0.19999999999999998,
+            "rouge2": 0.06329113924050632,
+            "rougeL": 0.15
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              405,
+              481
+            ]
+          ],
+          "evidence_words": 766
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did User Interface think about user interface design of remote control?",
+      "reference_answer": "User Interface found two kinds of remote controls: the multi-functional one and the one easy to use. He emphasized on user-friendliness, but considering that the target people were less than forty years old, multi-function should also be taken into account.",
+      "results": {
+        "oracle": {
+          "answer": "User Interface thought that the primary function of a remote control is to send messages to the television set. They identified two types of remote controls: multi-function remotes with many possibilities but lacking a good tactile feel, and ease-of-use remotes with fewer possibilities but better tactile feedback. User Interface's personal preference was for the ease-of-use remote due to its user-friendliness and trendiness in design. However, they acknowledged that incorporating some multi-functionality could be beneficial for their target audience under 40 years old. Ultimately, User Interface believed the ease-of-use remote control was the best option for their design, emphasizing user-friendliness.",
+          "rouge_f1": {
+            "rouge1": 0.326797385620915,
+            "rouge2": 0.10596026490066225,
+            "rougeL": 0.2222222222222222
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              57,
+              84
+            ]
+          ],
+          "evidence_words": 412
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did the group discuss about technical issues of the project?",
+      "reference_answer": "Industrial Designer introduced how the remote control worked and supposed that they should use infrared so that the remote control could communicate with most TV sets. He also proposed to use energy-friendly components and save the cost of circuit boards to develop elaborate lighting techniques. In order to prevent people from losing the remote control, the team decided to implement an audio signal. In terms of energy source, the team preferred to have a cradle so that the remote control could be recharged.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed several technical issues related to the project:\n\n1. **Infrared Communication**: The device would use infrared light to communicate with TV sets, as most TV sets are controlled via infrared. The Industrial Designer emphasized the importance of using infrared to ensure compatibility with almost every TV set.\n\n2. **Energy-Friendly Components**: The team agreed on using energy-efficient components to reduce power consumption. This includes using energy-friendly components and a low-cost circuit board to keep production costs down while allowing for additional features like fancy lighting.\n\n3. **LED Lighting**: The group considered using LEDs for button lighting, noting that these LEDs are power-friendly and can be incorporated into the design without significantly increasing costs. However, they acknowledged that LEDs would add some expense compared to a basic design.\n\n4. **Sound Signal Feature**: There was discussion about adding a sound signal feature to help users locate their remote control. This feature would require additional components and potentially complicate the design, increasing costs. The Industrial Designer warned that implementing this function would make the technical design more complex and costly.\n\n5. **Rechargeable Design**: The group briefly touched upon the possibility of incorporating a solar panel and rechargeable batteries into the device. They also considered including a cradle for recharging, which was deemed feasible and inexpensive due to mass production capabilities.",
+          "rouge_f1": {
+            "rouge1": 0.31921824104234525,
+            "rouge2": 0.09180327868852459,
+            "rougeL": 0.18892508143322473
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              85,
+              271
+            ],
+            [
+              482,
+              504
+            ]
+          ],
+          "evidence_words": 2632
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the team come up with to prevent customers from losing their remote controls in the discussion of technical issues of the project?",
+      "reference_answer": "User Interface proposed that a base station next to the TV could be a solution, but Industrial Designer pointed out that this could be technically complicated and would cost a lot. So the team eventually adopted Marketing's advice to implement an audio signal.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed building in a feature to help customers locate their remote controls, such as an audio signal or a \"find\" function. They considered a sound signal but noted the challenge of distinguishing clapping sounds from other noises. They agreed that having a base station next to the TV could be a viable solution, though it would add complexity and cost. The team decided that Sebastian would look into a detailed solution, emphasizing that the remote should have such a function if feasible within budget constraints. They believed this feature would distinguish their product in the market.",
+          "rouge_f1": {
+            "rouge1": 0.36619718309859156,
+            "rouge2": 0.17142857142857143,
+            "rougeL": 0.23943661971830987
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              158,
+              271
+            ]
+          ],
+          "evidence_words": 1330
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the team think about the energy source when discussing technical issues of the project?",
+      "reference_answer": "Industrial Designer proposed to incorporate a solar panel and rechargeable batteries, but Project Manager agreed more with Marketing's proposal to include a cradle.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed the possibility of using a hybrid energy source that incorporates a solar panel and rechargeable batteries. The Industrial Designer suggested that such a device could charge itself when left in a well-lit room, requiring minimal maintenance. However, the Project Manager raised concerns about the costs associated with this solution. The team also considered including a cradle for recharging, which was deemed inexpensive due to mass production. The Industrial Designer confirmed that both the cradle and the adapter would be very affordable, suggesting that the overall cost would be minimal.",
+          "rouge_f1": {
+            "rouge1": 0.27350427350427353,
+            "rouge2": 0.1739130434782609,
+            "rougeL": 0.2222222222222222
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              482,
+              504
+            ]
+          ],
+          "evidence_words": 216
+        }
+      }
+    }
+  ]
+}

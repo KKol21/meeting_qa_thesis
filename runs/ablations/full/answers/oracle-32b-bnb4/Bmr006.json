@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "Bmr006.json",
+        "sha256": "6ecfa3168b6db677022b3b314e775b5a14adc3bf8c5f69cd86a1e298fb68ecd7"
+      }
+    },
+    "input_hash": "65c2432ef4db5f9bb08c4f16f10e96476411ca43482ee16e681a7481d6a275b9",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "a0d1818fd990507a0309866f9e775da15552a103ebfcf4ca2873d08496c6d0e7",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bmr006",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What were some of the ideas proposed about future meeting recordings?",
+      "reference_answer": "PhD F wanted the group to record different meetings with the same group to help in tasks such as summarization, the Professor D however, wanted random meeting participants to have diversity that would be instrumental in acoustical research.",
+      "results": {
+        "oracle": {
+          "answer": "Some of the ideas proposed about future meeting recordings included:\n\n- Having different meetings by the same group to generate varied summaries.\n- Recording meetings with at least three or four different kinds of groups to avoid specificity to one particular group.\n- Collecting more data while holding some parameters constant or similar, such as having at least half the participants the same in meetings about a certain kind of work.\n- For acoustic-oriented research, preferring to have lots of different people and random scattered meetings with various speakers.\n- Gathering data from multiple groups even if only one or two meetings per group are recorded, to benefit from close and distant microphone recordings with different individuals.",
+          "rouge_f1": {
+            "rouge1": 0.2913907284768212,
+            "rouge2": 0.10738255033557048,
+            "rougeL": 0.19867549668874174
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              38,
+              64
+            ]
+          ],
+          "evidence_words": 453
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What was said on getting fluent English speakers?",
+      "reference_answer": "Postdoc E was championing the need to get proficient English speakers so as to allow for a stable language model. This did not mean limiting the type of accents that the speakers had but rather ensuring the speakers could proficiently follow the English grammar when they expressed themselves.",
+      "results": {
+        "oracle": {
+          "answer": "Postdoc E suggested advertising to linguistics grad students to get more fluent English speakers, as they would have sufficient proficiency in English. Postdoc E also noted that gathering data from random undergrads could result in a \"mixed bag\" of English proficiency levels, making it difficult to build reliable language models. Professor D agreed that random participants might not be ideal and proposed targeting professors and senior doctoral students leading projects. Postdoc E clarified that the issue was not accents but fluency, emphasizing that graduate-level fluency was preferable. Grad B suggested that the advertisement should specify the meeting should be held in English, and a few participants with less proficient English skills would likely be acceptable if it's a pre-existing meeting.",
+          "rouge_f1": {
+            "rouge1": 0.29239766081871343,
+            "rouge2": 0.07100591715976332,
+            "rougeL": 0.21052631578947364
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              65,
+              102
+            ]
+          ],
+          "evidence_words": 695
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What were the options that were discussed on the location of the recording equipment?",
+      "reference_answer": "One proposed solution was to set up another room in the linguistics department. This needed a dedicated partner and safety of the equipment for it to work. Professor D talked about making the equipment portable allowing it to be transported from meeting to meeting.",
+      "results": {
+        "oracle": {
+          "answer": "The options discussed for the location of the recording equipment included:\n1. Setting up a room in the linguistics department if the equipment was available and not being used elsewhere.\n2. Using a room in another building like psychology or computer science departments.\n3. Making the recording setup portable so it could be wheeled around to different locations.",
+          "rouge_f1": {
+            "rouge1": 0.4313725490196078,
+            "rouge2": 0.15999999999999998,
+            "rougeL": 0.29411764705882354
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              157,
+              162
+            ]
+          ],
+          "evidence_words": 221
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did the group say on portable equipment?",
+      "reference_answer": "The group wanted to introduce portable equipment so as to get more meetings from different groups. However, this was challenged by the complexity of setting up the recording equipment.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed the idea of making the equipment portable so it could be wheeled around (Excerpt [162]). They acknowledged that space was scarce, especially in CS, and finding a regular room might be difficult (Excerpts [165], [167]-[168]). They suggested that a meeting room where the equipment would be safe and someone could be present once a week to record meetings might suffice (Excerpts [170]-[171]). The possibility of placing the equipment in the phonology lab was mentioned (Excerpt [172]). They agreed that portable equipment would facilitate the recording process outside of ICSI (Excerpts [183]-[184]). However, they noted that recording with headphones for multiple people would be challenging (Excerpts [190]-[191]). They concluded that tabletop microphones would be sufficient for easy recordings, though this wasn't the specific corpus they were aiming to collect (Excerpts [192]-[197]). They also discussed that for summarization purposes, they didn't necessarily need sophisticated microphones and could use simpler recording devices like tape recorders (Excerpts [200]-[210]).",
+          "rouge_f1": {
+            "rouge1": 0.17525773195876287,
+            "rouge2": 0.03125,
+            "rougeL": 0.11340206185567012
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              162,
+              233
+            ]
+          ],
+          "evidence_words": 1090
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What were Grad B’s updates on meeting disk storage?",
+      "reference_answer": "Grad B said that archiving of the data by creating a clone had been done, though it took eleven hours. However, Grad B commented that accessing the data would be much faster. This archiving had freed ten gigabytes of free space. Additionally, two copies would be made: one offisite, another onsite.",
+      "results": {
+        "oracle": {
+          "answer": "Grad B's updates on meeting disk storage include:\n\n- They are working on archiving old data to free up space for recording meetings.\n- It took eleven hours to copy data from the P-files from Broadcast News, and it will take another eleven hours to create a clone.\n- The data is being copied to tape on Abbott.\n- After archiving and deleting the files, they will gain 10 gigabytes of free space.\n- Once completed, they will be able to record five more meetings.\n- Creating a clone (two copies, one offsite and one onsite) is part of the process and takes additional time.",
+          "rouge_f1": {
+            "rouge1": 0.3684210526315789,
+            "rouge2": 0.16,
+            "rougeL": 0.2631578947368421
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              370,
+              412
+            ]
+          ],
+          "evidence_words": 366
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What were other ways to get more space?",
+      "reference_answer": "Professor D said they would be getting another disk rack that would bring in four thirty-six gigabyte disks, increasing the space. Additionally, the directories of Aurora data, Carmen’s Data and SPINE were likely to be moved.",
+      "results": {
+        "oracle": {
+          "answer": "The meeting excerpts suggest two ways to get more space:\n\n1. **Acquiring Additional Hardware**: Getting another disk rack and additional disks (either four 36-gigabyte disks or possibly six). The new SUN rack requires more disks compared to the previous Andatico one, taking either four and six or eight and twelve disks, indicating an increase in storage capacity.\n\n2. **Exploring Other Vendors**: Since the previous vendor, Andatico, increased their prices after being bought by another company, they are considering other vendors to potentially get better deals on racks and disks.\n\nThere is no mention of other specific methods to gain more space in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.2638888888888889,
+            "rouge2": 0.056338028169014086,
+            "rougeL": 0.1527777777777778
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              421,
+              437
+            ]
+          ],
+          "evidence_words": 480
+        }
+      }
+    }
+  ]
+}

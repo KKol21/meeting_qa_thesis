@@ -1,0 +1,3613 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "Bro019.json",
+        "sha256": "0593f662df94363216e0be6f5609ddf15457b4455b70a0adfd8ac8397db6e6cb"
+      },
+      "retrieval": {
+        "file": "Bro019.json",
+        "sha256": "6c99d3cd9536b234cb3c29c7d466af3388996825362d4563d44057751f44437b"
+      },
+      "segmentation": {
+        "file": "Bro019.json",
+        "sha256": "c40b58b26d2d55c96b56ca884d39c7829c6435bbd13c7b865c7cff86a7160d2d"
+      }
+    },
+    "input_hash": "f3ec33349a91f3730a475b18ab907e3788388e79a9fdaa6ec5c93ac118ea2fc0",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "a80baeca588744aa8e491fde3c3c433c987d0c8dce4d1eee1301ede66dec3d45",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bro019",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 152,
+  "cache_hits": 10,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about microphone issues",
+      "reference_answer": "The professor pointed out that the lapel microphones were too close, so they were not good representative microphones. There was strong agreement that mics capture breath and other non-voice sounds since they were common.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The discussion about microphone issues centered around the preference for wireless headsets over lapel microphones due to better sound quality and reduced background noise. Professor C mentioned that lapel microphones were abandoned because they were neither far enough to capture distant sounds well nor close enough to eliminate interference effectively. Additionally, there were concerns about additional noise like mouth clicks and breath sounds being more prominent with wireless headsets compared to lapel microphones. However, there was a strong inclination towards discontinuing the use of lapel microphones.",
+          "rouge_f1": {
+            "rouge1": 0.3140495867768595,
+            "rouge2": 0.06722689075630252,
+            "rougeL": 0.1983471074380165
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            1,
+            36
+          ],
+          "retrieval_precision": 0.49609375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The discussion about microphone issues centered around the preference for wireless headsets over lapel microphones due to lapels causing more background noise and interference. Professor C mentioned that lapel microphones were neither far enough to reduce background noise nor close enough to eliminate interference effectively. Additionally, there were mentions of dealing with technical aspects such as microphone numbers and channels, indicating ongoing adjustments to ensure proper functioning of the wireless microphones.",
+          "rouge_f1": {
+            "rouge1": 0.22641509433962265,
+            "rouge2": 0.038461538461538464,
+            "rougeL": 0.18867924528301885
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            1,
+            36,
+            17,
+            27
+          ],
+          "retrieval_precision": 0.248046875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The discussion about microphone issues centered around the preference for wireless headsets over lapel microphones due to lapels causing more background noise and interference. Professor C mentioned abandoning lapel microphones because they were neither far enough to capture distant sounds well nor close enough to eliminate interference effectively. Additionally, wireless headsets were noted to produce more mouth clicks and breath sounds, though there was a strong inclination towards discarding lapel microphones.",
+          "rouge_f1": {
+            "rouge1": 0.32075471698113206,
+            "rouge2": 0.057692307692307696,
+            "rougeL": 0.18867924528301885
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            1,
+            36,
+            17,
+            27,
+            44,
+            38,
+            39,
+            46
+          ],
+          "retrieval_precision": 0.1240234375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The provided meeting excerpts do not contain any discussion about microphone issues. The evidence is insufficient.",
+          "rouge_f1": {
+            "rouge1": 0.1568627450980392,
+            "rouge2": 0.0,
+            "rougeL": 0.11764705882352938
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            23
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The meeting excerpts provided do not contain any discussion about microphone issues. The conversation revolves around technical aspects of research projects, job execution on machines, and speech recognition methodologies. There is no mention of any problems or discussions related to microphones.",
+          "rouge_f1": {
+            "rouge1": 0.1842105263157895,
+            "rouge2": 0.0,
+            "rougeL": 0.10526315789473684
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            23,
+            48,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The meeting excerpts provided do not contain any discussion about microphone issues. The conversation primarily revolves around compute resources, job parallelization, and research project updates. Therefore, the evidence is insufficient to summarize a discussion about microphone issues.",
+          "rouge_f1": {
+            "rouge1": 0.16666666666666669,
+            "rouge2": 0.0,
+            "rougeL": 0.11111111111111112
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            23,
+            48,
+            8,
+            3,
+            30,
+            5,
+            2,
+            38
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The meeting excerpts do not contain a detailed discussion about microphone issues. The conversation primarily revolves around technical challenges and past experiences with speech recognition techniques and evaluations, but specific details regarding microphone problems are insufficiently covered in the provided text.",
+          "rouge_f1": {
+            "rouge1": 0.15789473684210528,
+            "rouge2": 0.0,
+            "rougeL": 0.10526315789473684
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            38,
+            49
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The meeting excerpts provided do not contain any specific discussion about microphone issues. The conversation primarily revolves around technical aspects of speech recognition, including the use of different vocabularies, handling noisy speech, and exploring various techniques for improving recognition accuracy. There is no mention of problems or discussions related to microphones. Therefore, the evidence is insufficient to summarize a discussion about microphone issues.",
+          "rouge_f1": {
+            "rouge1": 0.14285714285714285,
+            "rouge2": 0.0,
+            "rougeL": 0.0816326530612245
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            38,
+            49,
+            36
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The discussion about microphone issues centered around the preference for wireless headsets over lapel microphones due to lapels causing more background noise and interference. Professor C mentioned abandoning lapel microphones as they were neither too far nor too close, leading to suboptimal sound quality. Participants also discussed the technical setup of wireless microphones, including channel numbers and ensuring clear pronunciation recordings.",
+          "rouge_f1": {
+            "rouge1": 0.25,
+            "rouge2": 0.06382978723404256,
+            "rougeL": 0.18749999999999997
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            38,
+            49,
+            36,
+            48,
+            11,
+            1,
+            0,
+            39
+          ],
+          "retrieval_precision": 0.1240234375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The discussion about microphone issues centered around the preference for wireless headsets over lapel microphones due to lapels producing more background noise and interference. Professor C mentioned that while lapels were in the middle range, they did not eliminate background noise effectively. Additionally, wireless headsets were noted to produce more mouth clicks and breath sounds compared to lapels. The group also discussed the specific settings and numbers associated with the wireless microphones, ensuring proper channel configuration for clear communication.",
+          "rouge_f1": {
+            "rouge1": 0.2456140350877193,
+            "rouge2": 0.017857142857142853,
+            "rougeL": 0.15789473684210525
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            1
+          ],
+          "retrieval_precision": 0.49609375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The discussion about microphone issues centered around the preference for wireless headsets over lapel microphones due to lapels causing more background noise and interference. Professor C mentioned that lapel microphones were neither far enough to reduce background noise nor close enough to eliminate interference effectively. Additionally, there were mentions of dealing with technical aspects such as microphone numbers and channels, though these details were secondary to the main issue of microphone performance.",
+          "rouge_f1": {
+            "rouge1": 0.24299065420560745,
+            "rouge2": 0.03809523809523809,
+            "rougeL": 0.20560747663551404
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            1,
+            34,
+            31
+          ],
+          "retrieval_precision": 0.248046875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The discussion about microphone issues centered around the preference for wireless headsets over lapel microphones due to lapels causing more background noise and interference. Professor C mentioned abandoning lapel microphones as they were neither too far nor too close, leading to suboptimal sound quality. Participants also noted that wireless headsets produced more mouth clicks and breath sounds but were generally favored over lapels. Additionally, there was guidance on setting up and identifying wireless microphone channels correctly.",
+          "rouge_f1": {
+            "rouge1": 0.3063063063063063,
+            "rouge2": 0.07339449541284404,
+            "rougeL": 0.1981981981981982
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            1,
+            34,
+            31,
+            17,
+            26,
+            35,
+            42
+          ],
+          "retrieval_precision": 0.1240234375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The meeting excerpts provided do not contain any direct discussion about microphone issues. The conversation revolves around conditions in an experiment or study, specifically comparing \"well-matched\" and \"middle\" conditions, and mentions natural recordings versus artificially added noise. There is no mention of microphone problems or related technical difficulties. Therefore, the evidence is insufficient to summarize a discussion about microphone issues.",
+          "rouge_f1": {
+            "rouge1": 0.14583333333333334,
+            "rouge2": 0.0,
+            "rougeL": 0.08333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            45,
+            23
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The meeting excerpts provided do not contain any discussion about microphone issues. The conversation primarily revolves around computational resources, job management systems, and aspects of a graduate student's research project related to speech recognition. There is no mention of any problems or discussions regarding microphones.",
+          "rouge_f1": {
+            "rouge1": 0.17283950617283952,
+            "rouge2": 0.0,
+            "rougeL": 0.09876543209876543
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            45,
+            23,
+            8,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The meeting excerpts provided do not contain any discussion about microphone issues. The conversation primarily revolves around compute resources, job scheduling, and research projects. Therefore, the evidence is insufficient to summarize a discussion about microphone issues.",
+          "rouge_f1": {
+            "rouge1": 0.16901408450704225,
+            "rouge2": 0.0,
+            "rougeL": 0.11267605633802817
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            45,
+            23,
+            8,
+            2,
+            5,
+            27,
+            44,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The meeting excerpt does not contain any specific discussion about microphone issues. The conversation primarily revolves around speech recognition techniques and adaptations using the Switchboard recognizer and concerns about testing with the SRI recognizer due to computational intensity. There is no detailed discussion regarding problems or solutions related to microphones.",
+          "rouge_f1": {
+            "rouge1": 0.1647058823529412,
+            "rouge2": 0.0,
+            "rougeL": 0.09411764705882354
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            45
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The meeting excerpts provided do not contain any specific discussion about microphone issues. Therefore, the evidence is insufficient to summarize a discussion about microphone problems based solely on the given text.",
+          "rouge_f1": {
+            "rouge1": 0.1515151515151515,
+            "rouge2": 0.0,
+            "rougeL": 0.0909090909090909
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            45,
+            18,
+            43
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The discussion about microphone issues centered around the preference for wireless headsets over lapel microphones due to lapels causing more background noise and interference. Professor C mentioned abandoning lapel microphones as they were neither too far nor too close, leading to suboptimal audio quality. Participants noted that wireless headsets produced more mouth clicks and breath sounds but were generally favored. The group also addressed setting up and identifying wireless microphone channels correctly.",
+          "rouge_f1": {
+            "rouge1": 0.28037383177570097,
+            "rouge2": 0.05714285714285714,
+            "rougeL": 0.20560747663551404
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            45,
+            18,
+            43,
+            29,
+            42,
+            0,
+            1
+          ],
+          "retrieval_precision": 0.1240234375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The discussion about microphone issues centered around the preference for wireless headsets over lapel microphones due to lapels causing more background noise and interference. Professor C mentioned that lapel microphones were neither far enough to capture distant sounds well nor close enough to eliminate background noise effectively. Additionally, wireless headsets produced more mouth clicks and breath sounds compared to lapels, but there was a strong opinion favoring the removal of lapels.",
+          "rouge_f1": {
+            "rouge1": 0.3018867924528302,
+            "rouge2": 0.057692307692307696,
+            "rougeL": 0.18867924528301885
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            30
+          ],
+          "retrieval_precision": 0.49609375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The discussion about microphone issues centered around the preference for wireless headsets over lapel microphones due to lapels causing more background noise and interference. Professor C mentioned that lapel microphones were not ideal as they were neither too far nor too close, leading to suboptimal sound quality. Participants agreed that there were strong opinions against using lapel microphones.",
+          "rouge_f1": {
+            "rouge1": 0.4086021505376344,
+            "rouge2": 0.10989010989010989,
+            "rougeL": 0.21505376344086022
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            30,
+            37
+          ],
+          "retrieval_precision": 0.248046875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The discussion about microphone issues centered around the preference for wireless headsets over lapel microphones due to lapels causing more background noise and interference. Professor C mentioned abandoning lapel microphones because they were neither close enough to eliminate background noise nor far enough to represent distant mikes effectively. There was a consensus that lapels were in the middle range but caused more issues with mouth clicks and breath sounds compared to wireless headsets.",
+          "rouge_f1": {
+            "rouge1": 0.3148148148148148,
+            "rouge2": 0.056603773584905655,
+            "rougeL": 0.2222222222222222
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            30,
+            37,
+            15,
+            35,
+            29,
+            31
+          ],
+          "retrieval_precision": 0.1240234375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The meeting excerpts provided do not contain any discussion about microphone issues. The conversation revolves around topics such as academic qualifiers, speech recognition projects, and related technical challenges. There is no mention of any problems or discussions regarding microphones.",
+          "rouge_f1": {
+            "rouge1": 0.18918918918918923,
+            "rouge2": 0.0,
+            "rougeL": 0.1081081081081081
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            37
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The evidence provided does not contain any relevant information regarding discussions about microphone issues.",
+          "rouge_f1": {
+            "rouge1": 0.12244897959183673,
+            "rouge2": 0.0,
+            "rougeL": 0.12244897959183673
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            37,
+            9,
+            4,
+            36
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The meeting excerpts provided do not contain any discussion about microphone issues. The conversation primarily revolves around compute usage, job parallelization, and research project updates. Therefore, the evidence is insufficient to summarize a discussion about microphone issues.",
+          "rouge_f1": {
+            "rouge1": 0.16666666666666669,
+            "rouge2": 0.0,
+            "rougeL": 0.11111111111111112
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            37,
+            9,
+            4,
+            36,
+            6,
+            34
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The meeting excerpts provided do not contain any discussion about microphone issues. The conversation revolves around Grad G's progress on their research related to speech recognition using acoustic events and does not mention any problems with microphones or audio equipment.",
+          "rouge_f1": {
+            "rouge1": 0.15789473684210528,
+            "rouge2": 0.0,
+            "rougeL": 0.10526315789473684
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            37
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The meeting excerpts provided do not contain any specific discussion about microphone issues. The conversation primarily revolves around topics such as colored noise, recording meeting data, speech recognition techniques, and a graduate student's proposal for their PhD work involving acoustic events. There is no mention of problems or discussions related to microphones. Therefore, the evidence is insufficient to summarize a discussion about microphone issues.",
+          "rouge_f1": {
+            "rouge1": 0.14,
+            "rouge2": 0.0,
+            "rougeL": 0.08
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            37,
+            30,
+            26
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The discussion about microphone issues centered around the abandonment of lapel microphones due to their inconsistent performance. Lapels were neither far enough to reduce background noise effectively nor close enough to eliminate interference. The team opted for wireless headsets instead, which seemed to address the previous issues with lapel microphones.",
+          "rouge_f1": {
+            "rouge1": 0.1647058823529412,
+            "rouge2": 0.024096385542168672,
+            "rougeL": 0.1647058823529412
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            37,
+            30,
+            26,
+            36,
+            35,
+            0
+          ],
+          "retrieval_precision": 0.06591796875,
+          "retrieval_recall": 0.531496062992126
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did PhD F think about computational resources?",
+      "reference_answer": "PhD F explained that he mistakenly had run his tasks on all the available compute instances. There was not enough computational resources going around. New computers were coming soon, but people would have to learn to share until then. It was important not to saturate computational resources. He also told the team how to properly queue tasks.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "PhD F thought positively about computational resources, indicating they had ordered new machines to create a compute farm and were implementing tools like P-make and Customs to facilitate their use. They also expressed willingness to help others utilize these resources effectively.",
+          "rouge_f1": {
+            "rouge1": 0.2626262626262626,
+            "rouge2": 0.041237113402061855,
+            "rougeL": 0.20202020202020202
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            3,
+            5
+          ],
+          "retrieval_precision": 0.521484375,
+          "retrieval_recall": 0.18350515463917524
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "PhD F thought positively about computational resources, indicating a need for more machines to handle current and future computational demands. They mentioned ordering twelve new machines to form a compute farm and discussed plans to utilize these resources efficiently with tools like P-make and Customs. PhD F also highlighted the importance of managing these resources carefully to avoid conflicts, such as simultaneous training jobs interfering with each other's execution.",
+          "rouge_f1": {
+            "rouge1": 0.23437499999999997,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.171875
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            3,
+            5,
+            18,
+            10
+          ],
+          "retrieval_precision": 0.4501953125,
+          "retrieval_recall": 0.3168384879725086
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "PhD F thought positively about computational resources, indicating a need for more machines to handle computational tasks efficiently. They mentioned ordering twelve new machines to create a compute farm and discussed the ease of using P-make and Customs for running tasks without needing to write scripts manually. Additionally, they addressed issues related to job eviction when machines are in use and provided guidance on managing computational resources effectively.",
+          "rouge_f1": {
+            "rouge1": 0.28571428571428575,
+            "rouge2": 0.04838709677419355,
+            "rougeL": 0.15873015873015875
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            3,
+            5,
+            18,
+            10,
+            57,
+            12,
+            38,
+            26
+          ],
+          "retrieval_precision": 0.22509765625,
+          "retrieval_recall": 0.3168384879725086
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "PhD F expressed concerns about computational resources being potentially interrupted due to system policies. Specifically, they mentioned that jobs could be automatically evicted from machines if someone returned from lunch and started using the console, which could lead to loss of computation time. They also noted that jobs could be protected from such interruptions by setting a \"no evict\" attribute, although they were unsure about the exact mechanism that triggers an eviction (keyboard activity or console activity).",
+          "rouge_f1": {
+            "rouge1": 0.17910447761194032,
+            "rouge2": 0.030303030303030304,
+            "rougeL": 0.13432835820895522
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            44,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "PhD F expressed concerns about computational resources, specifically regarding the automatic eviction of jobs from machines due to other users returning to their machines after lunch. This could lead to job interruptions and loss of processing time. PhD F also mentioned that jobs could be assigned the \"no evict\" attribute to prevent such interruptions, although they were unsure about the specifics of how the system handles evictions when users are logged in remotely.",
+          "rouge_f1": {
+            "rouge1": 0.2153846153846154,
+            "rouge2": 0.03125,
+            "rougeL": 0.15384615384615385
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            44,
+            10,
+            54,
+            46
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "PhD F thought that there were issues with computational resources, specifically mentioning that there wasn't enough compute capacity to run multiple training jobs simultaneously without interference. They noted that when more machines become available, there would be more compute power. Additionally, PhD F discussed the eviction policy of jobs on machines, suggesting strategies to prevent job eviction and maintain uninterrupted processing.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.05128205128205128,
+            "rougeL": 0.18487394957983191
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            44,
+            10,
+            54,
+            46,
+            2,
+            12,
+            5,
+            38
+          ],
+          "retrieval_precision": 0.12060546875,
+          "retrieval_recall": 0.1697594501718213
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "PhD F expressed concerns about computational resources being evicted due to other users returning from lunch and using the same machines. They mentioned that jobs could be automatically restarted on another machine if evicted, potentially causing delays. Additionally, PhD F was unsure about how the system handles evictions when users are logged in remotely without keyboard input, suggesting that someone named Andreas might have addressed this issue. Overall, PhD F seemed attentive to the complexities and potential issues related to managing computational resources effectively.",
+          "rouge_f1": {
+            "rouge1": 0.22695035460992907,
+            "rouge2": 0.043165467625899276,
+            "rougeL": 0.14184397163120566
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            10,
+            5
+          ],
+          "retrieval_precision": 0.044921875,
+          "retrieval_recall": 0.015807560137457044
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "PhD F thought positively about computational resources, indicating a need for more machines to handle current demands. They mentioned ordering twelve new machines to form a compute farm and discussed plans to utilize P-make and Customs for easier management of computational tasks. PhD F also highlighted the importance of managing resources efficiently to avoid conflicts, such as ensuring jobs are not run simultaneously to prevent issues with resource allocation.",
+          "rouge_f1": {
+            "rouge1": 0.28346456692913385,
+            "rouge2": 0.031999999999999994,
+            "rougeL": 0.1732283464566929
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            10,
+            5,
+            3,
+            12
+          ],
+          "retrieval_precision": 0.4501953125,
+          "retrieval_recall": 0.3168384879725086
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "PhD F thought positively about computational resources, indicating that new machines were being ordered to create a compute farm. They mentioned that these machines would be used for tasks such as running P-make and Customs, and noted that additional machines would provide more compute availability. PhD F also provided guidance on how to manage and utilize these resources effectively, addressing concerns about job eviction and suggesting best practices for running commands and managing jobs.",
+          "rouge_f1": {
+            "rouge1": 0.2878787878787879,
+            "rouge2": 0.04615384615384615,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            10,
+            5,
+            3,
+            12,
+            38,
+            44,
+            2,
+            18,
+            48
+          ],
+          "retrieval_precision": 0.22509765625,
+          "retrieval_recall": 0.3168384879725086
+        },
+        "word_packed__dense__w512": {
+          "answer": "PhD F thought positively about computational resources, indicating an expansion in available computing power for the group. They mentioned the acquisition of twelve new machines to form a compute farm, which would be used with P-make and Customs, facilitated by utilities developed by Andreas. However, they also emphasized the importance of resource management, advising participants to limit the number of simultaneous jobs to avoid overloading the system and ensure fair usage among group members.",
+          "rouge_f1": {
+            "rouge1": 0.25757575757575757,
+            "rouge2": 0.04615384615384615,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            6
+          ],
+          "retrieval_precision": 0.767578125,
+          "retrieval_recall": 0.27010309278350514
+        },
+        "word_packed__dense__w1024": {
+          "answer": "PhD F thought positively about the computational resources, indicating that new machines were being ordered to create a compute farm and that they were working on optimizing the usage of these resources. They mentioned ordering twelve new machines and discussed the current setup involving P-make and Customs for managing tasks across these machines. However, they also noted that there were issues with resource allocation, such as having to back off from running simultaneous training jobs due to limited availability, suggesting a need for better management and additional resources.",
+          "rouge_f1": {
+            "rouge1": 0.2876712328767123,
+            "rouge2": 0.04166666666666666,
+            "rougeL": 0.1643835616438356
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            6,
+            5,
+            10
+          ],
+          "retrieval_precision": 0.6337890625,
+          "retrieval_recall": 0.44604810996563576
+        },
+        "word_packed__dense__w2048": {
+          "answer": "PhD F thought positively about the computational resources, indicating that new machines were being ordered to create a compute farm and that existing resources were being utilized with specific tools like P-make and Customs to manage tasks efficiently. However, PhD F also highlighted the importance of managing the load on the network to avoid overloading it and suggested limiting the number of simultaneous jobs to ensure fair usage and prevent delays for others.",
+          "rouge_f1": {
+            "rouge1": 0.3053435114503817,
+            "rouge2": 0.031007751937984496,
+            "rougeL": 0.19847328244274806
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            6,
+            5,
+            10,
+            7,
+            11,
+            40,
+            25
+          ],
+          "retrieval_precision": 0.44189453125,
+          "retrieval_recall": 0.6219931271477663
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The evidence is insufficient to determine what PhD F thought about computational resources.",
+          "rouge_f1": {
+            "rouge1": 0.17142857142857143,
+            "rouge2": 0.058823529411764705,
+            "rougeL": 0.11428571428571428
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            40
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The evidence provided does not contain any direct statements or opinions from PhD F regarding computational resources. Therefore, the evidence is insufficient to determine what PhD F thought about computational resources.",
+          "rouge_f1": {
+            "rouge1": 0.22727272727272727,
+            "rouge2": 0.06976744186046512,
+            "rougeL": 0.1590909090909091
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            40,
+            50,
+            37
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "PhD F expressed concerns about computational resources, particularly regarding job eviction policies on machines. They mentioned that if a job needs to run uninterrupted, it can be assigned an attribute to prevent eviction. However, they were unsure about how the system handles evictions when users are logged in remotely, suggesting that someone named Andreas might have addressed this issue. Overall, PhD F seemed attentive to the nuances of resource management but acknowledged uncertainty about specific remote login procedures.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.030075187969924814,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            40,
+            50,
+            37,
+            19,
+            10,
+            18,
+            42
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The evidence is insufficient to determine what PhD F thought about computational resources.",
+          "rouge_f1": {
+            "rouge1": 0.17142857142857143,
+            "rouge2": 0.058823529411764705,
+            "rougeL": 0.11428571428571428
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            40
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "PhD F thought that there was a need for more computational resources, as indicated by the instance where they had to stop running simultaneous training jobs due to resource constraints. They mentioned looking forward to having more compute available once additional machines were acquired.",
+          "rouge_f1": {
+            "rouge1": 0.3762376237623762,
+            "rouge2": 0.06060606060606061,
+            "rougeL": 0.21782178217821782
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            40,
+            10,
+            5
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.1759450171821306
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "PhD F thought positively about the computational resources, indicating that new machines were being ordered to create a compute farm, and that there were plans to utilize these resources effectively with tools like P-make and Customs. However, there were also issues with resource allocation, such as jobs being evicted due to simultaneous usage, suggesting some frustration with current resource management.",
+          "rouge_f1": {
+            "rouge1": 0.2542372881355932,
+            "rouge2": 0.03448275862068965,
+            "rougeL": 0.20338983050847456
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            40,
+            10,
+            5,
+            25,
+            2,
+            18,
+            12
+          ],
+          "retrieval_precision": 0.19189453125,
+          "retrieval_recall": 0.27010309278350514
+        },
+        "lumber__dense__w512": {
+          "answer": "PhD F thought that the current computational resources were insufficient, as evidenced by having to back off from running multiple training jobs simultaneously due to resource constraints. They also suggested that more machines would provide additional computing power. Additionally, PhD F emphasized the importance of not overusing the available resources to avoid delaying other people's jobs and recommended limiting the number of concurrent jobs to around ten to prevent overloading the system.",
+          "rouge_f1": {
+            "rouge1": 0.35384615384615387,
+            "rouge2": 0.0625,
+            "rougeL": 0.23076923076923078
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.3518900343642612
+        },
+        "lumber__dense__w1024": {
+          "answer": "PhD F thought that the current computational resources were limited, leading to conflicts with other users' jobs. They mentioned having to back off from running simultaneous training jobs due to resource constraints and expressed hope for more machines to increase available compute. Additionally, PhD F emphasized the importance of not overloading the system by limiting the number of concurrent jobs to avoid delaying others' tasks.",
+          "rouge_f1": {
+            "rouge1": 0.3278688524590164,
+            "rouge2": 0.06666666666666667,
+            "rougeL": 0.2459016393442623
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            34
+          ],
+          "retrieval_precision": 0.5771484375,
+          "retrieval_recall": 0.4061855670103093
+        },
+        "lumber__dense__w2048": {
+          "answer": "PhD F thought positively about computational resources, indicating an expansion in available computing power through the acquisition of twelve new machines to form a compute farm. They described the ease of use and flexibility of the P-make and Customs system, including the ability to specify attributes for jobs such as operating system requirements and the capacity to control job distribution across machines. PhD F also highlighted the importance of managing resource usage to avoid overloading the system and ensuring fair access for all users.",
+          "rouge_f1": {
+            "rouge1": 0.2535211267605634,
+            "rouge2": 0.04285714285714286,
+            "rougeL": 0.15492957746478872
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            34,
+            5,
+            11,
+            17
+          ],
+          "retrieval_precision": 0.61669921875,
+          "retrieval_recall": 0.8680412371134021
+        },
+        "lumber__bm25__w512": {
+          "answer": "The evidence is insufficient to determine what PhD F thought about computational resources.",
+          "rouge_f1": {
+            "rouge1": 0.17142857142857143,
+            "rouge2": 0.058823529411764705,
+            "rougeL": 0.11428571428571428
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            42,
+            31
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The evidence provided does not contain any direct statements or opinions from PhD F regarding computational resources. Therefore, the evidence is insufficient to determine what PhD F thought about computational resources.",
+          "rouge_f1": {
+            "rouge1": 0.22727272727272727,
+            "rouge2": 0.06976744186046512,
+            "rougeL": 0.1590909090909091
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            42,
+            31
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The evidence is insufficient to determine what PhD F thought about computational resources based on the provided meeting excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.21052631578947367,
+            "rouge2": 0.05405405405405406,
+            "rougeL": 0.13157894736842105
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            42,
+            31,
+            34,
+            35,
+            40
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The evidence is insufficient to determine what PhD F thought about computational resources.",
+          "rouge_f1": {
+            "rouge1": 0.17142857142857143,
+            "rouge2": 0.058823529411764705,
+            "rougeL": 0.11428571428571428
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            34
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "PhD F thought that the current computational resources were limited, as evidenced by having to back off from running multiple training jobs simultaneously due to resource constraints. They also suggested that to avoid overloading the system, participants should limit the number of jobs they run at any one time to around ten, to ensure fair usage and prevent delays for others.",
+          "rouge_f1": {
+            "rouge1": 0.288135593220339,
+            "rouge2": 0.05172413793103449,
+            "rougeL": 0.23728813559322032
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            34,
+            6
+          ],
+          "retrieval_precision": 0.4130859375,
+          "retrieval_recall": 0.2907216494845361
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "PhD F thought positively about computational resources, indicating that new machines were being ordered to increase computing capacity. They provided details about the setup of a compute farm with SUN-Blade-one-hundreds and discussed the ease of use through tools like \"run command\" for distributing tasks across available machines. PhD F also emphasized the importance of managing the load to avoid overusing the network and suggested limiting the number of simultaneous jobs to ensure fair usage among users.",
+          "rouge_f1": {
+            "rouge1": 0.27941176470588236,
+            "rouge2": 0.029850746268656716,
+            "rougeL": 0.16176470588235292
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            34,
+            6,
+            17,
+            4,
+            5
+          ],
+          "retrieval_precision": 0.48046875,
+          "retrieval_recall": 0.6762886597938145
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the professor say about the workshop?",
+      "reference_answer": "The professor recalled that at a workshop at Hopkins or Rutgers, twenty-five participants were running their tasks on twenty-five machines. Things would have been better if they ran tasks on their own machine. He was adding to PhD F's remarks on students in the team doing a similar thing.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Professor C mentioned planning for a workshop that would involve a kick-off meeting, individual progress reports, and discussions on future plans. The specific details provided by Professor C were: \"So, one thing is to talk about a kick off meeting maybe uh, and then just uh, I guess uh, progress reports individually, and then uh, plans for where we go between now and then, pretty much.\"",
+          "rouge_f1": {
+            "rouge1": 0.18487394957983191,
+            "rouge2": 0.017094017094017096,
+            "rougeL": 0.11764705882352941
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            50,
+            11
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The professor mentioned a plan for the workshop which included a kick-off meeting, individual progress reports, and discussions on future plans. Additionally, during the meeting, the professor recalled a previous workshop experience involving the use of multiple machines, noting that efficiency was lower compared to using individual machines. There were no other specific details provided about the workshop in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.2608695652173913,
+            "rouge2": 0.05309734513274336,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            50,
+            11,
+            38,
+            7
+          ],
+          "retrieval_precision": 0.103515625,
+          "retrieval_recall": 0.18861209964412812
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The professor mentioned that they abandoned the use of lapel microphones during the workshop due to issues with background noise and interference. He also recalled a previous workshop where participants experienced inefficiency with distributed computing across multiple machines compared to using individual machines. Additionally, the professor discussed the possibility of testing techniques on large vocabulary data in the future, noting that attempts to do so might cause technical difficulties.",
+          "rouge_f1": {
+            "rouge1": 0.2644628099173553,
+            "rouge2": 0.03361344537815126,
+            "rougeL": 0.19834710743801653
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            50,
+            11,
+            38,
+            7,
+            57,
+            48,
+            36,
+            0
+          ],
+          "retrieval_precision": 0.0517578125,
+          "retrieval_recall": 0.18861209964412812
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Professor C mentioned that during a previous workshop, either at Rutgers or Hopkins, everyone was excited because they had access to twenty-five machines. However, the efficiency was lower compared to using individual machines since all twenty-five people were sending tasks to all twenty-five machines simultaneously, leading to inefficiencies.",
+          "rouge_f1": {
+            "rouge1": 0.38834951456310685,
+            "rouge2": 0.0594059405940594,
+            "rougeL": 0.27184466019417475
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            7,
+            5
+          ],
+          "retrieval_precision": 0.421875,
+          "retrieval_recall": 0.38434163701067614
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Professor C mentioned planning for a workshop that would involve a kick-off meeting, individual progress reports, and discussions on future plans. He recalled a previous workshop experience where participants were excited about using multiple machines but found that efficiency was lower compared to using individual machines.",
+          "rouge_f1": {
+            "rouge1": 0.30303030303030304,
+            "rouge2": 0.041237113402061855,
+            "rougeL": 0.18181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            7,
+            5,
+            56,
+            46
+          ],
+          "retrieval_precision": 0.3447265625,
+          "retrieval_recall": 0.6281138790035588
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The professor mentioned planning for a kick-off meeting and individual progress reports during the workshop. He also recalled a previous workshop where participants faced inefficiencies due to overuse of shared computing resources, suggesting caution in resource allocation and usage.",
+          "rouge_f1": {
+            "rouge1": 0.23913043478260868,
+            "rouge2": 0.02222222222222222,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            7,
+            5,
+            56,
+            46,
+            52,
+            36,
+            44,
+            10,
+            48
+          ],
+          "retrieval_precision": 0.17236328125,
+          "retrieval_recall": 0.6281138790035588
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Professor C mentioned a plan for a workshop that included a kick-off meeting, individual progress reports, and discussions on future plans. He also shared his experience from a previous workshop where participants had access to multiple machines but found the process less efficient than expected due to issues with parallelization and resource management.",
+          "rouge_f1": {
+            "rouge1": 0.20754716981132074,
+            "rouge2": 0.019230769230769232,
+            "rougeL": 0.1320754716981132
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            7,
+            11
+          ],
+          "retrieval_precision": 0.20703125,
+          "retrieval_recall": 0.18861209964412812
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The professor mentioned a plan for a workshop that included a kick-off meeting, individual progress reports, and discussions on future plans. Additionally, the professor recalled a previous workshop experience where participants had access to twenty-five machines but found that efficiency was lower compared to using individual machines.",
+          "rouge_f1": {
+            "rouge1": 0.31683168316831684,
+            "rouge2": 0.10101010101010101,
+            "rougeL": 0.21782178217821782
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            7,
+            11,
+            36,
+            50
+          ],
+          "retrieval_precision": 0.103515625,
+          "retrieval_recall": 0.18861209964412812
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The professor mentioned that the workshop would involve a kick-off meeting, individual progress reports, and discussions on future plans. Additionally, the professor recalled a previous workshop experience where participants were excited about using multiple machines but found that efficiency was lower compared to using individual machines. The professor also discussed the possibility of testing techniques on large vocabulary data in the future.",
+          "rouge_f1": {
+            "rouge1": 0.3130434782608696,
+            "rouge2": 0.07079646017699115,
+            "rougeL": 0.22608695652173913
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            7,
+            11,
+            36,
+            50,
+            48,
+            38,
+            44,
+            52,
+            56
+          ],
+          "retrieval_precision": 0.0517578125,
+          "retrieval_recall": 0.18861209964412812
+        },
+        "word_packed__dense__w512": {
+          "answer": "Professor C mentioned planning for a kick-off meeting and suggested having individual progress reports and discussions on future plans. The exact quote is: \"Um, so, one thing is to talk about a kick off meeting maybe uh, and then just uh, I guess uh, progress reports individually, and then uh, plans for where we go between now and then, pretty much.\"",
+          "rouge_f1": {
+            "rouge1": 0.14035087719298245,
+            "rouge2": 0.0,
+            "rougeL": 0.10526315789473684
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            6
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.4555160142348754
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The professor mentioned a workshop in the context of discussing past events, recalling, \"I remember I {disfmarker} I forget whether it was when the Rutgers or {disfmarker} or Hopkins workshop, I remember one of the workshops I was at there were {disfmarker} everybody was real.\" However, the details about what the professor said specifically about the workshop are not clearly provided in the given excerpts. Therefore, the evidence is insufficient to provide a detailed account of what the professor said about the workshop.",
+          "rouge_f1": {
+            "rouge1": 0.2222222222222222,
+            "rouge2": 0.04511278195488722,
+            "rougeL": 0.14814814814814814
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            6,
+            1,
+            32
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.4555160142348754
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The professor mentioned that during one of the workshops he attended, there were issues with audio equipment such as breath sounds being worse with certain types compared to lapel microphones, and noted that there were strong opinions for getting rid of lapels. Additionally, the professor discussed the possibility of conducting a kickoff meeting and giving individual progress reports, along with planning future work. He also referenced past workshops where logging in took a long time due to network congestion, and suggested that participants should be mindful of running too many jobs simultaneously to avoid overloading the system.",
+          "rouge_f1": {
+            "rouge1": 0.174496644295302,
+            "rouge2": 0.013605442176870748,
+            "rougeL": 0.1208053691275168
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            6,
+            1,
+            32,
+            47,
+            31,
+            35,
+            11
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.4555160142348754
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The professor mentioned the idea of sending an email pointing to a FAQ about the workshop. There is no further detailed discussion from the professor about the workshop itself beyond this suggestion.",
+          "rouge_f1": {
+            "rouge1": 0.14285714285714285,
+            "rouge2": 0.024390243902439025,
+            "rougeL": 0.11904761904761905
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            3
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.4555160142348754
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The professor mentioned recalling a workshop, possibly from Rutgers or Hopkins, where everyone was very engaged. He also discussed related experiments, specifically noting work combining elements from the French Telecom system with other systems, though the exact details of the combination were not clearly specified due to confusion over which system was involved (System One or System Two). Additionally, the professor touched upon the topic of real speech analysis, mentioning issues with formants not fitting perfectly into expected patterns due to quantization and storage methods used in stored speech.",
+          "rouge_f1": {
+            "rouge1": 0.19858156028368792,
+            "rouge2": 0.02877697841726619,
+            "rougeL": 0.14184397163120566
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            3,
+            52,
+            18
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.4555160142348754
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Professor C mentioned planning for a kick-off meeting and progress reports individually, followed by plans for future work between meetings. He also referenced a previous workshop experience where logging in took a long time, leading to frustration among participants.",
+          "rouge_f1": {
+            "rouge1": 0.17391304347826086,
+            "rouge2": 0.0,
+            "rougeL": 0.10869565217391305
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            3,
+            52,
+            18,
+            5,
+            42,
+            11,
+            2
+          ],
+          "retrieval_precision": 0.23876953125,
+          "retrieval_recall": 0.8701067615658363
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Professor C mentioned planning for a kick-off meeting and suggested having individual progress reports and discussions on future plans. The exact quote is: \"Um, so, one thing is to talk about a kick off meeting maybe uh, and then just uh, I guess uh, progress reports individually, and then uh, plans for where we go between now and then, pretty much.\"",
+          "rouge_f1": {
+            "rouge1": 0.14035087719298245,
+            "rouge2": 0.0,
+            "rougeL": 0.10526315789473684
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            2
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.4555160142348754
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The professor mentioned planning for a kick-off meeting and suggested discussing individual progress reports and future plans during the workshop.",
+          "rouge_f1": {
+            "rouge1": 0.136986301369863,
+            "rouge2": 0.02816901408450704,
+            "rougeL": 0.10958904109589042
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            2,
+            18,
+            11
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.4555160142348754
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The professor mentioned a workshop in the context of recalling past experiences. Specifically, he said, \"I remember I {disfmarker} I forget whether it was when the Rutgers or {disfmarker} or Hopkins workshop, I remember one of the workshops I was at there were {disfmarker} everybody was really concerned about breaths and so forth being worse with certain equipment than with lapel microphones.\" Additionally, he recalled another instance: \"And, you know, maybe if it's used in combination, it will get at something that we're missing. And maybe, you know, using, orth you know, KLT, or uh, um, adding probabilities, I mean, all th all the different ways that we've been playing with, that we would let the {disfmarker} essentially let the neural network determine what is it that's useful, that we're missing here.\" However, the exact details about the workshop from the professor's perspective are not fully elaborated due to disfluencies and interruptions.",
+          "rouge_f1": {
+            "rouge1": 0.2095238095238095,
+            "rouge2": 0.028846153846153848,
+            "rougeL": 0.09523809523809526
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            2,
+            18,
+            11,
+            1,
+            47,
+            40,
+            10
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.4555160142348754
+        },
+        "lumber__dense__w512": {
+          "answer": "Professor C mentioned a plan for a workshop kick-off meeting and individual progress reports. He also shared a recollection from a previous workshop experience where participants were excited about having access to twenty-five machines but noted that the efficiency was lower compared to using individual machines.",
+          "rouge_f1": {
+            "rouge1": 0.32,
+            "rouge2": 0.08163265306122448,
+            "rougeL": 0.2
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            37
+          ],
+          "retrieval_precision": 0.20703125,
+          "retrieval_recall": 0.18861209964412812
+        },
+        "lumber__dense__w1024": {
+          "answer": "Professor C mentioned that the workshop included a kick-off meeting and individual progress reports. He also shared his experience from a previous workshop where participants used multiple machines for computation, noting that efficiency was lower compared to using individual machines.",
+          "rouge_f1": {
+            "rouge1": 0.25806451612903225,
+            "rouge2": 0.0,
+            "rougeL": 0.17204301075268819
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            37,
+            38,
+            39
+          ],
+          "retrieval_precision": 0.103515625,
+          "retrieval_recall": 0.18861209964412812
+        },
+        "lumber__dense__w2048": {
+          "answer": "The professor mentioned that the workshop agenda included a kick-off meeting, individual progress reports, and plans for future work. Additionally, the professor shared a story about a previous workshop where participants were excited about having access to multiple machines but noted that efficiency was lower compared to using individual machines.",
+          "rouge_f1": {
+            "rouge1": 0.27184466019417475,
+            "rouge2": 0.0396039603960396,
+            "rougeL": 0.21359223300970875
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            4,
+            37,
+            38,
+            39,
+            15,
+            11,
+            29,
+            41
+          ],
+          "retrieval_precision": 0.0517578125,
+          "retrieval_recall": 0.18861209964412812
+        },
+        "lumber__bm25__w512": {
+          "answer": "Professor C mentioned planning for a kick-off meeting and individual progress reports during the workshop. He also shared a recollection from a previous workshop where multiple participants used a large number of machines inefficiently, emphasizing the need to be cautious with resource allocation.",
+          "rouge_f1": {
+            "rouge1": 0.20833333333333331,
+            "rouge2": 0.0,
+            "rougeL": 0.12499999999999997
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            7,
+            6
+          ],
+          "retrieval_precision": 0.65234375,
+          "retrieval_recall": 0.594306049822064
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Professor C mentioned that the workshop could involve a kick-off meeting and individual progress reports, followed by discussions on future plans. He also recalled a previous workshop experience where having multiple people use a shared set of machines (twenty-five in that case) led to inefficiencies compared to using individual machines.",
+          "rouge_f1": {
+            "rouge1": 0.3076923076923077,
+            "rouge2": 0.0196078431372549,
+            "rougeL": 0.1346153846153846
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            7,
+            6,
+            5
+          ],
+          "retrieval_precision": 0.548828125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The professor mentioned that the workshop would involve a kick-off meeting, followed by individual progress reports, and discussions on future plans until the next meeting.",
+          "rouge_f1": {
+            "rouge1": 0.20512820512820515,
+            "rouge2": 0.02631578947368421,
+            "rougeL": 0.17948717948717946
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            7,
+            6,
+            5,
+            10
+          ],
+          "retrieval_precision": 0.2744140625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Professor C mentioned a plan for a workshop kick-off meeting and individual progress reports. He also shared a recollection from a previous workshop experience where participants were excited about having access to twenty-five machines but noted that the efficiency was lower compared to using individual machines.",
+          "rouge_f1": {
+            "rouge1": 0.32,
+            "rouge2": 0.08163265306122448,
+            "rougeL": 0.2
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            7,
+            37
+          ],
+          "retrieval_precision": 0.20703125,
+          "retrieval_recall": 0.18861209964412812
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Professor C mentioned that the workshop involved a kick-off meeting and individual progress reports. Additionally, he recalled a previous workshop where participants were excited about having access to multiple machines but noted that efficiency was lower compared to using individual machines.",
+          "rouge_f1": {
+            "rouge1": 0.3191489361702128,
+            "rouge2": 0.021739130434782608,
+            "rougeL": 0.21276595744680848
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            7,
+            37,
+            11,
+            38
+          ],
+          "retrieval_precision": 0.103515625,
+          "retrieval_recall": 0.18861209964412812
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The professor mentioned that the workshop would involve a kick-off meeting, individual progress reports, and discussions on future plans. Additionally, the professor recalled a previous workshop where participants were excited about having twenty-five machines and a system similar to P-make, but noted that efficiency was lower compared to using individual machines.",
+          "rouge_f1": {
+            "rouge1": 0.3773584905660377,
+            "rouge2": 0.09615384615384615,
+            "rougeL": 0.22641509433962265
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            7,
+            37,
+            11,
+            38,
+            16,
+            29,
+            5
+          ],
+          "retrieval_precision": 0.0517578125,
+          "retrieval_recall": 0.18861209964412812
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about spectral subtraction",
+      "reference_answer": "The team was doing spectral subtraction with both scaling and GGT bins. There were pros and cons to both approaches. The professor suggested a simple spectral subtraction followed by a KL transformation. He also suggested using JRASTRA's technique which relied on adding some noise to get rid of noise. The team also suggested VTS techniques.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "PhD D discussed that implementing spectral subtraction improved the system significantly but required retuning the time constants of the online normalization. Keeping the original values did not help, indicating a need to find an optimal setting. They also mentioned experimenting with different types of spectral subtraction, including one based on mel energies, and noted the importance of frame dropping when applying spectral subtraction. PhD F inquired about whether spectral subtraction is typically applied post-mel scaling or on FFT bins, to which PhD D responded that both methods are possible.",
+          "rouge_f1": {
+            "rouge1": 0.2602739726027397,
+            "rouge2": 0.027777777777777776,
+            "rougeL": 0.12328767123287672
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            21,
+            19
+          ],
+          "retrieval_precision": 0.298828125,
+          "retrieval_recall": 0.1134173461823573
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The discussion about spectral subtraction involved implementing a method from France Telecom to improve speech quality by removing noise. Initially, there was confusion regarding whether they used the exact features provided by France Telecom or if they extracted features at the handset level before applying a Wiener filter. It was clarified that the process involved computing cepstral features after applying a Wiener filter. The team found that incorporating spectral subtraction improved system performance significantly but required retuning of time constants for online normalization. They also explored different implementations of spectral subtraction, including its application on mel energies and FFT bins, and considered combining spectral subtraction with other techniques like signal subspace processing.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.048192771084337345,
+            "rougeL": 0.13095238095238093
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            21,
+            19,
+            28,
+            29
+          ],
+          "retrieval_precision": 0.4365234375,
+          "retrieval_recall": 0.3313565604151223
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The discussion about spectral subtraction involved implementing spectral subtraction from France Telecom's methods, which included applying Wiener filters and computing cepstral features. Participants noted that spectral subtraction improved the system significantly but required retuning of time constants for online normalization. They also explored combining spectral subtraction with other techniques like signal subspace approaches and Wiener filtering, suggesting potential benefits in improving SNR before applying more complex processing. Additionally, concerns were raised about the effectiveness of spectral subtraction in large vocabulary tasks compared to Wiener filtering and signal subspace approaches.",
+          "rouge_f1": {
+            "rouge1": 0.2602739726027397,
+            "rouge2": 0.04166666666666667,
+            "rougeL": 0.13698630136986303
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            21,
+            19,
+            28,
+            29,
+            31,
+            36,
+            35,
+            30
+          ],
+          "retrieval_precision": 0.4833984375,
+          "retrieval_recall": 0.7338769458858414
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The discussion about spectral subtraction includes PhD D mentioning the implementation of a simple spectral subtraction method on mel energies, emphasizing the importance of frame dropping when applying spectral subtraction. PhD F inquired whether spectral subtraction is typically performed on mel-scaled data or FFT bins, to which PhD D responded that it can be done in both cases. Additionally, PhD A noted that spectral subtraction may not be effective for large vocabulary tasks compared to methods like Wiener filtering and subspace approaches, suggesting the need for optimization if simple spectral subtraction is used.",
+          "rouge_f1": {
+            "rouge1": 0.2933333333333334,
+            "rouge2": 0.05405405405405406,
+            "rougeL": 0.17333333333333337
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            35,
+            28
+          ],
+          "retrieval_precision": 0.33203125,
+          "retrieval_recall": 0.12601927353595255
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The discussion about spectral subtraction includes several key points:\n\n- Spectral subtraction was found to improve the system significantly when integrated, but required adjustments to the time constants of online normalization.\n- There was consideration of implementing a simple spectral subtraction method on mel energies, potentially including frame dropping.\n- Questions arose regarding where spectral subtraction should be applied—in the mel domain or on FFT bins—and it was noted that both approaches could be valid.\n- Suggestions were made to combine spectral subtraction with other methods, such as Wiener filtering or signal subspace processing, to enhance performance.\n- Concerns were raised about spectral subtraction's effectiveness in large vocabulary tasks compared to other techniques like Wiener filtering, indicating a need for optimization if used in such contexts.",
+          "rouge_f1": {
+            "rouge1": 0.2888888888888889,
+            "rouge2": 0.06741573033707865,
+            "rougeL": 0.15555555555555556
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            35,
+            28,
+            31,
+            21
+          ],
+          "retrieval_precision": 0.5703125,
+          "retrieval_recall": 0.4329132690882135
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The discussion about spectral subtraction includes several key points:\n\n- Spectral subtraction can improve baseline performance by 22% and in some cases by 50%, especially when endpoint information is provided.\n- Implementing spectral subtraction requires retuning the time constants of online normalization for optimal results.\n- Combining spectral subtraction with other methods, such as Wiener filtering or signal subspace approaches, is being considered to enhance performance, particularly in poor SNR conditions.\n- Spectral subtraction alone may not be ideal for large vocabulary tasks compared to Wiener filtering or signal subspace approaches, suggesting the need for optimization for specific applications.",
+          "rouge_f1": {
+            "rouge1": 0.2119205298013245,
+            "rouge2": 0.040268456375838924,
+            "rougeL": 0.11920529801324505
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            35,
+            28,
+            31,
+            21,
+            29,
+            36,
+            16,
+            23
+          ],
+          "retrieval_precision": 0.38330078125,
+          "retrieval_recall": 0.5819125277983692
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "PhD D discussed that incorporating spectral subtraction into their system significantly improved performance. However, this improvement necessitated retuning the time constants of the online normalization process. Keeping the original values for these constants did not yield benefits. The team planned to explore further optimizations through detailed analysis of results. Additionally, they were experimenting with different implementations of spectral subtraction, including its application on mel energies and FFT bins, considering the importance of frame dropping in spectral subtraction processes.",
+          "rouge_f1": {
+            "rouge1": 0.22388059701492538,
+            "rouge2": 0.04545454545454545,
+            "rougeL": 0.13432835820895525
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            21,
+            28
+          ],
+          "retrieval_precision": 0.328125,
+          "retrieval_recall": 0.1245366938472943
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The discussion about spectral subtraction focused on its implementation and effects within their system. PhD D noted that adding spectral subtraction improved the system significantly but required retuning the time constants of online normalization. Without these adjustments, spectral subtraction did not improve performance. They also explored different types of spectral subtraction, including simple methods on mel energies and FFT bins, and considered combining spectral subtraction with other techniques like Wiener filtering and signal subspace approaches. PhD A mentioned that spectral subtraction might not be ideal for large vocabulary tasks compared to Wiener filtering and subspace methods, suggesting the need for optimization if they decide to use it.",
+          "rouge_f1": {
+            "rouge1": 0.2822085889570552,
+            "rouge2": 0.037267080745341616,
+            "rougeL": 0.14723926380368096
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            21,
+            28,
+            35,
+            31
+          ],
+          "retrieval_precision": 0.421875,
+          "retrieval_recall": 0.3202372127501853
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The discussion about spectral subtraction includes several key points:\n\n- Spectral subtraction can improve performance when the entire speech is available for analysis, not just the endpoints.\n- Implementing spectral subtraction from France Telecom's samples showed significant improvements, though adjustments to time constants for online normalization were necessary.\n- Combining spectral subtraction with other methods, such as Wiener filtering or signal subspace approaches, was suggested to enhance performance further.\n- Spectral subtraction alone may not be optimal for large vocabulary tasks, with improvements often seen with Wiener filtering or signal subspace approaches instead.\n- There was consideration of applying spectral subtraction to the Wall Street Journal dataset with artificially added noise for testing.",
+          "rouge_f1": {
+            "rouge1": 0.23030303030303034,
+            "rouge2": 0.03680981595092024,
+            "rougeL": 0.1212121212121212
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            21,
+            28,
+            35,
+            31,
+            29,
+            19,
+            36,
+            16
+          ],
+          "retrieval_precision": 0.38330078125,
+          "retrieval_recall": 0.5819125277983692
+        },
+        "word_packed__dense__w512": {
+          "answer": "The discussion about spectral subtraction includes PhD D mentioning the implementation of a simple spectral subtraction method on mel energies, emphasizing the importance of frame dropping when applying spectral subtraction. PhD A notes that spectral subtraction does not seem suitable for large vocabulary tasks based on reviewed literature, suggesting improvements might come from Wiener filtering or subspace approaches instead. PhD F inquired about whether spectral subtraction is typically performed on mel-scaled data or FFT bins, to which PhD D responded unsurely.",
+          "rouge_f1": {
+            "rouge1": 0.2608695652173913,
+            "rouge2": 0.058823529411764705,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            33
+          ],
+          "retrieval_precision": 0.220703125,
+          "retrieval_recall": 0.083765752409192
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The discussion about spectral subtraction includes several points:\n\n- Spectral subtraction was found to improve the system significantly when added directly to the existing setup.\n- However, the time constants of the online normalization needed to be retuned for optimal performance.\n- Simple spectral subtraction on mel energies was being considered, with frame dropping deemed important for its effectiveness.\n- The application of spectral subtraction on colored noise was discussed, suggesting a method involving inverse filtering to whiten the noise before applying spectral subtraction.\n- Concerns were raised about the suitability of spectral subtraction for large vocabulary tasks, with alternatives like Wiener filtering and subspace approaches suggested as potentially more effective.\n- There was mention of generating datasets with artificially added noise for testing purposes, particularly in the context of large vocabulary tasks.",
+          "rouge_f1": {
+            "rouge1": 0.26229508196721313,
+            "rouge2": 0.0441988950276243,
+            "rougeL": 0.1530054644808743
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            33,
+            29,
+            20
+          ],
+          "retrieval_precision": 0.3603515625,
+          "retrieval_recall": 0.27353595255744995
+        },
+        "word_packed__dense__w2048": {
+          "answer": "PhD A mentioned that spectral subtraction and Wiener filtering are the main approaches people have tried in speech enhancement algorithms. PhD D noted that when spectral subtraction was plugged into their system, it significantly improved performance, though adjustments to the time constants of online normalization were necessary. PhD A also suggested that spectral subtraction might need optimization for large vocabulary tasks and that it generally performs poorly under poor SNR conditions and with colored noise.",
+          "rouge_f1": {
+            "rouge1": 0.29007633587786263,
+            "rouge2": 0.04651162790697675,
+            "rougeL": 0.15267175572519082
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            33,
+            29,
+            20,
+            28,
+            18,
+            17,
+            30
+          ],
+          "retrieval_precision": 0.40869140625,
+          "retrieval_recall": 0.6204595997034841
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The discussion about spectral subtraction includes PhD D mentioning the implementation of a simple spectral subtraction method on mel energies, emphasizing the importance of frame dropping when applying spectral subtraction. PhD A notes that spectral subtraction does not seem suitable for large vocabulary tasks based on reviewed literature, suggesting improvements might come from Wiener filtering or subspace approaches instead. PhD F inquired about whether spectral subtraction is typically performed on mel-scaled data or FFT bins, to which PhD D responded unsurely.",
+          "rouge_f1": {
+            "rouge1": 0.2608695652173913,
+            "rouge2": 0.058823529411764705,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33,
+            25
+          ],
+          "retrieval_precision": 0.220703125,
+          "retrieval_recall": 0.083765752409192
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The discussion about spectral subtraction includes the following points:\n\n- Spectral subtraction was found to improve the system significantly when added directly to an existing setup.\n- The time constants of online normalization needed to be retuned when spectral subtraction was introduced.\n- Simple spectral subtraction was being considered for implementation, particularly on mel energies.\n- Frame dropping was deemed important when using spectral subtraction.\n- Combining spectral subtraction with other methods like Wiener filtering or signal subspace approaches was suggested for potential improvements.\n- Continuous speech data with artificially added noise was being used for testing these methods.\n- Spectral subtraction alone may not be optimal for large vocabulary tasks compared to Wiener filtering or subspace approaches, suggesting the need for optimization.",
+          "rouge_f1": {
+            "rouge1": 0.24418604651162792,
+            "rouge2": 0.04705882352941177,
+            "rougeL": 0.15116279069767444
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33,
+            25,
+            20,
+            27
+          ],
+          "retrieval_precision": 0.3603515625,
+          "retrieval_recall": 0.27353595255744995
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The discussion about spectral subtraction focused on its effectiveness in improving speech quality, particularly noting improvements of up to 50% in certain cases when used with endpoint detection. Participants discussed combining spectral subtraction with other techniques, such as Wiener filtering and signal subspace approaches, to enhance performance further. They explored the idea of using spectral subtraction as a preliminary step to improve Signal-to-Noise Ratio (SNR) before applying more complex methods. However, concerns were raised about the applicability of spectral subtraction in large vocabulary tasks due to its limitations in handling colored noise and poor SNR conditions.",
+          "rouge_f1": {
+            "rouge1": 0.2727272727272727,
+            "rouge2": 0.03947368421052632,
+            "rougeL": 0.16883116883116886
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33,
+            25,
+            20,
+            27,
+            18,
+            29,
+            28,
+            16
+          ],
+          "retrieval_precision": 0.43017578125,
+          "retrieval_recall": 0.6530763528539659
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The discussion about spectral subtraction includes PhD D mentioning the implementation of a simple spectral subtraction method on mel energies, emphasizing the importance of frame dropping when applying spectral subtraction. PhD A notes that spectral subtraction does not seem suitable for large vocabulary tasks based on reviewed literature, suggesting improvements might come from Wiener filtering or subspace approaches instead. PhD F inquired about whether spectral subtraction is typically performed on mel-scaled data or FFT bins, to which PhD D responded unsurely.",
+          "rouge_f1": {
+            "rouge1": 0.2608695652173913,
+            "rouge2": 0.058823529411764705,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            33
+          ],
+          "retrieval_precision": 0.220703125,
+          "retrieval_recall": 0.083765752409192
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The discussion about spectral subtraction includes several points:\n\n- Spectral subtraction was found to improve the system significantly when added directly to the existing setup.\n- However, the time constants of the online normalization needed to be retuned for optimal performance.\n- Simple spectral subtraction on mel energies was being considered, with frame dropping deemed important for its effectiveness.\n- The application of spectral subtraction on colored noise was discussed, suggesting a method involving inverse filtering to whiten the noise before applying spectral subtraction.\n- Concerns were raised about the suitability of spectral subtraction for large vocabulary tasks, with alternatives like Wiener filtering and subspace approaches suggested as potentially more effective.\n- There was mention of generating datasets with artificially added noise for testing purposes, particularly in the context of large vocabulary tasks.",
+          "rouge_f1": {
+            "rouge1": 0.26229508196721313,
+            "rouge2": 0.0441988950276243,
+            "rougeL": 0.1530054644808743
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            33,
+            20,
+            29
+          ],
+          "retrieval_precision": 0.3603515625,
+          "retrieval_recall": 0.27353595255744995
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "PhD A mentioned that spectral subtraction and Wiener filtering are the main approaches used in speech enhancement algorithms. PhD D noted that incorporating spectral subtraction from the French Telecom system significantly improved performance, though adjustments to time constants for online normalization were necessary. Additionally, PhD A suggested that spectral subtraction could be combined with other methods like Wiener filtering or signal subspace approaches to potentially enhance performance, especially under poor Signal-to-Noise Ratio (SNR) conditions. However, spectral subtraction alone is generally less effective for large vocabulary tasks compared to Wiener filtering or the subspace approach.",
+          "rouge_f1": {
+            "rouge1": 0.23684210526315794,
+            "rouge2": 0.026666666666666665,
+            "rougeL": 0.14473684210526316
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            33,
+            20,
+            29,
+            18,
+            28,
+            27,
+            17
+          ],
+          "retrieval_precision": 0.43017578125,
+          "retrieval_recall": 0.6530763528539659
+        },
+        "lumber__dense__w512": {
+          "answer": "The discussion about spectral subtraction involved PhD D suggesting the inclusion of spectral subtraction methods in their code, specifically mentioning testing it on mel energies without frame dropping, though they noted that frame dropping could be important when using spectral subtraction. There was also a debate on where spectral subtraction should be applied—on FFT bins or mel energies—with PhD D stating that both methods are possible but unsure about the advantages and disadvantages of each. PhD A suggested that for speech reconstruction, applying spectral subtraction on FFT bins might be preferable, while for speech recognition, the choice between FFT bins or mel energies might not significantly impact performance due to subsequent linear weighting.",
+          "rouge_f1": {
+            "rouge1": 0.2573099415204679,
+            "rouge2": 0.023668639053254437,
+            "rougeL": 0.14035087719298245
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            17
+          ],
+          "retrieval_precision": 0.61328125,
+          "retrieval_recall": 0.23276501111934766
+        },
+        "lumber__dense__w1024": {
+          "answer": "The discussion about spectral subtraction includes several key points:\n\n- PhD D mentions that applying spectral subtraction significantly improved their results.\n- There's a need to retune the time constants of online normalization when using spectral subtraction.\n- Spectral subtraction can be applied either on FFT bins or mel energies, though the optimal choice isn't clear.\n- For speech reconstruction, performing spectral subtraction on FFT bins might be preferable, whereas for speech recognition, it may not make much difference whether it's done on mel-warped or FFT bins.\n- Colored noise issues were discussed, suggesting a method involving inverse filtering to make noise white before spectral subtraction and then filtering again during reconstruction.\n- PhD A notes that spectral subtraction is less effective for large vocabulary tasks compared to small vocabulary tasks.",
+          "rouge_f1": {
+            "rouge1": 0.23783783783783785,
+            "rouge2": 0.03278688524590164,
+            "rougeL": 0.14054054054054052
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            17,
+            26,
+            28
+          ],
+          "retrieval_precision": 0.5927734375,
+          "retrieval_recall": 0.44996293550778355
+        },
+        "lumber__dense__w2048": {
+          "answer": "The discussion about spectral subtraction involved comparing it with other methods such as Wiener filtering and signal subspace approaches. PhD A mentioned that spectral subtraction, when combined with Wiener filtering, can improve speech quality but noted that it performs poorly under low Signal-to-Noise Ratio (SNR) conditions and with colored noise. They suggested that spectral subtraction followed by a KL transform and Wiener filtering could be a viable approach. Additionally, PhD A highlighted that spectral subtraction is less effective for large vocabulary tasks compared to Wiener filtering and the signal subspace approach. The group also discussed the need for optimizing spectral subtraction for large vocabulary tasks and the importance of testing these methods on datasets like the Wall Street Journal with artificially added noise.",
+          "rouge_f1": {
+            "rouge1": 0.287292817679558,
+            "rouge2": 0.0893854748603352,
+            "rougeL": 0.19889502762430938
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            17,
+            26,
+            28,
+            29,
+            16,
+            25
+          ],
+          "retrieval_precision": 0.4365234375,
+          "retrieval_recall": 0.6627131208302446
+        },
+        "lumber__bm25__w512": {
+          "answer": "The discussion about spectral subtraction includes testing it on both FFT bins and mel energies, with no clear preference stated between the two methods. PhD A mentions that spectral subtraction may not be ideal for large vocabulary tasks compared to Wiener filtering or subspace approaches, suggesting the need for optimization if used.",
+          "rouge_f1": {
+            "rouge1": 0.3148148148148148,
+            "rouge2": 0.03773584905660377,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            23
+          ],
+          "retrieval_precision": 0.384765625,
+          "retrieval_recall": 0.14603409933283915
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The discussion about spectral subtraction includes PhD D mentioning that they are experimenting with spectral subtraction on both mel energies and FFT bins, though the preference between the two isn't clear. PhD A suggests that for speech reconstruction, performing spectral subtraction on FFT bins might be better, whereas for speech recognition, it may not significantly differ whether performed on mel-warped or FFT bins. Additionally, PhD A notes that spectral subtraction is generally less effective for large vocabulary tasks compared to Wiener filtering and subspace approaches, and that optimizing simple spectral subtraction might be necessary for its application in such tasks.",
+          "rouge_f1": {
+            "rouge1": 0.24050632911392403,
+            "rouge2": 0.038461538461538464,
+            "rougeL": 0.16455696202531644
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            23,
+            26,
+            21
+          ],
+          "retrieval_precision": 0.5927734375,
+          "retrieval_recall": 0.44996293550778355
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The discussion about spectral subtraction includes several key points:\n\n- PhD D mentioned that applying spectral subtraction significantly improved results, but required retuning the time constants of online normalization.\n- PhD D suggested testing different types of spectral subtraction, including simple spectral subtraction on mel energies and FFT bins.\n- PhD A noted that spectral subtraction might not be optimal for large vocabulary tasks compared to Wiener filtering or signal subspace approaches, especially in noisy conditions.\n- There was a suggestion to combine spectral subtraction with other techniques like Wiener filtering or signal subspace methods to improve performance.\n- The group discussed the potential benefits of using spectral subtraction before other processing steps, such as signal subspace analysis, to enhance speech clarity.",
+          "rouge_f1": {
+            "rouge1": 0.2774566473988439,
+            "rouge2": 0.04678362573099415,
+            "rougeL": 0.15028901734104044
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            23,
+            26,
+            21,
+            17,
+            24,
+            29,
+            25
+          ],
+          "retrieval_precision": 0.57177734375,
+          "retrieval_recall": 0.8680504077094143
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The discussion about spectral subtraction includes considering its application on either FFT bins or mel energies, with no clear consensus on which method is superior. There's an acknowledgment that spectral subtraction might not be optimal for large vocabulary tasks compared to methods like Wiener filtering, suggesting potential need for optimization if used.",
+          "rouge_f1": {
+            "rouge1": 0.25688073394495414,
+            "rouge2": 0.037383177570093455,
+            "rougeL": 0.1651376146788991
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            28
+          ],
+          "retrieval_precision": 0.61328125,
+          "retrieval_recall": 0.23276501111934766
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The discussion about spectral subtraction included considerations on where to apply it (FFT bins vs. mel energies), its effectiveness in speech reconstruction versus speech recognition, and its performance compared to other methods like Wiener filtering and the subspace approach, especially in large vocabulary tasks. PhD A noted that spectral subtraction may not be optimal for large vocabulary tasks and might require optimization. Additionally, there was a brief mention of how spectral subtraction could be used in conjunction with noise addition techniques to improve speech clarity.",
+          "rouge_f1": {
+            "rouge1": 0.3120567375886525,
+            "rouge2": 0.028776978417266185,
+            "rougeL": 0.19858156028368795
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            28,
+            26,
+            17
+          ],
+          "retrieval_precision": 0.5927734375,
+          "retrieval_recall": 0.44996293550778355
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The discussion about spectral subtraction involved comparing it with other methods like Wiener filtering and signal subspace approaches. PhD D mentioned that applying spectral subtraction improved results significantly but required retuning the time constants of online normalization. PhD A noted that spectral subtraction might not be optimal for large vocabulary tasks compared to Wiener filtering and signal subspace approaches. Additionally, there was a suggestion to test spectral subtraction on FFT bins versus mel energies, though the pros and cons of each method were unclear. The group also discussed combining spectral subtraction with other speech enhancement techniques to potentially improve performance.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.06493506493506493,
+            "rougeL": 0.21794871794871798
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            28,
+            26,
+            17,
+            29,
+            16,
+            24
+          ],
+          "retrieval_precision": 0.4365234375,
+          "retrieval_recall": 0.6627131208302446
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the team say about the person in Grenada?",
+      "reference_answer": "PhD D brought up a VTS technique to do voice-unvoice which was developed by Jose Carlos Segura, who is a person from Grenada. The professor did not know him, but the inspiration for the VTS had come from CMU.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The evidence provided does not contain any relevant information about what the team said regarding a person in Grenada.",
+          "rouge_f1": {
+            "rouge1": 0.20338983050847456,
+            "rouge2": 0.03508771929824561,
+            "rougeL": 0.10169491525423728
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            50,
+            51,
+            52
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The evidence is insufficient to determine what the team said about the person in Grenada. The provided excerpts do not contain any relevant information regarding a person in Grenada.",
+          "rouge_f1": {
+            "rouge1": 0.2898550724637681,
+            "rouge2": 0.05970149253731343,
+            "rougeL": 0.14492753623188406
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            50,
+            51,
+            52,
+            0,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The evidence provided does not contain any relevant information about what the team said regarding a person in Grenada.",
+          "rouge_f1": {
+            "rouge1": 0.20338983050847456,
+            "rouge2": 0.03508771929824561,
+            "rougeL": 0.10169491525423728
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            50,
+            51,
+            52,
+            0,
+            1,
+            2,
+            23,
+            12,
+            38
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The team mentioned a person in Grenada who is working on implementing Vector Taylor Series (VTS) techniques to model the transformation between clean cepstra and noisy cepstra. The name of the person in Grenada is Jose Carlos Segura, as stated by PhD B.",
+          "rouge_f1": {
+            "rouge1": 0.38554216867469876,
+            "rouge2": 0.14814814814814817,
+            "rougeL": 0.16867469879518074
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            32,
+            2,
+            24
+          ],
+          "retrieval_precision": 0.4921875,
+          "retrieval_recall": 0.9767441860465116
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The team mentioned a person in Grenada named Jose Carlos Segura who is working on Vector Taylor Series (VTS) techniques for modeling the transformation between clean cepstra and noisy cepstra.",
+          "rouge_f1": {
+            "rouge1": 0.37142857142857144,
+            "rouge2": 0.17647058823529413,
+            "rougeL": 0.2285714285714286
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            32,
+            2,
+            24,
+            56,
+            46
+          ],
+          "retrieval_precision": 0.24609375,
+          "retrieval_recall": 0.9767441860465116
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The team mentioned a person in Grenada who is working on Vector Taylor Series (VTS) techniques for modeling the transformation between clean cepstra and noisy cepstra. This individual's name is Jose Carlos Segura.",
+          "rouge_f1": {
+            "rouge1": 0.35135135135135137,
+            "rouge2": 0.1388888888888889,
+            "rougeL": 0.16216216216216214
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            32,
+            2,
+            24,
+            56,
+            46,
+            5,
+            52,
+            36,
+            44,
+            10
+          ],
+          "retrieval_precision": 0.123046875,
+          "retrieval_recall": 0.9767441860465116
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The evidence provided does not contain any relevant information about what the team said regarding a person in Grenada.",
+          "rouge_f1": {
+            "rouge1": 0.20338983050847456,
+            "rouge2": 0.03508771929824561,
+            "rougeL": 0.10169491525423728
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            52,
+            50
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team mentioned that there is someone in Grenada who works on Vector Taylor Series techniques to model the transformation between clean cepstra and noisy cepstra.",
+          "rouge_f1": {
+            "rouge1": 0.2121212121212121,
+            "rouge2": 0.03125,
+            "rougeL": 0.09090909090909093
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            52,
+            50,
+            24,
+            32
+          ],
+          "retrieval_precision": 0.1884765625,
+          "retrieval_recall": 0.748062015503876
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team mentioned a person in Grenada who is working on Vector Taylor Series (VTS) techniques in the cepstral domain. Specifically, PhD D referred to \"one guy in Grenada\" and PhD B identified him as Jose Carlos Segura.",
+          "rouge_f1": {
+            "rouge1": 0.41025641025641024,
+            "rouge2": 0.15789473684210525,
+            "rougeL": 0.1794871794871795
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            52,
+            50,
+            24,
+            32,
+            36,
+            11,
+            38,
+            46
+          ],
+          "retrieval_precision": 0.123046875,
+          "retrieval_recall": 0.9767441860465116
+        },
+        "word_packed__dense__w512": {
+          "answer": "The team mentioned that there is a person named Jose Carlos Segura working in Grenada. The conversation did not provide further details about his work or contributions beyond his name and location.",
+          "rouge_f1": {
+            "rouge1": 0.3055555555555556,
+            "rouge2": 0.17142857142857143,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            31
+          ],
+          "retrieval_precision": 0.2109375,
+          "retrieval_recall": 0.4186046511627907
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The team mentioned a person named Jose Carlos Segura who is in Grenada. This individual was referred to as \"one guy in Grenada\" by PhD D and further identified by PhD B. There were no additional comments or thoughts expressed by the team regarding this person beyond his name and location.",
+          "rouge_f1": {
+            "rouge1": 0.3296703296703296,
+            "rouge2": 0.13483146067415733,
+            "rougeL": 0.1758241758241758
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            31,
+            48,
+            1
+          ],
+          "retrieval_precision": 0.10546875,
+          "retrieval_recall": 0.4186046511627907
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The team mentioned a person named Jose Carlos Segura who works in Grenada. No further details about his role or contributions were provided in the excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.27272727272727276,
+            "rouge2": 0.125,
+            "rougeL": 0.2121212121212121
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            31,
+            48,
+            1,
+            2,
+            18,
+            16,
+            0
+          ],
+          "retrieval_precision": 0.052734375,
+          "retrieval_recall": 0.4186046511627907
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The team mentioned a person in Grenada named Jose Carlos Segura, referred to as \"one guy in Grenada\" who worked on the VTS proposed by CMU. No further details about his thoughts or contributions were provided in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.35,
+            "rouge2": 0.10256410256410256,
+            "rougeL": 0.20000000000000004
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            23
+          ],
+          "retrieval_precision": 0.2109375,
+          "retrieval_recall": 0.4186046511627907
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The team mentioned a person named Jose Carlos Segura who works in Grenada. They discussed that he is involved in work related to the VTS proposed by CMU, though the specifics of his contributions or thoughts were not detailed in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.38554216867469876,
+            "rouge2": 0.12345679012345678,
+            "rougeL": 0.21686746987951808
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            23,
+            3,
+            52
+          ],
+          "retrieval_precision": 0.10546875,
+          "retrieval_recall": 0.4186046511627907
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The team mentioned a person named Jose Carlos Segura who works in Grenada. They discussed that he is involved in work related to noise removal techniques and that the idea originated from CMU. No further details about his specific contributions or thoughts were provided in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.3409090909090909,
+            "rouge2": 0.11627906976744187,
+            "rougeL": 0.20454545454545456
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            23,
+            3,
+            52,
+            42,
+            2,
+            5,
+            18
+          ],
+          "retrieval_precision": 0.052734375,
+          "retrieval_recall": 0.4186046511627907
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The team mentioned a person in Grenada named Jose Carlos Segura, referred to as \"one guy in Grenada\" who worked on the VTS proposed by CMU. No further details about his thoughts or contributions were provided in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.35,
+            "rouge2": 0.10256410256410256,
+            "rougeL": 0.20000000000000004
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            23
+          ],
+          "retrieval_precision": 0.2109375,
+          "retrieval_recall": 0.4186046511627907
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The team mentioned a person in Grenada named Jose Carlos Segura, referred to as \"one guy in Grenada\" who was working in the cepstral domain on a project related to noise removal techniques. The project's initial idea was proposed by CMU.",
+          "rouge_f1": {
+            "rouge1": 0.3902439024390244,
+            "rouge2": 0.075,
+            "rougeL": 0.1951219512195122
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            23,
+            2,
+            18
+          ],
+          "retrieval_precision": 0.10546875,
+          "retrieval_recall": 0.4186046511627907
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The team mentioned a person named Jose Carlos Segura who works in Grenada. The conversation about him was brief and mainly focused on his involvement in research related to noise removal techniques. There were no further details provided about this individual beyond his name and location.",
+          "rouge_f1": {
+            "rouge1": 0.3023255813953488,
+            "rouge2": 0.11904761904761904,
+            "rougeL": 0.18604651162790697
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            23,
+            2,
+            18,
+            48,
+            47,
+            1,
+            5
+          ],
+          "retrieval_precision": 0.052734375,
+          "retrieval_recall": 0.4186046511627907
+        },
+        "lumber__dense__w512": {
+          "answer": "The evidence is insufficient to determine what the team said about the person in Grenada. The meeting excerpts do not contain any relevant information regarding a person in Grenada.",
+          "rouge_f1": {
+            "rouge1": 0.2898550724637681,
+            "rouge2": 0.05970149253731343,
+            "rougeL": 0.14492753623188406
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            38,
+            39
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The evidence provided does not contain any information about what the team said regarding a person in Grenada. The excerpts focus on discussions about progress reports, Sunil's visit, housing arrangements, and technical details of projects but do not mention anyone located in Grenada.",
+          "rouge_f1": {
+            "rouge1": 0.2142857142857143,
+            "rouge2": 0.04878048780487805,
+            "rougeL": 0.11904761904761904
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            38,
+            39,
+            19,
+            4,
+            21,
+            12
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The evidence is insufficient to determine what the team said about the person in Grenada. There are no mentions of anyone located in Grenada or discussions related to such a person in the provided meeting excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.2105263157894737,
+            "rouge2": 0.027027027027027025,
+            "rougeL": 0.10526315789473685
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            38,
+            39,
+            19,
+            4,
+            21,
+            12,
+            0,
+            37
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The team mentioned that there is a person named Jose Carlos Segura working in Grenada who has an implementation of VTS (Vector Taylor Series) techniques used to model the transformation between clean cepstra and noisy cepstra.",
+          "rouge_f1": {
+            "rouge1": 0.34210526315789475,
+            "rouge2": 0.1081081081081081,
+            "rougeL": 0.15789473684210525
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27
+          ],
+          "retrieval_precision": 0.50390625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The team mentioned a person in Grenada named Jose Carlos Segura who is working on implementing Vector Taylor Series (VTS) techniques for noise reduction in the cepstral domain. The mention of this individual was in the context of exploring different methods to combine noise removal techniques with other approaches being considered by the team.",
+          "rouge_f1": {
+            "rouge1": 0.3617021276595745,
+            "rouge2": 0.13043478260869568,
+            "rougeL": 0.19148936170212766
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21,
+            4,
+            6
+          ],
+          "retrieval_precision": 0.251953125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The team mentioned a person in Grenada named Jose Carlos Segura who is working on Vector Taylor Series (VTS) techniques to model the transformation between clean cepstra and noisy cepstra. The mention of this individual was in the context of exploring various methods for noise removal and combining them with other techniques being considered by the team.",
+          "rouge_f1": {
+            "rouge1": 0.35051546391752575,
+            "rouge2": 0.14736842105263157,
+            "rougeL": 0.20618556701030927
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21,
+            4,
+            6,
+            5,
+            42
+          ],
+          "retrieval_precision": 0.1259765625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The evidence provided does not contain any statements or discussions specifically about a person in Grenada. The excerpts focus on general meeting proceedings, progress updates, and technical discussions without mentioning anyone located in Grenada. Therefore, the evidence is insufficient to answer the question.",
+          "rouge_f1": {
+            "rouge1": 0.21686746987951808,
+            "rouge2": 0.049382716049382706,
+            "rougeL": 0.14457831325301204
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            4,
+            37
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The meeting excerpts provided do not contain any specific statements or discussions about a person in Grenada. The conversation primarily revolves around progress reports, future plans, and technical details of ongoing research projects within the team. There is no mention of anyone located in Grenada. Therefore, the evidence is insufficient to answer the question about what the team said about the person in Grenada.",
+          "rouge_f1": {
+            "rouge1": 0.19230769230769232,
+            "rouge2": 0.0392156862745098,
+            "rougeL": 0.1346153846153846
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            4,
+            37,
+            38,
+            27
+          ],
+          "retrieval_precision": 0.0341796875,
+          "retrieval_recall": 0.13565891472868216
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The team mentioned a person in Grenada who is working on Vector Taylor Series (VTS) techniques to model the transformation between clean cepstra and noisy cepstra. Specifically, PhD D referred to \"one guy in Grenada\" working on this, and PhD B identified him as Jose Carlos Segura.",
+          "rouge_f1": {
+            "rouge1": 0.36781609195402304,
+            "rouge2": 0.16470588235294117,
+            "rougeL": 0.16091954022988506
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            4,
+            37,
+            38,
+            27,
+            11,
+            16
+          ],
+          "retrieval_precision": 0.1259765625,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the professor think about the Wiener filter?",
+      "reference_answer": "The professor could not see the advantage in combining the Wiener filter and the subspace. He later understood it would be a simple spectral subtraction, followed by a KL transform, followed by a Wiener filter.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The evidence is insufficient to determine what the professor specifically thought about the Wiener filter. The professor asked questions about how the Wiener filter differs from signal subspace approaches but did not express a clear opinion or thought about the Wiener filter itself.",
+          "rouge_f1": {
+            "rouge1": 0.3076923076923077,
+            "rouge2": 0.10526315789473684,
+            "rougeL": 0.2564102564102564
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            30,
+            29,
+            28
+          ],
+          "retrieval_precision": 0.5703125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The professor expressed curiosity and some confusion about the Wiener filter, indicating a lack of familiarity with its specific application in the context discussed. The professor asked for clarification on how the Wiener filter differs from the signal subspace approach and acknowledged that the Wiener filter is part of the signal subspace method, particularly following a KL transform. The professor seemed open to the idea of combining different noise reduction techniques, including the Wiener filter, to potentially improve signal processing under poor SNR conditions and in the presence of colored noise. However, the professor also noted concerns about the effectiveness of certain methods, like orthogonalization, in noisy conditions.",
+          "rouge_f1": {
+            "rouge1": 0.2517482517482517,
+            "rouge2": 0.0851063829787234,
+            "rougeL": 0.22377622377622378
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            30,
+            29,
+            28,
+            33,
+            39
+          ],
+          "retrieval_precision": 0.28515625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The professor thought about the Wiener filter in the context of combining it with other speech enhancement techniques. Specifically, the professor asked how the Wiener filter differs from the signal subspace approach and seemed interested in understanding how these methods could be combined effectively. The professor acknowledged that the signal subspace approach includes an inherent Wiener filtering step and expressed curiosity about the potential benefits of combining simpler noise reduction steps (like spectral subtraction) with more complex methods before applying a Wiener filter.",
+          "rouge_f1": {
+            "rouge1": 0.3220338983050847,
+            "rouge2": 0.10344827586206896,
+            "rougeL": 0.2711864406779661
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            30,
+            29,
+            28,
+            33,
+            39,
+            17,
+            48,
+            57,
+            12
+          ],
+          "retrieval_precision": 0.142578125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The professor expressed curiosity and some confusion about the Wiener filter, asking how it differs from signal subspace approaches. After learning that the signal subspace approach includes a built-in Wiener filter, the professor acknowledged this and discussed the potential benefits of combining spectral subtraction with a Wiener filter, especially in noisy conditions.",
+          "rouge_f1": {
+            "rouge1": 0.40909090909090906,
+            "rouge2": 0.13953488372093026,
+            "rougeL": 0.29545454545454547
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            30,
+            19
+          ],
+          "retrieval_precision": 0.5703125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The professor expressed curiosity and some confusion about the Wiener filter, indicating a lack of complete understanding or familiarity with its application in the context discussed. The professor asked for clarification on how the Wiener filter differs from signal subspace approaches and acknowledged being \"ignorant\" about certain aspects of the Wiener filter's functionality, particularly regarding its assumptions about signal addition. The professor seemed open to learning more about the Wiener filter's role in signal processing and its comparison to other methods like signal subspace approaches and spectral subtraction.",
+          "rouge_f1": {
+            "rouge1": 0.256,
+            "rouge2": 0.08130081300813008,
+            "rougeL": 0.192
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            30,
+            19,
+            20,
+            44
+          ],
+          "retrieval_precision": 0.28515625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The professor thought that Wiener filtering could be beneficial as part of a combined approach for speech enhancement, particularly following a simpler method like spectral subtraction to improve SNR initially. However, the professor expressed some uncertainty about the specifics of how Wiener filtering differs from other methods like the signal subspace approach, indicating a need for clarification on the technical details.",
+          "rouge_f1": {
+            "rouge1": 0.39583333333333337,
+            "rouge2": 0.0851063829787234,
+            "rougeL": 0.20833333333333334
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            30,
+            19,
+            20,
+            44,
+            28,
+            35,
+            12,
+            17,
+            11
+          ],
+          "retrieval_precision": 0.142578125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The evidence is insufficient to determine what the professor specifically thought about the Wiener filter. The professor asked questions about how the Wiener filter differs from signal subspace approaches but did not express a clear opinion or thought about the Wiener filter itself.",
+          "rouge_f1": {
+            "rouge1": 0.3076923076923077,
+            "rouge2": 0.10526315789473684,
+            "rougeL": 0.2564102564102564
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            30,
+            28
+          ],
+          "retrieval_precision": 0.5703125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The evidence provided does not contain a direct statement from the professor expressing his thoughts about the Wiener filter. However, based on the context, it can be inferred that the professor was curious about how the Wiener filter interacts with other methods, as seen in excerpt [406], where he asks, \"How is it {disfmarker} I {disfmarker} I guess I 'm ignorant about this, how does {disfmarker} I mean, since Wiener filter also assumes that you're {disfmarker} that you're adding together the two signals, how is {disfmarker} how is that differ from signal subspace?\" This indicates that the professor was seeking clarification on the Wiener filter's role and its differences from other approaches. Therefore, the evidence is insufficient to definitively state what the professor thought about the Wiener filter beyond his curiosity and need for clarification.",
+          "rouge_f1": {
+            "rouge1": 0.19653179190751444,
+            "rouge2": 0.04678362573099415,
+            "rougeL": 0.12716763005780346
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            30,
+            28,
+            19,
+            17
+          ],
+          "retrieval_precision": 0.28515625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The evidence provided does not contain a direct statement from the professor expressing his thoughts specifically about the Wiener filter. However, based on the context, it can be inferred that the professor seemed interested in understanding how Wiener filtering fits into the overall speech enhancement strategies being discussed. When PhD A mentioned combining Wiener filtering with signal subspace approaches, the professor asked clarifying questions about how Wiener filtering differs from and interacts with the signal subspace method. This indicates that the professor was engaged in understanding the technical aspects of Wiener filtering within the context of improving speech enhancement techniques.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.06015037593984963,
+            "rougeL": 0.1925925925925926
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            30,
+            28,
+            19,
+            17,
+            39,
+            12,
+            35,
+            36
+          ],
+          "retrieval_precision": 0.142578125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The professor expressed curiosity and sought clarification about the Wiener filter, indicating a need to understand its relationship with signal subspace approaches. After being informed that the signal subspace method incorporates a form of Wiener filtering, the professor acknowledged this and considered the potential benefits of combining techniques, particularly in scenarios with poor signal-to-noise ratios (SNR) and colored noise.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.0851063829787234,
+            "rougeL": 0.20833333333333334
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            28
+          ],
+          "retrieval_precision": 0.544921875,
+          "retrieval_recall": 0.9554794520547946
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The professor expressed curiosity and some uncertainty about the Wiener filter, asking for clarification on its assumptions and differences from signal subspace approaches. After learning that the signal subspace method incorporates a Wiener filter, the professor acknowledged this and seemed open to exploring combinations of techniques, including Wiener filtering, for noise reduction and signal processing.",
+          "rouge_f1": {
+            "rouge1": 0.2888888888888889,
+            "rouge2": 0.11363636363636363,
+            "rougeL": 0.2444444444444445
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            28,
+            31,
+            39
+          ],
+          "retrieval_precision": 0.2724609375,
+          "retrieval_recall": 0.9554794520547946
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The professor thought positively about the Wiener filter, as indicated by his response to PhD A's statement about combining Wiener filtering with signal subspace approaches. He showed interest and asked clarifying questions, indicating he views the Wiener filter as a valuable component in speech enhancement techniques.",
+          "rouge_f1": {
+            "rouge1": 0.39024390243902435,
+            "rouge2": 0.09999999999999999,
+            "rougeL": 0.24390243902439024
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            28,
+            31,
+            39,
+            33,
+            25,
+            17,
+            34
+          ],
+          "retrieval_precision": 0.13623046875,
+          "retrieval_recall": 0.9554794520547946
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The professor thought that the Wiener filter is part of a process that can be combined with other techniques such as the KL transform. Specifically, the professor acknowledged that the signal subspace approach includes an in-built Wiener filtering step and seemed to understand its role in signal processing, particularly noting its effectiveness under certain conditions compared to spectral subtraction alone.",
+          "rouge_f1": {
+            "rouge1": 0.39583333333333337,
+            "rouge2": 0.12765957446808512,
+            "rougeL": 0.20833333333333334
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            19
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.8767123287671232
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The professor expressed curiosity and some confusion about the Wiener filter, asking for clarification on its application and how it differs from other methods like the signal subspace approach. The professor acknowledged the Wiener filter's role in spectral processing and its potential benefits when combined with other techniques, showing an interest in understanding its functionality and integration within the broader context of signal processing techniques discussed in the meeting.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.07766990291262135,
+            "rougeL": 0.19047619047619047
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            19,
+            27,
+            37
+          ],
+          "retrieval_precision": 0.2724609375,
+          "retrieval_recall": 0.9554794520547946
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The evidence provided does not contain a direct statement from the professor expressing his thoughts specifically about the Wiener filter. However, the professor shows interest and asks questions about its application and combination with other techniques. When PhD A mentions combining Wiener filtering with signal subspace, Professor C inquires about how the Wiener filter differs from signal subspace and seems open to exploring combinations of different methods, including Wiener filtering. Therefore, while the professor's explicit opinion is not stated, his engagement suggests he views the Wiener filter as a potentially valuable component in speech enhancement techniques worth investigating further.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.06015037593984963,
+            "rougeL": 0.17777777777777776
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            19,
+            27,
+            37,
+            11,
+            12,
+            33,
+            40
+          ],
+          "retrieval_precision": 0.13623046875,
+          "retrieval_recall": 0.9554794520547946
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The professor expressed curiosity and sought clarification about the Wiener filter, indicating a need to understand its relationship with signal subspace approaches. After being informed that the signal subspace method incorporates a form of Wiener filtering, the professor acknowledged this and considered the potential benefits of combining techniques, particularly in scenarios with poor signal-to-noise ratios (SNR) and colored noise.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.0851063829787234,
+            "rougeL": 0.20833333333333334
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            27
+          ],
+          "retrieval_precision": 0.544921875,
+          "retrieval_recall": 0.9554794520547946
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The professor expressed curiosity and some uncertainty about the Wiener filter, asking for clarification on how it differs from the signal subspace approach and acknowledging that the Wiener filter is part of the signal subspace method. The professor seemed open to the idea of combining techniques, including the Wiener filter, to improve signal processing outcomes, particularly in challenging noise conditions.",
+          "rouge_f1": {
+            "rouge1": 0.2947368421052632,
+            "rouge2": 0.08602150537634408,
+            "rougeL": 0.2105263157894737
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            27,
+            33,
+            39
+          ],
+          "retrieval_precision": 0.2724609375,
+          "retrieval_recall": 0.9554794520547946
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The professor thought that the Wiener filter could be beneficial when combined with other techniques, as indicated by his suggestion to consider combining Wiener filtering with signal subspace approaches. He acknowledged that the Wiener filter is part of the signal subspace method, specifically noting its role after a KL transform. Additionally, the professor recognized the effectiveness of Wiener filtering compared to spectral subtraction in various literature, particularly for large vocabulary tasks. However, his primary focus was on understanding how different methods could complement each other rather than solely praising the Wiener filter's standalone performance.",
+          "rouge_f1": {
+            "rouge1": 0.32307692307692304,
+            "rouge2": 0.109375,
+            "rougeL": 0.21538461538461537
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            27,
+            33,
+            39,
+            19,
+            12,
+            18,
+            36
+          ],
+          "retrieval_precision": 0.13623046875,
+          "retrieval_recall": 0.9554794520547946
+        },
+        "lumber__dense__w512": {
+          "answer": "The evidence provided does not contain any direct statement from the professor expressing his thoughts about the Wiener filter. However, the professor showed curiosity and asked for clarification on how the Wiener filter differs from signal subspace approaches, indicating he was seeking to understand its application and distinction from other methods. Therefore, the evidence is insufficient to determine the professor's specific thoughts about the Wiener filter beyond his interest in understanding it better.",
+          "rouge_f1": {
+            "rouge1": 0.27522935779816515,
+            "rouge2": 0.07476635514018691,
+            "rougeL": 0.22018348623853212
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            24
+          ],
+          "retrieval_precision": 0.5703125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The professor acknowledged the Wiener filter's role in speech enhancement techniques but seemed more interested in understanding its relationship with the signal subspace approach and how it could be effectively combined with other methods to improve performance, especially under poor Signal-to-Noise Ratio (SNR) conditions. The professor appeared curious about the specifics of how Wiener filtering fits into the broader context of speech enhancement algorithms and was open to exploring its integration with other techniques.",
+          "rouge_f1": {
+            "rouge1": 0.28571428571428575,
+            "rouge2": 0.07272727272727272,
+            "rougeL": 0.19642857142857142
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            24,
+            15,
+            29
+          ],
+          "retrieval_precision": 0.28515625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The professor thought that the Wiener filter is a component within the signal subspace approach and acknowledged its effectiveness in improving SNR, especially when combined with other techniques like spectral subtraction. However, the professor expressed some uncertainty about the specifics of how Wiener filtering differs from the signal subspace method, indicating a need for clarification on the technical details of these methods.",
+          "rouge_f1": {
+            "rouge1": 0.35051546391752575,
+            "rouge2": 0.10526315789473684,
+            "rougeL": 0.2268041237113402
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            24,
+            15,
+            29,
+            28,
+            16,
+            17
+          ],
+          "retrieval_precision": 0.142578125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The professor expressed curiosity and some confusion about the Wiener filter, indicating a lack of full understanding (\"I guess I'm ignorant about this\"). They questioned how the Wiener filter differs from signal subspace approaches and seemed to gain clarity as PhD A explained that signal subspace includes a built-in Wiener filter and discussed its application in improving signal-to-noise ratio (SNR) conditions. The professor acknowledged the explanation and agreed that a combination of spectral subtraction followed by a Wiener filter could be effective, especially noting the importance of considering noise levels when applying such techniques.",
+          "rouge_f1": {
+            "rouge1": 0.3308270676691729,
+            "rouge2": 0.15267175572519082,
+            "rougeL": 0.24060150375939846
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            16
+          ],
+          "retrieval_precision": 0.5703125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The professor expressed curiosity and some confusion about the Wiener filter, indicating a lack of full understanding of its application in the context discussed. He asked clarifying questions, showing he was trying to understand how the Wiener filter differs from other methods like signal subspace approaches and how it fits into the overall process of improving signal-to-noise ratio (SNR). When explained that the Wiener filter is part of a cascade of processing steps including a Karhunen-Loève (KL) transform, the professor showed comprehension and agreed with the idea that orthogonalization might not be ideal in noisy conditions.",
+          "rouge_f1": {
+            "rouge1": 0.3111111111111111,
+            "rouge2": 0.07518796992481203,
+            "rougeL": 0.1925925925925926
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            16,
+            31
+          ],
+          "retrieval_precision": 0.28515625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The professor expressed curiosity about the Wiener filter, asking how it differs from signal subspace approaches and noting that it involves assumptions about adding together two signals. He seemed interested in understanding its role in signal processing, particularly in relation to noise reduction techniques like spectral subtraction and KL transforms. However, the professor's thoughts did not indicate strong approval or disapproval; rather, he sought clarification on its application and effectiveness in specific contexts.",
+          "rouge_f1": {
+            "rouge1": 0.29357798165137616,
+            "rouge2": 0.09345794392523364,
+            "rougeL": 0.20183486238532108
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            16,
+            31,
+            12,
+            17
+          ],
+          "retrieval_precision": 0.142578125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The professor expressed curiosity and some confusion about the Wiener filter, indicating a lack of full understanding (\"I guess I'm ignorant about this\"). They questioned how the Wiener filter differs from signal subspace approaches and seemed to gain clarity as PhD A explained that signal subspace includes a built-in Wiener filter and discussed its application in improving signal-to-noise ratio (SNR) conditions. The professor acknowledged the explanation and agreed that a combination of spectral subtraction followed by a Wiener filter could be effective, especially noting the importance of considering noise levels when applying such techniques.",
+          "rouge_f1": {
+            "rouge1": 0.3308270676691729,
+            "rouge2": 0.15267175572519082,
+            "rougeL": 0.24060150375939846
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            16
+          ],
+          "retrieval_precision": 0.5703125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The professor expressed curiosity and a need for clarification regarding the Wiener filter. Specifically, Professor C asked how the Wiener filter differs from the signal subspace approach, indicating a desire to understand the nuances between these techniques. After learning that the signal subspace approach includes an inherent Wiener filtering step, the professor acknowledged this understanding and discussed the potential benefits of combining simpler spectral subtraction with more complex processing steps like the Karhunen-Loève (KL) transform and Wiener filtering, especially in scenarios with poor Signal-to-Noise Ratio (SNR) conditions.",
+          "rouge_f1": {
+            "rouge1": 0.30158730158730157,
+            "rouge2": 0.09677419354838708,
+            "rougeL": 0.23809523809523805
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            16,
+            24
+          ],
+          "retrieval_precision": 0.28515625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The professor expressed curiosity about the Wiener filter's role and its assumptions regarding signal addition. He acknowledged that the Wiener filter is part of the signal subspace approach, following a Karhunen-Loève (KL) transform. The professor seemed interested in understanding how combining simpler spectral subtraction with more complex processing steps like the Wiener filter could improve signal-to-noise ratio (SNR) conditions, especially in scenarios with poor SNR or colored noise. However, the professor also noted that orthogonalizing processes may not be effective in noisy conditions. Overall, the professor appeared open to exploring the integration of Wiener filtering within a broader enhancement framework but recognized potential challenges in its application under certain noise conditions.",
+          "rouge_f1": {
+            "rouge1": 0.31788079470198677,
+            "rouge2": 0.08053691275167786,
+            "rougeL": 0.18543046357615894
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            16,
+            24,
+            28,
+            17,
+            12
+          ],
+          "retrieval_precision": 0.142578125,
+          "retrieval_recall": 1.0
+        }
+      }
+    }
+  ]
+}

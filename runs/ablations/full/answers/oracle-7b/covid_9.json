@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "covid_9.json",
+        "sha256": "3a4d2e973d6fdf775c14fde5d02ff9b7a2643ba29cd71d012be62a07de561123"
+      }
+    },
+    "input_hash": "30ae21f655767be04d7c6f798645a3bdf723f7a4e508d8462bd7c789a9b81489",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "09340ffdddd8de1f92037a84ec7ddda542c6642c8fdeeed4fbe62c5ba99ce814",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "covid_9",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What were the statements discussed by the members?",
+      "reference_answer": "Several members expressed their gratitude towards various groups such as first responders, working populations and different companies that have come together to help with the COVID crisis. Students whose education had undergone a radical change were highlighted and their fortitude appreciated. There was also a call to rally for disenfranchised groups such as rural residents, black lives movement and non-binary persons.",
+      "results": {
+        "oracle": {
+          "answer": "The statements discussed by the members included:\n\n- Praise for community efforts and support during the COVID-19 pandemic, highlighting initiatives by local businesses, volunteers, and residents.\n- Recognition of specific individuals and organizations for their contributions, such as ProStitch and King Sportswear, Crosscut Distillery, Vale Canada, Glen Muise, Liam and Lucus Sakalauskas, Rose Fitzgerald, and the Bruce Oake Recovery Centre.\n- Acknowledgment of the importance of supporting vulnerable populations and addressing issues like police brutality and systemic racism.\n- Calls for action on internet connectivity in rural areas and the need for robust economic recovery plans.\n- Congratulatory messages for achievements, such as graduation ceremonies and the establishment of protected areas.\n- Criticisms of the government's handling of the pandemic response and spending, particularly regarding the allocation of funds and the need for transparency.\n- Expressions of pride in representing their communities and gratitude to constituents for their resilience and support.",
+          "rouge_f1": {
+            "rouge1": 0.20192307692307693,
+            "rouge2": 0.03883495145631068,
+            "rougeL": 0.11538461538461538
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              17,
+              47
+            ]
+          ],
+          "evidence_words": 2786
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What was the Prime minister and Government accused of?",
+      "reference_answer": "The liberal of Government was accused of not allowing for adequate scrutiny of their spending. The Prime Minister was accused of locking down Parliament to avoid accountability, refusing to hold a first ministers meeting and refusing to negotiate to pass a bill.",
+      "results": {
+        "oracle": {
+          "answer": "The Prime Minister and Government were accused of being reckless and avoiding accountability. Specifically, the opposition claimed that the Prime Minister:\n\n1. Locked down Parliament to avoid being accountable to the opposition.\n2. Refused to provide an economic update despite calls from the Parliamentary Budget Officer.\n3. Refused to hold a first ministers meeting on unconditional health transfers, which the opposition argued was necessary for Quebec to hire more health care staff before a potential second wave of the pandemic.\n4. Refused to negotiate with any party to get his bill passed, acting as if he had a majority government when the opposition believed he did not.",
+          "rouge_f1": {
+            "rouge1": 0.4295302013422818,
+            "rouge2": 0.217687074829932,
+            "rougeL": 0.348993288590604
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              37,
+              43
+            ]
+          ],
+          "evidence_words": 693
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Which groups did the members discuss to have been impacted heavily?",
+      "reference_answer": "Members advocated for aboriginals who faced police brutality, students for their disrupted education, indigenous and rural residents for lack of access to the internet and the black lives movement.",
+      "results": {
+        "oracle": {
+          "answer": "The members discussed that indigenous peoples and black communities have been heavily impacted. Specifically, Ms. Brub highlighted unacceptable incidents of police brutality against aboriginals, and Ms. Gazan honored Justice 4 Black Lives Winnipeg, noting the mobilization against police brutality and systemic racism affecting black communities.",
+          "rouge_f1": {
+            "rouge1": 0.32432432432432434,
+            "rouge2": 0.05555555555555555,
+            "rougeL": 0.18918918918918917
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              22,
+              41
+            ]
+          ],
+          "evidence_words": 1723
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What was said about the Auditor General?",
+      "reference_answer": "The Prime Minister was quizzed on why he wasn't providing the money to allow the Auditor general to conduct audits on the Government's spending. The Prime Minister responded as to having increased the budget of the Auditor General's budget the previous year. The response was deemed unsatisfactory by the questioning party.",
+      "results": {
+        "oracle": {
+          "answer": "The following points were made about the Auditor General during the meeting:\n\n- The Prime Minister is refusing to provide the Auditor General with additional funding needed to look into government expenditures.\n- The Auditor General has indicated that she will be able to do half as many audits despite an almost doubling in the size of government spending.\n- The Auditor General's office has requested more funds to be able to do the job that Canadians expect.\n- The Prime Minister previously worked with the Auditor General to increase funding in 2018-19, adding the equivalent of 38 full-time staff.\n- The Conservative government under Stephen Harper cut $6.5 million from the Auditor General's budget and fired 60 staff.\n- The interim auditor general mentioned that ten years ago, they were completing about 27 performance audits annually, but with current resources, they expect to deliver only 14 performance audits each year, which is half the number of audits.",
+          "rouge_f1": {
+            "rouge1": 0.3033175355450237,
+            "rouge2": 0.12440191387559808,
+            "rougeL": 0.27488151658767773
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              49,
+              55
+            ]
+          ],
+          "evidence_words": 694
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What was the issue around the CERB?",
+      "reference_answer": "Members quizzed the Prime minister on what would happen to the CERB as many of their constituents were depending on it. They stressed for urgency and clarifications for when it would be provided to allow for the affected population to plan for the future. Many people depended on CERB for their living.",
+      "results": {
+        "oracle": {
+          "answer": "The issue around the CERB (Canada Emergency Response Benefit) was that some families and individuals, particularly those who are arts workers without a forecasted return to work, were dependent on the CERB to cover basic expenses like groceries. There was concern that the CERB was planned to run out at the end of the month, leaving recipients without financial support. The opposition, led by Mr. Jagmeet Singh, was advocating for an extension of the CERB for those in need, especially families and individuals like Don from Burnaby, who faced the prospect of financial hardship if the CERB was not extended. The government, represented by Prime Minister Justin Trudeau, indicated that discussions were ongoing but committed to supporting Canadians in the \"right way,\" suggesting that they would consider extending the CERB along with other measures such as expanding the wage subsidy and increasing the flexibility of the CERB. However, the government also criticized the opposition for not wanting to debate or vote on the proposed measures.",
+          "rouge_f1": {
+            "rouge1": 0.22119815668202766,
+            "rouge2": 0.04651162790697674,
+            "rougeL": 0.11981566820276497
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              69,
+              82
+            ]
+          ],
+          "evidence_words": 783
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "Summarize what was said on the GBA+ analysis?",
+      "reference_answer": "A committee member repeatedly asked why a GBA+ analysis was not conducted on the COVID-19 relief programs since this would have prevented rolling out inadequate programs for women. The quizzed party responded by pointing out to their successful efforts with some of the women and stressing that women were at the core of their decision making.",
+      "results": {
+        "oracle": {
+          "answer": "Ms. Jag Sahota raised concerns about the lack of a Gender-Based Analysis Plus (GBA+) analysis for the COVID-19 relief programs, arguing that such an analysis would have helped identify gaps affecting women and families. She emphasized that these families deserve answers and assistance, particularly for expectant mothers. Hon. Carla Qualtrough acknowledged the importance of considering the needs of women and girls throughout the development of the Canada Emergency Response Benefit (CERB) and other support measures but maintained that GBA+ analysis was conducted and that women were well-supported through various benefits. Despite repeated questioning, Ms. Sahota's specific concerns regarding the absence of a GBA+ analysis and the resulting impacts on women and families remained unanswered.",
+          "rouge_f1": {
+            "rouge1": 0.29714285714285715,
+            "rouge2": 0.13872832369942195,
+            "rougeL": 0.24
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              237,
+              253
+            ]
+          ],
+          "evidence_words": 611
+        }
+      }
+    }
+  ]
+}

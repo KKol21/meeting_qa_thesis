@@ -1,0 +1,170 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "TS3004b.json",
+        "sha256": "3411f5ba0e7bba31c172489ecd4ed6ca3c04a61583c15893892e7ec47eb234ac"
+      }
+    },
+    "input_hash": "2177573faadf30f486885df867cc58b58024634b19b7268cf04829e212ee7ca7",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "97d0819ceb464775c482c85bf7b5e504a10466df39d4ed28fbe6bac3023fcaeb",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "TS3004b",
+  "question_count": 4,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 4,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the presentation and discussion on functional requirements.",
+      "reference_answer": "Marketing gave some suggestions on the remote functional requirements based on marketing reports, which included a fancy look of the remote control, ease of use for elderly people, a button on the home station to trace its position, and speech recognition. So finally, the group mates suggested the usability and the color of the remote control based on Marketing's presentation.",
+      "results": {
+        "oracle": {
+          "answer": "The presentation and discussion on functional requirements centered around designing a TV remote control for a target demographic of 40+ years old. Key points included:\n\n- The remote control should be visually appealing and attractive to older users who are willing to spend more on quality products.\n- Simplified design with easy-to-reach buttons, particularly for the most frequently used functions (zap buttons).\n- Consideration of a foldable system with the less frequently used buttons on the top for easy access.\n- Integration of a home station for recharging batteries and potentially a clap system to help locate the remote.\n- Focus on user-friendliness and simplicity to cater to the needs of elderly users.\n- Avoidance of advanced features like speech recognition due to cost constraints and the target demographic's preferences.\n- The remote control should be distinctive in appearance and design to stand out in the market, while maintaining good usability.\n\nMarketing emphasized the importance of making the remote control visually appealing and fashionable, aligning with the company's style. However, the team agreed that the primary focus should be on usability and simplicity to meet the needs of the target audience.",
+          "rouge_f1": {
+            "rouge1": 0.32,
+            "rouge2": 0.10483870967741934,
+            "rougeL": 0.22399999999999998
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              0,
+              120
+            ]
+          ],
+          "evidence_words": 1929
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did Marketing suggest giving up on speech recognition when presenting the functional requirements?",
+      "reference_answer": "When Marketing mentioned that their target group should be both young people and people above forty who were not keen on new features, Marketing thought it would be too expensive to have the speech recognition and not reachable for twenty-five Euros. Also, Marketing suggested a DVD player, stereo, and VCR for television.",
+      "results": {
+        "oracle": {
+          "answer": "Marketing suggested giving up on speech recognition when presenting the functional requirements because it is not reachable for 25 Euros. Marketing believed that speech recognition was too expensive to implement within the budget constraints, as indicated in excerpt [87]: \"because it's not reachable for twenty five Euros.\"",
+          "rouge_f1": {
+            "rouge1": 0.4158415841584158,
+            "rouge2": 0.18181818181818182,
+            "rougeL": 0.25742574257425743
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              80,
+              91
+            ]
+          ],
+          "evidence_words": 309
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did User Interface think of Marketing's suggestion on the ease of use when presenting the functional requirements?",
+      "reference_answer": "When Marketing mentioned that they should make a new product that looked fancy, fashionable, and was easy to use for elderly users, User Interface suggested making sure that the remote control had better usability and could stand out by just being watched. Also, Marketing suggested a different color or different shape.",
+      "results": {
+        "oracle": {
+          "answer": "User Interface thought that Marketing's suggestion to focus on simplicity for ease of use was important, but also believed they needed to stand out. Specifically, User Interface suggested making the product a different color or shape to improve usability and ensure it stood out among other similar products.",
+          "rouge_f1": {
+            "rouge1": 0.5,
+            "rouge2": 0.16326530612244897,
+            "rougeL": 0.25999999999999995
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              92,
+              120
+            ]
+          ],
+          "evidence_words": 335
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the presentation and discussion on technical function design.",
+      "reference_answer": "Firstly, User Interface suggested the group should stand up with a unique design like different shapes than usual. User Interface also suggested a new option for favorite channels and a menu button that could integrate with volume, the previous and next buttons. The group agreed to make the remote a bit smaller and would like to look at mobile phones when designing it.",
+      "results": {
+        "oracle": {
+          "answer": "The presentation and discussion on technical function design focused on creating a simplified remote control for a broad audience, particularly considering elderly users. The key points included:\n\n- **Simplicity and Standardization**: The remote control should use standardized methods similar to those found on remote controls, keeping the interface simple and intuitive. Only essential functions were suggested, such as numbers, on-off button, volume, channels, and basic text service options.\n\n- **Ease of Use**: Large buttons with clear labels (either text or icons) were recommended to help elderly users easily identify and operate them. The idea of \"favourites\" was considered but deemed too complex for elderly users due to difficulty in remembering which button corresponds to which channel.\n\n- **Navigation and Menu Buttons**: A menu button was proposed, along with navigation arrows for easier menu navigation. These buttons would be integrated with volume and previous/next functions to minimize clutter.\n\n- **Design Considerations**: The design should be unique and stand out from typical remote controls. Suggestions included different shapes and colors, inspired by modern mobile phone designs, to make the product visually appealing while maintaining a premium look despite its low price point.\n\nOverall, the goal was to create a user-friendly remote control that prioritizes simplicity and ease of use for a wide range of users, especially the elderly.",
+          "rouge_f1": {
+            "rouge1": 0.31654676258992803,
+            "rouge2": 0.07246376811594202,
+            "rougeL": 0.1726618705035971
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              121,
+              272
+            ]
+          ],
+          "evidence_words": 1825
+        }
+      }
+    }
+  ]
+}

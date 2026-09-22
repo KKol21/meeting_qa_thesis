@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "Bro004.json",
+        "sha256": "0b16380e4ddbb85f67d42242e202e41be33e79cf269854243bead51122562ed7"
+      }
+    },
+    "input_hash": "a90bbe36114b9cd3fcb63f0c0422c8dc29842671defda7c35031cdd88fa77eb2",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "22de74e96a1e2c573d1e2e689b4017a17e9c87b2e29fc5815badec77ddf1d856",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bro004",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about the effect of training on different languages",
+      "reference_answer": "Using multiple languages led to more diversity which potentially hindered the model performance. The professor was skeptical about discussing the results since they had not received any good ones so far.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion centered on the effect of training on different languages. Professor B and PhD A noted that removing English from the training set while keeping it in the test data led to poor performance, suggesting that the model's performance is more influenced by the diversity of the training data rather than the cross-language aspect. Grad F mentioned that the model uses 64 phonemes from SAMPA. PhD A questioned whether adding Finnish to the training data would improve performance if Finnish appeared in the test data. Professor B suggested that the results indicate the model performs better with a broader range of speech types rather than just cross-language differences. PhD D clarified that they had not conducted tests where a model was trained on one language and tested on another, only tests involving multiple languages. The charts discussed showed word error rates, with higher numbers indicating poorer performance. Professor B proposed conducting further tests with the same training conditions but testing on different languages to better understand the model's performance across various languages.",
+          "rouge_f1": {
+            "rouge1": 0.19230769230769232,
+            "rouge2": 0.06796116504854369,
+            "rougeL": 0.15384615384615383
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              206,
+              323
+            ]
+          ],
+          "evidence_words": 1989
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did PhD D explain about the multilingual model?",
+      "reference_answer": "PhD D explained that the multilingual model, trained on French, Spanish, and English, was trained with higher frame rates. It has slightly poorer results when delta was not used. All in all, the addition of English did not seem to help the model.",
+      "results": {
+        "oracle": {
+          "answer": "PhD D explained that the multilingual net was trained on features without the s derivatives (delta and delta-delta) but with increased frame numbers. The performance was slightly worse when delta features were not used, but not significantly so.",
+          "rouge_f1": {
+            "rouge1": 0.5121951219512196,
+            "rouge2": 0.225,
+            "rougeL": 0.41463414634146334
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              295,
+              303
+            ]
+          ],
+          "evidence_words": 319
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the Professor think about the use of English?",
+      "reference_answer": "The professor thought that the model did not get hurt that much because of the removal of English. He also thought it would be worthwhile to train on one language and test on another.",
+      "results": {
+        "oracle": {
+          "answer": "The Professor thought that the issue was not primarily about cross-language differences but rather about cross-type of speech differences. Specifically, the Professor suggested that the results indicated problems with training on one type of speech and testing on another, rather than just cross-linguistic issues. The Professor also expressed caution about drawing conclusions from the results due to the presence of compounded effects and the need for further analysis.",
+          "rouge_f1": {
+            "rouge1": 0.380952380952381,
+            "rouge2": 0.17475728155339804,
+            "rougeL": 0.28571428571428575
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              218,
+              242
+            ]
+          ],
+          "evidence_words": 531
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion on managing the complexity of the model",
+      "reference_answer": "The team discussed the size of the neural net, which was just a simple net. At the time, it had 27 outputs, but the professor recommended that they use a larger net, with perhaps more features. They discussed the effect that removing silent frames could have on the model. The professor recommended having a bigger hidden layer, though he did not think that would substantially improve performance. Currently, however, the team was facing computational limitations.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion on managing the complexity of the model centered around simplifying the model by reducing the number of output classes. Initially, PhD D mentioned they had a single neural network with 27 outputs corresponding to 27 broad classes (like back vowels and front vowels). This approach was seen as a way to reduce complexity compared to having more detailed classes. However, PhD D suggested that reducing the information too much could lead to poorer performance. Instead, they proposed using broader classes combined with additional features to capture more information. Professor B agreed that using broad classes along with features like PLP (Perceptual Linear Prediction) could provide valuable distinctions, such as distinguishing between speech and silence. The team also discussed potential methods for handling voice activity detection (VAD), including using a separate neural network for VAD or integrating it with existing models. Overall, the goal was to balance model complexity with performance, considering both computational constraints and the need for accurate feature representation.",
+          "rouge_f1": {
+            "rouge1": 0.32773109243697485,
+            "rouge2": 0.0423728813559322,
+            "rougeL": 0.1764705882352941
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              487,
+              750
+            ]
+          ],
+          "evidence_words": 5113
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the team discuss about IBM computers?",
+      "reference_answer": "The team was concerned about the availability of computational resources. The Professor informed them that they had received two 550 megahertz processors by IBM. Though, they were originally expecting eight 800 megahertz processors.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed that they have a small IBM machine with slots for eight processors, but they currently only have two 550 MHz IBM processors installed. Originally, they expected eight 800 MHz processors, but the performance is lower than anticipated. More processors are expected to arrive soon, and once fully populated, the machine will be a fast Linux machine with a moderate amount of memory. The team also mentioned that they are waiting for additional parts to make the machine more powerful.",
+          "rouge_f1": {
+            "rouge1": 0.2956521739130435,
+            "rouge2": 0.08849557522123894,
+            "rougeL": 0.20869565217391303
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              685,
+              714
+            ]
+          ],
+          "evidence_words": 745
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the team think about delays?",
+      "reference_answer": "The team talked about delays when discussing the removal of frames that were silent. This could possibly improve model performance at the cost of a small delay.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed delays introduced by certain processes. PhD A initially mentioned that something introduces delays. Professor B acknowledged the delays but noted that they are within acceptable boundaries. He also brought up that the Latent Dirichlet Allocation (LDA) introduces 200 milliseconds of delay but suggested it as a parallel path to avoid additional delays. There was a brief discussion about the differences between TLDA (Temporal LDA) and SLDA (Spectral LDA), with PhD C clarifying that TLDA refers to temporal and spectral aspects. Professor B then explained that TLDA includes similar elements, and by constructing a block diagram in a certain way, the delay could be managed effectively.",
+          "rouge_f1": {
+            "rouge1": 0.17777777777777776,
+            "rouge2": 0.015037593984962405,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              646,
+              656
+            ]
+          ],
+          "evidence_words": 174
+        }
+      }
+    }
+  ]
+}

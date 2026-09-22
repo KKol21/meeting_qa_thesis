@@ -1,0 +1,220 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "ES2004d.json",
+        "sha256": "0f3b6d62644452cca0bcffbe3228186f154bf82db1d84f594e93859f5ab7c801"
+      }
+    },
+    "input_hash": "41acbeb6a9149929a0e580929848c731e709d348dae95d637b005499718dc805",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "2f2f10530dee1f5e64694ca4896906b0ff6a9d6beeabcf703e22a7850904f9a7",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "ES2004d",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group discuss about simulation market evaluation of the new remote control?",
+      "reference_answer": "Marketing summarized the user requirements according to the market reports. Users expected a fancy look, technological innovation, and minimization of repetitive strain injury. The team did a preliminary rating using a seven-point scale. The results were that the remote control's fashion style and location function were most highly rated, but the team was not satisfied enough with the minimization of repetitive strain injury. The team agreed on further modifications to the current prototype.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed evaluating the new remote control's market potential through a simulation process. They used a seven-point scale (one being true, seven being false) to assess the prototype against several criteria derived from market research, including:\n\n- A fancy look and feel\n- Technological innovation\n- Ease of use\n- Incorporation of current fashion trends (specifically spongy texture and fruit/vegetable design colors)\n- Minimizing repetitive strain injury (R_S_I_)\n- Being easy to locate\n\nThey individually rated each criterion and averaged the scores. For instance, the fancy look and feel received an average score of 2.75, while incorporating current fashion trends scored a perfect 1 (true). The group concluded that the prototype met the necessary criteria sufficiently to proceed with further development and marketing.",
+          "rouge_f1": {
+            "rouge1": 0.42211055276381915,
+            "rouge2": 0.1218274111675127,
+            "rougeL": 0.23115577889447236
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              126,
+              321
+            ]
+          ],
+          "evidence_words": 2199
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Marketing think of the incorporation of current fashion trends in the prototype when making a simulation market evaluation of the new remote control?",
+      "reference_answer": "Marketing initially doubted that Industrial Designer was limited in the use of materials for the prototype, which would harm the fashion style. Marketing was soon convinced by Industrial Designer, however, that the changeable faces would allow users to customize their remote controls. Besides, the rubber case would give a spongy feel. Marketing thus rated one point for Industrial Designer's style design.",
+      "results": {
+        "oracle": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype, specifically noting the spongy texture and the use of fruit and vegetable design colors as aligning well with market research findings.",
+          "rouge_f1": {
+            "rouge1": 0.2708333333333333,
+            "rouge2": 0.08510638297872339,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              217,
+              237
+            ]
+          ],
+          "evidence_words": 251
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What's the conclusion of the minimization of repetitive strain injury when making simulation market evaluation of the new remote control?",
+      "reference_answer": "Marketing considered the design of pointers unfeasible, for many users were prone to zap. Project Manager recommended the slight and small-sized buttons with more space in between. Regretfully, the team failed to come up with a perfectly feasible solution to the problem. The team thus gave low rate points to the prototype's minimization of repetitive strain injury.",
+      "results": {
+        "oracle": {
+          "answer": "The conclusion from the meeting excerpts is that while the project team has considered minimizing repetitive strain injury (RSI) for the new remote control, they have not found feasible solutions beyond the use of a specific button material in the bottom half of the remote. The design includes larger, more spaced-out buttons which might help reduce RSI, but overall, the team remains uncertain and rates this aspect neutrally to slightly positively, giving it scores of 4 or 5 out of 5.",
+          "rouge_f1": {
+            "rouge1": 0.3971631205673759,
+            "rouge2": 0.08633093525179857,
+            "rougeL": 0.1702127659574468
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              246,
+              276
+            ]
+          ],
+          "evidence_words": 264
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about cost calculation and budget issues.",
+      "reference_answer": "The team calculated the cost of the remote control in the Euro. The team included one regular chip, one kinetic cell, one double-curved bottom, one push button, one LCD screen, as well as rubber and plastic materials. The team decided to recommend voice recognition to business customers. Once the budget increased, voice recognition would be incorporated. Overall, the present cost was 12.5 Euros and was under the budget.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed cost calculation and budget issues, focusing on several components:\n\n- **Kinetic Battery vs Standard Battery**: Initially, the team considered a kinetic battery but later decided to switch to a standard battery to reduce costs. This change reduced the cost by €3.\n  \n- **Voice Recognition Feature**: The team debated removing the voice recognition feature to further cut costs. Removing this feature lowered the cost to €12.25 each, bringing the total cost closer to the budget.\n\n- **Material Costs**: There was confusion regarding the inclusion of rubber in the cost calculations. Marketing pointed out that rubber used as a casing needed to be accounted for, leading to adjustments in the cost calculation.\n\n- **Final Cost Adjustment**: After removing the voice recognition feature, the team concluded that the cost per unit was €12.25, which was within the budget constraints. They acknowledged minor discrepancies in the exact figures but agreed that the project was close to the budget.\n\nOverall, the team managed to align the project costs with the budget through these adjustments.",
+          "rouge_f1": {
+            "rouge1": 0.3,
+            "rouge2": 0.10084033613445378,
+            "rougeL": 0.19166666666666665
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              335,
+              534
+            ]
+          ],
+          "evidence_words": 1803
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did User Interface think of the replacement of the kinetic batteries when discussing cost calculation and budget issues?",
+      "reference_answer": "User Interface recommended the standard batteries to replace the kinetic batteries and lower the cost. Marketing was promised by User Interface that the change in battery type would not make any big difference in shape and colours. However, Marketing was still uncertain about the replacement. User Interface further explained that users were used to paying little attention to batteries which were installed internally.",
+      "results": {
+        "oracle": {
+          "answer": "User Interface suggested changing to a standard battery instead of a kinetic one, indicating a preference for a simpler solution. They noted that customers had never mentioned the battery, implying that the type of battery used internally might not significantly impact customer perception. However, User Interface did not explicitly state an opinion on the cost implications of this change.",
+          "rouge_f1": {
+            "rouge1": 0.36065573770491804,
+            "rouge2": 0.08333333333333334,
+            "rougeL": 0.21311475409836064
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              420,
+              441
+            ],
+            [
+              452,
+              459
+            ]
+          ],
+          "evidence_words": 278
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What's the conclusion of the incorporation of voice recognition when discussing cost calculation and budget issues?",
+      "reference_answer": "Industrial Designer implicated that if the kinetic batteries were replaced by the standard batteries, the voice recognition would have to be taken away as well. Project Manager, therefore, made a compromise that the team might provide the voice recognition in an upgraded version for the business class who expected high office specifications.",
+      "results": {
+        "oracle": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that the feature will be offered initially to business class customers rather than included in the standard product. This decision aims to manage costs while still providing an option for those willing to pay more for advanced features, thereby setting the product apart from competitors.",
+          "rouge_f1": {
+            "rouge1": 0.3185840707964602,
+            "rouge2": 0.07207207207207207,
+            "rougeL": 0.17699115044247787
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              463,
+              508
+            ]
+          ],
+          "evidence_words": 487
+        }
+      }
+    }
+  ]
+}

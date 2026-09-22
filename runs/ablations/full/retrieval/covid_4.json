@@ -1,0 +1,5533 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "retrieval",
+    "config": {
+      "experiment_version": 2,
+      "configurations": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "chunkers": [
+        "turn_packed",
+        "word_packed",
+        "lumber"
+      ],
+      "retrievers": [
+        "dense",
+        "bm25",
+        "hybrid"
+      ],
+      "turn_packed_max_words": 256,
+      "word_packed_max_words": 256,
+      "evidence_order": "chronological",
+      "dense_model": {
+        "tag": "gte-modernbert-base",
+        "name": "Alibaba-NLP/gte-modernbert-base",
+        "revision": "e7f32e3c00f91d699e8c43b53106206bcc72bb22",
+        "prequantized": false
+      },
+      "bm25": {
+        "k1": 1.5,
+        "b": 0.75
+      },
+      "rrf_k": 60
+    },
+    "config_hash": "16aa157648a9511f8946028c0898ead031ab49257dee19d766fdc0cad676a603",
+    "inputs": {
+      "meeting": {
+        "file": "covid_4.json",
+        "sha256": "d81e4221c12e2e8c4f50a78473e2deadf20f1f8a394b5a5266df7b051f506b01"
+      },
+      "segmentation": {
+        "file": "covid_4.json",
+        "sha256": "f40b6d17bb8e21a48d9b97743795a326a24cbfc6271fc200c24884da56285742"
+      }
+    },
+    "input_hash": "07d941622510b940576c244312a421fe7b2d7a9383c3cdb774330278484d17d2",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "numpy": "2.4.6",
+        "sentence-transformers": "5.7.0",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "4d8906bc25f1154c60b38a486fd87527f49262e29a854c350c4fb300e7bf24b3"
+    },
+    "execution_hash": "69e6b279fb088bb8f1df32297db9e2b57f5800f6cc5ddee90abd2e19e644cb74",
+    "fingerprint": "fb2edd08bd692dd50fcc90a8c392b8da1b081ff72092dab2da317d7590719b17",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "covid_4",
+  "question_count": 12,
+  "configurations": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "chunking": {
+    "turn_packed_max_words": 256,
+    "word_packed_max_words": 256
+  },
+  "evidence_order": "chronological",
+  "retrievers": {
+    "dense": {
+      "tag": "gte-modernbert-base",
+      "name": "Alibaba-NLP/gte-modernbert-base",
+      "revision": "e7f32e3c00f91d699e8c43b53106206bcc72bb22",
+      "prequantized": false
+    },
+    "bm25": {
+      "k1": 1.5,
+      "b": 0.75
+    },
+    "hybrid": {
+      "method": "reciprocal_rank_fusion",
+      "k": 60
+    }
+  },
+  "dense_embeddings_initially_cached": {
+    "turn_packed": false,
+    "word_packed": false,
+    "lumber": false
+  },
+  "chunk_counts": {
+    "turn_packed": 77,
+    "word_packed": 64,
+    "lumber": 39
+  },
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about petitions fraudulence, tax evasion, violence handling and their supervisory.",
+      "reference_answer": "Mr. Dan Albas asked about the handling of fraudulence by the Canadian government but Right Hon. Justin Trudeau, the Prime Minister, was saying that the government put giving support and help to Canadians in the first place. Then Mr. Gabriel Ste-Marie questioned the reason why the government supported the profiteers for tax evasion when implementing the large employer emergency financing facility. However, Right Hon. Justin Trudeau thought they were making plans to help workers to survive this pandemic and was always their priority to overcome. Hon. Candice Bergen required that how they were dealing with unopened mail at Service Canada and put out a violence case that why the Liberals were making this gun illegal and What the purpose of banning this particular farm rifle was. It was demonstrated by Hon. Bill Blair that many Canadians were murdered by these guns which was their explanation of banning guns.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 0,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            4,
+            51,
+            6
+          ]
+        },
+        "turn_packed__dense__w1024": {
+          "precision": 0.3701171875,
+          "recall": 0.17538176770013883,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 379,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            4,
+            51,
+            6,
+            18,
+            10
+          ]
+        },
+        "turn_packed__dense__w2048": {
+          "precision": 0.3466796875,
+          "recall": 0.32855159648310966,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 710,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            4,
+            51,
+            6,
+            18,
+            10,
+            0,
+            20,
+            9,
+            53,
+            11
+          ]
+        },
+        "turn_packed__bm25__w512": {
+          "precision": 0.796875,
+          "recall": 0.18880148079592782,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 408,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            10,
+            11,
+            37
+          ]
+        },
+        "turn_packed__bm25__w1024": {
+          "precision": 0.3984375,
+          "recall": 0.18880148079592782,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 408,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            10,
+            11,
+            37,
+            26,
+            0
+          ]
+        },
+        "turn_packed__bm25__w2048": {
+          "precision": 0.3173828125,
+          "recall": 0.3007866728366497,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 650,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            10,
+            11,
+            37,
+            26,
+            0,
+            42,
+            4,
+            19,
+            39
+          ]
+        },
+        "turn_packed__hybrid__w512": {
+          "precision": 0.359375,
+          "recall": 0.08514576584914392,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 184,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            10,
+            4,
+            0
+          ]
+        },
+        "turn_packed__hybrid__w1024": {
+          "precision": 0.498046875,
+          "recall": 0.23600185099490975,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 510,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            10,
+            4,
+            0,
+            11,
+            18
+          ]
+        },
+        "turn_packed__hybrid__w2048": {
+          "precision": 0.40185546875,
+          "recall": 0.38084220268394264,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 823,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            10,
+            4,
+            0,
+            11,
+            18,
+            19,
+            37,
+            70,
+            26
+          ]
+        },
+        "word_packed__dense__w512": {
+          "precision": 0.056640625,
+          "recall": 0.013419713095788986,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 29,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            3,
+            17
+          ]
+        },
+        "word_packed__dense__w1024": {
+          "precision": 0.2783203125,
+          "recall": 0.13188338732068486,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 285,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            3,
+            17,
+            8,
+            29
+          ]
+        },
+        "word_packed__dense__w2048": {
+          "precision": 0.3447265625,
+          "recall": 0.3267006015733457,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 706,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            3,
+            17,
+            8,
+            29,
+            43,
+            5,
+            9,
+            2
+          ]
+        },
+        "word_packed__bm25__w512": {
+          "precision": 0.5,
+          "recall": 0.11846367422489588,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 256,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            8,
+            32
+          ]
+        },
+        "word_packed__bm25__w1024": {
+          "precision": 0.5,
+          "recall": 0.23692734844979177,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 512,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            8,
+            32,
+            9,
+            22
+          ]
+        },
+        "word_packed__bm25__w2048": {
+          "precision": 0.26416015625,
+          "recall": 0.25034706154558073,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 541,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            8,
+            32,
+            9,
+            22,
+            1,
+            17,
+            3,
+            0
+          ]
+        },
+        "word_packed__hybrid__w512": {
+          "precision": 0.5,
+          "recall": 0.11846367422489588,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 256,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            8,
+            3
+          ]
+        },
+        "word_packed__hybrid__w1024": {
+          "precision": 0.5283203125,
+          "recall": 0.25034706154558073,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 541,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            8,
+            3,
+            17,
+            9
+          ]
+        },
+        "word_packed__hybrid__w2048": {
+          "precision": 0.51416015625,
+          "recall": 0.4872744099953725,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1053,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            8,
+            3,
+            17,
+            9,
+            1,
+            0,
+            7,
+            15
+          ]
+        },
+        "lumber__dense__w512": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 4,
+          "first_overlap_reciprocal_rank": 0.25,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 0,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            2,
+            0,
+            27
+          ]
+        },
+        "lumber__dense__w1024": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 4,
+          "first_overlap_reciprocal_rank": 0.25,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 0,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            2,
+            0,
+            27
+          ]
+        },
+        "lumber__dense__w2048": {
+          "precision": 0.318359375,
+          "recall": 0.3017121702915317,
+          "first_overlap_rank": 4,
+          "first_overlap_reciprocal_rank": 0.25,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 652,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            2,
+            0,
+            27,
+            6,
+            3
+          ]
+        },
+        "lumber__bm25__w512": {
+          "precision": 1.0,
+          "recall": 0.23692734844979177,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            6
+          ]
+        },
+        "lumber__bm25__w1024": {
+          "precision": 0.63671875,
+          "recall": 0.3017121702915317,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 652,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            6,
+            0,
+            14
+          ]
+        },
+        "lumber__bm25__w2048": {
+          "precision": 0.318359375,
+          "recall": 0.3017121702915317,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 652,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            6,
+            0,
+            14,
+            19,
+            2
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 0.466796875,
+          "recall": 0.1105969458583989,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 239,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            0,
+            6
+          ]
+        },
+        "lumber__hybrid__w1024": {
+          "precision": 0.63671875,
+          "recall": 0.3017121702915317,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 652,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            0,
+            6,
+            2
+          ]
+        },
+        "lumber__hybrid__w2048": {
+          "precision": 0.318359375,
+          "recall": 0.3017121702915317,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 652,
+          "gold_words": 2161,
+          "selected_chunk_indices": [
+            0,
+            6,
+            2,
+            19,
+            14
+          ]
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Mr. Gabriel Ste-Marie mean by saying that the Prime Minister continued to support the profiteers?",
+      "reference_answer": "Mr. Gabriel Ste-Marie first asked the prime minister whether the government would outlaw what was immoral and then, put it precisely, made an example that a bank relocated its most profitable activities carried out in Canada and registered them in a subsidiary in the Bahamas, Barbados or another tax haven. Under this situation, the government might not consider this bank to be paying its fair share of taxes in Canada and that was why Mr. Gabriel Ste-Marie said that the Prime Minister continued to support the profiteers.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "precision": 0.359375,
+          "recall": 0.2822085889570552,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 184,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            10,
+            35
+          ]
+        },
+        "turn_packed__dense__w1024": {
+          "precision": 0.1796875,
+          "recall": 0.2822085889570552,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 184,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            10,
+            35,
+            51,
+            66,
+            9
+          ]
+        },
+        "turn_packed__dense__w2048": {
+          "precision": 0.20166015625,
+          "recall": 0.6334355828220859,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 413,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            10,
+            35,
+            51,
+            66,
+            9,
+            46,
+            59,
+            11,
+            20
+          ]
+        },
+        "turn_packed__bm25__w512": {
+          "precision": 1.0,
+          "recall": 0.7852760736196319,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            10,
+            11,
+            12
+          ]
+        },
+        "turn_packed__bm25__w1024": {
+          "precision": 0.63671875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 652,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            10,
+            11,
+            12,
+            9,
+            19
+          ]
+        },
+        "turn_packed__bm25__w2048": {
+          "precision": 0.318359375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 652,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            10,
+            11,
+            12,
+            9,
+            19,
+            8,
+            7,
+            40,
+            20
+          ]
+        },
+        "turn_packed__hybrid__w512": {
+          "precision": 0.5703125,
+          "recall": 0.44785276073619634,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 292,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            10,
+            9,
+            11
+          ]
+        },
+        "turn_packed__hybrid__w1024": {
+          "precision": 0.4033203125,
+          "recall": 0.6334355828220859,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 413,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            10,
+            9,
+            11,
+            20,
+            8
+          ]
+        },
+        "turn_packed__hybrid__w2048": {
+          "precision": 0.318359375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 652,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            10,
+            9,
+            11,
+            20,
+            8,
+            35,
+            66,
+            12,
+            40
+          ]
+        },
+        "word_packed__dense__w512": {
+          "precision": 0.34375,
+          "recall": 0.26993865030674846,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 176,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            8,
+            29
+          ]
+        },
+        "word_packed__dense__w1024": {
+          "precision": 0.421875,
+          "recall": 0.6625766871165644,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 432,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            8,
+            29,
+            17,
+            9
+          ]
+        },
+        "word_packed__dense__w2048": {
+          "precision": 0.2109375,
+          "recall": 0.6625766871165644,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 432,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            8,
+            29,
+            17,
+            9,
+            55,
+            33,
+            43,
+            45
+          ]
+        },
+        "word_packed__bm25__w512": {
+          "precision": 0.84375,
+          "recall": 0.6625766871165644,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 432,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            8,
+            9
+          ]
+        },
+        "word_packed__bm25__w1024": {
+          "precision": 0.63671875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 652,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            8,
+            9,
+            10,
+            16
+          ]
+        },
+        "word_packed__bm25__w2048": {
+          "precision": 0.318359375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 652,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            8,
+            9,
+            10,
+            16,
+            34,
+            6,
+            25,
+            35
+          ]
+        },
+        "word_packed__hybrid__w512": {
+          "precision": 0.84375,
+          "recall": 0.6625766871165644,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 432,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            8,
+            9
+          ]
+        },
+        "word_packed__hybrid__w1024": {
+          "precision": 0.421875,
+          "recall": 0.6625766871165644,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 432,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            8,
+            9,
+            17,
+            34
+          ]
+        },
+        "word_packed__hybrid__w2048": {
+          "precision": 0.2109375,
+          "recall": 0.6625766871165644,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 432,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            8,
+            9,
+            17,
+            34,
+            7,
+            6,
+            33,
+            55
+          ]
+        },
+        "lumber__dense__w512": {
+          "precision": 1.0,
+          "recall": 0.7852760736196319,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            6
+          ]
+        },
+        "lumber__dense__w1024": {
+          "precision": 0.63671875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 652,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            6,
+            34,
+            24
+          ]
+        },
+        "lumber__dense__w2048": {
+          "precision": 0.318359375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 652,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            6,
+            34,
+            24,
+            19
+          ]
+        },
+        "lumber__bm25__w512": {
+          "precision": 1.0,
+          "recall": 0.7852760736196319,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            6
+          ]
+        },
+        "lumber__bm25__w1024": {
+          "precision": 0.63671875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 652,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            6,
+            10
+          ]
+        },
+        "lumber__bm25__w2048": {
+          "precision": 0.318359375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 652,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            6,
+            10,
+            21,
+            4
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 1.0,
+          "recall": 0.7852760736196319,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            6
+          ]
+        },
+        "lumber__hybrid__w1024": {
+          "precision": 0.63671875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 652,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            6,
+            11,
+            21
+          ]
+        },
+        "lumber__hybrid__w2048": {
+          "precision": 0.318359375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 652,
+          "gold_words": 652,
+          "selected_chunk_indices": [
+            6,
+            11,
+            21,
+            4,
+            34,
+            5
+          ]
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Why did Hon. Bill Blair support banning Iver Johnson?",
+      "reference_answer": "First, the Canadian Association of Chiefs of Police declared that military assault rifles were produced for the sole purpose of killing people in large numbers and urged the government to enact legislation to ban all military assault rifles, except for law enforcement and military purposes. And Hon. Bill Blair thought what their regulations said very clearly, was that weapons that were designed not for hunting and not for sport purposes but for soldiers to use in combat to kill other soldiers in Canadian society.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "precision": 1.0,
+          "recall": 0.6808510638297872,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            18,
+            17,
+            19
+          ]
+        },
+        "turn_packed__dense__w1024": {
+          "precision": 0.6337890625,
+          "recall": 0.863031914893617,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 649,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            18,
+            17,
+            19,
+            72,
+            51
+          ]
+        },
+        "turn_packed__dense__w2048": {
+          "precision": 0.31689453125,
+          "recall": 0.863031914893617,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 649,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            18,
+            17,
+            19,
+            72,
+            51,
+            60,
+            4,
+            6,
+            26,
+            68
+          ]
+        },
+        "turn_packed__bm25__w512": {
+          "precision": 0.990234375,
+          "recall": 0.6742021276595744,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 507,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            18,
+            19,
+            17
+          ]
+        },
+        "turn_packed__bm25__w1024": {
+          "precision": 0.6337890625,
+          "recall": 0.863031914893617,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 649,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            18,
+            19,
+            17,
+            47,
+            44
+          ]
+        },
+        "turn_packed__bm25__w2048": {
+          "precision": 0.31689453125,
+          "recall": 0.863031914893617,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 649,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            18,
+            19,
+            17,
+            47,
+            44,
+            60,
+            72,
+            71,
+            37,
+            8
+          ]
+        },
+        "turn_packed__hybrid__w512": {
+          "precision": 1.0,
+          "recall": 0.6808510638297872,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            18,
+            17,
+            19
+          ]
+        },
+        "turn_packed__hybrid__w1024": {
+          "precision": 0.6337890625,
+          "recall": 0.863031914893617,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 649,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            18,
+            17,
+            19,
+            72,
+            60,
+            47
+          ]
+        },
+        "turn_packed__hybrid__w2048": {
+          "precision": 0.31689453125,
+          "recall": 0.863031914893617,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 649,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            18,
+            17,
+            19,
+            72,
+            60,
+            47,
+            10,
+            37,
+            71,
+            54
+          ]
+        },
+        "word_packed__dense__w512": {
+          "precision": 1.0,
+          "recall": 0.6808510638297872,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            16,
+            15
+          ]
+        },
+        "word_packed__dense__w1024": {
+          "precision": 0.5,
+          "recall": 0.6808510638297872,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 512,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            16,
+            15,
+            50,
+            5
+          ]
+        },
+        "word_packed__dense__w2048": {
+          "precision": 0.25,
+          "recall": 0.6808510638297872,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 512,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            16,
+            15,
+            50,
+            5,
+            4,
+            28,
+            49,
+            43
+          ]
+        },
+        "word_packed__bm25__w512": {
+          "precision": 1.0,
+          "recall": 0.6808510638297872,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            16,
+            15
+          ]
+        },
+        "word_packed__bm25__w1024": {
+          "precision": 0.5283203125,
+          "recall": 0.7194148936170213,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 541,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            16,
+            15,
+            40,
+            17
+          ]
+        },
+        "word_packed__bm25__w2048": {
+          "precision": 0.26416015625,
+          "recall": 0.7194148936170213,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 541,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            16,
+            15,
+            40,
+            17,
+            37,
+            59,
+            50,
+            60
+          ]
+        },
+        "word_packed__hybrid__w512": {
+          "precision": 1.0,
+          "recall": 0.6808510638297872,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            16,
+            15
+          ]
+        },
+        "word_packed__hybrid__w1024": {
+          "precision": 0.5,
+          "recall": 0.6808510638297872,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 512,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            16,
+            15,
+            50,
+            59
+          ]
+        },
+        "word_packed__hybrid__w2048": {
+          "precision": 0.26416015625,
+          "recall": 0.7194148936170213,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 541,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            16,
+            15,
+            50,
+            59,
+            17,
+            40,
+            60,
+            4
+          ]
+        },
+        "lumber__dense__w512": {
+          "precision": 0.9140625,
+          "recall": 0.6223404255319149,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 468,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            10,
+            31
+          ]
+        },
+        "lumber__dense__w1024": {
+          "precision": 0.45703125,
+          "recall": 0.6223404255319149,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 468,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            10,
+            31,
+            3
+          ]
+        },
+        "lumber__dense__w2048": {
+          "precision": 0.228515625,
+          "recall": 0.6223404255319149,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 468,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            10,
+            31,
+            3,
+            27,
+            6
+          ]
+        },
+        "lumber__bm25__w512": {
+          "precision": 0.9140625,
+          "recall": 0.6223404255319149,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 468,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            10,
+            25
+          ]
+        },
+        "lumber__bm25__w1024": {
+          "precision": 0.45703125,
+          "recall": 0.6223404255319149,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 468,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            10,
+            25,
+            31,
+            37
+          ]
+        },
+        "lumber__bm25__w2048": {
+          "precision": 0.228515625,
+          "recall": 0.6223404255319149,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 468,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            10,
+            25,
+            31,
+            37,
+            23,
+            4
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 0.9140625,
+          "recall": 0.6223404255319149,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 468,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            10,
+            31
+          ]
+        },
+        "lumber__hybrid__w1024": {
+          "precision": 0.45703125,
+          "recall": 0.6223404255319149,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 468,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            10,
+            31,
+            25,
+            6
+          ]
+        },
+        "lumber__hybrid__w2048": {
+          "precision": 0.228515625,
+          "recall": 0.6223404255319149,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 468,
+          "gold_words": 752,
+          "selected_chunk_indices": [
+            10,
+            31,
+            25,
+            6,
+            3,
+            37
+          ]
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about Government support for the elderly and for vulnerable people.",
+      "reference_answer": "During the pandemic of Covid-19, the government should fix this gap so that the single parents and their children could get the support they need. Also, matching funds and adequate housing should be given to support the affected in Canada. In addition, the elderly, one of the highest risk populations, had obtained extra funding from the government. Besides, vulnerable people like the disabled could gain more funding support and workers affected by the pandemic could also gain support.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "precision": 0.53515625,
+          "recall": 0.143530644316396,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 274,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            38,
+            61,
+            39
+          ]
+        },
+        "turn_packed__dense__w1024": {
+          "precision": 0.392578125,
+          "recall": 0.2105814562598219,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 402,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            38,
+            61,
+            39,
+            62,
+            64
+          ]
+        },
+        "turn_packed__dense__w2048": {
+          "precision": 0.46630859375,
+          "recall": 0.500261917234154,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 955,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            38,
+            61,
+            39,
+            62,
+            64,
+            63,
+            27,
+            50,
+            49,
+            14,
+            13
+          ]
+        },
+        "turn_packed__bm25__w512": {
+          "precision": 0.509765625,
+          "recall": 0.13672079622839184,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 261,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            15,
+            26,
+            38
+          ]
+        },
+        "turn_packed__bm25__w1024": {
+          "precision": 0.533203125,
+          "recall": 0.286013619696176,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 546,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            15,
+            26,
+            38,
+            42,
+            16
+          ]
+        },
+        "turn_packed__bm25__w2048": {
+          "precision": 0.44482421875,
+          "recall": 0.47721320062860134,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 911,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            15,
+            26,
+            38,
+            42,
+            16,
+            39,
+            50,
+            31,
+            56,
+            19
+          ]
+        },
+        "turn_packed__hybrid__w512": {
+          "precision": 1.0,
+          "recall": 0.2682032477737035,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            38,
+            39,
+            50
+          ]
+        },
+        "turn_packed__hybrid__w1024": {
+          "precision": 0.8896484375,
+          "recall": 0.47721320062860134,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 911,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            38,
+            39,
+            50,
+            15,
+            16
+          ]
+        },
+        "turn_packed__hybrid__w2048": {
+          "precision": 0.5986328125,
+          "recall": 0.642221058145626,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1226,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            38,
+            39,
+            50,
+            15,
+            16,
+            61,
+            31,
+            14,
+            71,
+            13
+          ]
+        },
+        "word_packed__dense__w512": {
+          "precision": 0.314453125,
+          "recall": 0.08433734939759036,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 161,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            52,
+            33
+          ]
+        },
+        "word_packed__dense__w1024": {
+          "precision": 0.3994140625,
+          "recall": 0.214248297537978,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 409,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            52,
+            33,
+            51,
+            32
+          ]
+        },
+        "word_packed__dense__w2048": {
+          "precision": 0.31591796875,
+          "recall": 0.3389209009952855,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 647,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            52,
+            33,
+            51,
+            32,
+            23,
+            53,
+            54,
+            42
+          ]
+        },
+        "word_packed__bm25__w512": {
+          "precision": 0.484375,
+          "recall": 0.12991094814038764,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 248,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            22,
+            32
+          ]
+        },
+        "word_packed__bm25__w1024": {
+          "precision": 0.724609375,
+          "recall": 0.3886851754845469,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 742,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            22,
+            32,
+            12,
+            42
+          ]
+        },
+        "word_packed__bm25__w2048": {
+          "precision": 0.50927734375,
+          "recall": 0.5463593504452593,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1043,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            22,
+            32,
+            12,
+            42,
+            14,
+            13,
+            36,
+            7
+          ]
+        },
+        "word_packed__hybrid__w512": {
+          "precision": 0.94921875,
+          "recall": 0.25458355159769513,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 486,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            32,
+            42
+          ]
+        },
+        "word_packed__hybrid__w1024": {
+          "precision": 0.8818359375,
+          "recall": 0.47302252488213725,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 903,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            32,
+            42,
+            13,
+            33
+          ]
+        },
+        "word_packed__hybrid__w2048": {
+          "precision": 0.587890625,
+          "recall": 0.6306966998428497,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1204,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            32,
+            42,
+            13,
+            33,
+            52,
+            12,
+            14,
+            29
+          ]
+        },
+        "lumber__dense__w512": {
+          "precision": 0.568359375,
+          "recall": 0.15243583027763227,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 291,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            32,
+            20
+          ]
+        },
+        "lumber__dense__w1024": {
+          "precision": 0.3994140625,
+          "recall": 0.214248297537978,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 409,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            32,
+            20,
+            33
+          ]
+        },
+        "lumber__dense__w2048": {
+          "precision": 0.2119140625,
+          "recall": 0.22734415924567836,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 434,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            32,
+            20,
+            33,
+            15,
+            7
+          ]
+        },
+        "lumber__bm25__w512": {
+          "precision": 1.0,
+          "recall": 0.2682032477737035,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            8
+          ]
+        },
+        "lumber__bm25__w1024": {
+          "precision": 0.7548828125,
+          "recall": 0.40492404400209536,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 773,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            8,
+            14,
+            20
+          ]
+        },
+        "lumber__bm25__w2048": {
+          "precision": 0.63525390625,
+          "recall": 0.6815086432687271,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1301,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            8,
+            14,
+            20,
+            26,
+            22,
+            37
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 1.0,
+          "recall": 0.2682032477737035,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            20,
+            26
+          ]
+        },
+        "lumber__hybrid__w1024": {
+          "precision": 0.98046875,
+          "recall": 0.5259298061812467,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 1004,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            20,
+            26,
+            8
+          ]
+        },
+        "lumber__hybrid__w2048": {
+          "precision": 0.86767578125,
+          "recall": 0.9308538501833421,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1777,
+          "gold_words": 1909,
+          "selected_chunk_indices": [
+            20,
+            26,
+            8,
+            7,
+            14,
+            25
+          ]
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did Ms. Jenny Kwan mean by saying there was a gap between program making and its implementation?",
+      "reference_answer": "Ms. Jenny Kwan gave an example that a single parent with four school-age children lost her spousal and child support due to COVID-19. She paid taxes on her spousal income, but she was not eligible for CERB. That meant a complicated program delivered by the government that left many people behind, and more importantly, there was no action reacting to it. So Ms. Jenny Kwan called for a fixation for this gap and proposed that matching funding and adequate housing should be arranged for those who were affected.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "precision": 0.8671875,
+          "recall": 0.5229681978798587,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 444,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            13,
+            14,
+            12
+          ]
+        },
+        "turn_packed__dense__w1024": {
+          "precision": 0.5341796875,
+          "recall": 0.6442873969375736,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 547,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            13,
+            14,
+            12,
+            61,
+            16
+          ]
+        },
+        "turn_packed__dense__w2048": {
+          "precision": 0.41455078125,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 849,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            13,
+            14,
+            12,
+            61,
+            16,
+            67,
+            15,
+            64,
+            23
+          ]
+        },
+        "turn_packed__bm25__w512": {
+          "precision": 0.517578125,
+          "recall": 0.3121319199057715,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 265,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            13,
+            19,
+            15
+          ]
+        },
+        "turn_packed__bm25__w1024": {
+          "precision": 0.484375,
+          "recall": 0.5842167255594818,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 496,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            13,
+            19,
+            15,
+            6,
+            48
+          ]
+        },
+        "turn_packed__bm25__w2048": {
+          "precision": 0.31396484375,
+          "recall": 0.7573616018845701,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 643,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            13,
+            19,
+            15,
+            6,
+            48,
+            16,
+            35,
+            49
+          ]
+        },
+        "turn_packed__hybrid__w512": {
+          "precision": 1.0,
+          "recall": 0.6030624263839811,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            13,
+            15,
+            14
+          ]
+        },
+        "turn_packed__hybrid__w1024": {
+          "precision": 0.8232421875,
+          "recall": 0.9929328621908127,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 843,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            13,
+            15,
+            14,
+            16,
+            61
+          ]
+        },
+        "turn_packed__hybrid__w2048": {
+          "precision": 0.41455078125,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 849,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            13,
+            15,
+            14,
+            16,
+            61,
+            12,
+            49,
+            48,
+            67
+          ]
+        },
+        "word_packed__dense__w512": {
+          "precision": 0.5703125,
+          "recall": 0.34393404004711425,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 292,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            11,
+            10
+          ]
+        },
+        "word_packed__dense__w1024": {
+          "precision": 0.78515625,
+          "recall": 0.9469964664310954,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 804,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            11,
+            10,
+            13,
+            12
+          ]
+        },
+        "word_packed__dense__w2048": {
+          "precision": 0.392578125,
+          "recall": 0.9469964664310954,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 804,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            11,
+            10,
+            13,
+            12,
+            20,
+            56,
+            62,
+            21
+          ]
+        },
+        "word_packed__bm25__w512": {
+          "precision": 1.0,
+          "recall": 0.6030624263839811,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            11,
+            13
+          ]
+        },
+        "word_packed__bm25__w1024": {
+          "precision": 0.53515625,
+          "recall": 0.6454652532391049,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 548,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            11,
+            13,
+            10,
+            16
+          ]
+        },
+        "word_packed__bm25__w2048": {
+          "precision": 0.392578125,
+          "recall": 0.9469964664310954,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 804,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            11,
+            13,
+            10,
+            16,
+            12,
+            4,
+            30,
+            42
+          ]
+        },
+        "word_packed__hybrid__w512": {
+          "precision": 0.5703125,
+          "recall": 0.34393404004711425,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 292,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            11,
+            10
+          ]
+        },
+        "word_packed__hybrid__w1024": {
+          "precision": 0.78515625,
+          "recall": 0.9469964664310954,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 804,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            11,
+            10,
+            13,
+            12
+          ]
+        },
+        "word_packed__hybrid__w2048": {
+          "precision": 0.392578125,
+          "recall": 0.9469964664310954,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 804,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            11,
+            10,
+            13,
+            12,
+            41,
+            56,
+            51,
+            4
+          ]
+        },
+        "lumber__dense__w512": {
+          "precision": 1.0,
+          "recall": 0.6030624263839811,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            7,
+            8
+          ]
+        },
+        "lumber__dense__w1024": {
+          "precision": 0.8291015625,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 849,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            7,
+            8,
+            32
+          ]
+        },
+        "lumber__dense__w2048": {
+          "precision": 0.41455078125,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 849,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            7,
+            8,
+            32,
+            13,
+            25,
+            35
+          ]
+        },
+        "lumber__bm25__w512": {
+          "precision": 1.0,
+          "recall": 0.6030624263839811,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            7,
+            8
+          ]
+        },
+        "lumber__bm25__w1024": {
+          "precision": 0.8291015625,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 849,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            7,
+            8,
+            10
+          ]
+        },
+        "lumber__bm25__w2048": {
+          "precision": 0.41455078125,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 849,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            7,
+            8,
+            10,
+            3,
+            25,
+            19
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 1.0,
+          "recall": 0.6030624263839811,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            7,
+            8
+          ]
+        },
+        "lumber__hybrid__w1024": {
+          "precision": 0.8291015625,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 849,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            7,
+            8,
+            25
+          ]
+        },
+        "lumber__hybrid__w2048": {
+          "precision": 0.41455078125,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 849,
+          "gold_words": 849,
+          "selected_chunk_indices": [
+            7,
+            8,
+            25,
+            32,
+            19
+          ]
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the Canadian government do to support the elderly.",
+      "reference_answer": "As one of the highest risk populations, the elderly's costs had gone up. Many seniors who were facing extra dispensing fees were already carefully budgeting before the pandemic. It was so important that the government be there to support them. The government announced a one-time, tax-free payment of $300 for seniors eligible for OAS and an additional $200 for seniors eligible for GIS. This meant there would be up to $500 for the most vulnerable seniors to help them with their financial security to get through this challenging time. Beyond this, they announced $20 million to expand the new horizons for seniors program to kick-start initiatives and services that would help seniors to get grocery deliveries right to their door and to stay connected.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "precision": 0.287109375,
+          "recall": 0.3594132029339853,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 147,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            38,
+            62,
+            63
+          ]
+        },
+        "turn_packed__dense__w1024": {
+          "precision": 0.392578125,
+          "recall": 0.9828850855745721,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 402,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            38,
+            62,
+            63,
+            39,
+            64,
+            61
+          ]
+        },
+        "turn_packed__dense__w2048": {
+          "precision": 0.1962890625,
+          "recall": 0.9828850855745721,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 402,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            38,
+            62,
+            63,
+            39,
+            64,
+            61,
+            27,
+            16,
+            14,
+            7
+          ]
+        },
+        "turn_packed__bm25__w512": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 6,
+          "first_overlap_reciprocal_rank": 0.16666666666666666,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 0,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            19,
+            48,
+            44
+          ]
+        },
+        "turn_packed__bm25__w1024": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 6,
+          "first_overlap_reciprocal_rank": 0.16666666666666666,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 0,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            19,
+            48,
+            44,
+            47,
+            15
+          ]
+        },
+        "turn_packed__bm25__w2048": {
+          "precision": 0.07177734375,
+          "recall": 0.3594132029339853,
+          "first_overlap_rank": 6,
+          "first_overlap_reciprocal_rank": 0.16666666666666666,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 147,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            19,
+            48,
+            44,
+            47,
+            15,
+            38,
+            20,
+            9,
+            58,
+            46
+          ]
+        },
+        "turn_packed__hybrid__w512": {
+          "precision": 0.287109375,
+          "recall": 0.3594132029339853,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 147,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            38,
+            47,
+            48
+          ]
+        },
+        "turn_packed__hybrid__w1024": {
+          "precision": 0.1435546875,
+          "recall": 0.3594132029339853,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 147,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            38,
+            47,
+            48,
+            20,
+            27,
+            46
+          ]
+        },
+        "turn_packed__hybrid__w2048": {
+          "precision": 0.07177734375,
+          "recall": 0.3594132029339853,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 147,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            38,
+            47,
+            48,
+            20,
+            27,
+            46,
+            7,
+            15,
+            63,
+            16
+          ]
+        },
+        "word_packed__dense__w512": {
+          "precision": 0.484375,
+          "recall": 0.6063569682151589,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 248,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            32,
+            51
+          ]
+        },
+        "word_packed__dense__w1024": {
+          "precision": 0.2421875,
+          "recall": 0.6063569682151589,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 248,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            32,
+            51,
+            52,
+            53
+          ]
+        },
+        "word_packed__dense__w2048": {
+          "precision": 0.19970703125,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 409,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            32,
+            51,
+            52,
+            53,
+            33,
+            23,
+            54,
+            14
+          ]
+        },
+        "word_packed__bm25__w512": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 11,
+          "first_overlap_reciprocal_rank": 0.09090909090909091,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 0,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            16,
+            41
+          ]
+        },
+        "word_packed__bm25__w1024": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 11,
+          "first_overlap_reciprocal_rank": 0.09090909090909091,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 0,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            16,
+            41,
+            17,
+            40
+          ]
+        },
+        "word_packed__bm25__w2048": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 11,
+          "first_overlap_reciprocal_rank": 0.09090909090909091,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 0,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            16,
+            41,
+            17,
+            40,
+            37,
+            6,
+            13,
+            39
+          ]
+        },
+        "word_packed__hybrid__w512": {
+          "precision": 0.484375,
+          "recall": 0.6063569682151589,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 248,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            32,
+            17
+          ]
+        },
+        "word_packed__hybrid__w1024": {
+          "precision": 0.2421875,
+          "recall": 0.6063569682151589,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 248,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            32,
+            17,
+            41,
+            6
+          ]
+        },
+        "word_packed__hybrid__w2048": {
+          "precision": 0.12109375,
+          "recall": 0.6063569682151589,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 248,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            32,
+            17,
+            41,
+            6,
+            40,
+            23,
+            13,
+            52
+          ]
+        },
+        "lumber__dense__w512": {
+          "precision": 0.798828125,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 409,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            20,
+            33
+          ]
+        },
+        "lumber__dense__w1024": {
+          "precision": 0.3994140625,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 409,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            20,
+            33
+          ]
+        },
+        "lumber__dense__w2048": {
+          "precision": 0.19970703125,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 409,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            20,
+            33,
+            15,
+            32,
+            25
+          ]
+        },
+        "lumber__bm25__w512": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 9,
+          "first_overlap_reciprocal_rank": 0.1111111111111111,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 0,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            25,
+            10
+          ]
+        },
+        "lumber__bm25__w1024": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 9,
+          "first_overlap_reciprocal_rank": 0.1111111111111111,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 0,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            25,
+            10,
+            11,
+            4
+          ]
+        },
+        "lumber__bm25__w2048": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 9,
+          "first_overlap_reciprocal_rank": 0.1111111111111111,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 0,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            25,
+            10,
+            11,
+            4,
+            23,
+            8
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 0.4453125,
+          "recall": 0.5574572127139364,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 228,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            25,
+            20
+          ]
+        },
+        "lumber__hybrid__w1024": {
+          "precision": 0.3994140625,
+          "recall": 1.0,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 409,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            25,
+            20,
+            11,
+            4
+          ]
+        },
+        "lumber__hybrid__w2048": {
+          "precision": 0.19970703125,
+          "recall": 1.0,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 409,
+          "gold_words": 409,
+          "selected_chunk_indices": [
+            25,
+            20,
+            11,
+            4,
+            19
+          ]
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "Summarize the discussion about Government support for energy resources and tourism and funding in green economy and small businesses.",
+      "reference_answer": "Since Quebec was Canada's biggest producer of hydroelectricity, renewable energy sharing through an energy corridor was very essential for different areas in Canada. And as a hard-hit sector, tourism needed much support from the Canadian government. The government was going to protect the tourism-based economy by investing in tourism infrastructure and upgrades to ensure Canada's tourist regions would be ready when the economy reopened. When it came to the green economy, the government now gave priority to the virus and making through this disaster. Also, they paid much attention to the small businesses and carried out measures to help them out.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "precision": 0.787109375,
+          "recall": 0.164021164021164,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 403,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            66,
+            70,
+            57
+          ]
+        },
+        "turn_packed__dense__w1024": {
+          "precision": 0.5693359375,
+          "recall": 0.2372812372812373,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 583,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            66,
+            70,
+            57,
+            34,
+            69,
+            55
+          ]
+        },
+        "turn_packed__dense__w2048": {
+          "precision": 0.546875,
+          "recall": 0.45584045584045585,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1120,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            66,
+            70,
+            57,
+            34,
+            69,
+            55,
+            71,
+            47,
+            56,
+            46
+          ]
+        },
+        "turn_packed__bm25__w512": {
+          "precision": 0.734375,
+          "recall": 0.15303215303215303,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 376,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            66,
+            34,
+            70
+          ]
+        },
+        "turn_packed__bm25__w1024": {
+          "precision": 0.6298828125,
+          "recall": 0.2625152625152625,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 645,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            66,
+            34,
+            70,
+            71,
+            55,
+            56
+          ]
+        },
+        "turn_packed__bm25__w2048": {
+          "precision": 0.52197265625,
+          "recall": 0.4350834350834351,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1069,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            66,
+            34,
+            70,
+            71,
+            55,
+            56,
+            46,
+            57,
+            69,
+            11
+          ]
+        },
+        "turn_packed__hybrid__w512": {
+          "precision": 0.787109375,
+          "recall": 0.164021164021164,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 403,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            66,
+            70,
+            34
+          ]
+        },
+        "turn_packed__hybrid__w1024": {
+          "precision": 0.6298828125,
+          "recall": 0.2625152625152625,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 645,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            66,
+            70,
+            34,
+            57,
+            71,
+            55
+          ]
+        },
+        "turn_packed__hybrid__w2048": {
+          "precision": 0.52197265625,
+          "recall": 0.4350834350834351,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1069,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            66,
+            70,
+            34,
+            57,
+            71,
+            55,
+            69,
+            56,
+            46,
+            37
+          ]
+        },
+        "word_packed__dense__w512": {
+          "precision": 0.412109375,
+          "recall": 0.08587708587708588,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 211,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            55,
+            29
+          ]
+        },
+        "word_packed__dense__w1024": {
+          "precision": 0.4560546875,
+          "recall": 0.19006919006919007,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 467,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            55,
+            29,
+            48,
+            57
+          ]
+        },
+        "word_packed__dense__w2048": {
+          "precision": 0.4013671875,
+          "recall": 0.33455433455433453,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 822,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            55,
+            29,
+            48,
+            57,
+            47,
+            40,
+            46,
+            58
+          ]
+        },
+        "word_packed__bm25__w512": {
+          "precision": 0.412109375,
+          "recall": 0.08587708587708588,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 211,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            55,
+            47
+          ]
+        },
+        "word_packed__bm25__w1024": {
+          "precision": 0.7060546875,
+          "recall": 0.29426129426129427,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 723,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            55,
+            47,
+            58,
+            59
+          ]
+        },
+        "word_packed__bm25__w2048": {
+          "precision": 0.47802734375,
+          "recall": 0.39845339845339844,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 979,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            55,
+            47,
+            58,
+            59,
+            46,
+            57,
+            48,
+            29
+          ]
+        },
+        "word_packed__hybrid__w512": {
+          "precision": 0.412109375,
+          "recall": 0.08587708587708588,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 211,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            55,
+            47
+          ]
+        },
+        "word_packed__hybrid__w1024": {
+          "precision": 0.2060546875,
+          "recall": 0.08587708587708588,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 211,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            55,
+            47,
+            29,
+            48
+          ]
+        },
+        "word_packed__hybrid__w2048": {
+          "precision": 0.47802734375,
+          "recall": 0.39845339845339844,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 979,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            55,
+            47,
+            29,
+            48,
+            57,
+            58,
+            46,
+            59
+          ]
+        },
+        "lumber__dense__w512": {
+          "precision": 0.326171875,
+          "recall": 0.06796906796906797,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 167,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            34,
+            29
+          ]
+        },
+        "lumber__dense__w1024": {
+          "precision": 0.49609375,
+          "recall": 0.20675620675620676,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 508,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            34,
+            29,
+            36,
+            18
+          ]
+        },
+        "lumber__dense__w2048": {
+          "precision": 0.5146484375,
+          "recall": 0.42897842897842897,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1054,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            34,
+            29,
+            36,
+            18,
+            28,
+            37
+          ]
+        },
+        "lumber__bm25__w512": {
+          "precision": 0.326171875,
+          "recall": 0.06796906796906797,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 167,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            34,
+            18,
+            29
+          ]
+        },
+        "lumber__bm25__w1024": {
+          "precision": 0.3876953125,
+          "recall": 0.16157916157916158,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 397,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            34,
+            18,
+            29,
+            24
+          ]
+        },
+        "lumber__bm25__w2048": {
+          "precision": 0.5146484375,
+          "recall": 0.42897842897842897,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1054,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            34,
+            18,
+            29,
+            24,
+            28,
+            37
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 0.326171875,
+          "recall": 0.06796906796906797,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 167,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            34,
+            29
+          ]
+        },
+        "lumber__hybrid__w1024": {
+          "precision": 0.3876953125,
+          "recall": 0.16157916157916158,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 397,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            34,
+            29,
+            18,
+            36
+          ]
+        },
+        "lumber__hybrid__w2048": {
+          "precision": 0.5146484375,
+          "recall": 0.42897842897842897,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1054,
+          "gold_words": 2457,
+          "selected_chunk_indices": [
+            34,
+            29,
+            18,
+            36,
+            28,
+            24,
+            37
+          ]
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "What was the current situation of the tourism sector and what was the government going to do?",
+      "reference_answer": "The current economic situation could lead to the disappearance of Canada's tourism industry. And the pain would be felt by thousands of Canadians, who would have to find new jobs in order to survive. Let's work together to find ways to get this hard-hit sector moving again. Many people had lost their jobs and needed assistance from the government. That was why they were here, providing a helping hand at this difficult time so they could come out the other side.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "precision": 0.4375,
+          "recall": 0.417910447761194,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 224,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            34,
+            47,
+            46
+          ]
+        },
+        "turn_packed__dense__w1024": {
+          "precision": 0.3232421875,
+          "recall": 0.6175373134328358,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 331,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            34,
+            47,
+            46,
+            70,
+            30
+          ]
+        },
+        "turn_packed__dense__w2048": {
+          "precision": 0.16162109375,
+          "recall": 0.6175373134328358,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 331,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            34,
+            47,
+            46,
+            70,
+            30,
+            55,
+            6,
+            51,
+            57,
+            66
+          ]
+        },
+        "turn_packed__bm25__w512": {
+          "precision": 0.4765625,
+          "recall": 0.4552238805970149,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 244,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            46,
+            34,
+            52
+          ]
+        },
+        "turn_packed__bm25__w1024": {
+          "precision": 0.23828125,
+          "recall": 0.4552238805970149,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 244,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            46,
+            34,
+            52,
+            55,
+            30
+          ]
+        },
+        "turn_packed__bm25__w2048": {
+          "precision": 0.16162109375,
+          "recall": 0.6175373134328358,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 331,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            46,
+            34,
+            52,
+            55,
+            30,
+            75,
+            7,
+            48,
+            42,
+            47
+          ]
+        },
+        "turn_packed__hybrid__w512": {
+          "precision": 0.4765625,
+          "recall": 0.4552238805970149,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 244,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            34,
+            46,
+            55
+          ]
+        },
+        "turn_packed__hybrid__w1024": {
+          "precision": 0.3232421875,
+          "recall": 0.6175373134328358,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 331,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            34,
+            46,
+            55,
+            30,
+            47
+          ]
+        },
+        "turn_packed__hybrid__w2048": {
+          "precision": 0.16162109375,
+          "recall": 0.6175373134328358,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 331,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            34,
+            46,
+            55,
+            30,
+            47,
+            52,
+            75,
+            67,
+            48,
+            7
+          ]
+        },
+        "word_packed__dense__w512": {
+          "precision": 0.193359375,
+          "recall": 0.18470149253731344,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 99,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            29,
+            40
+          ]
+        },
+        "word_packed__dense__w1024": {
+          "precision": 0.3466796875,
+          "recall": 0.6623134328358209,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 355,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            29,
+            40,
+            28,
+            39
+          ]
+        },
+        "word_packed__dense__w2048": {
+          "precision": 0.17333984375,
+          "recall": 0.6623134328358209,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 355,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            29,
+            40,
+            28,
+            39,
+            5,
+            45,
+            48,
+            47
+          ]
+        },
+        "word_packed__bm25__w512": {
+          "precision": 0.5,
+          "recall": 0.47761194029850745,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 256,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            39,
+            62
+          ]
+        },
+        "word_packed__bm25__w1024": {
+          "precision": 0.25,
+          "recall": 0.47761194029850745,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 256,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            39,
+            62,
+            25,
+            29
+          ]
+        },
+        "word_packed__bm25__w2048": {
+          "precision": 0.125,
+          "recall": 0.47761194029850745,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 256,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            39,
+            62,
+            25,
+            29,
+            44,
+            7,
+            47,
+            56
+          ]
+        },
+        "word_packed__hybrid__w512": {
+          "precision": 0.5,
+          "recall": 0.47761194029850745,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 256,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            29,
+            39
+          ]
+        },
+        "word_packed__hybrid__w1024": {
+          "precision": 0.3466796875,
+          "recall": 0.6623134328358209,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 355,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            29,
+            39,
+            28,
+            40
+          ]
+        },
+        "word_packed__hybrid__w2048": {
+          "precision": 0.17333984375,
+          "recall": 0.6623134328358209,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 355,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            29,
+            39,
+            28,
+            40,
+            25,
+            62,
+            47,
+            56
+          ]
+        },
+        "lumber__dense__w512": {
+          "precision": 0.74609375,
+          "recall": 0.7126865671641791,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 382,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            18,
+            24
+          ]
+        },
+        "lumber__dense__w1024": {
+          "precision": 0.5234375,
+          "recall": 1.0,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 536,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            18,
+            24,
+            25,
+            28
+          ]
+        },
+        "lumber__dense__w2048": {
+          "precision": 0.26171875,
+          "recall": 1.0,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 536,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            18,
+            24,
+            25,
+            28,
+            29,
+            34,
+            38
+          ]
+        },
+        "lumber__bm25__w512": {
+          "precision": 1.0,
+          "recall": 0.9552238805970149,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            24
+          ]
+        },
+        "lumber__bm25__w1024": {
+          "precision": 0.5234375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 536,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            24,
+            18,
+            38
+          ]
+        },
+        "lumber__bm25__w2048": {
+          "precision": 0.26171875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 536,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            24,
+            18,
+            38,
+            16,
+            27
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 0.74609375,
+          "recall": 0.7126865671641791,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 382,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            18,
+            24
+          ]
+        },
+        "lumber__hybrid__w1024": {
+          "precision": 0.5234375,
+          "recall": 1.0,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 536,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            18,
+            24,
+            38
+          ]
+        },
+        "lumber__hybrid__w2048": {
+          "precision": 0.26171875,
+          "recall": 1.0,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 536,
+          "gold_words": 536,
+          "selected_chunk_indices": [
+            18,
+            24,
+            38,
+            16,
+            28
+          ]
+        }
+      }
+    },
+    {
+      "question_index": 8,
+      "question": "What did the Canadian government do to help small businesses out?",
+      "reference_answer": "They shared the member's concern that small businesses be supported. That's why they've moved forward with a number of measures that are designed to be of assistance. With respect to rent support, they were encouraging landlords to support this measure. Obviously, rent and landlord-tenant relations were under provincial jurisdiction. At every opportunity Hon. Bill Morneau talked to the provincial finance ministers to encourage them to get engaged there. They would continue to support small businesses. It allowed for small businesses to significantly reduce their rent and for landlords to be protected with up to 75% of the rent. It was a sound program and would require the provinces to step forward and enforce it.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "precision": 0.251953125,
+          "recall": 0.6231884057971014,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 129,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            70,
+            55,
+            71
+          ]
+        },
+        "turn_packed__dense__w1024": {
+          "precision": 0.2021484375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            70,
+            55,
+            71,
+            7,
+            46
+          ]
+        },
+        "turn_packed__dense__w2048": {
+          "precision": 0.10107421875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            70,
+            55,
+            71,
+            7,
+            46,
+            57,
+            35,
+            37,
+            69
+          ]
+        },
+        "turn_packed__bm25__w512": {
+          "precision": 0.24609375,
+          "recall": 0.6086956521739131,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 126,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            55,
+            71,
+            70
+          ]
+        },
+        "turn_packed__bm25__w1024": {
+          "precision": 0.2021484375,
+          "recall": 1.0,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            55,
+            71,
+            70,
+            7,
+            8
+          ]
+        },
+        "turn_packed__bm25__w2048": {
+          "precision": 0.10107421875,
+          "recall": 1.0,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            55,
+            71,
+            70,
+            7,
+            8,
+            48,
+            34,
+            44,
+            19,
+            56
+          ]
+        },
+        "turn_packed__hybrid__w512": {
+          "precision": 0.251953125,
+          "recall": 0.6231884057971014,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 129,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            55,
+            70,
+            71
+          ]
+        },
+        "turn_packed__hybrid__w1024": {
+          "precision": 0.2021484375,
+          "recall": 1.0,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            55,
+            70,
+            71,
+            7,
+            57
+          ]
+        },
+        "turn_packed__hybrid__w2048": {
+          "precision": 0.10107421875,
+          "recall": 1.0,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            55,
+            70,
+            71,
+            7,
+            57,
+            8,
+            37,
+            46,
+            20
+          ]
+        },
+        "word_packed__dense__w512": {
+          "precision": 0.404296875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            58,
+            59
+          ]
+        },
+        "word_packed__dense__w1024": {
+          "precision": 0.2021484375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            58,
+            59,
+            39,
+            55
+          ]
+        },
+        "word_packed__dense__w2048": {
+          "precision": 0.10107421875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            58,
+            59,
+            39,
+            55,
+            31,
+            29,
+            38,
+            6
+          ]
+        },
+        "word_packed__bm25__w512": {
+          "precision": 0.404296875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            59,
+            58
+          ]
+        },
+        "word_packed__bm25__w1024": {
+          "precision": 0.2021484375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            59,
+            58,
+            6,
+            46
+          ]
+        },
+        "word_packed__bm25__w2048": {
+          "precision": 0.10107421875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            59,
+            58,
+            6,
+            46,
+            47,
+            37,
+            40,
+            41
+          ]
+        },
+        "word_packed__hybrid__w512": {
+          "precision": 0.404296875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            58,
+            59
+          ]
+        },
+        "word_packed__hybrid__w1024": {
+          "precision": 0.2021484375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            58,
+            59,
+            6,
+            47
+          ]
+        },
+        "word_packed__hybrid__w2048": {
+          "precision": 0.10107421875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            58,
+            59,
+            6,
+            47,
+            46,
+            31,
+            39,
+            17
+          ]
+        },
+        "lumber__dense__w512": {
+          "precision": 0.404296875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            37
+          ]
+        },
+        "lumber__dense__w1024": {
+          "precision": 0.2021484375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            37,
+            24
+          ]
+        },
+        "lumber__dense__w2048": {
+          "precision": 0.10107421875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            37,
+            24,
+            19,
+            29
+          ]
+        },
+        "lumber__bm25__w512": {
+          "precision": 0.404296875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            37
+          ]
+        },
+        "lumber__bm25__w1024": {
+          "precision": 0.2021484375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            37,
+            29
+          ]
+        },
+        "lumber__bm25__w2048": {
+          "precision": 0.10107421875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            37,
+            29,
+            28,
+            4
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 0.404296875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            37
+          ]
+        },
+        "lumber__hybrid__w1024": {
+          "precision": 0.2021484375,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            37,
+            29
+          ]
+        },
+        "lumber__hybrid__w2048": {
+          "precision": 0.10107421875,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 207,
+          "gold_words": 207,
+          "selected_chunk_indices": [
+            37,
+            29,
+            28,
+            19
+          ]
+        }
+      }
+    },
+    {
+      "question_index": 9,
+      "question": "Summarize the discussion about things including fishing and tourism, oil and gas affected by the Covid-19.",
+      "reference_answer": "During the pandemic, the lobster fishery was being negatively affected and was facing losses of up to 95% of its Asian markets. Many fishermen had their wives, their sons, their uncles or their fathers working for them, and sometimes it was the whole family on the boat. Moreover, the tourism season is already deeply affected by COVID-19. A number of industries, businesses and festivals were having to deal with considerable losses of income. As for oil and gas, western Canada oil storage is under extreme pressure. If thermal projects such as SAGD are shut down, those facilities could be lost forever. The oil and gas sector was suffering through two crises --COVID and the effects of a global price war.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "precision": 0.98828125,
+          "recall": 0.27574931880108994,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 506,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            30,
+            34,
+            54
+          ]
+        },
+        "turn_packed__dense__w1024": {
+          "precision": 0.755859375,
+          "recall": 0.4217983651226158,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 774,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            30,
+            34,
+            54,
+            32,
+            46,
+            57
+          ]
+        },
+        "turn_packed__dense__w2048": {
+          "precision": 0.634765625,
+          "recall": 0.7084468664850136,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1300,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            30,
+            34,
+            54,
+            32,
+            46,
+            57,
+            26,
+            55,
+            47,
+            56
+          ]
+        },
+        "turn_packed__bm25__w512": {
+          "precision": 0.98828125,
+          "recall": 0.27574931880108994,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 506,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            34,
+            55,
+            54
+          ]
+        },
+        "turn_packed__bm25__w1024": {
+          "precision": 0.80859375,
+          "recall": 0.45122615803814714,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 828,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            34,
+            55,
+            54,
+            56,
+            26
+          ]
+        },
+        "turn_packed__bm25__w2048": {
+          "precision": 0.68603515625,
+          "recall": 0.7656675749318801,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1405,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            34,
+            55,
+            54,
+            56,
+            26,
+            57,
+            30,
+            46,
+            76,
+            31
+          ]
+        },
+        "turn_packed__hybrid__w512": {
+          "precision": 0.98828125,
+          "recall": 0.27574931880108994,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 506,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            34,
+            54,
+            30
+          ]
+        },
+        "turn_packed__hybrid__w1024": {
+          "precision": 0.7841796875,
+          "recall": 0.4376021798365123,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 803,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            34,
+            54,
+            30,
+            55,
+            26
+          ]
+        },
+        "turn_packed__hybrid__w2048": {
+          "precision": 0.75146484375,
+          "recall": 0.838692098092643,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1539,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            34,
+            54,
+            30,
+            55,
+            26,
+            57,
+            46,
+            56,
+            32,
+            31
+          ]
+        },
+        "word_packed__dense__w512": {
+          "precision": 1.0,
+          "recall": 0.2790190735694823,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            26,
+            27
+          ]
+        },
+        "word_packed__dense__w1024": {
+          "precision": 0.578125,
+          "recall": 0.3226158038147139,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 592,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            26,
+            27,
+            29,
+            39
+          ]
+        },
+        "word_packed__dense__w2048": {
+          "precision": 0.59423828125,
+          "recall": 0.6632152588555859,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1217,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            26,
+            27,
+            29,
+            39,
+            25,
+            28,
+            46,
+            40
+          ]
+        },
+        "word_packed__bm25__w512": {
+          "precision": 1.0,
+          "recall": 0.2790190735694823,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            46,
+            48
+          ]
+        },
+        "word_packed__bm25__w1024": {
+          "precision": 1.0,
+          "recall": 0.5580381471389646,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 1024,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            46,
+            48,
+            47,
+            26
+          ]
+        },
+        "word_packed__bm25__w2048": {
+          "precision": 0.673828125,
+          "recall": 0.7520435967302452,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1380,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            46,
+            48,
+            47,
+            26,
+            45,
+            22,
+            28,
+            39
+          ]
+        },
+        "word_packed__hybrid__w512": {
+          "precision": 1.0,
+          "recall": 0.2790190735694823,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            26,
+            46
+          ]
+        },
+        "word_packed__hybrid__w1024": {
+          "precision": 0.75,
+          "recall": 0.41852861035422345,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 768,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            26,
+            46,
+            48,
+            39
+          ]
+        },
+        "word_packed__hybrid__w2048": {
+          "precision": 0.798828125,
+          "recall": 0.8915531335149863,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1636,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            26,
+            46,
+            48,
+            39,
+            47,
+            28,
+            27,
+            45
+          ]
+        },
+        "lumber__dense__w512": {
+          "precision": 1.0,
+          "recall": 0.2790190735694823,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            16
+          ]
+        },
+        "lumber__dense__w1024": {
+          "precision": 1.0,
+          "recall": 0.5580381471389646,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 1024,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            16,
+            18,
+            28
+          ]
+        },
+        "lumber__dense__w2048": {
+          "precision": 0.73828125,
+          "recall": 0.8239782016348773,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1512,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            16,
+            18,
+            28,
+            24,
+            29
+          ]
+        },
+        "lumber__bm25__w512": {
+          "precision": 1.0,
+          "recall": 0.2790190735694823,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            28,
+            29
+          ]
+        },
+        "lumber__bm25__w1024": {
+          "precision": 1.0,
+          "recall": 0.5580381471389646,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 1024,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            28,
+            29,
+            18,
+            16
+          ]
+        },
+        "lumber__bm25__w2048": {
+          "precision": 0.775390625,
+          "recall": 0.8653950953678474,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1588,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            28,
+            29,
+            18,
+            16,
+            24
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 1.0,
+          "recall": 0.2790190735694823,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            28,
+            16
+          ]
+        },
+        "lumber__hybrid__w1024": {
+          "precision": 1.0,
+          "recall": 0.5580381471389646,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 1024,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            28,
+            16,
+            18
+          ]
+        },
+        "lumber__hybrid__w2048": {
+          "precision": 0.775390625,
+          "recall": 0.8653950953678474,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1588,
+          "gold_words": 1835,
+          "selected_chunk_indices": [
+            28,
+            16,
+            18,
+            29,
+            24
+          ]
+        }
+      }
+    },
+    {
+      "question_index": 10,
+      "question": "What did the government do to help the fishing industry?",
+      "reference_answer": "The fish and seafood sector had been extremely adversely affected because of COVID-19. They've started to put measures in place to address the issue with the $62.5 million for processors, as well as to make sure that the CERB is available for seasonal workers as well as people who had run out of their fishery EI, but they knew that more needs to be done. The fishery enterprises were uniquely structured, which was why they were looking at measures to address the concerns they had. Because of the unique structure of fishing enterprises, they were not eligible for many of the supports they had put in place. They had made changes to the CERB to make sure that people who ran out of the fishers EI were eligible as well as seasonal workers.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "precision": 0.85546875,
+          "recall": 0.27289719626168224,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 438,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            30,
+            31,
+            5
+          ]
+        },
+        "turn_packed__dense__w1024": {
+          "precision": 0.5546875,
+          "recall": 0.35389408099688474,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 568,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            30,
+            31,
+            5,
+            34,
+            69,
+            54
+          ]
+        },
+        "turn_packed__dense__w2048": {
+          "precision": 0.34814453125,
+          "recall": 0.4442367601246106,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 713,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            30,
+            31,
+            5,
+            34,
+            69,
+            54,
+            32,
+            55,
+            70,
+            75,
+            46
+          ]
+        },
+        "turn_packed__bm25__w512": {
+          "precision": 0.7109375,
+          "recall": 0.226791277258567,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 364,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            31,
+            32,
+            48
+          ]
+        },
+        "turn_packed__bm25__w1024": {
+          "precision": 0.35546875,
+          "recall": 0.226791277258567,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 364,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            31,
+            32,
+            48,
+            8,
+            7,
+            55
+          ]
+        },
+        "turn_packed__bm25__w2048": {
+          "precision": 0.177734375,
+          "recall": 0.226791277258567,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 364,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            31,
+            32,
+            48,
+            8,
+            7,
+            55,
+            56,
+            70,
+            0,
+            12
+          ]
+        },
+        "turn_packed__hybrid__w512": {
+          "precision": 0.7109375,
+          "recall": 0.226791277258567,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 364,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            31,
+            32,
+            55
+          ]
+        },
+        "turn_packed__hybrid__w1024": {
+          "precision": 0.37109375,
+          "recall": 0.2367601246105919,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 380,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            31,
+            32,
+            55,
+            69,
+            70,
+            34
+          ]
+        },
+        "turn_packed__hybrid__w2048": {
+          "precision": 0.2412109375,
+          "recall": 0.30778816199376946,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 494,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            31,
+            32,
+            55,
+            69,
+            70,
+            34,
+            7,
+            56,
+            46,
+            48,
+            54
+          ]
+        },
+        "word_packed__dense__w512": {
+          "precision": 1.0,
+          "recall": 0.3190031152647975,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            26,
+            25
+          ]
+        },
+        "word_packed__dense__w1024": {
+          "precision": 0.75,
+          "recall": 0.4785046728971963,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 768,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            26,
+            25,
+            27,
+            4
+          ]
+        },
+        "word_packed__dense__w2048": {
+          "precision": 0.5390625,
+          "recall": 0.6878504672897197,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 1104,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            26,
+            25,
+            27,
+            4,
+            29,
+            57,
+            46,
+            28
+          ]
+        },
+        "word_packed__bm25__w512": {
+          "precision": 0.5,
+          "recall": 0.15950155763239876,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 256,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            26,
+            6
+          ]
+        },
+        "word_packed__bm25__w1024": {
+          "precision": 0.5,
+          "recall": 0.3190031152647975,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            26,
+            6,
+            47,
+            27
+          ]
+        },
+        "word_packed__bm25__w2048": {
+          "precision": 0.25,
+          "recall": 0.3190031152647975,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            26,
+            6,
+            47,
+            27,
+            41,
+            0,
+            10,
+            39
+          ]
+        },
+        "word_packed__hybrid__w512": {
+          "precision": 1.0,
+          "recall": 0.3190031152647975,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            26,
+            27
+          ]
+        },
+        "word_packed__hybrid__w1024": {
+          "precision": 0.5,
+          "recall": 0.3190031152647975,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            26,
+            27,
+            47,
+            57
+          ]
+        },
+        "word_packed__hybrid__w2048": {
+          "precision": 0.25,
+          "recall": 0.3190031152647975,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            26,
+            27,
+            47,
+            57,
+            39,
+            41,
+            6,
+            46
+          ]
+        },
+        "lumber__dense__w512": {
+          "precision": 1.0,
+          "recall": 0.3190031152647975,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            16
+          ]
+        },
+        "lumber__dense__w1024": {
+          "precision": 0.580078125,
+          "recall": 0.37009345794392523,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 594,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            16,
+            3,
+            28
+          ]
+        },
+        "lumber__dense__w2048": {
+          "precision": 0.353515625,
+          "recall": 0.45109034267912773,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 724,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            16,
+            3,
+            28,
+            18,
+            36,
+            29
+          ]
+        },
+        "lumber__bm25__w512": {
+          "precision": 1.0,
+          "recall": 0.3190031152647975,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            16
+          ]
+        },
+        "lumber__bm25__w1024": {
+          "precision": 0.580078125,
+          "recall": 0.37009345794392523,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 594,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            16,
+            29
+          ]
+        },
+        "lumber__bm25__w2048": {
+          "precision": 0.2900390625,
+          "recall": 0.37009345794392523,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 594,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            16,
+            29,
+            4,
+            25,
+            36
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 1.0,
+          "recall": 0.3190031152647975,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 512,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            16
+          ]
+        },
+        "lumber__hybrid__w1024": {
+          "precision": 0.580078125,
+          "recall": 0.37009345794392523,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 594,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            16,
+            29
+          ]
+        },
+        "lumber__hybrid__w2048": {
+          "precision": 0.2900390625,
+          "recall": 0.37009345794392523,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 594,
+          "gold_words": 1605,
+          "selected_chunk_indices": [
+            16,
+            29,
+            28,
+            36,
+            25
+          ]
+        }
+      }
+    },
+    {
+      "question_index": 11,
+      "question": "What did the stress faced by oil and gas?",
+      "reference_answer": "The oil and gas industry was under severe strain. Over the past number of years, they had seen tremendous pressure on the federal government from anti-oil and gas lobby groups demanding that the oil sands be shut down. The federal Liberal government's response to the anti-oil lobby was the introduction of the Bill C-69, which would prevent any major oil and gas projects from being developed in Canada; and the oil shipping ban, Bill C-48, for the northern coast of British Columbia, which also had a negative effect on the oil industry. These two bills alone pushed over $200 billion of investment out of Canada, causing the Alberta economy to retract to recession levels. To compound Alberta's economic problems, we have an international oil price war and the COVID-19 pandemic, which caused a huge drop in demand for oil.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "precision": 0.453125,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            57,
+            54,
+            56
+          ]
+        },
+        "turn_packed__dense__w1024": {
+          "precision": 0.2265625,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            57,
+            54,
+            56,
+            55,
+            69
+          ]
+        },
+        "turn_packed__dense__w2048": {
+          "precision": 0.11328125,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            57,
+            54,
+            56,
+            55,
+            69,
+            35,
+            66,
+            30,
+            29,
+            75
+          ]
+        },
+        "turn_packed__bm25__w512": {
+          "precision": 0.08984375,
+          "recall": 0.19008264462809918,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 46,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            56,
+            55,
+            54
+          ]
+        },
+        "turn_packed__bm25__w1024": {
+          "precision": 0.2265625,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            56,
+            55,
+            54,
+            57,
+            19
+          ]
+        },
+        "turn_packed__bm25__w2048": {
+          "precision": 0.11328125,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            56,
+            55,
+            54,
+            57,
+            19,
+            14,
+            45,
+            8,
+            48,
+            0
+          ]
+        },
+        "turn_packed__hybrid__w512": {
+          "precision": 0.18359375,
+          "recall": 0.3884297520661157,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 94,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            56,
+            57,
+            54
+          ]
+        },
+        "turn_packed__hybrid__w1024": {
+          "precision": 0.2265625,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            56,
+            57,
+            54,
+            55,
+            35
+          ]
+        },
+        "turn_packed__hybrid__w2048": {
+          "precision": 0.11328125,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            56,
+            57,
+            54,
+            55,
+            35,
+            45,
+            47,
+            30,
+            29
+          ]
+        },
+        "word_packed__dense__w512": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 0,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            48,
+            47
+          ]
+        },
+        "word_packed__dense__w1024": {
+          "precision": 0.236328125,
+          "recall": 1.0,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 242,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            48,
+            47,
+            46,
+            45
+          ]
+        },
+        "word_packed__dense__w2048": {
+          "precision": 0.1181640625,
+          "recall": 1.0,
+          "first_overlap_rank": 3,
+          "first_overlap_reciprocal_rank": 0.3333333333333333,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 242,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            48,
+            47,
+            46,
+            45,
+            25,
+            55,
+            29,
+            30
+          ]
+        },
+        "word_packed__bm25__w512": {
+          "precision": 0.27734375,
+          "recall": 0.5867768595041323,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 142,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            46,
+            47
+          ]
+        },
+        "word_packed__bm25__w1024": {
+          "precision": 0.236328125,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 242,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            46,
+            47,
+            48,
+            45
+          ]
+        },
+        "word_packed__bm25__w2048": {
+          "precision": 0.1181640625,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 242,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            46,
+            47,
+            48,
+            45,
+            6,
+            11,
+            16,
+            32
+          ]
+        },
+        "word_packed__hybrid__w512": {
+          "precision": 0.27734375,
+          "recall": 0.5867768595041323,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 142,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            46,
+            48
+          ]
+        },
+        "word_packed__hybrid__w1024": {
+          "precision": 0.236328125,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 242,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            46,
+            48,
+            47,
+            45
+          ]
+        },
+        "word_packed__hybrid__w2048": {
+          "precision": 0.1181640625,
+          "recall": 1.0,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 242,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            46,
+            48,
+            47,
+            45,
+            25,
+            38,
+            30,
+            40
+          ]
+        },
+        "lumber__dense__w512": {
+          "precision": 0.029296875,
+          "recall": 0.06198347107438017,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 15,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            29,
+            28
+          ]
+        },
+        "lumber__dense__w1024": {
+          "precision": 0.2265625,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            29,
+            28,
+            19
+          ]
+        },
+        "lumber__dense__w2048": {
+          "precision": 0.11328125,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 2,
+          "first_overlap_reciprocal_rank": 0.5,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            29,
+            28,
+            19,
+            36,
+            38
+          ]
+        },
+        "lumber__bm25__w512": {
+          "precision": 0.453125,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            28,
+            29
+          ]
+        },
+        "lumber__bm25__w1024": {
+          "precision": 0.2265625,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            28,
+            29,
+            7
+          ]
+        },
+        "lumber__bm25__w2048": {
+          "precision": 0.11328125,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            28,
+            29,
+            7,
+            25,
+            4,
+            10
+          ]
+        },
+        "lumber__hybrid__w512": {
+          "precision": 0.453125,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 512,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            28,
+            29
+          ]
+        },
+        "lumber__hybrid__w1024": {
+          "precision": 0.2265625,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 1024,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            28,
+            29,
+            25
+          ]
+        },
+        "lumber__hybrid__w2048": {
+          "precision": 0.11328125,
+          "recall": 0.9586776859504132,
+          "first_overlap_rank": 1,
+          "first_overlap_reciprocal_rank": 1.0,
+          "retrieved_words": 2048,
+          "relevant_retrieved_words": 232,
+          "gold_words": 242,
+          "selected_chunk_indices": [
+            28,
+            29,
+            25,
+            38,
+            19
+          ]
+        }
+      }
+    }
+  ]
+}

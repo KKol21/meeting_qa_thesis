@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "Bro019.json",
+        "sha256": "0593f662df94363216e0be6f5609ddf15457b4455b70a0adfd8ac8397db6e6cb"
+      }
+    },
+    "input_hash": "67d03e7932a176273e04aff7e34070df4af36746274a83723c30be8b40e196d7",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "aec4bca62c12a1c3b756ff2c2bcc75d7e243df8c7bba72e1a2e200f2b428092d",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bro019",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about microphone issues",
+      "reference_answer": "The professor pointed out that the lapel microphones were too close, so they were not good representative microphones. There was strong agreement that mics capture breath and other non-voice sounds since they were common.",
+      "results": {
+        "oracle": {
+          "answer": "Professor C discussed issues with lapel microphones, noting they were neither too far nor too close, leading to background noise and poor sound quality. However, having just one microphone could make the lapel a viable option. PhD A agreed. Other issues mentioned included unwanted sounds like mouth clicks and breaths being more prominent with lapels. There was a strong preference among participants for discontinuing the use of lapel microphones.",
+          "rouge_f1": {
+            "rouge1": 0.3269230769230769,
+            "rouge2": 0.09803921568627452,
+            "rougeL": 0.19230769230769232
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              9,
+              18
+            ]
+          ],
+          "evidence_words": 254
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did PhD F think about computational resources?",
+      "reference_answer": "PhD F explained that he mistakenly had run his tasks on all the available compute instances. There was not enough computational resources going around. New computers were coming soon, but people would have to learn to share until then. It was important not to saturate computational resources. He also told the team how to properly queue tasks.",
+      "results": {
+        "oracle": {
+          "answer": "PhD F thought positively about computational resources, indicating a need for more computational power and discussing plans to expand the existing setup with twelve new machines. They highlighted the ease of use of P-make and Customs for distributing tasks across machines and emphasized the importance of managing resource usage to avoid overloading the system. PhD F also mentioned the ability to specify attributes for jobs to ensure they run on suitable machines and discussed strategies for efficiently handling large numbers of small jobs through careful scripting or using P-make.",
+          "rouge_f1": {
+            "rouge1": 0.24324324324324323,
+            "rouge2": 0.0273972602739726,
+            "rougeL": 0.14864864864864866
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              46,
+              90
+            ]
+          ],
+          "evidence_words": 1455
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the professor say about the workshop?",
+      "reference_answer": "The professor recalled that at a workshop at Hopkins or Rutgers, twenty-five participants were running their tasks on twenty-five machines. Things would have been better if they ran tasks on their own machine. He was adding to PhD F's remarks on students in the team doing a similar thing.",
+      "results": {
+        "oracle": {
+          "answer": "Professor C mentioned that during a previous workshop, either at Rutgers or Hopkins, everyone was excited to have access to twenty-five machines. However, they found that efficiency was compromised when all twenty-five participants tried to send tasks to all twenty-five machines simultaneously, leading to less efficient outcomes compared to using their own machines individually.",
+          "rouge_f1": {
+            "rouge1": 0.4036697247706422,
+            "rouge2": 0.11214953271028037,
+            "rougeL": 0.2935779816513761
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              53,
+              75
+            ]
+          ],
+          "evidence_words": 562
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about spectral subtraction",
+      "reference_answer": "The team was doing spectral subtraction with both scaling and GGT bins. There were pros and cons to both approaches. The professor suggested a simple spectral subtraction followed by a KL transformation. He also suggested using JRASTRA's technique which relied on adding some noise to get rid of noise. The team also suggested VTS techniques.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about spectral subtraction includes considering its application on either FFT bins or mel energies, with no clear consensus on which method is superior. Participants also debated whether spectral subtraction should be implemented as a single-stage or multi-stage process, with some suggesting that combining spectral subtraction with other techniques like Wiener filtering or signal subspace methods might yield better results, especially under poor Signal-to-Noise Ratio (SNR) conditions. Additionally, there was mention of using spectral subtraction to preprocess data before applying signal subspace approaches to handle colored noise more effectively.",
+          "rouge_f1": {
+            "rouge1": 0.30666666666666664,
+            "rouge2": 0.04054054054054054,
+            "rougeL": 0.16
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              358,
+              448
+            ]
+          ],
+          "evidence_words": 1349
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the team say about the person in Grenada?",
+      "reference_answer": "PhD D brought up a VTS technique to do voice-unvoice which was developed by Jose Carlos Segura, who is a person from Grenada. The professor did not know him, but the inspiration for the VTS had come from CMU.",
+      "results": {
+        "oracle": {
+          "answer": "The team mentioned that there is a person in Grenada working on Vector Taylor Series (VTS) techniques for modeling the transformation between clean cepstra and noisy cepstra. The specific individual in Grenada is identified as Jose Carlos Segura by PhD B.",
+          "rouge_f1": {
+            "rouge1": 0.3703703703703704,
+            "rouge2": 0.12658227848101264,
+            "rougeL": 0.14814814814814814
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              447,
+              463
+            ]
+          ],
+          "evidence_words": 258
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the professor think about the Wiener filter?",
+      "reference_answer": "The professor could not see the advantage in combining the Wiener filter and the subspace. He later understood it would be a simple spectral subtraction, followed by a KL transform, followed by a Wiener filter.",
+      "results": {
+        "oracle": {
+          "answer": "The professor seemed confused initially about how the Wiener filter differs from the signal subspace approach but became clearer as the explanation progressed. By the end, the professor understood that the Wiener filter is part of a sequence of processing steps (including a KL transform) and acknowledged its role in signal processing, particularly noting that orthogonalization might not be ideal in noisy conditions.",
+          "rouge_f1": {
+            "rouge1": 0.4081632653061224,
+            "rouge2": 0.125,
+            "rougeL": 0.24489795918367344
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              406,
+              416
+            ]
+          ],
+          "evidence_words": 292
+        }
+      }
+    }
+  ]
+}

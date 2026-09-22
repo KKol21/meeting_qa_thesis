@@ -1,0 +1,3586 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "Bmr006.json",
+        "sha256": "6ecfa3168b6db677022b3b314e775b5a14adc3bf8c5f69cd86a1e298fb68ecd7"
+      },
+      "retrieval": {
+        "file": "Bmr006.json",
+        "sha256": "29943f83eb4d744cf48f326e091110f466d1fb378cc83cec34f6f5c7459ea61d"
+      },
+      "segmentation": {
+        "file": "Bmr006.json",
+        "sha256": "4b54c833a4b88727d88aa38739b55adeb804c8cf303c2a86247387f80d588d00"
+      }
+    },
+    "input_hash": "402e41d1b5713afdfa75b60211aa7f1e838fd1447908c38c46154d08ed4569a5",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "c4e199832ba94ab63a5a976644494688d8c0101436815a26949a6cd49ac707d3",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bmr006",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 147,
+  "cache_hits": 15,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What were some of the ideas proposed about future meeting recordings?",
+      "reference_answer": "PhD F wanted the group to record different meetings with the same group to help in tasks such as summarization, the Professor D however, wanted random meeting participants to have diversity that would be instrumental in acoustical research.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Some of the ideas proposed about future meeting recordings included:\n- Recording at the end of meetings to avoid disrupting participants' schedules.\n- Collecting data from multiple meetings of the same group to ensure a variety of summaries.\n- Recording regular meetings of a few different groups to gather diverse data, aiming for around three to four groups.\n- Considering the feasibility of recording additional meetings, such as front-end and networking group meetings, once space constraints (e.g., from Broadcast News recordings) are addressed.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.08547008547008547,
+            "rougeL": 0.16806722689075632
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            1,
+            31
+          ],
+          "retrieval_precision": 0.326171875,
+          "retrieval_recall": 0.3686534216335541
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Some of the ideas proposed about future meeting recordings included:\n\n- Recording at the end of meetings to avoid cutting into participants' time.\n- Ensuring regular meetings with consistent types to facilitate summarization.\n- Utilizing existing meeting rooms with guaranteed safety for equipment.\n- Possibly using the phonology lab for recordings.\n- Clearing up space from the Broadcast News to accommodate additional meetings.\n- Having enough storage space for approximately four more meetings.",
+          "rouge_f1": {
+            "rouge1": 0.2476190476190476,
+            "rouge2": 0.01941747572815534,
+            "rougeL": 0.1714285714285714
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            1,
+            31,
+            15,
+            3
+          ],
+          "retrieval_precision": 0.1630859375,
+          "retrieval_recall": 0.3686534216335541
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Some of the ideas proposed about future meeting recordings included:\n\n- Recording at the end of meetings to avoid cutting into participants' time.\n- Collecting data from regular meetings of known types rather than one-off meetings to facilitate easier processing and analysis.\n- Having meetings with consistent parameters such as the same group members participating regularly but discussing different topics.\n- Gathering data from various types of meetings to cover different domains and meeting styles, ensuring a mix of structured and unstructured meetings.\n- Considering the feasibility of recording meetings in different locations, possibly integrating the recording equipment into existing meeting rooms to ensure regular data collection without needing a dedicated space.",
+          "rouge_f1": {
+            "rouge1": 0.2465753424657534,
+            "rouge2": 0.055555555555555546,
+            "rougeL": 0.1643835616438356
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            1,
+            31,
+            15,
+            3,
+            4,
+            32,
+            6,
+            8
+          ],
+          "retrieval_precision": 0.197265625,
+          "retrieval_recall": 0.891832229580574
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Some of the ideas proposed about future meeting recordings include:\n- Recording digits at the end of meetings to avoid cutting into participants' time.\n- Collecting a substantial amount of data from the same type of meetings to facilitate analysis.\n- Having diverse datasets from various types of meetings to improve the processing and understanding of meeting content, including summarization and identifying key interaction patterns.",
+          "rouge_f1": {
+            "rouge1": 0.28,
+            "rouge2": 0.04081632653061224,
+            "rougeL": 0.18
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Some of the ideas proposed about future meeting recordings include:\n- Recording digits at the end of meetings to avoid cutting into participants' time (suggested by Professor D).\n- Collecting a substantial amount of data from the same meeting to facilitate analysis and higher-level work such as summarization (mentioned by Professor D).\n- Having multiple datasets from various types of meetings to improve the accuracy of summarization and cue detection in meetings (proposed by PhD F).",
+          "rouge_f1": {
+            "rouge1": 0.35714285714285715,
+            "rouge2": 0.09090909090909091,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            33,
+            84,
+            43
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Some of the ideas proposed about future meeting recordings include:\n\n- Recording meeting digits at the end to avoid cutting into participants' time.\n- Collecting data from multiple meetings within the same domain to facilitate summarization and analysis.\n- Having several meetings from different groups but similar types to ensure varied yet comparable data for summarization purposes.\n- Recording regular meetings from groups such as the front-end and networking groups to gather diverse but consistent data sets.\n- Considering the technical challenges of processing data from various types of meetings and focusing on a few distinct but related meeting types for better analysis outcomes.",
+          "rouge_f1": {
+            "rouge1": 0.2753623188405797,
+            "rouge2": 0.04411764705882353,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            4,
+            33,
+            84,
+            43,
+            5,
+            31,
+            89,
+            47
+          ],
+          "retrieval_precision": 0.08154296875,
+          "retrieval_recall": 0.3686534216335541
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Some of the ideas proposed about future meeting recordings included:\n- Recording at the end of meetings to avoid disrupting participants' schedules.\n- Collecting data from the same meetings multiple times to better understand summarization.\n- Recording regular sessions from groups like the front-end meeting and networking group meetings to ensure varied yet comparable data sets.\n- Ensuring there are several different types of meetings (three or four) from various groups to avoid specificity to a single group's dynamics.",
+          "rouge_f1": {
+            "rouge1": 0.2608695652173913,
+            "rouge2": 0.035398230088495575,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            5,
+            4
+          ],
+          "retrieval_precision": 0.326171875,
+          "retrieval_recall": 0.3686534216335541
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Some of the ideas proposed about future meeting recordings included:\n\n- Recording at the end of meetings to minimize disruption to participants' schedules.\n- Collecting data from multiple meetings within the same domain to facilitate analysis and summarization.\n- Having several meetings from different groups to ensure the summarization techniques are not specific to a single group.\n- Recording regular meetings from groups such as the front-end and networking groups to gather diverse data.\n- Ensuring there is sufficient storage space for recording approximately four additional meetings.",
+          "rouge_f1": {
+            "rouge1": 0.3140495867768595,
+            "rouge2": 0.06722689075630253,
+            "rougeL": 0.1983471074380165
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            5,
+            4,
+            31,
+            33
+          ],
+          "retrieval_precision": 0.1630859375,
+          "retrieval_recall": 0.3686534216335541
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Some of the ideas proposed about future meeting recordings included:\n\n- Recording at the end of meetings to avoid cutting into participants' time.\n- Collecting data from regular meetings of known types rather than one-off meetings to facilitate easier processing and analysis.\n- Having multiple meetings from the same group but with different content to aid in summarization research.\n- Maintaining consistency in certain parameters such as having at least half the participants the same across meetings.\n- Collecting data from various types of meetings to cater to different research needs, especially for acoustic-oriented studies requiring diverse voices.\n- Offering participants a copy of their recorded meeting on a CD-ROM if desired.",
+          "rouge_f1": {
+            "rouge1": 0.3129251700680272,
+            "rouge2": 0.041379310344827586,
+            "rougeL": 0.1904761904761905
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            5,
+            4,
+            31,
+            33,
+            3,
+            84,
+            6,
+            23
+          ],
+          "retrieval_precision": 0.197265625,
+          "retrieval_recall": 0.891832229580574
+        },
+        "word_packed__dense__w512": {
+          "answer": "The ideas proposed about future meeting recordings included:\n\n- Recording meetings remotely by sending someone to the location where the meeting is held (Excerpts [159], [170]).\n- Making the recording equipment portable so it can be moved around easily (Excerpts [162], [172]).\n- Using a specific room for regular meetings if space allows, or potentially using existing labs like the phonology lab (Excerpts [165], [172]).\n- Considering the use of tabletop microphones for easier recording processes (Excerpts [192], [194]).",
+          "rouge_f1": {
+            "rouge1": 0.1415929203539823,
+            "rouge2": 0.0,
+            "rougeL": 0.12389380530973451
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            13
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The ideas proposed about future meeting recordings included:\n\n- Collecting data from multiple types of meetings (e.g., front-end meetings, networking group meetings) across different domains.\n- Recording meetings regularly, ideally with some parameters held constant, such as having at least half the participants the same in each meeting.\n- Considering portability of recording equipment to facilitate recording meetings in various locations without needing a dedicated room.\n- Exploring the use of tabletop microphones for ease of recording in different settings, though there was acknowledgment that this method might not suit all research needs, especially those requiring diverse speaker samples.",
+          "rouge_f1": {
+            "rouge1": 0.2962962962962963,
+            "rouge2": 0.030075187969924814,
+            "rougeL": 0.17777777777777778
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            13,
+            4,
+            5
+          ],
+          "retrieval_precision": 0.345703125,
+          "retrieval_recall": 0.7814569536423841
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Some of the ideas proposed about future meeting recordings included:\n\n- Recording digit recordings at the end of meetings (suggested by Professor D).\n- Collecting data from a few different kinds of meetings to ensure variety while holding some parameters constant, such as having at least half the participants the same (proposed by PhD F).\n- Making the recording equipment portable so it could be used in various locations, including potentially in the phonology lab or other meeting rooms (suggested by Professor D).\n- Considering privacy concerns regarding the distribution of recorded meetings, with some suggesting it might be seen as a novelty item or useful for understanding the technology's potential (discussed by Professor D and PhD F).",
+          "rouge_f1": {
+            "rouge1": 0.27450980392156865,
+            "rouge2": 0.0662251655629139,
+            "rougeL": 0.15686274509803919
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            13,
+            4,
+            5,
+            0,
+            3,
+            28,
+            21
+          ],
+          "retrieval_precision": 0.1728515625,
+          "retrieval_recall": 0.7814569536423841
+        },
+        "word_packed__bm25__w512": {
+          "answer": "PhD F proposed collecting more consistent data from the same meetings to facilitate research, including potential summarization of meetings and identifying cues from utterances and interaction patterns to highlight important moments for those who did not attend.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.0547945205479452,
+            "rougeL": 0.21333333333333335
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "PhD C proposed extending the classification of meeting recordings to consider all the information previously mentioned. Additionally, there was a discussion about categorizing nonspeech segments, including a \"silence category\" which was clarified as \"pure silence,\" serving as a control set.",
+          "rouge_f1": {
+            "rouge1": 0.1794871794871795,
+            "rouge2": 0.0,
+            "rougeL": 0.12820512820512822
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            1,
+            29,
+            38
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The ideas proposed about future meeting recordings included:\n\n- Moving the digit recordings to the end of the meetings to avoid cutting into participants' time.\n- Collecting more data from the same group of meetings to facilitate research on summarization and understanding different types of meetings.\n- Ensuring that some parameters remain constant, such as having at least half the participants the same across meetings, to maintain consistency for certain types of analysis.\n- For acoustic-oriented research, having a diverse range of speakers and different types of meetings to gather varied data.",
+          "rouge_f1": {
+            "rouge1": 0.3307086614173228,
+            "rouge2": 0.047999999999999994,
+            "rougeL": 0.22047244094488186
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            1,
+            29,
+            38,
+            4,
+            5,
+            0,
+            74
+          ],
+          "retrieval_precision": 0.1728515625,
+          "retrieval_recall": 0.7814569536423841
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "PhD F proposed having a bunch of data from a few different kinds of meetings, such as regular front-end meetings and networking group meetings, to facilitate summarization and analysis. Grad B expressed hope that they could start recording these meetings regularly. Both participants agreed that having multiple meetings from the same group with varying content would be beneficial for understanding how to summarize meetings effectively.",
+          "rouge_f1": {
+            "rouge1": 0.4038461538461538,
+            "rouge2": 0.09803921568627451,
+            "rougeL": 0.23076923076923078
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4
+          ],
+          "retrieval_precision": 0.19140625,
+          "retrieval_recall": 0.2163355408388521
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "PhD F proposed collecting more data from a few different kinds of meetings, ensuring that these meetings are consistent in terms of participants and topics to facilitate summarization research. Additionally, Professor D suggested needing lots of different people for acoustic-oriented research, contrasting with the need for consistency in participants for summarization purposes.",
+          "rouge_f1": {
+            "rouge1": 0.37362637362637363,
+            "rouge2": 0.06741573033707865,
+            "rougeL": 0.21978021978021978
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4,
+            5,
+            1
+          ],
+          "retrieval_precision": 0.345703125,
+          "retrieval_recall": 0.7814569536423841
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The ideas proposed about future meeting recordings included:\n\n- Moving the digit recordings to the end of the meetings to accommodate participants who have to leave early.\n- Collecting more data from the same type of meetings to facilitate research on summarization and understanding meeting dynamics.\n- Having meetings with consistent parameters, such as the same group of participants, to better analyze summaries and interactions.\n- Considering portability of recording equipment to allow for recording meetings in various locations without needing a dedicated room.\n- Ensuring sufficient storage space for recordings, possibly consolidating data across disks to manage space efficiently.",
+          "rouge_f1": {
+            "rouge1": 0.28571428571428575,
+            "rouge2": 0.07633587786259542,
+            "rougeL": 0.18045112781954886
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4,
+            5,
+            1,
+            0,
+            13,
+            28,
+            29
+          ],
+          "retrieval_precision": 0.1728515625,
+          "retrieval_recall": 0.7814569536423841
+        },
+        "lumber__dense__w512": {
+          "answer": "PhD F proposed collecting data from a few different kinds of meetings to facilitate summarization and analysis. They suggested having meetings from the same group with varying content to ensure a diverse dataset while avoiding specificity to a single group. Additionally, Grad B expressed hope for starting regular recordings, which PhD F agreed would provide sufficient data for their proposed work.",
+          "rouge_f1": {
+            "rouge1": 0.36363636363636365,
+            "rouge2": 0.06185567010309279,
+            "rougeL": 0.202020202020202
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3
+          ],
+          "retrieval_precision": 0.2421875,
+          "retrieval_recall": 0.2737306843267108
+        },
+        "lumber__dense__w1024": {
+          "answer": "Some of the ideas proposed about future meeting recordings included:\n\n- Recording at the end of meetings to avoid cutting into participants' time (suggested by Professor D).\n- Collecting data from a few different types of meetings to facilitate summarization and analysis, ensuring that the meetings are of the same group but with varying content to provide diverse summaries.\n- Having regular recordings from the same group with at least half the participants being consistent across meetings.\n- Considering alternative locations for recordings, such as the phonology lab, to diversify the types of meetings recorded.\n- Exploring the use of portable recording equipment to make the recording process easier outside of the current facility, though it was noted that tabletop microphones could be used easily for simpler setups.",
+          "rouge_f1": {
+            "rouge1": 0.2981366459627329,
+            "rouge2": 0.050314465408805034,
+            "rougeL": 0.18633540372670807
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            1
+          ],
+          "retrieval_precision": 0.22265625,
+          "retrieval_recall": 0.5033112582781457
+        },
+        "lumber__dense__w2048": {
+          "answer": "The ideas proposed about future meeting recordings included:\n\n- Recording at the end of meetings to avoid cutting into participants' time.\n- Collecting data from regular meetings of the same group to maintain consistency in summarization efforts.\n- Having multiple types of meetings (e.g., reporting meetings vs. decision-making meetings) within the same domain to provide varied data.\n- Ensuring that at least half the participants are consistent across meetings to hold some parameters constant.\n- Potentially setting up recording equipment in different buildings or departments to capture various types of meetings, provided there's a motivated partner willing to collaborate.\n- Considering making the recording equipment portable to facilitate recording in different locations without needing a dedicated room.",
+          "rouge_f1": {
+            "rouge1": 0.23684210526315788,
+            "rouge2": 0.04,
+            "rougeL": 0.1710526315789474
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            1,
+            27,
+            12,
+            43
+          ],
+          "retrieval_precision": 0.111328125,
+          "retrieval_recall": 0.5033112582781457
+        },
+        "lumber__bm25__w512": {
+          "answer": "Some of the ideas proposed about future meeting recordings included:\n- Recording digits at the end of meetings to avoid cutting into participants' time strictly.\n- Collecting a substantial amount of data from the same type of meetings to facilitate analysis.\n- Having multiple datasets from various types of meetings to improve the processing and understanding of meeting content, including summarization and identifying key interaction patterns.",
+          "rouge_f1": {
+            "rouge1": 0.25742574257425743,
+            "rouge2": 0.020202020202020204,
+            "rougeL": 0.15841584158415842
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The ideas proposed about future meeting recordings included:\n- Recording digits at the end of meetings to avoid cutting into participants' time (suggested by Professor D).\n- Collecting a substantial amount of data from the same meetings to facilitate analysis and summarization.\n- Having multiple meetings from different domains or types to ensure varied data for summarization purposes.\n- Maintaining consistency in certain parameters such as having at least half the participants be the same across meetings to hold some variables constant.\n- Regularly recording meetings from groups like the front-end and networking groups if permitted.",
+          "rouge_f1": {
+            "rouge1": 0.3384615384615385,
+            "rouge2": 0.04687500000000001,
+            "rougeL": 0.1846153846153846
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            3,
+            28
+          ],
+          "retrieval_precision": 0.22265625,
+          "retrieval_recall": 0.5033112582781457
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The ideas proposed about future meeting recordings included:\n\n- Recording meeting digits at the end to avoid cutting into participants' time.\n- Collecting data from multiple meetings within the same domain to facilitate summarization and analysis.\n- Ensuring that some parameters remain constant across meetings, such as having at least half the participants be the same.\n- Recording additional meetings (up to five) to gather more data, utilizing available disk space.\n- Planning to consolidate data storage to free up space for new recordings.\n- Considering future studies to include a broader classification of overlapping events beyond just speech with speech.",
+          "rouge_f1": {
+            "rouge1": 0.27067669172932335,
+            "rouge2": 0.030534351145038167,
+            "rougeL": 0.16541353383458646
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            3,
+            28,
+            35,
+            27,
+            65
+          ],
+          "retrieval_precision": 0.111328125,
+          "retrieval_recall": 0.5033112582781457
+        },
+        "lumber__hybrid__w512": {
+          "answer": "PhD F proposed collecting data from a few different kinds of meetings to facilitate summarization and analysis. They suggested having meetings from the same group with varying content to ensure a diverse dataset while avoiding specificity to a single group. Additionally, Grad B expressed hope for starting regular recordings, which PhD F agreed would provide sufficient data for their proposed work.",
+          "rouge_f1": {
+            "rouge1": 0.36363636363636365,
+            "rouge2": 0.06185567010309279,
+            "rougeL": 0.202020202020202
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3
+          ],
+          "retrieval_precision": 0.2421875,
+          "retrieval_recall": 0.2737306843267108
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Some of the ideas proposed about future meeting recordings included:\n\n- Recording at the end of meetings to minimize disruption to participants' schedules.\n- Collecting data from multiple meetings within the same domain to facilitate summarization and analysis.\n- Ensuring that some parameters remain consistent across meetings, such as having at least half the participants be the same individuals.\n- Recording several types of meetings (e.g., group reports, decision-making sessions) to gather diverse data.\n- Planning to record approximately four additional meetings given available storage space.",
+          "rouge_f1": {
+            "rouge1": 0.3140495867768595,
+            "rouge2": 0.050420168067226885,
+            "rougeL": 0.1983471074380165
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            1,
+            27
+          ],
+          "retrieval_precision": 0.22265625,
+          "retrieval_recall": 0.5033112582781457
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Some of the ideas proposed about future meeting recordings include:\n- Recording at the end of meetings to avoid cutting into participants' time.\n- Collecting data from multiple meetings of the same group to ensure consistency and facilitate summarization efforts.\n- Having meetings with varying summaries but keeping some parameters constant, such as having at least half the participants the same.\n- Considering setting up recording equipment in different departments across campus if the current setup becomes unavailable or if space is limited.\n- Ensuring there is enough storage space for upcoming meetings, with plans to consolidate data onto fewer disks to manage space efficiently.",
+          "rouge_f1": {
+            "rouge1": 0.2753623188405797,
+            "rouge2": 0.07352941176470588,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            1,
+            27,
+            28,
+            12,
+            2
+          ],
+          "retrieval_precision": 0.111328125,
+          "retrieval_recall": 0.5033112582781457
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What was said on getting fluent English speakers?",
+      "reference_answer": "Postdoc E was championing the need to get proficient English speakers so as to allow for a stable language model. This did not mean limiting the type of accents that the speakers had but rather ensuring the speakers could proficiently follow the English grammar when they expressed themselves.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure proficiency in English, as these students would likely have sufficient fluency for the project's needs. They also noted that posting randomly to undergraduates might result in a mix of English proficiencies, making it difficult to build reliable language models. Grad B proposed that the advertisement should specify that meetings should be held in English, allowing for some participants to have less-than-perfect English skills.",
+          "rouge_f1": {
+            "rouge1": 0.3387096774193548,
+            "rouge2": 0.06557377049180328,
+            "rougeL": 0.2096774193548387
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            10,
+            95
+          ],
+          "retrieval_precision": 0.51953125,
+          "retrieval_recall": 0.38273381294964026
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure proficiency in English, stating that these students would have sufficient proficiency in English to be useful for the project's purposes. They emphasized the importance of having participants who speak closer to academic English to facilitate the creation of language models.",
+          "rouge_f1": {
+            "rouge1": 0.3636363636363636,
+            "rouge2": 0.041237113402061855,
+            "rougeL": 0.20202020202020202
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            10,
+            95,
+            11,
+            8
+          ],
+          "retrieval_precision": 0.361328125,
+          "retrieval_recall": 0.5323741007194245
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure proficiency in English, as they would likely have sufficient fluency for the project's purposes. This was discussed in the context of needing fluent English speakers to avoid issues with interlanguages and to facilitate the creation of useful language models.",
+          "rouge_f1": {
+            "rouge1": 0.4285714285714286,
+            "rouge2": 0.0625,
+            "rougeL": 0.24489795918367346
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            10,
+            95,
+            11,
+            8,
+            20,
+            9,
+            17,
+            15
+          ],
+          "retrieval_precision": 0.33935546875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure getting participants with sufficient proficiency in English. They emphasized the importance of having more fluent English speakers to avoid issues with interlanguages that do not match existing language models, making it harder to build accurate language models.",
+          "rouge_f1": {
+            "rouge1": 0.35789473684210527,
+            "rouge2": 0.06451612903225806,
+            "rougeL": 0.21052631578947367
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            7,
+            90
+          ],
+          "retrieval_precision": 0.373046875,
+          "retrieval_recall": 0.27482014388489207
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to obtain more fluent English speakers for the research data. They believed that linguistics grad students would have sufficient proficiency in English, making the collected data more useful for research purposes.",
+          "rouge_f1": {
+            "rouge1": 0.29885057471264365,
+            "rouge2": 0.047058823529411764,
+            "rougeL": 0.22988505747126434
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            7,
+            90,
+            28,
+            2
+          ],
+          "retrieval_precision": 0.1865234375,
+          "retrieval_recall": 0.27482014388489207
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure proficiency in English, as they would likely have sufficient fluency for the research purposes. They emphasized the importance of having participants whose English is closer to academic English to avoid issues with interlanguages that do not match existing language models.",
+          "rouge_f1": {
+            "rouge1": 0.3673469387755102,
+            "rouge2": 0.041666666666666664,
+            "rougeL": 0.20408163265306126
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            7,
+            90,
+            28,
+            2,
+            95,
+            10,
+            89,
+            20
+          ],
+          "retrieval_precision": 0.1298828125,
+          "retrieval_recall": 0.38273381294964026
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure getting participants with high proficiency in English. They emphasized the importance of having fluent English speakers for building reliable language models, noting that a mix of non-native speakers with varying levels of fluency (interlanguages) would make it difficult to create accurate models.",
+          "rouge_f1": {
+            "rouge1": 0.37623762376237624,
+            "rouge2": 0.06060606060606061,
+            "rougeL": 0.2376237623762376
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11,
+            10
+          ],
+          "retrieval_precision": 0.47265625,
+          "retrieval_recall": 0.34820143884892085
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure proficiency in English, as they would have sufficient proficiency in the language, making the conversations useful for building language models. They emphasized the importance of having participants who are closer to academic English rather than those using English as an interlanguage, to avoid issues with language proficiency affecting the quality of the data collected.",
+          "rouge_f1": {
+            "rouge1": 0.375,
+            "rouge2": 0.036363636363636355,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11,
+            10,
+            95,
+            20
+          ],
+          "retrieval_precision": 0.259765625,
+          "retrieval_recall": 0.38273381294964026
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure proficiency in English, as they would likely have sufficient fluency for the project's purposes. Additionally, Grad B proposed that the advertisement for meetings should specify that the meeting should be held in English, allowing for some flexibility regarding participants' English skills, while acknowledging that having more fluent speakers would be beneficial for building language models.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333337,
+            "rouge2": 0.07142857142857142,
+            "rougeL": 0.2105263157894737
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            11,
+            10,
+            95,
+            20,
+            8,
+            88,
+            90,
+            94
+          ],
+          "retrieval_precision": 0.2490234375,
+          "retrieval_recall": 0.7338129496402878
+        },
+        "word_packed__dense__w512": {
+          "answer": "Postdoc E emphasized the importance of fluency over accents, expressing concerns about the language skills of some undergraduate students in computer science. Grad B suggested that the advertisement for the meeting should specify that it will be held in English without mentioning fluency requirements explicitly.",
+          "rouge_f1": {
+            "rouge1": 0.2795698924731182,
+            "rouge2": 0.04395604395604396,
+            "rougeL": 0.19354838709677422
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            85
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.3683453237410072
+        },
+        "word_packed__dense__w1024": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure a higher proficiency in English among participants, emphasizing the importance of fluency over accents. Grad B proposed that the advertisement should specify that meetings should be held in English, accepting that a few participants might not have excellent English skills. Postdoc E reiterated the value of having more fluent speakers for the purpose of creating a versatile and beneficial corpus.",
+          "rouge_f1": {
+            "rouge1": 0.3220338983050847,
+            "rouge2": 0.034482758620689655,
+            "rougeL": 0.22033898305084748
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            85,
+            9,
+            6
+          ],
+          "retrieval_precision": 0.4287109375,
+          "retrieval_recall": 0.6316546762589929
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure proficiency in English, emphasizing fluency over accent. Professor D agreed, suggesting contacting professors and doctoral students leading projects to hold their meetings in the facility. Grad B proposed that the advertisement should specify that the meeting should be held in English, allowing for some flexibility regarding participants' English skills.",
+          "rouge_f1": {
+            "rouge1": 0.2803738317757009,
+            "rouge2": 0.057142857142857134,
+            "rougeL": 0.205607476635514
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            85,
+            9,
+            6,
+            15,
+            7,
+            20,
+            18
+          ],
+          "retrieval_precision": 0.33935546875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure a higher number of fluent English speakers, as these students would likely have sufficient proficiency in English to be useful for the project's purposes. Additionally, Postdoc E emphasized the importance of having participants who are more proficient and closer to academic English to maximize the utility of the corpus for various applications, including language models.",
+          "rouge_f1": {
+            "rouge1": 0.3508771929824562,
+            "rouge2": 0.05357142857142857,
+            "rougeL": 0.2105263157894737
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            6
+          ],
+          "retrieval_precision": 0.357421875,
+          "retrieval_recall": 0.2633093525179856
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure getting more fluent English speakers, as they would likely have sufficient proficiency in English for the project's purposes.",
+          "rouge_f1": {
+            "rouge1": 0.3636363636363637,
+            "rouge2": 0.05333333333333332,
+            "rougeL": 0.2337662337662338
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            6,
+            2,
+            80
+          ],
+          "retrieval_precision": 0.1787109375,
+          "retrieval_recall": 0.2633093525179856
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure that the speakers have sufficient proficiency in English, emphasizing the importance of fluency over just having native speakers. They noted that graduate-level linguistics students would likely have stronger language skills, making their contributions more beneficial for the project's purposes.",
+          "rouge_f1": {
+            "rouge1": 0.3434343434343434,
+            "rouge2": 0.06185567010309278,
+            "rougeL": 0.20202020202020202
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            6,
+            2,
+            80,
+            25,
+            8,
+            84,
+            79
+          ],
+          "retrieval_precision": 0.21435546875,
+          "retrieval_recall": 0.6316546762589929
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure a higher number of fluent English speakers, as these students would likely have sufficient proficiency in English to be useful for the project's purposes. Additionally, Postdoc E emphasized the importance of having participants who are more proficient and closer to academic English to maximize the utility of the corpus for various applications, including language models.",
+          "rouge_f1": {
+            "rouge1": 0.3508771929824562,
+            "rouge2": 0.05357142857142857,
+            "rougeL": 0.2105263157894737
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            6
+          ],
+          "retrieval_precision": 0.357421875,
+          "retrieval_recall": 0.2633093525179856
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure a higher proficiency in English among participants, emphasizing the importance of fluency over accents. Grad B proposed that the advertisement should specify that meetings should be held in English, accepting that a few participants might not have excellent English skills. Postdoc E reiterated the value of having more fluent speakers for the purpose of creating a versatile and beneficial corpus.",
+          "rouge_f1": {
+            "rouge1": 0.3220338983050847,
+            "rouge2": 0.034482758620689655,
+            "rougeL": 0.22033898305084748
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            6,
+            8,
+            85
+          ],
+          "retrieval_precision": 0.4287109375,
+          "retrieval_recall": 0.6316546762589929
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure that the speakers have sufficient proficiency in English, emphasizing the importance of fluency over just being native speakers. This was proposed to avoid issues with varied language skills among undergraduates and to ensure the quality of the language models built from the collected data.",
+          "rouge_f1": {
+            "rouge1": 0.39215686274509803,
+            "rouge2": 0.1,
+            "rougeL": 0.23529411764705882
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            6,
+            8,
+            85,
+            80,
+            7,
+            2,
+            77
+          ],
+          "retrieval_precision": 0.33935546875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "Postdoc E emphasized the importance of fluency over accent, suggesting that the focus should be on the proficiency and fluency of English speakers rather than their accents. Grad B proposed that the advertisement for meetings should specify that they will be held in English but did not strictly require all participants to have excellent English skills. The group acknowledged that the decision on English fluency requirements was complex and deferred further discussion to a later time.",
+          "rouge_f1": {
+            "rouge1": 0.3870967741935484,
+            "rouge2": 0.06557377049180328,
+            "rougeL": 0.2096774193548387
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            74
+          ],
+          "retrieval_precision": 0.49609375,
+          "retrieval_recall": 0.36546762589928056
+        },
+        "lumber__dense__w1024": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure that participants have sufficient proficiency in English. They emphasized the importance of fluency over accent and noted that recruiting from undergraduate populations might result in a \"mixed bag\" of language abilities, making it difficult to build reliable language models. Professor D agreed and proposed targeting professors and doctoral students leading projects, suggesting that these individuals could be invited to hold their meetings at the specified location.",
+          "rouge_f1": {
+            "rouge1": 0.2741935483870968,
+            "rouge2": 0.03278688524590164,
+            "rougeL": 0.1774193548387097
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            74,
+            5,
+            7,
+            10
+          ],
+          "retrieval_precision": 0.6787109375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure participants have sufficient proficiency in English. They emphasized the importance of fluency over accents and noted that proficiency becomes less of an issue at the graduate level. Professor D agreed that for language models, it's beneficial to have speakers who are more fluent and closer to academic English. However, Grad B proposed that the advertisement should specify that the meeting should be held in English, allowing for some flexibility regarding the fluency of individual participants.",
+          "rouge_f1": {
+            "rouge1": 0.34328358208955223,
+            "rouge2": 0.060606060606060594,
+            "rougeL": 0.20895522388059704
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            74,
+            5,
+            7,
+            10,
+            9,
+            14,
+            67
+          ],
+          "retrieval_precision": 0.33935546875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to obtain participants with sufficient proficiency in English. They emphasized that having fluent English speakers, particularly those closer to academic English, would be beneficial for building language models and avoiding the issues associated with interlanguages.",
+          "rouge_f1": {
+            "rouge1": 0.30769230769230776,
+            "rouge2": 0.06741573033707865,
+            "rougeL": 0.24175824175824176
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            5
+          ],
+          "retrieval_precision": 0.548828125,
+          "retrieval_recall": 0.40431654676258993
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure getting more native or highly proficient English speakers for the project. They emphasized the importance of having participants with sufficient proficiency in English to make the collected data useful for building language models.",
+          "rouge_f1": {
+            "rouge1": 0.4175824175824176,
+            "rouge2": 0.08988764044943819,
+            "rougeL": 0.2637362637362637
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            5,
+            2,
+            70
+          ],
+          "retrieval_precision": 0.3544921875,
+          "retrieval_recall": 0.5223021582733813
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure proficiency in English, as these students would likely have sufficient fluency in English for the research purposes. Additionally, Grad B proposed that the advertisement for meetings should specify that the meeting should be held in English, allowing for some flexibility regarding the English skills of individual participants, while acknowledging that having more fluent speakers would be beneficial for creating better language models.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333337,
+            "rouge2": 0.08474576271186442,
+            "rougeL": 0.21666666666666667
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            5,
+            2,
+            70,
+            24,
+            8,
+            63
+          ],
+          "retrieval_precision": 0.2138671875,
+          "retrieval_recall": 0.6302158273381295
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to obtain participants with sufficient proficiency in English. They believed that recruiting from this pool would provide useful data for building language models, as these participants would likely speak closer to academic English, thus ensuring fluency.",
+          "rouge_f1": {
+            "rouge1": 0.32608695652173914,
+            "rouge2": 0.04444444444444444,
+            "rougeL": 0.19565217391304346
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            9
+          ],
+          "retrieval_precision": 0.708984375,
+          "retrieval_recall": 0.5223021582733813
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure proficiency in English, as they would have sufficient fluency for the project's purposes. Additionally, Postdoc E emphasized the importance of having participants whose English is closer to academic English to facilitate the creation of language models. Grad B proposed that the advertisement should specify that the meeting should be held in English, allowing for some flexibility regarding the English proficiency of individual participants.",
+          "rouge_f1": {
+            "rouge1": 0.36065573770491804,
+            "rouge2": 0.08333333333333333,
+            "rougeL": 0.22950819672131148
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            9,
+            8,
+            74,
+            6
+          ],
+          "retrieval_precision": 0.46875,
+          "retrieval_recall": 0.6906474820143885
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Postdoc E suggested advertising to linguistics graduate students to ensure proficiency in English, emphasizing the importance of fluency over accents. They argued that having more fluent speakers would improve the quality of the language models being built, avoiding issues with interlanguages that don't match existing models.",
+          "rouge_f1": {
+            "rouge1": 0.35789473684210527,
+            "rouge2": 0.04301075268817204,
+            "rougeL": 0.25263157894736843
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            9,
+            8,
+            74,
+            6,
+            2,
+            67,
+            70
+          ],
+          "retrieval_precision": 0.30126953125,
+          "retrieval_recall": 0.8877697841726618
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What were the options that were discussed on the location of the recording equipment?",
+      "reference_answer": "One proposed solution was to set up another room in the linguistics department. This needed a dedicated partner and safety of the equipment for it to work. Professor D talked about making the equipment portable allowing it to be transported from meeting to meeting.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The options discussed for the location of the recording equipment included:\n\n1. Setting up a room in the linguistics department if Mari wasn't using the IBM equipment.\n2. Using an available meeting room in another department (e.g., psychology or computer science) where the equipment could be safely stored and used regularly.\n3. Making the setup portable so it could be wheeled around as needed.\n4. Placing the equipment in the phonology lab, contingent upon permission from相关人员请参考上下文回答问题，但我直接基于提供的会议摘录给出简洁、直接的答案：\n\n讨论的录音设备位置选项包括：\n- 在语言学系设立一个房间（如果Mari不使用IBM设备）。\n- 使用其他部门（如心理学或计算机科学）可用的会议室，确保设备安全并能定期使用。\n- 将设备设置为便携式，以便需要时可以移动。\n- 在获得许可的情况下，将设备放置在音系学实验室。",
+          "rouge_f1": {
+            "rouge1": 0.3709677419354839,
+            "rouge2": 0.14754098360655737,
+            "rougeL": 0.24193548387096778
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            15,
+            32
+          ],
+          "retrieval_precision": 0.431640625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The options discussed for the location of the recording equipment included:\n\n1. Setting up a room in the linguistics department if Mari wasn't using the IBM equipment.\n2. Using a room in psychology or computer science departments if space was available.\n3. Turning the equipment into a portable setup that could be wheeled around.\n4. Recording meetings in existing meeting rooms where the equipment could be safely stored and accessed weekly.\n5. Potentially placing the equipment in the phonology lab.",
+          "rouge_f1": {
+            "rouge1": 0.31999999999999995,
+            "rouge2": 0.13008130081300814,
+            "rougeL": 0.24
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            15,
+            32,
+            31,
+            19
+          ],
+          "retrieval_precision": 0.2158203125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The options discussed for the location of the recording equipment included:\n\n1. Setting up a room in the linguistics department or another building on campus if the IBM equipment was not used by Mari.\n2. Turning the equipment into a portable setup that could be wheeled around.\n3. Recording meetings remotely in other buildings on campus if a motivated partner could be found.\n4. Using a DAT machine for simpler and more portable recording.\n5. Recording with tabletop microphones for ease of use in various settings.",
+          "rouge_f1": {
+            "rouge1": 0.3230769230769231,
+            "rouge2": 0.10937500000000001,
+            "rougeL": 0.2153846153846154
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            15,
+            32,
+            31,
+            19,
+            16,
+            23,
+            1,
+            73
+          ],
+          "retrieval_precision": 0.10791015625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The options discussed regarding the location of the recording equipment included setting up a room in the linguistics department or another building on campus like psych or comp, contingent upon inheriting unused equipment from Mari (presumably from IBM) and finding a motivated partner on campus interested in the project. Another option mentioned was bringing participants to a designated recording location instead of moving the recording setup around.",
+          "rouge_f1": {
+            "rouge1": 0.34234234234234234,
+            "rouge2": 0.11009174311926605,
+            "rougeL": 0.2162162162162162
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            1,
+            89
+          ],
+          "retrieval_precision": 0.353515625,
+          "retrieval_recall": 0.8190045248868778
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The options discussed regarding the location of the recording equipment included setting up a room in the linguistics department or another building on campus if the IBM equipment was not used by Mari. This would allow for recording meetings remotely instead of bringing all participants to a specific location.",
+          "rouge_f1": {
+            "rouge1": 0.4301075268817204,
+            "rouge2": 0.13186813186813184,
+            "rougeL": 0.25806451612903225
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            1,
+            89,
+            96,
+            5
+          ],
+          "retrieval_precision": 0.1767578125,
+          "retrieval_recall": 0.8190045248868778
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The options discussed regarding the location of the recording equipment included:\n\n1. Using the existing IBM equipment in the current setup.\n2. Setting up a room in the linguistics department if the IBM equipment is not used.\n3. Recording in various locations around campus with a motivated partner's assistance.\n4. Using portable equipment from ICSI for easier recording processes outside the lab.\n5. Utilizing tabletop microphones for ease of recording.\n6. Implementing advanced setups with multiple microphones as seen in studies at institutions like Brown and Cape, though this was noted as more complex and resource-intensive.",
+          "rouge_f1": {
+            "rouge1": 0.2816901408450704,
+            "rouge2": 0.08571428571428572,
+            "rougeL": 0.16901408450704225
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            1,
+            89,
+            96,
+            5,
+            73,
+            78,
+            16,
+            43
+          ],
+          "retrieval_precision": 0.08837890625,
+          "retrieval_recall": 0.8190045248868778
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The options discussed regarding the location of the recording equipment included setting up a room in the linguistics department or another building on campus like psych or comp, contingent upon inheriting unused equipment from Mari (presumably from IBM). Another option mentioned was finding a motivated partner on campus interested in the project to facilitate recording meetings remotely without bringing participants to a specific location.",
+          "rouge_f1": {
+            "rouge1": 0.3703703703703703,
+            "rouge2": 0.11320754716981131,
+            "rougeL": 0.24074074074074076
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            1,
+            16
+          ],
+          "retrieval_precision": 0.353515625,
+          "retrieval_recall": 0.8190045248868778
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The options discussed for the location of the recording equipment included:\n\n1. Recording meetings at the end to avoid cutting into participants' time.\n2. Recording in various locations such as front-end meetings, networking group meetings, and potentially setting up a room in the linguistics department or another building if the IBM equipment was not used.\n3. Using portable equipment from ICSI for easier recording processes outside the lab.\n4. Utilizing tabletop microphones for ease of setup.\n5. Instrumenting rooms with multiple microphones, similar to setups seen at institutions like Brown and Cape, which involve large arrays of microphones for detailed recording.",
+          "rouge_f1": {
+            "rouge1": 0.31506849315068497,
+            "rouge2": 0.08333333333333331,
+            "rougeL": 0.17808219178082194
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            1,
+            16,
+            73,
+            5
+          ],
+          "retrieval_precision": 0.1767578125,
+          "retrieval_recall": 0.8190045248868778
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The options discussed regarding the location of the recording equipment included:\n\n1. Using a portable setup that could be wheeled around to different locations.\n2. Setting up a room in the linguistics department or another building on campus if the IBM equipment was not used.\n3. Recording meetings in various locations across the university, provided the equipment would be safe and accessible.\n4. Utilizing a simpler setup, such as a DAT machine, for basic recordings that only require transcription later.\n5. Implementing a more complex setup with multiple microphones, similar to systems used at institutions like Brown and Cape, which involve large arrays of microphones placed throughout a room.",
+          "rouge_f1": {
+            "rouge1": 0.28758169934640526,
+            "rouge2": 0.09271523178807947,
+            "rougeL": 0.18300653594771243
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            1,
+            16,
+            73,
+            5,
+            78,
+            19,
+            17,
+            15
+          ],
+          "retrieval_precision": 0.10791015625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The options discussed for the location of the recording equipment included:\n\n1. Bringing the equipment to where the meetings are held and having one person record the meetings weekly.\n2. Making the equipment portable so it could be wheeled around to different locations as needed.\n3. Potentially placing the equipment in a specific room like the phonology lab, provided the equipment would be secure and accessible.\n4. Using tabletop microphones for easier setup and recording processes in various locations.",
+          "rouge_f1": {
+            "rouge1": 0.3414634146341463,
+            "rouge2": 0.08264462809917356,
+            "rougeL": 0.19512195121951217
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            14
+          ],
+          "retrieval_precision": 0.216796875,
+          "retrieval_recall": 0.502262443438914
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The options discussed for the location of the recording equipment included:\n\n1. Bringing the equipment to a meeting room where it would be safe and accessible for weekly recordings.\n2. Using a portable setup that could be wheeled around.\n3. Placing the equipment in a specific lab, like the phonology lab, if permitted.\n4. Utilizing tabletop microphones for easier recording processes in various locations.",
+          "rouge_f1": {
+            "rouge1": 0.2962962962962963,
+            "rouge2": 0.056603773584905655,
+            "rougeL": 0.14814814814814814
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            14,
+            28,
+            27
+          ],
+          "retrieval_precision": 0.1083984375,
+          "retrieval_recall": 0.502262443438914
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The options discussed for the location of the recording equipment included:\n\n1. Setting up a room in the linguistics department if the IBM equipment was not used.\n2. Using a portable setup that could be wheeled around.\n3. Recording in a meeting room where the equipment would be safe and accessible weekly.\n4. Utilizing the phonology lab or similar spaces within the university.\n5. Employing tabletop microphones for ease of use in various locations.\n6. Implementing a system with multiple microphones (like those seen at Brown and Cape) for better selectivity and quality in recordings.",
+          "rouge_f1": {
+            "rouge1": 0.2733812949640288,
+            "rouge2": 0.10218978102189781,
+            "rougeL": 0.17266187050359713
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            14,
+            28,
+            27,
+            12,
+            21,
+            15,
+            64
+          ],
+          "retrieval_precision": 0.10791015625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The options discussed regarding the location of the recording equipment included setting up a room in the linguistics department or potentially in another building such as psychology or computer science departments. The group considered inheriting unused equipment from IBM if it was available and finding a motivated partner on campus interested in the project.",
+          "rouge_f1": {
+            "rouge1": 0.3877551020408163,
+            "rouge2": 0.125,
+            "rougeL": 0.22448979591836732
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            68,
+            12
+          ],
+          "retrieval_precision": 0.21484375,
+          "retrieval_recall": 0.497737556561086
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The options discussed regarding the location of the recording equipment included setting up a room in the linguistics department or another building such as psychology or computer science departments, contingent upon finding a motivated partner on campus interested in the project. Additionally, there was mention of potentially inheriting unused equipment from IBM if Mari was not using it.",
+          "rouge_f1": {
+            "rouge1": 0.35294117647058826,
+            "rouge2": 0.12,
+            "rougeL": 0.23529411764705882
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            68,
+            12,
+            79,
+            4
+          ],
+          "retrieval_precision": 0.107421875,
+          "retrieval_recall": 0.497737556561086
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The options discussed for the location of the recording equipment included:\n\n1. Setting up a room in the linguistics department if the equipment from IBM was not used by Mari.\n2. Using available meeting rooms across different departments (like psychology or computer science) where the equipment could be safely stored and one team member could visit weekly to record meetings.\n3. Turning the equipment into a portable setup that could be wheeled around to various locations.\n4. Utilizing existing facilities like the phonology lab for recordings.\n5. Implementing a system with multiple microphones distributed throughout a room for better audio capture, similar to setups described at institutions like Brown and Cape.",
+          "rouge_f1": {
+            "rouge1": 0.3225806451612903,
+            "rouge2": 0.1045751633986928,
+            "rougeL": 0.1935483870967742
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            68,
+            12,
+            79,
+            4,
+            86,
+            13,
+            38,
+            64
+          ],
+          "retrieval_precision": 0.10791015625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The options discussed for the location of the recording equipment included:\n1. Setting up a room in the linguistics department if the equipment from IBM was not used.\n2. Using an available meeting room in another department (such as psychology or computer science) where the equipment could be safely stored and one team member could visit weekly to record meetings.\n3. Potentially making the equipment portable and movable to different locations as needed.",
+          "rouge_f1": {
+            "rouge1": 0.4615384615384615,
+            "rouge2": 0.17391304347826086,
+            "rougeL": 0.2564102564102564
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            12
+          ],
+          "retrieval_precision": 0.431640625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The options discussed for the location of the recording equipment included:\n\n1. Setting up a room in the linguistics department or another building on campus (e.g., psychology or computer science) where the equipment could be used to record meetings or seminars.\n2. Making the equipment portable so it could be wheeled around and used in various locations.\n3. Using a meeting room in another department (like the phonology lab) where the equipment could be safely stored and used regularly for recordings.\n4. Implementing a setup similar to what some universities have, with large microphone arrays on walls for more precise and selective recordings.",
+          "rouge_f1": {
+            "rouge1": 0.3243243243243243,
+            "rouge2": 0.13698630136986303,
+            "rougeL": 0.24324324324324326
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            12,
+            14,
+            64
+          ],
+          "retrieval_precision": 0.2158203125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The options discussed for the location of the recording equipment included:\n\n1. Setting up a room in the linguistics department or another building on campus if the IBM equipment was not used.\n2. Using a portable setup that could be wheeled around to different locations.\n3. Recording meetings in existing rooms with guaranteed safety for the equipment, where one team member could visit weekly to operate the recording.\n4. Utilizing a DAT machine for simpler recordings that only require basic transcription quality.\n5. Implementing a sophisticated setup similar to those seen at institutions like Brown and Cape, featuring large arrays of microphones for detailed recordings.",
+          "rouge_f1": {
+            "rouge1": 0.33557046979865773,
+            "rouge2": 0.09523809523809525,
+            "rougeL": 0.1879194630872483
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            12,
+            14,
+            64,
+            15,
+            4,
+            28,
+            17
+          ],
+          "retrieval_precision": 0.10791015625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The options discussed for the location of the recording equipment included setting up a room in the linguistics department or another building on campus like psychology or computer science departments, contingent upon finding a motivated partner interested in the project. Another option mentioned was potentially using the phonology lab. Additionally, there was consideration for using portable recording equipment for easier recording processes outside of specific labs or rooms.",
+          "rouge_f1": {
+            "rouge1": 0.3214285714285714,
+            "rouge2": 0.12727272727272726,
+            "rougeL": 0.21428571428571427
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            12
+          ],
+          "retrieval_precision": 0.375,
+          "retrieval_recall": 0.8687782805429864
+        },
+        "lumber__dense__w1024": {
+          "answer": "The options discussed for the location of the recording equipment included:\n\n1. Setting up a room in the linguistics department if Mari wasn't using the IBM equipment.\n2. Using a meeting room in another building where the equipment could be safely stored and used for regular recordings.\n3. Turning the equipment into a portable setup that could be wheeled around.\n4. Possibly placing the equipment in the phonology lab or similar spaces within the university where safety and regular access could be guaranteed.\n5. Recording meetings with tabletop microphones instead of individual headsets for ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.2957746478873239,
+            "rouge2": 0.1142857142857143,
+            "rougeL": 0.22535211267605632
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            12,
+            27
+          ],
+          "retrieval_precision": 0.2158203125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The options discussed for the location of the recording equipment included:\n\n1. Setting up a room in the linguistics department or another building on campus if the IBM equipment was not used.\n2. Making the equipment portable so it could be wheeled around to different locations.\n3. Recording meetings remotely in other buildings if a motivated partner could be found.\n4. Using tabletop microphones for easier recording processes in various settings without needing complex setups.",
+          "rouge_f1": {
+            "rouge1": 0.4033613445378151,
+            "rouge2": 0.15384615384615385,
+            "rougeL": 0.2857142857142857
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            12,
+            27,
+            20,
+            15,
+            1,
+            60,
+            17
+          ],
+          "retrieval_precision": 0.10791015625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The options discussed regarding the location of the recording equipment included setting up a room in the linguistics department if the IBM equipment was available and not being used by Mari, or finding a motivated partner on campus to record meetings in another building such as in psychology or computer science departments.",
+          "rouge_f1": {
+            "rouge1": 0.41666666666666663,
+            "rouge2": 0.1276595744680851,
+            "rougeL": 0.24999999999999994
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            59,
+            12
+          ],
+          "retrieval_precision": 0.29296875,
+          "retrieval_recall": 0.6787330316742082
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The options discussed regarding the location of the recording equipment included:\n\n1. Setting up a room in the linguistics department or another building on campus (if the IBM equipment was not used).\n2. Turning the recording setup into a portable device that could be wheeled around.\n3. Recording meetings remotely in other buildings or departments where a meeting room could guarantee safety and regular access for recording purposes.",
+          "rouge_f1": {
+            "rouge1": 0.3928571428571429,
+            "rouge2": 0.10909090909090909,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            59,
+            12,
+            1,
+            69
+          ],
+          "retrieval_precision": 0.2158203125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The options discussed regarding the location of the recording equipment included:\n1. Using the existing IBM equipment in its current location if Mari continues to use it.\n2. Setting up a room in the linguistics department or another building on campus if the IBM equipment becomes available and a motivated partner is found.\n3. Turning the equipment into a portable setup that could be wheeled around to various meeting rooms across campus, provided the equipment's safety and regular access could be guaranteed.",
+          "rouge_f1": {
+            "rouge1": 0.36220472440944884,
+            "rouge2": 0.12800000000000003,
+            "rougeL": 0.25196850393700787
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            59,
+            12,
+            1,
+            69,
+            75,
+            3
+          ],
+          "retrieval_precision": 0.10791015625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The options discussed for the location of the recording equipment included:\n1. Setting up a room in the linguistics department if the IBM equipment was not being used by Mari.\n2. Using available meeting rooms in different departments across campus, provided the equipment would be secure and accessible.\n3. Making the recording setup portable to allow it to be moved around as needed.",
+          "rouge_f1": {
+            "rouge1": 0.4672897196261682,
+            "rouge2": 0.20952380952380953,
+            "rougeL": 0.29906542056074764
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            1
+          ],
+          "retrieval_precision": 0.431640625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The options discussed for the location of the recording equipment included:\n\n1. Setting up a room in the linguistics department or another building on campus (if the IBM equipment was not used).\n2. Turning the equipment into a portable setup that could be wheeled around to different locations.\n3. Recording meetings remotely in other buildings or departments where a meeting room could guarantee safety and regular access for recording.\n4. Using simpler tabletop microphones or even a basic tape recorder for easier and quicker recordings in various settings like seminars or classes.",
+          "rouge_f1": {
+            "rouge1": 0.3382352941176471,
+            "rouge2": 0.10447761194029852,
+            "rougeL": 0.22058823529411764
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            1,
+            13,
+            17
+          ],
+          "retrieval_precision": 0.2158203125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The options discussed regarding the location of the recording equipment included:\n\n1. Using the existing setup in the current room since it is underused and suitable for recording detailed data.\n2. Setting up the equipment in another building or department (like the linguistics department) if a motivated partner could be found to host the equipment.\n3. Making the setup portable so it could be wheeled around to different locations.\n4. Simplifying the recording process by using a DAT machine or a tape recorder for basic recordings that only require a transcription later.\n5. Bringing people to the current room equipped for recording to ensure the safety and ease of handling the equipment.",
+          "rouge_f1": {
+            "rouge1": 0.34615384615384615,
+            "rouge2": 0.1168831168831169,
+            "rougeL": 0.2051282051282051
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            1,
+            13,
+            17,
+            3
+          ],
+          "retrieval_precision": 0.10791015625,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did the group say on portable equipment?",
+      "reference_answer": "The group wanted to introduce portable equipment so as to get more meetings from different groups. However, this was challenged by the complexity of setting up the recording equipment.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group discussed the possibility of making the IBM equipment portable so it could be wheeled around to different locations on campus for recording meetings or other types of sessions. This would allow them to potentially use available meeting rooms without needing dedicated space, provided the equipment's safety could be guaranteed. Additionally, there was a suggestion that another portable piece of equipment might be needed to facilitate easier recording processes.",
+          "rouge_f1": {
+            "rouge1": 0.31999999999999995,
+            "rouge2": 0.02040816326530612,
+            "rougeL": 0.2
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            14,
+            16
+          ],
+          "retrieval_precision": 0.505859375,
+          "retrieval_recall": 0.23761467889908258
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The group discussed the possibility of making the equipment portable. Professor D suggested turning the equipment into a portable setup that could be wheeled around. However, they acknowledged the challenge of finding available space on campus. PhD C proposed needing another portable device to facilitate easier recording processes outside of ICSI, emphasizing the difficulty of setting up headsets for multiple participants. The group agreed that using tabletop microphones for recordings would be simpler but noted it wasn't suitable for their specific corpus collection needs.",
+          "rouge_f1": {
+            "rouge1": 0.2631578947368421,
+            "rouge2": 0.05357142857142857,
+            "rougeL": 0.21052631578947367
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            14,
+            16,
+            23,
+            73
+          ],
+          "retrieval_precision": 0.41015625,
+          "retrieval_recall": 0.3853211009174312
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The group discussed the need for portable equipment to facilitate recording meetings outside of a fixed location. Specifically, Professor D suggested turning the equipment into a portable device that could be wheeled around (excerpt 162). PhD C emphasized the need for another portable equipment to make the recording process easier, especially for recording seminars or classes within the university (excerpts 183, 184). The participants agreed that having portable equipment would allow them to record different types of meetings without the constraints of a fixed setup, though they acknowledged challenges in ensuring the safety and accessibility of the equipment.",
+          "rouge_f1": {
+            "rouge1": 0.2204724409448819,
+            "rouge2": 0.047999999999999994,
+            "rougeL": 0.1889763779527559
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            14,
+            16,
+            23,
+            73,
+            21,
+            5,
+            74,
+            17
+          ],
+          "retrieval_precision": 0.27197265625,
+          "retrieval_recall": 0.5110091743119266
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The group discussed making the equipment portable so it could be wheeled around and used in various locations, such as meeting rooms or labs, where it could be safely stored and used weekly for recordings. They acknowledged the scarcity of space and the difficulty of finding a dedicated room but suggested that regular use of portable equipment in guaranteed safe spaces could facilitate meetings and recordings. PhD C specifically mentioned needing another portable device to ease the recording process, especially for events like seminars or classes where distributing headsets might be impractical.",
+          "rouge_f1": {
+            "rouge1": 0.21487603305785122,
+            "rouge2": 0.050420168067226885,
+            "rougeL": 0.1652892561983471
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            15,
+            89
+          ],
+          "retrieval_precision": 0.8203125,
+          "retrieval_recall": 0.3853211009174312
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The group discussed the possibility of making the equipment portable to facilitate its use in various locations such as meeting rooms and potentially even classrooms or seminars. They acknowledged the challenges of ensuring the safety and ease of transporting the equipment, suggesting the need for portable devices to simplify the recording process. However, they also considered alternatives like using tabletop microphones and bringing people to a designated room equipped for recordings.",
+          "rouge_f1": {
+            "rouge1": 0.3,
+            "rouge2": 0.04081632653061224,
+            "rougeL": 0.21999999999999997
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            15,
+            89,
+            21,
+            4
+          ],
+          "retrieval_precision": 0.41015625,
+          "retrieval_recall": 0.3853211009174312
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The group discussed the need for portable equipment to facilitate the recording of meetings in various locations. Professor D suggested turning the recording setup into a portable device that could be wheeled around. PhD C emphasized the necessity of another portable equipment setup to make the recording process easier outside of ICSI, especially for recording seminars or classes where distributing headphones might be challenging. Grad B noted that using tabletop microphones for recordings would be easy but acknowledged that this method wouldn't meet the requirements of the corpus they aimed to collect.",
+          "rouge_f1": {
+            "rouge1": 0.22950819672131148,
+            "rouge2": 0.05,
+            "rougeL": 0.1639344262295082
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            15,
+            89,
+            21,
+            4,
+            5,
+            7,
+            10,
+            81
+          ],
+          "retrieval_precision": 0.205078125,
+          "retrieval_recall": 0.3853211009174312
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The group discussed the possibility of making the equipment portable to facilitate moving it around for regular meetings or recordings. They acknowledged the scarcity of space and the difficulty of finding a dedicated room. However, they suggested that if a meeting room could ensure the safety of the equipment and allow for weekly recordings, it might be feasible. Additionally, they considered the idea of using the phonology lab as an alternative location. PhD C proposed needing another portable device to make the recording process easier outside of ICSI, particularly for recording seminars or classes where distributing headphones might be challenging. The group agreed that using tabletop microphones would be simpler but noted that it wasn’t suitable for their specific corpus collection needs.",
+          "rouge_f1": {
+            "rouge1": 0.21052631578947367,
+            "rouge2": 0.026666666666666665,
+            "rougeL": 0.13157894736842105
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            16,
+            21
+          ],
+          "retrieval_precision": 0.8203125,
+          "retrieval_recall": 0.3853211009174312
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The group discussed the possibility of having portable equipment to facilitate easier recording processes outside of their primary location. Specifically, PhD C suggested needing \"another portable thing\" or \"another portable equipment\" to make the recording process easier, especially for recording seminars or classes within the university. This suggestion arose due to the difficulty of setting up multiple headsets for recordings compared to using simpler tabletop microphones.",
+          "rouge_f1": {
+            "rouge1": 0.2947368421052632,
+            "rouge2": 0.10752688172043012,
+            "rougeL": 0.25263157894736843
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            16,
+            21,
+            14,
+            5
+          ],
+          "retrieval_precision": 0.41015625,
+          "retrieval_recall": 0.3853211009174312
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The group discussed the possibility of making recording equipment portable so it could be wheeled around and used in various locations across the campus. They considered setting up recording sessions in different departments or buildings where meetings could be recorded without needing to bring participants to a central location. There was a suggestion that portable equipment would facilitate easier recording processes outside of ICSI, particularly for seminars or classes, though concerns were raised about the practicality of managing such equipment, including ensuring its safety and ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.29059829059829057,
+            "rouge2": 0.06956521739130435,
+            "rougeL": 0.15384615384615385
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            16,
+            21,
+            14,
+            5,
+            89,
+            7,
+            17,
+            4
+          ],
+          "retrieval_precision": 0.330078125,
+          "retrieval_recall": 0.6201834862385321
+        },
+        "word_packed__dense__w512": {
+          "answer": "The group discussed the possibility of using portable equipment for recording meetings remotely instead of bringing all the equipment down to a specific location. They considered the idea of making the setup portable so it could be wheeled around and potentially placed in a phonology lab or a meeting room where the equipment would be safe. Additionally, PhD C suggested needing another portable device to make the recording process easier outside of ICSI, particularly for recording seminars or classes within the university, emphasizing the difficulty of setting up multiple headsets for recording. However, Grad B noted that recording with tabletop microphones would be much simpler but stated that this method does not align with the type of corpus they are collecting.",
+          "rouge_f1": {
+            "rouge1": 0.22666666666666668,
+            "rouge2": 0.06756756756756757,
+            "rougeL": 0.14666666666666667
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            14
+          ],
+          "retrieval_precision": 0.861328125,
+          "retrieval_recall": 0.40458715596330275
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The group discussed the possibility of using portable equipment for recording meetings remotely instead of bringing all the equipment down to a specific location. They considered the idea of making the setup portable so it could be wheeled around and potentially placed in a phonology lab or a regular meeting room. Additionally, they mentioned the ease of using tabletop microphones for recording, which would simplify the process compared to using headsets. PhD C suggested needing another portable device to make the recording process easier outside of ICSI, emphasizing that current devices might be impractical for recording seminars or classes due to the difficulty in managing multiple headsets.",
+          "rouge_f1": {
+            "rouge1": 0.1911764705882353,
+            "rouge2": 0.04477611940298507,
+            "rougeL": 0.14705882352941177
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            14,
+            64,
+            21
+          ],
+          "retrieval_precision": 0.4306640625,
+          "retrieval_recall": 0.40458715596330275
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The group discussed the possibility of making the IBM equipment portable so it could be wheeled around and potentially used in various locations across campus. They considered setting up a room in the linguistics department or another building if the current equipment was not being used. Additionally, they mentioned needing another portable piece of equipment to facilitate easier recording processes outside of specific labs or classrooms.",
+          "rouge_f1": {
+            "rouge1": 0.2947368421052632,
+            "rouge2": 0.043010752688172046,
+            "rougeL": 0.16842105263157897
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            14,
+            64,
+            21,
+            20,
+            15,
+            12,
+            55
+          ],
+          "retrieval_precision": 0.34033203125,
+          "retrieval_recall": 0.6394495412844037
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The group discussed the possibility of using portable equipment for recording meetings remotely instead of bringing all the equipment down to a specific location. They considered the idea of making the setup portable so it could be wheeled around and potentially placed in a phonology lab or a meeting room where the equipment would be safe. Additionally, PhD C suggested needing another portable device to make the recording process easier outside of ICSI, particularly for recording seminars or classes within the university, emphasizing the difficulty of setting up multiple headsets for recording. However, Grad B noted that recording with tabletop microphones would be much simpler but stated that this method does not align with the type of corpus they are collecting.",
+          "rouge_f1": {
+            "rouge1": 0.22666666666666668,
+            "rouge2": 0.06756756756756757,
+            "rougeL": 0.14666666666666667
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            13
+          ],
+          "retrieval_precision": 0.861328125,
+          "retrieval_recall": 0.40458715596330275
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The group discussed the possibility of making the equipment portable to facilitate easier recording of meetings outside of their usual location. Specifically, Professor D mentioned turning the equipment into a portable thing that could be wheeled around. Additionally, PhD C suggested needing another portable piece of equipment to make the recording process easier outside of ICSI, particularly for recording seminars or classes within the university. However, Grad B noted that recording with tabletop microphones would be easy but that this method does not align with the specific corpus they are collecting.",
+          "rouge_f1": {
+            "rouge1": 0.2333333333333334,
+            "rouge2": 0.03389830508474576,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            13,
+            79,
+            3
+          ],
+          "retrieval_precision": 0.4306640625,
+          "retrieval_recall": 0.40458715596330275
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The group discussed the possibility of making the recording equipment portable so it could be wheeled around and used in different locations. Professor D suggested turning the equipment into a portable thing that could be moved easily. Additionally, PhD C emphasized the need for another portable equipment to make the recording process easier outside of ICSI, particularly for recording seminars or classes in the university, indicating current equipment might be challenging to use in such settings due to difficulties in placing multiple devices.",
+          "rouge_f1": {
+            "rouge1": 0.26785714285714285,
+            "rouge2": 0.07272727272727274,
+            "rougeL": 0.16071428571428573
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            13,
+            79,
+            3,
+            6,
+            4,
+            12,
+            18
+          ],
+          "retrieval_precision": 0.21533203125,
+          "retrieval_recall": 0.40458715596330275
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The group discussed the possibility of using portable equipment for recording meetings remotely instead of bringing all the equipment down to a specific location. They considered the idea of making the setup portable so it could be wheeled around and potentially placed in a phonology lab or a meeting room where the equipment would be safe. Additionally, PhD C suggested needing another portable device to make the recording process easier outside of ICSI, particularly for recording seminars or classes within the university, emphasizing the difficulty of setting up multiple headsets for recording. However, Grad B noted that recording with tabletop microphones would be much simpler but stated that this method does not align with the type of corpus they are collecting.",
+          "rouge_f1": {
+            "rouge1": 0.22666666666666668,
+            "rouge2": 0.06756756756756757,
+            "rougeL": 0.14666666666666667
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            14
+          ],
+          "retrieval_precision": 0.861328125,
+          "retrieval_recall": 0.40458715596330275
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The group discussed the need for portable equipment to facilitate easier recording processes outside of their primary location. Specifically, they mentioned the possibility of using portable equipment to record meetings in various departments across the university, noting that current equipment might require significant setup and might not be practical for recording seminars or classes due to the difficulty of managing multiple headsets. They also considered the idea of making the equipment portable so it could be wheeled around to different locations.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454546,
+            "rouge2": 0.03703703703703704,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            14,
+            12,
+            4
+          ],
+          "retrieval_precision": 0.4306640625,
+          "retrieval_recall": 0.40458715596330275
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The group discussed the possibility of making the recording equipment portable so it could be wheeled around and used in different locations. They considered setting up recording sessions in various departments across the campus, potentially using portable equipment to make the recording process easier and more accessible for different types of meetings. However, concerns were raised about the difficulty of setting up and maintaining such equipment, especially in terms of safety and regular access to rooms.",
+          "rouge_f1": {
+            "rouge1": 0.34285714285714286,
+            "rouge2": 0.11650485436893206,
+            "rougeL": 0.24761904761904763
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            14,
+            12,
+            4,
+            18,
+            79,
+            3,
+            15
+          ],
+          "retrieval_precision": 0.34033203125,
+          "retrieval_recall": 0.6394495412844037
+        },
+        "lumber__dense__w512": {
+          "answer": "The group discussed the possibility of making the IBM equipment portable so it could be wheeled around to different locations on campus for recording meetings or other types of sessions. This would allow them to potentially use available meeting rooms without needing dedicated space, provided the equipment's safety could be guaranteed. Additionally, there was a suggestion that another portable piece of equipment might be needed to facilitate easier recording processes.",
+          "rouge_f1": {
+            "rouge1": 0.31999999999999995,
+            "rouge2": 0.02040816326530612,
+            "rougeL": 0.2
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            13
+          ],
+          "retrieval_precision": 0.505859375,
+          "retrieval_recall": 0.23761467889908258
+        },
+        "lumber__dense__w1024": {
+          "answer": "The group discussed the possibility of making the equipment portable. Professor D suggested turning the equipment into a portable setup that could be wheeled around. Additionally, PhD C proposed needing another portable device to facilitate easier recording processes outside of ICSI, suggesting current equipment might require too many headphones for multiple users, making it impractical for seminars or classes. However, Grad B noted that recording with tabletop microphones would be much easier.",
+          "rouge_f1": {
+            "rouge1": 0.21782178217821785,
+            "rouge2": 0.0202020202020202,
+            "rougeL": 0.1386138613861386
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            13,
+            20
+          ],
+          "retrieval_precision": 0.3974609375,
+          "retrieval_recall": 0.37339449541284403
+        },
+        "lumber__dense__w2048": {
+          "answer": "The group discussed the idea of making recording equipment portable so it could be wheeled around and used in various locations across campus. They considered setting up recordings in different buildings and departments, emphasizing the need for portable equipment to facilitate easier recording processes outside of their primary location (ICSI). Additionally, they mentioned the potential benefits of having simpler setups, such as tabletop microphones, for ease of use in different settings.",
+          "rouge_f1": {
+            "rouge1": 0.3,
+            "rouge2": 0.08163265306122448,
+            "rougeL": 0.15999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            13,
+            20,
+            55,
+            4,
+            14,
+            27
+          ],
+          "retrieval_precision": 0.36572265625,
+          "retrieval_recall": 0.6871559633027523
+        },
+        "lumber__bm25__w512": {
+          "answer": "The group discussed the possibility of using portable equipment for recording meetings or classes on campus. Specifically, PhD C suggested needing another portable device to make the recording process easier outside of ICSI, indicating current equipment might be cumbersome. They noted difficulties with setting up headsets for multiple people but agreed that using tabletop microphones would be easier.",
+          "rouge_f1": {
+            "rouge1": 0.2988505747126437,
+            "rouge2": 0.09411764705882353,
+            "rougeL": 0.20689655172413793
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            12
+          ],
+          "retrieval_precision": 0.505859375,
+          "retrieval_recall": 0.23761467889908258
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The group discussed the need for portable equipment to facilitate easier recording processes outside of their primary location, such as in different meeting rooms or classrooms across the university. They considered the possibility of setting up recording sessions in various departments if the current IBM equipment was not used. Additionally, they acknowledged that having portable equipment would allow them to record meetings without needing to bring participants to a specific recording room, making the process more flexible and convenient.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.07547169811320754,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            12,
+            3
+          ],
+          "retrieval_precision": 0.3974609375,
+          "retrieval_recall": 0.37339449541284403
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The group discussed the need for portable equipment to facilitate recording meetings in various locations across the campus. Professor D suggested turning the existing equipment into a portable setup that could be wheeled around. However, space constraints and the complexity of setting up the equipment were noted as potential challenges. PhD C emphasized the need for another portable equipment setup to make the recording process easier outside of ICSI, particularly for recording seminars or classes where distributing headsets might be difficult. The group agreed that having portable equipment would allow them to regularly record different types of meetings and gather diverse data.",
+          "rouge_f1": {
+            "rouge1": 0.3053435114503817,
+            "rouge2": 0.12403100775193797,
+            "rougeL": 0.22900763358778625
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            12,
+            3,
+            69,
+            17
+          ],
+          "retrieval_precision": 0.251953125,
+          "retrieval_recall": 0.47339449541284406
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The group discussed the possibility of making the IBM equipment portable so it could be wheeled around to different locations on campus for recording meetings or other types of sessions. This would allow them to potentially use available meeting rooms without needing dedicated space, provided the equipment's safety could be guaranteed. Additionally, there was a suggestion that another portable piece of equipment might be needed to facilitate easier recording processes.",
+          "rouge_f1": {
+            "rouge1": 0.31999999999999995,
+            "rouge2": 0.02040816326530612,
+            "rougeL": 0.2
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            13
+          ],
+          "retrieval_precision": 0.505859375,
+          "retrieval_recall": 0.23761467889908258
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The group discussed the possibility of making the recording equipment portable. Professor D suggested turning the equipment into a portable setup that could be wheeled around. Additionally, PhD C proposed needing another portable piece of equipment to facilitate easier recording processes outside of ICSI, particularly in settings like seminars or classes where distributing headsets might be challenging. The group also considered using tabletop microphones as an easier alternative for recording meetings.",
+          "rouge_f1": {
+            "rouge1": 0.3,
+            "rouge2": 0.061224489795918366,
+            "rougeL": 0.18
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            13,
+            69,
+            3
+          ],
+          "retrieval_precision": 0.3974609375,
+          "retrieval_recall": 0.37339449541284403
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The group discussed the need for portable equipment to facilitate recording meetings in various locations across the campus. Professor D suggested turning the existing equipment into a portable setup that could be wheeled around. However, space constraints and the complexity of setting up the equipment were noted as potential challenges. PhD C emphasized the need for another portable equipment setup to make the recording process easier outside of ICSI, particularly for recording seminars or classes where distributing headsets might be difficult. The group agreed that having portable equipment would allow them to regularly record different types of meetings and gather diverse data.",
+          "rouge_f1": {
+            "rouge1": 0.3053435114503817,
+            "rouge2": 0.12403100775193797,
+            "rougeL": 0.22900763358778625
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            13,
+            69,
+            3,
+            17
+          ],
+          "retrieval_precision": 0.251953125,
+          "retrieval_recall": 0.47339449541284406
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What were Grad B’s updates on meeting disk storage?",
+      "reference_answer": "Grad B said that archiving of the data by creating a clone had been done, though it took eleven hours. However, Grad B commented that accessing the data would be much faster. This archiving had freed ten gigabytes of free space. Additionally, two copies would be made: one offisite, another onsite.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Grad B reported that they have space on the current disk where Meeting Recorder is located, which is enough for about four more meetings. They also mentioned that with the space freed up from Broadcast News, they can accommodate five or six more meetings, giving them a couple of weeks until they get a new disk. Grad B suggested consolidating Meeting Recorder onto one disk, possibly the Broadcast News disk, to free up space on the Meeting Recorder disk.",
+          "rouge_f1": {
+            "rouge1": 0.2153846153846154,
+            "rouge2": 0.03125,
+            "rougeL": 0.15384615384615385
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            32,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Grad B reported that they are slowly reaching a point where there is enough space to record meetings. They completed a significant amount of archiving, including copying data from Broadcast News which took eleven hours, and expect to free up approximately ten gigabytes of space. This newly freed space is estimated to accommodate about four additional meetings. Additionally, Grad B suggested consolidating Meeting Recorder onto one disk to avoid spreading it across multiple disks.",
+          "rouge_f1": {
+            "rouge1": 0.368,
+            "rouge2": 0.0975609756097561,
+            "rougeL": 0.224
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            32,
+            5,
+            26,
+            15
+          ],
+          "retrieval_precision": 0.2041015625,
+          "retrieval_recall": 0.5710382513661202
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Grad B's updates on meeting disk storage include archiving files from Broadcast News, which took eleven hours to copy and will take another eleven hours to clone, freeing up ten gigabytes of space. This will allow for the recording of five more meetings. Additionally, Grad B mentioned that they are consolidating Meeting Recorder onto one disk and planning to move Aurora and related materials to the Broadcast News disk to optimize available space. They also noted that they are expecting additional disk space from new disk racks and disks, though the exact specifications and timing are still under consideration.",
+          "rouge_f1": {
+            "rouge1": 0.3311258278145695,
+            "rouge2": 0.08053691275167785,
+            "rougeL": 0.15894039735099336
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            32,
+            5,
+            26,
+            15,
+            28,
+            27,
+            33,
+            1
+          ],
+          "retrieval_precision": 0.1787109375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Grad B reported that they have space on the current disk where Meeting Recorder is located, which is enough for about four more meetings. They also mentioned that after deleting some files and freeing up space from the Broadcast News, they can accommodate five or six more meetings, giving them a couple of weeks until they get a new disk. Grad B suggested consolidating Meeting Recorder onto one disk, possibly the Broadcast News disk, to free up space on the Meeting Recorder disk.",
+          "rouge_f1": {
+            "rouge1": 0.19402985074626866,
+            "rouge2": 0.030303030303030304,
+            "rougeL": 0.14925373134328357
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            32,
+            4
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Grad B's updates on meeting disk storage include that they currently have space for about four more meetings on the current disk where Meeting Recorder is located. Additionally, after clearing up space from the Broadcast News, they estimate having enough space for five or six more meetings. This gives them a couple of weeks until they receive a new disk. Grad B also suggested consolidating Aurora and other related data onto the Broadcast News disk to free up space on the Meeting Recorder disk.",
+          "rouge_f1": {
+            "rouge1": 0.2058823529411765,
+            "rouge2": 0.029850746268656712,
+            "rougeL": 0.14705882352941177
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            32,
+            4,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Grad B's updates on meeting disk storage include that they currently have space for about four more meetings on the current disk where Meeting Recorder is located. Additionally, with the cleared space from the Broadcast News, they estimate they can accommodate five or six more meetings. This gives them a couple of weeks until they receive new disks, which are expected to consist of four or six thirty-six gigabyte disks. Grad B also suggested consolidating Meeting Recorder onto one disk to avoid spreading them out.",
+          "rouge_f1": {
+            "rouge1": 0.2173913043478261,
+            "rouge2": 0.029411764705882356,
+            "rougeL": 0.11594202898550725
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            32,
+            4,
+            5,
+            1,
+            84,
+            28,
+            96,
+            14
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Grad B reported that they have space on the current disk where Meeting Recorder is located, which is enough for about four more meetings. They also mentioned that with the space freed up from Broadcast News, they can accommodate five or six more meetings, giving them a couple of weeks until they get a new disk. Grad B suggested consolidating Meeting Recorder onto one disk, possibly the Broadcast News disk, to free up space on the Meeting Recorder disk.",
+          "rouge_f1": {
+            "rouge1": 0.2153846153846154,
+            "rouge2": 0.03125,
+            "rougeL": 0.15384615384615385
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            32,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Grad B's updates on meeting disk storage include that they currently have space for about four more meetings on the current disk where Meeting Recorder is located. Additionally, with the clearance from the Broadcast News, they estimate having space for five or six more meetings. This gives them a couple of weeks until they receive new disks, which will consist of either four or six thirty-six gigabyte disks. Grad B also suggested consolidating Meeting Recorder onto one disk to avoid spreading them out, recommending the Broadcast News disk as a suitable option.",
+          "rouge_f1": {
+            "rouge1": 0.20689655172413796,
+            "rouge2": 0.027972027972027975,
+            "rougeL": 0.1103448275862069
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            32,
+            5,
+            28,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Grad B's updates on meeting disk storage include archiving files from Broadcast News, which took eleven hours to copy and will take another eleven hours to clone, freeing up ten gigabytes of space. Additionally, Grad B mentioned that they currently have enough space for about four more meetings on the current disk and that with the freed space from Broadcast News, they can accommodate five or six more meetings. Grad B also suggested consolidating Meeting Recorder onto one disk to manage space better.",
+          "rouge_f1": {
+            "rouge1": 0.34074074074074073,
+            "rouge2": 0.10526315789473684,
+            "rougeL": 0.1925925925925926
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            32,
+            5,
+            28,
+            1,
+            84,
+            26,
+            14,
+            33
+          ],
+          "retrieval_precision": 0.10205078125,
+          "retrieval_recall": 0.5710382513661202
+        },
+        "word_packed__dense__w512": {
+          "answer": "Grad B reported that there is currently enough space on the disk where Meeting Recorder is located (likely DI) for about four more meetings. They also mentioned that with the space freed up from Broadcast News, they could accommodate five or six more meetings, giving them a couple of weeks until they receive a new disk. Grad B suggested consolidating Meeting Recorder onto one disk and possibly moving Aurora and related data to the Broadcast News disk.",
+          "rouge_f1": {
+            "rouge1": 0.21875000000000003,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.140625
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            28
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "Grad B's updates on meeting disk storage include that the current disk has enough space for about four more meetings, as they dropped from 100% usage to 86%, likely due to an unknown deletion. Additionally, there is space available from the Broadcast News disk for five or six more meetings. Grad B suggests consolidating Meeting Recorder onto one disk, possibly the Broadcast News disk, to avoid spreading files across multiple disks.",
+          "rouge_f1": {
+            "rouge1": 0.16260162601626016,
+            "rouge2": 0.03305785123966942,
+            "rougeL": 0.11382113821138212
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            28,
+            13,
+            0
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Grad B's updates on meeting disk storage included archiving and deleting files from the Broadcast News project to free up 10GB of space, which allowed for recording five more meetings. Additionally, there was enough space on the current disk for about four more meetings. Grad B mentioned consolidating Meeting Recorder onto one disk to avoid spreading it across multiple disks.",
+          "rouge_f1": {
+            "rouge1": 0.2321428571428571,
+            "rouge2": 0.03636363636363636,
+            "rougeL": 0.14285714285714285
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            28,
+            13,
+            0,
+            24,
+            23,
+            29,
+            12
+          ],
+          "retrieval_precision": 0.17529296875,
+          "retrieval_recall": 0.9808743169398907
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Grad B reported that there is currently enough space on the disk where Meeting Recorder is located (likely DI) for about four more meetings. They also mentioned that with the space freed up from Broadcast News, they could accommodate five or six more meetings, giving them a couple of weeks until they receive a new disk. Grad B suggested consolidating Meeting Recorder onto one disk and possibly moving Aurora and related data to the Broadcast News disk.",
+          "rouge_f1": {
+            "rouge1": 0.21875000000000003,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.140625
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            27
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Grad B's updates on meeting disk storage include noting that the current disk used by Meeting Recorder has enough space for about four more meetings. Additionally, after freeing up space from Broadcast News, there is capacity for five or six more meetings, giving them a couple of weeks until they receive a new disk. Grad B also suggested consolidating Aurora and other related data onto the Broadcast News disk to free up space on the Meeting Recorder disk.",
+          "rouge_f1": {
+            "rouge1": 0.2153846153846154,
+            "rouge2": 0.03125,
+            "rougeL": 0.16923076923076924
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            27,
+            1,
+            4
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Grad B's updates on meeting disk storage included that they had cleared up space by deleting unnecessary Broadcast News files, freeing up enough space for about four additional meetings. Additionally, Grad B suggested consolidating Meeting Recorder data onto one disk to optimize storage usage. They also noted that they expected to receive more disk space soon with the acquisition of a new disk rack and multiple 36-gigabyte disks, though this upgrade would not be immediate.",
+          "rouge_f1": {
+            "rouge1": 0.328125,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.171875
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            27,
+            1,
+            4,
+            29,
+            25,
+            26,
+            74
+          ],
+          "retrieval_precision": 0.00341796875,
+          "retrieval_recall": 0.01912568306010929
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Grad B reported that there is currently enough space on the disk where Meeting Recorder is located (likely DI) for about four more meetings. They also mentioned that with the space freed up from Broadcast News, they could accommodate five or six more meetings, giving them a couple of weeks until they receive a new disk. Grad B suggested consolidating Meeting Recorder onto one disk and possibly moving Aurora and related data to the Broadcast News disk.",
+          "rouge_f1": {
+            "rouge1": 0.21875000000000003,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.140625
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            28
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Grad B reported that there is currently enough space on the disk where Meeting Recorder is located for about four more meetings. Additionally, with the space freed up from the Broadcast News, there's capacity for five or six more meetings, giving them a couple of weeks until they receive a new disk. Grad B suggested consolidating Meeting Recorder onto one disk to optimize storage.",
+          "rouge_f1": {
+            "rouge1": 0.22413793103448276,
+            "rouge2": 0.03508771929824561,
+            "rougeL": 0.13793103448275862
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            28,
+            13,
+            29
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Grad B's updates on meeting disk storage included that they had cleared up space by deleting unnecessary Broadcast News P-files, freeing up enough space for about four additional meetings. They also mentioned that the current disk had dropped from 100% usage to 86%, providing some temporary relief. Additionally, Grad B suggested consolidating Meeting Recorder data onto one disk to better manage storage. They anticipated receiving more disk space soon with the addition of a new disk rack and multiple 36-gigabyte disks, though this upgrade would not be immediate.",
+          "rouge_f1": {
+            "rouge1": 0.323943661971831,
+            "rouge2": 0.028571428571428574,
+            "rougeL": 0.16901408450704225
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            28,
+            13,
+            29,
+            1,
+            4,
+            25,
+            0
+          ],
+          "retrieval_precision": 0.00341796875,
+          "retrieval_recall": 0.01912568306010929
+        },
+        "lumber__dense__w512": {
+          "answer": "Grad B reported that the current disk used by Meeting Recorder has enough space for about four more meetings. This space became available after some unknown deletion, reducing the usage from 100% to 86%. Additionally, with the space freed from Broadcast News, they estimated having capacity for five or six more meetings, giving them a couple of weeks until they receive a new disk.",
+          "rouge_f1": {
+            "rouge1": 0.20869565217391303,
+            "rouge2": 0.017699115044247787,
+            "rougeL": 0.1391304347826087
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            23
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "Grad B's updates on meeting disk storage include archiving large datasets (P-files from Broadcast News) to free up space, which took eleven hours to copy to tape and will take another eleven hours to create a clone. This process will provide approximately ten gigabytes of free space, allowing for the recording of five more meetings. Additionally, there is currently enough space on the current disk for about four more meetings, giving them a couple of weeks until they receive a new disk. Grad B suggested consolidating Meeting Recorder onto one disk to manage storage better.",
+          "rouge_f1": {
+            "rouge1": 0.32432432432432434,
+            "rouge2": 0.136986301369863,
+            "rougeL": 0.18918918918918917
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            23,
+            12
+          ],
+          "retrieval_precision": 0.357421875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "Grad B's updates on meeting disk storage include archiving and deleting old files to free up space, which will allow for recording five more meetings. Additionally, there is currently enough space for about four more meetings on the current disk used by Meeting Recorder. Grad B plans to consolidate Meeting Recorder data onto one disk after completing the current archiving process.",
+          "rouge_f1": {
+            "rouge1": 0.24778761061946902,
+            "rouge2": 0.036036036036036036,
+            "rougeL": 0.1592920353982301
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            23,
+            12,
+            60,
+            13,
+            3
+          ],
+          "retrieval_precision": 0.1787109375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "Grad B reported that they have space on the current disk where Meeting Recorder is located, which is enough for about four more meetings. Additionally, with the space freed up from Broadcast News, they can accommodate five or six more meetings. This gives them a couple of weeks until they receive a new disk. Grad B suggested consolidating Meeting Recorder onto one disk, possibly the Broadcast News disk, to free up space on the Meeting Recorder disk.",
+          "rouge_f1": {
+            "rouge1": 0.234375,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.15624999999999997
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Grad B reported that they have space on the current disk where Meeting Recorder is located, which is enough for about four more meetings. Additionally, after clearing up space from the Broadcast News, they have room for five or six more meetings. This gives them a couple of weeks until they receive a new disk. Grad B suggested consolidating Aurora and other related data onto the Broadcast News disk to free up space on the Meeting Recorder disk.",
+          "rouge_f1": {
+            "rouge1": 0.21705426356589147,
+            "rouge2": 0.031496062992125984,
+            "rougeL": 0.15503875968992248
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Grad B's updates on meeting disk storage include archiving files from Broadcast News, which freed up approximately ten gigabytes of space, allowing for the recording of five more meetings. Additionally, Grad B mentioned that there is currently enough space on the current disk for about four more meetings. This brings the total additional capacity to accommodate around nine more meetings. Grad B also suggested consolidating Meeting Recorder data onto one disk to avoid spreading it out.",
+          "rouge_f1": {
+            "rouge1": 0.296875,
+            "rouge2": 0.06349206349206349,
+            "rougeL": 0.18749999999999997
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            3,
+            26,
+            1,
+            23
+          ],
+          "retrieval_precision": 0.1787109375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Grad B reported that the current disk used by Meeting Recorder has enough space for about four more meetings. This space became available after some unknown deletion, reducing the usage from 100% to 86%. Additionally, with the space freed from Broadcast News, they estimated having capacity for five or six more meetings, giving them a couple of weeks until they receive a new disk.",
+          "rouge_f1": {
+            "rouge1": 0.20869565217391303,
+            "rouge2": 0.017699115044247787,
+            "rougeL": 0.1391304347826087
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            23
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Grad B's updates on meeting disk storage include archiving large datasets (P-files from Broadcast News) to free up space, which took eleven hours to copy to tape and will take another eleven hours to create a clone. This process will provide approximately ten gigabytes of free space, allowing for the recording of five more meetings. Additionally, there is currently enough space on the current disk for about four more meetings, giving them a couple of weeks until they receive a new disk. Grad B suggests consolidating Meeting Recorder onto one disk to manage storage better.",
+          "rouge_f1": {
+            "rouge1": 0.32432432432432434,
+            "rouge2": 0.136986301369863,
+            "rougeL": 0.18918918918918917
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            23,
+            3
+          ],
+          "retrieval_precision": 0.357421875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Grad B's updates on meeting disk storage include archiving and deleting files from the Broadcast News project to free up space, which will allow for the recording of five more meetings. Additionally, there is currently enough space on the current disk for about four more meetings. Grad B also suggested consolidating Meeting Recorder data onto one disk to optimize storage usage.",
+          "rouge_f1": {
+            "rouge1": 0.2300884955752212,
+            "rouge2": 0.036036036036036036,
+            "rougeL": 0.1592920353982301
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            23,
+            3,
+            12,
+            1
+          ],
+          "retrieval_precision": 0.1787109375,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What were other ways to get more space?",
+      "reference_answer": "Professor D said they would be getting another disk rack that would bring in four thirty-six gigabyte disks, increasing the space. Additionally, the directories of Aurora data, Carmen’s Data and SPINE were likely to be moved.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Other ways to get more space mentioned in the meeting included:\n\n1. Getting another disk rack with potentially six 36-gigabyte disks (originally discussed as four).\n2. Exploring other vendors since their current supplier (Andatico) increased prices after being bought by another company.",
+          "rouge_f1": {
+            "rouge1": 0.34567901234567905,
+            "rouge2": 0.10126582278481013,
+            "rougeL": 0.2222222222222222
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            31,
+            26
+          ],
+          "retrieval_precision": 0.37890625,
+          "retrieval_recall": 0.4041666666666667
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Other ways to get more space included turning the setup into a portable thing that could be wheeled around (mentioned by Professor D) and using the phonology lab as an alternative location (also suggested by Professor D). Additionally, clearing up space by archiving old files and deleting them was discussed as a way to free up disk space (Grad B). Another plan involved acquiring new disk racks and disks, although this solution would not be immediate (Professor D).",
+          "rouge_f1": {
+            "rouge1": 0.2931034482758621,
+            "rouge2": 0.03508771929824561,
+            "rougeL": 0.1206896551724138
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            31,
+            26,
+            15,
+            73
+          ],
+          "retrieval_precision": 0.189453125,
+          "retrieval_recall": 0.4041666666666667
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Other ways to get more space included turning the setup into a portable thing that could be wheeled around (mentioned by Professor D) and putting the equipment into the phonology lab (also suggested by Professor D). Additionally, the idea of consolidating the Meeting Recorder onto one disk and using the Broadcast News disk was proposed by Grad B to manage space better.",
+          "rouge_f1": {
+            "rouge1": 0.28,
+            "rouge2": 0.04081632653061224,
+            "rougeL": 0.15999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            31,
+            26,
+            15,
+            73,
+            21,
+            32,
+            30,
+            27
+          ],
+          "retrieval_precision": 0.203125,
+          "retrieval_recall": 0.8666666666666667
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Other ways to get more space included using existing disks that were partially occupied, such as the disk currently used by Meeting Recorder (DI according to Grad B, but possibly DC according to PhD A), which had enough space for about four more meetings. Additionally, they considered clearing up space from the Broadcast News recordings to record another five meetings.",
+          "rouge_f1": {
+            "rouge1": 0.2653061224489796,
+            "rouge2": 0.0,
+            "rougeL": 0.163265306122449
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            17,
+            28
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Other ways to get more space included:\n1. Relocating P-files from Broadcast News, which are regeneratable, freeing up approximately 12 gigabytes (two gigabytes per file times six files).\n2. Acquiring additional disk space through the purchase of another disk rack with either four or six thirty-six gigabyte disks.\n3. Utilizing existing space on the current disk where Meeting Recorder is located, which has enough room for about four more meetings.",
+          "rouge_f1": {
+            "rouge1": 0.2727272727272727,
+            "rouge2": 0.09259259259259259,
+            "rougeL": 0.20000000000000004
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            17,
+            28,
+            27,
+            1
+          ],
+          "retrieval_precision": 0.189453125,
+          "retrieval_recall": 0.4041666666666667
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Other ways to get more space mentioned in the meeting included:\n\n1. Clearing up space by removing unnecessary files such as P-files from Broadcast News.\n2. Acquiring additional disk racks and disks (up to six 36-gigabyte disks).\n3. Utilizing existing space on current disks, which was estimated to be sufficient for about four more meetings.\n4. Exploring the possibility of adding a third microphone to PDAs to potentially reduce the need for extensive recordings, thereby indirectly managing storage needs.",
+          "rouge_f1": {
+            "rouge1": 0.2689075630252101,
+            "rouge2": 0.05128205128205128,
+            "rougeL": 0.16806722689075632
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            17,
+            28,
+            27,
+            1,
+            6,
+            15,
+            78,
+            72
+          ],
+          "retrieval_precision": 0.0947265625,
+          "retrieval_recall": 0.4041666666666667
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The meeting excerpts indicate that one way to get more space was to acquire additional disk racks and disks, as mentioned by Professor D who stated they are getting \"another disk rack and four thirty-six gigabyte disks\" (Excerpt 421). Another way was suggested by Grad B, who mentioned looking into other vendors since their current supplier, Andatico, increased their prices after being bought by another company (Excerpts 428-431). Additionally, they discussed utilizing existing space on current disks, such as the Meeting Recorder disk, which had enough space for about four more meetings (Excerpts 438-449).",
+          "rouge_f1": {
+            "rouge1": 0.31111111111111117,
+            "rouge2": 0.12030075187969926,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            28,
+            15
+          ],
+          "retrieval_precision": 0.37890625,
+          "retrieval_recall": 0.4041666666666667
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Other ways to get more space included turning the equipment into a portable thing that could be wheeled around (mentioned by Professor D) and utilizing the phonology lab or other labs' meeting rooms as long as the equipment would be safe and someone could record the meetings weekly (suggested by PhD F and supported by Professor D). Additionally, they discussed acquiring more disk space by getting another disk rack and additional disks, though this solution would not be immediate.",
+          "rouge_f1": {
+            "rouge1": 0.3247863247863248,
+            "rouge2": 0.08695652173913043,
+            "rougeL": 0.17094017094017094
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            28,
+            15,
+            27,
+            17
+          ],
+          "retrieval_precision": 0.189453125,
+          "retrieval_recall": 0.4041666666666667
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Other ways to get more space mentioned in the meeting included:\n\n1. Turning the recording setup into a portable device that could be wheeled around to different locations.\n2. Recording meetings in various rooms across the campus where the equipment could be safely stored and one team member could regularly record the meetings.\n3. Acquiring additional disk space by getting another disk rack and multiple 36-gigabyte (or possibly 36-gigabyte) disks.\n4. Exploring the possibility of installing multiple microphones in a room or using PDAs with multiple microphones to cover a wider area, though this was more about improving the quality and coverage of recordings rather than directly increasing physical space.",
+          "rouge_f1": {
+            "rouge1": 0.24,
+            "rouge2": 0.05405405405405406,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            28,
+            15,
+            27,
+            17,
+            73,
+            72,
+            6,
+            1
+          ],
+          "retrieval_precision": 0.0947265625,
+          "retrieval_recall": 0.4041666666666667
+        },
+        "word_packed__dense__w512": {
+          "answer": "Other ways to get more space included deleting unnecessary files, such as the regeneratable P-files from Broadcast News, and optimizing the use of existing disks by removing dynamic data and keeping only static data. Additionally, there was space available on the current disk where Meeting Recorder is stored, sufficient for about four more meetings.",
+          "rouge_f1": {
+            "rouge1": 0.27956989247311825,
+            "rouge2": 0.021978021978021976,
+            "rougeL": 0.12903225806451613
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            27
+          ],
+          "retrieval_precision": 0.4375,
+          "retrieval_recall": 0.4666666666666667
+        },
+        "word_packed__dense__w1024": {
+          "answer": "Other ways to get more space included turning the equipment into a portable setup that could be wheeled around and potentially placing it in another available space like the phonology lab. Additionally, the team was expecting to receive more disk space through an additional disk rack with multiple high-capacity disks.",
+          "rouge_f1": {
+            "rouge1": 0.3370786516853933,
+            "rouge2": 0.045977011494252866,
+            "rougeL": 0.15730337078651688
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            27,
+            13,
+            23
+          ],
+          "retrieval_precision": 0.21875,
+          "retrieval_recall": 0.4666666666666667
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Other ways to get more space mentioned in the meeting included turning the equipment into a portable device that could be wheeled around (Excerpt [162]), potentially using the phonology lab for storage (Excerpts [172], [173]), and archiving data to free up space on Abbott (Excerpts [370]-[385]). Additionally, plans were discussed to acquire new disk racks and disks to increase storage capacity (Excerpts [421]-[424]).",
+          "rouge_f1": {
+            "rouge1": 0.3106796116504854,
+            "rouge2": 0.019801980198019802,
+            "rougeL": 0.1359223300970874
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            27,
+            13,
+            23,
+            26,
+            24,
+            63,
+            64
+          ],
+          "retrieval_precision": 0.234375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Other ways to get more space included deleting unnecessary files, such as the regeneratable P-files from Broadcast News, and optimizing the use of existing disks by removing dynamic data and keeping only static data. Additionally, there was space available on the current disk where Meeting Recorder is stored, sufficient for about four more meetings.",
+          "rouge_f1": {
+            "rouge1": 0.27956989247311825,
+            "rouge2": 0.021978021978021976,
+            "rougeL": 0.12903225806451613
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            27
+          ],
+          "retrieval_precision": 0.4375,
+          "retrieval_recall": 0.4666666666666667
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Other ways to get more space included deleting unnecessary files, such as the P-files from Broadcast News, and optimizing storage by removing dynamic data and keeping only static data. Additionally, they planned to relocate files to free up space, specifically mentioning that the current disk where Meeting Recorder is located has enough space for about four additional meetings.",
+          "rouge_f1": {
+            "rouge1": 0.26804123711340205,
+            "rouge2": 0.021052631578947368,
+            "rougeL": 0.12371134020618557
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            27,
+            15,
+            68
+          ],
+          "retrieval_precision": 0.21875,
+          "retrieval_recall": 0.4666666666666667
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Other ways to get more space included archiving old files to free up space, obtaining new disk racks and additional disks, and consolidating data across disks to optimize available storage. Specifically, Grad B mentioned archiving files to free up approximately ten gigabytes of space, allowing for the recording of five more meetings. Additionally, Professor D noted plans to acquire another disk rack with four to six thirty-six gigabyte disks, though this solution would not be immediate.",
+          "rouge_f1": {
+            "rouge1": 0.34782608695652173,
+            "rouge2": 0.10619469026548672,
+            "rougeL": 0.19130434782608693
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            27,
+            15,
+            68,
+            1,
+            13,
+            24,
+            28
+          ],
+          "retrieval_precision": 0.109375,
+          "retrieval_recall": 0.4666666666666667
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Other ways to get more space included deleting unnecessary files, such as the regeneratable P-files from Broadcast News, and optimizing the use of existing disks by removing dynamic data and keeping only static data. Additionally, there was space available on the current disk where Meeting Recorder is stored, sufficient for about four more meetings.",
+          "rouge_f1": {
+            "rouge1": 0.27956989247311825,
+            "rouge2": 0.021978021978021976,
+            "rougeL": 0.12903225806451613
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            27
+          ],
+          "retrieval_precision": 0.4375,
+          "retrieval_recall": 0.4666666666666667
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Other ways to get more space included turning the equipment into a portable setup that could be wheeled around and potentially stored in different locations as needed, and seeking permission to use the phonology lab for storage. Additionally, there was a plan to acquire another disk rack with four to six thirty-six gigabyte disks, though this solution was not immediate.",
+          "rouge_f1": {
+            "rouge1": 0.36363636363636365,
+            "rouge2": 0.10309278350515463,
+            "rougeL": 0.18181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            27,
+            13,
+            24
+          ],
+          "retrieval_precision": 0.21875,
+          "retrieval_recall": 0.4666666666666667
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Other ways to get more space discussed included:\n\n- Archiving data to free up space (Grad B suggested archiving files to gain approximately 10 gigabytes of free space).\n- Using a portable setup that could be wheeled around to different locations (Professor D mentioned turning the equipment into a portable device).\n- Recording meetings remotely instead of bringing participants to a specific location (PhD F proposed recording meetings at other sites if the equipment could be guaranteed safe).\n- Deleting unnecessary files or data that can be regenerated (Grad B mentioned deleting regeneratable P-files from Broadcast News to free up space).",
+          "rouge_f1": {
+            "rouge1": 0.22058823529411767,
+            "rouge2": 0.01492537313432836,
+            "rougeL": 0.10294117647058823
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            27,
+            13,
+            24,
+            1,
+            15,
+            63,
+            28
+          ],
+          "retrieval_precision": 0.109375,
+          "retrieval_recall": 0.4666666666666667
+        },
+        "lumber__dense__w512": {
+          "answer": "Other ways to get more space included archiving data to tape, which freed up 10 gigabytes of space, and acquiring another disk rack with either four or six thirty-six gigabyte disks.",
+          "rouge_f1": {
+            "rouge1": 0.39999999999999997,
+            "rouge2": 0.14705882352941174,
+            "rougeL": 0.2571428571428571
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            23
+          ],
+          "retrieval_precision": 0.234375,
+          "retrieval_recall": 0.25
+        },
+        "lumber__dense__w1024": {
+          "answer": "Other ways to get more space mentioned in the meeting included:\n\n1. Archiving files to tape, which freed up approximately 10 gigabytes of space.\n2. Relocating files to different locations on existing disks to free up space.\n3. Expecting the arrival of additional disk racks with 36 gigabyte disks (possibly six disks), though this solution is not immediate.\n4. Utilizing available space on the current disk where Meeting Recorder is located, which could accommodate about four more meetings.\n5. Moving files from the Meeting Recorder disk to the Broadcast News disk to free up space on the Meeting Recorder disk.",
+          "rouge_f1": {
+            "rouge1": 0.21739130434782605,
+            "rouge2": 0.029411764705882353,
+            "rougeL": 0.11594202898550725
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            23,
+            27
+          ],
+          "retrieval_precision": 0.1171875,
+          "retrieval_recall": 0.25
+        },
+        "lumber__dense__w2048": {
+          "answer": "Other ways to get more space included setting up a room in the linguistics department or another building if the IBM equipment was not used by Mari, turning the equipment into a portable setup, and acquiring additional disk space through new disk racks and disks. Additionally, there was discussion about consolidating data across disks to free up space for recording more meetings.",
+          "rouge_f1": {
+            "rouge1": 0.26000000000000006,
+            "rouge2": 0.02040816326530612,
+            "rougeL": 0.15999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            23,
+            27,
+            26,
+            12,
+            55
+          ],
+          "retrieval_precision": 0.1982421875,
+          "retrieval_recall": 0.8458333333333333
+        },
+        "lumber__bm25__w512": {
+          "answer": "The meeting excerpts indicate that one way to get more space was to move data from the Meeting Recorder disk to the Broadcast News disk, consolidating Meeting Recorder onto one disk. Additionally, they mentioned having space on the current disk where Meeting Recorder is located, which could accommodate about four more meetings. Another suggestion was to utilize the space freed up from deleting something in an unspecified location, which provided additional room.",
+          "rouge_f1": {
+            "rouge1": 0.2727272727272727,
+            "rouge2": 0.018518518518518517,
+            "rougeL": 0.1090909090909091
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            23
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Other ways to get more space mentioned in the meeting included archiving files to tape, which freed up 10 gigabytes of space, and moving files from the Meeting Recorder disk to the Broadcast News disk to consolidate storage and free up additional space.",
+          "rouge_f1": {
+            "rouge1": 0.32098765432098764,
+            "rouge2": 0.0,
+            "rougeL": 0.14814814814814817
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            23,
+            59
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Other ways to get more space included setting up a room in the linguistics department or another building if the IBM equipment was not used by Mari, turning the equipment into a portable setup, and archiving large datasets to free up disk space on Abbott, which allowed for recording additional meetings.",
+          "rouge_f1": {
+            "rouge1": 0.2247191011235955,
+            "rouge2": 0.0,
+            "rougeL": 0.13483146067415733
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            23,
+            59,
+            14,
+            12
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The meeting excerpts indicate that one way to get more space was to move data from the Meeting Recorder disk to the Broadcast News disk, consolidating Meeting Recorder onto one disk. Additionally, they mentioned having space on the current disk where Meeting Recorder is located, which could accommodate about four more meetings. Another suggestion was to utilize the space freed up from deleting something in an unspecified location, which provided additional room.",
+          "rouge_f1": {
+            "rouge1": 0.2727272727272727,
+            "rouge2": 0.018518518518518517,
+            "rougeL": 0.1090909090909091
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            23
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Other ways to get more space mentioned in the meeting included archiving files to tape, which freed up 10 gigabytes of space, and moving files from the Meeting Recorder disk to the Broadcast News disk to consolidate storage and free up additional space.",
+          "rouge_f1": {
+            "rouge1": 0.32098765432098764,
+            "rouge2": 0.0,
+            "rougeL": 0.14814814814814817
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            23,
+            24
+          ],
+          "retrieval_precision": 0.005859375,
+          "retrieval_recall": 0.0125
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Other ways to get more space mentioned in the meeting included:\n\n1. Inheriting unused equipment from another department (like linguistics or psychology) and setting up a recording room there.\n2. Turning the equipment into a portable setup that could be wheeled around to different locations.\n3. Finding a motivated partner on campus who could provide a regular meeting room for recordings.\n4. Acquiring additional disk space through the installation of new disk racks and disks, although this process would not be immediate.\n5. Consolidating data storage by moving projects like Aurora to different disks to free up space on the Meeting Recorder disk.",
+          "rouge_f1": {
+            "rouge1": 0.2978723404255319,
+            "rouge2": 0.014388489208633094,
+            "rougeL": 0.14184397163120566
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            23,
+            24,
+            12,
+            14,
+            54
+          ],
+          "retrieval_precision": 0.05859375,
+          "retrieval_recall": 0.25
+        }
+      }
+    }
+  ]
+}

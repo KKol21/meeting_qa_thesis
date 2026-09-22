@@ -63,20 +63,30 @@ def average_lumber_effects(condition_values, configurations, bootstrap):
     ]
     output = {}
     for baseline in BASELINE_CHUNKERS:
+        pairs = [
+            (
+                lumber_name,
+                lumber_name.replace("lumber__", f"{baseline}__", 1),
+            )
+            for lumber_name in lumber
+        ]
+        pairs = [pair for pair in pairs if pair[1] in condition_values]
+        if not pairs:
+            continue
+        if len(pairs) != len(lumber):
+            raise ValueError(f"Incomplete paired conditions for {baseline}")
         meeting_effects = []
         for meeting_index in range(bootstrap.size):
-            differences = []
-            for lumber_name in lumber:
-                baseline_name = lumber_name.replace("lumber__", f"{baseline}__", 1)
-                if baseline_name not in condition_values:
-                    raise ValueError(f"Missing paired condition {baseline_name}")
-                differences.append(
+            differences = [
+                (
                     condition_values[lumber_name]["recall"][meeting_index]
                     - condition_values[baseline_name]["recall"][meeting_index]
                 )
-            meeting_effects.append(sum(differences) / len(differences))
+                for lumber_name, baseline_name in pairs
+            ]
+            meeting_effects.append(sum(differences) / len(pairs))
         output[baseline] = {
-            "environment_count": len(lumber),
+            "environment_count": len(pairs),
             "recall": bootstrap.mean(meeting_effects),
         }
     return output
@@ -103,6 +113,8 @@ def interval(estimate, signed=False):
 def make_report(result):
     lines = [
         "# Ablation uncertainty analysis",
+        "",
+        f"**Dataset split:** QMSum {result['dataset_split']}.",
         "",
         f"**Scope:** {result['meeting_count']} meetings; "
         f"{result['bootstrap_samples']:,} paired cluster-bootstrap samples; "
@@ -218,7 +230,7 @@ def make_report(result):
         "",
         "## Interpretation limits",
         "",
-        "An interval excluding zero is evidence that the paired meeting-level difference is consistently directional under this dataset sample. It is not a correction for the many exploratory comparisons, and only 20 meeting clusters are available. Judge and BERTScore uncertainty also does not include uncertainty from changing the evaluator model or prompt.",
+        f"An interval excluding zero is evidence that the paired meeting-level difference is consistently directional under this dataset sample. It is not a correction for the many exploratory comparisons, and only {result['meeting_count']} meeting clusters are available. Judge and BERTScore uncertainty also does not include uncertainty from changing the evaluator model or prompt.",
         "",
     ]
     return "\n".join(lines)
@@ -335,6 +347,9 @@ def main():
     artifact_targets = lumber_targets(run.lumber_dir, meeting_ids)
     result = {
         "preset": str(args.preset),
+        "dataset_split": (
+            "validation" if run.data_dir.name == "val" else run.data_dir.name
+        ),
         "meeting_ids": meeting_ids,
         "meeting_count": len(meeting_ids),
         "bootstrap_unit": "meeting",

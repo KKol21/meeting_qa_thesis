@@ -1,0 +1,3673 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "Bro004.json",
+        "sha256": "0b16380e4ddbb85f67d42242e202e41be33e79cf269854243bead51122562ed7"
+      },
+      "retrieval": {
+        "file": "Bro004.json",
+        "sha256": "949f41c1159105d6ea464e5333ad2c7508373605e3bfce071bf455c55f90e8c5"
+      },
+      "segmentation": {
+        "file": "Bro004.json",
+        "sha256": "d02aef17dac907b3999053d2ba166bc69793b839544a434609b83e77edbf63a0"
+      }
+    },
+    "input_hash": "ad87a42790bd4483f9e6217ca810a17d04e0fc6a0bac7293f38856ca990174f2",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "fc380bdca53f8bf52206e19b7ea3d27376adb9d02af4553308128c88e853428f",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bro004",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 160,
+  "cache_hits": 2,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about the effect of training on different languages",
+      "reference_answer": "Using multiple languages led to more diversity which potentially hindered the model performance. The professor was skeptical about discussing the results since they had not received any good ones so far.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The discussion centered around the impact of training on different languages. Initially, Professor B noted that training on one language and testing on another resulted in poor performance. However, they questioned whether broad training data across multiple languages could improve performance when tested on a different language. Professor B observed that adding more training data did not necessarily improve performance on specific tasks like TI-digits. They concluded that the presence of a particular language in the training set did not significantly affect performance, suggesting that the difference in performance between including or excluding a language was minimal. PhD D provided additional insights, noting that training on Spanish and testing on Italian showed a notably higher error rate compared to the baseline, indicating that the closeness of languages might influence performance.",
+          "rouge_f1": {
+            "rouge1": 0.18518518518518517,
+            "rouge2": 0.0125,
+            "rougeL": 0.09876543209876543
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            20,
+            3
+          ],
+          "retrieval_precision": 0.46484375,
+          "retrieval_recall": 0.11965811965811966
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The discussion centered around the impact of training models on one language and testing them on another. Initially, it was noted that training on one language and testing on another resulted in poor performance. However, there was curiosity about whether broad training data across multiple languages could improve performance when tested on a different language. Professor B suggested that the model's performance might not significantly deteriorate when moving from one language to another, indicating that the presence or absence of a specific language in the training set might not be crucial. The conversation also touched upon the idea that the type of speech (e.g., digits) might be more influential than the language itself. There was a suggestion to conduct further tests to confirm these observations, specifically testing models trained on one language on other languages to see if performance improves with broader training data.",
+          "rouge_f1": {
+            "rouge1": 0.1807909604519774,
+            "rouge2": 0.022857142857142857,
+            "rougeL": 0.1016949152542373
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            20,
+            3,
+            14,
+            18
+          ],
+          "retrieval_precision": 0.63671875,
+          "retrieval_recall": 0.32780291603821016
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The discussion focused on the effects of training neural networks on different languages. When trained on one language and tested on another, the performance was poor. Testing on a broader dataset covering multiple languages showed mixed results. Specifically, moving from training on TI-digits to TIMIT resulted in a 10% increase in error rate. Further expanding to multilingual data worsened performance by an additional 20-30%. However, transitioning between similar tasks (like different languages within the same category) did not significantly impact performance compared to using a single language. The group concluded that the challenge lies more in cross-type speech rather than cross-language training.",
+          "rouge_f1": {
+            "rouge1": 0.2043795620437956,
+            "rouge2": 0.014814814814814815,
+            "rougeL": 0.1021897810218978
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            20,
+            3,
+            14,
+            18,
+            5,
+            4,
+            15,
+            30,
+            13
+          ],
+          "retrieval_precision": 0.50048828125,
+          "retrieval_recall": 0.5153343388637506
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The discussion indicates that the team has not exclusively trained models on a single language and then tested them on another. They have primarily focused on training models across multiple languages or using broad data sets that include various languages. When they attempted cross-language training (training on one language and testing on another), the results were poor even when English was included in the training set. The poor performance was observed under consistent noise conditions, suggesting that the model's effectiveness may be influenced by the breadth of language coverage in the training data rather than differences in noise characteristics between training and test sets.",
+          "rouge_f1": {
+            "rouge1": 0.2043795620437956,
+            "rouge2": 0.04444444444444444,
+            "rougeL": 0.08759124087591243
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            15,
+            20
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.2574157868275515
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The discussion focused on the impact of training on different languages. When transitioning from TI-digits training to TIMIT training, there was a 10% relative increase in error rates. For training on a single language and testing on another, the word error rate increased to approximately 1.4 times the baseline, indicating an additional 30% error rate. The team has not conducted experiments solely training on one language and testing on another, except for cases involving two languages where the results were poor. They noted that even with the same noise conditions across training and testing, there was an observable effect from broader language coverage.",
+          "rouge_f1": {
+            "rouge1": 0.16176470588235295,
+            "rouge2": 0.014925373134328358,
+            "rougeL": 0.10294117647058823
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            15,
+            20,
+            7,
+            5
+          ],
+          "retrieval_precision": 0.6845703125,
+          "retrieval_recall": 0.3524384112619407
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The discussion indicates that training on task-specific data (e.g., digits) within a single language yields better performance compared to training on broader phonetically balanced data within the same language. When moving to multilingual training data, performance decreases further. Specifically, transitioning from task-specific training data to broad phonetic data within the same language increases the error rate by approximately 10%. Further increasing the complexity by using multilingual data worsens performance by an additional 20-30% relative to the initial task-specific training setup. The team has not conducted tests involving training on one language and testing on another.",
+          "rouge_f1": {
+            "rouge1": 0.15267175572519082,
+            "rouge2": 0.0,
+            "rougeL": 0.12213740458015267
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            15,
+            20,
+            7,
+            5,
+            10,
+            40,
+            4,
+            2,
+            6
+          ],
+          "retrieval_precision": 0.34228515625,
+          "retrieval_recall": 0.3524384112619407
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The discussion indicates that training on different languages does not significantly affect performance when the neural network is kept the same size and additional training data is added. However, testing on a language different from the one used in training (e.g., testing on Italian after training on Spanish) resulted in a notably higher error rate, nearly double the baseline error rate. There was also mention of needing to conduct further tests to confirm these findings across other language pairs.",
+          "rouge_f1": {
+            "rouge1": 0.2162162162162162,
+            "rouge2": 0.0,
+            "rougeL": 0.09009009009009009
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            10,
+            15
+          ],
+          "retrieval_precision": 0.685546875,
+          "retrieval_recall": 0.17647058823529413
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The discussion highlighted the impact of training on different languages, noting that transitioning from TI-digits training to TIMIT training resulted in a 10% relative increase in error rates. Further, moving to multilingual data worsened performance by an additional 20-30%. The group observed that removing task-specific training and introducing other languages led to increased errors. Additionally, training on a single language and testing on another showed poor performance, indicating that including English in the training did not significantly improve outcomes across different languages.",
+          "rouge_f1": {
+            "rouge1": 0.1724137931034483,
+            "rouge2": 0.03508771929824561,
+            "rougeL": 0.10344827586206896
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            10,
+            15,
+            5,
+            19
+          ],
+          "retrieval_precision": 0.6259765625,
+          "retrieval_recall": 0.322272498743087
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The discussion focused on the effects of training neural networks on different languages. Four types of tests were conducted:\n\n1. Training on task data specific to the target language (e.g., Italian).\n2. Training on a broad database of a single language assumed to be close to the target language (e.g., Spanish for Italian).\n3. Training on a three-language database.\n4. Training on a three-language database excluding the target language.\n\nWhen transitioning from task-specific training data to broad data, there was a 10% relative increase in error rates. Further increasing to multilingual data resulted in an additional 20-30% increase in error rates. The group noted that adding more languages to the training data while keeping the neural network size constant worsened performance on the TI-digits task. They also observed that the difference between including and excluding the target language in the multilingual training data was not significant. The conversation highlighted the challenges of cross-language training and testing, noting that training on a language closely related to the target language (like Spanish for Italian) did not yield satisfactory results.",
+          "rouge_f1": {
+            "rouge1": 0.1111111111111111,
+            "rouge2": 0.0,
+            "rougeL": 0.08333333333333334
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            10,
+            15,
+            5,
+            19,
+            4,
+            40,
+            18,
+            7,
+            30
+          ],
+          "retrieval_precision": 0.4619140625,
+          "retrieval_recall": 0.47561588738059324
+        },
+        "word_packed__dense__w512": {
+          "answer": "Professor B discussed the poor performance when models are trained on one language and tested on another, such as training on TI-digits and testing on Italian digits. PhD D mentioned conducting tests with nets trained on task-specific data (e.g., Italian on Italian speech) and also with broad databases in a single language. However, they confirmed that they have not conducted experiments where models were trained on one language and tested on a completely different single language.",
+          "rouge_f1": {
+            "rouge1": 0.16363636363636366,
+            "rouge2": 0.018518518518518517,
+            "rougeL": 0.10909090909090909
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            3
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.12870789341377575
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The discussion highlighted that training on one language and testing on another resulted in poor performance. Professor B mentioned that when models were trained on one language (e.g., TI-digits) and tested on another (e.g., Italian digits), the results were relatively poor. PhD D confirmed that they conducted tests with broader language coverage but did not specifically train on one language and test on another. However, limited results suggested that including multiple languages in training could worsen performance. Despite similar noise conditions in training and testing data, the model's performance remained poor when trained on one language and tested on another.",
+          "rouge_f1": {
+            "rouge1": 0.19259259259259257,
+            "rouge2": 0.045112781954887216,
+            "rougeL": 0.11851851851851852
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            3,
+            17,
+            50
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.2574157868275515
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The discussion highlighted that training on one language and testing on another resulted in poorer performance compared to training and testing within the same language. Specifically:\n\n- Training on TI-digits and testing on Italian digits yielded poor results.\n- Training on a single language with broad coverage but the same language as the task data improved performance slightly over training on task-specific data alone.\n- Training on multiple languages (three in total) led to further degradation in performance compared to training on a single language.\n- Training on Spanish and testing on Italian showed significant errors, suggesting that even closely related languages may not transfer well in terms of performance.\n\nPhD D mentioned that when transitioning from TI-digits training to TIMIT training, there was a 10% increase in error rate, which worsened to approximately 20% when using multilingual data.",
+          "rouge_f1": {
+            "rouge1": 0.17751479289940827,
+            "rouge2": 0.023952095808383235,
+            "rougeL": 0.07100591715976332
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            3,
+            17,
+            50,
+            12,
+            16,
+            4,
+            18
+          ],
+          "retrieval_precision": 0.625,
+          "retrieval_recall": 0.6435394670688789
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The discussion highlighted that training on multiple languages resulted in poorer performance compared to training solely on one language, particularly English. When English was removed and replaced with another language like Spanish or Italian, the error rates increased significantly. For instance, training on Spanish led to an error rate nearly twice the baseline when tested on Italian, indicating that Spanish and Italian are not closely related in terms of the model's performance. The noise conditions in the training data were consistent across languages but did not mitigate the observed performance drop. The participants suggested further testing with other languages to understand the extent of this effect.",
+          "rouge_f1": {
+            "rouge1": 0.20289855072463767,
+            "rouge2": 0.058823529411764705,
+            "rougeL": 0.14492753623188404
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            18
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.2574157868275515
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The discussion focused on the effects of training models on different languages. When training on TI-digits and switching to TIMIT training, there was a 10% relative increase in error rate. Using multilingual data worsened performance further, increasing the error rate by approximately another 20%. For Italian, using Spanish as a proxy due to its assumed closeness to Italian did not yield good results; the error rate nearly doubled compared to the baseline when the network was trained solely on Spanish. There was a suggestion to test the model's performance across other languages under the same training conditions.",
+          "rouge_f1": {
+            "rouge1": 0.2,
+            "rouge2": 0.015625,
+            "rougeL": 0.09230769230769231
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            18,
+            4,
+            14
+          ],
+          "retrieval_precision": 0.75,
+          "retrieval_recall": 0.3861236802413273
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The discussion highlights the effects of training on different languages, noting that training on a different language than the task data (e.g., training on Spanish for a task involving Italian) leads to a significant increase in error rates. Specifically, moving from task-specific training to training on a related language increases error rates by approximately 10%, and further increasing the diversity of training languages (multilingual data) worsens performance by an additional 20-30%. The team observed that the inclusion of multiple languages in training does not significantly improve performance compared to using a single language, suggesting that the benefit of multilingual training is minimal. Additionally, the team discussed the impact of noise conditions in training and testing datasets, noting discrepancies in noise types across different languages, which could affect performance. However, the exact nature of these noise differences and their precise impact on performance were not fully resolved during the meeting.",
+          "rouge_f1": {
+            "rouge1": 0.13114754098360654,
+            "rouge2": 0.022099447513812154,
+            "rougeL": 0.0983606557377049
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            18,
+            4,
+            14,
+            13,
+            5,
+            19,
+            9
+          ],
+          "retrieval_precision": 0.5029296875,
+          "retrieval_recall": 0.5178481649069885
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The discussion indicates that the team has not specifically trained on one language and tested on another. They have experimented with training on multiple languages but found that performance worsened when English was removed from the mix, even under consistent noise conditions (Aurora noises). There is interest in exploring training on a single language and testing on another, though this specific approach has not been implemented yet.",
+          "rouge_f1": {
+            "rouge1": 0.22448979591836735,
+            "rouge2": 0.020833333333333332,
+            "rougeL": 0.12244897959183673
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            13
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.2574157868275515
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The discussion focused on the effects of training models on different languages. They considered four tests: \n1. Training on the same language as the task data.\n2. Using Spanish for Italian due to its assumed closeness.\n3. Utilizing a three-language database.\n4. Excluding the task language from the three languages used in training.\n\nWhen transitioning from TI-digits training to TIMIT training, they observed a 10% relative increase in error rate. Further switching to multilingual data worsened performance by an additional 20%. There was no mention of training on a single language and testing on another, except for a brief consideration of Spanish for Italian, which did not yield satisfactory results. The team noted that training solely on Spanish led to nearly double the baseline error rate for Italian, suggesting that Spanish may not be as close to Italian as initially thought.",
+          "rouge_f1": {
+            "rouge1": 0.1724137931034483,
+            "rouge2": 0.011627906976744186,
+            "rougeL": 0.08045977011494253
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            13,
+            18,
+            4
+          ],
+          "retrieval_precision": 0.75,
+          "retrieval_recall": 0.3861236802413273
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The discussion highlights the effects of training on different languages:\n\n- Training on the same language but a different task (e.g., TIMIT training instead of TI-digits) increases the error rate by approximately 10% relative.\n- Using multilingual data (broad data) further increases the error rate by an additional 20-30% relative compared to training on the same language and task.\n- Training on multilingual broad data results in an error rate ratio of around 1.1 compared to the baseline error rate.\n- Adding more training data without increasing the neural net size leads to worse performance on TI-digits.\n- Training on a single language and testing on another shows poorer performance, suggesting that cross-language training is less effective than cross-type-of-speech training.\n- Noise conditions in the training data are consistent across different language datasets, indicating that differences in performance are not due to varying noise characteristics.\n- Training on Spanish for Italian tasks resulted in nearly double the baseline error rate, indicating that Spanish is not sufficiently close to Italian for effective transfer learning.",
+          "rouge_f1": {
+            "rouge1": 0.10679611650485439,
+            "rouge2": 0.0,
+            "rougeL": 0.08737864077669903
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            13,
+            18,
+            4,
+            5,
+            9,
+            19,
+            12
+          ],
+          "retrieval_precision": 0.5029296875,
+          "retrieval_recall": 0.5178481649069885
+        },
+        "lumber__dense__w512": {
+          "answer": "The discussion centered around the impact of training on one language and testing on another. Professor B noted that training on one language and testing on another resulted in poor performance based on previous observations. The group explored whether having broad data coverage during training could improve performance when testing on a different language. However, PhD D and others indicated they had not conducted experiments solely training on one language and testing on another. They concluded that they lacked sufficient data to definitively determine the effects, suggesting further investigation might reveal more about cross-language training impacts.",
+          "rouge_f1": {
+            "rouge1": 0.234375,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.125
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            19,
+            18
+          ],
+          "retrieval_precision": 0.5625,
+          "retrieval_recall": 0.14479638009049775
+        },
+        "lumber__dense__w1024": {
+          "answer": "The discussion highlighted that training on one language and testing on another resulted in poor performance. The participants considered whether broadening the training data to cover multiple languages could improve performance when tested on a different language. However, preliminary results suggested that even with broadened training data covering multiple languages, performance remained poor when tested on a different language. There was an acknowledgment that more definitive results were needed, as the current findings were based on limited data.",
+          "rouge_f1": {
+            "rouge1": 0.22018348623853212,
+            "rouge2": 0.03738317757009346,
+            "rougeL": 0.09174311926605504
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            19,
+            18,
+            24,
+            26
+          ],
+          "retrieval_precision": 0.78125,
+          "retrieval_recall": 0.4022121669180493
+        },
+        "lumber__dense__w2048": {
+          "answer": "The discussion centered around the effects of training on different languages. Initially, it was noted that training on one language and testing on another resulted in poor performance. However, when training on a broad dataset covering multiple languages, the performance improved compared to training solely on one language. Specifically, testing on a language not present in the training set (but within a broader multilingual dataset) did not significantly worsen performance. The team conducted tests involving training on TIMIT (English), testing on Italian, and using Spanish as an intermediary language due to its perceived similarity to Italian. They found that adding more diverse training data without increasing the neural network's size led to poorer performance on specific tasks, suggesting that the model might lack sufficient complexity to handle increased variability. The conversation also highlighted the importance of considering noise conditions in the datasets, noting differences in noise types between training and testing sets could affect outcomes.",
+          "rouge_f1": {
+            "rouge1": 0.1925133689839572,
+            "rouge2": 0.05405405405405405,
+            "rougeL": 0.0962566844919786
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            19,
+            18,
+            24,
+            26,
+            20,
+            6,
+            14,
+            25
+          ],
+          "retrieval_precision": 0.5654296875,
+          "retrieval_recall": 0.5822021116138764
+        },
+        "lumber__bm25__w512": {
+          "answer": "The meeting excerpts indicate that the discussion focused on the performance of neural networks trained on specific datasets (like TIMIT and TI-digits) and the impact of adding more training data. There was no mention of cross-language training or testing within the provided excerpts. When asked about training on different languages, PhD D clarified that they had either tested with the same language using broad data or with different languages from broad data, but specifically noted that they did not train on one language and test on another. Therefore, the evidence is insufficient to summarize the effect of training on different languages based solely on the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.21428571428571427,
+            "rouge2": 0.014492753623188406,
+            "rougeL": 0.1285714285714286
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            20,
+            14
+          ],
+          "retrieval_precision": 0.73828125,
+          "retrieval_recall": 0.19004524886877827
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The discussion indicates that training on one language and testing on another did not significantly affect performance, suggesting that the choice of language for training does not substantially impact the outcome. However, the team has not conducted experiments specifically training on one language and testing on another. They noted that adding more training data without increasing the neural network size can lead to worse performance on the TI-digits test. The noise conditions for both training and testing were consistent across experiments.",
+          "rouge_f1": {
+            "rouge1": 0.1946902654867257,
+            "rouge2": 0.0,
+            "rougeL": 0.10619469026548671
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            20,
+            14,
+            19,
+            44
+          ],
+          "retrieval_precision": 0.517578125,
+          "retrieval_recall": 0.26646556058320764
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The discussion focused on the effects of training neural networks on different languages. Four types of tests were conducted:\n\n1. Training on task-specific data (e.g., Italian speech).\n2. Training on a single language with broad database data, but the same language as the task data.\n3. Training on a three-language database.\n4. Training on a three-language database excluding the task language.\n\nWhen transitioning from task-specific data to broad data, there was a 10% relative increase in error rate. Further increasing the diversity of training data to multilingual broad data resulted in an additional 20% relative increase in error rate. Training on the same language but with different task data led to a word error rate of approximately 1.1 times the baseline. Training on multilingual broad data resulted in a word error rate of around 1.3 times the baseline. The group noted that adding more training data without increasing the neural network's size negatively impacted performance on the TI-digits test. They concluded that having a neural network with sufficient complexity to handle increased variability in the training set might be necessary. There was no mention of training on one language and testing on another language directly, though the discussion implied interest in exploring such scenarios.",
+          "rouge_f1": {
+            "rouge1": 0.11475409836065575,
+            "rouge2": 0.008264462809917356,
+            "rougeL": 0.07377049180327869
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            20,
+            14,
+            19,
+            44,
+            9,
+            8,
+            3,
+            6,
+            10,
+            7
+          ],
+          "retrieval_precision": 0.2587890625,
+          "retrieval_recall": 0.26646556058320764
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The meeting participants discussed whether they had conducted experiments where models were trained on one language and then tested on another. Professor B initially recalled seeing such an experiment, but PhD D clarified that they had not performed any tests where models were trained exclusively on one language and then tested on a different language without mixing languages during training. Instead, their experiments involved either training and testing within the same language or across multiple languages simultaneously. There was no mention of specific effects of training on different languages due to the lack of relevant experiments.",
+          "rouge_f1": {
+            "rouge1": 0.25196850393700787,
+            "rouge2": 0.048,
+            "rougeL": 0.12598425196850394
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            20,
+            25
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.2574157868275515
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The discussion indicates that training on one language and testing on another did not significantly affect performance, suggesting that the choice of language for training does not greatly impact the outcome. However, the team has not conducted experiments specifically training on one language and testing on another. They have mostly used multi-language training sets (like TIMIT for English) and observed slight variations in performance under similar noise conditions during both training and testing phases. There's a suggestion to conduct further tests to confirm these observations across different languages.",
+          "rouge_f1": {
+            "rouge1": 0.18181818181818182,
+            "rouge2": 0.0,
+            "rougeL": 0.09917355371900827
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            20,
+            25,
+            14,
+            24
+          ],
+          "retrieval_precision": 0.6865234375,
+          "retrieval_recall": 0.3534439416792358
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The discussion highlighted four types of training methods on different languages:\n\n1. **Task Data Training**: Nets were trained on task data for Italian speech.\n2. **Single Language Broad Database Training**: Nets were trained on a broad database of the same language as the task data (Spanish for Italian).\n3. **Three-Language Database Training**: Nets were trained on a database containing three languages.\n4. **Exclusion Method**: Nets were trained on three languages excluding the task language.\n\nProfessor B noted that the performance differences between the third and fourth methods were not significant, suggesting that the presence or absence of the task language in the training set did not greatly affect performance. However, there was a notable drop in performance when the training data was broadened without increasing the neural network's complexity. Additionally, preliminary results indicated that training on one language and testing on another did not yield favorable outcomes.",
+          "rouge_f1": {
+            "rouge1": 0.12222222222222223,
+            "rouge2": 0.0,
+            "rougeL": 0.08888888888888889
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            20,
+            25,
+            14,
+            24,
+            6,
+            18,
+            8,
+            26
+          ],
+          "retrieval_precision": 0.64990234375,
+          "retrieval_recall": 0.6691804927099044
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did PhD D explain about the multilingual model?",
+      "reference_answer": "PhD D explained that the multilingual model, trained on French, Spanish, and English, was trained with higher frame rates. It has slightly poorer results when delta was not used. All in all, the addition of English did not seem to help the model.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "PhD D explained that the multilingual model was trained on features without the s derivatives but with increased frame numbers. This model performed slightly worse when delta was not used, but the decrease in performance was not significant. The model was trained on data for French, Spanish, and English, indicated by MF, MS, and ME respectively.",
+          "rouge_f1": {
+            "rouge1": 0.5656565656565656,
+            "rouge2": 0.32989690721649484,
+            "rougeL": 0.42424242424242425
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            8,
+            5
+          ],
+          "retrieval_precision": 0.478515625,
+          "retrieval_recall": 0.768025078369906
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "PhD D explained that the multilingual model underwent four types of testing:\n\n1. Testing with nets trained on task data specific to the target language (e.g., Italian).\n2. Testing with nets trained on a broad database of a single language assumed to be close to the target language (e.g., Spanish for Italian).\n3. Testing with nets trained on a broad database of three languages.\n4. Testing with nets trained on a broad database of three languages excluding the target language.\n\nWhen moving from task-specific training to multilingual data, the error rate increased by approximately 20-30% relative to the initial task-specific training. Excluding English from the multilingual dataset did not significantly affect performance.",
+          "rouge_f1": {
+            "rouge1": 0.26249999999999996,
+            "rouge2": 0.10126582278481011,
+            "rougeL": 0.21250000000000002
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            8,
+            5,
+            4,
+            15
+          ],
+          "retrieval_precision": 0.2392578125,
+          "retrieval_recall": 0.768025078369906
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "PhD D explained that the multilingual model underwent four types of testing:\n\n1. Testing with task data (nets trained on task data).\n2. Testing with a single language using broad database data.\n3. Testing with a three-language database.\n4. Testing with a multilingual dataset excluding the task language.\n\nWhen transitioning from task-specific training data to multilingual broad data, the error rate increased by approximately 20-30% relative to the baseline. The multilingual model's performance was evaluated based on its word error rate ratio, indicating a degradation in performance when compared to models trained on task-specific data or even single-language broad data.",
+          "rouge_f1": {
+            "rouge1": 0.28187919463087246,
+            "rouge2": 0.108843537414966,
+            "rougeL": 0.20134228187919462
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            8,
+            5,
+            4,
+            15,
+            6,
+            17,
+            10,
+            13,
+            20
+          ],
+          "retrieval_precision": 0.11962890625,
+          "retrieval_recall": 0.768025078369906
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "PhD D explained that when transitioning from TI-digits training to TIMIT training, there was a 10% relative increase in error rate. When moving to multilingual data, the error rate increased further by approximately 20-30%. Additionally, excluding English from the multilingual dataset did not significantly affect the performance compared to including it.",
+          "rouge_f1": {
+            "rouge1": 0.4166666666666667,
+            "rouge2": 0.10638297872340424,
+            "rougeL": 0.29166666666666663
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            5,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "PhD D explained that when the network is trained on task data, tandem works well. However, transitioning from task-specific training (like TI-digits) to multilingual data leads to an increase in error rates. Specifically, moving from TI-digits training to TIMIT training results in a 10% relative error rate increase, and further transitioning to multilingual data increases the error rate by an additional 20-30%. PhD D also noted that excluding English from the multilingual dataset does not significantly change the performance compared to including it.",
+          "rouge_f1": {
+            "rouge1": 0.32307692307692304,
+            "rouge2": 0.078125,
+            "rougeL": 0.24615384615384617
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            5,
+            8,
+            11,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "PhD D explained that when the network is trained on multilingual data, which includes data from multiple languages (French, Spanish, and English), there is an increase in error rates compared to training on task-specific data or broad English data alone. Specifically, the error rate increases by approximately 20% to 30% relative to the baseline. Additionally, the multilingual models were trained on features without spectral derivatives but with increased frame numbers.",
+          "rouge_f1": {
+            "rouge1": 0.42105263157894735,
+            "rouge2": 0.1607142857142857,
+            "rougeL": 0.29824561403508776
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            5,
+            8,
+            11,
+            2,
+            56,
+            18,
+            44,
+            9,
+            38
+          ],
+          "retrieval_precision": 0.11962890625,
+          "retrieval_recall": 0.768025078369906
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "PhD D explained that when transitioning from TI-digits training to TIMIT training, there was a 10% relative increase in error rate. When moving to multilingual data, the error rate increased further by approximately 20-30%. Additionally, PhD D mentioned that the multilingual model includes data from multiple languages (French, Spanish, and English) and is trained on features without spectral derivatives.",
+          "rouge_f1": {
+            "rouge1": 0.40384615384615385,
+            "rouge2": 0.19607843137254902,
+            "rougeL": 0.23076923076923075
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8,
+            18
+          ],
+          "retrieval_precision": 0.111328125,
+          "retrieval_recall": 0.1786833855799373
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "PhD D explained that when transitioning from task-specific training data (like TI-digits) to multilingual data, the error rate increases significantly. Specifically, after moving from TI-digits to TIMIT training, there's a 10% relative increase in error rate. Further transitioning to multilingual data worsens the error rate by an additional 20-30%. The multilingual model is trained on a broader dataset including multiple languages (e.g., English, French, Spanish), leading to a relative error rate increase compared to the baseline task-specific training data. The multilingual model uses features without derivative information but with increased frame numbers, showing slight degradation in performance when not using delta features.",
+          "rouge_f1": {
+            "rouge1": 0.34210526315789475,
+            "rouge2": 0.10666666666666667,
+            "rougeL": 0.2236842105263158
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8,
+            18,
+            6,
+            9
+          ],
+          "retrieval_precision": 0.2392578125,
+          "retrieval_recall": 0.768025078369906
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "PhD D explained that the multilingual model underwent four types of testing:\n\n1. Testing with task data (e.g., Italian speech).\n2. Testing with a single language's broad database (e.g., Spanish assumed close to Italian).\n3. Testing with a three-language database.\n4. Testing with a multilingual database excluding the task language.\n\nWhen comparing the performance of the model trained on multilingual broad data versus the baseline (task-specific training), the error rate increased by approximately 20-30% relative to the baseline. The multilingual model used features without derivatives but with increased frame numbers, showing a slight decrease in performance when not using deltas.",
+          "rouge_f1": {
+            "rouge1": 0.3221476510067114,
+            "rouge2": 0.13605442176870747,
+            "rougeL": 0.20134228187919462
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            8,
+            18,
+            6,
+            9,
+            11,
+            4,
+            15,
+            48
+          ],
+          "retrieval_precision": 0.11962890625,
+          "retrieval_recall": 0.768025078369906
+        },
+        "word_packed__dense__w512": {
+          "answer": "PhD D explained that the multilingual model was trained on broad data including multiple languages (French, Spanish, and English), referred to as MF, MS, and ME respectively. The model showed a reduction in error rates by approximately 20% to 30% compared to the baseline. Additionally, the multilingual nets were trained on features without second-order derivatives but with an increased number of frames, showing slight performance degradation when not using deltas, though not significantly.",
+          "rouge_f1": {
+            "rouge1": 0.5128205128205129,
+            "rouge2": 0.22608695652173913,
+            "rougeL": 0.34188034188034183
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            5
+          ],
+          "retrieval_precision": 0.33984375,
+          "retrieval_recall": 0.5454545454545454
+        },
+        "word_packed__dense__w1024": {
+          "answer": "PhD D explained that the multilingual model was tested in several ways, including using a combination of three languages (Italian, Spanish, and another unspecified language) where Spanish was chosen as a proxy for Italian due to its assumed similarity. The fourth test involved excluding the task-specific language from the multilingual dataset. When the model was trained on multilingual broad data instead of task-specific data, the error rate increased by approximately 20-30% relative to the baseline error rate. Additionally, the multilingual datasets were twice the size of the broad English data (TIMIT), which was used for the initial baseline comparison. The multilingual models were trained on features without second-order derivatives but with an increased number of frames, showing slight performance degradation compared to models using delta features.",
+          "rouge_f1": {
+            "rouge1": 0.3236994219653179,
+            "rouge2": 0.11695906432748539,
+            "rougeL": 0.20809248554913296
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            5,
+            4,
+            8
+          ],
+          "retrieval_precision": 0.169921875,
+          "retrieval_recall": 0.5454545454545454
+        },
+        "word_packed__dense__w2048": {
+          "answer": "PhD D explained that the multilingual model was trained on a combination of English, French, and Spanish databases, referred to as \"multilingual broad data.\" When the model was trained on this multilingual data, the error rate increased compared to when it was trained on the same language but a different task dataset (TIMIT), showing a relative error rate increase of around 30% (from one point one to one point four). Additionally, the multilingual model included twice the amount of broad English data used in the one point one case, indicating that the increase in error rate was not solely due to a lack of English data representation but rather due to the diversity of the languages involved.",
+          "rouge_f1": {
+            "rouge1": 0.3625,
+            "rouge2": 0.13924050632911394,
+            "rougeL": 0.28750000000000003
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            5,
+            4,
+            8,
+            11,
+            13,
+            1,
+            7
+          ],
+          "retrieval_precision": 0.0849609375,
+          "retrieval_recall": 0.5454545454545454
+        },
+        "word_packed__bm25__w512": {
+          "answer": "PhD D explained that the main difference between the 1.1 case and the 1.4 case is that the latter is a multilingual model. The training data for the 1.4 case includes the training data from the 1.1 case (which is based on the TIMIT dataset), but it is twice as large, incorporating additional multilingual databases.",
+          "rouge_f1": {
+            "rouge1": 0.29411764705882354,
+            "rouge2": 0.09999999999999999,
+            "rougeL": 0.21568627450980393
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "PhD D explained that the multilingual model involves testing with data from multiple languages, where the fourth test excludes the language used for the task. When transitioning from monolingual to multilingual data, the error rate increases by approximately 20% relative to the initial increase of around 10% when switching from one specific language's training data to another (e.g., from TI-digits training to TIMIT training). The multilingual dataset is twice the size of the broad English data, which includes the TIMIT data used for the baseline performance (one point one case). Additionally, PhD D noted that while there is a general trend of increased error rates with multilingual data, certain features like JRASTA seem to perform better under highly mismatched conditions compared to PLP.",
+          "rouge_f1": {
+            "rouge1": 0.23668639053254434,
+            "rouge2": 0.08383233532934131,
+            "rougeL": 0.1893491124260355
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            8,
+            10,
+            4
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "PhD D explained that the multilingual model was tested by using a dataset that included multiple languages (specifically mentioned were English, French, and Spanish) instead of just the task-specific language data. When the model was trained on multilingual broad data, the error rate increased compared to when it was trained on single-language data. Specifically, the error rate increased by approximately 20-30% relative to the baseline when transitioning from single-language to multilingual data. Additionally, the multilingual datasets were noted to be about two times larger than the broad English data used for comparison.",
+          "rouge_f1": {
+            "rouge1": 0.38848920863309355,
+            "rouge2": 0.13138686131386862,
+            "rougeL": 0.2589928057553956
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            8,
+            10,
+            4,
+            5,
+            45,
+            51,
+            16,
+            2
+          ],
+          "retrieval_precision": 0.0849609375,
+          "retrieval_recall": 0.5454545454545454
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "PhD D explained that the multilingual model was trained on broad data including multiple languages, which resulted in a performance improvement measured as a ratio of error rates compared to a baseline. Specifically, the error rate ratio was around 1.1 when using the same language but a different task, and approximately 1.3 when using three languages (broad stuff). The multilingual dataset was twice the size of the broad English dataset, which was used for the 1.1 error rate ratio.",
+          "rouge_f1": {
+            "rouge1": 0.35200000000000004,
+            "rouge2": 0.13008130081300812,
+            "rougeL": 0.25600000000000006
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "PhD D explained that the multilingual model was tested in several ways, including using a combination of three languages (Italian, Spanish, and another unspecified language) where Spanish was chosen as a proxy for Italian due to its assumed similarity. The fourth test involved excluding the task-specific language from the multilingual dataset. When the model was trained on multilingual broad data instead of task-specific data, the error rate increased by approximately 20-30% relative to the baseline error rate. Additionally, the multilingual datasets were twice the size of the broad English data (TIMIT), which was used for the initial baseline comparison. The multilingual models were trained on features without second-order derivatives but with an increased number of frames, showing slight performance degradation compared to models using delta features.",
+          "rouge_f1": {
+            "rouge1": 0.3236994219653179,
+            "rouge2": 0.11695906432748539,
+            "rougeL": 0.20809248554913296
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            4,
+            16
+          ],
+          "retrieval_precision": 0.169921875,
+          "retrieval_recall": 0.5454545454545454
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "PhD D explained that the team focused on four types of features (PLP, PLP with JRASTA, MSG, and MFCC from the baseline Aurora) and conducted tests on English and Italian. They trained several neural networks on TI-digits English, Italian data, and broad English, French, and Spanish databases. When the network was trained on task data, it performed well. However, when transitioning from TI-digits training to TIMIT training, there was a 10% increase in error rate. Further, when using multilingual data, the error rate increased by an additional 20-30%. The multilingual data included two times the amount of broad English data, leading to a higher error rate compared to training on a single language dataset.",
+          "rouge_f1": {
+            "rouge1": 0.35,
+            "rouge2": 0.08860759493670886,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            4,
+            16,
+            1,
+            10,
+            3,
+            13
+          ],
+          "retrieval_precision": 0.0849609375,
+          "retrieval_recall": 0.5454545454545454
+        },
+        "lumber__dense__w512": {
+          "answer": "PhD D explained that the multilingual model involves removing task-specific training and adding other languages. Specifically, he mentioned that the multilingual nets are trained on features without second-order derivatives but with increased frame numbers. The model includes versions for different languages: Multi-French (MF), Multi-Spanish (MS), and Multi-English (ME). He also noted that while the performance was slightly worse without using deltas, the difference was not significant. Additionally, PhD D indicated that initial results with multiple languages showed poorer performance compared to single-language models.",
+          "rouge_f1": {
+            "rouge1": 0.4393939393939394,
+            "rouge2": 0.13846153846153847,
+            "rougeL": 0.3181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            8,
+            20
+          ],
+          "retrieval_precision": 0.623046875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "PhD D explained that the multilingual model involves training on broad data that includes multiple languages (French, Spanish, and English), making the dataset twice as large as the broad English data used for the baseline (TIMIT). The model removes task-specific training and incorporates other languages, resulting in an error rate ratio of around 1.1 compared to the baseline error rate. The multilingual model uses features without second-order derivatives but with increased frame numbers, showing only slightly worse performance when not using delta features.",
+          "rouge_f1": {
+            "rouge1": 0.46511627906976744,
+            "rouge2": 0.1889763779527559,
+            "rougeL": 0.31007751937984496
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            8,
+            20,
+            13,
+            9
+          ],
+          "retrieval_precision": 0.3115234375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "PhD D explained that the multilingual model underwent four types of testing:\n\n1. Training on task-specific data (e.g., Italian speech).\n2. Training on a broad database of a single language assumed to be similar to the task data (e.g., Spanish for Italian).\n3. Training on a combined database of three languages.\n4. Training on a multilingual database excluding the task-specific language.\n\nWhen comparing the performance of the model trained on multilingual data to the baseline, the error rate increased by approximately 20-30% relative to the baseline. The multilingual model used a dataset that was twice the size of the broad English data (TIMIT), which improved performance compared to using only task-specific data but worsened accuracy when compared to models trained solely on the same language's broad data.",
+          "rouge_f1": {
+            "rouge1": 0.23728813559322035,
+            "rouge2": 0.10285714285714286,
+            "rougeL": 0.20338983050847456
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            8,
+            20,
+            13,
+            9,
+            6,
+            7,
+            17,
+            26,
+            19
+          ],
+          "retrieval_precision": 0.15576171875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "PhD D explained that when transitioning from TI-digits training to TIMIT training, there was an error rate increase of around ten percent relative. However, when moving to multilingual data, the error rate increased further by approximately another twenty percent.",
+          "rouge_f1": {
+            "rouge1": 0.3132530120481927,
+            "rouge2": 0.07407407407407408,
+            "rougeL": 0.24096385542168675
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            50,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "PhD D explained that when transitioning from TI-digits training to TIMIT training, there was a ten percent relative increase in error rate. Further, when moving to multilingual data, the error rate increased by an additional twenty to thirty percent. Additionally, the multilingual dataset was twice the size of the broad English data, which included the TIMIT dataset.",
+          "rouge_f1": {
+            "rouge1": 0.37623762376237624,
+            "rouge2": 0.08080808080808081,
+            "rougeL": 0.2574257425742574
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            50,
+            7,
+            13,
+            54
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "PhD D explained that when transitioning from TI-digits training to TIMIT training, there was an error rate increase of around 10%. Further transitioning to multilingual data worsened the error rate by an additional 20% to 30%. The multilingual model involved broad data including multiple languages, leading to a significant performance drop compared to task-specific training. Additionally, the multilingual dataset was twice as large as the broad English data (TIMIT), which was used for the initial training phase.",
+          "rouge_f1": {
+            "rouge1": 0.3278688524590164,
+            "rouge2": 0.08333333333333333,
+            "rougeL": 0.19672131147540983
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            50,
+            7,
+            13,
+            54,
+            8,
+            15,
+            48,
+            0,
+            28,
+            24
+          ],
+          "retrieval_precision": 0.0615234375,
+          "retrieval_recall": 0.3949843260188088
+        },
+        "lumber__hybrid__w512": {
+          "answer": "PhD D explained that when transitioning from TI-digits training to TIMIT training, there was a 10% relative increase in error rate. When moving to multilingual data, the error rate increased further by approximately 20-30%. The multilingual model uses a broader dataset that includes multiple languages and is roughly twice the size of the broad English data used for the initial training (TIMIT), which is band-limited at 8kHz sampling.",
+          "rouge_f1": {
+            "rouge1": 0.3508771929824561,
+            "rouge2": 0.08928571428571427,
+            "rougeL": 0.2280701754385965
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            13,
+            7,
+            24
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "PhD D explained that when transitioning from TI-digits training to TIMIT training, there's a 10% relative increase in error rate. When moving to multilingual data, the error rate increases further by approximately 20-30% relative to the TIMIT training. The multilingual model uses a broader dataset including multiple languages (English, French, and Spanish), which is twice the size of the broad English data used for TIMIT training. The model trained on multilingual data shows a performance degradation compared to the baseline, with an error rate ratio of around 1.3 when considering three languages. The multilingual model uses features without second-order derivatives but with increased frame numbers, showing slight performance degradation when not using delta features.",
+          "rouge_f1": {
+            "rouge1": 0.345679012345679,
+            "rouge2": 0.11250000000000002,
+            "rougeL": 0.19753086419753088
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            13,
+            7,
+            24,
+            9
+          ],
+          "retrieval_precision": 0.3115234375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "PhD D explained that the multilingual model was tested in four ways:\n\n1. Trained on task data specific to the target language (e.g., Italian).\n2. Trained on a broad database of a single language assumed to be close to the target language (e.g., Spanish for Italian).\n3. Trained on a broad database of three languages.\n4. Trained on a broad database of three languages excluding the target language.\n\nWhen comparing the performance of the model trained on multilingual broad data to the baseline (trained on task-specific data), the error rate increased by approximately 20-30% relative to the baseline. The multilingual model used a dataset that was twice the size of the broad English data (TIMIT) used for the baseline, and included the broad English data.",
+          "rouge_f1": {
+            "rouge1": 0.29069767441860467,
+            "rouge2": 0.10588235294117646,
+            "rougeL": 0.19767441860465115
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            13,
+            7,
+            24,
+            9,
+            20,
+            15,
+            19,
+            6,
+            50
+          ],
+          "retrieval_precision": 0.15576171875,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the Professor think about the use of English?",
+      "reference_answer": "The professor thought that the model did not get hurt that much because of the removal of English. He also thought it would be worthwhile to train on one language and test on another.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The evidence is insufficient to determine what the Professor thought about the use of English based on the provided meeting excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.32727272727272727,
+            "rouge2": 0.11320754716981132,
+            "rougeL": 0.2545454545454545
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            14,
+            19
+          ],
+          "retrieval_precision": 0.49609375,
+          "retrieval_recall": 0.4783427495291902
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The Professor thought that the presence or absence of English did not significantly affect performance based on the results discussed. Specifically, the Professor mentioned that removing English did not necessarily cause harm, suggesting that diversity in the types of speech (rather than the number of languages) might be more critical. Additionally, the Professor noted that even with English included, the results remained poor when trained on one language and tested on another, indicating that the use of English alone did not improve outcomes.",
+          "rouge_f1": {
+            "rouge1": 0.37606837606837606,
+            "rouge2": 0.22608695652173913,
+            "rougeL": 0.34188034188034183
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            14,
+            19,
+            0,
+            13
+          ],
+          "retrieval_precision": 0.333984375,
+          "retrieval_recall": 0.6440677966101694
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The evidence provided does not contain any direct statements or clear indications of what the Professor thought about the use of English. The excerpts discuss various tests and results related to language models and datasets, but do not provide insight into the Professor's opinion on the use of English specifically. Therefore, the evidence is insufficient to determine the Professor's thoughts on the use of English.",
+          "rouge_f1": {
+            "rouge1": 0.3366336633663366,
+            "rouge2": 0.060606060606060615,
+            "rougeL": 0.21782178217821785
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            14,
+            19,
+            0,
+            13,
+            8,
+            4,
+            18,
+            48,
+            37
+          ],
+          "retrieval_precision": 0.23828125,
+          "retrieval_recall": 0.9190207156308852
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The evidence provided does not contain any direct statements from the Professor regarding his thoughts on the use of English. The excerpts mention \"ME\" as an abbreviation for Multi-English, but there is no commentary from the Professor about how he thinks about the use of English itself. Therefore, the evidence is insufficient to determine the Professor's thoughts on the use of English.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.041666666666666664,
+            "rougeL": 0.20408163265306123
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            56,
+            18,
+            54
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The evidence provided does not contain any direct statements from Professor B regarding his thoughts on the use of English. Therefore, the evidence is insufficient to determine what the Professor thought about the use of English.",
+          "rouge_f1": {
+            "rouge1": 0.34285714285714286,
+            "rouge2": 0.08823529411764705,
+            "rougeL": 0.22857142857142856
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            56,
+            18,
+            54,
+            1,
+            44
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The Professor thought that training on broad English data provided relatively good results, but including multiple languages made the results worse. Specifically, the Professor mentioned that training on one language and testing on another resulted in poorer performance compared to using data solely in the target language.",
+          "rouge_f1": {
+            "rouge1": 0.4197530864197531,
+            "rouge2": 0.25316455696202533,
+            "rougeL": 0.345679012345679
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            56,
+            18,
+            54,
+            1,
+            44,
+            27,
+            9,
+            3,
+            19,
+            49
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The evidence from the meeting excerpts indicates that Professor B thought the inclusion of English did not significantly improve performance in a multilingual context. Specifically, Professor B mentioned that even when English was added, the results remained poor. Additionally, Professor B noted that removing English from the mix also resulted in poor performance, suggesting that the presence or absence of English did not notably affect the outcome positively.",
+          "rouge_f1": {
+            "rouge1": 0.2745098039215686,
+            "rouge2": 0.06,
+            "rougeL": 0.2156862745098039
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            19,
+            14
+          ],
+          "retrieval_precision": 0.11328125,
+          "retrieval_recall": 0.10922787193973635
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The evidence provided does not contain any specific statements from Professor B regarding thoughts on the use of English. Therefore, the evidence is insufficient to determine what the Professor thought about the use of English.",
+          "rouge_f1": {
+            "rouge1": 0.3478260869565218,
+            "rouge2": 0.08955223880597016,
+            "rougeL": 0.23188405797101447
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            19,
+            14,
+            56,
+            12
+          ],
+          "retrieval_precision": 0.248046875,
+          "retrieval_recall": 0.4783427495291902
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The evidence provided does not contain any explicit statements from Professor B regarding his thoughts on the use of English. However, it can be inferred that Professor B acknowledges the importance of English in the context of the research discussed, particularly in relation to the performance of neural networks trained on English data compared to other languages. He notes the impact of excluding English from the datasets and discusses its role in achieving certain performance levels in the experiments conducted.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.05357142857142857,
+            "rougeL": 0.2280701754385965
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            19,
+            14,
+            56,
+            12,
+            8,
+            0,
+            1,
+            48,
+            49
+          ],
+          "retrieval_precision": 0.1240234375,
+          "retrieval_recall": 0.4783427495291902
+        },
+        "word_packed__dense__w512": {
+          "answer": "The evidence is insufficient to determine what the Professor thought about the use of English based on the provided meeting excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.32727272727272727,
+            "rouge2": 0.11320754716981132,
+            "rougeL": 0.2545454545454545
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            0
+          ],
+          "retrieval_precision": 0.15234375,
+          "retrieval_recall": 0.14689265536723164
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The Professor thought that the inclusion of English in the language combination improved performance, noting an increase from approximately 1.1 to around 1.4 when English was included, indicating an additional 30% improvement. However, the Professor also noted that excluding English did not significantly affect the performance, suggesting that the improvement might be due to the diversity of the dataset rather than solely the presence of English.",
+          "rouge_f1": {
+            "rouge1": 0.3137254901960785,
+            "rouge2": 0.13999999999999999,
+            "rougeL": 0.23529411764705885
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            0,
+            13,
+            7
+          ],
+          "retrieval_precision": 0.2685546875,
+          "retrieval_recall": 0.5178907721280602
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The Professor thought that the inclusion of English in the training data improved performance slightly compared to excluding it, noting that the performance reduction when English was excluded was not significant, suggesting that the diversity of the data rather than the specific inclusion of English was more influential.",
+          "rouge_f1": {
+            "rouge1": 0.34146341463414637,
+            "rouge2": 0.14999999999999997,
+            "rougeL": 0.26829268292682923
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            0,
+            13,
+            7,
+            16,
+            12,
+            43,
+            17
+          ],
+          "retrieval_precision": 0.25927734375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The evidence is insufficient to determine what the Professor thought about the use of English. The excerpts mention \"multi-English\" in the context of language models but do not provide the Professor's thoughts or opinions on its use or the English language itself.",
+          "rouge_f1": {
+            "rouge1": 0.358974358974359,
+            "rouge2": 0.07894736842105264,
+            "rougeL": 0.25641025641025644
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            16,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The evidence provided does not contain any direct statements or opinions from Professor B regarding the use of English. Therefore, the evidence is insufficient to determine what the Professor thought about the use of English.",
+          "rouge_f1": {
+            "rouge1": 0.2898550724637681,
+            "rouge2": 0.08955223880597016,
+            "rougeL": 0.20289855072463767
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            16,
+            1,
+            49,
+            45
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The Professor thought that using English as part of the training data improved performance, noting that excluding English led to a noticeable reduction in performance, though the exact impact varied depending on the inclusion of other languages and the size of the dataset. The Professor was interested in understanding the specific contributions of English within multilingual datasets and its effect on performance metrics like error rates.",
+          "rouge_f1": {
+            "rouge1": 0.32,
+            "rouge2": 0.12244897959183673,
+            "rougeL": 0.24000000000000002
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            16,
+            1,
+            49,
+            45,
+            24,
+            8,
+            7,
+            17
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The evidence provided does not contain any explicit statement or suggestion from Professor B about his thoughts on the use of English. The discussion revolves around performance metrics and data inclusion/exclusion involving multiple languages, but there is no direct commentary from the Professor regarding his personal views or opinions on the use of English specifically. Therefore, the evidence is insufficient to determine what the Professor thought about the use of English.",
+          "rouge_f1": {
+            "rouge1": 0.2830188679245283,
+            "rouge2": 0.05769230769230769,
+            "rougeL": 0.16981132075471697
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The evidence provided does not contain a direct statement from the Professor about his thoughts on the use of English. However, based on the discussion, it can be inferred that the Professor acknowledged the impact of including English in the dataset, noting that it contributed to a performance increase (from approximately 1.1 to 1.3 or 1.4), indicating a positive view towards its inclusion. When English was excluded, there wasn't a significant difference observed, suggesting that the Professor found English to be a valuable component in enhancing model performance.",
+          "rouge_f1": {
+            "rouge1": 0.2698412698412698,
+            "rouge2": 0.04838709677419355,
+            "rougeL": 0.15873015873015875
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            7,
+            11,
+            45
+          ],
+          "retrieval_precision": 0.076171875,
+          "retrieval_recall": 0.14689265536723164
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The Professor thought that the inclusion of English in the multilingual datasets improved performance, reducing the error rate. However, the improvement wasn't significant enough to conclude that English alone was crucial, as removing English did not drastically worsen performance compared to the baseline. The Professor noted that the multilingual dataset, which included English, was about twice the size of the broad English data (TIMIT), indicating that the enhancement might be due to the diversity of the dataset rather than solely the presence of English.",
+          "rouge_f1": {
+            "rouge1": 0.25210084033613445,
+            "rouge2": 0.11965811965811965,
+            "rougeL": 0.2184873949579832
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            7,
+            11,
+            45,
+            17,
+            8,
+            0,
+            43
+          ],
+          "retrieval_precision": 0.0380859375,
+          "retrieval_recall": 0.14689265536723164
+        },
+        "lumber__dense__w512": {
+          "answer": "The Professor thought that the inclusion of English added diversity to the model without increasing the number of parameters significantly. The Professor mentioned that having three languages, including English, resulted in around 1.4 times the representation compared to two languages, indicating an additional 30% without specifying a substantial increase in complexity or parameters. The Professor also noted that removing English did not seem to cause harm to the model's performance, suggesting that the model could handle the diversity well.",
+          "rouge_f1": {
+            "rouge1": 0.29565217391304344,
+            "rouge2": 0.1238938053097345,
+            "rougeL": 0.19130434782608696
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            16,
+            11,
+            0
+          ],
+          "retrieval_precision": 0.2734375,
+          "retrieval_recall": 0.263653483992467
+        },
+        "lumber__dense__w1024": {
+          "answer": "The Professor thought that the inclusion of English in the multilingual setup did not necessarily cause harm, suggesting instead that having a more diverse set of languages represented did not negatively impact performance, especially when the number of parameters remained the same. The Professor also expressed interest in experiments involving training on one language and testing on another, indicating a curiosity about how the model performs across different linguistic contexts.",
+          "rouge_f1": {
+            "rouge1": 0.4230769230769231,
+            "rouge2": 0.2745098039215686,
+            "rougeL": 0.3846153846153846
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            16,
+            11,
+            0,
+            20,
+            19
+          ],
+          "retrieval_precision": 0.26171875,
+          "retrieval_recall": 0.504708097928437
+        },
+        "lumber__dense__w2048": {
+          "answer": "The evidence provided does not contain any explicit statements from Professor B regarding his thoughts on the use of English. Therefore, the evidence is insufficient to determine what the Professor thought about the use of English.",
+          "rouge_f1": {
+            "rouge1": 0.34285714285714286,
+            "rouge2": 0.08823529411764705,
+            "rougeL": 0.22857142857142856
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            16,
+            11,
+            0,
+            20,
+            19,
+            6,
+            12,
+            24,
+            26
+          ],
+          "retrieval_precision": 0.130859375,
+          "retrieval_recall": 0.504708097928437
+        },
+        "lumber__bm25__w512": {
+          "answer": "The evidence is insufficient to determine what the Professor thought about the use of English.",
+          "rouge_f1": {
+            "rouge1": 0.326530612244898,
+            "rouge2": 0.1276595744680851,
+            "rougeL": 0.2448979591836735
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            54,
+            24
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The Professor thought that including English in the multilingual models did not significantly improve performance; in fact, he mentioned that the results were \"still poor\" even when English was added.",
+          "rouge_f1": {
+            "rouge1": 0.37500000000000006,
+            "rouge2": 0.1935483870967742,
+            "rougeL": 0.34375
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            54,
+            24,
+            53
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The evidence provided does not contain any explicit statements from Professor B regarding his thoughts on the use of English. However, it can be inferred that the Professor was aware of and discussed the use of English in the context of training neural networks and comparing results across different languages, indicating that English was a significant component of their research. Given the lack of direct commentary on the quality or appropriateness of using English, the evidence is insufficient to determine Professor B's specific thoughts on its use.",
+          "rouge_f1": {
+            "rouge1": 0.32786885245901637,
+            "rouge2": 0.05,
+            "rougeL": 0.19672131147540983
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            54,
+            24,
+            53,
+            13,
+            1,
+            48,
+            11,
+            0
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The Professor thought that incorporating multiple languages, including English, into the model resulted in poorer performance. Specifically, the Professor mentioned that removing English in cross-language scenarios led to poor results, and adding English back in did not improve the situation significantly.",
+          "rouge_f1": {
+            "rouge1": 0.3947368421052631,
+            "rouge2": 0.13513513513513514,
+            "rougeL": 0.2894736842105263
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            24,
+            0
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The Professor thought that the inclusion of English did not significantly improve performance. When English was excluded from the multilingual models, there wasn't a notable difference in the results compared to when it was included. The Professor noted that the model's performance seemed to depend more on diversity rather than the specific inclusion of English.",
+          "rouge_f1": {
+            "rouge1": 0.3516483516483516,
+            "rouge2": 0.15730337078651685,
+            "rougeL": 0.24175824175824173
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            24,
+            0,
+            17,
+            12
+          ],
+          "retrieval_precision": 0.13671875,
+          "retrieval_recall": 0.263653483992467
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The Professor thought that the inclusion of English in multilingual datasets improved performance, noting that excluding English led to poorer results. However, the improvement wasn't significant when the dataset size doubled to include English, suggesting that the diversity of the dataset rather than the mere inclusion of English was a factor.",
+          "rouge_f1": {
+            "rouge1": 0.2558139534883721,
+            "rouge2": 0.14285714285714285,
+            "rougeL": 0.23255813953488372
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            24,
+            0,
+            17,
+            12,
+            13,
+            42,
+            20,
+            50
+          ],
+          "retrieval_precision": 0.068359375,
+          "retrieval_recall": 0.263653483992467
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion on managing the complexity of the model",
+      "reference_answer": "The team discussed the size of the neural net, which was just a simple net. At the time, it had 27 outputs, but the professor recommended that they use a larger net, with perhaps more features. They discussed the effect that removing silent frames could have on the model. The professor recommended having a bigger hidden layer, though he did not think that would substantially improve performance. Currently, however, the team was facing computational limitations.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The discussion focused on managing the complexity of the model through context-dependent versions and incorporating context into the system. Professor B suggested that while hybrid systems benefit from context incorporation, ignoring context differences can lead to issues. The conversation also touched upon the need to address bugs and to consider the impact of increasing parameters on computational limits and model performance.",
+          "rouge_f1": {
+            "rouge1": 0.23357664233576642,
+            "rouge2": 0.04444444444444444,
+            "rougeL": 0.1897810218978102
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            29,
+            33
+          ],
+          "retrieval_precision": 0.544921875,
+          "retrieval_recall": 0.05456679053393311
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The discussion on managing the complexity of the model primarily revolves around initializing the model differently by starting the computation of mean and variance earlier than waiting for 25 frames, using an online scheme. PhD D suggests retraining the networks with these new features, expecting slight improvements but acknowledging that neural networks might learn to normalize features even without normalization. Professor B emphasizes the need to draw conclusions and reduce the scope of analysis due to time constraints. They also discuss the potential benefits of incorporating context-dependent versions and the trade-offs between increasing model parameters and computational limits. The conversation highlights ongoing efforts to refine the model's performance through various adjustments and considerations regarding the model's complexity and resource requirements.",
+          "rouge_f1": {
+            "rouge1": 0.2814070351758794,
+            "rouge2": 0.04060913705583757,
+            "rougeL": 0.18090452261306536
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            29,
+            33,
+            26,
+            50
+          ],
+          "retrieval_precision": 0.3134765625,
+          "retrieval_recall": 0.06278114609818111
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The discussion on managing the complexity of the model focused on simplifying the neural network by reducing its outputs to broad phonetic categories, aiming to decrease the number of outputs from potentially thousands to 27 broad classes. This approach was considered to potentially reduce the complexity of the model and simplify the networks. However, concerns were raised that reducing the information too much might negatively impact performance. Additionally, the group discussed the need to balance the number of parameters against computational limits, considering the potential benefits of increasing parameters versus the computational costs.",
+          "rouge_f1": {
+            "rouge1": 0.27380952380952384,
+            "rouge2": 0.060240963855421686,
+            "rougeL": 0.20238095238095238
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            29,
+            33,
+            26,
+            50,
+            35,
+            36,
+            46
+          ],
+          "retrieval_precision": 0.59130859375,
+          "retrieval_recall": 0.23684725210248386
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The discussion on managing the complexity of the model centered around the idea that the current model might lack sufficient complexity to handle increased variability in the training set, despite having the same number of parameters. Professor B suggested that the issue might not be related to cross-language differences but rather to cross-type of speech differences. PhD D noted that while there were similar tendencies across different conditions, there was a slight increase in error rates when moving from PLP to TIMIT and further to multilingual datasets. Additionally, JRASTA performed better under highly mismatched conditions compared to well-matched ones. The conversation did not directly address strategies to manage the model's complexity beyond acknowledging its limitations in handling variability.",
+          "rouge_f1": {
+            "rouge1": 0.2639593908629441,
+            "rouge2": 0.030769230769230774,
+            "rougeL": 0.16243654822335027
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            11,
+            14
+          ],
+          "retrieval_precision": 0.314453125,
+          "retrieval_recall": 0.031488362996283985
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The discussion on managing the complexity of the model centered around the idea that the current model might lack sufficient complexity to handle increased variability in the training set, despite maintaining the same number of parameters in the neural network. Professor B suggested that the issue might not be related to cross-language differences but rather to cross-type of speech differences. Additionally, there was a mention of the importance of proper normalization techniques, as observed issues with online normalization affecting the model's performance.",
+          "rouge_f1": {
+            "rouge1": 0.30000000000000004,
+            "rouge2": 0.0379746835443038,
+            "rougeL": 0.17500000000000002
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            11,
+            14,
+            23,
+            20
+          ],
+          "retrieval_precision": 0.1572265625,
+          "retrieval_recall": 0.031488362996283985
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The discussion on managing the complexity of the model centered around the effectiveness of training neural networks on task-specific data versus broad data. PhD D mentioned focusing on four kinds of features (PLP, PLP with JRASTA, MSG, and MFCC) and noted that when the network is trained on task data, it performs well. However, when trained on broad data, the performance decreases, especially when tested on different languages. Professor B suggested that the current neural network might lack sufficient complexity to handle increased variability in the training set, implying that increasing the complexity of the model could potentially improve its performance across different types of speech data.",
+          "rouge_f1": {
+            "rouge1": 0.29508196721311475,
+            "rouge2": 0.03314917127071823,
+            "rougeL": 0.18579234972677594
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            11,
+            14,
+            23,
+            20,
+            2,
+            1,
+            3,
+            15
+          ],
+          "retrieval_precision": 0.07861328125,
+          "retrieval_recall": 0.031488362996283985
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The discussion on managing the complexity of the model focused on addressing issues with online normalization assumptions that were leading to poor results when using straight PLP features with HTK. The team considered future directions such as exploring multi-band approaches and combinations of different methods, but specific strategies for managing the model's complexity were not detailed. The conversation also touched upon ongoing activities like net retraining and HTK training/testings without specifying concrete actions to simplify or manage the model's complexity further.",
+          "rouge_f1": {
+            "rouge1": 0.23750000000000002,
+            "rouge2": 0.0379746835443038,
+            "rougeL": 0.1625
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33,
+            23,
+            48
+          ],
+          "retrieval_precision": 0.048828125,
+          "retrieval_recall": 0.004889497359671426
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The discussion on managing the complexity of the model primarily revolves around addressing issues with online normalization and its impact on feature extraction and model performance. Specifically, PhD D mentions that assumptions made regarding online normalization led to suboptimal results when using straight PLP features with HTK. The team acknowledges the need to explore various approaches such as multi-band techniques and combinations of methods to improve the model's performance. Additionally, there is a consideration for parallelizing training processes across multiple machines to manage computational demands associated with complex models. However, the exact strategies for handling the complexity of the model beyond these points are not extensively detailed in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.25531914893617025,
+            "rouge2": 0.043010752688172046,
+            "rougeL": 0.14893617021276598
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33,
+            23,
+            48,
+            55,
+            46
+          ],
+          "retrieval_precision": 0.5244140625,
+          "retrieval_recall": 0.10502640328574223
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The discussion on managing the complexity of the model centered around the idea that the current neural network might not have sufficient complexity to handle the variability in the training set, despite having the same number of parameters. Participants considered simplifying the networks by reducing the number of outputs and exploring different feature representations such as broad phonetic categories to manage complexity effectively. They also discussed the importance of proper online normalization techniques and the potential benefits of combining different approaches like multi-band processing and LDA-Rasta filtering.",
+          "rouge_f1": {
+            "rouge1": 0.2926829268292683,
+            "rouge2": 0.037037037037037035,
+            "rougeL": 0.15853658536585366
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33,
+            23,
+            48,
+            55,
+            46,
+            35,
+            11,
+            24,
+            27
+          ],
+          "retrieval_precision": 0.4658203125,
+          "retrieval_recall": 0.1865832192450616
+        },
+        "word_packed__dense__w512": {
+          "answer": "Professor B discussed the complexity of the model, focusing on the impact of increasing parameters to improve performance, especially considering the computational limits. He questioned whether doubling the number of parameters would significantly enhance the model's effectiveness given the increased and diverse dataset size. The team also addressed resource constraints, including disk space and computation time, noting current limitations and plans to upgrade to a faster server in the future.",
+          "rouge_f1": {
+            "rouge1": 0.35616438356164387,
+            "rouge2": 0.09722222222222222,
+            "rougeL": 0.19178082191780824
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            45,
+            46
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.1001369059260708
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The discussion on managing the complexity of the model centered around increasing the number of outputs of neural networks to handle context-dependent phonemes. Professor B suggested that this approach could be applied to both hybrid and tandem systems, noting improvements seen in context-dependent versions. However, concerns were raised about the computational limits and the potential need for more parameters, especially considering the amount of diverse data available. There was also a brief mention of resource constraints, including disk space and computation time, with a note that a new, faster server was being considered but not yet installed.",
+          "rouge_f1": {
+            "rouge1": 0.35632183908045983,
+            "rouge2": 0.03488372093023255,
+            "rougeL": 0.17241379310344826
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            45,
+            46,
+            26,
+            42
+          ],
+          "retrieval_precision": 0.75,
+          "retrieval_recall": 0.1502053588891062
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The discussion on managing the complexity of the model focused on simplifying neural networks by reducing the number of outputs while retaining essential features. PhD D suggested using broader phonetic categories (twenty-seven broad classes) combined with original features (like PLP) to simplify the network without losing critical information. This approach aims to balance the complexity of the model and its performance, especially in distinguishing speech from silence. The team also considered combining features and exploring multi-band approaches to manage complexity effectively. Computational resource constraints were acknowledged, with a new, faster server planned to address potential limitations.",
+          "rouge_f1": {
+            "rouge1": 0.2658959537572254,
+            "rouge2": 0.03508771929824561,
+            "rougeL": 0.21965317919075145
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            45,
+            46,
+            26,
+            42,
+            31,
+            30,
+            33,
+            29
+          ],
+          "retrieval_precision": 0.505859375,
+          "retrieval_recall": 0.2026207705847839
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The discussion on managing the complexity of the model centered around the neural network's size and its ability to handle variability in the training set. Professor B suggested that the current model might lack sufficient complexity to adequately represent the variability observed. Additionally, there were observations regarding performance differences across various conditions (e.g., PLP vs. JRASTA) and datasets (TIMIT, multilingual), indicating challenges in managing model complexity to ensure robust performance across different scenarios. No specific strategies for increasing model complexity were detailed in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.22085889570552147,
+            "rouge2": 0.037267080745341616,
+            "rougeL": 0.17177914110429449
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            10
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.0500684529630354
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The discussion on managing the complexity of the model centered around the performance of the model when trained on one language and tested on another. Professor B suggested that the model might struggle due to insufficient complexity to handle the increased variability in the training set. PhD D reported that when the model was trained on task-specific data (e.g., Italian speech) and tested on the same, the performance was relatively good. However, when the model was trained on a broader dataset of a single language and tested on another language, the performance degraded. Additionally, when the model was trained on multiple languages, the performance worsened further. The participants concluded that they had not conducted experiments where the model was trained on one language and tested on another, except for cases involving two languages.",
+          "rouge_f1": {
+            "rouge1": 0.24761904761904763,
+            "rouge2": 0.03846153846153846,
+            "rougeL": 0.17142857142857146
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            10,
+            13,
+            3
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.0500684529630354
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The discussion on managing the complexity of the model centered around the performance of neural networks trained on different types of data. Specifically, the team explored whether training on task-specific data versus broad phonetically-balanced data affected model performance. They noted that networks trained on task data performed well, but when trained on broad data and tested on different languages, performance degraded. Professor B suggested that the degradation might be due to insufficient complexity in the neural network to handle increased variability in the training set. Additionally, there was a suggestion to test the models trained on one language and tested on another to further understand the impact of data type on model performance.",
+          "rouge_f1": {
+            "rouge1": 0.24210526315789477,
+            "rouge2": 0.0425531914893617,
+            "rougeL": 0.16842105263157894
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            10,
+            13,
+            3,
+            21,
+            1,
+            2,
+            18
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.0500684529630354
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The discussion focused on managing the complexity of the model through various combinations and approaches. Specifically:\n\n- **Combination of Features**: PhD E was experimenting with combining HTK (Hidden Markov Model Toolkit) training and testing using PLP (Perceptual Linear Prediction) twelve online delta-delta and MSG filter together, though results were not yet available.\n  \n- **Normalization**: The team was considering whether to use revised online normalization or stick with the older version.\n\n- **Multi-band Approach**: PhD D mentioned starting work on a multi-band approach and suggested combining features and net outputs to potentially reduce the number of neural network outputs, aiming for simpler networks while retaining feature information.\n\n- **Phonetic Categories**: They proposed using broad phonetic categories, such as those based on place of articulation (nine classes), manner (nine classes), and a combined approach (twenty-seven classes), to simplify the model further.",
+          "rouge_f1": {
+            "rouge1": 0.2429906542056075,
+            "rouge2": 0.03773584905660377,
+            "rougeL": 0.14018691588785048
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            30
+          ],
+          "retrieval_precision": 0.0234375,
+          "retrieval_recall": 0.002346958732642284
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The discussion on managing the complexity of the model centered around the performance of neural networks with varying features and conditions. Professor B suggested that the current neural network might lack sufficient complexity to handle increased variability in the training set. PhD D noted differences in performance between PLP and JRASTA features, particularly under mismatched conditions. There was a suggestion to simplify the networks by reducing the number of outputs while retaining features, aiming to create broader phonetic categories to manage complexity without significantly compromising performance.",
+          "rouge_f1": {
+            "rouge1": 0.2732919254658385,
+            "rouge2": 0.025157232704402514,
+            "rougeL": 0.16149068322981366
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            30,
+            10,
+            24
+          ],
+          "retrieval_precision": 0.01171875,
+          "retrieval_recall": 0.002346958732642284
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The discussion on managing the complexity of the model centered around simplifying the neural networks while maintaining performance. PhD D suggested reducing the number of outputs of the neural network by combining features and net outputs, aiming to create simpler networks. They proposed using broad phonetic categories to achieve this, suggesting three types of broad phonetic classes (place of articulation, manner, and a combined approach) leading to 27 broad classes. This approach aimed to simplify the model without losing essential information, thereby addressing the complexity issue.",
+          "rouge_f1": {
+            "rouge1": 0.26086956521739135,
+            "rouge2": 0.03773584905660378,
+            "rougeL": 0.18633540372670804
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            31,
+            30,
+            10,
+            24,
+            42,
+            1,
+            48,
+            44
+          ],
+          "retrieval_precision": 0.380859375,
+          "retrieval_recall": 0.15255231762174848
+        },
+        "lumber__dense__w512": {
+          "answer": "The discussion on managing the complexity of the model centered around the trade-offs between increasing model parameters and computational limitations. Professor B expressed curiosity about whether doubling the number of parameters could improve performance given twice as much diverse data, though he doubted a 40% improvement was likely. Concerns were raised regarding current computational resources, noting that processing a table took over five days, indicating existing constraints. Plans were mentioned to acquire a faster server to address these limitations.",
+          "rouge_f1": {
+            "rouge1": 0.2967741935483871,
+            "rouge2": 0.06535947712418301,
+            "rougeL": 0.19354838709677422
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            35
+          ],
+          "retrieval_precision": 0.958984375,
+          "retrieval_recall": 0.09602972814394681
+        },
+        "lumber__dense__w1024": {
+          "answer": "The discussion on managing the complexity of the model centered around incorporating context into the model, which improves performance but also introduces challenges. Professor B highlighted that adding more context-specific variables increases specificity to particular tasks, making it harder to gather sufficient training data. Additionally, there was concern about computational limits and the number of parameters that could be afforded given the available resources. The conversation also touched upon the need to balance the increase in model complexity with practical constraints such as computational power and training data availability.",
+          "rouge_f1": {
+            "rouge1": 0.3272727272727273,
+            "rouge2": 0.049079754601226995,
+            "rougeL": 0.20606060606060606
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            35,
+            37
+          ],
+          "retrieval_precision": 0.4794921875,
+          "retrieval_recall": 0.09602972814394681
+        },
+        "lumber__dense__w2048": {
+          "answer": "The discussion focused on managing the complexity of the model by considering reductions and making strong decisions for testing. Professor B emphasized the need to simplify the model due to time constraints and the difficulty of obtaining sufficient training data for complex contexts. PhD D suggested reducing the number of classes in the network but acknowledged that this might worsen performance if too much information is lost. The team considered combining broad classes with original features and transforming them together or separately. They also discussed the potential benefits of increasing parameters but were cautious about computational limits. The conversation highlighted the balance between model complexity and practical constraints such as training data availability and computational resources.",
+          "rouge_f1": {
+            "rouge1": 0.2617801047120419,
+            "rouge2": 0.05291005291005291,
+            "rougeL": 0.17801047120418845
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            35,
+            37,
+            49,
+            41,
+            33
+          ],
+          "retrieval_precision": 0.6806640625,
+          "retrieval_recall": 0.2726383727752787
+        },
+        "lumber__bm25__w512": {
+          "answer": "The discussion on managing the complexity of the model centered around the performance issues observed when adding more training data without increasing the neural network's size. Professor B suggested that the current model might lack sufficient complexity to handle the increased variability in the larger training set, implying that either the model needs to be made more complex or more data similar to the target language should be included. There were no specific details provided on how to manage this complexity beyond these suggestions.",
+          "rouge_f1": {
+            "rouge1": 0.27499999999999997,
+            "rouge2": 0.0379746835443038,
+            "rougeL": 0.17500000000000002
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            50
+          ],
+          "retrieval_precision": 0.373046875,
+          "retrieval_recall": 0.03735575982788969
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The discussion on managing the complexity of the model centered around the performance issues observed when adding more training data without increasing the size of the neural network. Professor B suggested that the current model might lack sufficient complexity to handle the increased variability in the training set. This implies that the model's performance worsened on TI-digits tests when more training data was added but the neural network size remained unchanged. The conversation also touched upon the idea that the model's performance might not significantly differ across languages but could vary based on the type of speech data used for training and testing.",
+          "rouge_f1": {
+            "rouge1": 0.2983425414364641,
+            "rouge2": 0.0782122905027933,
+            "rougeL": 0.18784530386740328
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            50,
+            18,
+            29
+          ],
+          "retrieval_precision": 0.3994140625,
+          "retrieval_recall": 0.07999217680422453
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The discussion on managing the complexity of the model centered around the challenges faced when increasing the variability in the training set without increasing the size of the neural network. Professor B suggested that the current neural network might lack sufficient complexity to handle the increased variability, leading to worse performance on tasks like TI-digits. PhD D proposed exploring multi-band approaches and combining features with network outputs to potentially simplify the network while maintaining necessary information, aiming to reduce the number of outputs and create simpler networks.",
+          "rouge_f1": {
+            "rouge1": 0.2804878048780488,
+            "rouge2": 0.06172839506172839,
+            "rougeL": 0.17073170731707316
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            50,
+            18,
+            29,
+            39,
+            33,
+            4,
+            1
+          ],
+          "retrieval_precision": 0.21826171875,
+          "retrieval_recall": 0.08742421279092509
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The discussion focused on simplifying the model to manage its complexity. Professor B suggested making strong decisions to test certain aspects before the next week. PhD D proposed reducing the information by changing how the tandem is used, suggesting flaws in the current training method where networks trained on specific tasks may not generalize well to different contexts due to fixed decision boundaries. PhD D also mentioned planning to work on multi-band approaches and combining features with network outputs to potentially reduce the number of neural network outputs, aiming for simpler networks.",
+          "rouge_f1": {
+            "rouge1": 0.22619047619047622,
+            "rouge2": 0.012048192771084336,
+            "rougeL": 0.13095238095238096
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33,
+            39
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The discussion focused on managing the complexity of the model through simplification and reduction strategies. PhD D highlighted issues with assumptions made regarding online normalization and the inadequacy of current approaches when applied to straight features in HTK. Professor B emphasized the need to make strong decisions and draw conclusions due to time constraints. They discussed potential reductions in what they are examining, such as considering multi-band approaches and simplifying the use of tandem models. PhD D suggested reducing the number of outputs of the neural network by combining features and network outputs, aiming to create simpler networks while retaining necessary information through broad phonetic categories. These categories included place of articulation (nine classes), manner (nine classes), and a combined approach (twenty-seven classes).",
+          "rouge_f1": {
+            "rouge1": 0.24,
+            "rouge2": 0.04040404040404041,
+            "rougeL": 0.13
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33,
+            39,
+            37,
+            29
+          ],
+          "retrieval_precision": 0.037109375,
+          "retrieval_recall": 0.007432035986700567
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The discussion on managing the complexity of the model centered around the challenges faced when adding more training data without increasing the size of the neural network. Professor B suggested that the current neural network might lack sufficient complexity to handle the increased variability in the training set. PhD D proposed reducing the number of outputs of the neural network by combining features and network outputs, aiming to create simpler networks while retaining necessary information through broad phonetic categories. This approach was intended to address the issue of insufficient complexity in the model.",
+          "rouge_f1": {
+            "rouge1": 0.27380952380952384,
+            "rouge2": 0.060240963855421686,
+            "rougeL": 0.16666666666666669
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33,
+            39,
+            37,
+            29,
+            50,
+            14,
+            51
+          ],
+          "retrieval_precision": 0.28955078125,
+          "retrieval_recall": 0.11597887737140622
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the team discuss about IBM computers?",
+      "reference_answer": "The team was concerned about the availability of computational resources. The Professor informed them that they had received two 550 megahertz processors by IBM. Though, they were originally expecting eight 800 megahertz processors.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The team discussed an IBM machine that was donated with slots for eight processors, but they only received two 550 MHz processors so far. The machine currently has a moderate amount of memory and hasn't excited anyone enough to spend much time on it yet. They hope to receive more parts soon to populate all eight processor slots and increase the memory, which would make it a fast Linux machine.",
+          "rouge_f1": {
+            "rouge1": 0.3076923076923077,
+            "rouge2": 0.05882352941176469,
+            "rougeL": 0.21153846153846154
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            50,
+            52
+          ],
+          "retrieval_precision": 0.91015625,
+          "retrieval_recall": 0.625503355704698
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The team discussed an IBM computer that was a smaller version of what they had hoped for. It currently has slots for eight processors but only has two 550 MHz processors, with plans for more to arrive soon. The machine also has limited memory and hasn't yet excited anyone enough to spend significant time on it. However, once fully populated, it is expected to be a fast Linux machine.",
+          "rouge_f1": {
+            "rouge1": 0.31067961165048547,
+            "rouge2": 0.0594059405940594,
+            "rougeL": 0.1941747572815534
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            50,
+            52,
+            53,
+            0
+          ],
+          "retrieval_precision": 0.455078125,
+          "retrieval_recall": 0.625503355704698
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The team discussed that they had received a small IBM machine with potential for expansion, currently equipped with two 550 MHz processors out of the initially planned eight 800 MHz processors. The machine had limited memory and was not extensively used due to lack of excitement. They hoped to receive additional components soon to make it a faster Linux machine.",
+          "rouge_f1": {
+            "rouge1": 0.3870967741935483,
+            "rouge2": 0.13186813186813187,
+            "rougeL": 0.25806451612903225
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            50,
+            52,
+            53,
+            0,
+            2,
+            1,
+            49,
+            38
+          ],
+          "retrieval_precision": 0.36376953125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The team discussed an IBM computer that was initially expected to have eight 800 MHz processors but ended up with only two 550 MHz processors due to a donation discrepancy. The professor mentioned that more components are expected to arrive soon, and once fully populated, the machine will be a fast Linux system with eight processors.",
+          "rouge_f1": {
+            "rouge1": 0.3595505617977528,
+            "rouge2": 0.09195402298850575,
+            "rougeL": 0.2247191011235955
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            56,
+            2
+          ],
+          "retrieval_precision": 0.462890625,
+          "retrieval_recall": 0.3181208053691275
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The team discussed an IBM computer that was donated to them, which currently has slots for eight processors but only two 550 MHz processors have been installed so far. The professor mentioned that more processors are expected to arrive soon, and once fully populated, it will be a fast Linux machine. There was also a mention of existing machines like \"Swede\" that seem fast for running tasks on Linux.",
+          "rouge_f1": {
+            "rouge1": 0.3137254901960784,
+            "rouge2": 0.06,
+            "rougeL": 0.1568627450980392
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            56,
+            2,
+            50,
+            44
+          ],
+          "retrieval_precision": 0.455078125,
+          "retrieval_recall": 0.625503355704698
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The team discussed that they had received a small IBM machine with potential for expansion, currently equipped with two 550 MHz processors out of the initially planned eight 800 MHz processors. There was also mention of hoping to receive additional components to fully populate the machine, which would then become a powerful Linux system with eight processors and ample memory. However, the team had not shown significant enthusiasm for using the current setup due to its underpowered state.",
+          "rouge_f1": {
+            "rouge1": 0.3063063063063063,
+            "rouge2": 0.11009174311926605,
+            "rougeL": 0.21621621621621623
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            56,
+            2,
+            50,
+            44,
+            48,
+            46,
+            49,
+            14
+          ],
+          "retrieval_precision": 0.36376953125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The team discussed that they had a small IBM machine with slots for eight processors, but only received two 550 MHz processors so far. The professor mentioned hoping to receive more parts soon to populate the machine fully with eight processors and sufficient memory, aiming to make it a fast Linux machine.",
+          "rouge_f1": {
+            "rouge1": 0.3529411764705882,
+            "rouge2": 0.14457831325301201,
+            "rougeL": 0.25882352941176473
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            50,
+            2
+          ],
+          "retrieval_precision": 0.91015625,
+          "retrieval_recall": 0.625503355704698
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team discussed an IBM computer that they received, which currently has two 550 MHz processors out of the expected eight 800 MHz processors. The machine is described as a \"little tiny IBM machine\" that might eventually grow into a larger one. The professor mentioned that the team hasn't spent much time on it due to limited excitement but hopes that additional parts will arrive soon, making it a faster Linux machine once fully populated.",
+          "rouge_f1": {
+            "rouge1": 0.33027522935779813,
+            "rouge2": 0.11214953271028036,
+            "rougeL": 0.23853211009174313
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            50,
+            2,
+            49,
+            38
+          ],
+          "retrieval_precision": 0.7275390625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team discussed that they had received a small IBM machine with slots for eight processors, but only two 550 MHz processors were installed so far. The machine was donated by IBM, and more parts were expected to arrive soon. The team expressed that nobody had been sufficiently excited by the current state of the machine to spend much time on it, but they anticipated it would be a powerful Linux machine once fully populated with processors and memory.",
+          "rouge_f1": {
+            "rouge1": 0.35714285714285715,
+            "rouge2": 0.1090909090909091,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            50,
+            2,
+            49,
+            38,
+            56,
+            33,
+            0,
+            44
+          ],
+          "retrieval_precision": 0.36376953125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The team discussed an IBM computer that was initially expected to have eight 800 MHz processors but currently has only two 550 MHz processors. The machine has limited memory and is not yet fully populated. Professor B expressed hope that more parts would arrive soon, making it a faster Linux machine eventually. The team also mentioned that the machine could be used to check multi-threading libraries and run their code, preparing for when it has more processors.",
+          "rouge_f1": {
+            "rouge1": 0.2882882882882883,
+            "rouge2": 0.055045871559633024,
+            "rougeL": 0.14414414414414414
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            48
+          ],
+          "retrieval_precision": 0.484375,
+          "retrieval_recall": 0.33288590604026846
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The team discussed an IBM machine that was donated with slots for eight processors, but they only received two 550 MHz processors so far. The machine currently has a moderate amount of memory and hasn't been extensively utilized due to limited processor availability. However, they hope to receive additional parts soon, which would make it a faster Linux machine once fully populated.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.06382978723404253,
+            "rougeL": 0.18749999999999997
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            48,
+            46,
+            51,
+            49
+          ],
+          "retrieval_precision": 0.4921875,
+          "retrieval_recall": 0.676510067114094
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The team discussed that they had received a small IBM machine with potential for expansion. Professor B mentioned it had slots for eight processors, but they currently only had two 550 MHz processors. More processors were expected to arrive soon, and once fully populated, it would be a fast Linux machine. However, nobody had shown significant excitement towards using it yet due to limited memory and processing power.",
+          "rouge_f1": {
+            "rouge1": 0.31683168316831684,
+            "rouge2": 0.10101010101010101,
+            "rougeL": 0.21782178217821782
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            48,
+            46,
+            51,
+            49,
+            1,
+            0,
+            45,
+            2
+          ],
+          "retrieval_precision": 0.36376953125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The team discussed an IBM computer that was initially expected to have eight 800 MHz processors but currently has only two 550 MHz processors. The professor mentioned that more processors are supposed to arrive soon, and once fully populated, it will be a fast Linux machine. There was also a mention of the current lack of excitement due to limited resources but hope for future improvements.",
+          "rouge_f1": {
+            "rouge1": 0.3636363636363636,
+            "rouge2": 0.08247422680412371,
+            "rougeL": 0.16161616161616163
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            45
+          ],
+          "retrieval_precision": 0.955078125,
+          "retrieval_recall": 0.6563758389261745
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The team discussed an IBM computer that was initially described as a \"little tiny IBM machine\" which was expected to eventually grow into a bigger machine. The machine was supposed to have slots for eight processors, with IBM donating five, but they only received two processors so far, operating at 550 MHz instead of the anticipated 800 MHz. There was also mention of limited memory and the hope that more parts would arrive soon to populate the machine fully. The professor expressed that once populated, it would be a powerful Linux machine.",
+          "rouge_f1": {
+            "rouge1": 0.304,
+            "rouge2": 0.04878048780487806,
+            "rougeL": 0.14400000000000002
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            45,
+            51,
+            40,
+            2
+          ],
+          "retrieval_precision": 0.4775390625,
+          "retrieval_recall": 0.6563758389261745
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The team discussed an IBM computer that they received, which currently has two 550 MHz processors out of the expected eight 800 MHz processors. Professor B mentioned that it is a \"little tiny IBM machine\" that might eventually grow into a powerful system with eight processors and sufficient memory. The team also considered running neural network and HTK (Hidden Markov Model Toolkit) trainings on this machine, which would be running Linux. However, there was no specific discussion about IBM computers beyond this context provided in the meeting excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.3305785123966942,
+            "rouge2": 0.08403361344537816,
+            "rougeL": 0.21487603305785125
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            45,
+            51,
+            40,
+            2,
+            1,
+            49,
+            3,
+            35
+          ],
+          "retrieval_precision": 0.23876953125,
+          "retrieval_recall": 0.6563758389261745
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The team discussed receiving a smaller IBM machine with limited capabilities compared to their initial expectations. They received a machine capable of holding eight processors but only got two 550 MHz processors instead of the hoped-for eight 800 MHz processors. The machine also had a moderate amount of data memory. The professor expressed hope that more parts would arrive soon, making it a faster Linux machine eventually. No one had shown significant excitement about the current state of the machine.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.08928571428571429,
+            "rougeL": 0.17543859649122806
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            51,
+            45
+          ],
+          "retrieval_precision": 0.4921875,
+          "retrieval_recall": 0.338255033557047
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The team discussed an IBM computer that was initially described as a \"little tiny IBM machine\" which was expected to eventually become a bigger machine. This machine was supposed to have slots for eight processors, with IBM donating five, but they only received two so far, operating at 550 MHz instead of the hoped-for 800 MHz. The machine also had limited memory. Professor B expressed hope that once fully populated with processors, it would be a powerful Linux machine. There was also discussion about potentially running neural network trainings and HTK (Hidden Markov Model Toolkit) stuff on Linux, with consideration given to starting with neural network trainings due to their importance for future projects.",
+          "rouge_f1": {
+            "rouge1": 0.28378378378378377,
+            "rouge2": 0.0273972602739726,
+            "rougeL": 0.13513513513513514
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            51,
+            45,
+            49,
+            1
+          ],
+          "retrieval_precision": 0.4775390625,
+          "retrieval_recall": 0.6563758389261745
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The team discussed an IBM computer that they received, which is described as a \"little tiny IBM machine\" intended to eventually become a larger system with eight processors. However, they currently only have two 550 MHz processors out of the expected eight 800 MHz processors. The machine has limited memory, and the team hasn't spent much time working with it due to lack of excitement. They hope to receive additional components soon to fully populate the machine, after which it will be a powerful Linux system.",
+          "rouge_f1": {
+            "rouge1": 0.3,
+            "rouge2": 0.08474576271186442,
+            "rougeL": 0.21666666666666667
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            51,
+            45,
+            49,
+            1,
+            2,
+            40,
+            35,
+            48
+          ],
+          "retrieval_precision": 0.23876953125,
+          "retrieval_recall": 0.6563758389261745
+        },
+        "lumber__dense__w512": {
+          "answer": "The team discussed an IBM computer that was initially expected to have eight 800 MHz processors but currently has only two 550 MHz processors. The machine has limited memory and hasn't excited anyone enough to spend significant time on it yet. However, Professor B hopes that more parts will arrive soon, allowing the machine to reach its full potential with eight processors and adequate memory. Grad G suggested checking if existing machines like \"Swede\" can run tasks on Linux, and Professor B agreed, adding that someone should test the multi-threading libraries and get their code running on the IBM machine with two processors to prepare for future upgrades.",
+          "rouge_f1": {
+            "rouge1": 0.22377622377622372,
+            "rouge2": 0.0425531914893617,
+            "rougeL": 0.1258741258741259
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            52,
+            51
+          ],
+          "retrieval_precision": 0.58984375,
+          "retrieval_recall": 0.4053691275167785
+        },
+        "lumber__dense__w1024": {
+          "answer": "The team discussed that they had a small IBM machine with potential for expansion, currently equipped with two 550 MHz processors out of the initially planned eight 800 MHz processors. The machine had limited memory and had not yet fully met expectations due to insufficient excitement from the team members. However, they anticipated receiving additional components soon which would make it a powerful Linux machine.",
+          "rouge_f1": {
+            "rouge1": 0.3673469387755102,
+            "rouge2": 0.10416666666666667,
+            "rougeL": 0.22448979591836735
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            52,
+            51,
+            42
+          ],
+          "retrieval_precision": 0.7275390625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team discussed an IBM machine that was donated with slots for eight processors, but they only received two 550 MHz processors so far. The machine is seen as potentially useful once fully populated with processors and sufficient memory, though currently, there hasn't been much excitement or utilization due to its limited capacity.",
+          "rouge_f1": {
+            "rouge1": 0.3218390804597701,
+            "rouge2": 0.07058823529411766,
+            "rougeL": 0.20689655172413793
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            52,
+            51,
+            42,
+            53,
+            0,
+            54
+          ],
+          "retrieval_precision": 0.36376953125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The team discussed an IBM machine that IBM was donating to them, which initially was supposed to have eight 800 MHz processors but currently has only two 550 MHz processors. The machine also has a moderate amount of data memory. The professor expressed hope that more parts would arrive soon, allowing the machine to reach its full potential as an eight-processor system with adequate memory. Grad G questioned whether they should continue working on existing machines like \"Swede\" and \"Fudge,\" which seemed fast. Professor B suggested that someone should work on getting their code running on the IBM machine with its current two processors to prepare for when more processors are added.",
+          "rouge_f1": {
+            "rouge1": 0.23287671232876714,
+            "rouge2": 0.05555555555555556,
+            "rougeL": 0.1643835616438356
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            52,
+            54
+          ],
+          "retrieval_precision": 0.49609375,
+          "retrieval_recall": 0.3409395973154362
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The team discussed receiving a smaller IBM machine with limited capabilities compared to what was initially expected. Professor B mentioned that they received an IBM machine with slots for eight processors but only got two processors so far, each operating at 550 MHz instead of the hoped-for 800 MHz. Additionally, there's only a moderate amount of memory in the machine. The professor expressed hope that more parts would arrive soon to populate the machine fully, making it a faster Linux machine eventually.",
+          "rouge_f1": {
+            "rouge1": 0.30769230769230765,
+            "rouge2": 0.05217391304347825,
+            "rougeL": 0.17094017094017094
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            52,
+            54,
+            48,
+            0
+          ],
+          "retrieval_precision": 0.248046875,
+          "retrieval_recall": 0.3409395973154362
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The team discussed receiving a small IBM machine with limited capabilities. They mentioned that IBM was donating processors, but they only received two out of the expected five, and these processors were slower than anticipated (550 MHz instead of 800 MHz). The machine had slots for eight processors and a moderate amount of memory. The team expressed that no one had been sufficiently excited by the machine to spend much time with it, but hoped that once it was fully populated, it would become a powerful Linux machine.",
+          "rouge_f1": {
+            "rouge1": 0.34710743801652894,
+            "rouge2": 0.03361344537815126,
+            "rougeL": 0.1652892561983471
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            52,
+            54,
+            48,
+            0,
+            28,
+            49,
+            50
+          ],
+          "retrieval_precision": 0.1240234375,
+          "retrieval_recall": 0.3409395973154362
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The team discussed an IBM machine that IBM was donating to them, which initially was supposed to have eight 800 MHz processors but currently has only two 550 MHz processors. The machine also has a moderate amount of data memory. The professor expressed hope that more parts would arrive soon, allowing the machine to reach its full potential as an eight-processor system with adequate memory. Grad G questioned whether they should continue working on existing machines like \"Swede\" and \"Fudge,\" which seemed fast. Professor B suggested that someone should work on getting their code running on the IBM machine with its current two processors to prepare for when more processors are added.",
+          "rouge_f1": {
+            "rouge1": 0.23287671232876714,
+            "rouge2": 0.05555555555555556,
+            "rougeL": 0.1643835616438356
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            52,
+            54
+          ],
+          "retrieval_precision": 0.49609375,
+          "retrieval_recall": 0.3409395973154362
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The team discussed that they have a small IBM machine donated by IBM, intended to eventually house eight processors, but currently equipped with only two 550 MHz processors. The machine has limited memory, and the team hasn't shown much excitement towards it due to its current limitations. However, they hope to receive additional components soon, which would make it a faster Linux machine.",
+          "rouge_f1": {
+            "rouge1": 0.30927835051546393,
+            "rouge2": 0.08421052631578947,
+            "rougeL": 0.16494845360824742
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            52,
+            54,
+            0,
+            42
+          ],
+          "retrieval_precision": 0.248046875,
+          "retrieval_recall": 0.3409395973154362
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The team discussed that they had received a small IBM machine with potential for expansion to eight processors, but currently only two 550 MHz processors were installed. The machine had limited memory, and no one had shown significant excitement about it due to its current limitations. However, they hoped to receive additional components soon to make it a faster Linux machine.",
+          "rouge_f1": {
+            "rouge1": 0.34042553191489355,
+            "rouge2": 0.10869565217391304,
+            "rougeL": 0.21276595744680848
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            52,
+            54,
+            0,
+            42,
+            51,
+            3,
+            37
+          ],
+          "retrieval_precision": 0.36376953125,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the team think about delays?",
+      "reference_answer": "The team talked about delays when discussing the removal of frames that were silent. This could possibly improve model performance at the cost of a small delay.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The evidence provided does not contain any direct statements or discussions from the participants about their thoughts on delays. Therefore, the evidence is insufficient to determine what the team thought about delays.",
+          "rouge_f1": {
+            "rouge1": 0.2711864406779661,
+            "rouge2": 0.07017543859649122,
+            "rougeL": 0.20338983050847456
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            50,
+            46
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The team acknowledged delays introduced by certain methods like LDA, noting that it introduces a 200-millisecond delay. However, they considered this acceptable within the project's constraints and timelines, aiming to balance improvements in word error rates with the introduction of delays. There was no explicit statement of concern over these delays beyond acknowledging their presence.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.024390243902439025,
+            "rougeL": 0.21428571428571427
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            50,
+            46,
+            45
+          ],
+          "retrieval_precision": 0.1494140625,
+          "retrieval_recall": 0.8793103448275862
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The team mentioned delays in the context of voice activity detection and on-line normalization techniques being explored by another group. Specifically, PhD A noted that such techniques \"introduce delays,\" to which Professor B responded that \"it does introduce delays but they're claiming that it's within the boundaries of it.\" There is no further discussion among the team members about their thoughts on these delays beyond acknowledging their existence.",
+          "rouge_f1": {
+            "rouge1": 0.24489795918367344,
+            "rouge2": 0.020833333333333332,
+            "rougeL": 0.1836734693877551
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            50,
+            46,
+            45,
+            44,
+            33,
+            2,
+            1,
+            38
+          ],
+          "retrieval_precision": 0.0849609375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The team acknowledged that the proposed method would introduce delays, but Professor B suggested that these delays were within acceptable limits. Specifically, Professor B mentioned that the LDA introduces delays, but the proposed parallel path aims to avoid additional delays, introducing only 200 milliseconds of delay. PhD A noted the introduction of delays, while Professor B emphasized that the delays were manageable according to the claims made.",
+          "rouge_f1": {
+            "rouge1": 0.2340425531914894,
+            "rouge2": 0.021739130434782608,
+            "rougeL": 0.19148936170212766
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            45,
+            56
+          ],
+          "retrieval_precision": 0.33984375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The team acknowledged that delays are introduced by certain processes, such as the LDA (Linear Discriminant Analysis), but believed these delays are within acceptable boundaries. Specifically, Professor B noted that while the LDA introduces a delay of two hundred milliseconds, the suggested parallel path aims to mitigate additional delays. PhD A also mentioned that introducing delays is a potential consequence of implementing silence detection mechanisms.",
+          "rouge_f1": {
+            "rouge1": 0.2173913043478261,
+            "rouge2": 0.022222222222222223,
+            "rougeL": 0.1956521739130435
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            45,
+            56,
+            2,
+            49
+          ],
+          "retrieval_precision": 0.169921875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The team discussed delays introduced by voice activity detection and LDA (Linear Discriminant Analysis). Specifically, Professor B mentioned that while such methods introduce delays, they claimed these delays are within acceptable boundaries. PhD A noted that these delays could affect real-time transmission, but Professor B suggested that the delays were manageable, introducing only about 200 milliseconds. The team acknowledged the presence of delays but seemed to consider them acceptable for the purposes of their evaluations and experiments.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.01941747572815534,
+            "rougeL": 0.1523809523809524
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            45,
+            56,
+            2,
+            49,
+            14,
+            38,
+            46,
+            48
+          ],
+          "retrieval_precision": 0.0849609375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The team acknowledged that the proposed method introduces delays, but Professor B suggested that these delays are within acceptable limits. Specifically, Professor B mentioned that the LDA introduces a 200-millisecond delay, which is claimed to be within acceptable boundaries. PhD A noted that such modifications would indeed introduce delays.",
+          "rouge_f1": {
+            "rouge1": 0.20779220779220778,
+            "rouge2": 0.026666666666666665,
+            "rougeL": 0.18181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            45,
+            46
+          ],
+          "retrieval_precision": 0.33984375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team acknowledged that delays are introduced by certain processes, such as silence detection and LDA (Linear Discriminant Analysis). Specifically, Professor B noted that while the LDA introduces delays, the suggested parallel path aims to avoid additional delays, introducing only 200 milliseconds of delay. This delay is considered acceptable within the project's constraints. PhD A highlighted that these delays are a concern but seemed to accept them as necessary for achieving better word error rates and evaluation outcomes.",
+          "rouge_f1": {
+            "rouge1": 0.18867924528301888,
+            "rouge2": 0.019230769230769232,
+            "rougeL": 0.16981132075471697
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            45,
+            46,
+            2
+          ],
+          "retrieval_precision": 0.169921875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team mentioned that delays introduced by silence detection and voice activity detection are within acceptable boundaries. Specifically, Professor B noted that while such processes introduce delays (around 200 milliseconds), these delays are claimed to be within acceptable limits for the system's operation.",
+          "rouge_f1": {
+            "rouge1": 0.16901408450704225,
+            "rouge2": 0.028985507246376812,
+            "rougeL": 0.1408450704225352
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            45,
+            46,
+            2,
+            38,
+            49,
+            27,
+            48,
+            0
+          ],
+          "retrieval_precision": 0.0849609375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The evidence provided does not contain any direct statements or discussions about the team's thoughts on delays. Therefore, the evidence is insufficient to determine what the team thought about delays.",
+          "rouge_f1": {
+            "rouge1": 0.27586206896551724,
+            "rouge2": 0.07142857142857144,
+            "rougeL": 0.20689655172413793
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            43
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The team acknowledged that delays are introduced by certain processes, such as the LDA, but noted that these delays are claimed to be within acceptable boundaries. Specifically, Professor B mentioned that \"It does introduce delays but they're claiming that it's within the boundaries of it.\" Additionally, Professor B suggested that the proposed parallel path might mitigate additional delays, stating, \"what he's suggesting this here is a parallel path so that it doesn't introduce any more delay.\"",
+          "rouge_f1": {
+            "rouge1": 0.18691588785046728,
+            "rouge2": 0.01904761904761905,
+            "rougeL": 0.16822429906542058
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            43,
+            41,
+            46
+          ],
+          "retrieval_precision": 0.169921875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The team acknowledged that delays were introduced by certain methods, specifically mentioning that the LDA introduces delays and that the proposed parallel path introduces approximately 200 milliseconds of delay. However, they considered these delays acceptable within the context of their project constraints.",
+          "rouge_f1": {
+            "rouge1": 0.2898550724637681,
+            "rouge2": 0.029850746268656723,
+            "rougeL": 0.2318840579710145
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            43,
+            41,
+            46,
+            24,
+            45,
+            1,
+            7
+          ],
+          "retrieval_precision": 0.0849609375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The team acknowledged that delays were introduced by certain methods such as LDA, but they believed these delays were manageable and within acceptable boundaries. Specifically, Professor B mentioned a two-hundred-millisecond delay introduced by the temporal LDA (TLDA) method, which was seen as a tentative solution to avoid additional delays. PhD A initially highlighted the issue of delays but seemed to accept the proposed solution afterward. Overall, while delays were recognized as a concern, the team appeared to view them as solvable issues rather than major obstacles.",
+          "rouge_f1": {
+            "rouge1": 0.17391304347826086,
+            "rouge2": 0.017699115044247787,
+            "rougeL": 0.12173913043478261
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            45
+          ],
+          "retrieval_precision": 0.33984375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The team acknowledged that the proposed method introduces delays but believes these delays are within acceptable boundaries. Specifically, Professor B mentioned that \"It does introduce delays but they're claiming that it's within the boundaries of it.\" Additionally, Professor B noted that the temporal LDA introduces a two-hundred-millisecond delay but suggested that this delay is mitigated by a parallel path design. PhD A highlighted the introduction of delays by stating, \"Plus it's gonna introduce delays.\" Overall, while the team recognized the presence of delays, they seemed to accept them as manageable within the context of the project's goals.",
+          "rouge_f1": {
+            "rouge1": 0.1692307692307692,
+            "rouge2": 0.015625,
+            "rougeL": 0.15384615384615383
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            45,
+            51,
+            40,
+            49
+          ],
+          "retrieval_precision": 0.169921875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The team discussed delays introduced by voice activity detection (VAD) and silence removal. Professor B mentioned that while VAD introduces delays, they claimed these delays are within acceptable boundaries. Specifically, a delay of two hundred milliseconds was noted, but it was suggested that this delay could be mitigated by using a parallel path. PhD A acknowledged that such methods would introduce delays but seemed to accept this as a necessary trade-off for improved performance.",
+          "rouge_f1": {
+            "rouge1": 0.25490196078431376,
+            "rouge2": 0.02,
+            "rougeL": 0.19607843137254902
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            45,
+            51,
+            40,
+            49,
+            2,
+            35,
+            1,
+            43
+          ],
+          "retrieval_precision": 0.0849609375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The team acknowledged that delays are introduced by certain processes like LDA, but they also noted that these delays are claimed to be within acceptable boundaries (around 200 milliseconds). Professor B suggested that the proposed parallel path might mitigate additional delays. PhD A expressed concern about the introduction of delays, while Professor B seemed to accept them as manageable given the benefits in word error rates and evaluation improvements.",
+          "rouge_f1": {
+            "rouge1": 0.22916666666666666,
+            "rouge2": 0.02127659574468085,
+            "rougeL": 0.14583333333333334
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            2
+          ],
+          "retrieval_precision": 0.33984375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The team acknowledged that delays are introduced by certain processes, such as the LDA (Linear Discriminant Analysis), which adds approximately 200 milliseconds of delay. However, they considered these delays acceptable if they fall within operational boundaries and do not significantly impact performance. Specifically, Professor B noted that while delays are introduced, they are claimed to be within acceptable limits. PhD A mentioned that additional delays could be a concern but did not express strong opposition to them. Overall, the team seemed to accept delays as a necessary trade-off for improved performance and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.19834710743801653,
+            "rouge2": 0.01680672268907563,
+            "rougeL": 0.14876033057851237
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            2,
+            45,
+            43
+          ],
+          "retrieval_precision": 0.169921875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The team acknowledged that the proposed method introduces delays, but Professor B noted that these delays are claimed to be within acceptable boundaries. Specifically, Professor B mentioned, \"It does introduce delays but they're claiming that it's within the boundaries of it.\" Additionally, Professor B clarified that the suggested parallel path aims to avoid introducing further delay, stating, \"what he's suggesting this here is a parallel path so that it doesn't introduce any more delay.\"",
+          "rouge_f1": {
+            "rouge1": 0.19047619047619047,
+            "rouge2": 0.01941747572815534,
+            "rougeL": 0.17142857142857146
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            2,
+            45,
+            43,
+            24,
+            1,
+            35,
+            51,
+            49
+          ],
+          "retrieval_precision": 0.0849609375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The evidence provided does not contain any explicit statements or discussions about the team's thoughts on delays. Therefore, the evidence is insufficient to determine what the team thought about delays.",
+          "rouge_f1": {
+            "rouge1": 0.27586206896551724,
+            "rouge2": 0.07142857142857144,
+            "rougeL": 0.20689655172413793
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            49
+          ],
+          "retrieval_precision": 0.00390625,
+          "retrieval_recall": 0.011494252873563218
+        },
+        "lumber__dense__w1024": {
+          "answer": "The team acknowledged delays and discussed the need to manage their time carefully. Professor B emphasized choosing experiments wisely to address key questions before certain deadlines, possibly implying delays or upcoming constraints. There was also mention of computational limits and resource management challenges, such as a table taking over five days to process, indicating concerns related to delays in processing times and resource availability.",
+          "rouge_f1": {
+            "rouge1": 0.19780219780219782,
+            "rouge2": 0.0449438202247191,
+            "rougeL": 0.19780219780219782
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            49,
+            51
+          ],
+          "retrieval_precision": 0.001953125,
+          "retrieval_recall": 0.011494252873563218
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team acknowledged delays introduced by certain processes, such as the use of LDA and the transmission of voice, which can cut off speech and introduce delays. However, they noted that the delays claimed were within acceptable boundaries. Specifically, Professor B mentioned that the LDA introduces delays, but suggested a parallel path to avoid additional delays, stating that the proposed method introduces only 200 milliseconds of delay.",
+          "rouge_f1": {
+            "rouge1": 0.2340425531914894,
+            "rouge2": 0.021739130434782608,
+            "rougeL": 0.21276595744680848
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            49,
+            51,
+            48,
+            37,
+            1,
+            33
+          ],
+          "retrieval_precision": 0.0849609375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The team acknowledged that delays were introduced by certain methods like LDA, but they believed these delays were within acceptable limits. Specifically, Professor B mentioned that while the method introduces a delay of two hundred milliseconds, it was claimed to be within operational boundaries. PhD A noted that the proposed changes would \"introduce delays,\" to which Professor B responded that although delays are present, they are managed through a parallel path design to avoid additional delays beyond the initial two hundred milliseconds.",
+          "rouge_f1": {
+            "rouge1": 0.18348623853211007,
+            "rouge2": 0.01869158878504673,
+            "rougeL": 0.1651376146788991
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            54
+          ],
+          "retrieval_precision": 0.3359375,
+          "retrieval_recall": 0.9885057471264368
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The team discussed delays primarily in the context of voice transmission and processing. Specifically, PhD A noted that the setup would introduce delays, to which Professor B responded that while delays are introduced, they claimed it was within acceptable boundaries. Additionally, Professor B mentioned that the LDA (Linear Discriminant Analysis) also introduces delays, but suggested a parallel path to avoid additional delays, noting that the proposed method introduces a two-hundred-millisecond delay. Overall, the team acknowledged the presence of delays but seemed to consider them manageable within the project's constraints.",
+          "rouge_f1": {
+            "rouge1": 0.18487394957983194,
+            "rouge2": 0.017094017094017096,
+            "rougeL": 0.1512605042016807
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            54,
+            0,
+            28,
+            42
+          ],
+          "retrieval_precision": 0.16796875,
+          "retrieval_recall": 0.9885057471264368
+        },
+        "lumber__bm25__w2048": {
+          "answer": "PhD A noted that the proposed method introduces delays, but Professor B clarified that these delays are within acceptable limits and suggested that a parallel path could mitigate additional delays. There was no explicit consensus or further discussion among the team members regarding their thoughts on the delays beyond this point.",
+          "rouge_f1": {
+            "rouge1": 0.2820512820512821,
+            "rouge2": 0.026315789473684213,
+            "rougeL": 0.15384615384615383
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            54,
+            0,
+            28,
+            42,
+            49,
+            50,
+            34,
+            51
+          ],
+          "retrieval_precision": 0.0849609375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The team acknowledged that delays were introduced by certain processes like LDA, but they believed these delays were within acceptable limits. Specifically, Professor B mentioned that while the LDA introduces delays, the suggested parallel path was intended not to introduce additional delays, and even if it did, it would only add 200 milliseconds. PhD A noted that the delays were a concern but seemed to accept the explanation provided by Professor B.",
+          "rouge_f1": {
+            "rouge1": 0.18181818181818182,
+            "rouge2": 0.02061855670103093,
+            "rougeL": 0.14141414141414144
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            42,
+            49
+          ],
+          "retrieval_precision": 0.33984375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The team acknowledged that delays were introduced by certain processes, such as the LDA, but believed these delays were within acceptable limits (\"it's within the boundaries of it\"). Additionally, they discussed the possibility of introducing a parallel path to avoid additional delays. Overall, the focus was on managing and minimizing delays while prioritizing key experiments and evaluations within the remaining timeframe.",
+          "rouge_f1": {
+            "rouge1": 0.29213483146067415,
+            "rouge2": 0.04597701149425287,
+            "rougeL": 0.20224719101123595
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            42,
+            49,
+            54
+          ],
+          "retrieval_precision": 0.169921875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "PhD A noted that the proposed system introduces delays, but Professor B clarified that these delays are claimed to be within acceptable boundaries. Additionally, Professor B mentioned that the LDA (Linear Discriminant Analysis) also introduces delays, though a parallel path is suggested to avoid additional delays. The team seemed to acknowledge the presence of delays but considered them manageable within the context of their project.",
+          "rouge_f1": {
+            "rouge1": 0.2173913043478261,
+            "rouge2": 0.022222222222222223,
+            "rougeL": 0.13043478260869565
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            48,
+            42,
+            49,
+            54,
+            0,
+            51,
+            28,
+            53
+          ],
+          "retrieval_precision": 0.0849609375,
+          "retrieval_recall": 1.0
+        }
+      }
+    }
+  ]
+}

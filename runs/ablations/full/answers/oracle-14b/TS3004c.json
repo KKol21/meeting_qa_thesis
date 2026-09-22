@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "TS3004c.json",
+        "sha256": "7006c465d59b87ca69f890499b0a8e4675b73dbe4182154fb59d3c45415c7e5c"
+      }
+    },
+    "input_hash": "c56b3432b4b570672632226f441a25cb5d39692a06018fbe7f62240c0509ae1e",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "9bad8f5c60fad32a61852ed75043ed485dd490439dc57a267c97edc4ef234a7f",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "TS3004c",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the presentation on the market trend.",
+      "reference_answer": "Marketing gave the presentation on the remote control market. Marketing suggested that the first most important aspect of remote controls should be with a fancy look and feel instead of the current functional look and feel. And the second most important aspect was that a remote control should be technologically innovative. Lastly, Marketing suggested the spongy material and colour fronts.",
+      "results": {
+        "oracle": {
+          "answer": "The presentation on the market trend highlighted that the most important aspect for remote controls is a fancy look-and-feel, which is twice as important as technological innovation. The research indicated that remote controls should have an original appearance and interface. Technological innovation was considered the second most important aspect, though the team had previously decided against using LCD or speech recognition. Additionally, the remote control should be easy to use, with a target audience of young and trendy users. There was also a suggestion that the material should feel spongy or soft, possibly making it flexible and stress-relieving.",
+          "rouge_f1": {
+            "rouge1": 0.5590062111801243,
+            "rouge2": 0.3018867924528302,
+            "rougeL": 0.3975155279503106
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              0,
+              110
+            ]
+          ],
+          "evidence_words": 1326
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Marketing think of making spongy remote when presenting the market trend?",
+      "reference_answer": "When User Interface asked the group how to make the spongy remote, Marketing thought about changeable fronts and some basic colour fronts because a fancy look was the most important thing for remote control. So they could make five different fronts to start with. Marketing also mentioned that it could be round, different from a normal remote control.",
+      "results": {
+        "oracle": {
+          "answer": "Marketing suggested a sponge-like shape as one of the ideas for making the remote control stand out, but seemed unsure about it, indicating a tentative approval. They emphasized that the most important aspect was a fancy look and proposed changeable fronts as a solution, suggesting a sponge shape could be considered among other shapes for discussion.",
+          "rouge_f1": {
+            "rouge1": 0.4173913043478261,
+            "rouge2": 0.1415929203539823,
+            "rougeL": 0.20869565217391306
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              79,
+              93
+            ]
+          ],
+          "evidence_words": 203
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did User Interface recommend to do when discussing the technology innovation and why?",
+      "reference_answer": "User Interface recommended the speech recognition when Marketing asked how to do with technological innovation because User Interface knew from the technology department that they had done research about it and recommended using speech. And User Interface would also check with the technology department on how to do that.",
+      "results": {
+        "oracle": {
+          "answer": "User Interface recommended using speech technology based on research from the technology department, which suggested there were more possibilities now with speech.",
+          "rouge_f1": {
+            "rouge1": 0.39436619718309857,
+            "rouge2": 0.2028985507246377,
+            "rougeL": 0.2816901408450704
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              93,
+              110
+            ]
+          ],
+          "evidence_words": 182
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about remote control features.",
+      "reference_answer": "The group decided to have the normal batteries, the scroll wheel with rubber buttons together with back-lights, the beeping of the home station, the round shape as well as the speech recognition with an advanced chip. And they would skip the LCD because they would need the most expensive chip if they used an LCD.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed several aspects of remote control features including:\n\n- **Battery Type**: They decided to use rechargeable batteries rather than solar cells or kinetic energy sources.\n- **Scroll Wheel**: They agreed to include a scroll wheel for volume control but debated its placement and functionality, ultimately deciding against using it for channel changing due to potential overscroll issues.\n- **Chip Selection**: They chose a regular chip over an LCD chip to avoid additional costs and complexity.\n- **Design Trends**: They aimed for a modern, non-square design with rounded corners, inspired by devices like iPods, to appeal to a younger audience.\n- **Speech Recognition**: Initially considered but deemed too complex, they eventually decided to include it as a feature despite uncertainty about its implementation details and cost implications.\n\nThese decisions were made through collaborative discussions among the User Interface, Marketing, and Industrial Designer roles, with input from the Project Manager guiding the timeline and feasibility constraints.",
+          "rouge_f1": {
+            "rouge1": 0.24038461538461542,
+            "rouge2": 0.03883495145631068,
+            "rougeL": 0.125
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              371,
+              838
+            ]
+          ],
+          "evidence_words": 4446
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did Project Manager think of the shape of the remote when discussing the remote and the recharger contact?",
+      "reference_answer": "Marketing and User Interface suggested the group could choose the shape of the remote either like an iPod square or a more innovative round shape. Project Manager thought they should choose a round shape with rounded corners, instead of looking like an iPod so that would be more innovative.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence is insufficient to determine what Project Manager thought specifically about the shape of the remote when discussing the remote and the recharger contact. The excerpts provided do not contain any statements from the Project Manager regarding the shape of the remote in relation to the recharger contact.",
+          "rouge_f1": {
+            "rouge1": 0.24489795918367346,
+            "rouge2": 0.125,
+            "rougeL": 0.20408163265306123
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              133,
+              166
+            ]
+          ],
+          "evidence_words": 569
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What was the conclusion about choosing a regular chip or an advanced chip inside the speech recognition when discussing the remote features?",
+      "reference_answer": "Marketing emphasized on the importance of technology innovation. So Project Manager suggested putting the speech recognition in the remote directly and they would need an advanced chip. The group agreed on it and Industrial Designer supplemented that the division had developed a new and inexpensive speech recognition feature: the integrated programmable sample sensor, indicating that the cost would not be too much.",
+      "results": {
+        "oracle": {
+          "answer": "The conclusion from the meeting excerpts indicates a preference for an advanced chip over a regular one for implementing the speech recognition feature. The Project Manager suggested needing an advanced chip for the function, and this was agreed upon by the Industrial Designer. However, there was uncertainty regarding the cost information for the chip.",
+          "rouge_f1": {
+            "rouge1": 0.41379310344827586,
+            "rouge2": 0.19298245614035087,
+            "rougeL": 0.25862068965517243
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              779,
+              807
+            ]
+          ],
+          "evidence_words": 232
+        }
+      }
+    }
+  ]
+}

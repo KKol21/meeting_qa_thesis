@@ -1,0 +1,232 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "IS1003a.json",
+        "sha256": "81414199f88de17cef5f27e2cc832f333428386ba6b83e64a54561b76725f018"
+      }
+    },
+    "input_hash": "6e86e383f80815aa30a0d11943860ada0a8ec62114448dfd00605a6c39be80ed",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "6589cdd14b827fbe235ba7cf20021511da78a6fbf6e17a130b52a3ecc84d3242",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "IS1003a",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about the product features.",
+      "reference_answer": "The remote control had to be original, trendy, easy to use, international and not too expensive.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about product features centered around creating an international, user-friendly, and affordable remote control. Key points included:\n\n- The remote control should be original, trendy, and user-friendly.\n- It must be designed to appeal to a global market, avoiding overly specific features.\n- The product cost should not exceed €12.50.\n- The design should incorporate common international standards (e.g., keyboard layouts) to ensure usability across different regions.\n- New functionalities should be introduced to differentiate from existing remote controls in the market.\n- The design process involves individual work and collaborative meetings to refine the functional, conceptual, and detailed designs.\n- The team aims to make the remote control simple, easy to use, and attractive to consumers.",
+          "rouge_f1": {
+            "rouge1": 0.1984732824427481,
+            "rouge2": 0.09302325581395349,
+            "rougeL": 0.15267175572519084
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              4,
+              4
+            ],
+            [
+              28,
+              34
+            ],
+            [
+              113,
+              140
+            ]
+          ],
+          "evidence_words": 484
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did Project Manager propose that the product should be international when discussing the product features?",
+      "reference_answer": "Because it would be sold in the entire world and everyone would use it.",
+      "results": {
+        "oracle": {
+          "answer": "The Project Manager proposed that the product should be international because they wanted to sell it worldwide, specifically mentioning that the product costs would not exceed twelve Euros and fifty centimes. The Project Manager also emphasized that the remote control needed to be designed with the idea that everyone would have to use it, drawing a parallel to keyboards which have different layouts like Qwerty, Azerty, French, and U_K_. This indicated the need for the remote control to be adaptable and usable across different regions and cultures.",
+          "rouge_f1": {
+            "rouge1": 0.19607843137254902,
+            "rouge2": 0.04,
+            "rougeL": 0.17647058823529413
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              28,
+              30
+            ],
+            [
+              113,
+              121
+            ]
+          ],
+          "evidence_words": 158
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Summarize the conclusion of the discussion about the product price and cost as a part of the product features.",
+      "reference_answer": "The remote control would be priced at 25 Euros and the product cost would be no more than 12.5 Euros.",
+      "results": {
+        "oracle": {
+          "answer": "The conclusion of the discussion about the product price and cost as part of the product features was that the selling price would be twenty-five Euros, which was considered reasonable and not too expensive. The project manager emphasized the need to maximize the benefit while keeping the cost under twelve Euros and fifty cents.",
+          "rouge_f1": {
+            "rouge1": 0.26315789473684215,
+            "rouge2": 0.08108108108108109,
+            "rougeL": 0.21052631578947364
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              19,
+              25
+            ],
+            [
+              122,
+              132
+            ]
+          ],
+          "evidence_words": 128
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about the work division of the project.",
+      "reference_answer": "Project manager would manage the whole group. Industrial Designer would think of the functions of the product. User interface designer would concentrate on the users' requirement and the relation between the users and the remote control. Marketing would give interface designer and industrial designer some trends about what should be done and what the users would like to have.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the work division of the project was as follows:\n\n- **Project Manager** will manage the entire group.\n- **Industrial Designer (I_D_)** will handle the industrial design, focusing on how the object will look like.\n- **User Interface Designer (U_I_D_)**, represented by **User Interface**, will design the user interface, including where buttons will be placed and how the user interacts with the remote control.\n- **Marketing Expert (Marketing)** will provide market trends and user preferences to guide the design process.\n\nThere was some initial confusion about the roles, particularly regarding the distinction between user interface design and industrial design, but these roles were eventually clarified.",
+          "rouge_f1": {
+            "rouge1": 0.47272727272727266,
+            "rouge2": 0.19631901840490798,
+            "rougeL": 0.3272727272727273
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              35,
+              112
+            ]
+          ],
+          "evidence_words": 565
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What was the industrial designer's opinion about the job of user interface designer when discussing the work division?",
+      "reference_answer": "Industrial designer thought user interface designer's job was to focus on the relation between the users and the remote control and decide how the object looks – for example, where the button would be.",
+      "results": {
+        "oracle": {
+          "answer": "The industrial designer believed that the user interface designer would design the placement of buttons and other elements to facilitate the user's interaction with the product, stating, \"I was thinking that he's a user 'cause the user interface to design for example where the but button will be, you know.\"",
+          "rouge_f1": {
+            "rouge1": 0.48837209302325585,
+            "rouge2": 0.16666666666666669,
+            "rougeL": 0.372093023255814
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              89,
+              100
+            ]
+          ],
+          "evidence_words": 141
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What was the conclusion of the discussion about the difference between the industrial designer and user interface designer?",
+      "reference_answer": "Industrial Designer would design the functions and figure out the industrial way to implement it while the user interface designer's job was to decide how the object looked. In short, the two were like the inside and the outside.",
+      "results": {
+        "oracle": {
+          "answer": "The conclusion of the discussion was that the industrial designer focuses on the physical appearance and functionality of the product, specifically how it looks and how its components are arranged. The user interface designer, on the other hand, focuses on the interaction between the user and the product, designing elements such as buttons and controls for ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.40404040404040403,
+            "rouge2": 0.12371134020618557,
+            "rougeL": 0.30303030303030304
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              71,
+              104
+            ]
+          ],
+          "evidence_words": 295
+        }
+      }
+    }
+  ]
+}

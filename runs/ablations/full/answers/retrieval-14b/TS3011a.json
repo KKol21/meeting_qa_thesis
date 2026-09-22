@@ -1,0 +1,3622 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "TS3011a.json",
+        "sha256": "05e4b8e3849f91786bf72293a1f2d066f6d2c3ddc92f31373781f061794cb963"
+      },
+      "retrieval": {
+        "file": "TS3011a.json",
+        "sha256": "85d30cf6954688a15f1e075d3e184bf42acdcc4d9c794545c33002fdaabe540f"
+      },
+      "segmentation": {
+        "file": "TS3011a.json",
+        "sha256": "338cd8d1150acbfff6b0f030f535e1a1128bfdc26a06cb120c5a69c26098ccf8"
+      }
+    },
+    "input_hash": "0ab529516c28c58a7add56c5c7d7cb2818f4303c2d83aa8d3f6307c66175a443",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "4446920e4f59b4999c501e266a1dfc51bb8d877ff9b8f1bb2cd9d94785afbb01",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "TS3011a",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 150,
+  "cache_hits": 12,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about remote control functions.",
+      "reference_answer": "Industrial Designer proposed that a modern remote control should control a diverse subset of equipment. User Interface agreed and revealed that the function of the remote control is to change the state of the TV, which could be realized by pressing the button.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The discussion about remote control functions focused on making the remote control interoperable across different devices, changing TV states, and considering various control methods such as buttons, touch-screens, and sticks for ease of use. The participants also mentioned the vulnerability of certain designs and the potential disturbance caused by having to point directly at the TV for operation.",
+          "rouge_f1": {
+            "rouge1": 0.411764705882353,
+            "rouge2": 0.08,
+            "rougeL": 0.23529411764705882
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            10,
+            11
+          ],
+          "retrieval_precision": 0.708984375,
+          "retrieval_recall": 0.4101694915254237
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The discussion about remote control functions focused on creating a universal remote control that could operate multiple devices. Key points included:\n\n- The remote should be interoperable, capable of controlling various TVs or devices.\n- Basic functionality involves changing the TV's state by pressing buttons.\n- Additional controls such as touch-screens or sticks for easier navigation were suggested.\n- Concerns were raised about the vulnerability of certain controls, particularly those that might break easily.\n- Suggestions were made for alternative user interfaces, such as pointing at the TV without needing precise alignment.",
+          "rouge_f1": {
+            "rouge1": 0.40909090909090906,
+            "rouge2": 0.10769230769230768,
+            "rougeL": 0.19696969696969696
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            10,
+            11,
+            3,
+            8
+          ],
+          "retrieval_precision": 0.6123046875,
+          "retrieval_recall": 0.7084745762711865
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The discussion about remote control functions focused on making the remote control versatile and user-friendly. Key points included:\n\n- **Interoperability**: The remote should control multiple devices such as TVs, DVD players, and possibly cell phones.\n- **Communication Methods**: Consideration of modern communication methods like Bluetooth instead of just infrared, though cost-effectiveness of infrared was noted.\n- **User Interaction**: Use of buttons, potentially including a directional stick for easier navigation, and possibly a touch screen.\n- **Display**: A simple display showing functions could enhance usability.\n- **Design Constraints**: The product should be affordable, with a target cost of around €12.50, limiting its high-end features.\n\nThese points were discussed to ensure the remote control meets user needs while being commercially viable.",
+          "rouge_f1": {
+            "rouge1": 0.3105590062111801,
+            "rouge2": 0.05031446540880504,
+            "rougeL": 0.16149068322981366
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            10,
+            11,
+            3,
+            8,
+            2,
+            15,
+            9,
+            13
+          ],
+          "retrieval_precision": 0.41064453125,
+          "retrieval_recall": 0.9502824858757062
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The discussion about remote control functions focused on the idea of creating a universal remote control capable of operating various devices such as DVD players, cell phones, and audio/video equipment. The Industrial Designer emphasized the importance of considering modern communication technologies like Bluetooth over traditional infrared due to its outdated nature. However, the User Interface pointed out that most TVs still use infrared, suggesting a potential need for compatibility with both technologies. Additionally, the possibility of incorporating a display on the remote control to simplify operation was briefly mentioned.",
+          "rouge_f1": {
+            "rouge1": 0.3759398496240602,
+            "rouge2": 0.07633587786259541,
+            "rougeL": 0.21052631578947367
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9,
+            15
+          ],
+          "retrieval_precision": 0.447265625,
+          "retrieval_recall": 0.25875706214689265
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The discussion about remote control functions focused on making the remote control original, trendy, and user-friendly. Key points included:\n\n- Interoperability: The remote should control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment.\n- Communication methods: While Bluetooth was suggested as a modern alternative, the group acknowledged that infrared remains widely used due to its cost-effectiveness, though both technologies could potentially be integrated.\n- Display functionality: Consideration was given to incorporating a display on the remote to make it easier to operate, with a preference for simplicity and visibility in dark conditions.\n- Cost constraints: The project has a budget limit of €12.50, implying the product cannot be high-end, and considerations must be made for durability (e.g., preventing fading of button markings).",
+          "rouge_f1": {
+            "rouge1": 0.3236994219653179,
+            "rouge2": 0.11695906432748539,
+            "rougeL": 0.2312138728323699
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9,
+            15,
+            1,
+            2
+          ],
+          "retrieval_precision": 0.2236328125,
+          "retrieval_recall": 0.25875706214689265
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The discussion about remote control functions focused on making the remote control original, trendy, and user-friendly. Key points included:\n\n- Interoperability: The remote should control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment.\n- Communication methods: Consideration of modern communication technologies like Bluetooth over traditional infrared.\n- User interface: Buttons should be visible in dark conditions (glow-in-the-dark feature) and have clear markings that do not fade.\n- Display: A display on the remote to show functions, potentially simplifying operation.\n- Cost constraints: The product must be developed within a cost limit of twelve euros fifty, implying it may not be a high-end product.",
+          "rouge_f1": {
+            "rouge1": 0.3660130718954248,
+            "rouge2": 0.13245033112582782,
+            "rougeL": 0.2483660130718954
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9,
+            15,
+            1,
+            2,
+            10,
+            3,
+            7,
+            6,
+            14
+          ],
+          "retrieval_precision": 0.25830078125,
+          "retrieval_recall": 0.5977401129943503
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The discussion about remote control functions focused on the concept of interoperability, where one remote control could operate multiple types of devices such as DVD players, cell phones, and audio/video equipment. The Industrial Designer emphasized the importance of this feature and suggested discussing how these devices should communicate with each other. The User Interface echoed the idea of interoperability and added that the remote should work across different devices. No specific details were provided about the actual functioning mechanisms or user interaction beyond the goal of broad compatibility.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333337,
+            "rouge2": 0.0923076923076923,
+            "rougeL": 0.19696969696969696
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            9
+          ],
+          "retrieval_precision": 0.947265625,
+          "retrieval_recall": 0.5480225988700564
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The discussion about remote control functions focused on making the remote control versatile and compatible with various devices such as televisions, DVD players, cell phones, and audio/video equipment. The team considered incorporating both infrared and Bluetooth technologies for communication. They also discussed the importance of simplicity and visibility of controls, especially in low-light conditions, while keeping costs low to ensure affordability. The goal was to create a trendy yet practical remote control that could operate multiple devices efficiently.",
+          "rouge_f1": {
+            "rouge1": 0.3089430894308943,
+            "rouge2": 0.049586776859504134,
+            "rougeL": 0.1788617886178862
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            9,
+            15,
+            3
+          ],
+          "retrieval_precision": 0.4736328125,
+          "retrieval_recall": 0.5480225988700564
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The discussion about remote control functions focused on making the remote control versatile and user-friendly. Key points included:\n\n- **Interoperability**: The remote should control multiple devices such as TVs, DVD players, and possibly cell phones.\n- **Communication Methods**: Consideration of modern communication methods like Bluetooth alongside traditional infrared.\n- **Ease of Use**: Basic functionality involves changing TV states through button presses, but alternative controls like touch-screens or sticks were suggested.\n- **Display**: A display on the remote to show functions could enhance usability.\n- **Design Constraints**: The product should be affordable, with a target cost of €12.50, limiting its high-end features.",
+          "rouge_f1": {
+            "rouge1": 0.4055944055944056,
+            "rouge2": 0.05673758865248227,
+            "rougeL": 0.1678321678321678
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            9,
+            15,
+            3,
+            2,
+            12,
+            11,
+            1
+          ],
+          "retrieval_precision": 0.41064453125,
+          "retrieval_recall": 0.9502824858757062
+        },
+        "word_packed__dense__w512": {
+          "answer": "The discussion about remote control functions focused on the idea of creating a universal remote control capable of operating various devices such as DVD players, cell phones, and audio/video equipment. The team considered modern communication technologies like Bluetooth over traditional infrared methods. Additionally, they explored different control mechanisms including buttons, touch-screens, and sticks for user interaction, emphasizing the importance of ease of use and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3454545454545454,
+            "rouge2": 0.037037037037037035,
+            "rougeL": 0.16363636363636366
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            7
+          ],
+          "retrieval_precision": 0.662109375,
+          "retrieval_recall": 0.38305084745762713
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The discussion about remote control functions focused on making the remote control versatile and capable of operating multiple devices such as televisions, DVD players, cell phones, and various audio/video equipment. The team considered modern communication technologies like Bluetooth over traditional infrared methods due to their obsolescence. The primary technical function agreed upon was changing the state of the TV by pressing buttons, though alternative control methods like touch-screens and directional sticks were also mentioned. The goal was to create a universal remote control for consumer use rather than for a specific vendor.",
+          "rouge_f1": {
+            "rouge1": 0.3795620437956204,
+            "rouge2": 0.13333333333333333,
+            "rougeL": 0.2335766423357664
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            7,
+            9,
+            2
+          ],
+          "retrieval_precision": 0.5810546875,
+          "retrieval_recall": 0.672316384180791
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The discussion about remote control functions focused on making the remote control original, trendy, and user-friendly. Key points included:\n\n- **Interoperability**: The remote should control multiple devices such as TVs, DVD players, cell phones, and audio/video equipment.\n- **Communication Methods**: Consideration of Bluetooth alongside infrared due to its modernity and cost-effectiveness.\n- **Ease of Use**: Basic functionality involves changing the TV's state by pressing buttons. Additional controls like touch-screens or sticks for navigation were suggested.\n- **User Interface**: Suggestions for alternative interfaces like pointing at the TV without needing precise alignment and potential limitations on the range for certain applications (e.g., radio control).",
+          "rouge_f1": {
+            "rouge1": 0.35135135135135137,
+            "rouge2": 0.10958904109589042,
+            "rougeL": 0.1891891891891892
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            7,
+            9,
+            2,
+            1,
+            8,
+            3,
+            11
+          ],
+          "retrieval_precision": 0.36181640625,
+          "retrieval_recall": 0.8372881355932204
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The discussion about remote control functions focused on the need for an original, trendy, and user-friendly design. The Industrial Designer mentioned they would address technical possibilities and limitations during the meeting. However, specific details about the remote control functions were not elaborated upon in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.30769230769230776,
+            "rouge2": 0.08988764044943819,
+            "rougeL": 0.1978021978021978
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            1
+          ],
+          "retrieval_precision": 0.28125,
+          "retrieval_recall": 0.16271186440677965
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The discussion about remote control functions focused on making the remote control original, trendy, and user-friendly. Key points included:\n\n- The remote should control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment.\n- There was consideration for the communication method between the remote and devices, with a preference for modern technologies over infrared.\n- Suggestions were made for incorporating both infrared and Bluetooth in the remote control.\n- The team agreed to discuss further the feasibility and benefits of integrating these features.",
+          "rouge_f1": {
+            "rouge1": 0.372093023255814,
+            "rouge2": 0.14173228346456693,
+            "rougeL": 0.2635658914728682
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            1,
+            8,
+            7
+          ],
+          "retrieval_precision": 0.4091796875,
+          "retrieval_recall": 0.47344632768361583
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The discussion about remote control functions focused on making the remote control original, trendy, and user-friendly. Key points included:\n\n- Interoperability: The remote should control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment.\n- Communication methods: Consideration of Bluetooth over infrared due to its modernity, though infrared remains cost-effective and widely used.\n- Visibility in the dark: Suggestions for a display on the remote control to show functions, possibly with simple contrasting colors (white buttons with black marks) for visibility without additional lighting.\n- Cost limitations: Emphasis on keeping production costs under €12.50 while aiming for a selling price of €25 and a profit target of €50 million.",
+          "rouge_f1": {
+            "rouge1": 0.3184713375796178,
+            "rouge2": 0.11612903225806452,
+            "rougeL": 0.2038216560509554
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            1,
+            8,
+            7,
+            13,
+            2,
+            5,
+            3
+          ],
+          "retrieval_precision": 0.20458984375,
+          "retrieval_recall": 0.47344632768361583
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The discussion about remote control functions focused on making the remote control original, trendy, and user-friendly. The Industrial Designer suggested that a modern remote control should be interoperable, capable of controlling a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They emphasized moving beyond outdated technologies like infrared towards more contemporary options like Bluetooth, while acknowledging the cost-effectiveness of infrared despite its being considered somewhat old-fashioned.",
+          "rouge_f1": {
+            "rouge1": 0.4406779661016949,
+            "rouge2": 0.2241379310344828,
+            "rougeL": 0.30508474576271183
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            1
+          ],
+          "retrieval_precision": 0.251953125,
+          "retrieval_recall": 0.14576271186440679
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The discussion about remote control functions focused on making the remote control original, trendy, and user-friendly, with an emphasis on its ability to control multiple devices (interopera\\-bility) such as DVD players, cell phones, and various audio and video equipment. The team considered the communication methods between the remote and devices, noting that while infrared is widely used, it may be outdated. They suggested considering newer technologies like Bluetooth alongside infrared for broader compatibility and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3,
+            "rouge2": 0.05084745762711865,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            1,
+            8,
+            2
+          ],
+          "retrieval_precision": 0.2685546875,
+          "retrieval_recall": 0.3107344632768362
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The discussion about remote control functions focused on making the remote control original, trendy, and user-friendly. Key points included:\n\n- **Interoperability**: The remote should control multiple devices such as TVs, DVD players, cell phones, and audio/video equipment.\n- **Communication Methods**: Consideration of Bluetooth alongside infrared due to its modernity, though infrared remains cost-effective and widely used.\n- **Ease of Use**: Basic functionality involves changing the TV's state by pressing buttons. Additional controls like touch-screens or sticks were suggested but deemed potentially vulnerable.\n- **Visibility in Dark**: Suggestions for a display or simple contrast (white buttons with black marks) to ensure visibility in low-light conditions.\n- **Design**: Aimed to be trendy while adhering to a cost limit of €12.50 per unit.",
+          "rouge_f1": {
+            "rouge1": 0.3515151515151515,
+            "rouge2": 0.08588957055214724,
+            "rougeL": 0.1696969696969697
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            1,
+            8,
+            2,
+            10,
+            9,
+            13,
+            6
+          ],
+          "retrieval_precision": 0.43212890625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The discussion about remote control functions focused on the idea of creating a universal remote control capable of operating various devices such as DVD players, cell phones, and audio/video equipment. The Industrial Designer emphasized the importance of considering modern communication technologies like Bluetooth over outdated methods like infrared. The User Interface highlighted that the fundamental technical function of a remote control is to change the state of a TV (or device) through button presses, while also suggesting that alternative controls like touch-screens could be considered.",
+          "rouge_f1": {
+            "rouge1": 0.5230769230769231,
+            "rouge2": 0.203125,
+            "rougeL": 0.33846153846153854
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7
+          ],
+          "retrieval_precision": 0.798828125,
+          "retrieval_recall": 0.46214689265536724
+        },
+        "lumber__dense__w1024": {
+          "answer": "The discussion about remote control functions focused on the idea of creating a universal remote control capable of operating multiple types of electronic devices such as DVD players, cell phones, and various audio and video equipment. The Industrial Designer emphasized the importance of interoperability and suggested considering modern communication technologies like Bluetooth instead of traditional infrared, though User Interface noted that many TVs still use infrared. They agreed that the remote should perform basic functions like changing the state of a TV by pressing buttons, while also considering alternative control methods such as touch-screens.",
+          "rouge_f1": {
+            "rouge1": 0.4782608695652174,
+            "rouge2": 0.14705882352941177,
+            "rougeL": 0.2753623188405797
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            8
+          ],
+          "retrieval_precision": 0.7685546875,
+          "retrieval_recall": 0.8892655367231639
+        },
+        "lumber__dense__w2048": {
+          "answer": "The discussion about remote control functions focused on making the remote control versatile and user-friendly. Key points included:\n\n- **Interoperability**: The remote should control various devices such as TVs, DVD players, and possibly cell phones.\n- **Communication Methods**: While acknowledging that infrared technology is somewhat outdated, the team considered combining infrared with Bluetooth for broader compatibility.\n- **Ease of Use**: Basic functionality involves changing the TV's state through button presses. Additional controls like touch-screens or sticks were suggested for ease of navigation.\n- **Pointing and Range**: Concerns were raised about the need for precise pointing and the range limitations of infrared signals, especially for non-TV devices.\n- **Visibility in Dark Conditions**: Suggestions were made for a display or simple contrasting button designs to ensure visibility in low-light environments.",
+          "rouge_f1": {
+            "rouge1": 0.3157894736842105,
+            "rouge2": 0.07100591715976332,
+            "rougeL": 0.1754385964912281
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            8,
+            2,
+            10,
+            13,
+            5,
+            12,
+            3
+          ],
+          "retrieval_precision": 0.41064453125,
+          "retrieval_recall": 0.9502824858757062
+        },
+        "lumber__bm25__w512": {
+          "answer": "The discussion about remote control functions focused on the idea of creating a universal remote control capable of operating various devices such as DVD players, cell phones, and audio/video equipment. The Industrial Designer emphasized the importance of interoperability between different devices and suggested moving away from outdated technologies like infrared towards more modern options like Bluetooth. There was consideration given to combining both infrared and Bluetooth in one remote control to cater to a wider range of devices, though this was noted as a topic for further discussion.",
+          "rouge_f1": {
+            "rouge1": 0.3181818181818182,
+            "rouge2": 0.04615384615384615,
+            "rougeL": 0.16666666666666669
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7
+          ],
+          "retrieval_precision": 0.537109375,
+          "retrieval_recall": 0.3107344632768362
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The discussion about remote control functions focused on the need for interoperability, allowing one remote control to operate multiple devices such as DVD players, cell phones, and audio/video equipment. There was consideration given to communication methods, with Bluetooth being suggested as a modern alternative to infrared, though infrared was noted for its widespread use and cost-effectiveness. The team also briefly discussed the possibility of combining both technologies in one remote. Additionally, the Industrial Designer proposed including a display on the remote control to enhance visibility and ease of operation, particularly in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.33093525179856115,
+            "rouge2": 0.08759124087591241,
+            "rougeL": 0.17266187050359713
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            1
+          ],
+          "retrieval_precision": 0.3046875,
+          "retrieval_recall": 0.3525423728813559
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The discussion about remote control functions focused on making the remote control original, trendy, and user-friendly. Key points included:\n\n- Interoperability: The remote should control a diverse subset of equipment including DVD players, cell phones, and video/audio equipment.\n- Communication methods: Consideration of Bluetooth alongside infrared due to its modernity and effectiveness.\n- User interaction: Basic functionality involves changing TV states by pressing buttons.\n- Visibility in dark environments: Suggestions for simple designs like white buttons with black marks for visibility without additional lighting features.",
+          "rouge_f1": {
+            "rouge1": 0.42857142857142855,
+            "rouge2": 0.16129032258064516,
+            "rougeL": 0.2698412698412698
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            1,
+            2,
+            6,
+            5,
+            8,
+            12,
+            9
+          ],
+          "retrieval_precision": 0.36767578125,
+          "retrieval_recall": 0.8508474576271187
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The discussion about remote control functions focused on the idea of creating a universal remote control capable of operating various devices such as DVD players, cell phones, and audio/video equipment. The Industrial Designer emphasized the importance of interoperability between different devices and suggested moving away from outdated technologies like infrared towards more modern options like Bluetooth. There was consideration given to combining both infrared and Bluetooth in one remote control to cater to a wider range of devices, though this was noted as a topic for further discussion.",
+          "rouge_f1": {
+            "rouge1": 0.3181818181818182,
+            "rouge2": 0.04615384615384615,
+            "rougeL": 0.16666666666666669
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7
+          ],
+          "retrieval_precision": 0.537109375,
+          "retrieval_recall": 0.3107344632768362
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The discussion about remote control functions focused on making the remote control versatile and user-friendly. Key points included:\n\n- **Interoperability**: The remote should be able to control multiple devices such as TVs, DVD players, cell phones, and audio/video equipment.\n- **Communication Methods**: There was consideration for using Bluetooth instead of or alongside infrared due to its modernity and effectiveness.\n- **Visibility in Dark Conditions**: Suggestions were made for improving visibility in low-light conditions, including having illuminated buttons or displays that show functions clearly without needing additional lighting.\n\nThese points reflect the team's efforts to enhance functionality and usability while considering current technological advancements and user needs.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.04054054054054055,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            2,
+            9
+          ],
+          "retrieval_precision": 0.3310546875,
+          "retrieval_recall": 0.38305084745762713
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The discussion about remote control functions focused on making the remote control original, trendy, and user-friendly. Key points included:\n\n- **Interoperability**: The remote should control multiple devices such as TVs, DVD players, cell phones, and audio/video equipment.\n- **Communication Methods**: Consideration of modern communication methods like Bluetooth instead of infrared, though infrared remains cost-effective for many TVs.\n- **Ease of Use**: Basic functionality involves changing the TV's state by pressing buttons. Additional controls like touch-screens were suggested but not finalized.\n- **Visibility in Dark Conditions**: Suggestions included having a display on the remote control for better visibility, or simpler options like white buttons with black marks for visibility in low light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.09090909090909091,
+            "rougeL": 0.1794871794871795
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            2,
+            9,
+            8,
+            5,
+            1,
+            6
+          ],
+          "retrieval_precision": 0.4287109375,
+          "retrieval_recall": 0.992090395480226
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did User Interface think about remote control functions?",
+      "reference_answer": "User Interface agreed with Industrial Designer and supposed that the remote control could be interoperable. That is to say, it could be a universal remote control that fits every device. He also revealed that the function of the remote control was to change the state of the TV and this could be realized by pressing the button.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "User Interface thought that the remote control functions should primarily serve to change the state of the TV by pressing buttons, which is the basic technical function. Additionally, User Interface considered the possibility of incorporating other control methods such as touch-screens or sticks for movement, though they noted that these could be more vulnerable. User Interface also suggested that pointing directly at the TV might be disturbing and implied a preference for infrared functionality.",
+          "rouge_f1": {
+            "rouge1": 0.4696969696969697,
+            "rouge2": 0.1846153846153846,
+            "rougeL": 0.25757575757575757
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            11,
+            10
+          ],
+          "retrieval_precision": 0.6953125,
+          "retrieval_recall": 0.8855721393034826
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "User Interface thought that the remote control functions should primarily involve changing the state of the TV by pressing buttons. They agreed with the concept of interoperability, suggesting that the remote should work across various devices. Additionally, User Interface considered alternative control methods such as touch-screens and sticks for movement, though they noted that these could be more vulnerable. They also suggested that a display on the remote could make it easier to operate.",
+          "rouge_f1": {
+            "rouge1": 0.5757575757575758,
+            "rouge2": 0.2153846153846154,
+            "rougeL": 0.25757575757575757
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            11,
+            10,
+            8,
+            15
+          ],
+          "retrieval_precision": 0.392578125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "User Interface thought that the remote control functions should be user-friendly and versatile, emphasizing interoperability to control various devices such as TVs, DVD players, and possibly cell phones. They suggested that the remote should change the state of the TV by pressing buttons, potentially including touch screens or sticks for navigation. Additionally, User Interface highlighted the importance of tactile feedback for buttons and considered a simple display design for visibility in dark environments, while also stressing the need for durability of the button markings.",
+          "rouge_f1": {
+            "rouge1": 0.4507042253521127,
+            "rouge2": 0.2,
+            "rougeL": 0.3380281690140845
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            11,
+            10,
+            8,
+            15,
+            13,
+            2,
+            3,
+            6
+          ],
+          "retrieval_precision": 0.1962890625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "User Interface thought that remote control functions should be visible in the dark, suggesting that the buttons or controls should be glow-in-the-dark or have similar visibility features. This was highlighted during the discussion about usability and user interface design considerations.",
+          "rouge_f1": {
+            "rouge1": 0.37999999999999995,
+            "rouge2": 0.08163265306122448,
+            "rougeL": 0.24
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            14,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "User Interface thought that the remote control functions should focus on interoperability, allowing the remote to work on different TVs and various devices. Additionally, User Interface emphasized the importance of visibility in dark environments, suggesting that the remote should glow in the dark to ensure usability in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.37383177570093457,
+            "rouge2": 0.11428571428571428,
+            "rougeL": 0.2616822429906542
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            14,
+            10,
+            3,
+            15
+          ],
+          "retrieval_precision": 0.044921875,
+          "retrieval_recall": 0.11442786069651742
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "User Interface thought that the remote control functions should be user-friendly and versatile, capable of controlling various devices including televisions and possibly cell phones. They emphasized the importance of interoperability, suggesting that the remote should work across different devices. Additionally, User Interface highlighted the need for buttons to be clearly visible in dark environments and suggested simple designs such as white buttons with black marks to enhance visibility without adding unnecessary complexity or cost.",
+          "rouge_f1": {
+            "rouge1": 0.3939393939393939,
+            "rouge2": 0.0923076923076923,
+            "rougeL": 0.24242424242424243
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            14,
+            10,
+            3,
+            15,
+            9,
+            11,
+            12,
+            2
+          ],
+          "retrieval_precision": 0.1962890625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "User Interface agreed with the idea of interoperability, suggesting that the remote control should work on different TVs and various devices, echoing Industrial Designer's proposal for a universal remote control.",
+          "rouge_f1": {
+            "rouge1": 0.43181818181818177,
+            "rouge2": 0.23255813953488372,
+            "rougeL": 0.2727272727272727
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            12
+          ],
+          "retrieval_precision": 0.142578125,
+          "retrieval_recall": 0.18159203980099503
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "User Interface thought that the remote control functions should primarily involve changing the state of the TV by pressing buttons. They agreed with the concept of interoperability, suggesting that the remote should work across various devices. Additionally, User Interface considered alternative control methods such as touch-screens and sticks for movement, though they noted that these could be more vulnerable. They also suggested that a display on the remote could make it easier to operate.",
+          "rouge_f1": {
+            "rouge1": 0.5757575757575758,
+            "rouge2": 0.2153846153846154,
+            "rougeL": 0.25757575757575757
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            12,
+            11,
+            15
+          ],
+          "retrieval_precision": 0.392578125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "User Interface thought that the remote control should be a universal device capable of controlling various types of equipment, emphasizing its functionality through button presses to change the state of TVs or other devices. They also suggested incorporating features such as touch screens or sticks for navigation, and highlighted the importance of user interface elements like glow-in-the-dark buttons for visibility in dark environments. Additionally, User Interface mentioned the potential inclusion of a display on the remote control to enhance usability.",
+          "rouge_f1": {
+            "rouge1": 0.4142857142857143,
+            "rouge2": 0.17391304347826086,
+            "rougeL": 0.28571428571428575
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            12,
+            11,
+            15,
+            14,
+            3,
+            2,
+            9
+          ],
+          "retrieval_precision": 0.1962890625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "User Interface thought that the remote control functions should primarily focus on basic technical functionality, such as changing the TV's state by pressing buttons. Additionally, User Interface considered the possibility of incorporating alternative control methods like touch-screens or sticks for movement, though they noted that such features might be \"very vulnerable.\" User Interface also emphasized the importance of interoperability, suggesting that the remote should work across various devices rather than being exclusive to one brand.",
+          "rouge_f1": {
+            "rouge1": 0.4328358208955224,
+            "rouge2": 0.13636363636363635,
+            "rougeL": 0.208955223880597
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            9
+          ],
+          "retrieval_precision": 0.78515625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "User Interface thought that the remote control should have basic technical functions such as changing the TV's state by pressing buttons. They agreed with the idea of interoperability, suggesting that the remote should work on different TVs and devices. User Interface also considered alternative control methods like touch-screens and sticks for movement but emphasized the importance of durability, noting that moving parts like sticks can be vulnerable. Additionally, they suggested that the infrared functionality should not require pointing directly at the TV and discussed the potential need for varying ranges depending on the device being controlled (e.g., a TV vs. a radio).",
+          "rouge_f1": {
+            "rouge1": 0.4444444444444445,
+            "rouge2": 0.1375,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            9,
+            7,
+            11
+          ],
+          "retrieval_precision": 0.392578125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "User Interface thought that the remote control should be a universal device capable of working on various TVs and other electronic devices. They emphasized the importance of ease of use and functionality, suggesting that pressing buttons should change the TV's state. Additionally, User Interface considered alternative control methods such as touch-screens and sticks for navigation. They also discussed the potential for infrared limitations and the need for visibility in low-light conditions, proposing simple designs like white buttons with black markings for better visibility without additional lighting features.",
+          "rouge_f1": {
+            "rouge1": 0.39455782312925175,
+            "rouge2": 0.11034482758620688,
+            "rougeL": 0.2585034013605442
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            9,
+            7,
+            11,
+            8,
+            1,
+            2,
+            13
+          ],
+          "retrieval_precision": 0.1962890625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "User Interface thought that most of the remote control functions could be simplified and suggested equipping the remote with both infrared and Bluetooth. They also agreed on having simple, visible controls in low light conditions, suggesting white buttons with black marks for visibility.",
+          "rouge_f1": {
+            "rouge1": 0.37999999999999995,
+            "rouge2": 0.12244897959183672,
+            "rougeL": 0.24
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "User Interface thought that the infrared technology for remote controls was somewhat outdated but acknowledged its widespread use and cost-effectiveness. They suggested equipping the remote with both infrared and Bluetooth to accommodate various devices. Additionally, User Interface agreed that having a display on the remote could be useful for visibility in dark environments but proposed a simple design solution involving contrasting colors for ease of use without adding excessive costs or complexity.",
+          "rouge_f1": {
+            "rouge1": 0.35384615384615387,
+            "rouge2": 0.125,
+            "rougeL": 0.2
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            8,
+            7,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "User Interface thought that the remote control should have basic technical functions such as changing the TV's state by pressing buttons. They agreed with the concept of interoperability, suggesting the remote should work on various devices. Additionally, User Interface considered the possibility of incorporating features like touch-screens or directional sticks but ultimately favored simplicity, proposing that buttons with contrasting colors (white with black marks) could ensure visibility in dark environments without needing additional lighting features.",
+          "rouge_f1": {
+            "rouge1": 0.3880597014925373,
+            "rouge2": 0.13636363636363635,
+            "rougeL": 0.208955223880597
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            8,
+            7,
+            2,
+            10,
+            6,
+            9,
+            5
+          ],
+          "retrieval_precision": 0.1962890625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "User Interface thought that the technical function of a remote control should primarily be to change the state of the TV by pressing buttons. They acknowledged that while infrared technology is somewhat outdated, it remains widely used in TVs. User Interface also considered alternative control methods such as touch-screens and sticks for movement but noted that these could be \"very vulnerable.\"",
+          "rouge_f1": {
+            "rouge1": 0.48739495798319327,
+            "rouge2": 0.20512820512820512,
+            "rougeL": 0.3025210084033613
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            7
+          ],
+          "retrieval_precision": 0.41015625,
+          "retrieval_recall": 0.5223880597014925
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "User Interface thought that the technical function of a remote control should primarily involve changing the state of the TV by pressing buttons. They agreed that infrared was somewhat outdated but acknowledged its prevalence in existing TVs. User Interface suggested equipping the remote with both infrared and Bluetooth for compatibility. Additionally, they considered the possibility of incorporating different types of controls such as touch-screens or sticks for movement, though they noted that these could be more vulnerable. User Interface also supported the idea of having a display on the remote control for better visibility in dark conditions, suggesting simple designs like white buttons with black marks for visibility without needing additional lighting.",
+          "rouge_f1": {
+            "rouge1": 0.411764705882353,
+            "rouge2": 0.16666666666666666,
+            "rougeL": 0.2235294117647059
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            7,
+            8,
+            13
+          ],
+          "retrieval_precision": 0.205078125,
+          "retrieval_recall": 0.5223880597014925
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "User Interface thought that the remote control should be a universal device capable of working on various TVs and other electronic devices. They emphasized the importance of ease of use and functionality, suggesting that pressing buttons should change the TV's state. Additionally, User Interface considered alternative control methods such as touch-screens and sticks for navigation. They also discussed the potential for infrared limitations and the need for visibility in low-light conditions, proposing simple designs like white buttons with black markings for better visibility without additional lighting features.",
+          "rouge_f1": {
+            "rouge1": 0.39455782312925175,
+            "rouge2": 0.11034482758620688,
+            "rougeL": 0.2585034013605442
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            7,
+            8,
+            13,
+            9,
+            2,
+            1,
+            11
+          ],
+          "retrieval_precision": 0.1962890625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "User Interface thought that the remote control functions should be universal, working across different TVs and devices. They emphasized that the basic technical function is to change the TV's state by pressing buttons, though they also considered alternatives like a touchscreen.",
+          "rouge_f1": {
+            "rouge1": 0.48484848484848486,
+            "rouge2": 0.20618556701030927,
+            "rougeL": 0.3838383838383838
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8
+          ],
+          "retrieval_precision": 0.751953125,
+          "retrieval_recall": 0.9577114427860697
+        },
+        "lumber__dense__w1024": {
+          "answer": "User Interface thought that the remote control functions should primarily focus on basic technical functionality such as changing the TV's state by pressing buttons. Additionally, User Interface considered alternative control methods like touch-screens and sticks for movement, and emphasized the importance of ease of use and universality across different devices. User Interface also suggested that the remote should ideally work without needing to point directly at the TV due to infrared limitations and discussed potential range issues for other devices like radios.",
+          "rouge_f1": {
+            "rouge1": 0.41134751773049644,
+            "rouge2": 0.12949640287769787,
+            "rougeL": 0.22695035460992907
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            10,
+            2
+          ],
+          "retrieval_precision": 0.392578125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "User Interface thought that the remote control should be a universal device capable of working on different TVs or devices, emphasizing its interoperability. They believed the primary technical function was to change the TV's state by pressing buttons. Additionally, User Interface suggested incorporating tactile feedback for buttons to ensure users could operate the remote without visual assistance and proposed simple visibility solutions such as using contrasting colors for buttons to enhance usability in dark environments.",
+          "rouge_f1": {
+            "rouge1": 0.42105263157894735,
+            "rouge2": 0.183206106870229,
+            "rougeL": 0.3157894736842105
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            10,
+            2,
+            7,
+            13,
+            5,
+            11
+          ],
+          "retrieval_precision": 0.1962890625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "User Interface thought that the idea of using infrared for remote control functions was a bit old-fashioned. They agreed with the notion of considering newer technologies for communication between devices. Additionally, User Interface suggested that the buttons on the remote control could be simple, with white buttons and black marks to ensure visibility in the dark, without needing additional lighting features.",
+          "rouge_f1": {
+            "rouge1": 0.43697478991596644,
+            "rouge2": 0.17094017094017094,
+            "rougeL": 0.2689075630252101
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "User Interface thought that the remote control functions should consider both infrared and Bluetooth for communication, suggesting they should be equipped together in one remote. They also agreed on the idea of enhancing visibility in dark environments through simple design solutions such as using white buttons with black marks, rather than incorporating complex lighting features.",
+          "rouge_f1": {
+            "rouge1": 0.3035714285714285,
+            "rouge2": 0.07272727272727272,
+            "rougeL": 0.21428571428571427
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            7,
+            2,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "User Interface thought that the remote control should be a universal device capable of working on different TVs or other devices, emphasizing its interoperability. They also highlighted the importance of ease of use, suggesting that users should be able to feel and identify buttons without looking at them. Additionally, User Interface mentioned that the buttons should change the TV's state upon being pressed, and discussed the possibility of having simple, visible markings on buttons for better usability in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.4316546762589928,
+            "rouge2": 0.145985401459854,
+            "rougeL": 0.3021582733812949
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            7,
+            2,
+            8,
+            12,
+            9,
+            5,
+            4,
+            11
+          ],
+          "retrieval_precision": 0.1962890625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "User Interface thought that the remote control functions should primarily focus on interoperability, allowing the remote to work across different TVs and devices. They emphasized that the remote should serve as a universal control for consumers rather than being exclusive to a specific brand. Additionally, User Interface highlighted that the basic technical function involves changing the TV's state through button presses, though they also suggested considering other forms of control beyond just buttons.",
+          "rouge_f1": {
+            "rouge1": 0.48854961832061067,
+            "rouge2": 0.1395348837209302,
+            "rougeL": 0.2900763358778626
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9
+          ],
+          "retrieval_precision": 0.751953125,
+          "retrieval_recall": 0.9577114427860697
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "User Interface thought that the remote control functions should primarily involve changing the state of the TV by pressing buttons. They agreed with the idea of interoperability, suggesting that the remote should work on various devices, not just for a specific vendor's products. Additionally, User Interface considered the possibility of incorporating a touch-screen or alternative controls beyond traditional buttons, though they emphasized that the core function should remain straightforward—changing the TV's state through interaction with the remote.",
+          "rouge_f1": {
+            "rouge1": 0.43478260869565216,
+            "rouge2": 0.1911764705882353,
+            "rougeL": 0.24637681159420288
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9,
+            13,
+            7
+          ],
+          "retrieval_precision": 0.392578125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "User Interface thought that the remote control should be a universal device capable of working on different TVs or devices, emphasizing its interoperability. They believed the basic technical function should involve changing the TV's state by pressing buttons. Additionally, User Interface considered alternative control methods like touch-screens or sticks for movement, and discussed the possibility of using infrared without needing to point directly at the TV. They also suggested that the range of the remote might need adjustment depending on the type of device being controlled (e.g., radio vs. TV). Lastly, User Interface proposed simple visibility solutions for the buttons to ensure usability in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.40718562874251496,
+            "rouge2": 0.15757575757575756,
+            "rougeL": 0.25149700598802394
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9,
+            13,
+            7,
+            2,
+            10,
+            5,
+            12,
+            11
+          ],
+          "retrieval_precision": 0.1962890625,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did Industrial Designer think about remote control functions?",
+      "reference_answer": "Industrial Designer believed that a modern remote control should control a diverse subset of equipment. That means, one remote control should control one or more pieces of equipment.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Industrial Designer thought that a modern remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They suggested considering various control methods beyond traditional buttons, including touch-screens and sticks for movement. Additionally, they proposed the idea of having a display on the remote control to show functions, which could enhance usability.",
+          "rouge_f1": {
+            "rouge1": 0.40425531914893625,
+            "rouge2": 0.2608695652173913,
+            "rougeL": 0.3404255319148936
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            12,
+            15
+          ],
+          "retrieval_precision": 0.447265625,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Industrial Designer thought that a modern remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They suggested moving beyond outdated technologies like infrared and considering newer options like Bluetooth. Additionally, they proposed discussing the inclusion of various control methods (e.g., buttons, touch-screens, sticks) and possibly incorporating a display to make operation easier. However, they emphasized the need to balance these features with cost limitations.",
+          "rouge_f1": {
+            "rouge1": 0.3119266055045872,
+            "rouge2": 0.20560747663551404,
+            "rougeL": 0.2752293577981651
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            12,
+            15,
+            9,
+            11
+          ],
+          "retrieval_precision": 0.2236328125,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Industrial Designer thought that a modern remote control should control a diverse subset of equipment, emphasizing interoperability between devices such as DVD players, cell phones, and video/audio equipment. They suggested considering newer communication technologies like Bluetooth over traditional infrared, noting that while infrared is cost-effective, it may not be the most advanced option. Additionally, they proposed discussing the integration of both infrared and Bluetooth in one remote control.",
+          "rouge_f1": {
+            "rouge1": 0.40816326530612246,
+            "rouge2": 0.2916666666666667,
+            "rougeL": 0.36734693877551017
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            12,
+            15,
+            9,
+            11,
+            10,
+            13,
+            2,
+            3
+          ],
+          "retrieval_precision": 0.11181640625,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Industrial Designer thought that a modern remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video and audio equipment. The goal was to create \"one remote control for all your equipment.\" Additionally, the Industrial Designer acknowledged the suggestion for the remote to be visible in the dark, indicating support for features that enhance usability in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.3877551020408163,
+            "rouge2": 0.27083333333333337,
+            "rougeL": 0.36734693877551017
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            14,
+            10
+          ],
+          "retrieval_precision": 0.447265625,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Industrial Designer thought that a modern remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They emphasized the need to consider how these devices should communicate with each other, suggesting that the team should move beyond outdated technologies like infrared. Additionally, they proposed the idea of having a display on the remote control to show functions, making it easier for users to operate, though they acknowledged cost limitations that might restrict the development of a high-end product.",
+          "rouge_f1": {
+            "rouge1": 0.3305785123966942,
+            "rouge2": 0.20168067226890754,
+            "rougeL": 0.2975206611570248
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            14,
+            10,
+            15,
+            9
+          ],
+          "retrieval_precision": 0.2236328125,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Industrial Designer thought that a modern remote control should be able to control a diverse subset of equipment, such as DVD players, cell phones, and video/audio equipment, advocating for interoperability. They suggested considering newer communication technologies like Bluetooth over traditional infrared, noting that while infrared is cost-effective, it may not be sufficient given current technological standards. Additionally, they proposed including a display on the remote control to help users easily identify functions, though they acknowledged cost limitations that might restrict the inclusion of more advanced features.",
+          "rouge_f1": {
+            "rouge1": 0.3448275862068965,
+            "rouge2": 0.21052631578947367,
+            "rougeL": 0.31034482758620696
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            14,
+            10,
+            15,
+            9,
+            3,
+            11,
+            12,
+            6
+          ],
+          "retrieval_precision": 0.11181640625,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Industrial Designer thought that a modern remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They also suggested that having a display on the remote control to show functions could make it easier to operate, though they acknowledged cost limitations that might prevent the development of a high-end product.",
+          "rouge_f1": {
+            "rouge1": 0.4086021505376344,
+            "rouge2": 0.26373626373626374,
+            "rougeL": 0.38709677419354843
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            15,
+            10
+          ],
+          "retrieval_precision": 0.447265625,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Industrial Designer thought that a modern remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They suggested considering newer communication technologies like Bluetooth instead of relying solely on infrared, which they considered outdated. Additionally, they proposed the idea of incorporating a display on the remote control to make it easier to operate, though they acknowledged cost limitations that might restrict the inclusion of advanced features.",
+          "rouge_f1": {
+            "rouge1": 0.35185185185185186,
+            "rouge2": 0.22641509433962262,
+            "rougeL": 0.31481481481481477
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            15,
+            10,
+            9,
+            12
+          ],
+          "retrieval_precision": 0.2236328125,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Industrial Designer thought that a modern remote control should be interoperable, capable of controlling a diverse subset of equipment including DVD players, cell phones, and video/audio equipment. They suggested considering communication methods beyond infrared, such as Bluetooth, due to its outdated nature. Additionally, they emphasized the importance of making the remote control cost-effective while still being functional and visible in dark conditions.",
+          "rouge_f1": {
+            "rouge1": 0.391304347826087,
+            "rouge2": 0.26666666666666666,
+            "rougeL": 0.34782608695652173
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            15,
+            10,
+            9,
+            12,
+            14,
+            11,
+            3,
+            13
+          ],
+          "retrieval_precision": 0.11181640625,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "word_packed__dense__w512": {
+          "answer": "Industrial Designer thought that a modern remote control should control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment, advocating for interoperability between devices. They suggested moving beyond outdated technologies like infrared and considering newer options like Bluetooth. Additionally, they agreed that the remote control's primary function is to change the state of devices through various control methods including buttons, potentially touch-screens, or directional sticks.",
+          "rouge_f1": {
+            "rouge1": 0.41584158415841577,
+            "rouge2": 0.26262626262626265,
+            "rougeL": 0.37623762376237624
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            10
+          ],
+          "retrieval_precision": 0.251953125,
+          "retrieval_recall": 0.4725274725274725
+        },
+        "word_packed__dense__w1024": {
+          "answer": "Industrial Designer thought that a modern remote control should control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment, advocating for interoperability between devices. They suggested moving beyond outdated technologies like infrared and considering newer options like Bluetooth. Additionally, they proposed including a display on the remote control to enhance visibility and ease of operation, especially in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.3829787234042553,
+            "rouge2": 0.28260869565217395,
+            "rougeL": 0.3617021276595745
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            10,
+            9,
+            13
+          ],
+          "retrieval_precision": 0.1259765625,
+          "retrieval_recall": 0.4725274725274725
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Industrial Designer thought that a modern remote control should control a diverse subset of equipment, such as DVD players, cell phones, and video/audio equipment, making it a \"one remote control for all your equipment.\" They emphasized the need to consider new technical possibilities like Bluetooth instead of relying solely on infrared technology due to its outdated nature. Additionally, they suggested discussing the communication methods between the remote and various devices, advocating for a universal remote control that fits a broad public and works with multiple devices.",
+          "rouge_f1": {
+            "rouge1": 0.3652173913043478,
+            "rouge2": 0.24778761061946908,
+            "rougeL": 0.3130434782608696
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            10,
+            9,
+            13,
+            8,
+            1,
+            11,
+            2
+          ],
+          "retrieval_precision": 0.06298828125,
+          "retrieval_recall": 0.4725274725274725
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The Industrial Designer thought that the team should consider having one remote control function to operate one or more pieces of equipment and discussed the importance of the way the remote communicates with these devices. They also suggested that a display on the remote control could make it easier for users to operate, especially if it is visible in the dark. However, they were unsure about the feasibility and simplicity of such a feature.",
+          "rouge_f1": {
+            "rouge1": 0.37254901960784315,
+            "rouge2": 0.2,
+            "rougeL": 0.25490196078431376
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Industrial Designer thought that a modern remote control should control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment, advocating for interoperability between different devices. They suggested considering newer communication technologies like Bluetooth instead of relying solely on infrared, which they considered outdated. Additionally, they proposed discussing the inclusion of features like touch-screens or directional sticks for ease of use and suggested the possibility of incorporating a display on the remote control to enhance visibility and functionality in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.3275862068965517,
+            "rouge2": 0.2280701754385965,
+            "rougeL": 0.27586206896551724
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            8,
+            7,
+            10
+          ],
+          "retrieval_precision": 0.1259765625,
+          "retrieval_recall": 0.4725274725274725
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Industrial Designer thought that the remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They suggested considering modern communication methods like Bluetooth instead of relying solely on infrared technology due to its outdated nature. Additionally, Industrial Designer proposed incorporating a display on the remote control to enhance visibility and ease of operation, especially in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.36,
+            "rouge2": 0.1836734693877551,
+            "rougeL": 0.3
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            8,
+            7,
+            10,
+            6,
+            9,
+            5,
+            2
+          ],
+          "retrieval_precision": 0.13330078125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Industrial Designer thought that a modern remote control should control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment, advocating for interoperability between different devices. They suggested moving away from outdated technologies like infrared towards more contemporary options like Bluetooth. Additionally, they proposed the idea of incorporating a display on the remote control to make it easier for users to operate, though they acknowledged potential cost limitations.",
+          "rouge_f1": {
+            "rouge1": 0.37623762376237624,
+            "rouge2": 0.26262626262626265,
+            "rougeL": 0.31683168316831684
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13
+          ],
+          "retrieval_precision": 0.251953125,
+          "retrieval_recall": 0.4725274725274725
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Industrial Designer thought that a modern remote control should control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment, advocating for interoperability between different devices. They suggested considering newer communication technologies like Bluetooth instead of relying solely on infrared, which they considered outdated. Additionally, they proposed discussing the inclusion of features like touch-screens or directional sticks for ease of use and suggested the possibility of incorporating a display on the remote control to enhance visibility and functionality in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.3275862068965517,
+            "rouge2": 0.2280701754385965,
+            "rougeL": 0.27586206896551724
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            10,
+            8
+          ],
+          "retrieval_precision": 0.1259765625,
+          "retrieval_recall": 0.4725274725274725
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The Industrial Designer thought that the remote control should have functionality to control a diverse subset of equipment (interopera operability), such as DVD players, cell phones, video, and audio equipment. They suggested considering modern communication methods like Bluetooth instead of relying solely on infrared technology due to its outdated nature. Additionally, the Industrial Designer proposed incorporating a display on the remote control to enhance visibility and ease of operation, especially in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.35294117647058826,
+            "rouge2": 0.18,
+            "rougeL": 0.29411764705882354
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            10,
+            8,
+            9,
+            1,
+            5,
+            2
+          ],
+          "retrieval_precision": 0.06298828125,
+          "retrieval_recall": 0.4725274725274725
+        },
+        "lumber__dense__w512": {
+          "answer": "Industrial Designer thought that a modern remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They suggested moving away from outdated technologies like infrared towards more contemporary options like Bluetooth, while acknowledging the cost-effectiveness of infrared technology. The designer proposed that these aspects should be considered during discussions about the product's development.",
+          "rouge_f1": {
+            "rouge1": 0.3917525773195876,
+            "rouge2": 0.23157894736842105,
+            "rougeL": 0.3298969072164948
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7
+          ],
+          "retrieval_precision": 0.447265625,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "lumber__dense__w1024": {
+          "answer": "Industrial Designer thought that a modern remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They suggested moving away from outdated technologies like infrared towards more contemporary options like Bluetooth. Additionally, they proposed considering the ease of switching between devices and discussed the importance of the operating range for different types of devices.",
+          "rouge_f1": {
+            "rouge1": 0.3541666666666667,
+            "rouge2": 0.2340425531914894,
+            "rougeL": 0.3333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            10,
+            8
+          ],
+          "retrieval_precision": 0.2236328125,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "lumber__dense__w2048": {
+          "answer": "Industrial Designer thought that a modern remote control should control a diverse subset of equipment, such as DVD players, cell phones, and video/audio equipment, advocating for interoperability. He suggested considering communication methods beyond infrared, proposing Bluetooth as a potential alternative due to its modernity and effectiveness. Additionally, he emphasized the importance of discussing the range limitations of the remote control's functionality, especially in scenarios where long-range operation might be necessary (e.g., controlling a radio from outside the house).",
+          "rouge_f1": {
+            "rouge1": 0.34545454545454546,
+            "rouge2": 0.24074074074074073,
+            "rougeL": 0.3090909090909091
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            10,
+            8,
+            13,
+            2,
+            9,
+            5,
+            6,
+            14
+          ],
+          "retrieval_precision": 0.13330078125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "Industrial Designer thought that a modern remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They suggested moving away from outdated technologies like infrared towards more contemporary options like Bluetooth. Additionally, they proposed considering the inclusion of a display on the remote control to make functions easier to operate, though they were open to simpler alternatives as well.",
+          "rouge_f1": {
+            "rouge1": 0.37623762376237624,
+            "rouge2": 0.24242424242424243,
+            "rougeL": 0.31683168316831684
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            7
+          ],
+          "retrieval_precision": 0.447265625,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Industrial Designer thought that a modern remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They suggested considering newer communication technologies like Bluetooth instead of relying solely on infrared, which they considered outdated. Additionally, they proposed the idea of having a display on the remote control to show functions, making it easier for users to operate, though they were open to simpler alternatives as well.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333337,
+            "rouge2": 0.22641509433962262,
+            "rougeL": 0.29629629629629634
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            7,
+            8
+          ],
+          "retrieval_precision": 0.2236328125,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Industrial Designer thought that the remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They suggested considering modern communication methods like Bluetooth instead of relying solely on infrared technology due to its outdated nature. Additionally, they proposed incorporating features like a display on the remote control to enhance visibility and ease of operation, especially in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.3564356435643564,
+            "rouge2": 0.18181818181818182,
+            "rougeL": 0.297029702970297
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            7,
+            8,
+            12,
+            2,
+            9,
+            5,
+            4,
+            10
+          ],
+          "retrieval_precision": 0.11181640625,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Industrial Designer thought that a modern remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They suggested moving away from outdated technologies like infrared towards more contemporary options like Bluetooth, while acknowledging the cost-effectiveness of infrared technology. The designer proposed that these aspects should be considered during discussions about the product's development.",
+          "rouge_f1": {
+            "rouge1": 0.3917525773195876,
+            "rouge2": 0.23157894736842105,
+            "rougeL": 0.3298969072164948
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7
+          ],
+          "retrieval_precision": 0.447265625,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Industrial Designer thought that a modern remote control should have interoperability, allowing it to control a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. They suggested considering newer communication technologies like Bluetooth instead of relying solely on infrared, which they considered outdated. Additionally, they proposed the idea of having a display on the remote control to show functions, making it easier for users to operate, though they were open to simpler alternatives as well.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333337,
+            "rouge2": 0.22641509433962262,
+            "rougeL": 0.29629629629629634
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            8
+          ],
+          "retrieval_precision": 0.2236328125,
+          "retrieval_recall": 0.8388278388278388
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Industrial Designer thought that a modern remote control should control a diverse subset of equipment, emphasizing interoperability between devices such as DVD players, cell phones, and video/audio equipment. They suggested considering newer communication technologies like Bluetooth over traditional infrared, noting that while infrared is cost-effective, it may not be the most advanced option. Additionally, they proposed incorporating features like a display on the remote control to enhance visibility and ease of use in various conditions.",
+          "rouge_f1": {
+            "rouge1": 0.3619047619047619,
+            "rouge2": 0.2524271844660194,
+            "rougeL": 0.34285714285714286
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            8,
+            2,
+            10,
+            9,
+            12,
+            5,
+            14
+          ],
+          "retrieval_precision": 0.11181640625,
+          "retrieval_recall": 0.8388278388278388
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did the group discuss about the connection of remote control and TV?",
+      "reference_answer": "Industrial Designer pointed out that infrared connection is old-fashioned so they should choose a novel one, such as Bluetooth. Project Manager added that the device should be rechargeable and not consume too much power.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group discussed that the remote control should be interoperable, capable of controlling one or more pieces of equipment including TVs. They considered various methods of interaction such as buttons, touch-screens, and sticks for navigation. Additionally, they mentioned the vulnerability of certain controls and the possibility of pointing at the TV for operation, though infrared limitations were noted.",
+          "rouge_f1": {
+            "rouge1": 0.2340425531914894,
+            "rouge2": 0.06521739130434782,
+            "rougeL": 0.14893617021276595
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            12,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The group discussed that the remote control should be interoperable, capable of controlling different TVs or devices, and potentially designed for consumer purchase rather than business use. They considered various functionalities such as changing the TV's state through buttons, touch-screens, or sticks for easier navigation. Additionally, they touched upon the idea of an infrared feature that might allow pointing without needing direct alignment with the TV.",
+          "rouge_f1": {
+            "rouge1": 0.27184466019417475,
+            "rouge2": 0.0594059405940594,
+            "rougeL": 0.11650485436893204
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            12,
+            2,
+            3,
+            11
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The group discussed that the remote control should be interoperable, capable of controlling various devices including televisions, DVD players, and possibly cell phones. They debated over communication methods, considering both infrared and Bluetooth, acknowledging that while infrared is widely used, Bluetooth could offer modern advantages. The remote's functionality was also considered, focusing on ease of use through various control mechanisms such as buttons, potentially a touch screen, or directional sticks. Additionally, the group touched upon the importance of tactile feedback for buttons and the possibility of incorporating a simple display for better usability.",
+          "rouge_f1": {
+            "rouge1": 0.21705426356589147,
+            "rouge2": 0.047244094488188976,
+            "rougeL": 0.10852713178294573
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            12,
+            2,
+            3,
+            11,
+            13,
+            8,
+            9,
+            15
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 0.5254988913525499
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The group discussed that the remote control should be able to operate one or more pieces of equipment, focusing on the interoperability and the communication methods between the remote and these devices. Additionally, they emphasized the importance of user-friendliness, particularly mentioning that the remote should be visible and usable in dark conditions, suggesting a \"glow in the dark\" feature.",
+          "rouge_f1": {
+            "rouge1": 0.23157894736842102,
+            "rouge2": 0.04301075268817204,
+            "rougeL": 0.16842105263157894
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            14,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The group discussed that the remote control should be interoperable, capable of controlling multiple devices including TVs, and considered modern communication methods beyond infrared, such as Bluetooth. They also emphasized the importance of user-friendliness, suggesting features like visibility in dark environments, possibly through glow-in-the-dark elements.",
+          "rouge_f1": {
+            "rouge1": 0.26190476190476186,
+            "rouge2": 0.09756097560975609,
+            "rougeL": 0.14285714285714288
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            14,
+            10,
+            3,
+            9
+          ],
+          "retrieval_precision": 0.0703125,
+          "retrieval_recall": 0.15964523281596452
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The group discussed that the remote control should be able to operate multiple devices including televisions, DVD players, and possibly cell phones, emphasizing interoperability. They considered using both infrared and Bluetooth for communication, acknowledging that while infrared is widely used, it may be outdated compared to newer technologies like Bluetooth. Additionally, they suggested incorporating features such as a touch screen, a directional stick, and glow-in-the-dark functionality to enhance user experience, especially in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.24778761061946902,
+            "rouge2": 0.05405405405405405,
+            "rougeL": 0.12389380530973451
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            14,
+            10,
+            3,
+            9,
+            8,
+            12,
+            5,
+            11
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 0.5254988913525499
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The group discussed that the remote control should be interoperable, meaning it should be able to control one or more pieces of equipment, including different TVs. They also emphasized the importance of user-friendliness and making the remote trendy and original. The discussion highlighted the need to consider how the remote communicates with these devices and how it functions for the user.",
+          "rouge_f1": {
+            "rouge1": 0.18556701030927839,
+            "rouge2": 0.04210526315789474,
+            "rougeL": 0.12371134020618557
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            10,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The group discussed that the remote control should be interoperable, capable of controlling one or more pieces of equipment including TVs, and should have a user-friendly interface. They considered various control methods such as buttons, touch-screens, and sticks for navigation. Additionally, they emphasized the importance of visibility in low-light conditions, suggesting features like glowing in the dark.",
+          "rouge_f1": {
+            "rouge1": 0.23157894736842102,
+            "rouge2": 0.06451612903225808,
+            "rougeL": 0.1263157894736842
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            10,
+            3,
+            12,
+            14
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The group discussed that the remote control should be capable of controlling multiple devices, including televisions, and considered the use of both infrared and Bluetooth for communication. They acknowledged that while infrared is widely used and cost-effective, it may be outdated compared to newer technologies like Bluetooth. Additionally, they emphasized the importance of making the remote control user-friendly, including features like glow-in-the-dark buttons for visibility in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.20183486238532108,
+            "rouge2": 0.037383177570093455,
+            "rougeL": 0.09174311926605505
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            10,
+            3,
+            12,
+            14,
+            9,
+            8,
+            11,
+            13
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 0.5254988913525499
+        },
+        "word_packed__dense__w512": {
+          "answer": "The group discussed that the primary technical function of the remote control is to change the state of the TV by pressing buttons. The User Interface suggested that this is the basic functionality, while the Industrial Designer brought up alternative control methods such as touch-screens and sticks for movement, though the User Interface noted that these could be \"very vulnerable.\"",
+          "rouge_f1": {
+            "rouge1": 0.20833333333333334,
+            "rouge2": 0.06382978723404256,
+            "rougeL": 0.125
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The group discussed that the remote control should be interoperable, capable of controlling a diverse subset of equipment including TVs, DVD players, cell phones, and various video and audio equipment. They emphasized moving beyond outdated technologies like infrared towards more modern communication methods such as Bluetooth. The focus was on making the remote control trendy, user-friendly, and cost-effective while ensuring it could operate across different devices without being specific to any particular brand.",
+          "rouge_f1": {
+            "rouge1": 0.21818181818181817,
+            "rouge2": 0.07407407407407408,
+            "rougeL": 0.16363636363636364
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            7,
+            9
+          ],
+          "retrieval_precision": 0.1240234375,
+          "retrieval_recall": 0.28159645232815966
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The group discussed that the remote control should be a universal device capable of controlling various types of equipment including TVs, DVD players, and possibly cell phones. They emphasized the importance of interoperability, suggesting that the remote should work across different brands and devices. Regarding communication methods, they considered both infrared and Bluetooth technologies, acknowledging that while infrared is widely used, Bluetooth could offer modern advantages. The discussion also touched upon the user interface, considering options such as buttons, touch-screens, and directional sticks for ease of use. Additionally, they debated the range limitations of infrared technology, particularly in contexts beyond typical TV usage, like controlling radios outdoors.",
+          "rouge_f1": {
+            "rouge1": 0.2097902097902098,
+            "rouge2": 0.0425531914893617,
+            "rougeL": 0.09790209790209789
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            7,
+            9,
+            2,
+            8,
+            11,
+            3
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 0.5254988913525499
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The group discussed that the remote control should be capable of controlling a television, focusing on its functionality and the methods of communication with the TV, such as considering the integration of infrared and potentially Bluetooth technology. They also mentioned the importance of interoperability, suggesting that one remote could control one or more pieces of equipment. However, specific details about the connection between the remote and the TV were not extensively elaborated upon in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.26785714285714285,
+            "rouge2": 0.05454545454545454,
+            "rougeL": 0.17857142857142855
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2
+          ],
+          "retrieval_precision": 0.21484375,
+          "retrieval_recall": 0.24390243902439024
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The group discussed the connection of remote control and TV in the context of developing a new remote control product. They focused on the functionality of the remote control, specifically mentioning that it should control a television. They also considered the technical aspects of communication between the remote and the TV, discussing the use of infrared and Bluetooth as potential technologies. Additionally, they touched upon the idea of making the remote control compatible with various devices, including TVs, and ensuring its usability in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.18181818181818182,
+            "rouge2": 0.0,
+            "rougeL": 0.13223140495867766
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2,
+            13,
+            7
+          ],
+          "retrieval_precision": 0.2314453125,
+          "retrieval_recall": 0.5254988913525499
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The group discussed that the remote control should be able to connect and control various devices including televisions, DVD players, cell phones, and video/audio equipment, emphasizing interoperability. They considered using both infrared and Bluetooth for communication, acknowledging that while infrared is widely used and cost-effective, Bluetooth could offer modern advantages. Additionally, they highlighted the importance of user-friendliness, suggesting features like tactile feedback for buttons and visibility in low light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.2222222222222222,
+            "rouge2": 0.03773584905660377,
+            "rougeL": 0.12962962962962962
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2,
+            13,
+            7,
+            10,
+            1,
+            5,
+            12
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 0.5254988913525499
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The group discussed that the remote control should be able to connect to and control one or more pieces of equipment, specifically mentioning a television. They also considered equipping the remote with both infrared and Bluetooth technology for connectivity options. The focus was on making the remote control original, trendy, and user-friendly, with an emphasis on interoperability.",
+          "rouge_f1": {
+            "rouge1": 0.2365591397849462,
+            "rouge2": 0.04395604395604395,
+            "rougeL": 0.12903225806451615
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            8
+          ],
+          "retrieval_precision": 0.21484375,
+          "retrieval_recall": 0.24390243902439024
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The group discussed that the remote control should be able to connect and control a television, focusing on its basic technical function of changing the TV's state by pressing buttons. They also considered incorporating additional features such as touch-screens and sticks for easier user interaction. The industrial designer mentioned seeing remote controls with sticks that users could move forward or sideways, noting these were easy for users to operate. However, the user interface designer pointed out that such controls might be \"very vu vulnerable,\" suggesting potential issues with durability or usability.",
+          "rouge_f1": {
+            "rouge1": 0.23437499999999997,
+            "rouge2": 0.1111111111111111,
+            "rougeL": 0.125
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            8,
+            2,
+            10
+          ],
+          "retrieval_precision": 0.107421875,
+          "retrieval_recall": 0.24390243902439024
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The group discussed that the remote control should be interoperable, capable of controlling various devices including televisions, DVD players, cell phones, and audio/video equipment. They considered the communication methods between the remote and these devices, noting that while infrared is widely used, it may be outdated, and Bluetooth could be a viable alternative. Additionally, they explored the idea of incorporating a display on the remote control to enhance visibility and ease of use, especially in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.21052631578947367,
+            "rouge2": 0.035714285714285705,
+            "rougeL": 0.12280701754385966
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            8,
+            2,
+            10,
+            7,
+            13,
+            9,
+            5
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 0.5254988913525499
+        },
+        "lumber__dense__w512": {
+          "answer": "The group discussed that the remote control should be a universal device capable of working with different TVs and other devices, making it user-friendly and trendy for a broad public rather than being developed specifically for a particular vendor.",
+          "rouge_f1": {
+            "rouge1": 0.18666666666666665,
+            "rouge2": 0.0547945205479452,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The group discussed that the remote control should be able to operate a diverse subset of equipment including televisions, DVD players, cell phones, and various audio and video equipment, making it a universal remote control. They considered the use of both infrared and Bluetooth technology for communication, acknowledging that while infrared is widely used and cost-effective, Bluetooth may offer more modern connectivity options. The goal was to create a trendy, user-friendly, and versatile remote control for a broad consumer market rather than for a specific vendor.",
+          "rouge_f1": {
+            "rouge1": 0.21138211382113822,
+            "rouge2": 0.03305785123966942,
+            "rougeL": 0.13008130081300814
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2,
+            7
+          ],
+          "retrieval_precision": 0.17578125,
+          "retrieval_recall": 0.3991130820399113
+        },
+        "lumber__dense__w2048": {
+          "answer": "The group discussed that the remote control should be capable of controlling multiple devices including televisions, DVD players, and possibly cell phones, emphasizing interoperability. They considered using both infrared and Bluetooth for communication, acknowledging that while infrared is widely used, it may be outdated compared to newer technologies. The discussion also touched upon the ease of use, suggesting various control methods such as buttons, touch-screens, and sticks for navigation. Additionally, they mentioned the importance of the remote being visible in low-light conditions, potentially through simple design elements like contrasting colors on buttons.",
+          "rouge_f1": {
+            "rouge1": 0.21705426356589147,
+            "rouge2": 0.047244094488188976,
+            "rougeL": 0.10852713178294573
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            2,
+            7,
+            10,
+            9,
+            5,
+            12,
+            13,
+            1
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 0.5254988913525499
+        },
+        "lumber__bm25__w512": {
+          "answer": "The group discussed that the remote control should be able to control a diverse subset of equipment including televisions, DVD players, cell phones, and other video and audio equipment, aiming for interoperability between these devices. However, the specific connection between the remote control and TV was not extensively detailed beyond the basic functionality of controlling a television.",
+          "rouge_f1": {
+            "rouge1": 0.1956521739130435,
+            "rouge2": 0.044444444444444446,
+            "rougeL": 0.13043478260869565
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            7
+          ],
+          "retrieval_precision": 0.033203125,
+          "retrieval_recall": 0.037694013303769404
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The group discussed that the remote control should have interoperability, meaning it should be able to control a diverse subset of equipment including televisions, DVD players, cell phones, and other video and audio equipment. They considered the communication methods between the remote and the devices, debating between traditional infrared technology and newer options like Bluetooth. There was acknowledgment that while infrared is widely used and cost-effective, it may be outdated compared to Bluetooth. The group suggested that incorporating both technologies could be a viable solution, though they agreed further discussion was needed.",
+          "rouge_f1": {
+            "rouge1": 0.203125,
+            "rouge2": 0.04761904761904762,
+            "rougeL": 0.109375
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            7,
+            13,
+            8
+          ],
+          "retrieval_precision": 0.2314453125,
+          "retrieval_recall": 0.5254988913525499
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The group discussed that the remote control should be able to control a television and potentially other devices through interoperability. They considered the use of infrared and Bluetooth for communication, acknowledging that while infrared is widely used, it may be seen as outdated. The discussion also touched upon the functionality of the remote, emphasizing its basic task of changing the TV's state through button presses, and briefly explored alternative control methods like touch-screens. Additionally, there was mention of enhancing usability in low-light conditions, possibly through backlighting or contrast in button colors.",
+          "rouge_f1": {
+            "rouge1": 0.20155038759689922,
+            "rouge2": 0.031496062992125984,
+            "rougeL": 0.10852713178294573
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            7,
+            13,
+            8,
+            12,
+            9,
+            3
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 0.5254988913525499
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The group discussed that the remote control should be able to function as a universal device to control different TVs or other devices, aiming for interoperability rather than being exclusive to one brand. They emphasized making it trendy, user-friendly, and original, planning to explore further details on its appearance and functionality through subsequent design stages including functional, conceptual, and detailed designs.",
+          "rouge_f1": {
+            "rouge1": 0.2268041237113402,
+            "rouge2": 0.04210526315789474,
+            "rougeL": 0.12371134020618557
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The group discussed that the remote control should be able to operate a diverse subset of equipment including televisions, DVD players, cell phones, and various audio and video equipment, making it a universal remote control. They considered the use of both infrared and Bluetooth technology for communication, acknowledging that while infrared is widely used and cost-effective, Bluetooth may offer more modern connectivity options. The goal was to create a trendy, user-friendly, and versatile remote control for a broad consumer market rather than for a specific vendor.",
+          "rouge_f1": {
+            "rouge1": 0.21138211382113822,
+            "rouge2": 0.03305785123966942,
+            "rougeL": 0.13008130081300814
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            8,
+            7
+          ],
+          "retrieval_precision": 0.17578125,
+          "retrieval_recall": 0.3991130820399113
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The group discussed that the remote control should be interoperable, capable of controlling various devices including televisions, DVD players, and possibly cell phones. They considered using both infrared and Bluetooth for communication, acknowledging that while infrared is widely used, it may be outdated compared to newer technologies. The discussion also touched upon the ease of use, suggesting features like buttons, touch-screens, or sticks for navigation, and the importance of visibility in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.19999999999999998,
+            "rouge2": 0.03703703703703704,
+            "rougeL": 0.10909090909090909
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            8,
+            7,
+            13,
+            9,
+            12,
+            5,
+            10,
+            3
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 0.5254988913525499
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did Industrial Designer suggest when discussing the connection of remote control and TV?",
+      "reference_answer": "Industrial Designer proposed to change the way how the remote control and the TV communicate with each other as the infrared connection was not hot technical and suggested using Bluetooth.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Industrial Designer suggested focusing on the interoperability of the remote control, proposing that a modern remote control should be capable of controlling a diverse subset of equipment including DVD players, cell phones, and various video and audio equipment. Additionally, they mentioned the possibility of incorporating different types of controls such as buttons, touch-screens, and sticks for user interaction, highlighting the ease of use for tasks like switching channels or changing tracks on a CD or DVD player.",
+          "rouge_f1": {
+            "rouge1": 0.2777777777777778,
+            "rouge2": 0.05660377358490566,
+            "rougeL": 0.2037037037037037
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            12,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Industrial Designer suggested that a modern remote control should have interoperability, meaning it should be able to control a diverse subset of equipment such as DVD players, cell phones, and various video and audio equipment. Additionally, they emphasized the need to consider how these devices should communicate with each other, noting that they are not living in the 1980s anymore. They also proposed that the remote control should have a display to show functions, making it easier to operate.",
+          "rouge_f1": {
+            "rouge1": 0.3486238532110092,
+            "rouge2": 0.11214953271028036,
+            "rougeL": 0.20183486238532108
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            12,
+            10,
+            15,
+            9
+          ],
+          "retrieval_precision": 0.0400390625,
+          "retrieval_recall": 0.1729957805907173
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Industrial Designer suggested that a modern remote control should have interoperability, meaning it should be capable of controlling a diverse subset of equipment such as DVD players, cell phones, and various video and audio equipment. Additionally, he proposed considering newer communication technologies like Bluetooth instead of relying solely on infrared, due to its outdated nature, while acknowledging the cost-effectiveness of infrared technology. He emphasized the importance of discussing these aspects as the team begins to formulate ideas about the product's functionality and design.",
+          "rouge_f1": {
+            "rouge1": 0.29565217391304355,
+            "rouge2": 0.05309734513274336,
+            "rougeL": 0.15652173913043477
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            12,
+            10,
+            15,
+            9,
+            11,
+            13,
+            2,
+            3
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Industrial Designer suggested incorporating a small stick on the remote control that users could move forward and sideways to easily switch between channels or change tracks on a CD or DVD player.",
+          "rouge_f1": {
+            "rouge1": 0.29032258064516125,
+            "rouge2": 0.09999999999999999,
+            "rougeL": 0.19354838709677422
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            12,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Industrial Designer suggested considering modern communication technologies like Bluetooth instead of relying solely on infrared for connecting the remote control and TV, advocating for a discussion on how these devices should communicate with each other in a contemporary context.",
+          "rouge_f1": {
+            "rouge1": 0.463768115942029,
+            "rouge2": 0.208955223880597,
+            "rougeL": 0.31884057971014496
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            12,
+            10,
+            9,
+            8
+          ],
+          "retrieval_precision": 0.2314453125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Industrial Designer suggested that the remote control should have interoperability, allowing it to control a diverse subset of equipment including DVD players, cell phones, and video/audio equipment. Additionally, they proposed considering modern communication methods beyond infrared, such as Bluetooth, to facilitate interaction between the remote and the TV.",
+          "rouge_f1": {
+            "rouge1": 0.43037974683544306,
+            "rouge2": 0.12987012987012989,
+            "rougeL": 0.25316455696202533
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            12,
+            10,
+            9,
+            8,
+            11,
+            3,
+            13,
+            2
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Industrial Designer suggested focusing on the interoperability of the remote control, proposing that a modern remote control should be capable of controlling a diverse subset of equipment including DVD players, cell phones, and various video and audio equipment. Additionally, they mentioned the possibility of incorporating different types of controls such as buttons, touch-screens, and sticks for user interaction, highlighting the ease of use for tasks like switching channels or changing tracks on a CD or DVD player.",
+          "rouge_f1": {
+            "rouge1": 0.2777777777777778,
+            "rouge2": 0.05660377358490566,
+            "rougeL": 0.2037037037037037
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            8,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Industrial Designer suggested that a modern remote control should be able to control a diverse subset of equipment including DVD players, cell phones, and various video and audio equipment, advocating for interoperability between these devices. Additionally, they proposed considering newer communication technologies such as Bluetooth instead of relying solely on infrared, given its outdated nature, while acknowledging the cost-effectiveness of infrared technology.",
+          "rouge_f1": {
+            "rouge1": 0.3010752688172043,
+            "rouge2": 0.04395604395604396,
+            "rougeL": 0.19354838709677416
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            8,
+            10,
+            9,
+            14
+          ],
+          "retrieval_precision": 0.2314453125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Industrial Designer suggested that a modern remote control should be interoperable, capable of controlling a diverse subset of equipment including DVD players, cell phones, and video/audio equipment. He emphasized moving beyond outdated technologies like infrared and considering newer communication methods such as Bluetooth. Additionally, he proposed incorporating a display on the remote control to show functions, making it easier for users to operate.",
+          "rouge_f1": {
+            "rouge1": 0.2978723404255319,
+            "rouge2": 0.06521739130434784,
+            "rougeL": 0.1702127659574468
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            8,
+            10,
+            9,
+            14,
+            11,
+            15,
+            13,
+            3
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "Industrial Designer suggested that a modern remote control should be interoperable, capable of controlling a diverse subset of equipment including DVD players, cell phones, and video/audio equipment, essentially making it a \"one remote control for all your equipment.\" They also recommended considering newer communication technologies like Bluetooth over traditional infrared methods due to its outdated nature.",
+          "rouge_f1": {
+            "rouge1": 0.22988505747126434,
+            "rouge2": 0.047058823529411764,
+            "rougeL": 0.16091954022988506
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7
+          ],
+          "retrieval_precision": 0.248046875,
+          "retrieval_recall": 0.5358649789029536
+        },
+        "word_packed__dense__w1024": {
+          "answer": "Industrial Designer suggested that a modern remote control should be interoperable, capable of controlling a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. Additionally, he proposed considering newer communication technologies like Bluetooth instead of relying solely on infrared technology due to its outdated nature.",
+          "rouge_f1": {
+            "rouge1": 0.3,
+            "rouge2": 0.05128205128205128,
+            "rougeL": 0.17500000000000002
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            10,
+            1
+          ],
+          "retrieval_precision": 0.1240234375,
+          "retrieval_recall": 0.5358649789029536
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Industrial Designer suggested that the remote control should be interoperable, capable of controlling a diverse subset of equipment such as DVD players, cell phones, and video/audio equipment. Additionally, he proposed considering modern communication technologies like Bluetooth instead of relying solely on infrared for connectivity.",
+          "rouge_f1": {
+            "rouge1": 0.3466666666666666,
+            "rouge2": 0.08219178082191782,
+            "rougeL": 0.24
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            10,
+            1,
+            13,
+            8,
+            11,
+            2
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Industrial Designer suggested that one remote control should control one or more pieces of equipment and emphasized the importance of considering interoperability and the method of communication between the remote control and the TV/equipment. Additionally, earlier in the discussion, Industrial Designer agreed with User Interface's suggestion to equip the remote with both infrared and Bluetooth technology together. However, the specific technical details or further suggestions from Industrial Designer regarding the connection of the remote control and TV were not explicitly detailed beyond these points.",
+          "rouge_f1": {
+            "rouge1": 0.3448275862068966,
+            "rouge2": 0.10526315789473684,
+            "rougeL": 0.24137931034482765
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            13
+          ],
+          "retrieval_precision": 0.21484375,
+          "retrieval_recall": 0.4641350210970464
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Industrial Designer suggested that one remote control should control one or more pieces of equipment and emphasized the importance of considering the method of communication between the remote and these devices. Additionally, they proposed having a display on the remote control to show functions, making it easier to operate.",
+          "rouge_f1": {
+            "rouge1": 0.35443037974683544,
+            "rouge2": 0.07792207792207793,
+            "rougeL": 0.22784810126582278
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            13,
+            12,
+            10
+          ],
+          "retrieval_precision": 0.107421875,
+          "retrieval_recall": 0.4641350210970464
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Industrial Designer suggested that the remote control should be interoperable, capable of controlling a diverse subset of equipment including TVs, DVD players, cell phones, and other audio/video equipment. Additionally, he proposed considering modern communication technologies like Bluetooth instead of relying solely on infrared, due to its outdated nature. He also recommended incorporating a display on the remote control to show functions, making it easier for users to operate.",
+          "rouge_f1": {
+            "rouge1": 0.2828282828282828,
+            "rouge2": 0.061855670103092786,
+            "rougeL": 0.1616161616161616
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            13,
+            12,
+            10,
+            11,
+            2,
+            7,
+            9
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Industrial Designer suggested that one remote control should control one or more pieces of equipment and emphasized the importance of considering interoperability and the method of communication between the remote control and the TV/equipment. Additionally, earlier in the discussion, Industrial Designer agreed with User Interface's suggestion to equip the remote with both infrared and Bluetooth technology together. However, the specific technical details or further suggestions from Industrial Designer regarding the connection of the remote control and TV were not explicitly detailed beyond these points.",
+          "rouge_f1": {
+            "rouge1": 0.3448275862068966,
+            "rouge2": 0.10526315789473684,
+            "rougeL": 0.24137931034482765
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            13
+          ],
+          "retrieval_precision": 0.21484375,
+          "retrieval_recall": 0.4641350210970464
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "When discussing the connection of the remote control and TV, Industrial Designer suggested that one remote control should control one or more pieces of equipment and emphasized the importance of considering the way of communicating with these devices. Additionally, they brought up the idea of having a display on the remote control where users could see functions, making it easier to operate.",
+          "rouge_f1": {
+            "rouge1": 0.3695652173913043,
+            "rouge2": 0.13333333333333333,
+            "rougeL": 0.19565217391304346
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            13,
+            10,
+            9
+          ],
+          "retrieval_precision": 0.107421875,
+          "retrieval_recall": 0.4641350210970464
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Industrial Designer suggested that a modern remote control should be interoperable, capable of controlling a diverse subset of equipment including DVD players, cell phones, and video/audio equipment. Additionally, they proposed considering communication methods beyond infrared, such as Bluetooth, due to its cost-effectiveness and broader compatibility. They also mentioned the possibility of incorporating a display on the remote control to enhance usability.",
+          "rouge_f1": {
+            "rouge1": 0.3225806451612903,
+            "rouge2": 0.06593406593406594,
+            "rougeL": 0.17204301075268816
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            13,
+            10,
+            9,
+            7,
+            12,
+            11,
+            1
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "Industrial Designer suggested that a modern remote control should have interoperability, capable of controlling a diverse subset of equipment including DVD players, cell phones, and video/audio equipment. They proposed moving away from outdated technologies like infrared towards more contemporary options such as Bluetooth, while acknowledging the cost-effectiveness of infrared technology. The designer recommended considering both infrared and Bluetooth integration in one remote control, though this was noted as a topic for further discussion.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.03883495145631068,
+            "rougeL": 0.19047619047619044
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7
+          ],
+          "retrieval_precision": 0.462890625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "Industrial Designer suggested that a modern remote control should control a diverse subset of equipment, such as DVD players, cell phones, and video/audio equipment, advocating for interoperability between these devices. He also proposed considering newer communication technologies like Bluetooth instead of relying solely on infrared, given its outdated nature, while acknowledging the cost-effectiveness of infrared technology. Additionally, he recommended discussing the possibility of equipping the remote with both infrared and Bluetooth capabilities.",
+          "rouge_f1": {
+            "rouge1": 0.3076923076923077,
+            "rouge2": 0.058823529411764705,
+            "rougeL": 0.1923076923076923
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8,
+            10
+          ],
+          "retrieval_precision": 0.2314453125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "Industrial Designer suggested that the remote control should have interoperability, meaning it should be capable of controlling a diverse subset of equipment including DVD players, cell phones, and video/audio equipment. Additionally, he proposed considering modern communication methods beyond infrared, such as Bluetooth, to facilitate interaction between the remote and the devices. He also mentioned the importance of thinking about the technical aspects and new possibilities available for implementation in the product.",
+          "rouge_f1": {
+            "rouge1": 0.35294117647058826,
+            "rouge2": 0.07999999999999999,
+            "rougeL": 0.21568627450980393
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8,
+            10,
+            2,
+            13,
+            9,
+            12,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "Industrial Designer suggested that a modern remote control should control a diverse subset of equipment, including DVD players, cell phones, and video and audio equipment, making it \"one remote control for all your equipment.\" They also proposed considering newer communication technologies such as Bluetooth instead of infrared for better interoperability between devices.",
+          "rouge_f1": {
+            "rouge1": 0.29268292682926833,
+            "rouge2": 0.05,
+            "rougeL": 0.1951219512195122
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            7
+          ],
+          "retrieval_precision": 0.197265625,
+          "retrieval_recall": 0.42616033755274263
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Industrial Designer suggested that a modern remote control should control a diverse subset of equipment, including DVD players, cell phones, and video/audio equipment, advocating for interoperability between different devices. They also proposed considering newer communication technologies like Bluetooth instead of relying solely on infrared, given its outdated nature. Additionally, they mentioned the possibility of incorporating a display on the remote control to make it easier to operate, especially in low-light conditions.",
+          "rouge_f1": {
+            "rouge1": 0.25242718446601936,
+            "rouge2": 0.0594059405940594,
+            "rougeL": 0.13592233009708737
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            7,
+            12,
+            9
+          ],
+          "retrieval_precision": 0.2314453125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Industrial Designer suggested that the remote control should have interoperability, allowing it to control a diverse subset of equipment including DVD players, cell phones, and video/audio equipment. Additionally, they proposed considering modern communication methods beyond infrared, such as Bluetooth, to facilitate interaction between the remote and the TV. They also recommended incorporating a display on the remote control to show functions, making it easier to operate.",
+          "rouge_f1": {
+            "rouge1": 0.3711340206185567,
+            "rouge2": 0.10526315789473685,
+            "rougeL": 0.20618556701030927
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            7,
+            12,
+            9,
+            2,
+            10,
+            11,
+            8
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Industrial Designer suggested that a modern remote control should have interoperability, capable of controlling a diverse subset of equipment including DVD players, cell phones, and video/audio equipment. They proposed moving away from outdated technologies like infrared towards more contemporary options such as Bluetooth, while acknowledging the cost-effectiveness of infrared technology. The designer recommended considering both infrared and Bluetooth integration in one remote control, though this was noted as a topic for further discussion.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.03883495145631068,
+            "rougeL": 0.19047619047619044
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7
+          ],
+          "retrieval_precision": 0.462890625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Industrial Designer suggested that a modern remote control should control a diverse subset of equipment, such as DVD players, cell phones, and video/audio equipment, advocating for interoperability between devices. He also proposed considering newer communication technologies like Bluetooth instead of relying solely on infrared, given its outdated nature. Additionally, he mentioned the idea of incorporating a small stick on the remote control that users can move to easily switch channels or navigate through media options.",
+          "rouge_f1": {
+            "rouge1": 0.26415094339622636,
+            "rouge2": 0.057692307692307696,
+            "rougeL": 0.13207547169811318
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            10
+          ],
+          "retrieval_precision": 0.2314453125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Industrial Designer suggested that the remote control should have interoperability, meaning it should be capable of controlling a diverse subset of equipment including DVD players, cell phones, and video/audio equipment. Additionally, he proposed considering modern communication methods like Bluetooth instead of relying solely on infrared technology due to its outdated nature. He also mentioned the importance of discussing how these devices should communicate with each other.",
+          "rouge_f1": {
+            "rouge1": 0.35051546391752575,
+            "rouge2": 0.12631578947368421,
+            "rougeL": 0.22680412371134023
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            10,
+            2,
+            8,
+            12,
+            9,
+            5,
+            11
+          ],
+          "retrieval_precision": 0.11572265625,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "Why did User Interface disagree to use Bluetooth in the discussion of connection of remote control and TV?",
+      "reference_answer": "Project Manager believed that remote control should not consume too much power. Therefore, as the cellphone would consume power very quickly when the Bluetooth was on, User Interface was concerned that it might be a problem.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The evidence provided does not contain any statement from User Interface specifically disagreeing to use Bluetooth for connecting the remote control and TV. Therefore, the evidence is insufficient to determine why User Interface disagreed to use Bluetooth.",
+          "rouge_f1": {
+            "rouge1": 0.24657534246575344,
+            "rouge2": 0.056338028169014086,
+            "rougeL": 0.16438356164383564
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            10,
+            11
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "User Interface disagreed to use Bluetooth because they believed it would consume too much power, citing experience from cell phones where Bluetooth cannot be used continuously for 24 hours a day.",
+          "rouge_f1": {
+            "rouge1": 0.3582089552238806,
+            "rouge2": 0.15384615384615383,
+            "rougeL": 0.2388059701492537
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            10,
+            11,
+            16,
+            9
+          ],
+          "retrieval_precision": 0.208984375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "User Interface disagreed to use Bluetooth in the discussion of the connection of remote control and TV because they believed Bluetooth consumes a lot of power and cannot be used continuously for 24 hours a day. This concern was raised in the context of ensuring the device either be rechargeable very easily or not consume too much power, as frequently changing batteries can be annoying.",
+          "rouge_f1": {
+            "rouge1": 0.4158415841584158,
+            "rouge2": 0.1212121212121212,
+            "rougeL": 0.17821782178217824
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            10,
+            11,
+            16,
+            9,
+            13,
+            8,
+            2,
+            3
+          ],
+          "retrieval_precision": 0.1044921875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "User Interface disagreed to use Bluetooth alone because they noted that most TVs are already equipped with infrared, making it cost-effective to continue using it. They suggested equipping the remote with both infrared and Bluetooth instead of relying solely on Bluetooth.",
+          "rouge_f1": {
+            "rouge1": 0.20512820512820512,
+            "rouge2": 0.02631578947368421,
+            "rougeL": 0.10256410256410256
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            16
+          ],
+          "retrieval_precision": 0.046875,
+          "retrieval_recall": 0.11214953271028037
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "User Interface disagreed to use Bluetooth because they believed it would consume too much power, as indicated by their statement: \"But um {disfmarker} Necessary, yeah.\" They further elaborated, \"But then Bluetooth uh might be problem... 'Cause I think Bluetooth uh {disfmarker} Yeah, I know it from the cell phone.\" Additionally, User Interface mentioned, \"But you can't you can't use Bluetooth all the time, twenty four hours a day,\" suggesting concerns about continuous power consumption.",
+          "rouge_f1": {
+            "rouge1": 0.3392857142857143,
+            "rouge2": 0.10909090909090909,
+            "rougeL": 0.17857142857142858
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            16,
+            14,
+            2
+          ],
+          "retrieval_precision": 0.208984375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "User Interface disagreed to use Bluetooth because they believed it would consume too much power, citing experience from cell phones where Bluetooth cannot be used continuously for 24 hours a day.",
+          "rouge_f1": {
+            "rouge1": 0.3582089552238806,
+            "rouge2": 0.15384615384615383,
+            "rougeL": 0.2388059701492537
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            16,
+            14,
+            2,
+            1,
+            3,
+            10,
+            11
+          ],
+          "retrieval_precision": 0.1044921875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "User Interface disagreed to use Bluetooth because they believed it consumes a lot of power and cannot be used continuously for 24 hours a day.",
+          "rouge_f1": {
+            "rouge1": 0.29508196721311475,
+            "rouge2": 0.03389830508474576,
+            "rougeL": 0.1639344262295082
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            16,
+            8
+          ],
+          "retrieval_precision": 0.41796875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "User Interface disagreed to use Bluetooth because they believed it consumes a lot of power and cannot be used continuously for 24 hours a day. This concern was raised specifically in the context of ensuring the remote control does not require frequent battery changes, highlighting the potential issue of Bluetooth increasing power consumption.",
+          "rouge_f1": {
+            "rouge1": 0.3820224719101123,
+            "rouge2": 0.04597701149425288,
+            "rougeL": 0.1348314606741573
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            16,
+            8,
+            10,
+            11
+          ],
+          "retrieval_precision": 0.208984375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "User Interface disagreed to use Bluetooth in the discussion of the connection of remote control and TV because they believed Bluetooth consumes a lot of power and cannot be used continuously for 24 hours a day.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.05714285714285714,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            16,
+            8,
+            10,
+            11,
+            12,
+            2,
+            14,
+            3
+          ],
+          "retrieval_precision": 0.1044921875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The meeting excerpts provided do not contain any direct statement from User Interface disagreeing to use Bluetooth specifically for connecting the remote control and TV. The excerpts focus on the general functionality and design aspects of the remote control, emphasizing its universality and ease of use. Therefore, the evidence is insufficient to determine why User Interface disagreed to use Bluetooth.",
+          "rouge_f1": {
+            "rouge1": 0.20833333333333334,
+            "rouge2": 0.0425531914893617,
+            "rougeL": 0.125
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "User Interface disagreed to use Bluetooth because they noted that while infrared technology is considered old-fashioned, most TVs are still equipped with infrared, making it cost-effective to continue using it. User Interface suggested equipping the remote with both infrared and Bluetooth to maintain compatibility with existing devices while considering newer technologies.",
+          "rouge_f1": {
+            "rouge1": 0.15730337078651685,
+            "rouge2": 0.02298850574712644,
+            "rougeL": 0.0898876404494382
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            9,
+            7,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "User Interface disagreed to use Bluetooth in the discussion of the connection of remote control and TV because they believed Bluetooth consumes a lot of power and cannot be used continuously for 24 hours a day.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.05714285714285714,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            9,
+            7,
+            8,
+            14,
+            1,
+            11,
+            15,
+            2
+          ],
+          "retrieval_precision": 0.1044921875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "User Interface disagreed to use Bluetooth alone because they noted that most TVs are already equipped with infrared technology, making it cost-effective to continue using it. They suggested equipping the remote with both infrared and Bluetooth instead of relying solely on Bluetooth.",
+          "rouge_f1": {
+            "rouge1": 0.20253164556962022,
+            "rouge2": 0.025974025974025976,
+            "rougeL": 0.10126582278481011
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "User Interface disagreed to use Bluetooth alone because they acknowledged that while infrared technology is considered old-fashioned, most TVs are still equipped with it, making it cost-effective to continue using it. They suggested equipping the remote with both infrared and Bluetooth to maintain compatibility with existing devices.",
+          "rouge_f1": {
+            "rouge1": 0.16470588235294115,
+            "rouge2": 0.024096385542168672,
+            "rougeL": 0.09411764705882353
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7,
+            1,
+            13
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "User Interface disagreed to use Bluetooth in the discussion of the connection of remote control and TV because they believed Bluetooth consumes a lot of power and cannot be used continuously for 24 hours a day, which would be problematic given the production cost constraints and the need for the remote to be user-friendly and not require frequent battery changes.",
+          "rouge_f1": {
+            "rouge1": 0.28865979381443296,
+            "rouge2": 0.042105263157894736,
+            "rougeL": 0.14432989690721648
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7,
+            1,
+            13,
+            6,
+            2,
+            15,
+            14,
+            10
+          ],
+          "retrieval_precision": 0.1044921875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "User Interface disagreed to use Bluetooth alone because they noted that most TVs are already equipped with infrared technology, making it cost-effective to continue using it. They suggested equipping the remote with both infrared and Bluetooth instead of relying solely on Bluetooth.",
+          "rouge_f1": {
+            "rouge1": 0.20253164556962022,
+            "rouge2": 0.025974025974025976,
+            "rougeL": 0.10126582278481011
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "User Interface disagreed to use Bluetooth alone because they noted that while infrared technology is considered old-fashioned, most TVs are still equipped with it, making it cost-effective to continue using it. User Interface suggested equipping the remote with both infrared and Bluetooth to maintain compatibility with existing devices.",
+          "rouge_f1": {
+            "rouge1": 0.16279069767441862,
+            "rouge2": 0.023809523809523805,
+            "rougeL": 0.09302325581395349
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7,
+            1,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "User Interface disagreed to use Bluetooth in the discussion of the connection of remote control and TV because they believed it might be problematic due to its high power consumption. User Interface mentioned that Bluetooth \"might be a problem\" because it uses a lot of power, which could conflict with the requirement for the remote to either be easily rechargeable or consume minimal power.",
+          "rouge_f1": {
+            "rouge1": 0.33999999999999997,
+            "rouge2": 0.12244897959183672,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7,
+            1,
+            10,
+            14,
+            9,
+            13,
+            2
+          ],
+          "retrieval_precision": 0.07373046875,
+          "retrieval_recall": 0.705607476635514
+        },
+        "lumber__dense__w512": {
+          "answer": "The evidence provided does not contain any statements from User Interface specifically disagreeing to use Bluetooth for connecting the remote control and TV. Therefore, the evidence is insufficient to determine why User Interface disagreed to use Bluetooth.",
+          "rouge_f1": {
+            "rouge1": 0.24657534246575344,
+            "rouge2": 0.056338028169014086,
+            "rougeL": 0.16438356164383564
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "User Interface disagreed to use Bluetooth specifically because they noted that while infrared technology is considered old-fashioned, most TVs are still equipped with infrared, making it cost-effective to continue using it. They suggested equipping the remote with both infrared and Bluetooth to maintain compatibility with existing devices while considering newer technologies.",
+          "rouge_f1": {
+            "rouge1": 0.15730337078651685,
+            "rouge2": 0.02298850574712644,
+            "rougeL": 0.0898876404494382
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "User Interface disagreed to use Bluetooth in the discussion of the connection of remote control and TV because they believed Bluetooth consumes a lot of power and cannot be used continuously for 24 hours a day, which would be problematic given the cost and power consumption constraints of the project.",
+          "rouge_f1": {
+            "rouge1": 0.3488372093023256,
+            "rouge2": 0.04761904761904761,
+            "rougeL": 0.16279069767441862
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7,
+            9,
+            10,
+            14,
+            2
+          ],
+          "retrieval_precision": 0.1044921875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "User Interface disagreed to use Bluetooth alone because they noted that most TVs are already equipped with infrared technology, making it cost-effective to continue using it. They suggested equipping the remote with both infrared and Bluetooth instead of relying solely on Bluetooth.",
+          "rouge_f1": {
+            "rouge1": 0.20253164556962022,
+            "rouge2": 0.025974025974025976,
+            "rougeL": 0.10126582278481011
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "User Interface disagreed to use Bluetooth due to concerns over its power consumption. They believed Bluetooth might be problematic as it uses a lot of power, which could be an issue given the cost limitations and the desire for the remote control to either be easily rechargeable or not consume too much power.",
+          "rouge_f1": {
+            "rouge1": 0.449438202247191,
+            "rouge2": 0.16091954022988506,
+            "rougeL": 0.1797752808988764
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            14
+          ],
+          "retrieval_precision": 0.1455078125,
+          "retrieval_recall": 0.6962616822429907
+        },
+        "lumber__bm25__w2048": {
+          "answer": "User Interface disagreed to use Bluetooth in the discussion of the connection of remote control and TV because they believed Bluetooth consumes a lot of power, citing their experience with Bluetooth usage on cell phones. They mentioned that Bluetooth cannot be used continuously for 24 hours a day, which could be problematic given the production cost limitations and the need for the remote control to be user-friendly and not require frequent battery changes.",
+          "rouge_f1": {
+            "rouge1": 0.27272727272727276,
+            "rouge2": 0.037037037037037035,
+            "rougeL": 0.16363636363636366
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            13,
+            14,
+            2,
+            1,
+            6,
+            5,
+            3
+          ],
+          "retrieval_precision": 0.1044921875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "User Interface disagreed to use Bluetooth alone because they noted that most TVs are already equipped with infrared technology, making it cost-effective to continue using it. They suggested equipping the remote with both infrared and Bluetooth instead of relying solely on Bluetooth.",
+          "rouge_f1": {
+            "rouge1": 0.20253164556962022,
+            "rouge2": 0.025974025974025976,
+            "rougeL": 0.10126582278481011
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "User Interface disagreed to use Bluetooth in the discussion of the connection of remote control and TV because they believed that Bluetooth consumes a lot of power and cannot be used continuously for 24 hours a day, which would be problematic given the cost limitations and the need for the device to either be easily rechargeable or not consume too much power.",
+          "rouge_f1": {
+            "rouge1": 0.3877551020408163,
+            "rouge2": 0.14583333333333334,
+            "rougeL": 0.14285714285714285
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            14,
+            13
+          ],
+          "retrieval_precision": 0.208984375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "User Interface disagreed to use Bluetooth in the discussion of the connection of remote control and TV because they believed that Bluetooth consumes a lot of power and cannot be used continuously for 24 hours a day, which would be problematic given the cost limitations and the need for the remote to be user-friendly and not require frequent battery changes.",
+          "rouge_f1": {
+            "rouge1": 0.30927835051546393,
+            "rouge2": 0.0631578947368421,
+            "rougeL": 0.14432989690721648
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            14,
+            13,
+            2,
+            8,
+            9,
+            1
+          ],
+          "retrieval_precision": 0.1044921875,
+          "retrieval_recall": 1.0
+        }
+      }
+    }
+  ]
+}

@@ -3,9 +3,9 @@
 ## Purpose
 
 This analysis checks whether the experiment's 256-word baseline chunks,
-550-pseudo-token Lumber window, and 512/1,024/2,048-word evidence budgets are
-reasonable for QMSum. It is descriptive, not evidence that these values are
-optimal.
+1,000-pseudo-token Lumber window, and 512/1,024/2,048-word evidence budgets are
+reasonable for QMSum. It is descriptive; the Lumber target was selected by the
+separate validation sweep summarized below.
 
 The parameter interpretation is based primarily on QMSum training data. The
 20-meeting validation subset used by the current experiment and the untouched
@@ -119,7 +119,7 @@ It should not be claimed that 256 words matches the natural evidence-span size.
 It deliberately does not: 74.0% of training spans are longer. The thesis should
 also disclose the soft-limit tail of the turn-packed baseline.
 
-### Lumber window: 550 pseudo-tokens
+### Lumber window: 1,000 pseudo-tokens
 
 On training data, an individual annotated range has a median of 649 Lumber
 pseudo-tokens. Only 42.3% of individual spans and 37.4% of complete per-question
@@ -134,20 +134,17 @@ increase to 66.4% and 62.5%, respectively.
 
 These comparisons establish scale, not a requirement that one Lumber window
 contain an entire answer span. Lumber predicts a local semantic boundary; it is
-not given the question or gold evidence. The strongest justification for 550
-should therefore be that it is the inherited LumberChunker setting used for the
-primary adaptation, while the QMSum statistics show that it produces relatively
-local context.
+not given the question or gold evidence.
 
-A one-meeting sensitivity check on `Bed002`, holding the 14B boundary model
-fixed, supports including 1,000 as a small ablation. The 550 setting produced 70
-chunks (69 internal boundaries), whereas 1,000 produced 48 chunks (47
-boundaries). Of the 47 boundaries under 1,000, 37 also occurred exactly under
-550: 78.7% retention, 53.6% in the reverse direction, and 46.8% Jaccard overlap.
-Mean chunk length increased from 205 to 299 content words. This suggests that
-the larger window removes some fine-grained boundaries while preserving many
-boundary locations, but the result is exploratory because it uses one meeting
-and sequential decisions are not independent.
+The final target was selected on the fixed 20-meeting validation subset by
+sweeping 500, 750, 1,000, 1,250, and 1,500 pseudo-tokens while holding the
+boundary model, prompt, decoding, retrievers, and evidence budgets fixed. The
+1,000 setting had a 243-word median chunk, closest to the deterministic
+baseline medians, and the highest mean retrieval F1 across the prespecified
+retriever-budget environments. Its mean recall was within 0.01 of the best
+target. The predeclared rule therefore selected 1,000 before evaluation on the
+test split. Full results are in
+[`lumber-sweep/sweep.md`](../runs/ablations/lumber-sweep/sweep.md).
 
 ### Retrieved-evidence budgets: 512, 1,024, and 2,048 words
 
@@ -173,15 +170,9 @@ The data support the following restrained justification:
 > both soft turn-preserving and strict word-packed forms. Evidence budgets of
 > 512, 1,024, and 2,048 words represent approximately two, four, and eight
 > baseline chunks and probe median, upper-quartile, and near-P90 gold evidence
-> sizes. The 550-token
-> Lumber window follows the adapted method's approximate token accounting and
-> is treated as a method parameter rather than as a value optimized on QMSum.
-
-If time permits, the 1,000-target Lumber condition is the most informative
-additional chunking ablation. It tests whether conclusions depend on the
-primary method's relatively local window. It should be run across all selected
-validation meetings before its boundary stability is presented as more than a
-single-meeting observation.
+> sizes. A validation-only sweep selected a 1,000-pseudo-token Lumber window:
+> it produced chunks closest in median size to the deterministic baselines while
+> retaining retrieval performance within the predeclared recall tolerance.
 
 ## Limitations
 
@@ -194,4 +185,5 @@ single-meeting observation.
 - The selected validation subset contains only 20 meetings and 142 questions.
 - The distributions are highly skewed; means should always be accompanied by
   medians or upper percentiles.
-- The 1,000-target comparison currently covers only `Bed002`.
+- Target selection reuses the 20-meeting validation subset and is therefore a
+  development decision rather than independent confirmatory evidence.

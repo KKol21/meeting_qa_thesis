@@ -1,5 +1,7 @@
 # Ablation report
 
+**Dataset split:** QMSum validation.
+
 **Scope:** 1 meeting(s), 6 question(s).
 
 > This is a smoke test. Treat rankings as pipeline validation, not experimental conclusions.

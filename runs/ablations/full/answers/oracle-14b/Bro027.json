@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "Bro027.json",
+        "sha256": "4b2b777f0e22d9cb0553cd4489c22aeb1802b98e7cbfff356ad37904e76942b5"
+      }
+    },
+    "input_hash": "36481ca5be601c5cc337fbc52fe5981a749fa6ee01cae39c8b5547ec28d5a9a7",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "c5e0546c394ab6236788241b9800f81dd047ef76c3df3af4eb5aa8504c9c3edc",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bro027",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion on deletions and improving the net",
+      "reference_answer": "Adding the neural net was doubling the number of deletions. The model did not improve significantly, however, thought it became better at some tasks. The results were a mixed basket and it was decided that further experimentation was necessary.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion focused on the increase in deletions observed after adding a neural network to the system. PhD C noted that the number of deletions doubled while insertions and substitutions remained roughly the same or slightly improved. The increase in deletions was not specific to cases that otherwise improved but occurred across various conditions, particularly in noisy environments like distant microphone recordings. The group considered the possibility that the neural network might be causing issues, especially in noisy conditions, suggesting a need to improve the neural network's performance. Professor B suggested focusing on improving the neural network to address the problem.",
+          "rouge_f1": {
+            "rouge1": 0.22695035460992907,
+            "rouge2": 0.05755395683453237,
+            "rougeL": 0.15602836879432624
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              678,
+              818
+            ]
+          ],
+          "evidence_words": 2232
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the professor think about the neural net?",
+      "reference_answer": "The professor was interested in knowing what impact the neural net had in the older models which did not have pure features. The professor believed it was worthwhile to improve the net, though he also expressed that nets were occasionally over used.",
+      "results": {
+        "oracle": {
+          "answer": "The professor thought that the neural net alone did not improve performance initially and might have worsened results compared to using pure features. However, the professor suggested that the neural net could potentially help when the features are poor. The professor also expressed uncertainty about whether the neural net would consistently perform better than LDA and emphasized the need for further experimentation to understand its impact fully.",
+          "rouge_f1": {
+            "rouge1": 0.4220183486238532,
+            "rouge2": 0.13084112149532712,
+            "rougeL": 0.3119266055045872
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              726,
+              841
+            ]
+          ],
+          "evidence_words": 2132
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the team discuss about the most noisy cases?",
+      "reference_answer": "The team thought that the most noisy cases were the distant microphone testing. That is when there were non-stationary noises in the background, like from a car, a babble or subway. These presented a unique challenge for the model that could potentially be best solved with a neural net.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed that the most noisy cases involved distant microphone testing. They noted issues with noise subtraction potentially removing speech instead of noise, especially when adding neural networks. The discussion highlighted that without neural networks, performance was better, but adding them worsened outcomes unless a secondary path with pure features was included. They explored various types of noise from the TIMIT dataset, including car, babble, subway, and train station noises, noting differences in their characteristics. The team also considered past experiments where neural nets alone performed worse than pure features, suggesting that current issues might stem from how neural networks interact with other features.",
+          "rouge_f1": {
+            "rouge1": 0.3483870967741935,
+            "rouge2": 0.1045751633986928,
+            "rougeL": 0.24516129032258063
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              700,
+              746
+            ]
+          ],
+          "evidence_words": 675
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion on VAD results",
+      "reference_answer": "The VAD neural net had twelve times nine inputs and two outputs. The system had improved significantly. It added some latency but the team could potentially run it in parallel.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion on VAD results focused on improvements made to the system using noise-compensated MFCC features instead of noisy features, leading to a noticeable enhancement in performance. The new system uses a small neural network with 100 hidden units, processing nine frames of six features (including first derivatives) for each input. The total number of parameters is approximately 11,000. However, the latency issue remains significant at 220 milliseconds due to various processing steps including noise cleaning, neural network processing, and delta computation. Suggestions were made to potentially reduce latency by adjusting the timing of delta computation relative to online normalization and considering a smaller window for delta calculation.",
+          "rouge_f1": {
+            "rouge1": 0.19999999999999996,
+            "rouge2": 0.014492753623188406,
+            "rougeL": 0.1142857142857143
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              221,
+              330
+            ]
+          ],
+          "evidence_words": 1372
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the professor think about VAD latency?",
+      "reference_answer": "The professor wanted to know how much latency the VAD was adding to the model. The professor thought that the process could work in parallel. The professor informed the team that the max latency was unknown.",
+      "results": {
+        "oracle": {
+          "answer": "The professor was initially confused about the VAD latency, specifically about how the initial latency of 220 milliseconds was calculated and how it related to subsequent computations. As the discussion progressed, the professor seemed to accept the breakdown of the latency components but expressed some uncertainty and suggested potential ways to reduce the overall latency, such as adjusting the smoothing duration or repositioning the delta computation. The professor's primary concern appeared to be ensuring the total latency remained under 200 milliseconds, indicating a desire to optimize the system's performance.",
+          "rouge_f1": {
+            "rouge1": 0.2992125984251969,
+            "rouge2": 0.064,
+            "rougeL": 0.22047244094488186
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              251,
+              346
+            ]
+          ],
+          "evidence_words": 1096
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did PhD C say about the breakdown of the latency?",
+      "reference_answer": "PhD C explained that the silence probabilities had a 100ms delay, the delta at the input had a 40ms delay, and a 10ms delay was created by LDA filters.",
+      "results": {
+        "oracle": {
+          "answer": "PhD C mentioned that the breakdown of the latency includes a 100 milliseconds delay from filtering silence probabilities, a 10 milliseconds delay from LDA filters, and other contributions such as 40 milliseconds for cleaning the speech, 100 milliseconds for smoothing, and 20 milliseconds for the delta. PhD C concluded that the total latency is around 210 milliseconds, considering additional factors discussed.",
+          "rouge_f1": {
+            "rouge1": 0.35555555555555557,
+            "rouge2": 0.11363636363636362,
+            "rougeL": 0.24444444444444446
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              262,
+              294
+            ]
+          ],
+          "evidence_words": 312
+        }
+      }
+    }
+  ]
+}

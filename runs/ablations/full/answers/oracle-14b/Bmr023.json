@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "Bmr023.json",
+        "sha256": "70d0d99d63ccfb98e55b4f6421eb657bda18e1295ef7c03f885c8e8ba23c25a8"
+      }
+    },
+    "input_hash": "828056aafbedceae535fcec54b320a5af7af32d6285fd0c31514f1d56b14b92f",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "5f6c4be688ae05ae609a7a853afef252d226037f8c834b34f53ca6fa8fb6ffde",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bmr023",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What was decided on DARPA?",
+      "reference_answer": "A pressing concern for the group is the DARPA meeting in July, which is only a short time away, and for which they would like to have some progress. ",
+      "results": {
+        "oracle": {
+          "answer": "The evidence is insufficient to determine what was decided on DARPA.",
+          "rouge_f1": {
+            "rouge1": 0.2,
+            "rouge2": 0.0,
+            "rougeL": 0.15
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              32,
+              35
+            ]
+          ],
+          "evidence_words": 106
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What was said on transcripts?",
+      "reference_answer": "For the DARPA meeting in July, the group proposed that they should have the question answering mock-up and transcriber interface ready for then, and also have data available.",
+      "results": {
+        "oracle": {
+          "answer": "On the transcripts, Professor F mentioned starting late and asked Adam if he had thought more about the demo stuff since the DARPA meeting was in mid-July. They discussed doing a mock-up for question answering separately from the transcriber interface. Professor F emphasized the need to sort out tasks and assign someone to work on them as they had about a month left. PhD G clarified that the notes were from previous meetings and proceeded to xerox some digits.",
+          "rouge_f1": {
+            "rouge1": 0.32727272727272727,
+            "rouge2": 0.09259259259259259,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              32,
+              47
+            ]
+          ],
+          "evidence_words": 285
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What was the status of transcription?",
+      "reference_answer": "The final english SmartKom demo will be presented to the whole institute once the system is de-bugged and stabilised.",
+      "results": {
+        "oracle": {
+          "answer": "The status of transcription was that a significant amount of work had been completed, but there were ongoing adjustments and refinements. Specifically, some transcriptions required tweaking around boundaries, particularly for shorter utterances. Additionally, there was discussion about organizing and recording the status of all meetings, including their transcription progress, on a web page. However, the exact number of completed transcriptions was not definitively stated due to ongoing verification and updates.",
+          "rouge_f1": {
+            "rouge1": 0.11111111111111112,
+            "rouge2": 0.0,
+            "rougeL": 0.08888888888888888
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              229,
+              323
+            ]
+          ],
+          "evidence_words": 2642
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What change has occurred to the segmenter?",
+      "reference_answer": "Segmentation for the recogniser has been done by hand which the group consider \"cheating\", instead now they want to use Thilo's automatic segmenter.",
+      "results": {
+        "oracle": {
+          "answer": "The change to the segmenter involves moving from hand-segmentations to automatic segmentations for meeting recognition.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.10526315789473685,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              101,
+              108
+            ]
+          ],
+          "evidence_words": 124
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What is the status of the segmenter",
+      "reference_answer": "The classifier segmentation work is going well, but needs more data to improve results since non-native speaker data cannot be used.",
+      "results": {
+        "oracle": {
+          "answer": "The segmenter, developed by Thilo, is working well according to PhD C's statement in excerpt [109]. However, there are no further details provided about its current operational status beyond this positive assessment.",
+          "rouge_f1": {
+            "rouge1": 0.21818181818181817,
+            "rouge2": 0.0,
+            "rougeL": 0.18181818181818182
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              101,
+              114
+            ]
+          ],
+          "evidence_words": 173
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What change has occurred to the segmenter?",
+      "reference_answer": "To improve the performance of Thilo's automatic segmenter, this is going to be retrained and adapted to run with Thilo's posteriors and speaker background models.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence provided does not specify any particular change to the segmenter beyond indicating that currently, they are \"discrete.\" No explicit changes or modifications to the segmenter are discussed in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.13333333333333333,
+            "rouge2": 0.0,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              133,
+              140
+            ]
+          ],
+          "evidence_words": 88
+        }
+      }
+    }
+  ]
+}

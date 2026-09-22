@@ -1,0 +1,3648 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "ES2011c.json",
+        "sha256": "ff02d2ce9ad006ebb216f023f2bbf324307db4d85f33051e733023b55574b3ca"
+      },
+      "retrieval": {
+        "file": "ES2011c.json",
+        "sha256": "30539427ccd3b90f45bb8abd39e9042d4dc3f7f3a10a69aa4f9646860f21a1da"
+      },
+      "segmentation": {
+        "file": "ES2011c.json",
+        "sha256": "4aca4b7a8ec0b6304880312be252a6c225273e4ce8089a43f505729c25d0c7fe"
+      }
+    },
+    "input_hash": "1fc1794579485662b49a60fc8d5af2784abeec6bb0e756ec56e70be906ef45cd",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "ebeb214c17477de109654c67b8be1dde811e47dd461f177c2b982be3a5e620bd",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "ES2011c",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 142,
+  "cache_hits": 20,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group discuss about the current trend and potential materials?",
+      "reference_answer": "Marketing proposed that the fancy look and feel were more important than the functionality of the product. The fruit and vegetable theme was the current trend, and marketing himself preferred fruits to vegetables. Therefore, how spongy the material could be should be taken into consideration when choosing the materials. The potential materials to accomplish the fruit and vegetable theme could be a sort of rubber, which was used in the stress balls. The alternative option was to use a cover for it, and choose a colour that fits one's sitting room.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group discussed the potential use of wood as a material but decided against it without specifying reasons. They also explored the idea of using an iPod-style wheel button, noting that this would require a more expensive chip than the minimal chip. Regarding materials, there was a suggestion to make the squishy part of the product interchangeable, possibly themed around trendy vegetables and fruits, which could be automatically adjusted. For energy sources, they considered batteries, solar power, and a dynamo (the purpose of which was unclear to some participants).",
+          "rouge_f1": {
+            "rouge1": 0.38461538461538464,
+            "rouge2": 0.06666666666666667,
+            "rougeL": 0.1978021978021978
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            22,
+            0
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The group discussed the current trend towards incorporating fashionable and innovative materials into the design of their product. Marketing suggested using materials that evoke a \"fruit and vegetable\" theme, emphasizing a spongy feel as a desirable feature. They debated whether the remote should look like a fruit or if the fruit/vegetable design should be printed on the surface. Additionally, the group considered the potential use of a more expensive chip for an iPod-style wheel button system. There was also discussion around the feasibility and desirability of having a customizable, possibly \"squishy,\" part of the device that could be changed to reflect trends.",
+          "rouge_f1": {
+            "rouge1": 0.4795918367346939,
+            "rouge2": 0.10309278350515462,
+            "rougeL": 0.24489795918367346
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            22,
+            0,
+            4,
+            24,
+            5
+          ],
+          "retrieval_precision": 0.25390625,
+          "retrieval_recall": 0.26078234704112335
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme aimed at creating a fashionable and technologically innovative product that is also user-friendly. They considered materials such as rubber, plastic, wood, and titanium, with a preference for achieving a spongy feel. Marketing suggested incorporating this theme into the design, possibly through printing or making the remote resemble a fruit. The team also explored the idea of having a squishy, moldable part of the remote that could change shape according to the user's grip, while the other part remained a single unit. This discussion was centered around balancing the trendy design with practical usability.",
+          "rouge_f1": {
+            "rouge1": 0.39999999999999997,
+            "rouge2": 0.07070707070707069,
+            "rougeL": 0.18
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            22,
+            0,
+            4,
+            24,
+            5,
+            1,
+            3,
+            18,
+            21
+          ],
+          "retrieval_precision": 0.255859375,
+          "retrieval_recall": 0.5255767301905717
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme, aiming for a fancy look and feel, technological innovation, and ease of use. They considered using materials that could achieve a spongy feel, possibly through printing techniques or actual material composition resembling fruits rather than vegetables. The exact method to achieve the spongy texture was left open for further discussion, particularly involving the Industrial Designer.",
+          "rouge_f1": {
+            "rouge1": 0.425,
+            "rouge2": 0.1139240506329114,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4,
+            5
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.5135406218655968
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The group discussed that the current trend in electronics is incorporating a \"fruit and vegetable\" theme, aiming for a fancy look and feel, technological innovation, and ease of use. Marketing suggested that the material should have a spongy feel, though the exact implementation details were left open for further discussion among the team members. There was also consideration given to whether the remote should look like a fruit or if it should be printed to resemble one. Additionally, the group explored the possibility of using a touch-based graphical interface similar to an iPod, which would be technologically innovative and trendy.",
+          "rouge_f1": {
+            "rouge1": 0.4870466321243524,
+            "rouge2": 0.12565445026178013,
+            "rougeL": 0.22797927461139894
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4,
+            5,
+            15,
+            0
+          ],
+          "retrieval_precision": 0.51171875,
+          "retrieval_recall": 0.5255767301905717
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The group discussed that the current trend in electronics involves a \"fancy look and feel,\" technological innovation, and ease of use. They noted that the fruit and vegetable theme is the current trend, with a preference for fruits over vegetables. Regarding materials, they considered a spongy feel, possibly using a rubber similar to stress balls, and debated integrating this tactile element into the design. They also explored different power sources, leaning towards batteries as a practical choice.",
+          "rouge_f1": {
+            "rouge1": 0.43786982248520706,
+            "rouge2": 0.1437125748502994,
+            "rougeL": 0.2958579881656805
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            4,
+            5,
+            15,
+            0,
+            7,
+            16,
+            24,
+            23
+          ],
+          "retrieval_precision": 0.37939453125,
+          "retrieval_recall": 0.7793380140421263
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The group discussed that the current trend focuses on a \"fancy look and feel,\" followed by technological innovation and ease of use. Regarding potential materials, Marketing suggested aiming for a spongy feel and considering the remote to resemble a fruit rather than a vegetable, emphasizing the importance of discussing whether the fruit design should be printed or if the actual remote should look like a fruit. Industrial Designer was asked to explore solutions for achieving a spongy texture that aligns with technological innovation.",
+          "rouge_f1": {
+            "rouge1": 0.4342857142857143,
+            "rouge2": 0.10404624277456648,
+            "rougeL": 0.24
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            3
+          ],
+          "retrieval_precision": 0.689453125,
+          "retrieval_recall": 0.354062186559679
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme, aiming for a fancy look and feel, technological innovation, and ease of use. Regarding potential materials, Marketing suggested a spongy feel, though the exact feasibility was uncertain. They debated whether the remote should look like a fruit or if it should be printed to resemble one, with a preference for fruits over vegetables. Industrial Designer mentioned the possibility of having a squishy part that could be changed to reflect different trendy designs while keeping the main body as a single unit.",
+          "rouge_f1": {
+            "rouge1": 0.4623655913978495,
+            "rouge2": 0.13043478260869568,
+            "rougeL": 0.21505376344086022
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            3,
+            5,
+            22
+          ],
+          "retrieval_precision": 0.51171875,
+          "retrieval_recall": 0.5255767301905717
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The group discussed that the current trend in electronics is a \"fruit and vegetable\" theme, aiming for a fancy look and feel, technological innovation, and ease of use. They considered using materials that provide a spongy feel, such as a rubber similar to stress balls, to align with the trend. Regarding potential materials, they explored options like rubber for the spongy aspect and debated between various energy sources including batteries, solar power, and a dynamo mechanism, ultimately leaning towards batteries due to insufficient data on other options and concerns about practicality.",
+          "rouge_f1": {
+            "rouge1": 0.41530054644808745,
+            "rouge2": 0.12154696132596685,
+            "rougeL": 0.19672131147540983
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            3,
+            5,
+            22,
+            2,
+            24,
+            23,
+            16,
+            15
+          ],
+          "retrieval_precision": 0.37939453125,
+          "retrieval_recall": 0.7793380140421263
+        },
+        "word_packed__dense__w512": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme and emphasized a fancy look and feel, technological innovation, and ease of use. Regarding potential materials, they considered various power sources such as battery, wind-up, dynamo, and solar power, ultimately leaning towards batteries due to insufficient data on costs and availability for other options like solar power with a rubber case.",
+          "rouge_f1": {
+            "rouge1": 0.3439490445859873,
+            "rouge2": 0.12903225806451615,
+            "rougeL": 0.178343949044586
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            2
+          ],
+          "retrieval_precision": 0.404296875,
+          "retrieval_recall": 0.20762286860581744
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme and a spongy, squishy feel. They considered this trend important for making their electronic product fashionable. Regarding potential materials, they explored options such as batteries, solar power, and a dynamo mechanism, ultimately leaning towards batteries due to insufficient data on costs and availability for other options.",
+          "rouge_f1": {
+            "rouge1": 0.31788079470198677,
+            "rouge2": 0.09395973154362416,
+            "rougeL": 0.18543046357615892
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            2,
+            20,
+            22,
+            0
+          ],
+          "retrieval_precision": 0.2021484375,
+          "retrieval_recall": 0.20762286860581744
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The group discussed the current trend of a \"fruit and vegetable\" theme as fashionable and technologically innovative, aiming for a fancy look and feel, technological innovation, and ease of use. They considered materials such as rubber, plastic, wood, and titanium, with a preference for achieving a spongy feel. The Industrial Designer suggested using a rubber-like material similar to stress balls to achieve this spongy texture. Regarding energy sources, they briefly explored options including batteries, solar power, and a dynamo mechanism, ultimately leaning towards batteries due to insufficient data on other alternatives and concerns about practicality.",
+          "rouge_f1": {
+            "rouge1": 0.3829787234042554,
+            "rouge2": 0.10752688172043011,
+            "rougeL": 0.1914893617021277
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            2,
+            20,
+            22,
+            0,
+            1,
+            14,
+            3,
+            16
+          ],
+          "retrieval_precision": 0.3193359375,
+          "retrieval_recall": 0.6559679037111334
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme, particularly favoring fruits over vegetables according to Marketing's preference. They also emphasized the importance of achieving a spongy feel and technological innovation in the material used. Marketing suggested considering whether the material should be printed to resemble fruit or if the actual remote should look like a fruit. The group recognized the need to explore how spongy the material could be and to ensure technological innovation, tasks they directed towards the Industrial Designer.",
+          "rouge_f1": {
+            "rouge1": 0.5251396648044694,
+            "rouge2": 0.15819209039548024,
+            "rougeL": 0.22346368715083798
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3
+          ],
+          "retrieval_precision": 0.904296875,
+          "retrieval_recall": 0.46439317953861586
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme, aiming for a fancy look and feel, technological innovation, and ease of use. Marketing suggested that the material should have a spongy feel, possibly resembling stress balls made from rubber. However, there was some hesitation about achieving the desired level of sponiness. The group agreed that the Industrial Designer should explore solutions for this requirement.",
+          "rouge_f1": {
+            "rouge1": 0.425,
+            "rouge2": 0.13924050632911392,
+            "rougeL": 0.2125
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            14,
+            4
+          ],
+          "retrieval_precision": 0.693359375,
+          "retrieval_recall": 0.7121364092276831
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The group discussed that the current trend in electronics is a \"fruit and vegetable\" theme, aiming for a fancy look and feel, technological innovation, and ease of use. Marketing suggested using materials that provide a spongy feel, possibly like the rubber used in stress balls, to align with the trend. However, there was no consensus on whether the remote should look like a fruit or if the fruit design should be printed on it. The group also briefly explored different power sources, leaning towards batteries as a practical option.",
+          "rouge_f1": {
+            "rouge1": 0.46408839779005523,
+            "rouge2": 0.14525139664804468,
+            "rougeL": 0.22099447513812157
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            14,
+            4,
+            6,
+            0,
+            22,
+            21,
+            20
+          ],
+          "retrieval_precision": 0.3466796875,
+          "retrieval_recall": 0.7121364092276831
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme and emphasized a fancy look and feel, technological innovation, and ease of use. Regarding potential materials, they considered various power sources such as battery, wind-up, dynamo, and solar power, ultimately leaning towards batteries due to insufficient data on costs and availability for other options like solar power with a rubber case.",
+          "rouge_f1": {
+            "rouge1": 0.3439490445859873,
+            "rouge2": 0.12903225806451615,
+            "rougeL": 0.178343949044586
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            21
+          ],
+          "retrieval_precision": 0.404296875,
+          "retrieval_recall": 0.20762286860581744
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme, with a preference for fruits over vegetables. They considered the material to be spongy, possibly resembling stress balls made from rubber. The discussion also touched upon the technological innovation aspect, with considerations for battery power as a feasible option due to uncertainties around the cost and availability of alternatives like solar power or dynamo systems.",
+          "rouge_f1": {
+            "rouge1": 0.4125,
+            "rouge2": 0.1139240506329114,
+            "rougeL": 0.2375
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            21,
+            3,
+            14
+          ],
+          "retrieval_precision": 0.6337890625,
+          "retrieval_recall": 0.6509528585757272
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The group discussed that the current trend in electronics involves a \"fancy look and feel,\" followed by technological innovation and ease of use. Marketing suggested that the fruit and vegetable theme is the current trend, particularly favoring fruits over vegetables for a fashionable appearance. They debated whether the remote should look like a fruit or if it should be printed to resemble one. Regarding materials, Marketing proposed a spongy feel, and the Industrial Designer suggested using a rubber-like material similar to stress balls to achieve this. The group also briefly touched upon energy sources, considering batteries, solar power, and a dynamo mechanism, ultimately leaning towards batteries due to insufficient data on other options.",
+          "rouge_f1": {
+            "rouge1": 0.48543689320388345,
+            "rouge2": 0.13725490196078433,
+            "rougeL": 0.28155339805825247
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            21,
+            3,
+            14,
+            22,
+            0,
+            20,
+            4,
+            16
+          ],
+          "retrieval_precision": 0.34912109375,
+          "retrieval_recall": 0.7171514543630892
+        },
+        "lumber__dense__w512": {
+          "answer": "The group discussed the current trend towards customizable designs for components such as the case and circuit board, with a preference for custom designing the case likely from hard plastic or other materials, and standard parts for buttons, wheels, and the infrared LED. Regarding potential materials for the case, options included rubber, plastic, wood, or titanium, with a recommendation against titanium due to its heaviness and limitation to flat cases. For energy sources, they considered batteries, solar power, and a dynamo (a mechanism that generates electricity through movement), ultimately leaning towards batteries as the most practical option for a remote control.",
+          "rouge_f1": {
+            "rouge1": 0.2797927461139897,
+            "rouge2": 0.03141361256544503,
+            "rougeL": 0.1865284974093264
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The group discussed the current trend as being the \"fruit and vegetable theme\" in fashion and electronics, aiming for a fancy look and feel, followed by technological innovation and ease of use. Regarding potential materials, they considered rubber, plastic, wood, and titanium, with a recommendation against titanium due to its heaviness and limitation to flat cases. Rubber was noted to require rubber buttons, making it incompatible with the desire for plastic buttons. They also briefly touched upon the idea of incorporating a spongy feel into the design.",
+          "rouge_f1": {
+            "rouge1": 0.42458100558659223,
+            "rouge2": 0.11299435028248589,
+            "rougeL": 0.18994413407821228
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            1,
+            0,
+            2
+          ],
+          "retrieval_precision": 0.216796875,
+          "retrieval_recall": 0.2226680040120361
+        },
+        "lumber__dense__w2048": {
+          "answer": "The group discussed the current trend of a \"fruit and vegetable\" theme in fashion and technology, aiming for a fancy look and feel, technological innovation, and ease of use. They considered materials such as rubber, plastic, wood, and titanium, with a preference for achieving a spongy feel. Marketing suggested the remote should resemble a fruit rather than a vegetable for aesthetic appeal. The team also explored the possibility of using different energy sources including batteries, solar power, and a dynamo, ultimately leaning towards batteries due to practicality and cost considerations.",
+          "rouge_f1": {
+            "rouge1": 0.4175824175824176,
+            "rouge2": 0.08888888888888889,
+            "rougeL": 0.2087912087912088
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            1,
+            0,
+            2,
+            22,
+            17,
+            13
+          ],
+          "retrieval_precision": 0.23095703125,
+          "retrieval_recall": 0.4744232698094283
+        },
+        "lumber__bm25__w512": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme, particularly favoring fruits over vegetables based on Marketing's preference. They also emphasized the importance of a fancy look and feel, technological innovation, and ease of use. Regarding materials, they considered achieving a spongy feel and debated whether the design should mimic the appearance of a fruit or if it should be printed to look like one. The group acknowledged the need for technological innovation to achieve the desired spongy texture and suggested that the Industrial Designer should explore solutions for this aspect.",
+          "rouge_f1": {
+            "rouge1": 0.48936170212765956,
+            "rouge2": 0.10752688172043011,
+            "rougeL": 0.2021276595744681
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            13
+          ],
+          "retrieval_precision": 0.923828125,
+          "retrieval_recall": 0.4744232698094283
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The group discussed that the current trend in electronics is influenced by fashion trends, particularly noting a \"fruit and vegetable\" theme observed in Milan and Paris. They emphasized the importance of a fancy look and feel, technological innovation, and ease of use. Regarding materials, Marketing suggested aiming for a spongy feel, though the exact implementation was uncertain. Industrial Designer proposed using a type of rubber similar to stress balls as a potential material option to achieve the desired spongy texture.",
+          "rouge_f1": {
+            "rouge1": 0.47674418604651164,
+            "rouge2": 0.15294117647058822,
+            "rougeL": 0.20930232558139536
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            13,
+            3,
+            0,
+            6
+          ],
+          "retrieval_precision": 0.587890625,
+          "retrieval_recall": 0.6038114343029087
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme, aiming for a fancy look and feel, technological innovation, and ease of use. Marketing suggested using a spongy material, possibly rubber similar to stress balls, to achieve the desired spongy feel. Regarding materials, the discussion centered on achieving a spongy texture and deciding whether to print the fruit/vegetable design or make the remote resemble a real fruit. The group also briefly touched upon the potential use of a touch-based graphical interface as a trendy and innovative feature.",
+          "rouge_f1": {
+            "rouge1": 0.4782608695652174,
+            "rouge2": 0.15384615384615385,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            13,
+            3,
+            0,
+            6,
+            21,
+            22
+          ],
+          "retrieval_precision": 0.2939453125,
+          "retrieval_recall": 0.6038114343029087
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme, particularly favoring fruits over vegetables based on Marketing's preference. They also emphasized the importance of a fancy look and feel, technological innovation, and ease of use. Regarding materials, there was a suggestion to achieve a spongy feel, though the exact method and whether to print the design or make the actual remote resemble a fruit were undecided.",
+          "rouge_f1": {
+            "rouge1": 0.4662576687116564,
+            "rouge2": 0.11180124223602485,
+            "rougeL": 0.2085889570552147
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            21
+          ],
+          "retrieval_precision": 0.923828125,
+          "retrieval_recall": 0.4744232698094283
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme, aiming for a fancy look and feel, technological innovation, and ease of use. Marketing suggested using materials that provide a spongy feel, possibly inspired by fruits rather than vegetables, and proposed considering whether the material should be printed to resemble fruit or if the actual remote should look like a fruit. They also mentioned the need for technological innovation regarding the spongy material, suggesting the Industrial Designer should explore solutions. Additionally, the group briefly touched upon the idea of a touch-based graphical interface as a technologically innovative feature. Regarding materials, the discussion was centered around achieving a spongy texture and aligning with the fruit theme.",
+          "rouge_f1": {
+            "rouge1": 0.4644549763033175,
+            "rouge2": 0.12440191387559808,
+            "rougeL": 0.2180094786729858
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            21,
+            0,
+            13
+          ],
+          "retrieval_precision": 0.4619140625,
+          "retrieval_recall": 0.4744232698094283
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The group discussed that the current trend involves a \"fruit and vegetable\" theme, aiming for a fashionable and technologically innovative look and feel, with a focus on a spongy texture. They considered using a stress ball-like rubber material for the spongy aspect and debated between having a hard plastic outer shell with interchangeable covers (like stickers) depicting fruits or vegetables and a completely customizable design. Regarding materials, they explored options such as batteries, solar power, and a dynamo mechanism, ultimately leaning towards batteries due to practicality and cost considerations.",
+          "rouge_f1": {
+            "rouge1": 0.3626373626373626,
+            "rouge2": 0.1111111111111111,
+            "rougeL": 0.18681318681318682
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            21,
+            0,
+            13,
+            22,
+            3,
+            17,
+            1
+          ],
+          "retrieval_precision": 0.2939453125,
+          "retrieval_recall": 0.6038114343029087
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the Industrial Designer say about component design?",
+      "reference_answer": "Industrial Designer thought some parts needed custom design, and other parts should just use standard. For example, the case needed custom design to protect the remote and the locator, and the circuit board needed custom design as well, while the buttons and the wheels, radio sender and receiver were all standard parts. In addition, beeper or other noise things were needed as well for locating the remote. Rubber, plastic, wood and titanium were options of materials, but better not titanium. Regular chips were required if the iPod-style wheel button was used.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The Industrial Designer discussed that custom design parts would be needed for the case and the circuit board. For the case, they suggested materials such as hard plastic, rubber, wood, or titanium but recommended against titanium due to its heaviness and limitation to flat cases. Rubber was also noted to require rubber buttons, which might not be suitable if plastic buttons were preferred. Standard parts included buttons, wheels (like an iPod-style wheel), the infrared LED (which would be part of the circuit board), a radio sender and receiver, and a beeper or buzzer for locating the remote.",
+          "rouge_f1": {
+            "rouge1": 0.5578947368421052,
+            "rouge2": 0.1702127659574468,
+            "rougeL": 0.2631578947368421
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            1,
+            22
+          ],
+          "retrieval_precision": 0.52734375,
+          "retrieval_recall": 0.6870229007633588
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The Industrial Designer discussed that custom design parts would be needed for the case and circuit board, while standard parts could be used for buttons, wheels, and other components. They recommended against using titanium due to its heaviness and suggested that rubber cases require rubber buttons. For the circuit board, a more expensive chip might be necessary if an iPod-style wheel button is desired. The designer also mentioned material options including rubber, plastic, wood, and titanium, advising against titanium for flat cases and noting that rubber cases require rubber buttons.",
+          "rouge_f1": {
+            "rouge1": 0.48087431693989074,
+            "rouge2": 0.15469613259668508,
+            "rougeL": 0.2841530054644808
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            1,
+            22,
+            2,
+            4
+          ],
+          "retrieval_precision": 0.36328125,
+          "retrieval_recall": 0.9465648854961832
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The Industrial Designer discussed the components design by stating that they need custom design parts such as a case and a circuit board, while other parts like buttons, wheels, and the infrared LED will be standard. They also mentioned material options including rubber, plastic, wood, and titanium, recommending against titanium due to its heaviness and limitation to flat cases. Additionally, they noted that an iPod-style wheel button would require a more expensive chip compared to the minimal chip.",
+          "rouge_f1": {
+            "rouge1": 0.46783625730994155,
+            "rouge2": 0.15384615384615383,
+            "rougeL": 0.2923976608187135
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            1,
+            22,
+            2,
+            4,
+            0,
+            9,
+            11,
+            15,
+            10
+          ],
+          "retrieval_precision": 0.19189453125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The Industrial Designer mentioned that if they wanted an iPod-style wheel button, it would require a slightly more expensive chip, specifically the \"regular\" grade chip, which is more costly than the minimal chip. Additionally, the Industrial Designer suggested using a rubber-like material similar to stress balls for a spongy feel as one of the material options.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.05405405405405405,
+            "rougeL": 0.12
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            16
+          ],
+          "retrieval_precision": 0.240234375,
+          "retrieval_recall": 0.31297709923664124
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The Industrial Designer mentioned that if the team wanted an iPod-style wheel button, it would require a slightly more expensive chip called \"regular,\" which is more costly than the minimal chip. Additionally, the Industrial Designer suggested using a material similar to the stress ball rubber for a spongy feel, which could work as an alternative to the usual hard plastic used in touch pads.",
+          "rouge_f1": {
+            "rouge1": 0.3439490445859873,
+            "rouge2": 0.06451612903225808,
+            "rougeL": 0.14012738853503184
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            16,
+            15,
+            19
+          ],
+          "retrieval_precision": 0.1201171875,
+          "retrieval_recall": 0.31297709923664124
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The Industrial Designer stated that they have been looking at the components design and mentioned that if the team wants an iPod-style wheel button, it will require a slightly more expensive chip, specifically the \"regular\" grade chip, which is more expensive than the minimal chip but not significantly so.",
+          "rouge_f1": {
+            "rouge1": 0.2676056338028169,
+            "rouge2": 0.0857142857142857,
+            "rougeL": 0.15492957746478875
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            16,
+            15,
+            19,
+            4,
+            12,
+            7,
+            5,
+            1
+          ],
+          "retrieval_precision": 0.064453125,
+          "retrieval_recall": 0.33587786259541985
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The Industrial Designer mentioned that if they wanted an iPod-style wheel button, it would require a slightly more expensive chip called \"regular,\" which is more costly than the minimal chip but not significantly so. They did not provide further details about other components in the excerpts provided.",
+          "rouge_f1": {
+            "rouge1": 0.24285714285714285,
+            "rouge2": 0.057971014492753624,
+            "rougeL": 0.1
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            4
+          ],
+          "retrieval_precision": 0.240234375,
+          "retrieval_recall": 0.31297709923664124
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The Industrial Designer mentioned that they have been looking at the components design by consulting remote control diagrams from the internet and incorporating design ideas from previous meetings. They noted that custom design parts would be needed for the case and circuit board, while standard parts could be used for buttons, wheels, and other components. They also recommended against using titanium due to its heaviness and suggested that wood could be an option but didn't provide a strong reason for its use. Additionally, they pointed out that an iPod-style wheel button would require a more expensive chip compared to the minimal chip.",
+          "rouge_f1": {
+            "rouge1": 0.4387755102040816,
+            "rouge2": 0.09278350515463918,
+            "rougeL": 0.2346938775510204
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            4,
+            24,
+            1
+          ],
+          "retrieval_precision": 0.3623046875,
+          "retrieval_recall": 0.9440203562340967
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The Industrial Designer discussed the components design by stating that they need custom design parts such as a case and a circuit board, while other parts like buttons, wheels, and the infrared LED will be standard. They recommended against using titanium due to its heaviness and suggested that if rubber is chosen as the case material, rubber buttons must also be used. Additionally, they mentioned that incorporating an iPod-style wheel button would require a more expensive chip.",
+          "rouge_f1": {
+            "rouge1": 0.4588235294117647,
+            "rouge2": 0.11904761904761904,
+            "rougeL": 0.2588235294117647
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            0,
+            4,
+            24,
+            1,
+            15,
+            22,
+            9,
+            5,
+            16
+          ],
+          "retrieval_precision": 0.19189453125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The Industrial Designer mentioned considering different types of power sources for the component design, including a wind-up mechanism, dynamo, and solar power, but ultimately favored a battery-powered option due to practicality concerns, especially for a living room setting. They also noted that while some components might be expensive, such as the chip, many parts could be produced cheaply in bulk.",
+          "rouge_f1": {
+            "rouge1": 0.24675324675324678,
+            "rouge2": 0.013157894736842108,
+            "rougeL": 0.12987012987012986
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22,
+            0
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The Industrial Designer stated that they have been looking at the components design by consulting remote control diagrams and incorporating design ideas from previous meetings. They mentioned needing custom design parts such as a case (likely made of hard plastic) and a circuit board, while standard parts would include buttons, wheels, an infrared LED, a radio sender and receiver, and a beeper or buzzer. They also discussed material options including rubber, plastic, wood, and titanium, recommending against titanium due to its heaviness and noting that rubber cases require rubber buttons. Additionally, they noted that an iPod-style wheel would require a more expensive chip.",
+          "rouge_f1": {
+            "rouge1": 0.4795918367346939,
+            "rouge2": 0.15463917525773194,
+            "rougeL": 0.2959183673469388
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22,
+            0,
+            1,
+            20
+          ],
+          "retrieval_precision": 0.365234375,
+          "retrieval_recall": 0.9516539440203562
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The Industrial Designer stated that they have been looking at the components design by consulting remote control diagrams and incorporating design ideas from previous meetings. They mentioned needing custom design parts such as a case and a circuit board, while standard parts include buttons, wheels, and an infrared LED. They also noted that a radio sender and receiver, and a beeper or buzzer for locating the remote, are standard components. Regarding materials, they recommended against using titanium due to its heaviness and suggested that a rubber case would require rubber buttons, implying that if plastic buttons are preferred, a rubber case should be avoided. Additionally, they highlighted that an iPod-style wheel button would require a more expensive chip compared to the minimal chip.",
+          "rouge_f1": {
+            "rouge1": 0.4814814814814815,
+            "rouge2": 0.14018691588785048,
+            "rougeL": 0.2870370370370371
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22,
+            0,
+            1,
+            20,
+            2,
+            10,
+            3,
+            4
+          ],
+          "retrieval_precision": 0.19189453125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The Industrial Designer mentioned that they have been looking at the components design by consulting remote control diagrams from the internet and incorporating design ideas from the last project meeting. They noted that some parts will require custom design, such as the case (likely made of hard plastic or another material) and the circuit board, while other parts will use standard components.",
+          "rouge_f1": {
+            "rouge1": 0.4025974025974026,
+            "rouge2": 0.11842105263157895,
+            "rougeL": 0.2077922077922078
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            0
+          ],
+          "retrieval_precision": 0.23046875,
+          "retrieval_recall": 0.30025445292620867
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The Industrial Designer mentioned that they have been looking at component design mostly by consulting remote control diagrams from the internet and incorporating design ideas from the last project meeting. They noted that some components will require custom design, such as the case (likely made of hard plastic or another protective material) and the circuit board, while others will use standard parts. Custom designing these components is more expensive but necessary for the specific requirements of the project.",
+          "rouge_f1": {
+            "rouge1": 0.4117647058823529,
+            "rouge2": 0.10714285714285715,
+            "rougeL": 0.22352941176470587
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            0,
+            2,
+            22,
+            3
+          ],
+          "retrieval_precision": 0.1337890625,
+          "retrieval_recall": 0.3486005089058524
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The Industrial Designer mentioned that they have been looking at the components design by consulting remote control diagrams from the internet and incorporating design ideas from the last project meeting. They noted that some custom design parts will be needed, while others can use standard parts. Specifically, they assumed they would be custom designing a hard plastic or other material case to protect the remote and the locator, and they would need to custom design a circuit board because the circuit board has to take into account the specific requirements of the project. The designer also pointed out that custom design parts are more expensive but necessary for the project.",
+          "rouge_f1": {
+            "rouge1": 0.44554455445544555,
+            "rouge2": 0.16,
+            "rougeL": 0.2574257425742574
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            0,
+            2,
+            22,
+            3,
+            6,
+            17,
+            11,
+            4
+          ],
+          "retrieval_precision": 0.06689453125,
+          "retrieval_recall": 0.3486005089058524
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The Industrial Designer mentioned that they have been looking at component design, mostly by consulting remote control diagrams from the internet and incorporating design ideas from previous meetings. They noted that some parts will require custom design, such as the case (likely made of hard plastic or another protective material) and the circuit board. The designer also discussed the cost implications of custom designs versus standard parts, mentioning that custom designs are more expensive, particularly the custom-designed circuit board. Additionally, the Industrial Designer touched upon the concept of \"chip on print,\" explaining that it allows for mass production of chips used in devices like remote controls and calculators, making them cheaper to produce compared to programmable chips found in computers.",
+          "rouge_f1": {
+            "rouge1": 0.3849765258215962,
+            "rouge2": 0.0947867298578199,
+            "rougeL": 0.20657276995305165
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            22,
+            2
+          ],
+          "retrieval_precision": 0.240234375,
+          "retrieval_recall": 0.31297709923664124
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The Industrial Designer mentioned that they have been looking at component design, mostly by consulting remote control diagrams from the internet and incorporating design ideas from previous meetings. They noted that some components will require custom design, such as the case (likely made of hard plastic or another protective material) and the circuit board. Standard parts will be used for other components. The designer also discussed the potential use of batteries over other power sources like wind-up or solar due to practicality and cost considerations.",
+          "rouge_f1": {
+            "rouge1": 0.3932584269662922,
+            "rouge2": 0.07954545454545456,
+            "rougeL": 0.20224719101123595
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            22,
+            2,
+            21,
+            3
+          ],
+          "retrieval_precision": 0.1337890625,
+          "retrieval_recall": 0.3486005089058524
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The Industrial Designer stated that they have been looking at the components design by consulting remote control diagrams and incorporating design ideas from previous meetings. They mentioned needing custom design parts such as a case and a circuit board, while standard parts include buttons, wheels, and an infrared LED. They also noted that a radio sender and receiver, and a beeper or buzzer for locating the remote, are standard components. Regarding materials, they recommended against using titanium due to its heaviness and suggested that rubber cases require rubber buttons, implying that if plastic buttons are preferred, a rubber case should not be chosen. Additionally, they highlighted that an iPod-style wheel button would require a more expensive chip compared to the minimal chip option.",
+          "rouge_f1": {
+            "rouge1": 0.5,
+            "rouge2": 0.14018691588785048,
+            "rougeL": 0.2870370370370371
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            22,
+            2,
+            21,
+            3,
+            1,
+            14,
+            6,
+            20
+          ],
+          "retrieval_precision": 0.19189453125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The Industrial Designer discussed that the components design would involve both custom and standard parts. Custom parts include the case (likely hard plastic) and the circuit board, while standard parts consist of buttons, wheels, the infrared LED (included in the circuit board), radio sender and receiver, and a beeper or buzzer. They recommended against using titanium due to its heaviness and limitations in flat cases and suggested that rubber cases require rubber buttons. For the iPod-style wheel, a more expensive chip is needed compared to the minimal chip. Additionally, they mentioned options for powering the device including batteries, solar power, and a dynamo, though they were unsure about the latter.",
+          "rouge_f1": {
+            "rouge1": 0.5320197044334976,
+            "rouge2": 0.12935323383084577,
+            "rougeL": 0.25615763546798026
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            21
+          ],
+          "retrieval_precision": 0.734375,
+          "retrieval_recall": 0.9567430025445293
+        },
+        "lumber__dense__w1024": {
+          "answer": "The Industrial Designer discussed that the team needs to design some components customly, such as the case (likely a hard plastic or another material case) and the circuit board, while other parts like buttons, wheels, and the infrared LED will be standard. They recommended against using titanium due to its heaviness and suggested that rubber cases require rubber buttons, implying that if plastic buttons are preferred, a rubber case should be avoided. Additionally, they noted that an iPod-style wheel button would require a more expensive chip compared to the minimal chip.",
+          "rouge_f1": {
+            "rouge1": 0.43478260869565216,
+            "rouge2": 0.10989010989010989,
+            "rougeL": 0.2391304347826087
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            21,
+            7,
+            9,
+            2
+          ],
+          "retrieval_precision": 0.3671875,
+          "retrieval_recall": 0.9567430025445293
+        },
+        "lumber__dense__w2048": {
+          "answer": "The Industrial Designer said that in component design, they need some custom design parts such as a case and a circuit board, while other parts like buttons, wheels, and the infrared LED will be standard. They also mentioned that using a more expensive chip would be necessary for an iPod-style wheel button. Additionally, the designer recommended against using titanium due to its heaviness and suggested avoiding rubber cases if plastic buttons are preferred.",
+          "rouge_f1": {
+            "rouge1": 0.4819277108433735,
+            "rouge2": 0.0975609756097561,
+            "rougeL": 0.253012048192771
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            21,
+            7,
+            9,
+            2,
+            3,
+            0,
+            16,
+            15,
+            13
+          ],
+          "retrieval_precision": 0.19189453125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The Industrial Designer mentioned considering a material option similar to the stress ball material for the component design, describing it as \"spongy.\" This suggestion was made in response to a preference for a spongy feel and was further elaborated upon by the Project Manager, who envisioned a design where the user holds a stress ball-like material that feels comfortable, while there is a harder plastic part that could be customized in terms of color or imagery.",
+          "rouge_f1": {
+            "rouge1": 0.28402366863905326,
+            "rouge2": 0.011976047904191616,
+            "rougeL": 0.15384615384615383
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            0,
+            17
+          ],
+          "retrieval_precision": 0.033203125,
+          "retrieval_recall": 0.043256997455470736
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The Industrial Designer mentioned a material option that is similar to the rubber used in stress balls, suggesting it could provide a spongy feel as desired.",
+          "rouge_f1": {
+            "rouge1": 0.1864406779661017,
+            "rouge2": 0.017241379310344827,
+            "rougeL": 0.10169491525423728
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            0,
+            17,
+            2
+          ],
+          "retrieval_precision": 0.0166015625,
+          "retrieval_recall": 0.043256997455470736
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The Industrial Designer stated that they have been looking at the components design by consulting remote control diagrams and incorporating design ideas from previous meetings. They mentioned needing custom design parts such as a case and a circuit board, while standard parts include buttons, wheels, and an infrared LED. They also noted that a more expensive chip would be required for an iPod-style wheel button.",
+          "rouge_f1": {
+            "rouge1": 0.379746835443038,
+            "rouge2": 0.10256410256410257,
+            "rougeL": 0.25316455696202533
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            0,
+            17,
+            2,
+            22,
+            1,
+            11
+          ],
+          "retrieval_precision": 0.19189453125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The Industrial Designer discussed the component design by stating that they would need custom-designed parts such as a case (likely made of hard plastic) and a circuit board, while standard parts like buttons, wheels, infrared LED, radio sender/receiver, and a beeper or buzzer could be used off-the-shelf. They also mentioned material options including rubber, plastic, wood, or titanium, recommending against titanium due to its heaviness and limitation to flat cases, and against rubber if plastic buttons were preferred. Additionally, they noted that an iPod-style wheel would require a slightly more expensive chip than the minimal one.",
+          "rouge_f1": {
+            "rouge1": 0.49740932642487046,
+            "rouge2": 0.11518324607329844,
+            "rougeL": 0.2901554404145078
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0
+          ],
+          "retrieval_precision": 0.734375,
+          "retrieval_recall": 0.9567430025445293
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The Industrial Designer stated that they have been focusing on the components design by consulting remote control diagrams and incorporating previous project meeting ideas. They mentioned needing custom-designed parts such as a case (likely made of hard plastic) and a circuit board, while standard parts would include buttons, wheels, and an infrared LED. They also noted that an iPod-style wheel would require a more expensive chip.",
+          "rouge_f1": {
+            "rouge1": 0.3625,
+            "rouge2": 0.08860759493670886,
+            "rougeL": 0.2125
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            2
+          ],
+          "retrieval_precision": 0.3837890625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The Industrial Designer stated that they have been looking at the components design by consulting remote control diagrams from the internet and incorporating design ideas from previous meetings. They mentioned needing custom design parts such as a case and a circuit board, while standard parts include buttons, wheels, and an infrared LED. They also noted that a more expensive chip would be required for an iPod-style wheel button.",
+          "rouge_f1": {
+            "rouge1": 0.38509316770186336,
+            "rouge2": 0.10062893081761008,
+            "rougeL": 0.2608695652173913
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            0,
+            2,
+            13,
+            21,
+            7,
+            22
+          ],
+          "retrieval_precision": 0.19189453125,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did people decide on screen usage when discussing the necessity of screen?",
+      "reference_answer": "User Interface assumed they were going to have a screen at first, since User Interface thought a screen was necessary for people to visualize things such as a specific song when looking for one. However, since adding a screen cost more money, and TV could be used as the screen, they finally decided that screen was not necessary.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group decided they would not have a dedicated screen but could potentially use a graphical interface that appears on a television. This decision was influenced by concerns over cost and the infrequent use of a dedicated screen for menu options and settings adjustments.",
+          "rouge_f1": {
+            "rouge1": 0.3725490196078432,
+            "rouge2": 0.019999999999999997,
+            "rougeL": 0.2156862745098039
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            6,
+            7
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.3587946741415557
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The group decided not to include a screen on the remote itself. Instead, they agreed that the TV screen would serve as the display for menu options and channel selection, allowing users to interact with these features through a simplified remote control with a wheel or central button that triggers the display of controls on the TV. This decision was made to avoid cluttering the remote and reducing costs associated with adding an additional screen.",
+          "rouge_f1": {
+            "rouge1": 0.31578947368421056,
+            "rouge2": 0.030534351145038167,
+            "rougeL": 0.16541353383458646
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            6,
+            7,
+            10,
+            4
+          ],
+          "retrieval_precision": 0.9404296875,
+          "retrieval_recall": 0.6748423265592152
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The group decided not to include a screen on the remote control itself. Instead, they agreed that the screen functionality would be displayed on the TV, allowing users to interact with menus and settings through a touch-based graphical interface shown on the television. This approach avoids cluttering the remote and keeps costs down by not requiring an additional screen on the device.",
+          "rouge_f1": {
+            "rouge1": 0.2975206611570248,
+            "rouge2": 0.03361344537815126,
+            "rougeL": 0.13223140495867766
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            6,
+            7,
+            10,
+            4,
+            15,
+            11,
+            5,
+            13
+          ],
+          "retrieval_precision": 0.5908203125,
+          "retrieval_recall": 0.8479327259985985
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The participants decided that a screen would be necessary for a touch-based graphical interface, allowing users to easily navigate through channels and avoid the confusion associated with abbreviated buttons. They agreed that having a screen on the TV could display clear instructions and channel numbers, similar to an iPod screen, making it user-friendly and technologically innovative.",
+          "rouge_f1": {
+            "rouge1": 0.3793103448275862,
+            "rouge2": 0.10526315789473684,
+            "rougeL": 0.1724137931034483
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            7,
+            5
+          ],
+          "retrieval_precision": 0.484375,
+          "retrieval_recall": 0.17379117028731605
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The participants decided to include a screen in their design for the remote control. They believed it would help users navigate through channels and access menus more easily compared to traditional button interfaces. The touch-based graphical interface was seen as a cool, innovative, and trendy feature, especially inspired by the popularity of iPods.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.03636363636363636,
+            "rougeL": 0.17857142857142858
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            7,
+            5,
+            24,
+            9
+          ],
+          "retrieval_precision": 0.5185546875,
+          "retrieval_recall": 0.3721093202522775
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The group decided that they would not include a screen on the remote control itself but rather utilize the TV screen to display necessary information and menus. This decision was influenced by concerns over cost and the preference for a simpler, more intuitive user interface. They agreed that essential functions could be accessed through a central button that would bring up the menu on the TV.",
+          "rouge_f1": {
+            "rouge1": 0.3709677419354839,
+            "rouge2": 0.06557377049180328,
+            "rougeL": 0.17741935483870966
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            7,
+            5,
+            24,
+            9,
+            6,
+            12,
+            4,
+            10
+          ],
+          "retrieval_precision": 0.51416015625,
+          "retrieval_recall": 0.7379117028731604
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The participants decided that a screen would be necessary for channel control and accessing various settings such as brightness adjustment and menu options. They acknowledged that while having a screen might be more expensive, it would provide clearer visibility and ease of use compared to relying solely on abbreviations and codes on buttons. However, there was some hesitation regarding the frequent use of the screen if it were included.",
+          "rouge_f1": {
+            "rouge1": 0.3464566929133858,
+            "rouge2": 0.112,
+            "rougeL": 0.2047244094488189
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            9,
+            15
+          ],
+          "retrieval_precision": 0.93359375,
+          "retrieval_recall": 0.33496846531184304
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The group decided that a screen would be necessary for certain functions such as channel selection and accessing menus for features like changing brightness or setting timers. They acknowledged that while it might be less frequently used, having a screen provides clearer interaction and instructions compared to buttons with abbreviations. However, they noted that including a screen increases costs due to the need for more advanced chips.",
+          "rouge_f1": {
+            "rouge1": 0.39999999999999997,
+            "rouge2": 0.1138211382113821,
+            "rougeL": 0.20800000000000002
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            9,
+            15,
+            6,
+            5
+          ],
+          "retrieval_precision": 0.7421875,
+          "retrieval_recall": 0.5325858444288718
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The group decided not to include a screen on the remote control itself. Instead, they agreed that the screen functionality would be displayed on the TV, allowing users to interact with a menu or settings via a wheel or central button that triggers the display on the television. This approach avoids cluttering the remote and reduces costs associated with incorporating an additional screen.",
+          "rouge_f1": {
+            "rouge1": 0.2975206611570248,
+            "rouge2": 0.03361344537815126,
+            "rougeL": 0.1487603305785124
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            9,
+            15,
+            6,
+            5,
+            10,
+            4,
+            24,
+            12
+          ],
+          "retrieval_precision": 0.5908203125,
+          "retrieval_recall": 0.8479327259985985
+        },
+        "word_packed__dense__w512": {
+          "answer": "When discussing the necessity of a screen, the participants decided to utilize the TV as the primary screen instead of incorporating a dedicated screen into their device. This decision was made due to the infrequent use of the screen and the additional cost associated with including a more advanced chip required for a dedicated screen. The team agreed that users could access necessary functions through a graphical interface on the TV by using a central button on their device to bring up the menu on the television.",
+          "rouge_f1": {
+            "rouge1": 0.3724137931034483,
+            "rouge2": 0.04195804195804195,
+            "rougeL": 0.1793103448275862
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.3587946741415557
+        },
+        "word_packed__dense__w1024": {
+          "answer": "When discussing the necessity of a screen, the participants decided to utilize the TV as the primary screen for displaying channel numbers and menus rather than incorporating a dedicated screen into their device. This decision was influenced by concerns over cost and the infrequent use of a dedicated screen. The team agreed that users could switch to a mode on the TV to control channels and access various settings and functions via scrolling or tapping commands.",
+          "rouge_f1": {
+            "rouge1": 0.3432835820895523,
+            "rouge2": 0.030303030303030304,
+            "rougeL": 0.17910447761194026
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            6,
+            7
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.7175893482831114
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The participants decided that instead of having a screen on the remote control itself, they would utilize the TV screen to display necessary information and menus. This decision was made to avoid the additional cost and complexity of including a screen on the remote while still providing users with the functionality they need, such as scrolling through channels and accessing various settings. The team agreed that the TV screen could serve as an effective alternative for displaying detailed information and menus, making the remote control simpler and more user-friendly.",
+          "rouge_f1": {
+            "rouge1": 0.36486486486486486,
+            "rouge2": 0.0684931506849315,
+            "rougeL": 0.17567567567567569
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            5,
+            6,
+            7,
+            4,
+            10,
+            11,
+            13
+          ],
+          "retrieval_precision": 0.625,
+          "retrieval_recall": 0.8969866853538893
+        },
+        "word_packed__bm25__w512": {
+          "answer": "When discussing the necessity of a screen, the participants decided that a screen would be needed for the iPod-ish remote control. This decision was based on the need for users to identify specific songs, navigate through numerous channels (especially in cases with over 200 channels), and avoid the inconvenience of scrolling extensively without visual feedback. The Industrial Designer also mentioned an existing product with a similar design that displayed information on the TV, supporting the inclusion of a screen.",
+          "rouge_f1": {
+            "rouge1": 0.3188405797101449,
+            "rouge2": 0.07352941176470588,
+            "rougeL": 0.1884057971014493
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            4
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.3587946741415557
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "When discussing the necessity of a screen, the participants decided that a screen would be needed for the remote control, particularly for navigating through numerous channels and selecting specific songs or content. This decision was supported by the User Interface's suggestion and the agreement from the Project Manager, Marketing, and Industrial Designer.",
+          "rouge_f1": {
+            "rouge1": 0.3063063063063063,
+            "rouge2": 0.09174311926605505,
+            "rougeL": 0.16216216216216214
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            4,
+            22,
+            14,
+            8
+          ],
+          "retrieval_precision": 0.5048828125,
+          "retrieval_recall": 0.36229852838121934
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The group decided that the device would not have its own screen but instead would project its interface onto the TV screen. This decision was made considering the cost implications of adding a screen and the convenience of using the TV as the primary display for the interface.",
+          "rouge_f1": {
+            "rouge1": 0.3584905660377358,
+            "rouge2": 0.07692307692307691,
+            "rougeL": 0.22641509433962265
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            4,
+            22,
+            14,
+            8,
+            5,
+            10,
+            13,
+            3
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.7175893482831114
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "When discussing the necessity of a screen, the participants decided to utilize the TV screen itself as the display rather than adding an additional screen. This decision was made considering the cost implications of including an advanced chip for a dedicated screen, which is more expensive compared to the regular or minimal chips. The TV screen would serve as the interface for navigating through channels and accessing features like timers.",
+          "rouge_f1": {
+            "rouge1": 0.359375,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.171875
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.3587946741415557
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "When discussing the necessity of a screen, the participants decided that instead of including a screen on the device itself, they would utilize the TV screen as the display for the remote control's functions. This decision was made to avoid the additional cost and complexity associated with incorporating a screen into the remote, while still providing users with the necessary visual feedback and functionality through the TV.",
+          "rouge_f1": {
+            "rouge1": 0.3492063492063492,
+            "rouge2": 0.08064516129032258,
+            "rougeL": 0.15873015873015872
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            4,
+            5
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.7175893482831114
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The participants decided that the screen would not be included on the remote itself but instead would display information on the TV screen. This decision was made to avoid the cost of adding an advanced chip for a screen and to utilize the TV as the primary display for menus and detailed information. The team agreed that the TV could serve as the screen for displaying the graphical interface and menu options, making the remote simpler and more cost-effective.",
+          "rouge_f1": {
+            "rouge1": 0.34782608695652173,
+            "rouge2": 0.07352941176470588,
+            "rougeL": 0.1884057971014493
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            4,
+            5,
+            10,
+            7,
+            14,
+            13
+          ],
+          "retrieval_precision": 0.625,
+          "retrieval_recall": 0.8969866853538893
+        },
+        "lumber__dense__w512": {
+          "answer": "The participants discussed the necessity of having a screen for channel selection due to the impracticality of scrolling through a large number of channels without one. They considered alternatives such as showing the channel number on the TV temporarily and using a wheel mechanism, but acknowledged challenges with these methods, particularly with a high number of channels. The conversation did not result in a definitive decision on screen usage but highlighted the potential need for a screen to facilitate easier navigation and access to various functions and settings.",
+          "rouge_f1": {
+            "rouge1": 0.2876712328767123,
+            "rouge2": 0.05555555555555556,
+            "rougeL": 0.16438356164383564
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.3587946741415557
+        },
+        "lumber__dense__w1024": {
+          "answer": "The participants decided to use the TV screen as the primary display for controlling the device, rather than including a dedicated screen on the remote. This decision was made to avoid cluttering the remote and to leverage the larger screen of the TV for displaying menus and options, such as channel selection and other settings. However, they acknowledged the potential inconvenience of scrolling through numerous channels without a dedicated screen on the remote, suggesting that a central button on the remote could bring up the menu on the TV screen for easier navigation.",
+          "rouge_f1": {
+            "rouge1": 0.3311258278145695,
+            "rouge2": 0.026845637583892617,
+            "rougeL": 0.18543046357615894
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            5,
+            7,
+            13
+          ],
+          "retrieval_precision": 0.9453125,
+          "retrieval_recall": 0.6783461807988788
+        },
+        "lumber__dense__w2048": {
+          "answer": "The participants decided not to include a screen on the remote control itself. Instead, they agreed that the screen functionality would be displayed on the TV, allowing users to interact with menus and settings via the remote's wheel and potentially a central button that would bring up the menu on the TV screen. This decision was made to keep the remote simple and less cluttered while maintaining necessary functionalities.",
+          "rouge_f1": {
+            "rouge1": 0.28125,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.171875
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            5,
+            7,
+            13,
+            4,
+            8,
+            11
+          ],
+          "retrieval_precision": 0.65234375,
+          "retrieval_recall": 0.9362298528381219
+        },
+        "lumber__bm25__w512": {
+          "answer": "The participants considered incorporating a screen for channel selection and control due to the limitations of scrolling through numerous channels without visual assistance. They also discussed the idea of a touch-based graphical interface, comparing it to an iPod screen, which they found to be technologically innovative and trendy. However, there was no explicit decision made; rather, it seemed to be a consideration under discussion.",
+          "rouge_f1": {
+            "rouge1": 0.2764227642276423,
+            "rouge2": 0.01652892561983471,
+            "rougeL": 0.14634146341463414
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            6
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.17939733707077785
+        },
+        "lumber__bm25__w1024": {
+          "answer": "When discussing the necessity of a screen, the participants decided that having a screen would be beneficial for displaying menu options and making it easier to navigate through numerous features and channels. However, they acknowledged that if the screen is hardly used, it might seem unnecessary. The decision leaned towards including a screen as an option for its utility in navigating complex functionalities, despite the potential infrequency of its use.",
+          "rouge_f1": {
+            "rouge1": 0.328125,
+            "rouge2": 0.09523809523809525,
+            "rougeL": 0.171875
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            6,
+            4
+          ],
+          "retrieval_precision": 0.75,
+          "retrieval_recall": 0.5381920112123336
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The participants decided against including a screen in the design due to concerns over cost and the belief that a wheel-based interface could suffice for channel selection and other functions. However, they acknowledged that a screen might be beneficial for providing menu options and enhancing usability, especially given the complexity of features like adjusting TV settings or navigating through numerous channels. Ultimately, the decision leaned towards minimizing costs and simplifying the design, focusing primarily on the functionality of the wheel and minimalistic button controls.",
+          "rouge_f1": {
+            "rouge1": 0.2657342657342658,
+            "rouge2": 0.028368794326241134,
+            "rougeL": 0.15384615384615383
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            6,
+            4,
+            8,
+            22,
+            7
+          ],
+          "retrieval_precision": 0.51708984375,
+          "retrieval_recall": 0.7421163279607569
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The participants discussed the necessity of having a screen for channel selection due to the impracticality of scrolling through a large number of channels without one. They considered alternatives such as showing the channel number on the TV temporarily and using a wheel mechanism, but acknowledged challenges with these methods, particularly with a high number of channels. The conversation did not result in a definitive decision on screen usage but highlighted the potential need for a screen to facilitate easier navigation and access to various functions and settings.",
+          "rouge_f1": {
+            "rouge1": 0.2876712328767123,
+            "rouge2": 0.05555555555555556,
+            "rougeL": 0.16438356164383564
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.3587946741415557
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "When discussing the necessity of a screen, the participants decided that having a screen would be beneficial for displaying menu options and making it easier to navigate through numerous features and channels. However, they acknowledged that if the screen is hardly used, it might seem unnecessary. The decision leaned towards including a screen as an option for its utility in navigating complex functionalities, despite the potential infrequency of its use.",
+          "rouge_f1": {
+            "rouge1": 0.328125,
+            "rouge2": 0.09523809523809525,
+            "rougeL": 0.171875
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            13,
+            4
+          ],
+          "retrieval_precision": 0.75,
+          "retrieval_recall": 0.5381920112123336
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The participants decided not to include a screen on the remote control itself. Instead, they agreed that the screen functionality would be displayed on the TV, allowing users to interact with menus and settings via the remote's wheel and potentially a central button that would bring up the menu on the TV screen. This decision was made to keep the remote simple and less cluttered while maintaining necessary functionalities.",
+          "rouge_f1": {
+            "rouge1": 0.28125,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.171875
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            13,
+            4,
+            5,
+            7,
+            8,
+            11
+          ],
+          "retrieval_precision": 0.65234375,
+          "retrieval_recall": 0.9362298528381219
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about potential options of energy.",
+      "reference_answer": "Battery, solar power, dynamo, Kryptonite were potential options of the energy. They ended up with a preference on Kryptonite. Even though they could not find an exact price for it, it would not be more expensive than a chip.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, a dynamo (a mechanism that generates electricity from movement), and a kinetic winding mechanism. They considered the feasibility and practicality of each option, noting that solar power might not be suitable due to the rubber case material. The group leaned towards batteries as a viable solution, though the dynamo was also seen as potentially interesting despite concerns about its implementation and cost.",
+          "rouge_f1": {
+            "rouge1": 0.2831858407079646,
+            "rouge2": 0.05405405405405406,
+            "rougeL": 0.1592920353982301
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            23,
+            9
+          ],
+          "retrieval_precision": 0.59375,
+          "retrieval_recall": 0.8106666666666666
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The team discussed several options for energy sources including batteries, solar power, a dynamo (a mechanism that generates electricity through movement), and a kinetic winding mechanism. The Industrial Designer initially favored batteries, noting that solar power might not be feasible with a rubber case. The User Interface found the dynamo intriguing, while Marketing highlighted the dynamo’s ability to generate energy through movement. However, due to insufficient data on costs, particularly for the dynamo and kinetic mechanisms, the group did not reach a definitive decision beyond acknowledging the pros and cons of each option.",
+          "rouge_f1": {
+            "rouge1": 0.24060150375939848,
+            "rouge2": 0.061068702290076333,
+            "rougeL": 0.16541353383458648
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            23,
+            9,
+            0,
+            4
+          ],
+          "retrieval_precision": 0.296875,
+          "retrieval_recall": 0.8106666666666666
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The participants discussed several options for powering the device including batteries, solar power, a dynamo (a mechanism that generates energy from movement), and a kinetic winding mechanism. The Industrial Designer initially favored batteries, noting that solar power might not be feasible with a rubber case. The User Interface found the dynamo intriguing, while Marketing highlighted its ability to generate energy through movement. However, due to insufficient cost data, the group leaned towards batteries as a practical choice.",
+          "rouge_f1": {
+            "rouge1": 0.22413793103448276,
+            "rouge2": 0.07017543859649122,
+            "rougeL": 0.15517241379310345
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            23,
+            9,
+            0,
+            4,
+            2,
+            21,
+            11,
+            10,
+            24
+          ],
+          "retrieval_precision": 0.18212890625,
+          "retrieval_recall": 0.9946666666666667
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, a dynamo (a mechanism that generates electricity from movement), and a kinetic winding mechanism. The industrial designer initially favored batteries, noting that solar power might not be feasible due to the rubber case. The dynamo was considered interesting but impractical for a living room setting. Ultimately, the group leaned towards using batteries, finding them straightforward and less annoying compared to the alternatives, though the exact cost remained undetermined.",
+          "rouge_f1": {
+            "rouge1": 0.2521008403361345,
+            "rouge2": 0.05128205128205128,
+            "rougeL": 0.13445378151260504
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            22,
+            16
+          ],
+          "retrieval_precision": 0.59375,
+          "retrieval_recall": 0.8106666666666666
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, a dynamo, and a kinetic winding mechanism. The dynamo was described as a mechanism similar to a bicycle that generates energy through movement. Solar power was considered impractical due to the rubber case. Batteries were favored for their simplicity and suitability for a living room setting. The group acknowledged the novelty of the dynamo but lacked sufficient cost data to make a final decision.",
+          "rouge_f1": {
+            "rouge1": 0.20869565217391303,
+            "rouge2": 0.05309734513274336,
+            "rougeL": 0.1391304347826087
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            22,
+            16,
+            9,
+            12
+          ],
+          "retrieval_precision": 0.296875,
+          "retrieval_recall": 0.8106666666666666
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The team discussed several options for powering the remote control, including batteries, solar power, a dynamo, and a kinetic winding mechanism. The industrial designer initially favored batteries, noting that solar power might not be feasible with a rubber case. The user interface suggested that a dynamo could be interesting, while marketing pointed out that a dynamo generates energy through movement. However, due to insufficient cost data, the group leaned towards using batteries as a reliable and cost-effective solution.",
+          "rouge_f1": {
+            "rouge1": 0.23728813559322035,
+            "rouge2": 0.06896551724137932,
+            "rougeL": 0.1694915254237288
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            22,
+            16,
+            9,
+            12,
+            1,
+            10,
+            0,
+            24
+          ],
+          "retrieval_precision": 0.18310546875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, a dynamo (a mechanism that generates electricity from movement), and a kinetic winding mechanism. They considered the feasibility and practicality of each option, noting that solar power might not be suitable due to the rubber case material. The group leaned towards batteries as a viable solution, though the dynamo was also seen as potentially interesting despite concerns about its implementation and cost.",
+          "rouge_f1": {
+            "rouge1": 0.2831858407079646,
+            "rouge2": 0.05405405405405406,
+            "rougeL": 0.1592920353982301
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            23,
+            9
+          ],
+          "retrieval_precision": 0.59375,
+          "retrieval_recall": 0.8106666666666666
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team discussed several options for energy sources including batteries, solar power, a dynamo (a mechanism that generates electricity through movement), and a kinetic winding mechanism. The Industrial Designer initially favored batteries, noting that solar power might not be feasible with a rubber case. The User Interface found the dynamo intriguing, while Marketing highlighted the dynamo’s ability to generate energy through movement. However, due to insufficient data on costs, particularly for the dynamo and kinetic mechanisms, the group did not reach a definitive decision beyond acknowledging the pros and cons of each option.",
+          "rouge_f1": {
+            "rouge1": 0.24060150375939848,
+            "rouge2": 0.061068702290076333,
+            "rougeL": 0.16541353383458648
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            23,
+            9,
+            0,
+            4
+          ],
+          "retrieval_precision": 0.296875,
+          "retrieval_recall": 0.8106666666666666
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team discussed several options for powering the remote control, including batteries, solar power, a dynamo, and a kinetic winding mechanism. The Industrial Designer initially favored batteries, noting that solar power might not be feasible with a rubber case. The User Interface suggested that a dynamo could be interesting, while Marketing pointed out that a dynamo generates energy through movement. However, due to insufficient cost data, the group did not reach a definitive conclusion on the best energy option.",
+          "rouge_f1": {
+            "rouge1": 0.2711864406779661,
+            "rouge2": 0.06896551724137932,
+            "rougeL": 0.1694915254237288
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            23,
+            9,
+            0,
+            4,
+            10,
+            2,
+            24,
+            16,
+            1
+          ],
+          "retrieval_precision": 0.18310546875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, a dynamo (a mechanism that generates electricity from movement), and a kinetic winding mechanism. The industrial designer initially considered these options but settled on batteries. However, marketing suggested that a dynamo could be interesting as it generates energy through movement. The group acknowledged the potential of solar power but noted it might not be compatible with the rubber case design. They also briefly mentioned Kryptonite as a joke, highlighting the annoyance of buying batteries. The main concern throughout the discussion was the cost of implementing these energy solutions, with insufficient data available to make a final decision.",
+          "rouge_f1": {
+            "rouge1": 0.28378378378378377,
+            "rouge2": 0.0410958904109589,
+            "rougeL": 0.16216216216216217
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20
+          ],
+          "retrieval_precision": 0.708984375,
+          "retrieval_recall": 0.968
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, a dynamo (a mechanism that generates electricity from movement), and a kinetic winding mechanism. They considered the practicality and cost-effectiveness of each option. The dynamo and wind-up mechanisms were seen as potentially interesting but raised concerns about implementation and cost. Ultimately, the group favored using batteries due to their common availability and ease of use in a living room setting.",
+          "rouge_f1": {
+            "rouge1": 0.26548672566371684,
+            "rouge2": 0.036036036036036036,
+            "rougeL": 0.1415929203539823
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            7,
+            9
+          ],
+          "retrieval_precision": 0.3544921875,
+          "retrieval_recall": 0.968
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, a dynamo (a mechanism that generates electricity when moved), and a kinetic winding mechanism. The industrial designer initially favored batteries, noting that solar power might not be feasible with a rubber case. The user interface suggested the dynamo as an interesting option, while marketing pointed out that a dynamo generates energy upon movement. However, due to insufficient cost data, the group leaned towards using batteries as the most practical solution.",
+          "rouge_f1": {
+            "rouge1": 0.23140495867768598,
+            "rouge2": 0.06722689075630252,
+            "rougeL": 0.14876033057851243
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            7,
+            9,
+            1,
+            10,
+            19,
+            0
+          ],
+          "retrieval_precision": 0.17724609375,
+          "retrieval_recall": 0.968
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, a dynamo (a mechanism that generates electricity from movement), and a kinetic winding mechanism. The industrial designer initially considered these options but settled on batteries. However, marketing suggested that a dynamo could be interesting as it generates energy through movement. The group acknowledged the potential of solar power but noted it might not be compatible with the rubber case design. They also briefly mentioned Kryptonite as a joke, highlighting the annoyance of buying batteries. The main concern throughout the discussion was the cost of implementing these energy solutions, with insufficient data available to make a final decision.",
+          "rouge_f1": {
+            "rouge1": 0.28378378378378377,
+            "rouge2": 0.0410958904109589,
+            "rougeL": 0.16216216216216217
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            21
+          ],
+          "retrieval_precision": 0.708984375,
+          "retrieval_recall": 0.968
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, a dynamo (a mechanism that generates electricity from movement), and a kinetic winding mechanism. The industrial designer initially favored batteries, noting that solar power might not be feasible due to the rubber case. The dynamo was considered interesting but impractical for a living room setting. The group acknowledged the novelty of a wind-up mechanism but ultimately preferred batteries due to insufficient data on costs and practicality of alternative methods.",
+          "rouge_f1": {
+            "rouge1": 0.2644628099173553,
+            "rouge2": 0.05042016806722689,
+            "rougeL": 0.13223140495867766
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            21,
+            7,
+            14
+          ],
+          "retrieval_precision": 0.3544921875,
+          "retrieval_recall": 0.968
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The team discussed several options for powering the remote including batteries, solar power, a dynamo (a mechanism that generates electricity from movement), and a kinetic winding mechanism. The industrial designer initially favored batteries, noting that solar power might not be feasible with a rubber case. The user interface suggested the dynamo as an interesting option, while marketing pointed out that a dynamo generates energy upon movement, potentially eliminating the need for batteries. However, due to insufficient cost data, the group leaned towards using batteries as a reliable and cost-effective solution.",
+          "rouge_f1": {
+            "rouge1": 0.23076923076923078,
+            "rouge2": 0.0625,
+            "rougeL": 0.15384615384615383
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            21,
+            7,
+            14,
+            11,
+            9,
+            1,
+            0
+          ],
+          "retrieval_precision": 0.17724609375,
+          "retrieval_recall": 0.968
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, a dynamo (a mechanism that generates electricity from movement), and a kinetic winding mechanism. The industrial designer initially considered these options but settled on batteries. However, marketing suggested that a dynamo could be interesting as it generates energy through movement. The group acknowledged the potential of solar power but noted it might not be compatible with the rubber case design. They also briefly mentioned Kryptonite as a joke, highlighting the annoyance of buying batteries. The main concern throughout the discussion was the cost of implementing these energy solutions, with insufficient data available to make a final decision.",
+          "rouge_f1": {
+            "rouge1": 0.28378378378378377,
+            "rouge2": 0.0410958904109589,
+            "rougeL": 0.16216216216216217
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            21
+          ],
+          "retrieval_precision": 0.708984375,
+          "retrieval_recall": 0.968
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, a dynamo (a mechanism that generates electricity from movement), and a kinetic winding mechanism. They considered the practicality and cost-effectiveness of each option. The dynamo and wind-up mechanisms were seen as potentially interesting but raised concerns about implementation and cost. Ultimately, the group favored using batteries due to their common availability and ease of use in a living room setting.",
+          "rouge_f1": {
+            "rouge1": 0.26548672566371684,
+            "rouge2": 0.036036036036036036,
+            "rougeL": 0.1415929203539823
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            21,
+            7,
+            9
+          ],
+          "retrieval_precision": 0.3544921875,
+          "retrieval_recall": 0.968
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, a dynamo (a mechanism that generates electricity when moved), and a kinetic winding mechanism. The Industrial Designer initially favored batteries, noting that solar power might not be feasible with a rubber case. The User Interface found the dynamo intriguing, while Marketing highlighted its ability to generate energy upon movement. However, concerns about the cost and practicality of alternative energy sources led the group to lean towards batteries as the most viable option.",
+          "rouge_f1": {
+            "rouge1": 0.2276422764227642,
+            "rouge2": 0.06611570247933884,
+            "rougeL": 0.13008130081300812
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            21,
+            7,
+            9,
+            1,
+            0,
+            14,
+            3
+          ],
+          "retrieval_precision": 0.17724609375,
+          "retrieval_recall": 0.968
+        },
+        "lumber__dense__w512": {
+          "answer": "The team discussed several options for energy sources including batteries, solar power, and a dynamo (a mechanism that generates electricity from movement). They also briefly mentioned a wind-up mechanism. However, they decided that solar power might not be feasible due to the rubber case material. The project manager favored batteries, while the user interface suggested the dynamo as an interesting alternative. Marketing highlighted the dynamo's ability to generate energy through movement and proposed a \"Kryptonite\" idea involving storing energy through throwing motion. However, the group lacked sufficient cost data for these alternatives, leading to uncertainty about their feasibility.",
+          "rouge_f1": {
+            "rouge1": 0.2446043165467626,
+            "rouge2": 0.043795620437956206,
+            "rougeL": 0.14388489208633096
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22
+          ],
+          "retrieval_precision": 0.732421875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The team discussed several options for energy sources including batteries, solar power, and a dynamo (a mechanism that generates electricity through movement). The Industrial Designer initially favored batteries, noting that solar power might not be suitable due to the type of case used. The User Interface suggested that a dynamo could be interesting, while Marketing pointed out that a dynamo creates energy upon movement. However, due to lack of specific cost data, the group did not definitively choose an option, leaning towards batteries as a practical choice.",
+          "rouge_f1": {
+            "rouge1": 0.25396825396825395,
+            "rouge2": 0.04838709677419354,
+            "rougeL": 0.17460317460317462
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22,
+            0,
+            1
+          ],
+          "retrieval_precision": 0.3662109375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team discussed several options for powering the remote, including batteries, solar power, a dynamo, and a kinetic winding mechanism. The Industrial Designer initially favored batteries, noting that solar power might not be feasible with a rubber case. The User Interface suggested the dynamo as an interesting option, while Marketing pointed out that a dynamo generates energy through movement. However, due to insufficient cost data, the group did not make a final decision on the energy source.",
+          "rouge_f1": {
+            "rouge1": 0.2758620689655173,
+            "rouge2": 0.08771929824561402,
+            "rougeL": 0.17241379310344826
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22,
+            0,
+            1,
+            2,
+            19,
+            6
+          ],
+          "retrieval_precision": 0.18310546875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The team discussed several options for energy sources including batteries, solar power, and a dynamo (a mechanism that generates electricity from movement). They also briefly mentioned a wind-up mechanism. However, they decided that solar power might not be feasible due to the rubber case material. The project manager favored batteries, while the user interface suggested the dynamo as an interesting alternative. Marketing highlighted the dynamo's ability to generate energy through movement and proposed a \"Kryptonite\" idea involving storing energy through throwing motion. However, the group lacked sufficient cost data for these alternatives, leading to uncertainty about their feasibility.",
+          "rouge_f1": {
+            "rouge1": 0.2446043165467626,
+            "rouge2": 0.043795620437956206,
+            "rougeL": 0.14388489208633096
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22
+          ],
+          "retrieval_precision": 0.732421875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The team discussed several options for energy sources including batteries, solar power, a dynamo, and a kinetic winding mechanism. The Industrial Designer initially considered all these options but ultimately chose batteries. The Marketing member suggested a dynamo as an interesting alternative but noted that its implementation might be impractical due to movement requirements. The group acknowledged the novelty and cost-effectiveness of various methods but concluded that batteries seemed to be the most feasible option given the current constraints and lack of detailed cost information for alternatives.",
+          "rouge_f1": {
+            "rouge1": 0.2063492063492064,
+            "rouge2": 0.03225806451612903,
+            "rougeL": 0.14285714285714288
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22,
+            11,
+            13
+          ],
+          "retrieval_precision": 0.3662109375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, and a dynamo. The Industrial Designer initially favored batteries, while the group considered the dynamo as an interesting alternative. However, concerns about the cost and practicality of the dynamo and solar power led the group to lean towards using batteries. The exact costs of these options were not definitively known, but the group acknowledged that the chip for the remote control would likely be the most expensive component.",
+          "rouge_f1": {
+            "rouge1": 0.3025210084033614,
+            "rouge2": 0.05128205128205128,
+            "rougeL": 0.18487394957983194
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22,
+            11,
+            13,
+            6,
+            7,
+            2
+          ],
+          "retrieval_precision": 0.18310546875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The team discussed several options for energy sources including batteries, solar power, and a dynamo (a mechanism that generates electricity from movement). They also briefly mentioned a wind-up mechanism. However, they decided that solar power might not be feasible due to the rubber case material. The project manager favored batteries, while the user interface suggested the dynamo as an interesting alternative. Marketing highlighted the dynamo's ability to generate energy through movement and proposed a \"Kryptonite\" idea involving storing energy through throwing motion. However, the group lacked sufficient cost data for these alternatives, leading to uncertainty about their feasibility.",
+          "rouge_f1": {
+            "rouge1": 0.2446043165467626,
+            "rouge2": 0.043795620437956206,
+            "rougeL": 0.14388489208633096
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22
+          ],
+          "retrieval_precision": 0.732421875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, and a dynamo (a mechanism similar to that used in torches). The dynamo and wind-up mechanisms were considered interesting but deemed somewhat impractical for a living room setting. Solar power was ruled out due to incompatibility with a rubber case. Batteries were ultimately favored as the most practical option, though the team acknowledged the need to consider costs and availability of components.",
+          "rouge_f1": {
+            "rouge1": 0.2631578947368421,
+            "rouge2": 0.05357142857142857,
+            "rougeL": 0.15789473684210525
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22,
+            2
+          ],
+          "retrieval_precision": 0.3662109375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The participants discussed several options for energy sources including batteries, solar power, a dynamo, and a kinetic winding mechanism. The Industrial Designer initially favored batteries, noting that solar power might not be feasible with a rubber case. The Marketing suggested a dynamo as an interesting option, explaining it generates energy through movement. However, concerns over cost and practicality led the group to lean towards batteries as the most viable option.",
+          "rouge_f1": {
+            "rouge1": 0.27522935779816515,
+            "rouge2": 0.07476635514018691,
+            "rougeL": 0.16513761467889906
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22,
+            2,
+            6,
+            1
+          ],
+          "retrieval_precision": 0.18310546875,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the Industrial Designer think of the potential options of energy?",
+      "reference_answer": "Industrial Designer preferred battery. Industrial Designer was not very familiar with dynamo. Wind-up or a dynamo or a solar power were all possible, but solar power would not be available with the rubber case.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The Industrial Designer considered options such as batteries, solar power, and a dynamo (a mechanism that generates energy from movement). They noted that solar power might not be feasible due to the rubber case and found the idea of a wind-up mechanism intriguing. However, they ultimately chose batteries, finding the other options either impractical or lacking sufficient data for evaluation.",
+          "rouge_f1": {
+            "rouge1": 0.37499999999999994,
+            "rouge2": 0.1702127659574468,
+            "rougeL": 0.2708333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            23,
+            0
+          ],
+          "retrieval_precision": 0.306640625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The Industrial Designer thought that while there were potential options such as solar power, a dynamo, and a wind-up mechanism, batteries seemed like the most practical choice. They noted that solar power might not be suitable due to the rubber case and that the dynamo or wind-up options could be interesting but might seem odd for a living room setting. The Industrial Designer ultimately favored batteries due to a lack of sufficient data on the other options and the relatively low cost of components when bought in bulk.",
+          "rouge_f1": {
+            "rouge1": 0.36799999999999994,
+            "rouge2": 0.16260162601626016,
+            "rougeL": 0.192
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            23,
+            0,
+            24,
+            2,
+            4
+          ],
+          "retrieval_precision": 0.1533203125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The Industrial Designer considered options such as batteries, solar power, and a dynamo for energy. They preferred batteries, finding the other options impractical or unavailable (e.g., solar power with a rubber case). The dynamo was briefly seen as interesting but ultimately not pursued due to lack of cost data and practicality concerns.",
+          "rouge_f1": {
+            "rouge1": 0.4545454545454546,
+            "rouge2": 0.13953488372093026,
+            "rougeL": 0.25000000000000006
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            23,
+            0,
+            24,
+            2,
+            4,
+            21,
+            11,
+            9,
+            1
+          ],
+          "retrieval_precision": 0.07666015625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The Industrial Designer considered options such as batteries, solar power, and a dynamo (a mechanism that generates energy from movement). They noted that solar power might not be feasible due to the rubber case and found the idea of a wind-up mechanism intriguing. However, they ultimately chose batteries, finding the other options either impractical or lacking sufficient data for evaluation.",
+          "rouge_f1": {
+            "rouge1": 0.37499999999999994,
+            "rouge2": 0.1702127659574468,
+            "rougeL": 0.2708333333333333
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            22,
+            0
+          ],
+          "retrieval_precision": 0.306640625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The Industrial Designer mentioned several potential options for energy including batteries, solar power, and a dynamo. They noted that while solar power wasn't feasible with a rubber case, they personally favored batteries. The designer felt that batteries seemed more appropriate for a living room setting compared to alternative options like a wind-up mechanism or dynamo.",
+          "rouge_f1": {
+            "rouge1": 0.4130434782608695,
+            "rouge2": 0.13333333333333333,
+            "rougeL": 0.21739130434782608
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            22,
+            0,
+            15,
+            16
+          ],
+          "retrieval_precision": 0.1533203125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The Industrial Designer thought that among the potential options for energy (batteries, solar power, and a dynamo), batteries seemed like the most practical choice. They noted that solar power might not be feasible with a rubber case and found the dynamo and kinetic winding mechanisms somewhat impractical for a living room setting.",
+          "rouge_f1": {
+            "rouge1": 0.41379310344827586,
+            "rouge2": 0.1411764705882353,
+            "rougeL": 0.2758620689655173
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            22,
+            0,
+            15,
+            16,
+            7,
+            12,
+            9,
+            24
+          ],
+          "retrieval_precision": 0.07666015625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The Industrial Designer considered options such as batteries, solar power, and a dynamo (a mechanism that generates energy from movement). They noted that solar power might not be feasible due to the rubber case and found the idea of a wind-up mechanism intriguing. However, they ultimately chose batteries, finding the other options either impractical or lacking sufficient data for evaluation.",
+          "rouge_f1": {
+            "rouge1": 0.37499999999999994,
+            "rouge2": 0.1702127659574468,
+            "rougeL": 0.2708333333333333
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            23,
+            0
+          ],
+          "retrieval_precision": 0.306640625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The Industrial Designer thought that while there were potential options such as solar power, a dynamo, and wind-up mechanisms, batteries seemed like the most practical choice. They noted that solar power might not be feasible with a rubber case and that the other alternatives, like a dynamo, could be inconvenient for a living room setting. The Industrial Designer also mentioned lacking sufficient data to make a definitive decision on costs.",
+          "rouge_f1": {
+            "rouge1": 0.4150943396226415,
+            "rouge2": 0.15384615384615385,
+            "rougeL": 0.22641509433962265
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            23,
+            0,
+            24,
+            15
+          ],
+          "retrieval_precision": 0.1533203125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The Industrial Designer thought that among the potential options for energy (batteries, solar power, and a dynamo), battery power seemed the most practical. They noted that solar power might not be feasible with a rubber case and found the dynamo and kinetic winding mechanisms interesting but somewhat unusual for a living room setting. The Industrial Designer ultimately chose batteries due to insufficient data on the feasibility and cost of the other options.",
+          "rouge_f1": {
+            "rouge1": 0.39252336448598135,
+            "rouge2": 0.13333333333333333,
+            "rougeL": 0.24299065420560745
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            23,
+            0,
+            24,
+            15,
+            9,
+            1,
+            10,
+            12
+          ],
+          "retrieval_precision": 0.07666015625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The Industrial Designer considered several options for energy, including batteries, solar power, a dynamo, and a kinetic winding mechanism. They expressed uncertainty about the dynamo and noted that solar power might not be feasible with a rubber case. The Industrial Designer ultimately favored batteries, finding the other options either impractical or unusual for a living room setting, and mentioned lacking sufficient cost data to make a definitive choice.",
+          "rouge_f1": {
+            "rouge1": 0.4077669902912622,
+            "rouge2": 0.1386138613861386,
+            "rougeL": 0.2524271844660194
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20
+          ],
+          "retrieval_precision": 0.306640625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The Industrial Designer considered several options for energy, including batteries, solar power, a dynamo, and a kinetic winding mechanism. They initially favored batteries, finding the other options either impractical (like solar power with a rubber case) or lacking sufficient data on costs. The designer expressed uncertainty about the dynamo and kinetic options due to limited information and practicality concerns, ultimately suggesting batteries as the most viable choice.",
+          "rouge_f1": {
+            "rouge1": 0.3529411764705882,
+            "rouge2": 0.09999999999999999,
+            "rougeL": 0.2156862745098039
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            2,
+            1
+          ],
+          "retrieval_precision": 0.1533203125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The Industrial Designer considered several options for energy, including batteries, solar power, a dynamo, and a kinetic winding mechanism. They ultimately favored batteries, finding the other options impractical or lacking sufficient data for cost estimation. The designer noted that solar power might not be feasible with a rubber case and that a dynamo or kinetic winding mechanism seemed unusual for a living room setting.",
+          "rouge_f1": {
+            "rouge1": 0.42424242424242425,
+            "rouge2": 0.14432989690721648,
+            "rougeL": 0.26262626262626265
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            2,
+            1,
+            22,
+            0,
+            19,
+            3,
+            9
+          ],
+          "retrieval_precision": 0.07666015625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The Industrial Designer mentioned three potential options for energy: batteries, solar power, and a dynamo. However, the Industrial Designer was unsure about what a dynamo is, noting it might be related to torches. They clarified their understanding after Marketing explained that a dynamo is a mechanism similar to a bicycle where movement generates stored energy.",
+          "rouge_f1": {
+            "rouge1": 0.31111111111111106,
+            "rouge2": 0.11363636363636363,
+            "rougeL": 0.2222222222222222
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            20
+          ],
+          "retrieval_precision": 0.1484375,
+          "retrieval_recall": 0.4840764331210191
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The Industrial Designer considered options such as batteries, solar power, and a dynamo for energy. They preferred batteries, finding the other options either impractical (like solar power with a rubber case) or lacking sufficient data on costs (like the dynamo).",
+          "rouge_f1": {
+            "rouge1": 0.45333333333333337,
+            "rouge2": 0.1643835616438356,
+            "rougeL": 0.26666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            20,
+            21,
+            0
+          ],
+          "retrieval_precision": 0.1533203125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The Industrial Designer thought that while options such as solar power, a dynamo, and a kinetic winding mechanism were considered, batteries seemed the most practical choice for a living room remote control due to the unavailability of solar power with a rubber case and the inconvenience of the other alternatives.",
+          "rouge_f1": {
+            "rouge1": 0.37647058823529417,
+            "rouge2": 0.12048192771084339,
+            "rougeL": 0.25882352941176473
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            20,
+            21,
+            0,
+            6,
+            7,
+            11,
+            9
+          ],
+          "retrieval_precision": 0.07666015625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The Industrial Designer considered several options for energy, including batteries, solar power, a dynamo, and a kinetic winding mechanism. They expressed uncertainty about the dynamo and noted that solar power might not be feasible with a rubber case. The Industrial Designer ultimately favored batteries, finding the other options either impractical or unusual for a living room setting, and mentioned lacking sufficient cost data to make a definitive choice.",
+          "rouge_f1": {
+            "rouge1": 0.4077669902912622,
+            "rouge2": 0.1386138613861386,
+            "rougeL": 0.2524271844660194
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20
+          ],
+          "retrieval_precision": 0.306640625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The Industrial Designer considered options such as batteries, solar power, and a dynamo for energy. They preferred batteries, finding the other options either impractical (like solar power with a rubber case) or lacking sufficient data on costs (like the dynamo).",
+          "rouge_f1": {
+            "rouge1": 0.45333333333333337,
+            "rouge2": 0.1643835616438356,
+            "rougeL": 0.26666666666666666
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            0,
+            14
+          ],
+          "retrieval_precision": 0.1533203125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The Industrial Designer thought that among the potential options for energy (batteries, solar power, and a dynamo), batteries seemed the most practical choice. They noted that solar power might not be feasible with a rubber case and found the idea of a dynamo or wind-up mechanism somewhat unusual for a living room setting. The Industrial Designer ultimately chose batteries due to insufficient data and cost information for the other options.",
+          "rouge_f1": {
+            "rouge1": 0.4150943396226415,
+            "rouge2": 0.17307692307692307,
+            "rougeL": 0.22641509433962265
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            0,
+            14,
+            1,
+            9,
+            22,
+            7,
+            2
+          ],
+          "retrieval_precision": 0.07666015625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The Industrial Designer considered options such as batteries, solar power, and a dynamo (which they initially didn't understand but later learned was related to generating energy through movement). They ultimately preferred batteries, finding the other options either impractical (like solar power with a rubber case) or unusual for a living room setting.",
+          "rouge_f1": {
+            "rouge1": 0.40909090909090906,
+            "rouge2": 0.13953488372093026,
+            "rougeL": 0.25000000000000006
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            1
+          ],
+          "retrieval_precision": 0.306640625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The Industrial Designer thought that while there were potential options for energy such as batteries, solar power, and a dynamo, they preferred battery power. They believed that solar power might not be compatible with a rubber case and found the idea of a dynamo or wind-up mechanism somewhat unusual for a living room device. The decision was influenced by the lack of sufficient data on costs and practicality.",
+          "rouge_f1": {
+            "rouge1": 0.4423076923076923,
+            "rouge2": 0.17647058823529413,
+            "rougeL": 0.25000000000000006
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            1,
+            22
+          ],
+          "retrieval_precision": 0.1533203125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The Industrial Designer thought that among the potential options for energy (batteries, solar power, and a dynamo), batteries seemed the most practical choice. They noted that solar power might not be feasible with a rubber case and found the idea of a dynamo or wind-up mechanism somewhat unusual for a living room setting. However, they acknowledged that the team could consider a wind-up or dynamo option, though they lacked sufficient data to make a definitive recommendation based on cost.",
+          "rouge_f1": {
+            "rouge1": 0.3620689655172414,
+            "rouge2": 0.15789473684210528,
+            "rougeL": 0.20689655172413793
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            1,
+            22,
+            0,
+            2,
+            13,
+            7
+          ],
+          "retrieval_precision": 0.07666015625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The Industrial Designer mentioned several options for energy including batteries, solar power, and a dynamo, noting that solar power might not be feasible with a rubber case. They ultimately preferred batteries, finding the other options either impractical or unconventional for a living room setting.",
+          "rouge_f1": {
+            "rouge1": 0.4556962025316455,
+            "rouge2": 0.18181818181818182,
+            "rougeL": 0.30379746835443033
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            21,
+            22
+          ],
+          "retrieval_precision": 0.306640625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The Industrial Designer thought that while there were multiple options for energy (batteries, solar power, and a dynamo), they ultimately chose batteries. They noted that solar power might not be feasible with a rubber case and felt that a dynamo or wind-up mechanism seemed unusual for a living room setting. The Industrial Designer also mentioned lacking sufficient data to make a definitive choice beyond batteries.",
+          "rouge_f1": {
+            "rouge1": 0.45544554455445546,
+            "rouge2": 0.18181818181818182,
+            "rougeL": 0.23762376237623764
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            21,
+            22,
+            0
+          ],
+          "retrieval_precision": 0.1533203125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The Industrial Designer thought that among the potential options for energy (batteries, solar power, and a dynamo), battery power seemed the most practical. They noted that solar power might not be suitable due to the rubber case and that a dynamo could be interesting but might create issues when moved. The Industrial Designer ultimately chose batteries, finding it \"a little weird\" for a living room setting compared to alternative methods.",
+          "rouge_f1": {
+            "rouge1": 0.3619047619047619,
+            "rouge2": 0.1553398058252427,
+            "rougeL": 0.24761904761904763
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            21,
+            22,
+            0,
+            6,
+            11,
+            15
+          ],
+          "retrieval_precision": 0.07666015625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The Industrial Designer considered several options for energy, including batteries, solar power, and a dynamo (a mechanism that generates electricity from movement). They noted that solar power might not be feasible due to the rubber case. The designer favored batteries, finding the other options either impractical or unconventional for a living room setting. Insufficient data on costs led the designer to conclude that most components would be affordable in bulk, with the chip being the most expensive part.",
+          "rouge_f1": {
+            "rouge1": 0.33628318584070793,
+            "rouge2": 0.14414414414414414,
+            "rougeL": 0.23008849557522126
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22
+          ],
+          "retrieval_precision": 0.306640625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The Industrial Designer thought that while there were multiple options for energy (batteries, solar power, and a dynamo), they ultimately chose batteries. They noted that solar power might not be feasible with a rubber case and felt that a dynamo or wind-up mechanism seemed unusual for a living room setting. The Industrial Designer also mentioned lacking sufficient data to make a definitive choice beyond batteries.",
+          "rouge_f1": {
+            "rouge1": 0.45544554455445546,
+            "rouge2": 0.18181818181818182,
+            "rougeL": 0.23762376237623764
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22,
+            13,
+            0
+          ],
+          "retrieval_precision": 0.1533203125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The Industrial Designer thought that while there were potential options for energy such as batteries, solar power, and a dynamo, they preferred battery power. They believed that solar power might not be suitable for a rubber case and that a dynamo seemed unusual for a living room setting. The Industrial Designer chose battery power due to insufficient data and considerations regarding practicality and aesthetics.",
+          "rouge_f1": {
+            "rouge1": 0.404040404040404,
+            "rouge2": 0.16494845360824742,
+            "rougeL": 0.2424242424242424
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            22,
+            13,
+            0,
+            1,
+            7,
+            15,
+            2
+          ],
+          "retrieval_precision": 0.07666015625,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What was the cost of the Kryptonite when discussing potential options of energy?",
+      "reference_answer": "The website did not give an actual cost, but most of the stuff was cheap. The chip would be the most expensive part anyway, so the group should not worry about the cost of the Kryptonite too much.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            22,
+            9
+          ],
+          "retrieval_precision": 0.142578125,
+          "retrieval_recall": 0.5069444444444444
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            22,
+            9,
+            24,
+            0
+          ],
+          "retrieval_precision": 0.140625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            22,
+            9,
+            24,
+            0,
+            21,
+            2,
+            4,
+            10,
+            11
+          ],
+          "retrieval_precision": 0.0703125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The evidence provided does not contain any specific cost details for Kryptonite when discussing potential options of energy. The closest reference is that Marketing mentions needing to find the cost but doesn't provide a figure. Therefore, the exact cost cannot be determined from the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.28235294117647053,
+            "rouge2": 0.048192771084337345,
+            "rougeL": 0.2117647058823529
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            24,
+            22
+          ],
+          "retrieval_precision": 0.28125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The evidence provided does not contain any specific mention of the cost of Kryptonite when discussing potential options of energy. Therefore, the evidence is insufficient to determine the cost.",
+          "rouge_f1": {
+            "rouge1": 0.2985074626865672,
+            "rouge2": 0.0923076923076923,
+            "rougeL": 0.208955223880597
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            24,
+            22,
+            12,
+            16
+          ],
+          "retrieval_precision": 0.140625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            24,
+            22,
+            12,
+            16,
+            17,
+            0,
+            20,
+            11
+          ],
+          "retrieval_precision": 0.0703125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            22,
+            24
+          ],
+          "retrieval_precision": 0.19921875,
+          "retrieval_recall": 0.7083333333333334
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            22,
+            24,
+            0,
+            9
+          ],
+          "retrieval_precision": 0.140625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            22,
+            24,
+            0,
+            9,
+            12,
+            11,
+            19,
+            18
+          ],
+          "retrieval_precision": 0.0703125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20
+          ],
+          "retrieval_precision": 0.2578125,
+          "retrieval_recall": 0.9166666666666666
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The evidence provided does not contain any specific cost details for Kryptonite when discussing potential options of energy. The participants mentioned needing to find the cost but did not provide it.",
+          "rouge_f1": {
+            "rouge1": 0.31884057971014496,
+            "rouge2": 0.08955223880597014,
+            "rougeL": 0.20289855072463767
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            8,
+            19
+          ],
+          "retrieval_precision": 0.12890625,
+          "retrieval_recall": 0.9166666666666666
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            8,
+            19,
+            22,
+            9,
+            1,
+            2,
+            3
+          ],
+          "retrieval_precision": 0.0703125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20
+          ],
+          "retrieval_precision": 0.2578125,
+          "retrieval_recall": 0.9166666666666666
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The evidence provided does not contain any specific mention of the cost of the Kryptonite when discussing potential options of energy. Therefore, the evidence is insufficient to determine the cost.",
+          "rouge_f1": {
+            "rouge1": 0.32352941176470584,
+            "rouge2": 0.15151515151515152,
+            "rougeL": 0.23529411764705882
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            22,
+            10,
+            15
+          ],
+          "retrieval_precision": 0.140625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            22,
+            10,
+            15,
+            14,
+            0,
+            18,
+            11
+          ],
+          "retrieval_precision": 0.0703125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20
+          ],
+          "retrieval_precision": 0.2578125,
+          "retrieval_recall": 0.9166666666666666
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The evidence provided does not contain any specific mention of the cost of Kryptonite when discussing potential options of energy. Therefore, the evidence is insufficient to determine the cost.",
+          "rouge_f1": {
+            "rouge1": 0.2985074626865672,
+            "rouge2": 0.0923076923076923,
+            "rougeL": 0.208955223880597
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            22,
+            10,
+            9
+          ],
+          "retrieval_precision": 0.140625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            22,
+            10,
+            9,
+            14,
+            18,
+            7,
+            19
+          ],
+          "retrieval_precision": 0.0703125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The evidence provided does not contain any specific cost details for Kryptonite when discussing potential options of energy. Marketing and Industrial Designer both noted that they did not have enough data or cost information for Kryptonite. Therefore, the cost of the Kryptonite cannot be determined from the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.2988505747126437,
+            "rouge2": 0.11764705882352941,
+            "rougeL": 0.22988505747126436
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21
+          ],
+          "retrieval_precision": 0.28125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The evidence provided does not contain any specific mention of the cost of Kryptonite when discussing potential options of energy. Therefore, the evidence is insufficient to determine the cost of Kryptonite in this context.",
+          "rouge_f1": {
+            "rouge1": 0.27777777777777773,
+            "rouge2": 0.08571428571428572,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21,
+            1
+          ],
+          "retrieval_precision": 0.140625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21,
+            1,
+            0,
+            7,
+            19,
+            9,
+            17,
+            8
+          ],
+          "retrieval_precision": 0.0703125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The evidence provided does not contain any specific cost details for Kryptonite when discussing potential options of energy. Marketing and Industrial Designer both noted that they did not have enough data or cost information for Kryptonite. Therefore, the cost of the Kryptonite cannot be determined from the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.2988505747126437,
+            "rouge2": 0.11764705882352941,
+            "rougeL": 0.22988505747126436
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21
+          ],
+          "retrieval_precision": 0.28125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The evidence provided does not contain any specific mention of the cost of Kryptonite when discussing potential options of energy. Therefore, the evidence is insufficient to determine the cost.",
+          "rouge_f1": {
+            "rouge1": 0.2985074626865672,
+            "rouge2": 0.0923076923076923,
+            "rougeL": 0.208955223880597
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21,
+            16,
+            8
+          ],
+          "retrieval_precision": 0.140625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The evidence provided does not contain any specific mention of the cost of Kryptonite when discussing potential options of energy. Therefore, the evidence is insufficient to determine the cost.",
+          "rouge_f1": {
+            "rouge1": 0.2985074626865672,
+            "rouge2": 0.0923076923076923,
+            "rougeL": 0.208955223880597
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21,
+            16,
+            8,
+            19,
+            13,
+            11,
+            6
+          ],
+          "retrieval_precision": 0.0703125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The evidence provided does not contain any specific cost details for Kryptonite when discussing potential options of energy. Marketing and Industrial Designer both noted that they did not have enough data or cost information for Kryptonite. Therefore, the cost of the Kryptonite cannot be determined from the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.2988505747126437,
+            "rouge2": 0.11764705882352941,
+            "rougeL": 0.22988505747126436
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21
+          ],
+          "retrieval_precision": 0.28125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21,
+            19,
+            8
+          ],
+          "retrieval_precision": 0.140625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The evidence provided does not contain any specific cost details for Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.17857142857142858,
+            "rouge2": 0.0,
+            "rougeL": 0.14285714285714285
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21,
+            19,
+            8,
+            1,
+            0,
+            7,
+            13
+          ],
+          "retrieval_precision": 0.0703125,
+          "retrieval_recall": 1.0
+        }
+      }
+    }
+  ]
+}

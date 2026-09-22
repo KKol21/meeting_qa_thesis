@@ -1,0 +1,170 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "TS3004b.json",
+        "sha256": "3411f5ba0e7bba31c172489ecd4ed6ca3c04a61583c15893892e7ec47eb234ac"
+      }
+    },
+    "input_hash": "2177573faadf30f486885df867cc58b58024634b19b7268cf04829e212ee7ca7",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "24c4184b1a8516c0e03c3108a23f6c1281cdcea74f183d5eb6c4ebedaeb05ac9",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "TS3004b",
+  "question_count": 4,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 4,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the presentation and discussion on functional requirements.",
+      "reference_answer": "Marketing gave some suggestions on the remote functional requirements based on marketing reports, which included a fancy look of the remote control, ease of use for elderly people, a button on the home station to trace its position, and speech recognition. So finally, the group mates suggested the usability and the color of the remote control based on Marketing's presentation.",
+      "results": {
+        "oracle": {
+          "answer": "The presentation and discussion on functional requirements highlighted several key points:\n\n- **User Preferences**: Seventy-five percent of users find most remote controls ugly, indicating a need for an aesthetically pleasing design. Eighty percent of users would spend more on a fancy-looking remote control, suggesting a focus on visual appeal, especially for older users who are willing to spend more.\n\n- **Button Usage**: Fifty percent of users only use ten percent of the buttons, implying that the remote should prioritize commonly used functions. This led to the suggestion of placing the most frequently used buttons prominently.\n\n- **Usability**: Users often lose remote controls in the room, leading to the idea of incorporating a home station for recharging and possibly a clapping system or a button on the home station to locate the remote. Additionally, thirty-four percent of users find it difficult to learn how to use a new remote control, emphasizing the importance of ease of use.\n\n- **Health Concerns**: Remote controls can cause RSI (Repetitive Strain Injury) if users watch TV for over five hours daily and zap frequently, though this is less of a concern for the target audience.\n\n- **Features**: Gadgets such as speech recognition and LCD screens were considered but deemed unnecessary for the target demographic of forty-plus individuals, who prefer simplicity over new features. The team agreed to skip these features due to cost constraints and user preferences.\n\n- **Target Market**: The remote control should cater primarily to older users, requiring larger buttons and simpler functionality. The project aims to create a unique yet usable product that stands out in terms of both appearance and functionality, despite the target market's preference for simplicity over novelty.",
+          "rouge_f1": {
+            "rouge1": 0.25368731563421826,
+            "rouge2": 0.11275964391691395,
+            "rougeL": 0.18289085545722714
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              0,
+              120
+            ]
+          ],
+          "evidence_words": 1929
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did Marketing suggest giving up on speech recognition when presenting the functional requirements?",
+      "reference_answer": "When Marketing mentioned that their target group should be both young people and people above forty who were not keen on new features, Marketing thought it would be too expensive to have the speech recognition and not reachable for twenty-five Euros. Also, Marketing suggested a DVD player, stereo, and VCR for television.",
+      "results": {
+        "oracle": {
+          "answer": "Marketing suggested giving up on speech recognition when presenting the functional requirements because it is not feasible within the budget constraint of twenty-five Euros. Additionally, the target market (people over forty) is less interested in new features like speech recognition.",
+          "rouge_f1": {
+            "rouge1": 0.3829787234042553,
+            "rouge2": 0.10869565217391305,
+            "rougeL": 0.19148936170212766
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              80,
+              91
+            ]
+          ],
+          "evidence_words": 309
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did User Interface think of Marketing's suggestion on the ease of use when presenting the functional requirements?",
+      "reference_answer": "When Marketing mentioned that they should make a new product that looked fancy, fashionable, and was easy to use for elderly users, User Interface suggested making sure that the remote control had better usability and could stand out by just being watched. Also, Marketing suggested a different color or different shape.",
+      "results": {
+        "oracle": {
+          "answer": "User Interface agreed with the emphasis on good usability as mentioned by Marketing. However, User Interface also suggested that the product needed to stand out by having a different color or shape, indicating that while ease of use was important, differentiation was also crucial.",
+          "rouge_f1": {
+            "rouge1": 0.48421052631578954,
+            "rouge2": 0.15053763440860218,
+            "rougeL": 0.2947368421052632
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              92,
+              120
+            ]
+          ],
+          "evidence_words": 335
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the presentation and discussion on technical function design.",
+      "reference_answer": "Firstly, User Interface suggested the group should stand up with a unique design like different shapes than usual. User Interface also suggested a new option for favorite channels and a menu button that could integrate with volume, the previous and next buttons. The group agreed to make the remote a bit smaller and would like to look at mobile phones when designing it.",
+      "results": {
+        "oracle": {
+          "answer": "The presentation and discussion on technical function design focused on creating a simple and user-friendly remote control, particularly for elderly users. The key points included:\n\n- Keeping the design simple and standardized, similar to existing remote controls, with basic functions like numbers and on-off buttons.\n- Using large, clear buttons with icons or text to ensure ease of use.\n- Considering the use of questionnaires to gather input from elderly users on preferred functionalities.\n- Basic functions identified were volume control, channel switching (with a focus on simplicity for channels above ten), and a menu button for accessing additional settings.\n- The team debated the inclusion of \"favourites\" buttons but concluded it might be too complex.\n- The remote control would feature a mute button and possibly a menu button for navigation.\n- Design considerations included making the remote stand out visually in stores, potentially through unique shapes and offering different colors.\n- The team agreed to look at mobile phone designs for inspiration, emphasizing the importance of size and usability.\n\nThe overall goal was to create a straightforward and intuitive remote control that would be easy for elderly users to operate.",
+          "rouge_f1": {
+            "rouge1": 0.321285140562249,
+            "rouge2": 0.08906882591093118,
+            "rougeL": 0.2008032128514056
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              121,
+              272
+            ]
+          ],
+          "evidence_words": 1825
+        }
+      }
+    }
+  ]
+}

@@ -20,18 +20,15 @@ reference-answer quality, and automatic evaluator.
 ## Data and split discipline
 
 Only QMSum specific-query questions are used. Each example contains a question,
-a reference answer, and one or more annotated inclusive turn ranges. The
-experiment uses a fixed 20-meeting validation subset with 142 questions.
-Parameter selection and sensitivity analyses use this same subset and are
-therefore exploratory rather than independent confirmation.
-
-The selected parameters must be frozen before any held-out test run. If no
-held-out run is completed, the thesis should explicitly describe the reported
-results as validation results and avoid claims of confirmed generalization.
+a reference answer, and one or more annotated inclusive turn ranges. Parameter
+selection and sensitivity analyses use a fixed 20-meeting validation subset
+with 142 questions and are therefore exploratory rather than independent
+confirmation. After freezing the design, the final experiment uses all 35
+QMSum test meetings and their 244 specific-query questions.
 
 ## Chunking conditions
 
-Four representations of every transcript are compared:
+Validation compared four representations of every transcript:
 
 1. **Single turn:** every speaker turn is a separate chunk. This is a
    deliberately fine-grained baseline, not a size-matched baseline.
@@ -45,6 +42,11 @@ Four representations of every transcript are compared:
    numbered turns and identifies the first clear content shift. Segmentation is
    sequential and boundaries remain legal turn boundaries. Greedy decoding is
    used. The selected window target is 1,000 pseudo-tokens.
+
+The held-out test grid omits the single-turn condition. It is not size matched,
+and validation already established that comparisons against it mainly measure
+the benefit of aggregating turns. The final confirmatory comparisons are
+Lumber versus turn-packed and word-packed chunks.
 
 Lumber's `target_tokens` value is not a tokenizer count. It follows the adapted
 Lumber procedure's deterministic approximation over rendered text. Chunk and
@@ -147,8 +149,9 @@ meetings with replacement. The 2.5th and 97.5th percentiles form a paired 95%
 confidence interval. This preserves dependence among questions and among the
 nine conditions from the same meeting.
 
-Headline effects are reported separately against single-turn, turn-packed, and
-word-packed baselines. The nine cell-specific paired differences show whether
+Validation effects include the exploratory single-turn contrast. Held-out test
+effects are reported against turn-packed and word-packed baselines. The nine
+cell-specific paired differences show whether
 the result varies with retriever or evidence budget. A significant result in
 one cell and a non-significant result in another is not, by itself, evidence
 that the two cell effects differ; such claims require a direct interaction

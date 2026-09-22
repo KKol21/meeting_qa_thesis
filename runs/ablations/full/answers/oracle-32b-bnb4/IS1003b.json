@@ -1,0 +1,305 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "IS1003b.json",
+        "sha256": "2600547060dd9ece5843d7b9d74f56c9bc4f30a505c629d80c7a830fe1e2b0fb"
+      }
+    },
+    "input_hash": "c0d678ad69518f954fe263d99118f5b7f2f170f9c57c15caec74f07391fc7d99",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "f8d0935e3070a7d702bd1b5d15ec8d145e09ef6217b2b43a8b9db130a831cc95",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "IS1003b",
+  "question_count": 9,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 9,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about product requirements.",
+      "reference_answer": "Based on the presentations of the user interface designer, the industrial designer and the marketing expert which were about the product requirements, the project manager concluded that the new remote control should be powerful, easy to use, fashionable, recognizable and only for television. Furthermore, the remote control should use the Internet rather than teletext due to the spread of the Internet.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about product requirements centered around designing a remote TV control that balances sophistication with ease of use. The User Interface designer proposed creating an interface similar to Google’s, which has powerful functions but remains user-friendly. The team agreed that the remote control should focus solely on television functions, excluding features like controlling recorders or garage doors, to avoid complexity and cost increases. Additionally, the remote control must incorporate recognizable brand elements such as color and slogan to ensure brand recognition. The remote control should also be affordable, and the design should consider the integration of internet capabilities through a set-top box, although this was noted as not being a primary focus of the remote control itself.",
+          "rouge_f1": {
+            "rouge1": 0.4065934065934066,
+            "rouge2": 0.14444444444444446,
+            "rougeL": 0.26373626373626374
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              43,
+              97
+            ],
+            [
+              297,
+              361
+            ]
+          ],
+          "evidence_words": 1271
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the user interface designer and the industrial designer recommend to do when discussing the product requirement and why?",
+      "reference_answer": "The user interface designer recommended to design a Google TV controller because Google was very successful for its powerful functions and friendly user interface. Also, to make the customers able to use the product without learning the manual, the industrial designer suggested applying some international standards such as some pictograms.",
+      "results": {
+        "oracle": {
+          "answer": "The user interface designer recommended designing a user interface for the remote TV control that has sophisticated functions but remains very easy to use, similar to Google’s approach. The industrial designer suggested using international standards for symbols (like pictograms) to make the interface more intuitive and easier to learn, ensuring consistency across different devices (e.g., the \"escape\" button). This would help users understand the functions quickly without needing to read a manual.",
+          "rouge_f1": {
+            "rouge1": 0.5483870967741935,
+            "rouge2": 0.22950819672131148,
+            "rougeL": 0.30645161290322587
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              47,
+              80
+            ]
+          ],
+          "evidence_words": 456
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Summarize the discussion about the Internet connection.",
+      "reference_answer": "The industrial designer expressed concern about how to connect TV to the Internet and the user interface designer said a set box would enable TV to surf the Internet. However, the technology was not very popular, which might be an obstacle for global usage of the product.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the Internet connection focused on whether the TV would be able to connect to the internet and browse the web. The Industrial Designer raised the initial concern about connecting the TV to the internet. Marketing noted that internet connectivity might not be part of the remote control design but more related to browsing. User Interface mentioned that there is a set-top box in some TVs that allows internet connection. However, both the Industrial Designer and User Interface agreed that this feature is not very popular currently, which could pose a problem for global usage if the technology is not widely adopted. The conversation did not reach a conclusion but acknowledged the relevance of internet connectivity for the TV's functionality.",
+          "rouge_f1": {
+            "rouge1": 0.4444444444444444,
+            "rouge2": 0.20118343195266275,
+            "rougeL": 0.32748538011695905
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              338,
+              361
+            ]
+          ],
+          "evidence_words": 186
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about the industrial design of the product.",
+      "reference_answer": "The group reached the agreement to design an infrared-based controller because it was cheaper than a laser. Secondly, the industrial designer preferred a wireless remote control as it was easier to manage but the suggestion was doubted by the marketing and the project manager considering the cost and user requirements. Another thing was about the buttons. The marketing advised having less buttons because only ten percent of the buttons were actually in use and people tended to zap a lot.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the industrial design of the product focused primarily on the remote control's design, specifically its control method (infrared vs. wired) and the number of buttons. The Industrial Designer proposed an infrared-based remote control due to its lower cost compared to laser technology. They emphasized that while a wired connection might be cheaper, a wireless remote control is more practical. However, the Industrial Designer acknowledged that some users might prefer a wired option for reliability.\n\nMarketing highlighted user requirements, noting that remote controls often have too many buttons, leading to user frustration and potential repetitive strain injury (RSI). Marketing suggested simplifying the remote control to meet user needs and improve sales competitiveness.\n\nThe User Interface Designer agreed that reducing the number of buttons while maintaining functionality was possible through categorizing functions and using a switch menu. However, they noted that the design had to remain intuitive to avoid user confusion.\n\nOverall, the team discussed balancing cost, user preference, and practicality in designing the remote control, leaning towards a wireless design with fewer buttons and more intuitive functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3587786259541985,
+            "rouge2": 0.09999999999999999,
+            "rougeL": 0.21374045801526712
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              98,
+              193
+            ],
+            [
+              208,
+              251
+            ]
+          ],
+          "evidence_words": 1914
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Why did the project manager disagree with the industrial designer when talking about whether to have a wireless control?",
+      "reference_answer": "Firstly, the industrial designer said the wireless technology would cost 8 Euros which was higher than the manager's expectation. Secondly, whether the users would like to have a wireless control or not was unknown and the marketing would go to figure it out. Finally, having a link between the remote control and the television would prevent control from losing.",
+      "results": {
+        "oracle": {
+          "answer": "The project manager disagreed with the industrial designer about having a wireless control because the project manager believed that a wired solution might be cheaper. Additionally, the project manager raised concerns about the practicality and usability issues associated with a wireless remote control, such as the potential problem of losing it. The project manager suggested that a wired connection could be a simpler and potentially more cost-effective solution.",
+          "rouge_f1": {
+            "rouge1": 0.3565891472868217,
+            "rouge2": 0.09448818897637795,
+            "rougeL": 0.21705426356589147
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              141,
+              190
+            ]
+          ],
+          "evidence_words": 610
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the user interface designer recommend to do when discussing the problem of having less buttons?",
+      "reference_answer": "The industrial designer recommended mixing several functions in one button by having a switch menu. For example, the category the functions into several classes and link switch menu to this kind of this category of functions.",
+      "results": {
+        "oracle": {
+          "answer": "The user interface designer recommended using a switch menu to categorize functions into several classes, allowing users to switch between different categories of functions with fewer buttons. This way, one button could handle multiple functions through a switch mechanism, reducing the total number of buttons while maintaining functionality. However, they were unsure if it would be easy to use and emphasized that it had to be intuitive.",
+          "rouge_f1": {
+            "rouge1": 0.4271844660194175,
+            "rouge2": 0.19801980198019803,
+            "rougeL": 0.2912621359223301
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              227,
+              251
+            ]
+          ],
+          "evidence_words": 320
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "Summarize the discussion about product appearance.",
+      "reference_answer": "Based on earlier experiments and questionnaires, the marketing found that seventy-five percent of the users thought most remote controls ugly. Thus, the group decided to make the product look fancy so that people would pay more. However, how to make remote control look fancy was a big problem because different people have different opinions about fancy. What's more, the project manager thought the product should be recognizable and attractive.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about product appearance centered around the observation that 75% of users found the current remote controls unattractive. Marketing suggested that 80% of users would be willing to pay more for a better-looking remote control. The team discussed making the remote control look \"fancy\" rather than \"ugly,\" with User Interface noting that opinions on what constitutes \"fancy\" vary among users. Industrial Designer proposed offering multiple color options instead of a single standard color, acknowledging that this would increase production costs. Project Manager emphasized the need to balance fanciness with affordability and ease of use, suggesting that the remote control should not have too many buttons and should facilitate channel zapping. The group briefly considered making the remote control yellow to align with the company's brand image, though there was some skepticism about this idea. Overall, the goal was to create an attractive, user-friendly remote control that would appeal to consumers without significantly increasing the price.",
+          "rouge_f1": {
+            "rouge1": 0.40869565217391307,
+            "rouge2": 0.07017543859649122,
+            "rougeL": 0.2
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              199,
+              207
+            ],
+            [
+              252,
+              296
+            ],
+            [
+              362,
+              381
+            ]
+          ],
+          "evidence_words": 897
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "What was the opinion of the user interface designer and the industrial designer towards the product appearance?",
+      "reference_answer": "They thought in order to make the product look fancy, the product should have many colours instead of having one grey standard to meet different customers' needs.",
+      "results": {
+        "oracle": {
+          "answer": "The User Interface designer and the Industrial Designer both favored offering multiple color options for the product appearance. The User Interface designer suggested personalized colors, noting that some people might prefer a red remote control while others might prefer a black one. The Industrial Designer agreed with this idea, suggesting that having many colors instead of just one standard grey could be a good solution. Both acknowledged that this might increase production costs.",
+          "rouge_f1": {
+            "rouge1": 0.22,
+            "rouge2": 0.06122448979591837,
+            "rougeL": 0.18
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              260,
+              278
+            ]
+          ],
+          "evidence_words": 202
+        }
+      }
+    },
+    {
+      "question_index": 8,
+      "question": "Summarize the project manager's opinions towards product appearance.",
+      "reference_answer": "The project manager agreed that the product should be good-looking but having many colours wasn't a good idea because it would increase the product cost. Also, the project manager thought the remote control should be marked with the image of the society so that one can recognize it at a glance.",
+      "results": {
+        "oracle": {
+          "answer": "The project manager is concerned that customizing or offering multiple color options for the product's appearance will increase production costs, which could make the final product too expensive. They emphasize the importance of maintaining an attractive and fashionable design that aligns with the company's image while keeping the price reasonable for mass production. The project manager stresses the need for a balance between an appealing appearance and cost-effectiveness.",
+          "rouge_f1": {
+            "rouge1": 0.33870967741935487,
+            "rouge2": 0.11475409836065574,
+            "rougeL": 0.25806451612903225
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              264,
+              283
+            ],
+            [
+              368,
+              379
+            ]
+          ],
+          "evidence_words": 383
+        }
+      }
+    }
+  ]
+}

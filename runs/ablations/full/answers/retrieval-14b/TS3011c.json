@@ -1,0 +1,3660 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "TS3011c.json",
+        "sha256": "5ae47a3cc5d9773c2157d68798a3f14667f3099a51d0799560b68b2611269a15"
+      },
+      "retrieval": {
+        "file": "TS3011c.json",
+        "sha256": "a466abfbd27f430343452bf5ac2eb4c5c7eb07d75589f1dc3ddee5b5a6e0ea75"
+      },
+      "segmentation": {
+        "file": "TS3011c.json",
+        "sha256": "b7242db756e293ad2357016fbe897362dafe83eebf87003cbb83c9a5b6846504"
+      }
+    },
+    "input_hash": "b46aa3bdfe019f1b51c467ae58adb2a0139cafdf56c3c0bdb5c494e494cb090f",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "8dafa5ab75d4990fc812ba0cb3ad39fb02854e1dbfeab181adc1f888921e17e1",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "TS3011c",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 156,
+  "cache_hits": 6,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about remote control style.",
+      "reference_answer": "Marketing revealed that the younger target group preferred colourful objects and soft material. Project Manager agreed and added that the remote control should be light and not too slippery. Then Industrial Designer introduced three casing possibilities: uncurved, single-curved and double-curved. Considering that uncurved design could be too dull and double-curved design would make it difficult to use scroll-wheels, the team chose the single-curved design.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The discussion about remote control style includes considerations for ease of use and grip. The Industrial Designer mentioned a remote control design with a shape underneath for finger placement, allowing for a better grip without needing much pressure. Additionally, the User Interface suggested incorporating voice recognition technology while maintaining simplicity in the interface to ensure ease of use. However, the Project Manager expressed concern that such high-tech features might be excessive for their goals.",
+          "rouge_f1": {
+            "rouge1": 0.22222222222222224,
+            "rouge2": 0.04225352112676056,
+            "rougeL": 0.13888888888888887
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            1,
+            12
+          ],
+          "retrieval_precision": 0.44921875,
+          "retrieval_recall": 0.11752682677567705
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The discussion about remote control style included considerations for ease of use and grip. The Industrial Designer mentioned remote controls with shapes for finger placement to improve grip without requiring much pressure. The User Interface suggested incorporating voice recognition technology alongside a simple interface for ease of use. The Industrial Designer presented various casing options, including flat, curved in two dimensions, and curved in three dimensions. They also discussed user interface controls such as push-buttons and scroll-wheels, though there was some disagreement about the feasibility of using scroll-wheels. The User Interface emphasized the importance of placing buttons within thumb reach for optimal usability.",
+          "rouge_f1": {
+            "rouge1": 0.22857142857142856,
+            "rouge2": 0.05780346820809249,
+            "rougeL": 0.19428571428571428
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            1,
+            12,
+            8,
+            15
+          ],
+          "retrieval_precision": 0.4375,
+          "retrieval_recall": 0.228921819110884
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The discussion about remote control style focused on several aspects including ergonomics, user interface, and innovative features. Ergonomically, the team discussed incorporating finger grips to enhance usability and reduce pressure needed to hold the remote. They also considered integrating voice recognition technology to simplify the interface while maintaining ease of use. Regarding innovative features, the team explored unconventional power sources such as kinetic energy (from shaking or throwing the remote) and solar panels. However, they debated the practicality of these options, particularly in the context of user behavior during TV viewing. The team also discussed the integration of scroll-wheels and buttons, concluding that while novel, these might not fit naturally into the remote control design due to ergonomic constraints. Finally, they agreed on the importance of making the remote distinct from existing models through unique design elements like scroll-bars or side-mounted volume controls.",
+          "rouge_f1": {
+            "rouge1": 0.20465116279069764,
+            "rouge2": 0.03755868544600939,
+            "rougeL": 0.12093023255813953
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            1,
+            12,
+            8,
+            15,
+            2,
+            10,
+            13,
+            14
+          ],
+          "retrieval_precision": 0.30615234375,
+          "retrieval_recall": 0.32038834951456313
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The Industrial Designer discussed the remote control style, mentioning that it would be a \"retro\" style, which would be very new to the market. The Project Manager agreed with this assessment.",
+          "rouge_f1": {
+            "rouge1": 0.36,
+            "rouge2": 0.10204081632653061,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            9,
+            8
+          ],
+          "retrieval_precision": 0.115234375,
+          "retrieval_recall": 0.030148185998978026
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The discussion about remote control style focused on innovative designs and materials rather than ease of use. The Industrial Designer presented various casing options including flat, curved in two dimensions, and curved in three dimensions. Different finishing materials such as plastic, rubber, wood, and titanium were considered, with considerations for their slipperiness and color options. Energy sources discussed included traditional methods and more unconventional ones like hand dynamos, which were noted to be a retro style. The placement of buttons, particularly the volume button on the side, was also addressed for ergonomic purposes.",
+          "rouge_f1": {
+            "rouge1": 0.2962962962962963,
+            "rouge2": 0.024999999999999998,
+            "rougeL": 0.18518518518518517
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            9,
+            8,
+            5,
+            15
+          ],
+          "retrieval_precision": 0.4296875,
+          "retrieval_recall": 0.22483392948390393
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The discussion about the remote control style focused on several key aspects:\n\n- **Color**: Marketing suggested that younger groups prefer colorful objects, while User Interface proposed using corporate colors (grey and yellow). However, Marketing noted that older groups prefer familiar materials.\n  \n- **Material**: The team agreed that the material should be soft, possibly rubber, rather than slippery or spongy. Industrial Designer mentioned that the material should provide a good grip and not be too slippery.\n\n- **Shape**: Industrial Designer presented three casing possibilities: flat, curved in two dimensions, and curved in three dimensions. The team leaned towards shapes that were organic and innovative.\n\n- **Functionality**: The remote control should prioritize innovation over ease of use, according to the target group. Voice recognition and round buttons for channel programming and volume control were discussed. The team considered placing the volume button on the side of the remote control for better accessibility.\n\n- **Buttons and Design**: Buttons should be made of rubber for a spongy feel, though concerns were raised about the longevity of printed numbers on rubber buttons. The team suggested using speech recognition for functions like volume control instead of relying solely on physical buttons.\n\nOverall, the team aimed for a remote control that was visually appealing, innovative, and comfortable to use, with a focus on integrating modern technologies like voice recognition.",
+          "rouge_f1": {
+            "rouge1": 0.2937062937062937,
+            "rouge2": 0.11267605633802816,
+            "rougeL": 0.2237762237762238
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            9,
+            8,
+            5,
+            15,
+            6,
+            27,
+            16,
+            3
+          ],
+          "retrieval_precision": 0.4580078125,
+          "retrieval_recall": 0.4793050587634134
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The Project Manager mentioned that the current remote control style is inconvenient because it requires pointing directly at the television due to its infrared functionality, finding it \"quite strange.\" The Industrial Designer discussed various casing possibilities for the remote control, including a flat case (the most common), a curved case in two dimensions, and a more advanced curved case in three dimensions. The User Interface suggested considering the placement of buttons based on where the user's hand grips the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.2649006622516557,
+            "rouge2": 0.08053691275167785,
+            "rougeL": 0.22516556291390727
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            8,
+            15
+          ],
+          "retrieval_precision": 0.42578125,
+          "retrieval_recall": 0.11139499233520694
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The discussion about remote control style focused on various design aspects including casing shapes (flat, curved in two dimensions, and curved in three dimensions), materials (plastic, rubber, wood, titanium), and energy sources (solar power, hand dynamo). The team considered user interface controls such as push-buttons, scroll-wheels, and LCD displays. They also discussed the placement of buttons for ease of use, noting that certain designs, like the rubber double-curved case, limit the integration of features like LCD displays and scroll-wheels due to curvature constraints.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333337,
+            "rouge2": 0.05194805194805195,
+            "rougeL": 0.19230769230769232
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            8,
+            15,
+            9,
+            12
+          ],
+          "retrieval_precision": 0.212890625,
+          "retrieval_recall": 0.11139499233520694
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The discussion about remote control style included considerations for the shape, grip, and functionality of the remote. The team considered a round or oval shape, possibly yellow, with a focus on making it lightweight and easy to grip without being slippery. They discussed incorporating voice recognition technology while maintaining simplicity and ease of use. Various casing options were explored, including flat, curved in two dimensions, and curved in three dimensions. Energy sources such as solar power, hand dynamos, and kinetic energy from movement were also considered. The team aimed to balance high-tech features with practical usability.",
+          "rouge_f1": {
+            "rouge1": 0.2891566265060241,
+            "rouge2": 0.048780487804878044,
+            "rougeL": 0.15662650602409636
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            8,
+            15,
+            9,
+            12,
+            7,
+            6,
+            10,
+            16,
+            3
+          ],
+          "retrieval_precision": 0.35595703125,
+          "retrieval_recall": 0.372508942258559
+        },
+        "word_packed__dense__w512": {
+          "answer": "The Project Manager noted the inconvenience of needing to point an infrared remote control at the television while talking to it, finding it strange. The discussion then shifted towards the design of the remote control, focusing on the placement of buttons, particularly the volume control. User Interface suggested placing the volume button within reach of the user's thumb while holding the remote, which was agreed upon by the Industrial Designer. The Project Manager also mentioned examples from existing devices like Sony telephones and Nokia phones, though these did not directly address the scroll-wheel concept discussed.",
+          "rouge_f1": {
+            "rouge1": 0.22891566265060243,
+            "rouge2": 0.06097560975609757,
+            "rougeL": 0.14457831325301204
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            1
+          ],
+          "retrieval_precision": 0.013671875,
+          "retrieval_recall": 0.0035769034236075624
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The discussion about remote control style focused on making the grip comfortable and secure. The Project Manager suggested that the remote control should not be too slippery and proposed incorporating a shape or groove for fingers to enhance grip. The Industrial Designer agreed and mentioned that some remote controls already have shapes for fingers to improve handling. Additionally, there was a brief mention of integrating a scroll-wheel or side volume button, though it was noted that such designs were previously used but are less common now. The team also considered various materials and finishes for the casing, including plastic, rubber, wood, and titanium, aiming for both aesthetic appeal and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3888888888888889,
+            "rouge2": 0.12359550561797754,
+            "rougeL": 0.24444444444444444
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            1,
+            8,
+            6
+          ],
+          "retrieval_precision": 0.3056640625,
+          "retrieval_recall": 0.1599386816555953
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The discussion about remote control style focused on several aspects including grip, shape, and user interface elements. The Project Manager suggested making the remote light but with a good grip, noting that it shouldn't be too slippery. The Industrial Designer proposed incorporating shapes for finger placement to enhance grip without requiring much pressure. They also discussed various casing options (flat, curved in two dimensions, and curved in three dimensions) and materials (plastic, rubber, wood, titanium). Regarding energy sources, they explored solar panels, hand dynamos, and kinetic energy from movement, considering combining these with traditional batteries. For user interface controls, they considered push-buttons, scroll-wheels, and LCD displays, ultimately deciding against scroll-wheels due to impracticality but favoring a volume button on the side for ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.3232323232323232,
+            "rouge2": 0.07142857142857142,
+            "rougeL": 0.20202020202020202
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            1,
+            8,
+            6,
+            10,
+            7,
+            11,
+            9
+          ],
+          "retrieval_precision": 0.27783203125,
+          "retrieval_recall": 0.2907511497189576
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The discussion about the remote control style involved considering an advanced, curved design compared to existing models. The team explored various materials such as plastic, rubber, wood, and titanium for the casing, each offering different textures and color options. They also discussed incorporating alternative energy sources like solar cells and hand dynamos. Marketing suggested that while the design would be innovative, it could also be seen as having a retro style.",
+          "rouge_f1": {
+            "rouge1": 0.34285714285714286,
+            "rouge2": 0.07246376811594203,
+            "rougeL": 0.17142857142857143
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            1
+          ],
+          "retrieval_precision": 0.111328125,
+          "retrieval_recall": 0.02912621359223301
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The discussion about remote control style focused on the importance of ease of use, technology, and appearance. The team considered various materials such as soft materials, plastic, rubber, wood, and titanium for the casing. They also explored different shapes, including a round or oval design and a more advanced, curved three-dimensional shape. Additionally, they discussed incorporating voice recognition and round buttons for channel programming and volume control. The group acknowledged the potential of integrating unconventional energy sources like hand dynamos but noted that these ideas were innovative and possibly retro in style. The concern over the longevity of printed numbers and symbols on rubber buttons was raised, suggesting alternatives like placing icons near the buttons instead.",
+          "rouge_f1": {
+            "rouge1": 0.24731182795698925,
+            "rouge2": 0.03260869565217391,
+            "rougeL": 0.13978494623655913
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            1,
+            5,
+            25
+          ],
+          "retrieval_precision": 0.3056640625,
+          "retrieval_recall": 0.1599386816555953
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The discussion about the remote control style focused on several aspects including ease of use, material comfort, and technological features. The team considered a round or oval shape for the remote control, emphasizing soft materials that provide a comfortable grip without being too slippery. They discussed incorporating voice recognition and a simple interface to ensure ease of use while maintaining a modern appearance. Additionally, the group explored various casing designs, ranging from flat to more complex curved shapes, and considered different energy sources such as solar power and hand dynamo mechanisms, though they acknowledged potential issues with kinetic energy supply during prolonged use. The integration of scroll-wheels and the placement of buttons for optimal thumb reach were also topics of consideration.",
+          "rouge_f1": {
+            "rouge1": 0.28272251308900526,
+            "rouge2": 0.07407407407407407,
+            "rougeL": 0.18848167539267013
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            1,
+            5,
+            25,
+            13,
+            7,
+            10,
+            6
+          ],
+          "retrieval_precision": 0.40283203125,
+          "retrieval_recall": 0.4215636177823199
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The discussion about the remote control style involved considering an advanced, curved design compared to existing models. The team explored various materials such as plastic, rubber, wood, and titanium for the casing, each offering different textures and color options. They also discussed incorporating alternative energy sources like solar cells and hand dynamos. Marketing suggested that while the design would be innovative, it could also be seen as having a retro style.",
+          "rouge_f1": {
+            "rouge1": 0.34285714285714286,
+            "rouge2": 0.07246376811594203,
+            "rougeL": 0.17142857142857143
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            1
+          ],
+          "retrieval_precision": 0.111328125,
+          "retrieval_recall": 0.02912621359223301
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The discussion about remote control style focused on making the grip comfortable and secure. The Project Manager suggested that the remote control should not be too slippery and proposed incorporating a shape or groove for fingers to enhance grip. The Industrial Designer agreed and mentioned that some remote controls already have shapes for fingers to improve handling. Additionally, there was a brief mention of integrating a scroll-wheel or side volume button, though it was noted that such designs were previously used but are less common now. The team also considered various materials and finishes for the casing, including plastic, rubber, wood, and titanium, aiming for both aesthetic appeal and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3888888888888889,
+            "rouge2": 0.12359550561797754,
+            "rougeL": 0.24444444444444444
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            1,
+            13,
+            6
+          ],
+          "retrieval_precision": 0.3056640625,
+          "retrieval_recall": 0.1599386816555953
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The discussion about the remote control style focused on several aspects including ease of use, material comfort, and technological features. The team considered a round or oval shape for the remote control, emphasizing soft materials that provide a comfortable grip without being too slippery. They discussed incorporating voice recognition and a simple interface to ensure ease of use while maintaining a modern appearance. Additionally, the group explored various casing designs, ranging from flat to more complex curved shapes, and considered different energy sources such as solar power and hand dynamo mechanisms, though they acknowledged potential issues with kinetic energy supply during prolonged use. The integration of scroll-wheels and the placement of buttons for optimal thumb reach were also topics of consideration.",
+          "rouge_f1": {
+            "rouge1": 0.28272251308900526,
+            "rouge2": 0.07407407407407407,
+            "rougeL": 0.18848167539267013
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            1,
+            13,
+            6,
+            10,
+            7,
+            5,
+            25
+          ],
+          "retrieval_precision": 0.40283203125,
+          "retrieval_recall": 0.4215636177823199
+        },
+        "lumber__dense__w512": {
+          "answer": "The discussion about remote control style focused on the design and functionality of the remote, including the use of push-buttons, scroll-wheels, and LCD displays. User Interface and Industrial Designer agreed on integrating push-buttons, particularly in a circular formation, and debated the feasibility of incorporating scroll-wheels. User Interface expressed skepticism about using scroll-wheels due to lack of suitable scenarios, while Industrial Designer suggested potential integration with certain functions. They both agreed that the placement of buttons should be within easy reach, especially for the volume button on the side of the remote.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.08588957055214724,
+            "rougeL": 0.15757575757575756
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            17,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The discussion about the remote control style focused on several aspects:\n\n- **Shape and Design**: User Interface suggested a round or oval shape for the remote control, which was seen positively by others for its organic feel. The idea was to ensure the remote was lightweight and had a good grip, avoiding being too slippery.\n\n- **Material**: Suggestions included using rubber-like materials to ensure a secure grip.\n\n- **User Interface Controls**: The team discussed incorporating push-buttons and scroll-wheels. However, User Interface expressed doubt about the feasibility of integrating scroll-wheels with buttons, leading to a preference for push-buttons arranged in a circular formation.\n\n- **Placement of Buttons**: User Interface emphasized placing buttons within easy reach of the thumb while holding the remote, suggesting the volume button on the side of the remote as ideal.\n\nThese points reflect the collaborative effort to design a user-friendly and ergonomic remote control.",
+          "rouge_f1": {
+            "rouge1": 0.2018348623853211,
+            "rouge2": 0.055555555555555566,
+            "rougeL": 0.13761467889908255
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            17,
+            2,
+            9
+          ],
+          "retrieval_precision": 0.3125,
+          "retrieval_recall": 0.16351558507920286
+        },
+        "lumber__dense__w2048": {
+          "answer": "The discussion about remote control style focused on making the remote control easy to use and distinctive from existing models. Key points included:\n\n- **Shape and Grip**: Suggestions were made for a round or oval shape with a soft, rubbery texture to ensure a comfortable grip without being too slippery. The idea of incorporating finger grips was also discussed.\n  \n- **User Interface**: Voice recognition was considered but deemed too advanced. Instead, simpler interfaces with basic buttons were favored. Scroll-wheels were initially proposed but ultimately rejected due to impracticality in typical usage scenarios.\n\n- **Energy Sources**: Various options were explored, including traditional solar power, hand dynamo mechanisms, and kinetic energy from movement (similar to watches). However, practicality and user convenience were prioritized over novelty.\n\n- **Integration of Features**: The team aimed to integrate features like volume control and mute functionality in innovative ways, such as through scroll-bars or integrated buttons, to differentiate the design from conventional remotes.\n\nThese discussions aimed to balance technological advancement with user-friendly design principles.",
+          "rouge_f1": {
+            "rouge1": 0.2127659574468085,
+            "rouge2": 0.060085836909871244,
+            "rougeL": 0.1276595744680851
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            17,
+            2,
+            9,
+            12,
+            15,
+            11,
+            18,
+            4
+          ],
+          "retrieval_precision": 0.416015625,
+          "retrieval_recall": 0.43536024527337763
+        },
+        "lumber__bm25__w512": {
+          "answer": "The discussion about the remote control style included suggestions for a round or oval shape, possibly yellow in color, with a focus on making it lightweight and providing a good grip. The team considered incorporating a textured surface or finger grips to prevent slipperiness. They also noted that the design could be seen as retro yet innovative.",
+          "rouge_f1": {
+            "rouge1": 0.28571428571428575,
+            "rouge2": 0.11290322580645161,
+            "rougeL": 0.1746031746031746
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            13,
+            2
+          ],
+          "retrieval_precision": 0.76953125,
+          "retrieval_recall": 0.2013285641287685
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The discussion about remote control style included considerations for a round or oval shape, a lightweight yet grippy material to ensure ease of handling, and various casing designs ranging from a flat box-like form to more advanced curved shapes. The team also explored incorporating ergonomic features such as finger grips and placing frequently used buttons within thumb reach. Additionally, there was a suggestion that a retro style might be appealing despite being innovative.",
+          "rouge_f1": {
+            "rouge1": 0.22377622377622378,
+            "rouge2": 0.028368794326241134,
+            "rougeL": 0.12587412587412586
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            13,
+            2,
+            21,
+            12
+          ],
+          "retrieval_precision": 0.552734375,
+          "retrieval_recall": 0.28921819110884006
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The discussion about remote control style focused on several aspects including the shape, grip, and materials. The team considered a round or oval shape for the remote control, with a suggestion for a yellow color. They emphasized the importance of a comfortable grip, discussing options such as rubber surfaces and finger grooves to enhance usability. Regarding the casing, they explored flat, curved in two dimensions, and curved in three dimensions designs. Materials discussed included plastic, rubber, wood, and titanium, with considerations for slipperiness and color options. Energy sources were also debated, including solar power and hand dynamo mechanisms, though the latter was seen as a retro and novel approach. The team also discussed the integration of voice recognition technology and the feasibility of incorporating scroll-wheels, ultimately deciding against scroll-wheels due to practical limitations.",
+          "rouge_f1": {
+            "rouge1": 0.22549019607843138,
+            "rouge2": 0.039603960396039604,
+            "rougeL": 0.15686274509803924
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            13,
+            2,
+            21,
+            12,
+            40,
+            15,
+            17,
+            22
+          ],
+          "retrieval_precision": 0.2998046875,
+          "retrieval_recall": 0.3137455288707205
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The discussion about the remote control style focused on creating a simple, ergonomic design. The User Interface suggested a round or oval shape, possibly yellow, which was met with approval from the Project Manager and Industrial Designer. The Project Manager emphasized the importance of making the remote control lightweight and not too slippery, suggesting a good grip mechanism. The Industrial Designer proposed incorporating finger grips and ensuring that buttons are within easy reach, particularly recommending placing the volume button on the side of the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.27096774193548384,
+            "rouge2": 0.0915032679738562,
+            "rougeL": 0.21935483870967742
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            21,
+            2
+          ],
+          "retrieval_precision": 0.76953125,
+          "retrieval_recall": 0.2013285641287685
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The discussion about remote control style included considerations for a round or oval shape, a comfortable grip that isn't too slippery, and the integration of traditional buttons, scroll-wheels, and possibly LCD displays for feedback. The group also discussed placing frequently used buttons, such as the volume control, within easy reach of the thumb while holding the remote.",
+          "rouge_f1": {
+            "rouge1": 0.25,
+            "rouge2": 0.0634920634920635,
+            "rougeL": 0.15625000000000003
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            21,
+            2,
+            17
+          ],
+          "retrieval_precision": 0.384765625,
+          "retrieval_recall": 0.2013285641287685
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The discussion about remote control style included considerations for the shape, grip, and functionality of the remote. The team discussed a preference for a simple, round shape that is easy to hold and has a good grip, possibly incorporating rubber materials. They explored various casing options, including flat, curved in two dimensions, and curved in three dimensions. Energy sources considered included traditional solar power and innovative ideas like hand dynamo mechanisms. Additionally, the team debated the feasibility of integrating features such as scroll-wheels and voice recognition technology, ultimately deciding against scroll-wheels due to practical limitations.",
+          "rouge_f1": {
+            "rouge1": 0.2891566265060241,
+            "rouge2": 0.048780487804878044,
+            "rougeL": 0.1686746987951807
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            21,
+            2,
+            17,
+            12,
+            15,
+            13,
+            4,
+            22
+          ],
+          "retrieval_precision": 0.3759765625,
+          "retrieval_recall": 0.3934593765968319
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What material did the team decide to use in the discussion of remote control style?",
+      "reference_answer": "Industrial Designer supposed that natural feeling could be a factor. Marketing agreed and revealed that the younger target group preferred soft material but not necessarily a real sponge. Then User Interface proposed to use rubber, which was agreed by the whole team.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The team did not explicitly decide on a specific material for the remote control during the provided discussion excerpts. The conversation focused more on the design aspects such as ease of grip and functionality rather than the material composition. Therefore, the evidence is insufficient to determine the material they decided to use.",
+          "rouge_f1": {
+            "rouge1": 0.21276595744680848,
+            "rouge2": 0.021739130434782608,
+            "rougeL": 0.12765957446808512
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            7,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The team decided to use spongy material in the discussion of remote control style, based on Marketing's suggestion that the younger target group prefers spongy material, likely influenced by trends in clothing and furniture.",
+          "rouge_f1": {
+            "rouge1": 0.3636363636363636,
+            "rouge2": 0.16,
+            "rougeL": 0.23376623376623376
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            7,
+            8,
+            2,
+            15
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The team decided to use a spongy material for the remote control based on Marketing's suggestion that the younger target group prefers spongy materials, as mentioned in excerpt [60].",
+          "rouge_f1": {
+            "rouge1": 0.3611111111111111,
+            "rouge2": 0.1714285714285714,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            7,
+            8,
+            2,
+            15,
+            12,
+            20,
+            6,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The team did not explicitly decide on a specific material for the remote control style during the provided excerpts. The closest reference is Industrial Designer mentioning that \"when you use the buttons, they'll they'll be made of rubber,\" but this does not constitute a formal decision regarding the overall material of the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.28571428571428575,
+            "rouge2": 0.020833333333333332,
+            "rougeL": 0.16326530612244897
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            1,
+            27
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The team decided to use soft materials for the remote control based on the statement from the Project Manager: \"And um colouring is important and and uh soft materials.\"",
+          "rouge_f1": {
+            "rouge1": 0.22535211267605634,
+            "rouge2": 0.057971014492753624,
+            "rougeL": 0.11267605633802817
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            1,
+            27,
+            5,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The team decided to use soft materials, specifically rubber, for the remote control based on the preference for a spongy feel and the importance of soft materials as discussed.",
+          "rouge_f1": {
+            "rouge1": 0.3380281690140845,
+            "rouge2": 0.057971014492753624,
+            "rougeL": 0.1408450704225352
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            1,
+            27,
+            5,
+            3,
+            15,
+            9,
+            12,
+            30
+          ],
+          "retrieval_precision": 0.0703125,
+          "retrieval_recall": 0.5255474452554745
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The team decided to use a design where the volume button would be placed on the side of the remote control, within reach of the user's thumb while holding the remote. Additionally, they concluded that if they wanted to use a rubber double-curved case, they would have to use push-buttons, as integrating LCD displays or scroll-wheels would not be possible due to the curvature.",
+          "rouge_f1": {
+            "rouge1": 0.23636363636363636,
+            "rouge2": 0.018518518518518517,
+            "rougeL": 0.14545454545454542
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            15,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team decided to use spongy material for the remote control based on Marketing's suggestion that the younger target group prefers materials that feel spongy.",
+          "rouge_f1": {
+            "rouge1": 0.41176470588235287,
+            "rouge2": 0.1818181818181818,
+            "rougeL": 0.23529411764705882
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            15,
+            2,
+            12,
+            3
+          ],
+          "retrieval_precision": 0.0205078125,
+          "retrieval_recall": 0.07664233576642336
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team decided to use a soft material for the remote control, as discussed during the meeting. This decision was influenced by Marketing's findings that the younger target group preferred spongy materials, though it was clarified that the material should not be a real sponge but rather something soft and possibly rubber-like.",
+          "rouge_f1": {
+            "rouge1": 0.5208333333333334,
+            "rouge2": 0.2127659574468085,
+            "rougeL": 0.2916666666666667
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            15,
+            2,
+            12,
+            3,
+            8,
+            9,
+            7,
+            6
+          ],
+          "retrieval_precision": 0.0703125,
+          "retrieval_recall": 0.5255474452554745
+        },
+        "word_packed__dense__w512": {
+          "answer": "The team did not explicitly decide on a specific material for the remote control during the discussed excerpt. The focus was on the design concepts and ease of use, with the Industrial Designer mentioning different casing possibilities but not specifying the material used for those casings.",
+          "rouge_f1": {
+            "rouge1": 0.2727272727272727,
+            "rouge2": 0.046511627906976744,
+            "rougeL": 0.13636363636363635
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The team discussed using rubber or a similar organic material for the grip of the remote control, as mentioned by the User Interface and agreed upon by the Project Manager and Industrial Designer.",
+          "rouge_f1": {
+            "rouge1": 0.3733333333333333,
+            "rouge2": 0.10958904109589042,
+            "rougeL": 0.18666666666666665
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            7,
+            6,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The team decided to use soft materials for the remote control, as mentioned by Marketing and agreed upon by the Project Manager and Industrial Designer. They discussed avoiding slippery surfaces and ensuring a good grip, possibly incorporating rubber-like materials.",
+          "rouge_f1": {
+            "rouge1": 0.3658536585365853,
+            "rouge2": 0.1,
+            "rougeL": 0.14634146341463414
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            7,
+            6,
+            8,
+            13,
+            10,
+            18,
+            3
+          ],
+          "retrieval_precision": 0.11328125,
+          "retrieval_recall": 0.8467153284671532
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The team decided to use soft materials in the discussion of remote control style, as indicated by the statements from the Project Manager and Marketing.",
+          "rouge_f1": {
+            "rouge1": 0.2985074626865672,
+            "rouge2": 0.0923076923076923,
+            "rougeL": 0.1492537313432836
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The team decided to use soft materials in the discussion of remote control style.",
+          "rouge_f1": {
+            "rouge1": 0.25,
+            "rouge2": 0.07407407407407408,
+            "rougeL": 0.14285714285714285
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            5,
+            8,
+            25
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The team decided to use soft, spongy material for the remote control based on the preferences of the younger target group, as discussed by Marketing and agreed upon by the Project Manager and Industrial Designer.",
+          "rouge_f1": {
+            "rouge1": 0.4415584415584416,
+            "rouge2": 0.16,
+            "rougeL": 0.1818181818181818
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            5,
+            8,
+            25,
+            3,
+            10,
+            2,
+            1
+          ],
+          "retrieval_precision": 0.11328125,
+          "retrieval_recall": 0.8467153284671532
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The team discussed materials such as plastic, rubber, wood, and titanium for the remote control casing. However, they noted that titanium cannot be used on double curve cases, and plastic cases do not allow the use of solar cells as an energy source. No final decision on the material was explicitly stated in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.22448979591836735,
+            "rouge2": 0.0,
+            "rougeL": 0.14285714285714288
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The team discussed several materials including plastic, rubber, wood, and titanium for the casing of the remote control. However, they noted that titanium cannot be used on double-curved cases, and plastic and latex cases do not allow the use of solar cells as an energy source. The final decision on the material was not explicitly stated in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.21359223300970873,
+            "rouge2": 0.0,
+            "rougeL": 0.1359223300970874
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            1,
+            15,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The team decided to use soft materials for the remote control based on the discussion around ensuring ease of use and a modern feel, as mentioned by Marketing and agreed upon by the Project Manager and Industrial Designer.",
+          "rouge_f1": {
+            "rouge1": 0.37500000000000006,
+            "rouge2": 0.10256410256410257,
+            "rougeL": 0.175
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            1,
+            15,
+            10,
+            3,
+            5,
+            13,
+            7
+          ],
+          "retrieval_precision": 0.11328125,
+          "retrieval_recall": 0.8467153284671532
+        },
+        "lumber__dense__w512": {
+          "answer": "The evidence provided does not contain a specific decision about the material to be used in the remote control style discussion. The excerpts focus on the structure of the meeting, initial comments about remote controls, and a brief mention of previous ideas including voice recognition and a round button design, but do not specify a chosen material for the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.23300970873786406,
+            "rouge2": 0.0,
+            "rougeL": 0.1359223300970874
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The team decided to use a material that provides a good grip, likely rubber or a similar textured material, to ensure the remote control is not too slippery and can be held easily without needing much pressure. The exact material is not specified, but the preference is for a surface that allows users to maintain a firm hold on the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.32692307692307687,
+            "rouge2": 0.019607843137254905,
+            "rougeL": 0.1923076923076923
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            9,
+            17,
+            21
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team decided to use soft materials for the remote control based on Marketing's suggestion and the subsequent agreement among the participants. This decision was influenced by the preference for soft materials among the younger target group, as mentioned by Marketing in excerpt [99].",
+          "rouge_f1": {
+            "rouge1": 0.3448275862068965,
+            "rouge2": 0.14117647058823526,
+            "rougeL": 0.16091954022988508
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            9,
+            17,
+            21,
+            12,
+            11,
+            6,
+            15,
+            4
+          ],
+          "retrieval_precision": 0.10595703125,
+          "retrieval_recall": 0.791970802919708
+        },
+        "lumber__bm25__w512": {
+          "answer": "The team decided to use a soft material, possibly rubber, for the remote control to ensure it wasn't too hard and had a spongy feel. They considered making the buttons out of rubber as well for the same tactile experience, though there was concern about the longevity of printed numbers or symbols on rubber surfaces.",
+          "rouge_f1": {
+            "rouge1": 0.2653061224489796,
+            "rouge2": 0.041666666666666664,
+            "rougeL": 0.14285714285714288
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            40,
+            21,
+            6,
+            2
+          ],
+          "retrieval_precision": 0.423828125,
+          "retrieval_recall": 0.791970802919708
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The team decided to use a soft material, possibly rubber, for the remote control to ensure a spongy feel, as discussed between Marketing, Industrial Designer, and Project Manager. They avoided using a real sponge and considered making it colorful or exchangeable to cater to both younger and older groups.",
+          "rouge_f1": {
+            "rouge1": 0.41758241758241765,
+            "rouge2": 0.11235955056179774,
+            "rougeL": 0.15384615384615383
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            40,
+            21,
+            6,
+            2,
+            23
+          ],
+          "retrieval_precision": 0.2119140625,
+          "retrieval_recall": 0.791970802919708
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The team decided to use soft materials for the remote control, aiming for a spongy feel. They considered rubber as a suitable option due to its softness and grip, though concerns were raised about the longevity of printed text or symbols on rubber surfaces.",
+          "rouge_f1": {
+            "rouge1": 0.2790697674418604,
+            "rouge2": 0.04761904761904762,
+            "rougeL": 0.1395348837209302
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            40,
+            21,
+            6,
+            2,
+            23,
+            17,
+            9,
+            4,
+            12
+          ],
+          "retrieval_precision": 0.10595703125,
+          "retrieval_recall": 0.791970802919708
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The evidence provided does not contain a specific decision about the material to be used for the remote control style. The excerpts focus on the structure of the meeting, initial comments about remote controls, and discussions around design concepts such as placement of buttons and voice recognition, but do not specify the material chosen for the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.22,
+            "rouge2": 0.0,
+            "rougeL": 0.12000000000000001
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            21,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The team decided to use a material that provides a good grip, similar to rubber, to ensure the remote control isn't too slippery. They also discussed incorporating shapes or indentations for fingers to improve grip without requiring much pressure. Additionally, they considered using solar power as an energy source for the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.20833333333333334,
+            "rouge2": 0.02127659574468085,
+            "rougeL": 0.125
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            21,
+            9,
+            17
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The team decided to use soft materials for the remote control based on Marketing's suggestion and the subsequent agreement among the participants. This decision was influenced by the preference for soft materials among the younger target group and the desire for a comfortable grip.",
+          "rouge_f1": {
+            "rouge1": 0.367816091954023,
+            "rouge2": 0.14117647058823526,
+            "rougeL": 0.16091954022988508
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            21,
+            9,
+            17,
+            6,
+            12,
+            4,
+            11,
+            15
+          ],
+          "retrieval_precision": 0.10595703125,
+          "retrieval_recall": 0.791970802919708
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Why did the team choose single-curved design when discussing remote control style?",
+      "reference_answer": "Industrial Designer introduced uncurved, single-curved and double-curved design at first. User Interface and Project Manager thought that uncurved design was too dull and Industrial Designer pointed out that double-curved design would make it impossible to use scroll-wheels, so the team selected single-curved design eventually.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The team chose a single-curved design over a completely flat design because they believed it offered a better balance between aesthetics and functionality. They thought a flat design (\"uncurved or flat case\") would be \"too dull\" and not appealing to customers. While a fully double-curved design provided an advanced look, it restricted the integration of certain features like LCD displays and scroll-wheels due to its curvature. Therefore, a single-curved design was seen as the best compromise, offering an improved aesthetic appeal compared to a flat design without completely sacrificing functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3776223776223776,
+            "rouge2": 0.15602836879432624,
+            "rougeL": 0.2517482517482517
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            15,
+            20
+          ],
+          "retrieval_precision": 0.62890625,
+          "retrieval_recall": 0.9938271604938271
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The team chose a single-curved design over a completely flat or double-curved design because they believed it offered a balance between aesthetics and functionality. They thought a flat design was \"too dull\" and might not appeal to customers, while a double-curved design restricted the integration of certain features like LCD displays and scroll-wheels due to its curvature. Therefore, a single-curved design was seen as the best compromise, providing an appealing shape without sacrificing necessary functionalities.",
+          "rouge_f1": {
+            "rouge1": 0.40310077519379844,
+            "rouge2": 0.2047244094488189,
+            "rougeL": 0.31007751937984496
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            15,
+            20,
+            6,
+            12
+          ],
+          "retrieval_precision": 0.31640625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The team chose a single-curved design because they believed it offered a balance between aesthetics and functionality. According to Industrial Designer, a single curve was considered \"the best of two worlds\" as it provided a more appealing design compared to a flat, uncurved case, which they deemed \"too dull.\" Additionally, a single curve allowed for the integration of features such as LCD displays and scroll-wheels, unlike a double-curved design which restricted these functionalities due to its curvature.",
+          "rouge_f1": {
+            "rouge1": 0.37209302325581395,
+            "rouge2": 0.14173228346456693,
+            "rougeL": 0.20155038759689922
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            15,
+            20,
+            6,
+            12,
+            23,
+            7,
+            13,
+            10
+          ],
+          "retrieval_precision": 0.158203125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The team chose a single-curved design because it was seen as a balance between simplicity and advancement compared to the flat and double-curved options. This decision is directly stated by the Project Manager when summarizing the decisions made during the meeting.",
+          "rouge_f1": {
+            "rouge1": 0.30434782608695654,
+            "rouge2": 0.13333333333333333,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            8,
+            15
+          ],
+          "retrieval_precision": 0.42578125,
+          "retrieval_recall": 0.6728395061728395
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The team chose a single-curved design because it offered a balance between functionality and aesthetics. According to the Industrial Designer, a single-curved design was preferred over a flat case as it was considered \"too dull\" and customers might not like it. Additionally, while a double-curved design allowed for the placement of buttons within reach, it restricted the integration of LCD displays and scroll-wheels. The single-curved design provided a compromise, allowing for both user-friendly button placement and the inclusion of additional features like scroll-wheels.",
+          "rouge_f1": {
+            "rouge1": 0.3741007194244604,
+            "rouge2": 0.17518248175182483,
+            "rougeL": 0.27338129496402874
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            8,
+            15,
+            20,
+            23
+          ],
+          "retrieval_precision": 0.31640625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The team chose a single-curved design because it was seen as a balance between being innovative and practical. According to the Industrial Designer, a double-curved design would limit functionality (e.g., inability to integrate LCD displays or scroll-wheels), while a completely flat design was considered too dull and unappealing to customers. The single-curved design offered a compromise that allowed for both aesthetic appeal and necessary functionalities.",
+          "rouge_f1": {
+            "rouge1": 0.43697478991596644,
+            "rouge2": 0.2222222222222222,
+            "rougeL": 0.3025210084033613
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            8,
+            15,
+            20,
+            23,
+            9,
+            11,
+            10,
+            27,
+            16
+          ],
+          "retrieval_precision": 0.158203125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The team chose a single-curved design over a completely flat design because they believed it offered a better balance between aesthetics and functionality. They thought a flat design (\"uncurved or flat case\") would be \"too dull\" and not appealing to customers. While a fully double-curved design provided an advanced look, it restricted the integration of certain features like LCD displays and scroll-wheels due to its curvature. Therefore, a single-curved design was seen as the best compromise, offering an improved aesthetic appeal compared to a flat design without completely sacrificing functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3776223776223776,
+            "rouge2": 0.15602836879432624,
+            "rougeL": 0.2517482517482517
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            15,
+            20
+          ],
+          "retrieval_precision": 0.62890625,
+          "retrieval_recall": 0.9938271604938271
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team chose a single-curved design because it offered a balance between functionality and aesthetics. According to the Industrial Designer, a simple, straight-forward design (uncurved) was considered too dull and unlikely to appeal to customers. Additionally, a double-curved design restricted the integration of certain features like LCD displays and scroll-wheels due to its complexity. Therefore, a single-curved design was seen as \"the best of two worlds,\" providing an appealing form factor while still allowing for necessary functionalities.",
+          "rouge_f1": {
+            "rouge1": 0.3816793893129771,
+            "rouge2": 0.18604651162790697,
+            "rougeL": 0.2595419847328244
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            15,
+            20,
+            23,
+            24
+          ],
+          "retrieval_precision": 0.31640625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team chose a single-curved design because they believed it offered a balance between being innovative and practical. They considered it less risky compared to a double-curved design, which would limit functionality (e.g., preventing the integration of LCD displays and scroll-wheels). Additionally, the Project Manager and others felt that a non-curved design would be too dull and unappealing to customers. Therefore, a single-curved design was seen as the \"best of two worlds,\" providing an appealing shape without sacrificing necessary features.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.19548872180451127,
+            "rougeL": 0.26666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            15,
+            20,
+            23,
+            24,
+            10,
+            6,
+            9,
+            27
+          ],
+          "retrieval_precision": 0.158203125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The team chose a single-curved design over a flat or double-curved design due to a balance between aesthetics and functionality. The Industrial Designer argued against a flat design, stating it would be \"too dull\" and not liked by customers. For the double-curved design, the Industrial Designer noted limitations such as the inability to use scroll-wheels and rubber buttons. Therefore, a single-curved design was seen as the best compromise, offering a more appealing look without sacrificing necessary features.",
+          "rouge_f1": {
+            "rouge1": 0.4580152671755725,
+            "rouge2": 0.24806201550387597,
+            "rougeL": 0.3053435114503817
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            18
+          ],
+          "retrieval_precision": 0.53515625,
+          "retrieval_recall": 0.845679012345679
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The team chose the single-curved design over the flat and double-curved designs due to a balance between aesthetics and functionality. They believed the single-curved design was less dull compared to a flat design, aligning better with customer preferences. Additionally, the double-curved design posed limitations such as restricted button material options and inability to use scroll-wheels, making the single-curved design the best compromise.",
+          "rouge_f1": {
+            "rouge1": 0.4444444444444445,
+            "rouge2": 0.22608695652173913,
+            "rougeL": 0.3760683760683761
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            18,
+            8,
+            13
+          ],
+          "retrieval_precision": 0.31640625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The team chose a single-curved design because they believed it offered a balance between aesthetics and functionality. According to Industrial Designer, a single curve provided a less dull appearance compared to a flat design, and unlike a double-curved design, it allowed for the use of scroll-wheels and rubber buttons. Additionally, the Project Manager agreed that a single-curved design was preferable to a completely flat design, as it was perceived as too dull and unlikely to appeal to customers.",
+          "rouge_f1": {
+            "rouge1": 0.4580152671755725,
+            "rouge2": 0.20155038759689922,
+            "rougeL": 0.2748091603053435
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            18,
+            8,
+            13,
+            6,
+            11,
+            1,
+            21
+          ],
+          "retrieval_precision": 0.158203125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The team chose a single-curved design because the Project Manager explicitly stated it during the summary of decisions, though the exact reasoning behind choosing a single-curved design over other options (like double-curved) was not detailed in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.30769230769230765,
+            "rouge2": 0.15730337078651688,
+            "rougeL": 0.21978021978021978
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            8
+          ],
+          "retrieval_precision": 0.09765625,
+          "retrieval_recall": 0.15432098765432098
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The team chose the single-curved design because the Industrial Designer believed that a non-curved design would be \"too dull\" and that customers might not like it. Additionally, the double-curved design posed limitations such as restricting the use of rubber buttons and scroll-wheels, leading the Industrial Designer to conclude that the single-curved design was \"the best of two worlds.\"",
+          "rouge_f1": {
+            "rouge1": 0.5357142857142858,
+            "rouge2": 0.2545454545454545,
+            "rougeL": 0.33928571428571425
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            8,
+            7,
+            18
+          ],
+          "retrieval_precision": 0.31640625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The team chose a single-curved design because it was seen as a balance between being too dull (like a flat case) and too advanced (like a double-curved case). The Project Manager and Industrial Designer both agreed that a single-curved design would be less dull and more appealing to customers compared to a flat case, while still allowing for the integration of features such as scroll-wheels, which are not possible with a double-curved design.",
+          "rouge_f1": {
+            "rouge1": 0.4566929133858268,
+            "rouge2": 0.24000000000000002,
+            "rougeL": 0.2992125984251968
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            8,
+            7,
+            18,
+            21,
+            10,
+            15,
+            14
+          ],
+          "retrieval_precision": 0.158203125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The team chose a single-curved design due to considerations around simplicity and ease of use compared to highly technical alternatives. The Industrial Designer presented multiple casing options including a flat case, a single-curved case, and a triple-curved case. The Project Manager and User Interface emphasized the importance of an easy-to-use interface, contrasting it with overly complex designs. The single-curved design was likely seen as a balance between innovation and user-friendliness, avoiding the complexity of multi-curved designs while still offering a modern twist over traditional flat designs. However, the exact decision-making process for choosing the single-curved design over others is not explicitly detailed in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.32727272727272727,
+            "rouge2": 0.13496932515337423,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8
+          ],
+          "retrieval_precision": 0.42578125,
+          "retrieval_recall": 0.6728395061728395
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The team chose the single-curved design because it was seen as a balance between being too dull (like the uncurved design) and too daring (like the double-curved design). The Project Manager and Industrial Designer both agreed that a single-curved design would appeal to customers better than a completely flat design, while still being practical and allowing for features like scroll-wheels which were not possible with a double-curved design.",
+          "rouge_f1": {
+            "rouge1": 0.5245901639344263,
+            "rouge2": 0.25,
+            "rougeL": 0.3278688524590164
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8,
+            18,
+            21
+          ],
+          "retrieval_precision": 0.31640625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The team chose the single-curved design because it was seen as a balance between being too dull (like an uncurved design) and too daring (like a double-curved design). The Project Manager and Industrial Designer both agreed that a single-curved design would be less dull and more appealing to customers compared to a flat design, while still allowing for the integration of features such as scroll-wheels, which were deemed necessary for user convenience.",
+          "rouge_f1": {
+            "rouge1": 0.49600000000000005,
+            "rouge2": 0.24390243902439027,
+            "rougeL": 0.288
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8,
+            18,
+            21,
+            13,
+            10,
+            9,
+            22
+          ],
+          "retrieval_precision": 0.158203125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The team chose a single-curved design over a double-curved design because the Industrial Designer believed that a double-curved design would limit the use of scroll-wheels and rubber buttons, while a single-curved design would provide a balance between aesthetics and functionality, avoiding a \"dull\" appearance that customers might dislike.",
+          "rouge_f1": {
+            "rouge1": 0.49019607843137253,
+            "rouge2": 0.21999999999999997,
+            "rougeL": 0.3529411764705882
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            17
+          ],
+          "retrieval_precision": 0.20703125,
+          "retrieval_recall": 0.3271604938271605
+        },
+        "lumber__dense__w1024": {
+          "answer": "The team chose a single-curved design because the Industrial Designer believed that a non-curved design would be \"too dull\" and that customers wouldn't like it. Additionally, a double-curved design would limit the use of rubber buttons and scroll-wheels, whereas a single-curved design offered a balance between aesthetics and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.5192307692307692,
+            "rouge2": 0.23529411764705882,
+            "rougeL": 0.3653846153846154
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            17,
+            9
+          ],
+          "retrieval_precision": 0.103515625,
+          "retrieval_recall": 0.3271604938271605
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team chose a single-curved design because they believed it offered a balance between aesthetics and functionality. According to Industrial Designer, a fully flat design (\"uncurved or flat case\") was considered too dull and unlikely to appeal to customers. Meanwhile, a double-curved design (\"curved in three dimensions\") was deemed too advanced and presented limitations in incorporating certain features like LCD displays and scroll-wheels due to the lack of flat areas. Therefore, a single-curved design was seen as the best compromise, providing an organic and appealing shape while still allowing for the integration of desired features such as scroll-wheels and rubber buttons.",
+          "rouge_f1": {
+            "rouge1": 0.33548387096774196,
+            "rouge2": 0.1568627450980392,
+            "rougeL": 0.23225806451612901
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            17,
+            9,
+            12,
+            21,
+            22,
+            2
+          ],
+          "retrieval_precision": 0.158203125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The team chose a single-curved design because it was one of the casing possibilities discussed, aligning with the balance between common design forms and more advanced shapes. The Industrial Designer presented multiple casing options including an uncurved (flat) case, a double-curved case, and a triple-curved case. The decision for a single-curved design was explicitly stated by the Project Manager as \"The casing is curved, single-curved.\" However, specific reasons for choosing single-curved over other options were not detailed in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.3088235294117647,
+            "rouge2": 0.13432835820895522,
+            "rougeL": 0.19117647058823534
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            34,
+            12
+          ],
+          "retrieval_precision": 0.349609375,
+          "retrieval_recall": 0.5524691358024691
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The team chose the single-curved design because it allowed for more flexibility in incorporating necessary components like LCD displays and scroll-wheels compared to the double-curved design, which restricted the integration of such features due to its curvature.",
+          "rouge_f1": {
+            "rouge1": 0.29213483146067415,
+            "rouge2": 0.13793103448275862,
+            "rougeL": 0.20224719101123595
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            34,
+            12,
+            22
+          ],
+          "retrieval_precision": 0.212890625,
+          "retrieval_recall": 0.6728395061728395
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The team chose the single-curved design over the flat and double-curved designs because they believed it offered a balance between being less dull than a flat design and maintaining functionality (unlike the double-curved design which limits the integration of LCD displays and scroll-wheels). Additionally, Marketing mentioned that the older group prefers simple shapes, which the single-curved design satisfies while still offering a modern twist compared to a completely flat design.",
+          "rouge_f1": {
+            "rouge1": 0.4032258064516129,
+            "rouge2": 0.1639344262295082,
+            "rougeL": 0.27419354838709675
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            34,
+            12,
+            22,
+            13,
+            28,
+            16,
+            40,
+            21,
+            4
+          ],
+          "retrieval_precision": 0.158203125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The team chose the single-curved design because the industrial designer believed that a straight-forward, non-curved design would be too dull for customers and that a double-curved design would restrict the use of scroll-wheels and rubber buttons. Therefore, a single-curved design was seen as the best compromise.",
+          "rouge_f1": {
+            "rouge1": 0.5148514851485149,
+            "rouge2": 0.24242424242424243,
+            "rougeL": 0.3762376237623762
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            12
+          ],
+          "retrieval_precision": 0.333984375,
+          "retrieval_recall": 0.5277777777777778
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The team chose the single-curved design because it offered a balance between being visually appealing (not \"too dull\") and functional. The double-curved design was deemed too limiting as it could not accommodate LCD displays or scroll-wheels, while the flat design was considered unattractive. The single-curved design allowed for the inclusion of features such as scroll-wheels and regular chips, providing a compromise between aesthetics and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3529411764705882,
+            "rouge2": 0.188034188034188,
+            "rougeL": 0.26890756302521
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            12,
+            22
+          ],
+          "retrieval_precision": 0.31640625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The team chose the single-curved design because they believed it offered a balance between being visually appealing and functional. According to Industrial Designer, a completely flat design was considered too dull and unlikely to appeal to customers. Meanwhile, a double-curved design would limit functionality due to the lack of flat areas necessary for incorporating features like LCD displays and scroll-wheels. Therefore, a single-curved design was seen as \"the best of two worlds,\" providing an aesthetically pleasing option without sacrificing usability.",
+          "rouge_f1": {
+            "rouge1": 0.37593984962406013,
+            "rouge2": 0.1984732824427481,
+            "rougeL": 0.28571428571428575
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            12,
+            22,
+            21,
+            17,
+            34,
+            9
+          ],
+          "retrieval_precision": 0.158203125,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did the group discuss about user interface controls of the remote control?",
+      "reference_answer": "Industrial Designer proposed to use scroll-wheels, which could be integrated with buttons. User Interface doubted its practicability and then Project Manager proposed to integrate a scroll-bar on the side to mute the device. As they would not use an LCD display, a regular chip was enough.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group discussed the user interface controls of the remote control in terms of ease of use and grip. The User Interface suggested that even with advanced features like voice recognition, the design should maintain simplicity and ease of use. The Industrial Designer mentioned that some remote controls have a shape underneath where users can place their fingers, which helps in getting a good grip without applying much pressure. This discussion aimed to balance high-tech features with user-friendly design elements.",
+          "rouge_f1": {
+            "rouge1": 0.21538461538461542,
+            "rouge2": 0.031249999999999993,
+            "rougeL": 0.10769230769230771
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            7,
+            15
+          ],
+          "retrieval_precision": 0.07421875,
+          "retrieval_recall": 0.018821198613174838
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The group discussed several aspects of the user interface controls of the remote control, including:\n\n- Incorporating voice recognition technology.\n- Designing a round or oval shape for the remote control.\n- Ensuring the remote has a comfortable grip, possibly with rubber material or finger-shaped indentations for better handling.\n- Including push-buttons, scroll-wheels (which can also function as buttons), and LCD displays for showing channel or volume settings.\n- Positioning the volume button within easy reach of the thumb while holding the remote.\n- Considering the integration challenges of certain features (like LCD displays and scroll-wheels) with a curved design.",
+          "rouge_f1": {
+            "rouge1": 0.24657534246575347,
+            "rouge2": 0.05555555555555555,
+            "rougeL": 0.1506849315068493
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            7,
+            15,
+            6,
+            12
+          ],
+          "retrieval_precision": 0.2880859375,
+          "retrieval_recall": 0.14611193660227836
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The group discussed the user interface controls of the remote control, focusing on push-buttons, scroll-wheels, and their integration. They considered the possibility of incorporating scroll-wheels with buttons but concluded that there wasn't a clear scenario where such a combination would be useful. They also explored the idea of placing a scroll-bar on one side of the remote control for channel selection and discussed the placement of the volume button, suggesting that a side-mounted volume button would be ideal given the proposed grip design. Additionally, they noted that certain designs, particularly those with curved surfaces, would limit the integration of LCD displays and scroll-wheels due to physical constraints.",
+          "rouge_f1": {
+            "rouge1": 0.32098765432098764,
+            "rouge2": 0.08750000000000001,
+            "rougeL": 0.19753086419753085
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            7,
+            15,
+            6,
+            12,
+            8,
+            20,
+            13,
+            2
+          ],
+          "retrieval_precision": 0.36083984375,
+          "retrieval_recall": 0.3660227835562159
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The group did not specifically discuss user interface controls of the remote control in the provided meeting excerpts. The conversation primarily revolved around design preferences and material feels for the younger target group, mentioning aspects such as color, shape, and material texture, but did not delve into the specifics of user interface controls.",
+          "rouge_f1": {
+            "rouge1": 0.15841584158415842,
+            "rouge2": 0.0202020202020202,
+            "rougeL": 0.1188118811881188
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            26
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The group discussed that the user interface controls of the remote control should have a spongy or soft feel, similar to the preference for softer materials among the younger target group. They also mentioned incorporating a scroll-wheel and additional buttons, though the specifics of these buttons were left for further determination by the User Interface and Industrial Designer.",
+          "rouge_f1": {
+            "rouge1": 0.26168224299065423,
+            "rouge2": 0.0761904761904762,
+            "rougeL": 0.13084112149532712
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            26,
+            30,
+            12
+          ],
+          "retrieval_precision": 0.0107421875,
+          "retrieval_recall": 0.005448241703813769
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The group discussed that the user interface controls of the remote control would include push-buttons and scroll-wheels. However, due to the design constraints of the double-curved case, scroll-wheels could not be integrated, leaving push-buttons as the primary option. The buttons were suggested to be made of rubber and spongy material for better grip and ease of use. Additionally, the group decided against using LCD displays.",
+          "rouge_f1": {
+            "rouge1": 0.3728813559322034,
+            "rouge2": 0.06896551724137931,
+            "rougeL": 0.22033898305084748
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            26,
+            30,
+            12,
+            7,
+            15,
+            20,
+            6
+          ],
+          "retrieval_precision": 0.24609375,
+          "retrieval_recall": 0.24962852897473997
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The group discussed the user interface controls of the remote control in terms of ease of use and innovative design features. Specifically, they mentioned the importance of having a good grip on the remote control, possibly through incorporating shapes or indentations for fingers to enhance usability without requiring much pressure. Additionally, User Interface suggested integrating high-tech features such as voice recognition while maintaining simplicity and ease of use in the interface design.",
+          "rouge_f1": {
+            "rouge1": 0.23140495867768596,
+            "rouge2": 0.033613445378151266,
+            "rougeL": 0.1487603305785124
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            2,
+            15
+          ],
+          "retrieval_precision": 0.056640625,
+          "retrieval_recall": 0.014363546310054482
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The group discussed the user interface controls of the remote control, focusing on the feasibility of incorporating scroll-wheels and push-buttons. They considered integrating scroll-wheels with buttons, similar to a mouse function, but User Interface expressed doubt about the possibility of using scroll-wheels due to design constraints. They also explored the idea of placing buttons within reach of the user's thumb, suggesting that a volume button on the side of the remote control would be ideal. Additionally, Industrial Designer noted that if a curved case design is used, only push-buttons can be integrated, as L_C_D_ displays and scroll-wheels cannot fit into such a design.",
+          "rouge_f1": {
+            "rouge1": 0.35000000000000003,
+            "rouge2": 0.10126582278481013,
+            "rougeL": 0.22500000000000003
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            2,
+            15,
+            12,
+            6
+          ],
+          "retrieval_precision": 0.388671875,
+          "retrieval_recall": 0.1971272907379891
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The group discussed the user interface controls of the remote control, focusing on push-buttons, scroll-wheels, and the integration of LCD displays. They considered the placement of buttons within reach of the user's thumb and debated the feasibility of incorporating scroll-wheels with the chosen design, ultimately deciding that scroll-wheels could not be integrated into a double-curved design due to curvature constraints. Additionally, they explored the idea of placing the volume button on the side of the remote control for ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.35555555555555557,
+            "rouge2": 0.09022556390977444,
+            "rougeL": 0.19259259259259262
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            2,
+            15,
+            12,
+            6,
+            3,
+            20,
+            1,
+            8
+          ],
+          "retrieval_precision": 0.24609375,
+          "retrieval_recall": 0.24962852897473997
+        },
+        "word_packed__dense__w512": {
+          "answer": "The group discussed the grip and comfort of holding the remote control, mentioning the importance of not making it too slippery and considering designs that facilitate a secure grip, such as incorporating rubber material or adding shapes for finger placement. There was no specific discussion about user interface controls beyond general considerations for ease of use and comfort.",
+          "rouge_f1": {
+            "rouge1": 0.20754716981132074,
+            "rouge2": 0.01923076923076923,
+            "rougeL": 0.11320754716981132
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            6
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The group discussed the user interface controls of the remote control, focusing on the ease of use and grip. They considered incorporating voice recognition technology alongside traditional button controls, aiming for a balance between high-tech features and simplicity. The conversation also touched upon the placement of buttons, particularly suggesting that a volume button on the side of the remote control could be ideal due to the natural way users hold the device. Additionally, they explored different shapes and materials for the remote control to ensure a comfortable grip without being too slippery.",
+          "rouge_f1": {
+            "rouge1": 0.24113475177304966,
+            "rouge2": 0.07194244604316546,
+            "rougeL": 0.1702127659574468
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            6,
+            13,
+            7
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.1267954432887568
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The group discussed the user interface controls of the remote control, focusing on push-buttons, scroll-wheels, and LCD displays. They considered integrating scroll-wheels with buttons but ultimately found it impractical. They agreed on placing the volume button on the side of the remote control for better accessibility. Additionally, they explored the possibility of incorporating voice recognition features and discussed the necessity of specific chips for advanced functionalities like LCD displays and voice recognition.",
+          "rouge_f1": {
+            "rouge1": 0.2764227642276423,
+            "rouge2": 0.09917355371900827,
+            "rougeL": 0.19512195121951217
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            6,
+            13,
+            7,
+            11,
+            10,
+            15,
+            18
+          ],
+          "retrieval_precision": 0.4560546875,
+          "retrieval_recall": 0.4626052501238237
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The group discussed that the user interface controls of the remote control should have a spongy or soft feel to appeal to the younger target group, who prefer colorful and softer materials. They suggested using corporate colors of grey and yellow, making it colorful, and possibly offering exchangeable covers to cater to both younger and older preferences. However, they emphasized avoiding actual sponge-like materials due to practical concerns.",
+          "rouge_f1": {
+            "rouge1": 0.20512820512820512,
+            "rouge2": 0.017391304347826087,
+            "rougeL": 0.11965811965811966
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The group discussed that the user interface controls of the remote control should be made of soft, spongy material, similar to rubber, to cater to the preference for comfortable touch among the younger target group. Additionally, they mentioned incorporating a scroll-wheel and retaining voice recognition functionality while keeping the button count manageable. There was no specific discussion about the design or placement of the controls beyond ensuring they felt good to press.",
+          "rouge_f1": {
+            "rouge1": 0.2809917355371901,
+            "rouge2": 0.05042016806722688,
+            "rougeL": 0.1322314049586777
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            7,
+            24
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The group discussed that the user interface controls of the remote control should include scroll-wheels and additional buttons. They agreed that the buttons should be made of rubber to provide a spongy feel, ensuring they are not too hard and offer a good grip. The group also decided against using LCD displays and opted for regular chips instead.",
+          "rouge_f1": {
+            "rouge1": 0.35514018691588783,
+            "rouge2": 0.0761904761904762,
+            "rougeL": 0.22429906542056074
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            3,
+            7,
+            24,
+            15,
+            6,
+            10,
+            28,
+            8
+          ],
+          "retrieval_precision": 0.15869140625,
+          "retrieval_recall": 0.16097077761267956
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The group discussed the importance of having a good grip on the remote control to ensure ease of use. They mentioned that the remote should not be too slippery and suggested incorporating designs such as rubber surfaces (like the Siemens phone) or shapes underneath where fingers can fit to facilitate a better grip without requiring excessive pressure. Additionally, they touched upon the idea of maintaining simplicity in the user interface despite incorporating high-tech features like voice recognition to balance functionality and usability.",
+          "rouge_f1": {
+            "rouge1": 0.25954198473282447,
+            "rouge2": 0.031007751937984496,
+            "rougeL": 0.12213740458015267
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            6
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The group discussed the user interface controls of the remote control focusing on the grip and ease of use. They mentioned the importance of having a non-slippery surface and suggested incorporating shapes or indentations for better finger placement. Additionally, they touched upon the idea of integrating voice recognition technology alongside traditional button controls, aiming for a balance between high-tech features and user-friendly design.",
+          "rouge_f1": {
+            "rouge1": 0.22807017543859648,
+            "rouge2": 0.03571428571428571,
+            "rougeL": 0.12280701754385966
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            6,
+            15,
+            10
+          ],
+          "retrieval_precision": 0.3173828125,
+          "retrieval_recall": 0.16097077761267956
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The group discussed the user interface controls of the remote control, focusing on push-buttons and scroll-wheels. They considered integrating scroll-wheels with buttons and debated the placement of buttons, particularly the volume button, suggesting it could be placed on the side of the remote control for better accessibility. Additionally, they explored the feasibility of incorporating voice recognition features and discussed the potential integration of LCD displays and advanced chips for these features.",
+          "rouge_f1": {
+            "rouge1": 0.3278688524590164,
+            "rouge2": 0.11666666666666667,
+            "rougeL": 0.22950819672131148
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            6,
+            15,
+            10,
+            13,
+            3,
+            1,
+            18
+          ],
+          "retrieval_precision": 0.3310546875,
+          "retrieval_recall": 0.33580980683506684
+        },
+        "lumber__dense__w512": {
+          "answer": "The group discussed user interface controls of the remote control in terms of incorporating voice recognition and a round button for channel programming and volume control. The User Interface suggested these features based on previous discussions and presented some advanced, high-tech designs found online that included voice recognition, though he noted these designs had unusual shapes. He also mentioned creating a simple mock-up in PowerPoint as an alternative design approach.",
+          "rouge_f1": {
+            "rouge1": 0.2,
+            "rouge2": 0.016949152542372885,
+            "rougeL": 0.11666666666666665
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The group discussed the user interface controls of the remote control, focusing on incorporating voice recognition, a round button for channel programming and volume control, and the integration of scroll-wheels that can also function as buttons. They also emphasized the importance of an ergonomic design, ensuring that the buttons are within easy reach of the user's thumb while holding the remote control comfortably without slipping.",
+          "rouge_f1": {
+            "rouge1": 0.26086956521739135,
+            "rouge2": 0.035398230088495575,
+            "rougeL": 0.1391304347826087
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            9,
+            21,
+            11,
+            17
+          ],
+          "retrieval_precision": 0.1796875,
+          "retrieval_recall": 0.09113422486379395
+        },
+        "lumber__dense__w2048": {
+          "answer": "The group discussed the inclusion of scroll-wheels as user interface controls on the remote control, alongside push-buttons. They considered integrating scroll-wheels with buttons but ultimately decided against it due to perceived impracticality. They agreed on incorporating a scroll-wheel along with some additional buttons, which should be designed to provide a comfortable grip and ease of use. The group also mentioned the possibility of using rubber buttons for better grip and the idea of placing the volume button on the side of the remote control for convenience.",
+          "rouge_f1": {
+            "rouge1": 0.3478260869565218,
+            "rouge2": 0.08823529411764706,
+            "rougeL": 0.1739130434782609
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            9,
+            21,
+            11,
+            17,
+            15,
+            20,
+            39,
+            28,
+            4
+          ],
+          "retrieval_precision": 0.439453125,
+          "retrieval_recall": 0.4457652303120357
+        },
+        "lumber__bm25__w512": {
+          "answer": "The group discussed placing the volume button on the side of the remote control, making it within easy reach of the user's thumb while holding the device. They also considered the shape and color of the remote, suggesting a preference for simple, organic designs and dark colors, though the specific theme leaned towards a more youthful audience.",
+          "rouge_f1": {
+            "rouge1": 0.22641509433962265,
+            "rouge2": 0.05769230769230769,
+            "rougeL": 0.1509433962264151
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            21,
+            9
+          ],
+          "retrieval_precision": 0.181640625,
+          "retrieval_recall": 0.04606240713224369
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The group discussed that the user interface controls of the remote control should have a spongy or soft feel, possibly made of rubber, to cater to the preference for natural and comfortable materials among users. They also mentioned the importance of having a good grip on the remote control, suggesting designs that allow for easy handling without slipping, such as incorporating finger grips or placing buttons within easy reach of the thumb. Additionally, there was consideration for using rubber or plastic buttons to maintain the desired tactile experience while addressing potential issues like wear and tear on the button labels.",
+          "rouge_f1": {
+            "rouge1": 0.22972972972972977,
+            "rouge2": 0.027397260273972608,
+            "rougeL": 0.10810810810810811
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            21,
+            9,
+            6,
+            40
+          ],
+          "retrieval_precision": 0.0908203125,
+          "retrieval_recall": 0.04606240713224369
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The group discussed that the user interface controls of the remote control should include push-buttons and possibly scroll-wheels integrated with buttons. However, there was skepticism about the practicality of using scroll-wheels due to the specific context of a remote control. They also emphasized the importance of placing buttons within easy reach of the user's thumb while holding the remote. Additionally, they considered the material of the buttons, leaning towards rubber for a spongy feel, though there were concerns about the longevity of printed numbers or symbols on rubber buttons. The group agreed that the overall finish should be soft and possibly spongy to cater to user preferences.",
+          "rouge_f1": {
+            "rouge1": 0.27672955974842767,
+            "rouge2": 0.06369426751592357,
+            "rougeL": 0.1509433962264151
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            21,
+            9,
+            6,
+            40,
+            12,
+            17,
+            43
+          ],
+          "retrieval_precision": 0.1884765625,
+          "retrieval_recall": 0.19118375433382861
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The group discussed the design of user interface controls for the remote control, focusing on voice recognition and physical button placements. They mentioned a round button for channel programming and volume control. The User Interface suggested a simple, round or oval-shaped remote control with yellow color. The group also emphasized the importance of a comfortable grip and easy access to buttons, particularly the volume button, which could be placed on the side of the remote control for ease of use with the thumb.",
+          "rouge_f1": {
+            "rouge1": 0.2727272727272727,
+            "rouge2": 0.07692307692307691,
+            "rougeL": 0.16666666666666669
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            21,
+            4
+          ],
+          "retrieval_precision": 0.181640625,
+          "retrieval_recall": 0.04606240713224369
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The group discussed that the user interface controls of the remote control would include push-buttons and possibly scroll-wheels integrated with buttons. However, there was skepticism about the feasibility and practicality of incorporating scroll-wheels. They agreed on having a simple and easy-to-use interface, with a focus on ease of grip and accessibility of buttons within thumb reach. The idea of integrating voice recognition was also mentioned but deemed too complex for their goals.",
+          "rouge_f1": {
+            "rouge1": 0.33599999999999997,
+            "rouge2": 0.08130081300813008,
+            "rougeL": 0.192
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            21,
+            4,
+            17,
+            11
+          ],
+          "retrieval_precision": 0.376953125,
+          "retrieval_recall": 0.19118375433382861
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The group discussed that the remote control would feature push-buttons and scroll-wheels, though there was skepticism about integrating scroll-wheels with buttons. They considered placing the volume button on the side of the remote control for ease of use, ensuring it was within the range of the user's thumb while holding the device. Additionally, they emphasized the importance of having a good grip on the remote control, suggesting designs that facilitate this, such as incorporating shapes for fingers to rest in.",
+          "rouge_f1": {
+            "rouge1": 0.3181818181818182,
+            "rouge2": 0.07692307692307691,
+            "rougeL": 0.18181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            21,
+            4,
+            17,
+            11,
+            2,
+            6,
+            12,
+            22
+          ],
+          "retrieval_precision": 0.20947265625,
+          "retrieval_recall": 0.212481426448737
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the team think about scroll-wheels in the discussion of interface controls?",
+      "reference_answer": "Industrial Designer proposed to use scroll-wheels integrated with buttons. User Interface doubted its practicability and supposed that a round button with four directions could be better. But Project Manager liked the idea of scroll-wheels as it might attract young customers and suggested that they could be used to mute the device.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The team expressed skepticism about using scroll-wheels. User Interface specifically stated, \"I don't think there's any possibility for us to use scroll-wheels\" and elaborated that they couldn't envision a scenario where a scroll-wheel with a button would be used. Industrial Designer agreed, noting, \"There's no scenario where you use uh the button in the scroll-wheel. You just use the wheel.\" However, they acknowledged that scroll-wheels could be integrated with other functions, though no clear use case was established.",
+          "rouge_f1": {
+            "rouge1": 0.37142857142857144,
+            "rouge2": 0.14492753623188406,
+            "rougeL": 0.24285714285714285
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            13,
+            14
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.6975476839237057
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The team expressed skepticism about using scroll-wheels. User Interface specifically stated, \"I don't think there's any possibility for us to use scroll-wheels\" and elaborated that they couldn't envision a scenario where a scroll-wheel with an integrated button would be used. Industrial Designer agreed, noting that there was no scenario where the button in the scroll-wheel would be utilized, as users would likely just use the wheel itself. However, Marketing suggested that a scroll-wheel could attract younger customers due to its novelty. Despite this, the overall sentiment was negative towards incorporating scroll-wheels into the design.",
+          "rouge_f1": {
+            "rouge1": 0.4102564102564102,
+            "rouge2": 0.12987012987012989,
+            "rougeL": 0.24358974358974358
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            13,
+            14,
+            15,
+            19
+          ],
+          "retrieval_precision": 0.716796875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The team expressed mixed views on scroll-wheels. User Interface initially suggested that there was no possibility for using scroll-wheels due to lack of clear scenarios where they would be useful. However, Marketing saw them as potentially attractive to young customers. The Industrial Designer acknowledged that scroll-wheels could be handy and were previously used in other devices like telephones. Despite this, User Interface reiterated concerns about functionality and integration, suggesting that the design might become too complex. Ultimately, the team decided against integrating scroll-wheels with a double-curved case but left open the possibility for a single-curved case.",
+          "rouge_f1": {
+            "rouge1": 0.45161290322580644,
+            "rouge2": 0.1176470588235294,
+            "rougeL": 0.2064516129032258
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            13,
+            14,
+            15,
+            19,
+            23,
+            22,
+            7,
+            8
+          ],
+          "retrieval_precision": 0.3583984375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The team expressed concerns about using scroll-wheels. Specifically, User Interface stated, \"I don't think there's any possibility for us to use scroll-wheels,\" based on some information they had. This indicates that the team did not favor the inclusion of scroll-wheels in the design due to potential issues or limitations highlighted by User Interface.",
+          "rouge_f1": {
+            "rouge1": 0.28828828828828823,
+            "rouge2": 0.11009174311926606,
+            "rougeL": 0.1981981981981982
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            27,
+            17
+          ],
+          "retrieval_precision": 0.478515625,
+          "retrieval_recall": 0.3337874659400545
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The team expressed mixed views on scroll-wheels. The User Interface specifically stated, \"I don't think there's any possibility for us to use scroll-wheels,\" based on some information they had. The Industrial Designer mentioned that using scroll-wheels would require the regular version of the chip, which is less costly than the advanced version needed for LCD displays. Additionally, the Industrial Designer noted that if the design was double-curved, scroll-wheels could not be used due to space constraints.",
+          "rouge_f1": {
+            "rouge1": 0.29411764705882354,
+            "rouge2": 0.10447761194029852,
+            "rougeL": 0.1911764705882353
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            27,
+            17,
+            20,
+            26
+          ],
+          "retrieval_precision": 0.2392578125,
+          "retrieval_recall": 0.3337874659400545
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The team expressed skepticism about incorporating scroll-wheels into the remote control. User Interface specifically stated, \"I don't think there's any possibility for us to use scroll-wheels,\" and further elaborated that they couldn't envision a scenario where a scroll-wheel with an integrated button would be useful. Additionally, Industrial Designer noted that if the team opted for a curved design, scroll-wheels could not be used due to space constraints. Despite these concerns, the team acknowledged the scroll-wheel as a potential feature but ultimately left the final decision regarding its inclusion to User Interface and Industrial Designer, given their expertise on supplier capabilities and design feasibility.",
+          "rouge_f1": {
+            "rouge1": 0.35365853658536583,
+            "rouge2": 0.1111111111111111,
+            "rougeL": 0.2073170731707317
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            27,
+            17,
+            20,
+            26,
+            5,
+            15,
+            13,
+            30
+          ],
+          "retrieval_precision": 0.234375,
+          "retrieval_recall": 0.6539509536784741
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The team expressed skepticism about using scroll-wheels. User Interface specifically stated, \"I don't think there's any possibility for us to use scroll-wheels\" and elaborated that they couldn't envision a scenario where a scroll-wheel with a button on it would be used. Industrial Designer agreed, noting, \"There's no scenario where you use uh the button in the scroll-wheel. You just use the wheel.\" Thus, the team did not support the inclusion of scroll-wheels in the design.",
+          "rouge_f1": {
+            "rouge1": 0.33576642335766427,
+            "rouge2": 0.1333333333333333,
+            "rougeL": 0.21897810218978103
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            13,
+            15
+          ],
+          "retrieval_precision": 0.9375,
+          "retrieval_recall": 0.6539509536784741
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team expressed skepticism about using scroll-wheels. User Interface specifically stated, \"I don't think there's any possibility for us to use scroll-wheels\" and elaborated that they couldn't envision a scenario where a scroll-wheel with a button would be used. Additionally, Industrial Designer agreed, noting that there was no scenario where the button in the scroll-wheel would be utilized, suggesting that the wheel alone would suffice. However, the discussion concluded that incorporating scroll-wheels was not feasible due to the design constraints of the curved case.",
+          "rouge_f1": {
+            "rouge1": 0.35862068965517235,
+            "rouge2": 0.1258741258741259,
+            "rougeL": 0.23448275862068962
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            13,
+            15,
+            27,
+            20
+          ],
+          "retrieval_precision": 0.46875,
+          "retrieval_recall": 0.6539509536784741
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team expressed mixed views on scroll-wheels. Initially, User Interface was skeptical, stating there wasn't any clear scenario where a scroll-wheel with an integrated button would be useful. However, Marketing suggested that scroll-wheels could attract younger customers due to being new and innovative. Industrial Designer acknowledged that scroll-wheels had been used before in various devices but noted that they were not commonly seen now. Despite this, the team considered using scroll-wheels alongside regular chips, as they could be handy and fit within the design constraints of not having a curved surface. Ultimately, the inclusion of scroll-wheels was seen as a way to differentiate the product from traditional devices.",
+          "rouge_f1": {
+            "rouge1": 0.4047619047619048,
+            "rouge2": 0.1325301204819277,
+            "rougeL": 0.2261904761904762
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            13,
+            15,
+            27,
+            20,
+            26,
+            19,
+            17,
+            14
+          ],
+          "retrieval_precision": 0.31787109375,
+          "retrieval_recall": 0.8869209809264306
+        },
+        "word_packed__dense__w512": {
+          "answer": "The team expressed skepticism about using scroll-wheels. User Interface specifically stated, \"I don't think there's any possibility for us to use scroll-wheels\" and elaborated that they couldn't envision a scenario where a scroll-wheel with a button would be used. Industrial Designer agreed, noting, \"There's no scenario where you use uh the button in the scroll-wheel. You just use the wheel.\" However, Marketing suggested that a scroll-wheel could attract younger customers due to its novelty.",
+          "rouge_f1": {
+            "rouge1": 0.4117647058823529,
+            "rouge2": 0.1492537313432836,
+            "rougeL": 0.24999999999999994
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            12
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.6975476839237057
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The team expressed mixed views on scroll-wheels. User Interface was skeptical, stating there wasn't any possibility for using scroll-wheels and couldn't envision a scenario where a scroll-wheel with a button would be used. In contrast, Industrial Designer acknowledged that scroll-wheels could be handy and could be implemented with a regular chip. Marketing suggested that scroll-wheels might attract younger customers due to being new and advanced. However, concerns were raised about integrating a button within the scroll-wheel, as no clear scenario was presented where such functionality would be useful.",
+          "rouge_f1": {
+            "rouge1": 0.4295302013422818,
+            "rouge2": 0.14965986394557823,
+            "rougeL": 0.22818791946308728
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            12,
+            17,
+            21
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.6975476839237057
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The team expressed uncertainty and skepticism about incorporating scroll-wheels into the remote control. User Interface specifically stated that there was no clear scenario where a scroll-wheel with a button would be useful and suggested that it might not fit well given the placement of the hand on the remote control. Marketing saw potential in attracting younger customers with new features like scroll-wheels, while Industrial Designer noted that scroll-wheels had been used before but were not currently popular. Project Manager agreed that the team needed to consider whether scroll-wheels would make the remote control stand out from traditional models. Overall, the team did not strongly support the idea of scroll-wheels, leaning towards simpler and more conventional designs.",
+          "rouge_f1": {
+            "rouge1": 0.3771428571428571,
+            "rouge2": 0.13872832369942198,
+            "rougeL": 0.19428571428571426
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            12,
+            17,
+            21,
+            13,
+            7,
+            6,
+            20
+          ],
+          "retrieval_precision": 0.32470703125,
+          "retrieval_recall": 0.9059945504087193
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The team discussed the use of scroll-wheels in relation to the choice of chips required for different functionalities. According to the Industrial Designer, if the team wants to use scroll-wheels, they need the regular version of the chip. There were no explicit statements indicating the team's thoughts or opinions about the scroll-wheels themselves beyond this functional requirement. Therefore, based on the provided excerpts, the evidence is insufficient to determine what the team specifically thought about scroll-wheels beyond their functionality needs.",
+          "rouge_f1": {
+            "rouge1": 0.20289855072463767,
+            "rouge2": 0.08823529411764706,
+            "rougeL": 0.1739130434782609
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            15
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The team expressed mixed views on scroll-wheels. The Industrial Designer suggested incorporating scroll-wheels as they are useful and have been used before, noting that they can be combined with buttons and serve functions similar to those of a mouse. However, the User Interface was skeptical, stating there isn't a clear scenario where a scroll-wheel with a button would be beneficial and doubting the feasibility of integrating such features.",
+          "rouge_f1": {
+            "rouge1": 0.46399999999999997,
+            "rouge2": 0.1138211382113821,
+            "rougeL": 0.20800000000000002
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            15,
+            11,
+            10
+          ],
+          "retrieval_precision": 0.3173828125,
+          "retrieval_recall": 0.4427792915531335
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The team expressed mixed views on scroll-wheels. Initially, User Interface was skeptical about incorporating scroll-wheels, stating there wasn't any clear scenario where they would be useful. However, the Project Manager suggested integrating a scroll-bar for channel selection, to which User Interface agreed as a possibility. Later, Industrial Designer mentioned that the double-curved design precluded the use of scroll-wheels due to technical constraints. Despite this, the team ultimately decided to include scroll-wheels in the final design, alongside additional buttons, with the Project Manager leaving the specifics of the implementation to User Interface and Industrial Designer.",
+          "rouge_f1": {
+            "rouge1": 0.35064935064935066,
+            "rouge2": 0.10526315789473685,
+            "rougeL": 0.16883116883116883
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            15,
+            11,
+            10,
+            18,
+            24,
+            7,
+            28,
+            12
+          ],
+          "retrieval_precision": 0.17626953125,
+          "retrieval_recall": 0.49182561307901906
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The team expressed skepticism about using scroll-wheels. User Interface specifically stated, \"I don't think there's any possibility for us to use scroll-wheels\" and added, \"I can't see any scenario where you would use a scroll-wheel with a button on it.\" Industrial Designer agreed, saying, \"Well, maybe when you integrate some functions,\" indicating some openness to the idea under certain conditions, but overall, the sentiment was negative towards incorporating scroll-wheels into the interface controls.",
+          "rouge_f1": {
+            "rouge1": 0.33082706766917297,
+            "rouge2": 0.10687022900763359,
+            "rougeL": 0.19548872180451124
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            25
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.34877384196185285
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The team expressed skepticism about incorporating scroll-wheels into the interface controls. User Interface specifically stated, \"I don't think there's any possibility for us to use scroll-wheels\" and elaborated that they couldn't envision a scenario where a scroll-wheel with a button would be useful. However, Marketing suggested that a scroll-wheel might attract younger customers, indicating some openness to the idea based on potential appeal rather than functionality.",
+          "rouge_f1": {
+            "rouge1": 0.39682539682539686,
+            "rouge2": 0.1774193548387097,
+            "rougeL": 0.253968253968254
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            25,
+            12,
+            7
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.6975476839237057
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The team thought that scroll-wheels could be handy but were uncertain about their implementation due to the required regular chip. User Interface expressed doubt about the feasibility of using scroll-wheels, stating there was no clear scenario where a scroll-wheel with an integrated button would be useful. Industrial Designer acknowledged this but suggested scroll-wheels could be implemented with a regular chip. The team also noted that scroll-wheels could not be used with a double-curved design but could work with a single-curved case.",
+          "rouge_f1": {
+            "rouge1": 0.39716312056737585,
+            "rouge2": 0.11510791366906475,
+            "rougeL": 0.21276595744680848
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            25,
+            12,
+            7,
+            15,
+            17,
+            18,
+            21
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.6975476839237057
+        },
+        "lumber__dense__w512": {
+          "answer": "The team expressed skepticism about using scroll-wheels. User Interface specifically stated, \"I don't think there's any possibility for us to use scroll-wheels\" and elaborated that they couldn't envision a scenario where a scroll-wheel with a button would be used. Industrial Designer agreed, noting, \"There's no scenario where you use uh the button in the scroll-wheel. You just use the wheel.\" However, they acknowledged that scroll-wheels could be integrated with other functions, though no clear use case was established.",
+          "rouge_f1": {
+            "rouge1": 0.37142857142857144,
+            "rouge2": 0.14492753623188406,
+            "rougeL": 0.24285714285714285
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            18
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.6975476839237057
+        },
+        "lumber__dense__w1024": {
+          "answer": "The team expressed mixed views on scroll-wheels. The User Interface was skeptical, stating there were no clear scenarios where a scroll-wheel with an integrated button would be used and suggesting it might not be feasible. In contrast, the Industrial Designer acknowledged that scroll-wheels could be handy and noted that they have been used in other devices like telephones and radios. The Project Manager considered the scroll-wheel as a way to differentiate the product and potentially attract younger customers. However, practical concerns such as integration with the design (specifically, it couldn't work with a double-curved case) and the need for a regular chip were raised. Overall, while there was interest in incorporating scroll-wheels, doubts remained regarding their practical application and necessity.",
+          "rouge_f1": {
+            "rouge1": 0.4222222222222222,
+            "rouge2": 0.1348314606741573,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            18,
+            39,
+            20,
+            27,
+            31,
+            28
+          ],
+          "retrieval_precision": 0.7109375,
+          "retrieval_recall": 0.9918256130790191
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team discussed the potential use of scroll-wheels in the remote control but expressed uncertainty about integrating them with buttons. User Interface initially suggested that there was no clear scenario where a scroll-wheel with an integrated button would be used. However, the Project Manager and Industrial Designer explored the possibility of using scroll-wheels for functions such as volume control and muting, though they acknowledged that it was a feature previously used but later abandoned. The team ultimately agreed that scroll-wheels could be useful and decided to incorporate them along with other features like voice recognition and rubber buttons, aiming for a design that appeals to customers with its blend of functionality and modernity.",
+          "rouge_f1": {
+            "rouge1": 0.4588235294117647,
+            "rouge2": 0.14285714285714288,
+            "rougeL": 0.2941176470588235
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            18,
+            39,
+            20,
+            27,
+            31,
+            28,
+            41,
+            29,
+            9
+          ],
+          "retrieval_precision": 0.35546875,
+          "retrieval_recall": 0.9918256130790191
+        },
+        "lumber__bm25__w512": {
+          "answer": "The team expressed skepticism about using scroll-wheels. User Interface specifically stated, \"I don't think there's any possibility for us to use scroll-wheels\" and added, \"I can't see any scenario where you would use a scroll-wheel with a button on it.\" Industrial Designer agreed, saying, \"Well, maybe when you integrate some functions,\" but also indicated uncertainty. There was no strong support for scroll-wheels within the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.31746031746031744,
+            "rouge2": 0.0967741935483871,
+            "rougeL": 0.1904761904761905
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            40,
+            28
+          ],
+          "retrieval_precision": 0.572265625,
+          "retrieval_recall": 0.3991825613079019
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The team expressed mixed views on scroll-wheels. The User Interface was skeptical, stating there wasn't a clear scenario where a scroll-wheel with a button would be used and doubted the possibility of using scroll-wheels. However, the Project Manager later liked the idea of scroll-wheels, suggesting its inclusion along with the regular chip and skipping the LCD part.",
+          "rouge_f1": {
+            "rouge1": 0.43478260869565216,
+            "rouge2": 0.17699115044247787,
+            "rougeL": 0.2956521739130435
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            40,
+            28,
+            23
+          ],
+          "retrieval_precision": 0.2861328125,
+          "retrieval_recall": 0.3991825613079019
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The team expressed mixed views on scroll-wheels. Initially, User Interface was skeptical about incorporating scroll-wheels, stating there wasn't any clear scenario where a scroll-wheel with a button would be useful. However, the Industrial Designer suggested using scroll-wheels with regular chips as a feasible option. The Project Manager also liked the idea of scroll-wheels, indicating a positive inclination towards their integration. Ultimately, the Industrial Designer proposed using scroll-wheels alongside voice recognition and regular chips, which was agreed upon by the User Interface and Project Manager, suggesting a general approval for scroll-wheels in the design.",
+          "rouge_f1": {
+            "rouge1": 0.36363636363636365,
+            "rouge2": 0.15789473684210525,
+            "rougeL": 0.23376623376623376
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            40,
+            28,
+            23,
+            18,
+            9,
+            22
+          ],
+          "retrieval_precision": 0.27001953125,
+          "retrieval_recall": 0.7534059945504087
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The team expressed skepticism about using scroll-wheels. User Interface specifically stated, \"I don't think there's any possibility for us to use scroll-wheels\" and elaborated that they couldn't envision a scenario where a scroll-wheel with a button would be used. Industrial Designer agreed, noting, \"There's no scenario where you use uh the button in the scroll-wheel. You just use the wheel.\" However, they acknowledged that scroll-wheels could be integrated with other functions, though no clear use case was established.",
+          "rouge_f1": {
+            "rouge1": 0.37142857142857144,
+            "rouge2": 0.14492753623188406,
+            "rougeL": 0.24285714285714285
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            18
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.6975476839237057
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The team expressed mixed views on scroll-wheels. The User Interface was skeptical about their practicality, stating there wasn't any clear scenario where a scroll-wheel with an integrated button would be used. However, the Industrial Designer suggested that scroll-wheels could be useful and were previously implemented. The Project Manager also liked the idea of scroll-wheels, indicating a positive inclination towards their inclusion in the design.",
+          "rouge_f1": {
+            "rouge1": 0.45901639344262296,
+            "rouge2": 0.20000000000000004,
+            "rougeL": 0.2950819672131147
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            18,
+            28,
+            9
+          ],
+          "retrieval_precision": 0.5400390625,
+          "retrieval_recall": 0.7534059945504087
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The team discussed the integration of scroll-wheels into the remote control interface. Initially, User Interface expressed skepticism about incorporating scroll-wheels, stating there was no clear scenario where a scroll-wheel with a button would be useful. However, the Industrial Designer suggested that scroll-wheels could be handy and could be implemented with a regular chip. Despite initial doubts, the Project Manager and Industrial Designer favored including scroll-wheels as part of the new technology features, considering them valuable additions to the remote control's functionality. Marketing agreed that customers would appreciate the modern technology, though User Interface noted that the inclusion of scroll-wheels, along with other features like voice recognition and fancy colors, might be overwhelming.",
+          "rouge_f1": {
+            "rouge1": 0.3953488372093023,
+            "rouge2": 0.12941176470588237,
+            "rougeL": 0.18604651162790695
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            18,
+            28,
+            9,
+            27,
+            22,
+            29
+          ],
+          "retrieval_precision": 0.27001953125,
+          "retrieval_recall": 0.7534059945504087
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "Why did the team decide not to use LCD displays when discussing interface controls?",
+      "reference_answer": "Industrial Manager revealed that if LCD was used, they had to choose advanced chips. Project Manager thought it was within the budget and LCD displays could add extra high-tech feeling. User Interface then pointed out that they already had too many high-tech substances including scroll-wheels, voice recognition and a fancy look so they didn't need to use LCD displays.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The meeting excerpts do not contain a direct statement or discussion indicating why the team decided not to use LCD displays when discussing interface controls. Therefore, the evidence is insufficient to determine the reason for not using LCD displays based on the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.205607476635514,
+            "rouge2": 0.07619047619047618,
+            "rougeL": 0.14953271028037382
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            7,
+            17
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls due to cost considerations and the belief that such displays were unnecessary for their goals. Specifically, the Industrial Designer mentioned that using an advanced version of the chip required for LCD displays would be more costly. Additionally, the User Interface suggested that they might not need a display, implying that the team prioritized simplicity and cost-effectiveness over additional features like LCD displays.",
+          "rouge_f1": {
+            "rouge1": 0.31884057971014496,
+            "rouge2": 0.08823529411764705,
+            "rougeL": 0.2028985507246377
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            7,
+            17,
+            15,
+            8
+          ],
+          "retrieval_precision": 0.185546875,
+          "retrieval_recall": 0.475
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The team decided not to use LCD displays because they concluded that incorporating LCD displays would require a more advanced and costly chip, and they opted for a regular chip to keep costs lower and to fit the design constraints of the double-curved case, which does not allow for LCD integration.",
+          "rouge_f1": {
+            "rouge1": 0.29565217391304344,
+            "rouge2": 0.07079646017699115,
+            "rougeL": 0.1565217391304348
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            7,
+            17,
+            15,
+            8,
+            20,
+            1,
+            30,
+            21
+          ],
+          "retrieval_precision": 0.0927734375,
+          "retrieval_recall": 0.475
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The team decided not to use LCD displays because the User Interface suggested that information did not necessarily need to be displayed on a screen, and the advanced LCD display required a more costly chip compared to the simpler options available for the scroll-wheels and basic functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3423423423423423,
+            "rouge2": 0.12844036697247704,
+            "rougeL": 0.18018018018018014
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            27,
+            12
+          ],
+          "retrieval_precision": 0.37109375,
+          "retrieval_recall": 0.475
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls because the advanced chip required for LCD displays was more costly. They opted for the regular chip, which is cheaper and sufficient for their needs without the LCD display feature.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.0970873786407767,
+            "rougeL": 0.19047619047619047
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            27,
+            12,
+            30,
+            15
+          ],
+          "retrieval_precision": 0.185546875,
+          "retrieval_recall": 0.475
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls because integrating LCD displays was incompatible with the chosen double-curved rubber casing design, as mentioned by the Industrial Designer in excerpt [292]. Additionally, the User Interface suggested that an LCD display might not be necessary, and the team agreed to opt for the regular chip version, which is less costly and does not support LCD displays, as discussed in excerpts [310] and [317].",
+          "rouge_f1": {
+            "rouge1": 0.2446043165467626,
+            "rouge2": 0.072992700729927,
+            "rougeL": 0.14388489208633096
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            27,
+            12,
+            30,
+            15,
+            9,
+            7,
+            2,
+            20
+          ],
+          "retrieval_precision": 0.0927734375,
+          "retrieval_recall": 0.475
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The team decided not to use LCD displays because they would require a more advanced and costly chip compared to the simpler and cheaper options needed for other features like scroll-wheels. Additionally, the User Interface suggested that a display might not be necessary based on the functionality required.",
+          "rouge_f1": {
+            "rouge1": 0.33928571428571425,
+            "rouge2": 0.0909090909090909,
+            "rougeL": 0.19642857142857142
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            17,
+            7
+          ],
+          "retrieval_precision": 0.37109375,
+          "retrieval_recall": 0.475
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team decided not to use LCD displays due to the constraints imposed by the design of the remote control, specifically the curved rubber casing which does not allow for integration of LCD displays. Additionally, User Interface expressed doubt about the necessity of having a display, suggesting that it might not be essential for the functionality they aimed to achieve. The final decision was left to User Interface and Industrial Designer to determine based on supplier possibilities and costs, ultimately favoring simpler and potentially less expensive options over advanced features like LCD displays.",
+          "rouge_f1": {
+            "rouge1": 0.2564102564102564,
+            "rouge2": 0.06493506493506493,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            17,
+            7,
+            15,
+            30
+          ],
+          "retrieval_precision": 0.185546875,
+          "retrieval_recall": 0.475
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls because integrating LCD displays would not be possible with the chosen double-curved design, as stated by the Industrial Designer: \"if you take the double-curved...then you cannot...you can only use the rubber buttons and you cannot use the scroll-wheels.\" Additionally, the team opted for a regular chip over an advanced version, which supports LCD displays, due to cost considerations and the decision against using advanced features. As mentioned by the Industrial Designer, \"If we want to use the LCD display, we really need the advanced version, which is a bit more costly,\" and the team concluded, \"we've decided not to use LCD_.\"",
+          "rouge_f1": {
+            "rouge1": 0.24175824175824173,
+            "rouge2": 0.05555555555555555,
+            "rougeL": 0.13186813186813187
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            17,
+            7,
+            15,
+            30,
+            27,
+            20,
+            26,
+            1
+          ],
+          "retrieval_precision": 0.0927734375,
+          "retrieval_recall": 0.475
+        },
+        "word_packed__dense__w512": {
+          "answer": "The team decided not to use LCD displays because incorporating them would require an advanced version of the chip, which is more costly. They aimed to maintain simplicity and cost-effectiveness in their design, aligning with their goal of having an easy-to-use interface without excessive high-tech features.",
+          "rouge_f1": {
+            "rouge1": 0.24778761061946905,
+            "rouge2": 0.07207207207207209,
+            "rougeL": 0.12389380530973453
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            7
+          ],
+          "retrieval_precision": 0.30859375,
+          "retrieval_recall": 0.395
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls due to cost considerations. The User Interface mentioned that using an LCD display would require an advanced version of the chip, which is more expensive compared to the simpler chip needed without advanced functions.",
+          "rouge_f1": {
+            "rouge1": 0.27522935779816515,
+            "rouge2": 0.09345794392523366,
+            "rougeL": 0.16513761467889906
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            7,
+            6,
+            1
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 0.395
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls due to cost considerations and the complexity of integrating advanced features. Specifically, User Interface mentioned that using the LCD display would require an advanced version of the chip, which is more costly. Additionally, they needed the regular chip for the sample sensor speaker, leading to uncertainty about whether they could afford both. Therefore, they opted for simpler solutions to maintain cost-effectiveness.",
+          "rouge_f1": {
+            "rouge1": 0.29197080291970806,
+            "rouge2": 0.07407407407407407,
+            "rougeL": 0.1313868613138686
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            7,
+            6,
+            1,
+            18,
+            11,
+            25,
+            13
+          ],
+          "retrieval_precision": 0.0771484375,
+          "retrieval_recall": 0.395
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The team considered using LCD displays but decided against it due to cost concerns. According to the Industrial Designer, the LCD display required an advanced version of the chip, which was more expensive. They opted for a simpler, less costly chip option that did not support advanced functions like LCD displays.",
+          "rouge_f1": {
+            "rouge1": 0.2982456140350877,
+            "rouge2": 0.05357142857142857,
+            "rougeL": 0.15789473684210528
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            24
+          ],
+          "retrieval_precision": 0.30859375,
+          "retrieval_recall": 0.395
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The team decided not to use LCD displays because integrating them with the proposed design, which includes a rubber double-curved case, was not feasible due to the lack of flat areas on the curved surface where such displays could be incorporated. Additionally, using an LCD display would require the more expensive advanced chip, whereas the team was considering cost-saving measures and simpler functionalities.",
+          "rouge_f1": {
+            "rouge1": 0.265625,
+            "rouge2": 0.09523809523809523,
+            "rougeL": 0.140625
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            24,
+            14,
+            10
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 0.395
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls because they chose the regular chip over the advanced version, which is necessary for incorporating LCD displays. As stated by the Industrial Designer, \"The only difference between the advanced and the regular version is that the advanced uh version of the chip supports L_C_D_. That's all.\" Additionally, the Industrial Designer explicitly mentioned, \"And we've decided not to use L_C_D_.\"",
+          "rouge_f1": {
+            "rouge1": 0.2571428571428572,
+            "rouge2": 0.05797101449275362,
+            "rougeL": 0.14285714285714285
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            24,
+            14,
+            10,
+            11,
+            25,
+            2,
+            28,
+            8
+          ],
+          "retrieval_precision": 0.0771484375,
+          "retrieval_recall": 0.395
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The team considered using LCD displays but decided against them due to cost concerns. The Industrial Designer mentioned that using LCD displays would require an advanced version of the chip, which is more expensive compared to the regular version needed for scroll-wheels or the simpler, cheaper chip if they opted out of advanced functions. There was no explicit statement indicating why they specifically avoided LCD displays for interface controls beyond the cost implication.",
+          "rouge_f1": {
+            "rouge1": 0.3357664233576642,
+            "rouge2": 0.059259259259259255,
+            "rougeL": 0.16058394160583941
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            11
+          ],
+          "retrieval_precision": 0.30859375,
+          "retrieval_recall": 0.395
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The team decided not to use LCD displays because incorporating them would require an advanced and more costly chip. The decision was influenced by the goal of maintaining simplicity and ease of use, as indicated by the Project Manager's emphasis on avoiding overly complex designs compared to existing remote controls. Additionally, the manufacturing department's limitations in advanced techniques further supported the decision against using LCD displays.",
+          "rouge_f1": {
+            "rouge1": 0.24427480916030533,
+            "rouge2": 0.07751937984496124,
+            "rougeL": 0.15267175572519082
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            11,
+            7,
+            24
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 0.395
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls due to the limitations imposed by the chosen design. Specifically, the Industrial Designer mentioned that if the team opts for the double-curved design, there are no flat areas available to incorporate LCD displays or scroll-wheels (Excerpt 292). Additionally, using the advanced chip required for LCD displays would increase costs, and the team was considering cost implications (Excerpts 309-310). Therefore, the decision against using LCD displays was influenced by both design constraints and cost considerations.",
+          "rouge_f1": {
+            "rouge1": 0.28947368421052627,
+            "rouge2": 0.09333333333333332,
+            "rougeL": 0.17105263157894737
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            11,
+            7,
+            24,
+            14,
+            25,
+            18,
+            6
+          ],
+          "retrieval_precision": 0.0771484375,
+          "retrieval_recall": 0.395
+        },
+        "lumber__dense__w512": {
+          "answer": "The team did not explicitly decide not to use LCD displays when discussing interface controls based on the provided excerpts. There is insufficient evidence to determine why LCD displays were not used or considered for the interface controls.",
+          "rouge_f1": {
+            "rouge1": 0.19801980198019803,
+            "rouge2": 0.08080808080808081,
+            "rougeL": 0.13861386138613863
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls due to cost considerations and the belief that such displays were unnecessary since TV screens could already show channel and volume information. Specifically, User Interface stated, \"I don't think you need it on a display,\" and further emphasized, \"Especially when when we have to look at a cost, I don't think uh,\" indicating concern over expenses. Additionally, Industrial Designer agreed, stating, \"I don't think either.\" They concluded that basic functionality could suffice without the added complexity and cost of LCD displays.",
+          "rouge_f1": {
+            "rouge1": 0.289308176100629,
+            "rouge2": 0.06369426751592357,
+            "rougeL": 0.1509433962264151
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            9,
+            23,
+            11
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.64
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls due to cost considerations and the belief that such displays were not necessary since all TVs can display digital information on-screen. Specifically, User Interface stated, \"Especially when when we have to look at a cost, I don't think uh,\" and \"any TV can uh can uh view a digit on uh on screen.\" Additionally, Industrial Designer agreed, saying, \"I don't think you need it.\"",
+          "rouge_f1": {
+            "rouge1": 0.2535211267605634,
+            "rouge2": 0.05714285714285715,
+            "rougeL": 0.14084507042253522
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            9,
+            23,
+            11,
+            2,
+            28,
+            41,
+            20
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.64
+        },
+        "lumber__bm25__w512": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls because they believed the advanced version required for LCD displays was more costly, and they felt that the display wasn't necessary given that the information could be viewed on a TV screen. Additionally, User Interface expressed concern over costs, suggesting that omitting the LCD display would help reduce expenses.",
+          "rouge_f1": {
+            "rouge1": 0.32,
+            "rouge2": 0.08130081300813008,
+            "rougeL": 0.192
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            40,
+            17
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.64
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls due to the limitations posed by the design of the remote control, which included the absence of flat areas necessary for integrating such displays, as mentioned by the Industrial Designer in excerpt [292]. Additionally, concerns over cost were raised by both the User Interface and the Industrial Designer, suggesting that the inclusion of LCD displays might increase expenses ([315], [318], [319]).",
+          "rouge_f1": {
+            "rouge1": 0.20588235294117646,
+            "rouge2": 0.07462686567164178,
+            "rougeL": 0.1323529411764706
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            40,
+            17,
+            4,
+            22
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.64
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls because they opted for a simpler design that focused on ease of use and cost considerations. Specifically, the Industrial Designer mentioned that incorporating LCD displays would require the advanced version of the chip, which is more expensive. Additionally, the User Interface suggested that an LCD display wasn't necessary since TVs already display digits on-screen, and considering costs, they believed the display wasn't essential. Therefore, they chose the regular chip over the advanced one, leading to the decision against using LCD displays.",
+          "rouge_f1": {
+            "rouge1": 0.31446540880503143,
+            "rouge2": 0.06369426751592357,
+            "rougeL": 0.2138364779874214
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            40,
+            17,
+            4,
+            22,
+            43,
+            11,
+            16
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.64
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The team decided not to use LCD displays because they deemed it unnecessary to display information such as the selected channel or volume level, and using the advanced version required for LCD displays would increase costs. User Interface specifically stated, \"I don't think you need it on a display,\" suggesting that the information displayed could be managed without an LCD.",
+          "rouge_f1": {
+            "rouge1": 0.3548387096774194,
+            "rouge2": 0.09836065573770492,
+            "rougeL": 0.1935483870967742
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            23
+          ],
+          "retrieval_precision": 0.37890625,
+          "retrieval_recall": 0.485
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls due to the curvature of the remote design, which did not allow for flat areas necessary to incorporate such displays. Additionally, concerns over cost and the redundancy of having a display since TV screens could show similar information influenced the decision.",
+          "rouge_f1": {
+            "rouge1": 0.1896551724137931,
+            "rouge2": 0.05263157894736842,
+            "rougeL": 0.12068965517241378
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            23,
+            11,
+            22
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.64
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls due to the limitations imposed by the curved design of the remote control, which did not provide flat areas necessary for integrating such displays. Additionally, the team believed that LCD displays did not add significant value and considering cost constraints, they opted against including them.",
+          "rouge_f1": {
+            "rouge1": 0.23333333333333334,
+            "rouge2": 0.06779661016949153,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            17,
+            23,
+            11,
+            22,
+            28,
+            41,
+            43
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.64
+        }
+      }
+    }
+  ]
+}

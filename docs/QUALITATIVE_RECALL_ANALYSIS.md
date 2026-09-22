@@ -23,10 +23,10 @@ meeting-level comparison.
 
 Primary artifacts:
 
-- [retrieval summary](../runs/ablations/full/retrieval/summary.json)
-- [retrieved-answer evaluation](../runs/ablations/full/evaluation/retrieval-14b.json)
-- [oracle-14B evaluation](../runs/ablations/full/evaluation/oracle-14b.json)
-- [selected-condition review](../runs/ablations/full/review-selection.md)
+- [retrieval summary](../runs/ablations/validation-full/retrieval/summary.json)
+- [retrieved-answer evaluation](../runs/ablations/validation-full/evaluation/retrieval-14b.json)
+- [oracle-14B evaluation](../runs/ablations/validation-full/evaluation/oracle-14b.json)
+- [qualitative review workbook](../runs/ablations/full/qualitative-review.xlsx)
 
 ## Aggregate result
 
@@ -115,9 +115,9 @@ shared entities and propositions. A missing subtopic has little effect on the
 average matching score. This is the clearest reason not to interpret a
 0.001-level BERTScore difference as equal completeness.
 
-Artifacts: [retrieval](../runs/ablations/full/retrieval/education_18.json),
-[retrieved answer](../runs/ablations/full/answers/retrieval-14b/education_18.json),
-[oracle answer](../runs/ablations/full/answers/oracle-14b/education_18.json).
+Artifacts: [retrieval](../runs/ablations/validation-full/retrieval/education_18.json),
+[retrieved answer](../runs/ablations/validation-full/answers/retrieval-14b/education_18.json),
+[oracle answer](../runs/ablations/validation-full/answers/oracle-14b/education_18.json).
 
 ## Case 2: zero recall but almost identical ROUGE-L
 
@@ -139,9 +139,9 @@ The oracle is not perfect either: it covers voice-controlled location but
 omits the sticky pad, so the judge assigns 2 rather than 3. A low oracle ROUGE
 ceiling makes the retrieved-oracle gap look smaller still.
 
-Artifacts: [retrieval](../runs/ablations/full/retrieval/ES2009b.json),
-[retrieved answer](../runs/ablations/full/answers/retrieval-14b/ES2009b.json),
-[oracle answer](../runs/ablations/full/answers/oracle-14b/ES2009b.json).
+Artifacts: [retrieval](../runs/ablations/validation-full/retrieval/ES2009b.json),
+[retrieved answer](../runs/ablations/validation-full/answers/retrieval-14b/ES2009b.json),
+[oracle answer](../runs/ablations/validation-full/answers/oracle-14b/ES2009b.json).
 
 ## Case 3: low numerical recall can contain a concentrated answer
 
@@ -166,9 +166,9 @@ A score of 2 appears more defensible than the saved 3.
 rather than total evidence failure. It also shows that the LLM judge can
 over-credit a fluent, topically correct answer.
 
-Artifacts: [retrieval](../runs/ablations/full/retrieval/IS1006c.json),
-[retrieved answer](../runs/ablations/full/answers/retrieval-14b/IS1006c.json),
-[oracle answer](../runs/ablations/full/answers/oracle-14b/IS1006c.json).
+Artifacts: [retrieval](../runs/ablations/validation-full/retrieval/IS1006c.json),
+[retrieved answer](../runs/ablations/validation-full/answers/retrieval-14b/IS1006c.json),
+[oracle answer](../runs/ablations/validation-full/answers/oracle-14b/IS1006c.json).
 
 ## Case 4: full recall is not enough when precision is low
 
@@ -192,9 +192,9 @@ the included evidence correctly. The saved judge score of 1 may be harsh—the
 retrieved answer contains some correct core information—so this case also
 illustrates judge noise.
 
-Artifacts: [retrieval](../runs/ablations/full/retrieval/TS3010b.json),
-[retrieved answer](../runs/ablations/full/answers/retrieval-14b/TS3010b.json),
-[oracle answer](../runs/ablations/full/answers/oracle-14b/TS3010b.json).
+Artifacts: [retrieval](../runs/ablations/validation-full/retrieval/TS3010b.json),
+[retrieved answer](../runs/ablations/validation-full/answers/retrieval-14b/TS3010b.json),
+[oracle answer](../runs/ablations/validation-full/answers/oracle-14b/TS3010b.json).
 
 ## Case 5: apparent QMSum span error reverses the comparison
 
@@ -218,9 +218,9 @@ annotation mismatch in the checked-in QMSum file. Because the same span drives
 recall, oracle evidence, and judge context, one label error distorts all three.
 
 The raw record is `data/raw/qmsum/data/ALL/val/TS3010c.json` (local data,
-ignored by Git). Related artifacts: [retrieval](../runs/ablations/full/retrieval/TS3010c.json),
-[retrieved answer](../runs/ablations/full/answers/retrieval-14b/TS3010c.json),
-[oracle answer](../runs/ablations/full/answers/oracle-14b/TS3010c.json).
+ignored by Git). Related artifacts: [retrieval](../runs/ablations/validation-full/retrieval/TS3010c.json),
+[retrieved answer](../runs/ablations/validation-full/answers/retrieval-14b/TS3010c.json),
+[oracle answer](../runs/ablations/validation-full/answers/oracle-14b/TS3010c.json).
 
 Do not silently remove or relabel this case after seeing its outcome. A
 defensible response is to define a fixed audit rule for all suspicious cases,

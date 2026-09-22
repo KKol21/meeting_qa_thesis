@@ -1,0 +1,2531 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "Bmr014.json",
+        "sha256": "d7c6a51500678eedbc83cd694cd4bc4681e0e15a50909e90fb5e9346106c475e"
+      },
+      "retrieval": {
+        "file": "Bmr014.json",
+        "sha256": "187985503a597bb2a388632b79f3fa985c878217cb0751461a257387feb87f4e"
+      },
+      "segmentation": {
+        "file": "Bmr014.json",
+        "sha256": "5b43692c1ba12a589f7244d1624d4fb1650af9233622c84b5fcac81163d50733"
+      }
+    },
+    "input_hash": "4581455e5408248894cfdc9bfabaeca47e2f145d8b05fd77816a817024ea56bf",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "c3b6eca4af15a7cdd2b5a5b9d27c3f7f7234a5ec35be288da4a22ec5f048a2cd",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bmr014",
+  "question_count": 4,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 105,
+  "cache_hits": 3,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What was said about the equipment?",
+      "reference_answer": "The group discussed recording equipment issues, including the purchase of two additional headsets and the prospect of getting a new base station and a set of wireless microphones to replace those wired microphones currently in use.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Grad C mentioned that two new microphones were installed and were being assembled. They also suggested getting more comfortable headsets and possibly another wireless setup due to its perceived superiority over the wired option. Additionally, Grad C clarified that any necessary modifications to the headsets would be done professionally rather than by hand-soldering.",
+          "rouge_f1": {
+            "rouge1": 0.28888888888888886,
+            "rouge2": 0.022727272727272724,
+            "rougeL": 0.15555555555555556
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.458984375,
+          "retrieval_recall": 0.415929203539823
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Grad C mentioned that two new microphones were installed and were being assembled. There was a discussion about possibly getting more comfortable headsets and considering another wireless setup instead of the current wired microphones. The group decided to replace the existing wired microphones with wireless ones, potentially increasing the number of channels from 5 (with one more incoming) to up to 9 by purchasing an additional base station and more wireless microphones. The cost for the base station was estimated at $900, with each channel costing around $800. Additionally, there was concern about the reliability of the wired microphones, leading to a preference for the Sony radio mikes due to their good quality, despite battery issues needing attention. The group also discussed changing headsets, which would involve professional modification rather than hand-soldering.",
+          "rouge_f1": {
+            "rouge1": 0.3313609467455621,
+            "rouge2": 0.08383233532934131,
+            "rougeL": 0.14201183431952663
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            5,
+            6,
+            7,
+            8
+          ],
+          "retrieval_precision": 0.5517578125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Postdoc F mentioned wanting to ask about audio monitoring on some of the equipment, specifically inquiring about certain equipment but without providing detailed specifics. Grad C discussed the current setup of microphones and channels, mentioning the replacement of wired microphones with wireless ones, aiming for up to nine channels. They also talked about the reliability of Sony radio mikes and the importance of battery management. Additionally, there was a discussion about potentially changing headsets and connectors, which would be professionally handled rather than by hand-soldering.",
+          "rouge_f1": {
+            "rouge1": 0.3278688524590164,
+            "rouge2": 0.049999999999999996,
+            "rougeL": 0.14754098360655737
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            5,
+            6,
+            7,
+            8,
+            27,
+            26,
+            0,
+            55,
+            23
+          ],
+          "retrieval_precision": 0.27587890625,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Postdoc F mentioned wanting to ask about audio monitoring on some of the equipment, specifically referring to \"some of the equipment\" but did not provide further details beyond that initial inquiry.",
+          "rouge_f1": {
+            "rouge1": 0.1791044776119403,
+            "rouge2": 0.0,
+            "rougeL": 0.11940298507462685
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            51,
+            32
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Postdoc F mentioned concerns about audio monitoring on some of the equipment, specifically asking about it but not providing further details. There were no other specific comments about the equipment beyond this inquiry.",
+          "rouge_f1": {
+            "rouge1": 0.11594202898550725,
+            "rouge2": 0.0,
+            "rougeL": 0.08695652173913043
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            51,
+            32,
+            27,
+            38
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Postdoc F mentioned audio monitoring on some of the equipment, specifically expressing concern about certain aspects of the equipment. Additionally, Professor E discussed radio-mikes and the potential need for changes to the headsets, including concerns about hand-soldering. Grad C clarified that they are having others handle the modifications instead of doing it themselves.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.02247191011235955,
+            "rougeL": 0.15384615384615383
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            51,
+            32,
+            27,
+            38,
+            16,
+            37,
+            52,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Postdoc F mentioned wanting to ask about audio monitoring on some of the equipment, specifically referring to \"that\" equipment, though the exact type wasn't specified. Later, there was a discussion about modifying headsets, likely part of the equipment in use, where Grad C clarified that professional repair shop personnel would handle the modifications rather than doing it themselves.",
+          "rouge_f1": {
+            "rouge1": 0.2526315789473684,
+            "rouge2": 0.02150537634408602,
+            "rougeL": 0.1473684210526316
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            9,
+            27
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Postdoc F mentioned concern about audio monitoring on some of the equipment, specifically asking about it. Additionally, there was discussion regarding professional modification of headsets, including potential hand-soldering, which would be handled by a repair shop or maintenance team rather than being done by Grad C personally.",
+          "rouge_f1": {
+            "rouge1": 0.21428571428571427,
+            "rouge2": 0.0,
+            "rougeL": 0.11904761904761905
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            9,
+            27,
+            32,
+            5
+          ],
+          "retrieval_precision": 0.0126953125,
+          "retrieval_recall": 0.023008849557522124
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Postdoc F mentioned wanting to ask about audio monitoring on some of the equipment, specifically noting that there were issues with some of the equipment. Grad C discussed the status of new microphones being assembled and the potential change in headsets, mentioning that the modification of headsets would be done professionally by a repair shop. Additionally, there was discussion about the recognizer having problems with long chunks of speech due to memory constraints.",
+          "rouge_f1": {
+            "rouge1": 0.3119266055045872,
+            "rouge2": 0.018691588785046724,
+            "rougeL": 0.2018348623853211
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            9,
+            27,
+            32,
+            5,
+            37,
+            53,
+            38,
+            23
+          ],
+          "retrieval_precision": 0.0869140625,
+          "retrieval_recall": 0.31504424778761064
+        },
+        "word_packed__dense__w512": {
+          "answer": "The discussion about the equipment focused on the cost and replacement of existing wired microphones with wireless ones. Specifically, Grad C mentioned that the base station costs $900 and each channel costs $800. They also discussed replacing some non-functioning wired microphones with wireless ones, noting that the team has had positive experiences with Sony radio microphones. Additionally, there was a brief mention of professional modification of headsets to accommodate the new equipment.",
+          "rouge_f1": {
+            "rouge1": 0.4036697247706422,
+            "rouge2": 0.03738317757009345,
+            "rougeL": 0.22018348623853212
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            6
+          ],
+          "retrieval_precision": 0.365234375,
+          "retrieval_recall": 0.3309734513274336
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The participants discussed the status of microphones and channels, mentioning that two new microphones were being assembled and would be picked up the next day. They noted the cost of the base station ($900) and each channel ($800). There was a plan to replace some wired microphones with wireless ones, and they emphasized the importance of battery management for the Sony radio mikes. The quality of the Sony radio mikes was described as good, and there was a suggestion to discuss this setup with other institutions like SRI and UW.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333337,
+            "rouge2": 0.04838709677419355,
+            "rougeL": 0.25396825396825395
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            6,
+            4,
+            7
+          ],
+          "retrieval_precision": 0.3017578125,
+          "retrieval_recall": 0.5469026548672566
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Postdoc F mentioned audio monitoring on some of the equipment, specifically asking about it. Grad C discussed the status of microphones and channels, mentioning new microphones being assembled and the possibility of getting another wireless setup to replace wired microphones. The group considered the costs and benefits of wireless versus wired microphones, noting issues with wired microphones and the reliability of Sony radio mikes. They also talked about the importance of battery management for the wireless mikes.",
+          "rouge_f1": {
+            "rouge1": 0.35398230088495575,
+            "rouge2": 0.10810810810810811,
+            "rougeL": 0.24778761061946902
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            6,
+            4,
+            7,
+            24,
+            5,
+            23,
+            0
+          ],
+          "retrieval_precision": 0.27587890625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Postdoc F mentioned wanting to ask about audio monitoring on some of the equipment, specifically noting concerns about the ability to edit parts of the meeting that individuals found offensive, whether they were spoken by themselves or others. This was discussed in relation to consent forms and the ease of specifying bleep parts either through manual editing or by having a document to edit.",
+          "rouge_f1": {
+            "rouge1": 0.24000000000000005,
+            "rouge2": 0.020408163265306124,
+            "rougeL": 0.18
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            29
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Postdoc F mentioned concerns about audio monitoring on some of the equipment, specifically noting issues related to the accuracy of transcripts and the potential for misinterpretation of audio recordings. They discussed the possibility of people wanting to edit out parts of meetings they found offensive, regardless of whether they spoke those parts or not, and the importance of having a facility to listen to recordings for verification purposes.",
+          "rouge_f1": {
+            "rouge1": 0.2884615384615385,
+            "rouge2": 0.0196078431372549,
+            "rougeL": 0.21153846153846156
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            29,
+            45,
+            28
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Postdoc F mentioned concerns about audio monitoring on some of the equipment, specifically noting issues with the accuracy of transcripts compared to actual audio recordings. They highlighted a case where words were visible in the transcript but the tone or meaning was lost, leading to potential misunderstandings.",
+          "rouge_f1": {
+            "rouge1": 0.26506024096385544,
+            "rouge2": 0.0,
+            "rougeL": 0.16867469879518074
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            29,
+            45,
+            28,
+            24,
+            32,
+            38,
+            34
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Postdoc F mentioned wanting to ask about audio monitoring on some of the equipment, specifically noting an interest in monitoring certain equipment, though the exact type was not specified due to an interruption.",
+          "rouge_f1": {
+            "rouge1": 0.17391304347826086,
+            "rouge2": 0.0,
+            "rougeL": 0.11594202898550725
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            24
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Postdoc F mentioned concerns about audio monitoring on some of the equipment, specifically asking about it. Professor E later noted that their experience with Sony radio-mikes has been quite positive. Additionally, there was discussion about modifying headsets, which would involve professional handling rather than personal hand-soldering.",
+          "rouge_f1": {
+            "rouge1": 0.14285714285714288,
+            "rouge2": 0.0,
+            "rougeL": 0.09523809523809525
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            24,
+            8,
+            28
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Postdoc F mentioned concerns about audio monitoring on some of the equipment, specifically referring to the equipment used in the sessions. Grad C discussed modifying headsets, clarifying that professional repair shop personnel would handle the modifications rather than personal hand-soldering. Additionally, Professor E expressed positive experiences with Sony radio-mikes previously used in the project.",
+          "rouge_f1": {
+            "rouge1": 0.2391304347826087,
+            "rouge2": 0.0,
+            "rougeL": 0.13043478260869565
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            24,
+            8,
+            28,
+            29,
+            23,
+            32,
+            21
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w512": {
+          "answer": "Professor E mentioned that they've had more problems with certain equipment, specifically referring to \"the Jimbox thing.\" However, they found a reliable way of getting data through Sony radio microphones, emphasizing the importance of being conscious about the batteries. Grad C raised concerns about changing the headsets, which initially seemed to involve hand-soldering, but it was clarified that professionals would handle the modifications.",
+          "rouge_f1": {
+            "rouge1": 0.21782178217821782,
+            "rouge2": 0.020202020202020204,
+            "rougeL": 0.11881188118811883
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            6
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "Grad C mentioned that two new microphones were installed and were being assembled. They also discussed the possibility of replacing wired microphones with wireless setups, suggesting the purchase of an additional base station and more wireless microphones to increase the number of channels from six to nine. The cost for the base station was estimated at $900, with each channel costing around $800. Additionally, there was a discussion about the reliability of Sony radio microphones and the importance of managing battery life.",
+          "rouge_f1": {
+            "rouge1": 0.37288135593220345,
+            "rouge2": 0.13793103448275862,
+            "rougeL": 0.22033898305084748
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            6,
+            3,
+            4
+          ],
+          "retrieval_precision": 0.431640625,
+          "retrieval_recall": 0.7823008849557522
+        },
+        "lumber__dense__w2048": {
+          "answer": "Grad C mentioned that two new microphones have been installed and are being assembled. They also discussed the possibility of replacing wired microphones with wireless ones, suggesting the purchase of another base station and additional wireless microphones. The cost for a base station was estimated at around $900, with each channel costing approximately $800. Additionally, there was a discussion about evaluating the comfort of other headsets and possibly acquiring them if they were deemed more comfortable. The group expressed satisfaction with the Sony radio mikes, noting that battery management is crucial for their operation.",
+          "rouge_f1": {
+            "rouge1": 0.36923076923076914,
+            "rouge2": 0.125,
+            "rougeL": 0.16923076923076924
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            6,
+            3,
+            4,
+            21,
+            18,
+            43
+          ],
+          "retrieval_precision": 0.228515625,
+          "retrieval_recall": 0.8283185840707965
+        },
+        "lumber__bm25__w512": {
+          "answer": "The excerpts provided do not contain any information about the equipment used or discussed during the meeting. The conversation revolves around editing meeting recordings, consent forms, and the accuracy of transcripts. Therefore, the evidence is insufficient to answer the question about what was said about the equipment.",
+          "rouge_f1": {
+            "rouge1": 0.24096385542168677,
+            "rouge2": 0.024691358024691357,
+            "rougeL": 0.16867469879518074
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            24
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Postdoc F mentioned concerns about audio monitoring on some of the equipment, specifically noting that there are sometimes big spikes on particular things during recorded meetings. This indicates an issue with the audio quality or recording process that needs attention.",
+          "rouge_f1": {
+            "rouge1": 0.15789473684210525,
+            "rouge2": 0.0,
+            "rougeL": 0.10526315789473685
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            24,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Postdoc F mentioned concerns about audio monitoring on some of the equipment, specifically noting \"big spikes\" in certain recordings. These spikes were described as instantaneous click-type noises, potentially caused by issues with wired microphones or connectors. The group discussed possible causes including touching and fiddling with the equipment, and suggested conducting tests to identify the source of the spikes.",
+          "rouge_f1": {
+            "rouge1": 0.3541666666666667,
+            "rouge2": 0.06382978723404256,
+            "rougeL": 0.16666666666666669
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            24,
+            1,
+            43,
+            22
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The conversation mentioned concerns over changing headsets, specifically the connectors, which initially seemed to require hand-soldering. However, it was clarified that professionals from a repair shop or maintenance team would handle the modifications. There was no further detailed discussion about the specific equipment beyond this context.",
+          "rouge_f1": {
+            "rouge1": 0.19277108433734938,
+            "rouge2": 0.0,
+            "rougeL": 0.09638554216867469
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            43
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Postdoc F mentioned concerns about audio monitoring on some of the equipment, specifically noting there were sometimes big spikes in the recordings of meetings that had already been recorded. Additionally, Professor E discussed the team's positive experience with Sony radio-mikes and mentioned plans to change the headsets, likely involving professional modification of the connectors.",
+          "rouge_f1": {
+            "rouge1": 0.30434782608695654,
+            "rouge2": 0.0,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            43,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Postdoc F mentioned issues with audio monitoring on some equipment, specifically noting \"big spikes\" in recordings. Grad C suggested these spikes could be due to touching and fiddling or connector issues with wired microphones. Additionally, Grad C discussed the status of microphones and channels, mentioning the installation of two new microphones and considering the purchase of additional wireless setups to replace wired microphones.",
+          "rouge_f1": {
+            "rouge1": 0.4646464646464646,
+            "rouge2": 0.10309278350515463,
+            "rougeL": 0.30303030303030304
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            43,
+            1,
+            3,
+            22
+          ],
+          "retrieval_precision": 0.15673828125,
+          "retrieval_recall": 0.5681415929203539
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the team say about recording conventions?",
+      "reference_answer": "Efforts will be made to ensure that recording conventions are consistent across ICSI, the University of Washington, and SRI.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The team discussed recording conventions in relation to editing parts of the meeting that participants do not want to include. Grad C mentioned wanting to discuss how to get people to edit these sections and sought opinions on finishing this process. No specific recording conventions were detailed beyond the intention to exclude certain segments from the final recordings.",
+          "rouge_f1": {
+            "rouge1": 0.1818181818181818,
+            "rouge2": 0.02666666666666667,
+            "rougeL": 0.12987012987012989
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            0,
+            19
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The team discussed recording conventions indirectly through comments on transcription processes and recording statuses. Specifically, Grad C mentioned the need to edit parts of the meeting that participants do not want to include, indicating a convention for handling bleeped or excluded content. Additionally, Postdoc F noted the importance of spot-checking transcriptions for consistency, suggesting a convention for ensuring transcription accuracy. However, explicit details about recording conventions were not provided in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.1935483870967742,
+            "rouge2": 0.02197802197802198,
+            "rougeL": 0.10752688172043011
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            0,
+            19,
+            12,
+            22
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The team discussed recording conventions in relation to editing and approving transcriptions. Specifically, Grad C mentioned wanting to discuss how to get people to edit parts of the meeting that they don't want to include. Additionally, it was noted that an email approval was considered sufficient, rather than requiring signatures. Participants also agreed that individuals should be allowed to bleep out sections of a meeting where they weren't speaking if they felt strongly about it.",
+          "rouge_f1": {
+            "rouge1": 0.16666666666666669,
+            "rouge2": 0.02127659574468085,
+            "rougeL": 0.08333333333333334
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            0,
+            19,
+            12,
+            22,
+            7,
+            9,
+            26,
+            31,
+            2
+          ],
+          "retrieval_precision": 0.072265625,
+          "retrieval_recall": 0.556390977443609
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The team discussed recording conventions in the context of ensuring the consistency and quality of transcriptions. Specifically, Postdoc F mentioned the need to incorporate new conventions for handling numbers and acronyms as requested by Liz, ensuring that the markup is consistent throughout the transcripts. For example, they discussed how numbers should be systematically handled, such as writing \"ninety-two\" as \"nine two.\"",
+          "rouge_f1": {
+            "rouge1": 0.2469135802469136,
+            "rouge2": 0.05063291139240506,
+            "rougeL": 0.1234567901234568
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            13,
+            54
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The team discussed recording conventions in the context of ensuring the data's cleanliness and consistency during transcription. Specifically, Postdoc F mentioned incorporating new conventions for handling numbers and acronyms as requested by Liz, such as systematically writing out numbers (e.g., \"ninety-two\" instead of \"92\").",
+          "rouge_f1": {
+            "rouge1": 0.21212121212121215,
+            "rouge2": 0.03125,
+            "rougeL": 0.15151515151515152
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            13,
+            54,
+            32,
+            29
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The team discussed recording conventions in relation to ensuring the quality and consistency of transcriptions. Specifically, Postdoc F mentioned the need to establish conventions for handling numbers and acronyms systematically, such as consistently writing \"ninety-two\" as \"nine two.\" Additionally, there was a discussion about the process of cleaning the data, which includes spell-checking, ensuring consistent markup, and incorporating new conventions requested by Liz.",
+          "rouge_f1": {
+            "rouge1": 0.19047619047619047,
+            "rouge2": 0.04878048780487805,
+            "rougeL": 0.16666666666666669
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            13,
+            54,
+            32,
+            29,
+            10,
+            12,
+            45,
+            55,
+            14
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The team discussed the status of recordings and transcriptions but did not specify any particular recording conventions. Professor E mentioned the need to discuss the status of the corpus, including transcriptions and recordings, indicating an awareness of the importance of these elements but without detailing specific conventions.",
+          "rouge_f1": {
+            "rouge1": 0.1818181818181818,
+            "rouge2": 0.03125,
+            "rougeL": 0.15151515151515152
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            12,
+            19
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team discussed recording conventions indirectly through mentions of transcription processes and data cleaning. Specifically, Professor E mentioned the importance of ensuring recording quality, noting that in a professional setting, one would check for issues like unwanted performance artifacts. Additionally, Postdoc F highlighted the need for spot-checking transcriptions for consistency, indicating established conventions for transcription accuracy within the team. However, no explicit detailed recording conventions were outlined in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.1758241758241758,
+            "rouge2": 0.022471910112359553,
+            "rougeL": 0.10989010989010987
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            12,
+            19,
+            32,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team discussed recording conventions in relation to editing parts of meetings that participants do not want included. Grad C mentioned that if someone feels strongly about it, they should be allowed to edit out sections of a meeting where they were speaking. Additionally, there was a discussion about the possibility of allowing participants to edit out other people's contributions if they consider a conversation private, aligning with the consent forms that allowed participants to edit out offensive content, regardless of whether they were the speakers or not.",
+          "rouge_f1": {
+            "rouge1": 0.12962962962962962,
+            "rouge2": 0.018867924528301886,
+            "rougeL": 0.07407407407407407
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            12,
+            19,
+            32,
+            10,
+            5,
+            13,
+            31,
+            0,
+            55,
+            29
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The team discussed recording conventions indirectly through Professor E's mention of wanting to discuss the status of microphones and channels within the context of the recording and transcription of the corpus. However, specific details about recording conventions were not elaborated upon in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.1846153846153846,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.15384615384615385
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The team discussed recording conventions indirectly through updates on the status of recordings and transcription progress. Specifically, Postdoc F mentioned the importance of ensuring the recordings are \"clean\" and \"channelized,\" indicating a focus on quality and organization of the recorded data. Additionally, there was mention of tightening up the boundaries of the time bins and achieving speech-nonspeech segmentation, suggesting established conventions for processing and analyzing the recordings. However, explicit details about specific recording conventions were not provided in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.13861386138613863,
+            "rouge2": 0.0202020202020202,
+            "rougeL": 0.11881188118811879
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            2,
+            11,
+            17
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Grad C suggested a method for handling the editing of parts of the meeting that participants do not want to include. They proposed that each participant would have a single username and password to access only the meetings they attended, addressing privacy concerns. However, Professor E expressed some skepticism about the complexity of this approach, suggesting that a simpler method, such as reviewing transcriptions on paper, might suffice since the need to exclude parts of the recording would likely be rare.",
+          "rouge_f1": {
+            "rouge1": 0.14,
+            "rouge2": 0.0,
+            "rougeL": 0.08
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            2,
+            11,
+            17,
+            0,
+            20,
+            9,
+            23
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The team discussed recording conventions in the context of ensuring the data was clean, consistent, and incorporated additional conventions requested, such as a systematic handling of numbers and acronyms. Postdoc F mentioned the need to ensure the markup was consistent throughout and to incorporate new conventions for numbers (e.g., \"ninety-two\" should be systematically handled as \"nine two\").",
+          "rouge_f1": {
+            "rouge1": 0.23076923076923078,
+            "rouge2": 0.05263157894736842,
+            "rougeL": 0.1282051282051282
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            2
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The team discussed recording conventions in the context of ensuring the data were clean, consistent, and incorporated additional conventions requested, such as a systematic handling of numbers and acronyms. Postdoc F mentioned the need to ensure the mark-up was consistent throughout and that the data were spell-checked. They also addressed the issue of editing offensive content from recordings based on consent forms that allowed participants to edit parts they found offensive.",
+          "rouge_f1": {
+            "rouge1": 0.1956521739130435,
+            "rouge2": 0.04444444444444444,
+            "rougeL": 0.10869565217391304
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            2,
+            48,
+            29
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The team discussed recording conventions in relation to ensuring the data were clean, spell-checked, and consistently marked-up. They also mentioned incorporating additional conventions for handling numbers and acronyms systematically, as requested by Liz. For example, they agreed to standardize the representation of numbers, such as writing \"ninety-two\" as \"nine two.\"",
+          "rouge_f1": {
+            "rouge1": 0.22222222222222224,
+            "rouge2": 0.05714285714285715,
+            "rougeL": 0.13888888888888887
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            2,
+            48,
+            29,
+            11,
+            9,
+            26,
+            40
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The team discussed the status of recordings and had around 35 hours of recordings as of the meeting, including digit recordings. However, specific recording conventions were not detailed in the provided excerpts. The evidence is insufficient to describe any particular recording conventions discussed by the team.",
+          "rouge_f1": {
+            "rouge1": 0.1846153846153846,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.12307692307692308
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            11
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The team discussed recording conventions indirectly through updates on the recording status and quality assurance processes. Postdoc F mentioned that they have been working on cleaning and channelizing the data, ensuring it is ready for use by other team members. Additionally, Postdoc F highlighted the importance of spot-checking transcriptions for consistency, indicating that transcription conventions were being adhered to closely. However, specific details about the recording conventions themselves were not explicitly outlined in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.20833333333333334,
+            "rouge2": 0.02127659574468085,
+            "rougeL": 0.10416666666666667
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            11,
+            17,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The team discussed recording conventions in relation to transcriptions and data handling. Specifically, Postdoc F mentioned the need to incorporate additional conventions for handling numbers and acronyms consistently across transcripts. For example, they agreed to standardize the representation of numbers like \"ninety-two\" to \"nine two.\" Additionally, there was a discussion about allowing participants to bleep out sections of meetings where they were not speaking, provided it did not disrupt the integrity of conversations involving others.",
+          "rouge_f1": {
+            "rouge1": 0.16842105263157894,
+            "rouge2": 0.04301075268817204,
+            "rougeL": 0.1263157894736842
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            2,
+            11,
+            17,
+            9,
+            12,
+            48,
+            28,
+            4
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The evidence is insufficient to determine what the team said about recording conventions. The provided excerpts do not contain any discussion related to recording conventions.",
+          "rouge_f1": {
+            "rouge1": 0.1818181818181818,
+            "rouge2": 0.04761904761904762,
+            "rougeL": 0.1818181818181818
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8
+          ],
+          "retrieval_precision": 0.10546875,
+          "retrieval_recall": 0.20300751879699247
+        },
+        "lumber__dense__w1024": {
+          "answer": "The meeting excerpts provided do not contain any specific discussion about recording conventions. The conversation primarily revolves around technical issues, project updates, and logistical planning related to the project, but there is no mention of recording conventions. Therefore, the evidence is insufficient to answer the question.",
+          "rouge_f1": {
+            "rouge1": 0.1846153846153846,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.12307692307692308
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8,
+            6
+          ],
+          "retrieval_precision": 0.091796875,
+          "retrieval_recall": 0.3533834586466165
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team discussed recording conventions indirectly through the mention of ensuring data consistency and incorporating specific conventions for handling numbers and acronyms during transcription. Postdoc F mentioned the need to ensure that the transcribed data are clean, spell-checked, and consistently marked up, including a systematic handling of numbers and acronyms as requested by Liz. For example, they agreed to standardize the representation of numbers like \"ninety-two\" to \"nine two.\"",
+          "rouge_f1": {
+            "rouge1": 0.2222222222222222,
+            "rouge2": 0.06818181818181819,
+            "rougeL": 0.15555555555555553
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8,
+            6,
+            43,
+            11,
+            3
+          ],
+          "retrieval_precision": 0.10546875,
+          "retrieval_recall": 0.8120300751879699
+        },
+        "lumber__bm25__w512": {
+          "answer": "The team discussed incorporating additional conventions for recording, specifically mentioning a systematic handling of numbers and acronyms. For numbers, instead of writing out the full word (e.g., \"ninety-two\"), the convention now involves writing them as digits followed by a gloss (e.g., \"92\"). This ensures consistency across the transcripts.",
+          "rouge_f1": {
+            "rouge1": 0.22857142857142856,
+            "rouge2": 0.029411764705882353,
+            "rougeL": 0.14285714285714285
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            43
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The team discussed incorporating additional conventions for recording, specifically mentioning a systematic handling of numbers and acronyms. For example, instead of writing \"ninety-two,\" they decided to use a consistent format to ensure clarity and consistency across transcripts. Additionally, there was a discussion about allowing participants to bleep out sections of meetings where they weren't speaking, provided both sides of the conversation are appropriately handled to maintain privacy and consent guidelines.",
+          "rouge_f1": {
+            "rouge1": 0.21978021978021975,
+            "rouge2": 0.04494382022471911,
+            "rougeL": 0.13186813186813187
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            43,
+            24
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The team discussed allowing participants to edit out sections of a meeting where they were not speaking if they felt strongly about it. They agreed that if someone objects to a conversation, they should be able to bleep out their side of the conversation to maintain privacy. This decision aligns with the consent forms that participants signed, which allowed for editing out offensive content regardless of whether they said it or not.",
+          "rouge_f1": {
+            "rouge1": 0.10989010989010987,
+            "rouge2": 0.0,
+            "rougeL": 0.0879120879120879
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            43,
+            24,
+            1,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The team discussed incorporating additional conventions for recording, specifically mentioning a systematic handling of numbers and acronyms. For numbers, instead of writing out the full word (e.g., \"ninety-two\"), the convention now involves writing them as digits followed by a gloss (e.g., \"92\"). This ensures consistency across the transcripts.",
+          "rouge_f1": {
+            "rouge1": 0.22857142857142856,
+            "rouge2": 0.029411764705882353,
+            "rougeL": 0.14285714285714285
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            43
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The team discussed incorporating new conventions for recording numbers and acronyms consistently across transcripts. Specifically, they mentioned the need for a systematic handling of numbers, such as writing \"ninety-two\" as \"nine two,\" and ensuring that the markup is consistent throughout the transcripts. Additionally, they emphasized the importance of cleaning the data by spell-checking, ensuring consistent markup, and incorporating these new conventions.",
+          "rouge_f1": {
+            "rouge1": 0.21951219512195122,
+            "rouge2": 0.049999999999999996,
+            "rougeL": 0.14634146341463414
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            43,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The team discussed allowing participants to edit out sections of a meeting where they were not speaking if they felt strongly about it. They also mentioned that if someone objects to a conversation, they should be able to bleep out their side of the conversation to maintain privacy. This aligns with the consent forms that left open the possibility for participants to edit out content they found offensive, regardless of whether they said it or not.",
+          "rouge_f1": {
+            "rouge1": 0.10526315789473684,
+            "rouge2": 0.0,
+            "rougeL": 0.10526315789473684
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            43,
+            8,
+            24,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What’s the current state of transcriptions?",
+      "reference_answer": "Approximately 32-35 hours of meeting data have been recorded, roughly 30 hours of which comprise non-digits recordings. The transcribers have begun performing digit extraction (see abstract for Bmr013) and should be finished within a few days. Approximately 11 hours of speech have been transcribed.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The current state of transcriptions involves generating web pages for participants once the transcripts are ready. Grad C plans to distribute these via email with passwords for access. However, Professor E suggests a simpler method of distributing physical copies of the transcriptions for review instead of relying on web interfaces. The group is considering how to distribute passwords and whether additional methods of providing the information are necessary.",
+          "rouge_f1": {
+            "rouge1": 0.12280701754385966,
+            "rouge2": 0.0,
+            "rougeL": 0.10526315789473685
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            2,
+            27
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The current state of transcriptions involves several ongoing processes and discussions:\n\n- Transcription work has begun, with specific tasks assigned to individuals like Dave and the transcribers.\n- Forms related to transcription are now digitized and stored on computers.\n- Scripts for reading and using different transcription tools are prepared.\n- There's a plan to create web interfaces for accessing transcriptions, though there's debate about whether to also provide physical copies.\n- The team is considering methods for distributing passwords for web access to these transcriptions.\n- There's concern about ensuring accuracy and addressing potential errors in the transcriptions.\n- The group acknowledges the importance of verifying non-verbal aspects of the recordings, suggesting that listening to the recordings might be necessary for full context understanding.",
+          "rouge_f1": {
+            "rouge1": 0.16666666666666669,
+            "rouge2": 0.012048192771084338,
+            "rougeL": 0.09523809523809523
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            2,
+            27,
+            50,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, including digits, though the exact amount of digit recordings is unknown. Transcription conventions involve glosses following expressions, and there's ongoing discussion about how to distribute and verify these transcriptions, considering both digital and printed formats. Participants are also considering the possibility of allowing participants to request excisions from the final dataset.",
+          "rouge_f1": {
+            "rouge1": 0.2201834862385321,
+            "rouge2": 0.056074766355140186,
+            "rougeL": 0.20183486238532108
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            2,
+            27,
+            50,
+            10,
+            12,
+            33,
+            45,
+            24,
+            14
+          ],
+          "retrieval_precision": 0.0869140625,
+          "retrieval_recall": 0.15878679750223015
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, which includes digit transcriptions. However, the exact amount of time dedicated to digit transcriptions is unknown as they have not been separated out. There are discussions about inconsistencies in transcription methods and suggestions for improving consistency, such as alphabetizing transcribed words to identify errors.",
+          "rouge_f1": {
+            "rouge1": 0.31683168316831684,
+            "rouge2": 0.0404040404040404,
+            "rougeL": 0.2376237623762376
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            12,
+            35
+          ],
+          "retrieval_precision": 0.701171875,
+          "retrieval_recall": 0.320249776984835
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, including digit transcriptions. However, the exact amount of digit transcriptions within the total is unknown as they have not been separated out. There is discussion about inconsistencies in transcriptions and strategies for handling them, such as alphabetizing words to identify errors. Additionally, there is consideration for distributing the transcriptions via web interfaces, printouts, or mailing, with participants able to request transcripts through a web page button. The web interface allows for editing only at the whole utterance level due to convenience and ease of editing.",
+          "rouge_f1": {
+            "rouge1": 0.22535211267605634,
+            "rouge2": 0.02857142857142857,
+            "rougeL": 0.16901408450704225
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            12,
+            35,
+            27,
+            16
+          ],
+          "retrieval_precision": 0.396484375,
+          "retrieval_recall": 0.3621766280107047
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, with around twelve hours given to transcribers who are still working on completing them. Transcriptions are being managed with conventions for glossing, marking vocalizations, and non-vocalizations. There's a discussion about distributing transcriptions via web interfaces and ensuring participants can review and potentially edit their content, though the ease of editing at the utterance level versus sub-utterance level is noted as a consideration.",
+          "rouge_f1": {
+            "rouge1": 0.24590163934426232,
+            "rouge2": 0.03333333333333334,
+            "rougeL": 0.180327868852459
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            12,
+            35,
+            27,
+            16,
+            22,
+            32,
+            2,
+            38
+          ],
+          "retrieval_precision": 0.2958984375,
+          "retrieval_recall": 0.5405887600356825
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The current state of transcriptions involves approximately 35 hours of recordings, including digit recordings. However, the exact amount of digit recordings within this total is unknown as it hasn't been separated out yet. There's discussion about distributing these transcriptions via a web interface with password protection and providing printouts upon request.",
+          "rouge_f1": {
+            "rouge1": 0.30303030303030304,
+            "rouge2": 0.061855670103092786,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            12,
+            2
+          ],
+          "retrieval_precision": 0.220703125,
+          "retrieval_recall": 0.1008028545941124
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, including digit recordings. There is ongoing discussion about inconsistencies in transcriptions and methods to improve accuracy, such as separating transcriptions into words and alphabetizing them to identify errors. Additionally, there is consideration for distributing these transcriptions via web interfaces and possibly providing printouts upon request.",
+          "rouge_f1": {
+            "rouge1": 0.2156862745098039,
+            "rouge2": 0.05999999999999999,
+            "rougeL": 0.17647058823529413
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            12,
+            2,
+            14,
+            35
+          ],
+          "retrieval_precision": 0.3505859375,
+          "retrieval_recall": 0.320249776984835
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, with 12 hours assigned to transcribers who are still working on completing their portions. The transcriptions are being managed through a web interface where participants can access and review the transcripts. However, there is ongoing discussion about how to distribute passwords for accessing these web pages and whether to provide printouts or physical copies to participants who prefer them. Additionally, there is concern about the ease of editing and potentially bleeping out parts of the transcripts, with a preference to keep such actions rare and necessary.",
+          "rouge_f1": {
+            "rouge1": 0.1958041958041958,
+            "rouge2": 0.028368794326241134,
+            "rougeL": 0.13986013986013987
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            12,
+            2,
+            14,
+            35,
+            50,
+            38,
+            22,
+            23
+          ],
+          "retrieval_precision": 0.17529296875,
+          "retrieval_recall": 0.320249776984835
+        },
+        "word_packed__dense__w512": {
+          "answer": "The current state of transcriptions involves tools being developed to generate web pages where participants can review and edit their transcripts online. However, there's a discussion about distributing these transcriptions either via web interfaces requiring passwords or through physical copies for participants to review and approve. The process is ongoing, with some success noted in distinguishing between foreground and background speech, though it's not always perfect.",
+          "rouge_f1": {
+            "rouge1": 0.12280701754385966,
+            "rouge2": 0.0,
+            "rougeL": 0.07017543859649121
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            22
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The current state of transcriptions involves the creation of tools to generate web pages with transcriptions for participants to review and bleep out sections they do not want included. These web pages will be sent via email with a password for access. The process of distributing these passwords and providing the information in alternative formats is still under consideration. Transcription work is ongoing, with plans for bleep editing following completion.",
+          "rouge_f1": {
+            "rouge1": 0.13793103448275862,
+            "rouge2": 0.0,
+            "rougeL": 0.12068965517241381
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            22,
+            2,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The current state of transcriptions involves collecting transcripts for meetings, with approximately 35 hours of recordings transcribed so far, though the exact breakdown of digit recordings is unknown. Tools are being developed to allow participants to review and bleep out sections they do not want included, primarily through a web interface. There is ongoing discussion about how to distribute these transcripts and ensure participants can easily access and modify them while balancing ease of use and the potential for excessive bleeping.",
+          "rouge_f1": {
+            "rouge1": 0.25196850393700787,
+            "rouge2": 0.04800000000000001,
+            "rougeL": 0.1732283464566929
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            22,
+            2,
+            9,
+            11,
+            44,
+            40,
+            34
+          ],
+          "retrieval_precision": 0.0595703125,
+          "retrieval_recall": 0.10883140053523639
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, which includes digit transcriptions. However, the exact amount of time dedicated to digit transcriptions is unknown as it hasn't been separated out. There's discussion about inconsistencies and misspellings in the transcriptions, with suggestions to alphabetize words to identify these issues more efficiently.",
+          "rouge_f1": {
+            "rouge1": 0.2574257425742574,
+            "rouge2": 0.0404040404040404,
+            "rougeL": 0.198019801980198
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            11
+          ],
+          "retrieval_precision": 0.73828125,
+          "retrieval_recall": 0.33719892952720787
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, which includes digit recordings. However, the exact amount of time dedicated to digit recordings is unknown as it hasn't been separated out. There's discussion about inconsistencies in transcriptions and plans to use filters to reduce errors in handling transcribed data, particularly for tagging and subcategorizing comments. Additionally, there's consideration for distributing transcriptions via web interfaces with password protection and possibly providing physical copies for verification and approval.",
+          "rouge_f1": {
+            "rouge1": 0.2677165354330709,
+            "rouge2": 0.04800000000000001,
+            "rougeL": 0.1889763779527559
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            11,
+            24,
+            15
+          ],
+          "retrieval_precision": 0.5947265625,
+          "retrieval_recall": 0.5432649420160571
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, including digits, though the exact amount of digit content is unknown. Transcription work is ongoing, with some transcribers still working on their assigned portions. A filtering process is being considered to handle inconsistencies and errors more efficiently, particularly for tagging and subcategorizing comments. Web interfaces and secure distribution methods are under consideration for sharing the transcriptions, with options such as mailing physical copies or providing web-based access with password protection.",
+          "rouge_f1": {
+            "rouge1": 0.23437499999999997,
+            "rouge2": 0.031746031746031744,
+            "rougeL": 0.15625
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            11,
+            24,
+            15,
+            2,
+            31,
+            20,
+            29
+          ],
+          "retrieval_precision": 0.29736328125,
+          "retrieval_recall": 0.5432649420160571
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The current state of transcriptions involves approximately 35 hours of recordings, including digit recordings. However, the exact amount of time dedicated to digit recordings is unknown as it hasn't been separated out. There's discussion about distributing the transcriptions via web pages requiring passwords or providing physical copies for participants to review and confirm.",
+          "rouge_f1": {
+            "rouge1": 0.2772277227722772,
+            "rouge2": 0.0606060606060606,
+            "rougeL": 0.21782178217821782
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            11
+          ],
+          "retrieval_precision": 0.23828125,
+          "retrieval_recall": 0.10883140053523639
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, including digit recordings, though the exact breakdown between digit and non-digit recordings is unclear. There are ongoing discussions about inconsistencies in spelling and a plan to create web interfaces for participants to access these transcriptions, along with considerations for distributing passwords and obtaining confirmations from participants regarding the accuracy of the transcriptions.",
+          "rouge_f1": {
+            "rouge1": 0.2727272727272727,
+            "rouge2": 0.07407407407407406,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            11,
+            2,
+            13
+          ],
+          "retrieval_precision": 0.369140625,
+          "retrieval_recall": 0.33719892952720787
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, with around 12 hours assigned to transcribers who are still working on completing their portions. The transcriptions are being managed with digital tools and forms, and there's a plan to create web pages for participants to access the transcriptions with passwords. However, there are discussions about providing paper copies of the transcriptions for verification and consent purposes. Additionally, there are considerations regarding the ability to edit or bleep out parts of the transcriptions based on participants' preferences and consent forms.",
+          "rouge_f1": {
+            "rouge1": 0.21739130434782608,
+            "rouge2": 0.02941176470588236,
+            "rougeL": 0.15942028985507245
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            11,
+            2,
+            13,
+            9,
+            44,
+            20,
+            29
+          ],
+          "retrieval_precision": 0.1845703125,
+          "retrieval_recall": 0.33719892952720787
+        },
+        "lumber__dense__w512": {
+          "answer": "The current state of transcriptions includes approximately thirty-five hours of recordings, which includes both digit and non-digit content. However, the exact breakdown between digit and non-digit content is unknown since it hasn't been separated out. Work is ongoing, with plans to provide transcripts to participants for review and potential bleeping of sensitive sections.",
+          "rouge_f1": {
+            "rouge1": 0.27184466019417475,
+            "rouge2": 0.039603960396039604,
+            "rougeL": 0.23300970873786409
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            10,
+            20
+          ],
+          "retrieval_precision": 0.357421875,
+          "retrieval_recall": 0.1632471008028546
+        },
+        "lumber__dense__w1024": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, which includes digit recordings. However, the exact amount of non-digit recordings is unknown since they haven't been separated out. Tools have been developed to generate web pages for participants to review and bleep out sections they wish to exclude, with plans to implement a password-protected system for privacy. The team is considering both digital and printed forms for distribution.",
+          "rouge_f1": {
+            "rouge1": 0.31932773109243695,
+            "rouge2": 0.08547008547008547,
+            "rougeL": 0.21848739495798317
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            10,
+            20,
+            40,
+            22
+          ],
+          "retrieval_precision": 0.1787109375,
+          "retrieval_recall": 0.1632471008028546
+        },
+        "lumber__dense__w2048": {
+          "answer": "The current state of transcriptions involves approximately 35 hours of recordings, including digits. About 11 hours of these recordings have been completed in transcription. The next steps involve ensuring the data is clean (spell-checked, consistent markup), channelized, and provided to participants for bleep editing, where they can exclude sections they do not want included. Tools are being developed to facilitate this process via web interfaces, though there is discussion about providing printouts as an alternative.",
+          "rouge_f1": {
+            "rouge1": 0.2950819672131147,
+            "rouge2": 0.08333333333333334,
+            "rougeL": 0.180327868852459
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            10,
+            20,
+            40,
+            22,
+            8,
+            11
+          ],
+          "retrieval_precision": 0.138671875,
+          "retrieval_recall": 0.25334522747546834
+        },
+        "lumber__bm25__w512": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, which includes both digit and non-digit content. However, the exact breakdown between digit and non-digit content is unknown since it hasn't been separated out. There is at least 30 hours of non-digit content. The team has not yet addressed inconsistencies and misspellings in the transcriptions systematically, though suggestions have been made to alphabetize words to identify such issues. Transcripts are managed at the whole utterance level for ease of editing.",
+          "rouge_f1": {
+            "rouge1": 0.2900763358778626,
+            "rouge2": 0.09302325581395349,
+            "rougeL": 0.22900763358778625
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            10,
+            27,
+            18
+          ],
+          "retrieval_precision": 0.53515625,
+          "retrieval_recall": 0.24442462087421946
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The current state of transcriptions includes approximately thirty-five hours of recordings, including digit recordings. The exact breakdown between digit and non-digit recordings is unclear. There are ongoing issues with the recognizer's handling of long chunks of speech due to memory constraints, and efforts are being made to address these by normalizing energy across channels and adjusting features such as loudness-based measurements. Transcripts are displayed on a webpage, allowing users to edit whole utterances but not sub-utterance segments due to practical editing difficulties.",
+          "rouge_f1": {
+            "rouge1": 0.2255639097744361,
+            "rouge2": 0.07633587786259542,
+            "rougeL": 0.16541353383458648
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            10,
+            27,
+            18,
+            1
+          ],
+          "retrieval_precision": 0.267578125,
+          "retrieval_recall": 0.24442462087421946
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The current state of transcriptions involves approximately 30-35 hours of recordings, including both digit and non-digit content. Transcription inconsistencies and misspellings are being addressed through filtering methods rather than manual correction. Acronyms are being transcribed with letters separated by spaces, possibly followed by a clarification in brackets. The next steps include refining the multichannel format and tightening the boundaries of time bins. Participants are also discussing the ease of editing transcripts and the potential impact of removing content on future research.",
+          "rouge_f1": {
+            "rouge1": 0.24806201550387602,
+            "rouge2": 0.04724409448818898,
+            "rougeL": 0.17054263565891473
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            10,
+            27,
+            18,
+            1,
+            14,
+            30
+          ],
+          "retrieval_precision": 0.259765625,
+          "retrieval_recall": 0.4745762711864407
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, which includes both digit and non-digit content. However, the exact breakdown between digit and non-digit content is unknown since it hasn't been separated out. The transcriptions are presented in whole utterances on the web page, and editing is done at the utterance level for convenience.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.058252427184466014,
+            "rougeL": 0.2285714285714286
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            12,
+            27,
+            40
+          ],
+          "retrieval_precision": 0.53515625,
+          "retrieval_recall": 0.24442462087421946
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The current state of transcriptions includes approximately 35 hours of recordings, which includes both digit and non-digit content. However, the exact breakdown between digit and non-digit content is unknown since it hasn't been separated out yet. There's agreement that the digit content doesn't take up much time, implying a significant portion of the recordings consists of non-digit content. Additionally, discussions around the distribution and presentation of these transcriptions are ongoing, considering both digital and print formats, with a focus on ensuring accuracy and providing options for participants to verify the transcriptions if necessary.",
+          "rouge_f1": {
+            "rouge1": 0.23448275862068965,
+            "rouge2": 0.04195804195804196,
+            "rougeL": 0.17931034482758623
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            12,
+            27,
+            40,
+            22
+          ],
+          "retrieval_precision": 0.267578125,
+          "retrieval_recall": 0.24442462087421946
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The current state of transcriptions involves approximately 35 hours of recordings, including both digit and non-digit content. Tools have been developed to generate web pages for participants to review and bleep out sections they do not want included. The process includes providing each participant with a password-protected access to the web pages containing the transcriptions. However, there is ongoing discussion about making the bleeping process less convenient to avoid excessive removal of content, while still allowing participants to exclude sensitive information.",
+          "rouge_f1": {
+            "rouge1": 0.24806201550387602,
+            "rouge2": 0.06299212598425197,
+            "rougeL": 0.18604651162790697
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            12,
+            27,
+            40,
+            22,
+            30,
+            20,
+            1
+          ],
+          "retrieval_precision": 0.1337890625,
+          "retrieval_recall": 0.24442462087421946
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What was needed for the transcripts?",
+      "reference_answer": "Efforts by speaker fe008 are in progress to ensure that transcripts are clean (i.e. spell checked), channelized, and conform to set conventions regarding the coding of numbers, acronyms, and explicit comments (e.g. door slams, coughs, and laughter). Subsequent efforts by speaker fe008 will be to tighten up boundaries on the time bins. Inter-annotator agreement was reported to be very good. Speaker mn014's multi-channel speech/non-speech segmenter is in use.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "For the transcripts, it was discussed that participants needed access via a web interface with passwords, though some might prefer printouts. The main points were to ensure the accuracy of the transcription and obtain participants' approval, either through signing physical sheets indicating approval or confirming it via the web interface.",
+          "rouge_f1": {
+            "rouge1": 0.144,
+            "rouge2": 0.016260162601626018,
+            "rougeL": 0.09599999999999999
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            26,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts should be made available via a web interface where participants can access them with a password.\n- Participants should have the option to request printouts of the transcripts.\n- An alternative method for providing transcripts to those who prefer it (e.g., mailing) should be considered.\n- Participants should be able to indicate sections they wish to have excised from the database, which will be removed from both the transcript and the recording.\n- The process should be efficient, minimizing the need for extensive paperwork and ensuring that participants can easily review and approve the transcripts.",
+          "rouge_f1": {
+            "rouge1": 0.21714285714285717,
+            "rouge2": 0.034682080924855495,
+            "rougeL": 0.10285714285714286
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            26,
+            10,
+            35,
+            45
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "For the transcripts, it was necessary to provide each participant of every meeting with an opportunity to review and bleep out sections they did not want included. This was to be achieved through a web interface where participants could access the transcripts with a password, allowing them to mark sections for exclusion. However, there was a discussion about providing printouts as an alternative due to concerns about the ease and accessibility of reviewing transcripts online versus on paper. The final decision leaned towards ensuring that participants could request printouts if they preferred, while maintaining the primary method as the web-based system for convenience and efficiency.",
+          "rouge_f1": {
+            "rouge1": 0.17679558011049723,
+            "rouge2": 0.0223463687150838,
+            "rougeL": 0.08839779005524862
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            26,
+            10,
+            35,
+            45,
+            25,
+            34,
+            39,
+            28
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "For the transcripts, the following was needed:\n\n- Cleaned and channelized data.\n- Transcriptions of segments (e.g., ten-minute segments).\n- The ability to review transcriptions either online or via physical copies handed directly to reviewers.\n- An option for reviewers to request the full scripts via a web page button or mailing.\n- Display of whole utterances on the web page without the capability to edit within an utterance due to convenience and ease of editing considerations.",
+          "rouge_f1": {
+            "rouge1": 0.22818791946308725,
+            "rouge2": 0.0272108843537415,
+            "rougeL": 0.13422818791946306
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            35,
+            19
+          ],
+          "retrieval_precision": 0.228515625,
+          "retrieval_recall": 0.072
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts of meeting segments were to be provided to every participant.\n- Participants would have the opportunity to bleep out sections they did not want included.\n- Each participant would receive a password to access the web pages containing the transcriptions.\n- Web pages would allow participants to review the transcriptions and indicate sections for exclusion via an HTML form.\n- An alternative method involving printouts and physical signatures was considered for those preferring it.\n- For those not satisfied with digital methods, the option to mail the transcripts was discussed.",
+          "rouge_f1": {
+            "rouge1": 0.15476190476190477,
+            "rouge2": 0.012048192771084336,
+            "rougeL": 0.10714285714285714
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            35,
+            19,
+            27,
+            25
+          ],
+          "retrieval_precision": 0.1650390625,
+          "retrieval_recall": 0.104
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts needed to be provided to every participant of every meeting to give them an opportunity to exclude sections they don't want.\n- Participants would have access via a web page with a password for security.\n- An option for printouts was considered for those preferring physical copies.\n- The system allowed participants to review whole utterances and exclude them if necessary.\n- There was discussion about providing the transcripts via email or mailing if preferred by participants.",
+          "rouge_f1": {
+            "rouge1": 0.15286624203821655,
+            "rouge2": 0.012903225806451613,
+            "rougeL": 0.07643312101910828
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            35,
+            19,
+            27,
+            25,
+            16,
+            20,
+            50,
+            10,
+            32
+          ],
+          "retrieval_precision": 0.203125,
+          "retrieval_recall": 0.256
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "For the transcripts, the following was needed:\n\n- Web pages with passwords for online access.\n- Printouts for those who prefer physical copies.\n- Distribution methods including email, preferred contact method, mailing, or dropping off at a designated location for those who require it.",
+          "rouge_f1": {
+            "rouge1": 0.06896551724137931,
+            "rouge2": 0.0,
+            "rougeL": 0.05172413793103449
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            27,
+            35
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts of every meeting should be provided to all participants involved in those meetings.\n- Participants should have the ability to review the transcripts and mark sections they wish to exclude.\n- A web-based system with a password-protected interface was proposed where participants could access and modify their transcripts.\n- An alternative option to provide physical copies of the transcripts upon request was also discussed.\n- The system allowed marking whole utterances for exclusion rather than parts of utterances due to ease of editing.",
+          "rouge_f1": {
+            "rouge1": 0.15853658536585366,
+            "rouge2": 0.0,
+            "rougeL": 0.12195121951219512
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            27,
+            35,
+            25,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts were to be provided to every participant of every meeting.\n- Participants would have an opportunity to bleep out sections they did not want included.\n- Each participant would receive a password to access the web page containing the transcription.\n- The system allowed participants to edit out parts of conversations they considered private.\n- There was a discussion about providing printouts instead of or alongside web access due to concerns about universality and privacy.\n- An option to request physical copies via mail was suggested as an alternative for those who preferred not to use the web.\n- Editing could only be done at the whole utterance level, not sub-utterance level, for simplicity in editing the transcripts.",
+          "rouge_f1": {
+            "rouge1": 0.14285714285714285,
+            "rouge2": 0.010309278350515465,
+            "rougeL": 0.10204081632653061
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            27,
+            35,
+            25,
+            10,
+            50,
+            19,
+            34,
+            32
+          ],
+          "retrieval_precision": 0.08251953125,
+          "retrieval_recall": 0.104
+        },
+        "word_packed__dense__w512": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts were to be made available via a web interface where participants could access them with a password.\n- There was discussion about distributing passwords and providing physical copies of signed confirmations to ensure agreement on the content of the transcripts.\n- Some participants preferred receiving physical sheets of paper with the transcription content for review and signing, indicating their approval.",
+          "rouge_f1": {
+            "rouge1": 0.18439716312056736,
+            "rouge2": 0.04316546762589928,
+            "rougeL": 0.0851063829787234
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts should be made available to participants via a web interface accessible with a password.\n- Participants should be contacted via email to inform them about the availability of the transcripts and asked to confirm their acceptance.\n- If participants have issues or require a printout, they should be able to contact the team for assistance.\n- The informed consent form guarantees participants access to the transcript, though the specific method (web, print) is flexible as long as it's available upon request.\n- The wording of the notification to participants needs to be carefully crafted to ensure clarity and satisfaction of all parties involved.",
+          "rouge_f1": {
+            "rouge1": 0.17486338797814208,
+            "rouge2": 0.02209944751381215,
+            "rougeL": 0.1092896174863388
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            9,
+            40,
+            38
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts were to be made available to participants via a web interface, with each participant having a unique username and password to access the specific meeting they attended.\n- Participants would receive emails with links to the web pages containing the transcripts.\n- There was a discussion about providing printouts upon request, with the option for participants to print the transcripts themselves if preferred.\n- The process included ensuring that participants could easily confirm if the transcripts were accurate and acceptable to them.\n- The team aimed to balance ease of access with legal requirements, particularly concerning informed consent forms that guaranteed participants' access to the transcripts without specifying the exact method of delivery.",
+          "rouge_f1": {
+            "rouge1": 0.14583333333333334,
+            "rouge2": 0.021052631578947368,
+            "rougeL": 0.10416666666666667
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            9,
+            40,
+            38,
+            23,
+            25,
+            2,
+            11
+          ],
+          "retrieval_precision": 0.0595703125,
+          "retrieval_recall": 0.07507692307692308
+        },
+        "word_packed__bm25__w512": {
+          "answer": "For the transcripts, the following was needed:\n\n- A single username and password for each participant to access the web page containing the transcript of their specific meeting.\n- Distribution of these credentials (username and password) via email or preferred contact method to each participant.\n- An option for participants to review the transcript online or, alternatively, receive physical copies of the transcript for approval.\n- Privacy measures to ensure that only participants of a particular meeting can access its transcript.",
+          "rouge_f1": {
+            "rouge1": 0.17105263157894737,
+            "rouge2": 0.02666666666666667,
+            "rougeL": 0.11842105263157895
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            24
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "For the transcripts, the following was needed:\n\n- The data needed to be cleaned and channelized.\n- Spot checks were conducted on transcriptions done by two transcribers.\n- Password protection was considered for accessing the transcripts online, with each participant having a single password to view only the meetings they attended.\n- An alternative simpler method involving physical copies of the transcriptions was suggested, where participants would review and sign off on the accuracy of the content.\n- Consideration was given to the convenience of editing the transcripts, with a preference for deleting entire lines rather than editing at the sub-utterance level.",
+          "rouge_f1": {
+            "rouge1": 0.18497109826589594,
+            "rouge2": 0.023391812865497078,
+            "rougeL": 0.12716763005780346
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            24,
+            32,
+            17
+          ],
+          "retrieval_precision": 0.2177734375,
+          "retrieval_recall": 0.13723076923076924
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts needed to be provided to every participant of every meeting to give them an opportunity to bleep out sections they don't want.\n- Web pages were to be generated with the transcription so participants could click on pieces and decide if they wanted parts excluded.\n- Each participant would receive a password to access the web pages containing the transcripts of the meetings they attended.\n- An alternative method of providing the transcripts was suggested, such as mailing printed copies to participants who preferred not to use the web interface.",
+          "rouge_f1": {
+            "rouge1": 0.16374269005847952,
+            "rouge2": 0.01183431952662722,
+            "rougeL": 0.11695906432748539
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            24,
+            32,
+            17,
+            22,
+            18,
+            31,
+            9
+          ],
+          "retrieval_precision": 0.10888671875,
+          "retrieval_recall": 0.13723076923076924
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "For the transcripts, the following was needed:\n\n- A single username and password for each participant to access the web page containing the transcript of their specific meeting.\n- Distribution of these credentials (username and password) via email or preferred contact method to each participant.\n- An option for participants to review the transcript online or, alternatively, receive physical copies of the transcript for approval.\n- Privacy measures to ensure that only participants of a particular meeting can access its transcript.",
+          "rouge_f1": {
+            "rouge1": 0.17105263157894737,
+            "rouge2": 0.02666666666666667,
+            "rougeL": 0.11842105263157895
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            23
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "For the transcripts, the following details were needed:\n\n- Transcribers were not to handle paperwork, as per Jane's preference.\n- Password protection was proposed for accessing transcripts online, with each participant having a single password to view only the meetings they attended.\n- There was discussion about distributing transcripts via paper copies signed by participants, as an alternative to digital access.\n- The system aimed to ensure privacy and address potential embarrassment from content, while also facilitating easy editing and distribution of transcripts.",
+          "rouge_f1": {
+            "rouge1": 0.18064516129032254,
+            "rouge2": 0.013071895424836602,
+            "rougeL": 0.10322580645161292
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            23,
+            9,
+            32
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts needed to be provided to every participant of every meeting to give them an opportunity to bleep out sections they didn't want included.\n- A web-based system was developed where participants could view the transcripts online, with each participant having a unique password to access the specific meeting's transcript.\n- An alternative option was considered to provide printed transcripts upon request.\n- The distribution of passwords and the method of providing the transcripts (online or printed) were discussed to ensure compliance with legal and ethical standards, particularly regarding informed consent forms that guaranteed participants' access to the transcripts.\n- The wording of the notifications sent to participants about the availability of transcripts was to be carefully crafted to ensure clarity and compliance with the informed consent agreements.",
+          "rouge_f1": {
+            "rouge1": 0.1818181818181818,
+            "rouge2": 0.01932367149758454,
+            "rougeL": 0.11483253588516747
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            23,
+            9,
+            32,
+            38,
+            22,
+            40,
+            17
+          ],
+          "retrieval_precision": 0.10888671875,
+          "retrieval_recall": 0.13723076923076924
+        },
+        "lumber__dense__w512": {
+          "answer": "For the transcripts, there were differing preferences. Some participants, like Professor E, preferred physical copies of the transcriptions to review and sign, indicating a need for printed materials. Grad C, however, suggested providing a web interface where participants could access the transcripts online, requiring a distribution method for passwords and an option to provide printouts for those who requested them.",
+          "rouge_f1": {
+            "rouge1": 0.1333333333333333,
+            "rouge2": 0.0,
+            "rougeL": 0.08888888888888889
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "For the transcripts, Grad C needed to provide the transcriptions to every meeting participant via a web interface where they could review and bleep out sections they did not want included. Each participant would receive a single password to access the specific meeting's transcription webpage. Additionally, Grad C considered providing printouts for those who preferred it, though he personally favored the web interface for its convenience.",
+          "rouge_f1": {
+            "rouge1": 0.11267605633802817,
+            "rouge2": 0.0,
+            "rougeL": 0.09859154929577464
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21,
+            20,
+            40
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts needed to be clean (spell-checked, consistent markup).\n- Additional conventions for handling numbers and acronyms were required.\n- Transcripts had to be provided to every participant involved in the meeting for them to bleep out sections they did not want included.\n- Participants would receive a password to access the web pages containing the transcripts.\n- There was discussion about providing printouts for those who preferred them, while the primary method would be via web access.\n- Email approval was considered sufficient for most cases, rather than requiring signatures.",
+          "rouge_f1": {
+            "rouge1": 0.21428571428571427,
+            "rouge2": 0.024096385542168672,
+            "rougeL": 0.14285714285714285
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21,
+            20,
+            40,
+            23,
+            11,
+            10
+          ],
+          "retrieval_precision": 0.11865234375,
+          "retrieval_recall": 0.14953846153846154
+        },
+        "lumber__bm25__w512": {
+          "answer": "For the transcripts, the following was needed:\n\n- Web pages accessible via a password for participants to review the transcriptions.\n- The option for some participants to receive printouts of the transcriptions for review.\n- Participants' confirmation that the transcriptions were accurate, possibly through signing a document indicating approval.",
+          "rouge_f1": {
+            "rouge1": 0.13223140495867766,
+            "rouge2": 0.0,
+            "rougeL": 0.08264462809917356
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21,
+            22
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcriptions from two transcribers for comparison.\n- Spot checks to ensure accuracy.\n- Web pages with passwords for access.\n- The option to provide printouts for those who prefer them.\n- Display of whole utterances on the web page, without the ability to bleep within an utterance due to editing convenience.",
+          "rouge_f1": {
+            "rouge1": 0.18604651162790697,
+            "rouge2": 0.03149606299212599,
+            "rougeL": 0.12403100775193798
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21,
+            22,
+            15
+          ],
+          "retrieval_precision": 0.1689453125,
+          "retrieval_recall": 0.10646153846153845
+        },
+        "lumber__bm25__w2048": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts of meeting recordings to be provided to every participant involved in each meeting.\n- Participants would have the option to review and bleep out sections they do not want included.\n- A web-based system was developed to facilitate this process, including generating web pages with the transcriptions and allowing participants to submit exclusions via email.\n- Password protection was implemented to ensure privacy, with each participant having a unique username and password to access the specific meeting's transcription.\n- An alternative printout option was considered for those preferring a physical copy.\n- The system allowed for bleeping out entire utterances only, due to the complexity of editing at the sub-utterance level.",
+          "rouge_f1": {
+            "rouge1": 0.1666666666666667,
+            "rouge2": 0.021052631578947368,
+            "rougeL": 0.11458333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21,
+            22,
+            15,
+            20,
+            16,
+            40,
+            41
+          ],
+          "retrieval_precision": 0.08447265625,
+          "retrieval_recall": 0.10646153846153845
+        },
+        "lumber__hybrid__w512": {
+          "answer": "For the transcripts, there were differing preferences. Some participants, like Professor E, preferred physical copies of the transcriptions to review and sign, indicating a need for printed materials. Grad C, however, suggested providing a web interface where participants could access the transcripts online, requiring a distribution method for passwords and an option to provide printouts for those who requested them.",
+          "rouge_f1": {
+            "rouge1": 0.1333333333333333,
+            "rouge2": 0.0,
+            "rougeL": 0.08888888888888889
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts of every meeting were required to be provided to all participants involved in those meetings.\n- Participants needed the ability to review the transcripts and mark sections they wished to exclude (bleep out).\n- A web-based system was developed where participants could access the transcripts via a username and password, ensuring only attendees of a specific meeting could view its transcript.\n- An option for participants to receive printouts of the transcripts was considered, though not all found this necessary or preferable.\n- The system allowed marking whole utterances for exclusion rather than parts of utterances due to technical convenience.\n- Consideration was given to providing a simpler, paper-based method for participants to indicate approval or request exclusions, though this was seen as potentially less efficient than the web-based approach.",
+          "rouge_f1": {
+            "rouge1": 0.13270142180094785,
+            "rouge2": 0.009569377990430622,
+            "rougeL": 0.1042654028436019
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21,
+            20,
+            27,
+            40
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "For the transcripts, the following was needed:\n\n- Transcripts needed to be provided to every participant of every meeting so they could review and bleep out sections they did not want included.\n- Participants would receive a web page with their transcription, accessible via a single username and password.\n- An option for participants to request printouts of the transcripts was considered.\n- The ability to exclude sections was to be done at the whole utterance level, not sub-utterance level.\n- Participants would need to approve the inclusion of their transcript either via email or by signing a physical document, though email approval was deemed sufficient.\n- Consideration was given to providing a way for participants to listen to the recordings corresponding to the transcripts, acknowledging the importance of non-verbal cues in context.",
+          "rouge_f1": {
+            "rouge1": 0.1568627450980392,
+            "rouge2": 0.009900990099009901,
+            "rougeL": 0.11764705882352942
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21,
+            20,
+            27,
+            40,
+            23,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        }
+      }
+    }
+  ]
+}

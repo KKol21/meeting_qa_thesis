@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "Bed008.json",
+        "sha256": "b15a3741770a20708e7cc6158d25579a566d62c9048ff148baad058d56eb352c"
+      }
+    },
+    "input_hash": "cbab548cc9d0c165cae8b3dd54b30e149aa941926993868981bd6258ea4b79be",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "94f665e37e271356590ae3bd78652801b5a96c934767787982229db70d9c4bc8",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bed008",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about value for user and situation models.",
+      "reference_answer": "First, Grad E proposed a question about better discriminating the definition of user and situation models, and it was necessary to set values for the models. Then, they discussed the issues in terms of the user's running budget, which was vital for the outcome of decisions. They tried to design a set of terms to describe the user's financial policy, such as thrift, average, spendy, or more finer scale ones.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion centered around defining the user and situation models, particularly focusing on the values these models could take. Grad E struggled with specifying the discrete values for a running budget and sought clarity on how to represent continuously changing numbers. The group agreed that the user model includes characteristics such as thriftiness (cheap, average, spendy), while the situation model might involve factors like a running budget. They also noted that the user's budget influences decision outcomes. Professor B clarified that the models are part of a GUI for a simulator that generates functioning belief-nets based on input provided.",
+          "rouge_f1": {
+            "rouge1": 0.393063583815029,
+            "rouge2": 0.14035087719298245,
+            "rougeL": 0.1965317919075145
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              45,
+              81
+            ]
+          ],
+          "evidence_words": 537
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the group members think of the value of user budget when discussing value for user and situation models?",
+      "reference_answer": "The reason why they mentioned user budget was that they wanted to take this example to further discuss the value for user model. Also, user budget was an important factor for the outcomes of decisions. Then, they tried to decide which set of words could represent the budget better. Finally, they found that the words that could describe financial policy of users, such as user thrift, was appropriate.",
+      "results": {
+        "oracle": {
+          "answer": "The group members acknowledged that the user's budget could influence decision outcomes and discussed it as a dynamic aspect (running total) rather than static financial policy. They considered terms like \"thrift\" or \"greediness\" to describe user behavior related to budget constraints, indicating an understanding of its importance in modeling user behavior and decision-making processes. However, specific thoughts on the exact value or significance of incorporating user budget into the models were not extensively detailed beyond acknowledging its relevance.",
+          "rouge_f1": {
+            "rouge1": 0.4054054054054054,
+            "rouge2": 0.0410958904109589,
+            "rougeL": 0.17567567567567569
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              47,
+              81
+            ]
+          ],
+          "evidence_words": 447
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Summarize the discussion about Go-there decision.",
+      "reference_answer": "Grad E proposed the idea that Go-there decision was also worth thinking about. Professor B suggested that the decision could stick to the discourse properties as a placeholder. With regard to the lack of ontologies, Professor B thought that it could use the same properties like exhibiting and selling. Grad E doubted the choice of binary EVA values, but Professor B insisted that it was still necessary to make this choice. Then the group members discussed the layout of belief-nets, for example, the connection between Go-there nodes and other ones such as endpoints. And Professor B reminded me that the belief-nets should not have loops.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the Go-there decision focused on incorporating discourse features and situational factors to determine whether a user intends to go to a location. Discourse features were identified as crucial indicators, such as asking \"how do I get to the castle\" typically implying an intention to go there, while \"how do I get there to find out\" might not necessarily imply the same intent. Situational factors like the availability of the location (open/closed), strikes, riots, traffic, and time of day were also considered. The group discussed the need for a structured model where the Go-there decision node would be influenced by multiple sub-nodes representing different aspects, ensuring no loops in the belief network to avoid undefined computations.",
+          "rouge_f1": {
+            "rouge1": 0.33766233766233766,
+            "rouge2": 0.07860262008733625,
+            "rougeL": 0.21645021645021648
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              433,
+              533
+            ]
+          ],
+          "evidence_words": 1356
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did Grad E say when discussing Go-there decision?",
+      "reference_answer": "Grad E first started the topic about Go-there decision, and then proposed the question about how to represent discourse. Though Professor B insisted on using true-and-false values, Grad E challenged Professor B's opinion by taking examples about whether people really wanted to go some place or not when they asked how to get there.",
+      "results": {
+        "oracle": {
+          "answer": "When discussing the Go-there decision, Grad E stated, \"Well let's {disfmarker} th this go there or not I think is a good one.\" Additionally, Grad E provided insights on how discourse influences the Go-there decision, noting that people often ask \"how do I get to the castle\" indicating they want to go there, while sometimes they ask \"how do I get there\" without intending to go there, and occasionally they ask \"where is it\" just to know its location. Grad E concluded that despite these nuances, the discourse analysis should ultimately push the decision towards a binary outcome of \"true\" or \"false\" regarding the intention to go there.",
+          "rouge_f1": {
+            "rouge1": 0.3550295857988166,
+            "rouge2": 0.11976047904191615,
+            "rougeL": 0.1893491124260355
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              433,
+              533
+            ]
+          ],
+          "evidence_words": 1356
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Summarize the discussion about probability computation.",
+      "reference_answer": "Professor B first emphasized the necessity of combining influences mathematically and asked Grad D to further explain the potential solutions. Then the students discussed the computation methods including weighted combination and mixture of experts, based on the mechanism of belief-nets. But there was no consensus on which method should be applied in belief-nets.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion focused on methods to compute probabilities in a belief-net model where multiple nodes (experts) contribute to a single node's probability distribution. Initially, the group considered a simple averaging method where each expert's vote contributes equally to the final probability distribution. However, they acknowledged that assigning equal weights might not always be appropriate and proposed using weighted averages instead, ensuring the weights sum to one. They further explored a \"mixture of experts\" approach, introducing a hidden variable \"H\" that determines which expert's opinion is most reliable based on the current context, effectively selecting the most trustworthy expert's contribution to the final probability calculation.",
+          "rouge_f1": {
+            "rouge1": 0.29268292682926833,
+            "rouge2": 0.061728395061728385,
+            "rougeL": 0.14634146341463417
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              669,
+              749
+            ]
+          ],
+          "evidence_words": 2002
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did Grad D say about mixture of experts when discussing probability computation?",
+      "reference_answer": "Grad D first said that different experts were reliable in different situations and it was necessary to organically combine them to make the network adapt to diverse situations. The network could be divided into several parts and the network would decide which of the experts would be trusted in this particular situation. Grad D then answered other group members' questions about the layout of mixture of expert models and their detailed computation process.",
+      "results": {
+        "oracle": {
+          "answer": "Grad D explained that in a mixture of experts model, a hidden variable \"H\" is introduced to decide which expert is more reliable based on the input values (X-one, X-two, X-three, and X-four). H produces a number indicating which expert is most reliable in the given situation, essentially selecting which expert's output to trust. This mechanism allows for a dynamic adjustment of reliability among experts depending on the specific context provided by the inputs.",
+          "rouge_f1": {
+            "rouge1": 0.32894736842105265,
+            "rouge2": 0.08,
+            "rougeL": 0.1842105263157895
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              727,
+              749
+            ]
+          ],
+          "evidence_words": 671
+        }
+      }
+    }
+  ]
+}

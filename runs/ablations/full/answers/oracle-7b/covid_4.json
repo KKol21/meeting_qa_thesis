@@ -1,0 +1,374 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "covid_4.json",
+        "sha256": "d81e4221c12e2e8c4f50a78473e2deadf20f1f8a394b5a5266df7b051f506b01"
+      }
+    },
+    "input_hash": "3a895e9bfea60b8fd59ff4508c8ba3094b65a92546be95d7dec6831a1e6b5c3b",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "b2581d93314410215ffaabbdbcbdf503ca4551bc8b82ec408f594e1729e46aa7",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "covid_4",
+  "question_count": 12,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 12,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about petitions fraudulence, tax evasion, violence handling and their supervisory.",
+      "reference_answer": "Mr. Dan Albas asked about the handling of fraudulence by the Canadian government but Right Hon. Justin Trudeau, the Prime Minister, was saying that the government put giving support and help to Canadians in the first place. Then Mr. Gabriel Ste-Marie questioned the reason why the government supported the profiteers for tax evasion when implementing the large employer emergency financing facility. However, Right Hon. Justin Trudeau thought they were making plans to help workers to survive this pandemic and was always their priority to overcome. Hon. Candice Bergen required that how they were dealing with unopened mail at Service Canada and put out a violence case that why the Liberals were making this gun illegal and What the purpose of banning this particular farm rifle was. It was demonstrated by Hon. Bill Blair that many Canadians were murdered by these guns which was their explanation of banning guns.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion did not directly address petitions fraudulence, tax evasion, violence handling, or their supervisory aspects. Therefore, based on the provided excerpts, the evidence is insufficient to summarize these topics.",
+          "rouge_f1": {
+            "rouge1": 0.1229050279329609,
+            "rouge2": 0.01129943502824859,
+            "rougeL": 0.0893854748603352
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              11,
+              38
+            ],
+            [
+              50,
+              64
+            ]
+          ],
+          "evidence_words": 2161
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Mr. Gabriel Ste-Marie mean by saying that the Prime Minister continued to support the profiteers?",
+      "reference_answer": "Mr. Gabriel Ste-Marie first asked the prime minister whether the government would outlaw what was immoral and then, put it precisely, made an example that a bank relocated its most profitable activities carried out in Canada and registered them in a subsidiary in the Bahamas, Barbados or another tax haven. Under this situation, the government might not consider this bank to be paying its fair share of taxes in Canada and that was why Mr. Gabriel Ste-Marie said that the Prime Minister continued to support the profiteers.",
+      "results": {
+        "oracle": {
+          "answer": "Mr. Gabriel Ste-Marie meant that the Prime Minister was continuing to support companies that use tax havens to avoid paying their fair share of taxes, referring to them as \"profiteers.\" He believed that despite the Prime Minister's claims of no tolerance for tax evasion and avoidance, the measures announced did not effectively prevent companies that legally use tax havens from accessing emergency financing, thereby allowing them to avoid their tax obligations.",
+          "rouge_f1": {
+            "rouge1": 0.3703703703703703,
+            "rouge2": 0.17500000000000002,
+            "rougeL": 0.2716049382716049
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              28,
+              38
+            ]
+          ],
+          "evidence_words": 652
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Why did Hon. Bill Blair support banning Iver Johnson?",
+      "reference_answer": "First, the Canadian Association of Chiefs of Police declared that military assault rifles were produced for the sole purpose of killing people in large numbers and urged the government to enact legislation to ban all military assault rifles, except for law enforcement and military purposes. And Hon. Bill Blair thought what their regulations said very clearly, was that weapons that were designed not for hunting and not for sport purposes but for soldiers to use in combat to kill other soldiers in Canadian society.",
+      "results": {
+        "oracle": {
+          "answer": "Hon. Bill Blair supported banning the Iver Johnson single-shot rifle because it was designed for military use and had no place in Canadian society. He cited the Canadian Association of Chiefs of Police and Ontario police leaders who supported prohibiting military-designed rifles, arguing that such weapons should be reserved for use by the military and law enforcement. Blair emphasized the need to prevent gun violence, stating that any Canadian killed by gun violence is \"one too many.\"",
+          "rouge_f1": {
+            "rouge1": 0.4417177914110429,
+            "rouge2": 0.13664596273291926,
+            "rougeL": 0.20858895705521474
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              50,
+              64
+            ]
+          ],
+          "evidence_words": 752
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about Government support for the elderly and for vulnerable people.",
+      "reference_answer": "During the pandemic of Covid-19, the government should fix this gap so that the single parents and their children could get the support they need. Also, matching funds and adequate housing should be given to support the affected in Canada. In addition, the elderly, one of the highest risk populations, had obtained extra funding from the government. Besides, vulnerable people like the disabled could gain more funding support and workers affected by the pandemic could also gain support.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about government support for the elderly and vulnerable people focused on several key points:\n\n1. **Single Parents and Spousal Support**: Ms. Jenny Kwan highlighted that a single parent with four school-age children lost her spousal and child support due to COVID-19, despite paying taxes on her spousal income. The Minister of Employment acknowledged the gap but stated that the government was working to fill these gaps. The Prime Minister agreed to increase the Canada child benefit and the Canada emergency response benefit (CERB) but noted that these do not replace spousal support and child maintenance.\n\n2. **Homelessness and Housing**: Ms. Kwan emphasized the lack of a national standard to address homelessness during the pandemic, particularly in her riding where many people are at risk due to inadequate housing conditions. The Prime Minister acknowledged the federal government's immediate response with hundreds of millions of dollars sent to shelters but acknowledged that more needs to be done. He committed to continuing efforts to support vulnerable Canadians, including the homeless.\n\n3. **Seniors' Support**: Hon. Deb Schulte addressed the concerns of vulnerable seniors, announcing a one-time, tax-free payment of $300 for seniors eligible for Old Age Security (OAS) and an additional $200 for those eligible for Guaranteed Income Supplement (GIS), totaling up to $500 for the most vulnerable seniors. The government also allocated $20 million to expand the New Horizons for Seniors Program to provide services such as grocery delivery and social connection.\n\nOverall, while the government acknowledged existing gaps and challenges, it committed to ongoing efforts to support vulnerable groups, including seniors and the homeless, through various financial and service-based interventions.",
+          "rouge_f1": {
+            "rouge1": 0.247887323943662,
+            "rouge2": 0.0679886685552408,
+            "rougeL": 0.14647887323943662
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              39,
+              49
+            ],
+            [
+              127,
+              134
+            ],
+            [
+              176,
+              195
+            ]
+          ],
+          "evidence_words": 1909
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did Ms. Jenny Kwan mean by saying there was a gap between program making and its implementation?",
+      "reference_answer": "Ms. Jenny Kwan gave an example that a single parent with four school-age children lost her spousal and child support due to COVID-19. She paid taxes on her spousal income, but she was not eligible for CERB. That meant a complicated program delivered by the government that left many people behind, and more importantly, there was no action reacting to it. So Ms. Jenny Kwan called for a fixation for this gap and proposed that matching funding and adequate housing should be arranged for those who were affected.",
+      "results": {
+        "oracle": {
+          "answer": "Ms. Jenny Kwan meant that there was a discrepancy between the government's intention to provide support through a program and the actual implementation of that program. Specifically, she highlighted that while the government had implemented a program like the Canada Emergency Response Benefit (CERB) to provide financial support during the pandemic, it did not adequately address the needs of certain groups, such as single parents who lost spousal and child support due to COVID-19. She pointed out that despite awareness of these issues by the Minister of Employment for several weeks, no concrete action had been taken to resolve the gap in support for these individuals.",
+          "rouge_f1": {
+            "rouge1": 0.42424242424242425,
+            "rouge2": 0.14285714285714285,
+            "rougeL": 0.2525252525252525
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              39,
+              49
+            ]
+          ],
+          "evidence_words": 849
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the Canadian government do to support the elderly.",
+      "reference_answer": "As one of the highest risk populations, the elderly's costs had gone up. Many seniors who were facing extra dispensing fees were already carefully budgeting before the pandemic. It was so important that the government be there to support them. The government announced a one-time, tax-free payment of $300 for seniors eligible for OAS and an additional $200 for seniors eligible for GIS. This meant there would be up to $500 for the most vulnerable seniors to help them with their financial security to get through this challenging time. Beyond this, they announced $20 million to expand the new horizons for seniors program to kick-start initiatives and services that would help seniors to get grocery deliveries right to their door and to stay connected.",
+      "results": {
+        "oracle": {
+          "answer": "The Canadian government supported the elderly by announcing a one-time, tax-free payment of $300 for seniors eligible for OAS and an additional $200 for seniors eligible for GIS, totaling up to $500 for the most vulnerable seniors. Additionally, they allocated $20 million to expand the new horizons for seniors program to help with initiatives such as grocery deliveries and staying connected.",
+          "rouge_f1": {
+            "rouge1": 0.5968586387434556,
+            "rouge2": 0.455026455026455,
+            "rougeL": 0.5549738219895287
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              127,
+              134
+            ]
+          ],
+          "evidence_words": 409
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "Summarize the discussion about Government support for energy resources and tourism and funding in green economy and small businesses.",
+      "reference_answer": "Since Quebec was Canada's biggest producer of hydroelectricity, renewable energy sharing through an energy corridor was very essential for different areas in Canada. And as a hard-hit sector, tourism needed much support from the Canadian government. The government was going to protect the tourism-based economy by investing in tourism infrastructure and upgrades to ensure Canada's tourist regions would be ready when the economy reopened. When it came to the green economy, the government now gave priority to the virus and making through this disaster. Also, they paid much attention to the small businesses and carried out measures to help them out.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion covered several aspects of government support for energy resources, tourism, and funding in the green economy and small businesses:\n\n1. **Government Support for Energy Resources**:\n   - Jacques Gourde proposed allowing provinces to share renewable energy through an energy corridor, specifically mentioning Quebec's hydroelectricity.\n   - The government acknowledged ongoing efforts to facilitate such sharing but emphasized the importance of protecting Canadians.\n\n2. **Tourism Infrastructure**:\n   - Gourde expressed concerns about the potential disappearance of Canada's tourism industry due to the pandemic.\n   - Minister Joly assured that the government would invest in tourism infrastructure and upgrades to prepare for the industry's recovery.\n\n3. **Green Economy Transition**:\n   - Mario Simard criticized the government's recent announcements, which primarily involved fossil fuels, and questioned the commitment to transitioning to a green economy.\n   - Minister Wilkinson acknowledged the current focus on immediate support for Canadians but indicated that the government would consider long-term plans for a green economy post-pandemic.\n\n4. **Funding for Small Businesses**:\n   - Marc Dalton raised concerns about small businesses, particularly those facing rent issues and needing personal protective equipment (PPE) for reopening.\n   - The government committed to supporting small businesses through rent assistance programs and ensuring access to PPE.\n\nOverall, the discussion highlighted the government's efforts to support various sectors while balancing immediate needs with long-term goals for a sustainable and resilient economy.",
+          "rouge_f1": {
+            "rouge1": 0.3619631901840491,
+            "rouge2": 0.10493827160493827,
+            "rougeL": 0.20245398773006135
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              163,
+              175
+            ],
+            [
+              241,
+              274
+            ]
+          ],
+          "evidence_words": 2457
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "What was the current situation of the tourism sector and what was the government going to do?",
+      "reference_answer": "The current economic situation could lead to the disappearance of Canada's tourism industry. And the pain would be felt by thousands of Canadians, who would have to find new jobs in order to survive. Let's work together to find ways to get this hard-hit sector moving again. Many people had lost their jobs and needed assistance from the government. That was why they were here, providing a helping hand at this difficult time so they could come out the other side.",
+      "results": {
+        "oracle": {
+          "answer": "The current situation of the tourism sector was described as potentially facing disappearance due to the economic impact of the COVID-19 crisis, which would result in thousands of Canadians losing their jobs and needing assistance. In response, the government, specifically Minister Joly, stated that they would protect the tourism-based economy by investing in tourism infrastructure and upgrades to ensure Canada's tourist regions are ready when the economy reopens.",
+          "rouge_f1": {
+            "rouge1": 0.42580645161290326,
+            "rouge2": 0.130718954248366,
+            "rougeL": 0.27096774193548384
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              163,
+              175
+            ]
+          ],
+          "evidence_words": 536
+        }
+      }
+    },
+    {
+      "question_index": 8,
+      "question": "What did the Canadian government do to help small businesses out?",
+      "reference_answer": "They shared the member's concern that small businesses be supported. That's why they've moved forward with a number of measures that are designed to be of assistance. With respect to rent support, they were encouraging landlords to support this measure. Obviously, rent and landlord-tenant relations were under provincial jurisdiction. At every opportunity Hon. Bill Morneau talked to the provincial finance ministers to encourage them to get engaged there. They would continue to support small businesses. It allowed for small businesses to significantly reduce their rent and for landlords to be protected with up to 75% of the rent. It was a sound program and would require the provinces to step forward and enforce it.",
+      "results": {
+        "oracle": {
+          "answer": "The Canadian government introduced a rent assistance program to support small businesses. This program allows small businesses to significantly reduce their rent, with landlords being protected by up to 75% of the rent. However, the government is encouraging landlords to participate in this measure and notes that rent and landlord-tenant relations are under provincial jurisdiction. The government is continuing to support small businesses and is working with provincial finance ministers to encourage engagement in this program.",
+          "rouge_f1": {
+            "rouge1": 0.5948717948717949,
+            "rouge2": 0.32124352331606215,
+            "rougeL": 0.3076923076923077
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              252,
+              254
+            ]
+          ],
+          "evidence_words": 207
+        }
+      }
+    },
+    {
+      "question_index": 9,
+      "question": "Summarize the discussion about things including fishing and tourism, oil and gas affected by the Covid-19.",
+      "reference_answer": "During the pandemic, the lobster fishery was being negatively affected and was facing losses of up to 95% of its Asian markets. Many fishermen had their wives, their sons, their uncles or their fathers working for them, and sometimes it was the whole family on the boat. Moreover, the tourism season is already deeply affected by COVID-19. A number of industries, businesses and festivals were having to deal with considerable losses of income. As for oil and gas, western Canada oil storage is under extreme pressure. If thermal projects such as SAGD are shut down, those facilities could be lost forever. The oil and gas sector was suffering through two crises --COVID and the effects of a global price war.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion covered several aspects of industries affected by the COVID-19 pandemic, including fishing and tourism, as well as the oil and gas sector.\n\n### Fishing and Tourism:\n- **Fishing Industry:**\n  - The Minister of Fisheries, Oceans and the Canadian Coast Guard acknowledged that the fish and seafood sector was adversely affected by the pandemic.\n  - The government had allocated $62.5 million for processors and ensured that the CERB was available for seasonal workers and those who had exhausted their fishery EI.\n  - The minister stated that more support was needed for harvesters directly, and efforts were ongoing to find solutions.\n  - Concerns were raised about additional fishing regulations that were added without authorization, which were promptly removed.\n\n- **Tourism Industry:**\n  - The Minister of Economic Development and Official Languages committed to working with the Atlantic Canada Opportunities Agency (ACOA) to support the tourism sector, particularly in the Atlantic region.\n  - Specific measures to assist the ferry service between Bar Harbor, Maine, and Yarmouth, Nova Scotia, were not detailed but indicated a willingness to collaborate.\n\n### Oil and Gas Sector:\n- **Industry Challenges:**\n  - The sector faced significant pressures from anti-oil and gas lobby groups, leading to the introduction of bills like Bill C-69 and Bill C-48, which had a negative impact on investment and the economy.\n  - The pandemic and the resulting drop in oil demand exacerbated existing issues, leading to job losses and closures among smaller companies.\n  - The government had announced liquidity measures for both small and medium-sized businesses and large-cap corporations in the oil and gas sector.\n\n- **Government Support:**\n  - Measures were announced to provide liquidity to businesses, with a focus on supporting 85% of workers in the sector.\n  - Efforts were made to ensure that indigenous-owned businesses could qualify for financial assistance.\n  - The government aimed to maintain the stability of the oil and gas sector and protect jobs, emphasizing the importance of workers in achieving a greener economy.\n\nIn summary, the government recognized the challenges faced by the fishing and tourism sectors and was working on targeted support measures. For the oil and gas sector, while acknowledging the severe strain, the government had taken steps to provide financial assistance to mitigate the impact of the pandemic and other regulatory pressures.",
+          "rouge_f1": {
+            "rouge1": 0.2459016393442623,
+            "rouge2": 0.06584362139917696,
+            "rougeL": 0.14344262295081966
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              109,
+              122
+            ],
+            [
+              213,
+              221
+            ]
+          ],
+          "evidence_words": 1835
+        }
+      }
+    },
+    {
+      "question_index": 10,
+      "question": "What did the government do to help the fishing industry?",
+      "reference_answer": "The fish and seafood sector had been extremely adversely affected because of COVID-19. They've started to put measures in place to address the issue with the $62.5 million for processors, as well as to make sure that the CERB is available for seasonal workers as well as people who had run out of their fishery EI, but they knew that more needs to be done. The fishery enterprises were uniquely structured, which was why they were looking at measures to address the concerns they had. Because of the unique structure of fishing enterprises, they were not eligible for many of the supports they had put in place. They had made changes to the CERB to make sure that people who ran out of the fishers EI were eligible as well as seasonal workers.",
+      "results": {
+        "oracle": {
+          "answer": "The government provided $62.5 million in aid for processors in the seafood sector and ensured that the CERB was available for seasonal workers and people who had exhausted their fishery EI. Additionally, the minister stated that more needs to be done to support harvesters directly, and efforts are underway to find direct financial support for them.",
+          "rouge_f1": {
+            "rouge1": 0.383419689119171,
+            "rouge2": 0.18848167539267013,
+            "rougeL": 0.2901554404145078
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              96,
+              122
+            ]
+          ],
+          "evidence_words": 1605
+        }
+      }
+    },
+    {
+      "question_index": 11,
+      "question": "What did the stress faced by oil and gas?",
+      "reference_answer": "The oil and gas industry was under severe strain. Over the past number of years, they had seen tremendous pressure on the federal government from anti-oil and gas lobby groups demanding that the oil sands be shut down. The federal Liberal government's response to the anti-oil lobby was the introduction of the Bill C-69, which would prevent any major oil and gas projects from being developed in Canada; and the oil shipping ban, Bill C-48, for the northern coast of British Columbia, which also had a negative effect on the oil industry. These two bills alone pushed over $200 billion of investment out of Canada, causing the Alberta economy to retract to recession levels. To compound Alberta's economic problems, we have an international oil price war and the COVID-19 pandemic, which caused a huge drop in demand for oil.",
+      "results": {
+        "oracle": {
+          "answer": "The stress faced by the oil and gas industry, according to Mr. Yurdiga, stems from several factors including:\n\n1. Pressure from anti-oil and gas lobby groups demanding the shutdown of the oil sands.\n2. The introduction of Bill C-69, which prevents major oil and gas projects from being developed in Canada.\n3. The oil shipping ban, Bill C-48, affecting the northern coast of British Columbia.\n4. These bills pushing over $200 billion of investment out of Canada.\n5. An international oil price war.\n6. The COVID-19 pandemic causing a significant drop in oil demand.\n7. Delayed action on promised liquidity loans from the finance minister.",
+          "rouge_f1": {
+            "rouge1": 0.6352941176470588,
+            "rouge2": 0.4426877470355731,
+            "rougeL": 0.580392156862745
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              213,
+              214
+            ]
+          ],
+          "evidence_words": 242
+        }
+      }
+    }
+  ]
+}

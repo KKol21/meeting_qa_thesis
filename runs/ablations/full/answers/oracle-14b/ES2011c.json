@@ -1,0 +1,220 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "ES2011c.json",
+        "sha256": "ff02d2ce9ad006ebb216f023f2bbf324307db4d85f33051e733023b55574b3ca"
+      }
+    },
+    "input_hash": "80d22c620bcb87ca7a021e383545370c7533ba87ccf78c0b8c254affdfe17243",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "561942b1e5f9f654376d9a48c84f2b1e295b6219f8885a7096fc078a6292d488",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "ES2011c",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group discuss about the current trend and potential materials?",
+      "reference_answer": "Marketing proposed that the fancy look and feel were more important than the functionality of the product. The fruit and vegetable theme was the current trend, and marketing himself preferred fruits to vegetables. Therefore, how spongy the material could be should be taken into consideration when choosing the materials. The potential materials to accomplish the fruit and vegetable theme could be a sort of rubber, which was used in the stress balls. The alternative option was to use a cover for it, and choose a colour that fits one's sitting room.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed that the current trend in electronics is a \"fancy look and feel,\" followed by technological innovation and ease of use. They identified the fruit and vegetable theme as the specific trend to follow, with a preference for fruits over vegetables. Regarding materials, they considered a spongy feel, possibly using a rubber-like material similar to stress balls, and discussed the option of having interchangeable covers or naming products after fruits and vegetables to match various interior designs.",
+          "rouge_f1": {
+            "rouge1": 0.5232558139534884,
+            "rouge2": 0.16470588235294117,
+            "rougeL": 0.3023255813953488
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              30,
+              63
+            ],
+            [
+              267,
+              329
+            ]
+          ],
+          "evidence_words": 997
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the Industrial Designer say about component design?",
+      "reference_answer": "Industrial Designer thought some parts needed custom design, and other parts should just use standard. For example, the case needed custom design to protect the remote and the locator, and the circuit board needed custom design as well, while the buttons and the wheels, radio sender and receiver were all standard parts. In addition, beeper or other noise things were needed as well for locating the remote. Rubber, plastic, wood and titanium were options of materials, but better not titanium. Regular chips were required if the iPod-style wheel button was used.",
+      "results": {
+        "oracle": {
+          "answer": "The Industrial Designer discussed the component design by stating that custom design parts would be needed for the case and circuit board, while standard parts could be used for buttons, wheels, the infrared LED (which comes with the circuit board), radio sender and receiver, and a beeper or buzzer. They recommended against using titanium due to its heaviness and limitations in case shape, and suggested that if plastic buttons were desired, a rubber case should be avoided. Additionally, they noted that using an iPod-style wheel would require a more expensive chip.",
+          "rouge_f1": {
+            "rouge1": 0.532608695652174,
+            "rouge2": 0.13186813186813187,
+            "rougeL": 0.2717391304347826
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              10,
+              22
+            ]
+          ],
+          "evidence_words": 393
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did people decide on screen usage when discussing the necessity of screen?",
+      "reference_answer": "User Interface assumed they were going to have a screen at first, since User Interface thought a screen was necessary for people to visualize things such as a specific song when looking for one. However, since adding a screen cost more money, and TV could be used as the screen, they finally decided that screen was not necessary.",
+      "results": {
+        "oracle": {
+          "answer": "The group decided not to include a screen on the remote control. Instead, they agreed that the TV screen would serve as the display for menu options and other functions, while the remote would primarily feature a wheel for navigation and basic controls. This decision was made to avoid cluttering the remote and to reduce costs associated with incorporating an additional screen.",
+          "rouge_f1": {
+            "rouge1": 0.31666666666666665,
+            "rouge2": 0.033898305084745756,
+            "rougeL": 0.16666666666666669
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              52,
+              157
+            ]
+          ],
+          "evidence_words": 1427
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about potential options of energy.",
+      "reference_answer": "Battery, solar power, dynamo, Kryptonite were potential options of the energy. They ended up with a preference on Kryptonite. Even though they could not find an exact price for it, it would not be more expensive than a chip.",
+      "results": {
+        "oracle": {
+          "answer": "The participants discussed several options for energy: batteries, solar power, dynamo, and a wind-up mechanism. The industrial designer initially considered all these options but ultimately chose batteries. Concerns were raised about the suitability of solar power due to the rubber case and the dynamo's practicality in a living room setting. The user interface found the dynamo interesting, while marketing highlighted its self-generating energy feature as a positive aspect. However, there was uncertainty regarding the costs of implementing these alternatives, particularly the dynamo and wind-up mechanisms, due to insufficient data.",
+          "rouge_f1": {
+            "rouge1": 0.19696969696969696,
+            "rouge2": 0.04615384615384615,
+            "rougeL": 0.13636363636363635
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              473,
+              500
+            ]
+          ],
+          "evidence_words": 375
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the Industrial Designer think of the potential options of energy?",
+      "reference_answer": "Industrial Designer preferred battery. Industrial Designer was not very familiar with dynamo. Wind-up or a dynamo or a solar power were all possible, but solar power would not be available with the rubber case.",
+      "results": {
+        "oracle": {
+          "answer": "The Industrial Designer considered batteries, solar power, and a dynamo (initially misunderstood) as potential energy options. They also mentioned a kinetic option involving winding. The designer preferred batteries, finding them suitable for the living room setting, and noted that solar power might not be feasible due to the rubber case.",
+          "rouge_f1": {
+            "rouge1": 0.4235294117647058,
+            "rouge2": 0.21686746987951805,
+            "rougeL": 0.30588235294117644
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              474,
+              485
+            ]
+          ],
+          "evidence_words": 157
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What was the cost of the Kryptonite when discussing potential options of energy?",
+      "reference_answer": "The website did not give an actual cost, but most of the stuff was cheap. The chip would be the most expensive part anyway, so the group should not worry about the cost of the Kryptonite too much.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence is insufficient to determine the cost of the Kryptonite when discussing potential options of energy.",
+          "rouge_f1": {
+            "rouge1": 0.2545454545454545,
+            "rouge2": 0.1509433962264151,
+            "rougeL": 0.21818181818181817
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              489,
+              500
+            ]
+          ],
+          "evidence_words": 144
+        }
+      }
+    }
+  ]
+}

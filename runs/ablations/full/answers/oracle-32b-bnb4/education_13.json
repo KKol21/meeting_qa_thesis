@@ -1,0 +1,354 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "education_13.json",
+        "sha256": "7f94761227cca00c44ee4b28ebf56b22d256f6aca42e42ed75ab41d24ac2977c"
+      }
+    },
+    "input_hash": "0f37d663dee6e690c0c8221f7e711eec7327a1bc443d61d683ae7b9acf94754b",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "5374a253e7da7345a093b912bd8016877ba5cc51c537755dc80002bcf942ba59",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "education_13",
+  "question_count": 12,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 12,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about the efficacy of the law.",
+      "reference_answer": "Barry Hughes first stated that children had fewer rights than adults and therefore the law should be enforced to defend physical assault. As such social behavior was not available now, the law should change to reflect that. The discussion then turned to talk about the legal framework and its prosecution.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion centered on the efficacy of the current law regarding the protection of children from physical punishment. Barry Hughes explained that the current law includes a defense for \"reasonable punishment\" in cases of assault on a child, which is not available for adults. He noted that while a 2007 government review suggested retaining the law due to lack of evidence it was ineffective, societal attitudes are evolving, and younger generations find corporal punishment less acceptable. Removing the \"reasonable punishment\" defense could clarify the legal framework for parents and professionals, though it introduces complexities. Barry highlighted that the law's application involves a spectrum of behaviors, ranging from minor incidents (like a parent pulling a child back from traffic) to more severe cases of repeated smacking. Removing the defense could lead to more referrals to the Crown Prosecution Service (CPS), but the CPS would still assess each case based on evidence and public interest, potentially leading to fewer prosecutions for minor incidents.",
+          "rouge_f1": {
+            "rouge1": 0.2641509433962264,
+            "rouge2": 0.07619047619047618,
+            "rougeL": 0.16037735849056606
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              1,
+              16
+            ]
+          ],
+          "evidence_words": 1905
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Barry Hughes think about the legal framework when talking about the efficacy of the law?",
+      "reference_answer": "Barry thought that the legal framework would make things clearer for parents and professionals. But when it came to prosecuting, there was a degree of confusion and some cases were in the grey areas.",
+      "results": {
+        "oracle": {
+          "answer": "Barry Hughes discussed the legal framework concerning the protection of children through existing laws. He mentioned that there are various offences created by the criminal law, starting from the Offences Against the Person Act 1861, which cover assaults on different groups, including children. Specifically, he noted the Children and Young Persons Act 1933, which addresses offences related to children. He pointed out that while general criminal legislation protects both adults and children from physical assault, there is a specific provision under section 58 of the Children Act 2004 that allows for a defense of \"reasonable punishment\" in cases where a child is assaulted. This defense is not available in cases involving adults, suggesting that children may have fewer rights in this context.",
+          "rouge_f1": {
+            "rouge1": 0.1923076923076923,
+            "rouge2": 0.025974025974025976,
+            "rougeL": 0.14102564102564105
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              1,
+              5
+            ]
+          ],
+          "evidence_words": 247
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What was the two-stage test during prosecutions when discussing the efficacy of the law?",
+      "reference_answer": "The first stage was to check whether there was sufficient evidence submitted by the police to provide a realistic prospect of conviction. Only if the first stage was satisfied, the second stage came to be considered, which was in the public interest.",
+      "results": {
+        "oracle": {
+          "answer": "The two-stage test during prosecutions involves:\n1. **Evidential Stage**: Determining whether there is sufficient evidence to provide a realistic prospect of conviction.\n2. **Public Interest Stage**: Considering whether it is in the public interest to prosecute, but this stage is only reached if the evidential stage is satisfied.",
+          "rouge_f1": {
+            "rouge1": 0.5494505494505494,
+            "rouge2": 0.2696629213483146,
+            "rougeL": 0.41758241758241765
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              12,
+              13
+            ]
+          ],
+          "evidence_words": 472
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about the divergence between the law in England and Wales.",
+      "reference_answer": "Barry Hughes indicated that the Bill would impact England and their people, although it needed a period. Moreover, Barry thought there was no cross-border issue from the potential legislation, and the draft changing to CPS guidance would not be helpful for scrutinisers to decide on the law in Wales.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion centered on the divergence between the law in England and Wales, particularly regarding the removal of a defense for minor physical punishment of children in Wales, which would not apply in England. Barry Hughes highlighted that this divergence would lead to more cases passing the evidential stage in Wales compared to England, raising awareness issues for individuals traveling between the two regions. He provided examples such as families traveling from England to Wales where a minor smack would be subject to prosecution in Wales but not in England. \n\nBarry also noted that the CPS would need to update its guidance, especially concerning the public interest stage, to reflect the new legislation. Staff in Wales are already somewhat aware of the changes due to internal communications, but there would be a need for further training and awareness-raising. For staff in England, awareness would be less extensive but still necessary, given the interchange of prosecutors between the two regions.\n\nBarry indicated that the CPS would work closely with stakeholders to ensure proper implementation and that the divergence in this area sets a precedent, though he noted that there are other minor legal differences between Wales and England, such as offenses related to electronic collars on pets and cockle picking. He emphasized that the change aims to protect children and aligns with societal values. Finally, Barry suggested that similar legislation might eventually be adopted in England, noting that it is already progressing in Scotland and exists in several other countries.",
+          "rouge_f1": {
+            "rouge1": 0.22,
+            "rouge2": 0.06040268456375838,
+            "rougeL": 0.12666666666666665
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              17,
+              49
+            ]
+          ],
+          "evidence_words": 2245
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did Barry Hughes think about the implications for implementing the Bill in Wales when talking about the divergence between the law in England and Wales?",
+      "reference_answer": "Barry Hughes concluded two kinds of implications. First, the Bill would raise awareness for people from England who travel to Wales. Second, people in other areas might reflect on this defense as they did to the drink driving limit in Scotland.",
+      "results": {
+        "oracle": {
+          "answer": "Barry Hughes highlighted several implications for implementing the Bill in Wales regarding the divergence between the law in England and Wales:\n\n1. **Increased Cases in Wales**: The removal of the defence would result in more cases passing the evidential stage in Wales compared to England, where the defence would still apply.\n   \n2. **Public Awareness Issues**: There could be confusion among individuals traveling from England to Wales, as acts that would be defended in England would not be defended in Wales. For example, a parent smacking a child on the leg while traveling from England to Wales would face different legal outcomes depending on their location.\n\n3. **Precedent of Legal Divergence**: He noted that there is already some legal divergence within the UK, such as the differing limits for drink driving between England/Wales and Scotland. This suggests that the CPS is prepared to handle such divergences.\n\n4. **CPS Flexibility**: The CPS has provisions in its code to address potential legal divergences and would issue policy guidance and charging standards to reflect any changes.\n\n5. **Implementation Strategy**: Barry Hughes suggested that the CPS would work closely with colleagues in Wales to ensure national guidance suits both England and Wales. He also mentioned the possibility of having a few specialists trained to handle these cases due to the expected low volume of offenses.\n\n6. **Public Interest Focus**: The primary focus would be on the public interest aspect of the cases.",
+          "rouge_f1": {
+            "rouge1": 0.1863799283154122,
+            "rouge2": 0.04332129963898917,
+            "rougeL": 0.12903225806451613
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              17,
+              23
+            ]
+          ],
+          "evidence_words": 697
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did Barry Hughes think about draft changes to CPS guidance when talking about the divergence between the law in England and Wales?",
+      "reference_answer": "Barry Hughes thought draft changes to CPS guidance would not necessarily be helpful to the scrutinisers, and simply wanted to take the present interest factors. Barry thought they needed to work for the principles of generality and a degree of specificity.",
+      "results": {
+        "oracle": {
+          "answer": "Barry Hughes thought that seeing the draft changes to CPS guidance on the public interest test before making a final decision might not be helpful. He believed that the current public interest factors, as outlined in the code for Crown prosecutors, should be used and given more specific detail related to the issues being discussed. He suggested that providing too much detail too early could be premature (\"putting the cart before the horse\").",
+          "rouge_f1": {
+            "rouge1": 0.3684210526315789,
+            "rouge2": 0.16071428571428573,
+            "rougeL": 0.2982456140350877
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              42,
+              44
+            ]
+          ],
+          "evidence_words": 265
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "Summarize the discussion about out-of-court disposals.",
+      "reference_answer": "Barry Hughes introduced their cooperated organizations the National Police Chiefs' Council and their work on the out-of-court disposals. Then, Hughes and Vikki Howells talked about the possibility of creating a body of out-of-court disposals specific to the Bill. Lastly, there was a short discussion about the duty around awareness raising.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about out-of-court disposals focused on ongoing work to simplify and clarify the range of disposals, led by the National Police Chiefs' Council under Deputy Chief Constable Sara Glen. Barry Hughes explained that the police handle most out-of-court disposals, while the CPS decides on prosecution for more serious cases. The CPS can opt for diversion from the criminal justice system, especially for younger offenders, instead of prosecution. However, the administration and monitoring of compliance with out-of-court disposals remain the responsibility of the police.\n\nRegarding the creation of a specific body of out-of-court disposals for the Bill, Barry Hughes suggested building an infrastructure within Wales, possibly involving the Welsh Government, local authorities, and the police, though he noted that directing the police or CPS to use this infrastructure would be challenging due to limited legislative competence. Awareness raising was also discussed, with Barry Hughes emphasizing its importance for the Act's success and noting the current lack of a duty to raise awareness in the Bill. He highlighted the importance of media coverage in increasing awareness, even for those coming from outside the UK, where ignorance of the law is not a defense.",
+          "rouge_f1": {
+            "rouge1": 0.3058823529411765,
+            "rouge2": 0.12648221343873517,
+            "rougeL": 0.21176470588235297
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              95,
+              105
+            ]
+          ],
+          "evidence_words": 937
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "How did the National Police Chiefs' Council help in out-of-court disposals?",
+      "reference_answer": "The National Police Chiefs' Council was responsible for developing the police approach to out-of-court disposals and simplifying the range of out-of-court disposals.",
+      "results": {
+        "oracle": {
+          "answer": "The National Police Chiefs' Council helped in out-of-court disposals by leading the development of the police approach to these disposals under the responsibility of Deputy Chief Constable Sara Glen. They are working towards simplifying the range of out-of-court disposals to make them clearer and more straightforward. This effort aims to streamline the process and provide more clarity on what each type of disposal entails. The police handle most out-of-court disposals, as many offences or reports of crime are resolved without reaching the Crown Prosecution Service (CPS).",
+          "rouge_f1": {
+            "rouge1": 0.4067796610169491,
+            "rouge2": 0.2931034482758621,
+            "rougeL": 0.3559322033898305
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              95,
+              96
+            ]
+          ],
+          "evidence_words": 415
+        }
+      }
+    },
+    {
+      "question_index": 8,
+      "question": "What did Barry Hughes think about the infrastructure of out-of-court disposals?",
+      "reference_answer": "Barry Hughes thought that the infrastructure can be built for a range of out-of-court disposals. It might be built by the Welsh Government, the police, and crime commissioners.",
+      "results": {
+        "oracle": {
+          "answer": "Barry Hughes believed that while policing and the Crown Prosecution Service (CPS) are not devolved, it is possible to build an infrastructure for out-of-court disposals within Wales. He suggested that a well-built infrastructure could increase the likelihood of people being directed towards these disposals, even though there is no authority to directly instruct the police or CPS to do so. He proposed that the Welsh Government, local authorities, and the police, possibly in partnership with police and crime commissioners using their commissioning powers, could be involved in building such an infrastructure.",
+          "rouge_f1": {
+            "rouge1": 0.3870967741935484,
+            "rouge2": 0.18032786885245902,
+            "rougeL": 0.3064516129032258
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              97,
+              101
+            ]
+          ],
+          "evidence_words": 170
+        }
+      }
+    },
+    {
+      "question_index": 9,
+      "question": "Summarize the discussion about unintended consequences.",
+      "reference_answer": "Barry Hughes explained a number of unintended consequences questioned. The first one was about the isolated incidences in Wales, and the second came to the targets in terms of performance measure. The following concerns included malicious reporting, the European convention on human rights, low numbers of prosecutions, and a shortage of registered intermediaries.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about unintended consequences focused on several potential issues:\n\n1. **Life Prospects Impact**: Sian Gwenllian AM raised the concern that individuals in Wales who cannot use the reasonable punishment defense might face different life prospects compared to those in England, where such a defense is available. Barry Hughes noted that if someone in Wales is convicted of assaulting their child, they would have a criminal record, which could affect their life prospects, though he emphasized this would be an isolated incident due to the low number of cases expected.\n\n2. **Police Performance Targets**: Sian Gwenllian AM questioned whether performance targets for the police might lead to inappropriate criminal justice involvement. Barry Hughes dismissed this as unlikely, stating that the CPS does not have targets for securing convictions and that the numbers of cases would be too small to significantly impact performance metrics.\n\n3. **Malicious Reporting**: The possibility of increased malicious reporting in private family law cases was discussed. Barry Hughes acknowledged a potential increase but noted that the numbers would be small and manageable, given existing approaches to evaluating evidence.\n\n4. **European Convention on Human Rights (ECHR)**: Sian Gwenllian AM inquired about the potential for Wales to face difficulties under the ECHR if the law is not introduced. Barry Hughes stated that implementing the law would align Wales more closely with ECHR standards, while England would be less compliant. However, he noted that the current position is that section 58 is compliant with the ECHR.\n\nBarry Hughes concluded that the unintended consequences discussed were unlikely to be significant due to the low number of cases expected and the existing legal frameworks in place.",
+          "rouge_f1": {
+            "rouge1": 0.24464831804281342,
+            "rouge2": 0.09846153846153846,
+            "rougeL": 0.15290519877675843
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              106,
+              132
+            ]
+          ],
+          "evidence_words": 1907
+        }
+      }
+    },
+    {
+      "question_index": 10,
+      "question": "What did Barry Hughes think about the targets regarding performance measure?",
+      "reference_answer": "Barry Hughes stated that they did not have targets and only prosecuted with reasonable prospects. As for the police, there were no targets for the police anymore, except for some individuals.",
+      "results": {
+        "oracle": {
+          "answer": "Barry Hughes thought it was extremely unlikely that performance measures would lead to inappropriate handling of cases through the criminal justice system. He stated that the Crown Prosecution Service (CPS) does not have targets for securing convictions and prosecutes only if there is a realistic prospect of conviction and it is in the public interest. Additionally, he noted that with the small number of cases involved, any attempt to meet targets would be insignificant. Regarding unsolved crimes or offences, Hughes mentioned that while there were previously targets for the police related to sanction detection, these have disappeared, and current practices are more sensible, with less emphasis on meeting notional targets.",
+          "rouge_f1": {
+            "rouge1": 0.28368794326241137,
+            "rouge2": 0.11510791366906477,
+            "rougeL": 0.24113475177304966
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              111,
+              114
+            ]
+          ],
+          "evidence_words": 298
+        }
+      }
+    },
+    {
+      "question_index": 11,
+      "question": "What did Karen Cornish think about a shortage of registered intermediaries?",
+      "reference_answer": "Karen Cornish thought it was a potential barrier but not a substantial barrier. The Ministry of Justice had taken action to deal with it and there had had a number of people in the positions. However, it was true that the work required larger recruitment.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence provided does not contain any statements or thoughts from Karen Cornish regarding a shortage of registered intermediaries. Therefore, based on the given excerpts, there is insufficient evidence to answer the question.",
+          "rouge_f1": {
+            "rouge1": 0.28205128205128205,
+            "rouge2": 0.026315789473684213,
+            "rougeL": 0.15384615384615383
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              128,
+              130
+            ]
+          ],
+          "evidence_words": 249
+        }
+      }
+    }
+  ]
+}

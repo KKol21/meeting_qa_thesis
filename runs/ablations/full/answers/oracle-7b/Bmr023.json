@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "Bmr023.json",
+        "sha256": "70d0d99d63ccfb98e55b4f6421eb657bda18e1295ef7c03f885c8e8ba23c25a8"
+      }
+    },
+    "input_hash": "828056aafbedceae535fcec54b320a5af7af32d6285fd0c31514f1d56b14b92f",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "0351bef11b2b921a3760bb13c6bebde9b4807fdf7d64e93ddacbbb717bf044f3",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bmr023",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What was decided on DARPA?",
+      "reference_answer": "A pressing concern for the group is the DARPA meeting in July, which is only a short time away, and for which they would like to have some progress. ",
+      "results": {
+        "oracle": {
+          "answer": "The meeting did not decide on any specific actions regarding DARPA. The discussion briefly mentioned that the DARPA meeting is in mid-July and that something was planned for the transcriber interface, but no further details were provided or decisions made about DARPA.",
+          "rouge_f1": {
+            "rouge1": 0.25,
+            "rouge2": 0.08571428571428572,
+            "rougeL": 0.2222222222222222
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              32,
+              35
+            ]
+          ],
+          "evidence_words": 106
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What was said on transcripts?",
+      "reference_answer": "For the DARPA meeting in July, the group proposed that they should have the question answering mock-up and transcriber interface ready for then, and also have data available.",
+      "results": {
+        "oracle": {
+          "answer": "On the transcripts, Professor F brought up the upcoming DARPA meeting in mid-July and mentioned they were behind schedule due to starting late. They asked if anyone remembered the two things they planned to do: one related to the transcriber interface and another involving a mock-up of question answering in a pre-stored fashion. PhD G confirmed the mock-up idea and suggested using xeroxing as a solution for some written material. The group agreed they needed to assign someone to work on the mock-up since they had about a month left until the DARPA meeting.",
+          "rouge_f1": {
+            "rouge1": 0.28125,
+            "rouge2": 0.11111111111111112,
+            "rougeL": 0.21875
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              32,
+              47
+            ]
+          ],
+          "evidence_words": 285
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What was the status of transcription?",
+      "reference_answer": "The final english SmartKom demo will be presented to the whole institute once the system is de-bugged and stabilised.",
+      "results": {
+        "oracle": {
+          "answer": "The status of transcription is that some meetings have been transcribed, but not all. Specifically, as of Monday, the fourteenth, 62 hours of meetings have been collected, and some have been transcribed. However, there is no indication that all transcriptions have been reviewed or approved by the participants for distribution. The group plans to organize the transcription status and make a subset of the transcriptions available by July, after addressing legal issues.",
+          "rouge_f1": {
+            "rouge1": 0.13043478260869565,
+            "rouge2": 0.0,
+            "rougeL": 0.08695652173913045
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              229,
+              323
+            ]
+          ],
+          "evidence_words": 2642
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What change has occurred to the segmenter?",
+      "reference_answer": "Segmentation for the recogniser has been done by hand which the group consider \"cheating\", instead now they want to use Thilo's automatic segmenter.",
+      "results": {
+        "oracle": {
+          "answer": "The segmenter has changed from using hand-segmentations as the basis for recognition to using automatic segmentations.",
+          "rouge_f1": {
+            "rouge1": 0.48780487804878053,
+            "rouge2": 0.10256410256410256,
+            "rougeL": 0.39024390243902435
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              101,
+              108
+            ]
+          ],
+          "evidence_words": 124
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What is the status of the segmenter",
+      "reference_answer": "The classifier segmentation work is going well, but needs more data to improve results since non-native speaker data cannot be used.",
+      "results": {
+        "oracle": {
+          "answer": "The status of the segmenter is that it is working well, as mentioned by PhD C, and it has been suggested that they should consider using it for automatic recognition instead of relying on hand-segmentations, which were used in previous experiments.",
+          "rouge_f1": {
+            "rouge1": 0.18749999999999997,
+            "rouge2": 0.0,
+            "rougeL": 0.15624999999999997
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              101,
+              114
+            ]
+          ],
+          "evidence_words": 173
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What change has occurred to the segmenter?",
+      "reference_answer": "To improve the performance of Thilo's automatic segmenter, this is going to be retrained and adapted to run with Thilo's posteriors and speaker background models.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence is insufficient to determine a specific change that has occurred to the segmenter. The excerpts discuss potential improvements such as retraining models for background noise and using posteriors, but do not indicate any actual change to the segmenter itself.",
+          "rouge_f1": {
+            "rouge1": 0.3529411764705882,
+            "rouge2": 0.0,
+            "rougeL": 0.1764705882352941
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              133,
+              140
+            ]
+          ],
+          "evidence_words": 88
+        }
+      }
+    }
+  ]
+}

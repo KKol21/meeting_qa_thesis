@@ -1,0 +1,170 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "Bmr014.json",
+        "sha256": "d7c6a51500678eedbc83cd694cd4bc4681e0e15a50909e90fb5e9346106c475e"
+      }
+    },
+    "input_hash": "b7b6f2249456580ab5dc310f6dbf6c9b2a63ed357d99c8996310e040bce2883e",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "55fe6a5791c49078e5b7a63cf312dc2935e8231177af05f22c17fbc24d03d141",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bmr014",
+  "question_count": 4,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 4,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What was said about the equipment?",
+      "reference_answer": "The group discussed recording equipment issues, including the purchase of two additional headsets and the prospect of getting a new base station and a set of wireless microphones to replace those wired microphones currently in use.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the equipment focused on microphones and wireless setups:\n\n- Two new microphones were mentioned as being assembled and would be picked up the next day.\n- There was consideration of getting more comfortable headsets once the new microphones were evaluated.\n- The possibility of acquiring another wireless setup was discussed, though it was noted to be expensive.\n- Currently, there was one base station with six wireless microphone possibilities, and it was suggested that additional base stations could be chained together to replace wired microphones.\n- The cost was discussed: $900 for a base station and $800 per channel.\n- The plan was to replace some of the existing wired microphones (two working and one non-working) with wireless ones, without increasing the total number of channels beyond nine.",
+          "rouge_f1": {
+            "rouge1": 0.30864197530864196,
+            "rouge2": 0.07500000000000001,
+            "rougeL": 0.20987654320987653
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              74,
+              104
+            ]
+          ],
+          "evidence_words": 565
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the team say about recording conventions?",
+      "reference_answer": "Efforts will be made to ensure that recording conventions are consistent across ICSI, the University of Washington, and SRI.",
+      "results": {
+        "oracle": {
+          "answer": "The team did not discuss any specific recording conventions in the provided meeting excerpts. The conversation focused on the reliability of equipment such as wired and wireless microphones, particularly the Sony radio mikes, and the importance of managing battery issues. There was no mention of conventions related to recording practices or protocols.",
+          "rouge_f1": {
+            "rouge1": 0.16901408450704222,
+            "rouge2": 0.02898550724637681,
+            "rougeL": 0.14084507042253522
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              99,
+              121
+            ]
+          ],
+          "evidence_words": 266
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What’s the current state of transcriptions?",
+      "reference_answer": "Approximately 32-35 hours of meeting data have been recorded, roughly 30 hours of which comprise non-digits recordings. The transcribers have begun performing digit extraction (see abstract for Bmr013) and should be finished within a few days. Approximately 11 hours of speech have been transcribed.",
+      "results": {
+        "oracle": {
+          "answer": "The current state of transcriptions is that there are approximately thirty-five hours of recordings, including digits, though the exact amount of non-digit content is unknown. About eleven hours of these recordings have been transcribed and are being cleaned and standardized, including consistent markup and handling of numbers and acronyms. The transcriptions are being checked for spelling and consistency, and a systematic approach is being implemented to handle spoken forms not in the lexicon.",
+          "rouge_f1": {
+            "rouge1": 0.3140495867768595,
+            "rouge2": 0.08403361344537816,
+            "rougeL": 0.19834710743801653
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              201,
+              248
+            ]
+          ],
+          "evidence_words": 1121
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What was needed for the transcripts?",
+      "reference_answer": "Efforts by speaker fe008 are in progress to ensure that transcripts are clean (i.e. spell checked), channelized, and conform to set conventions regarding the coding of numbers, acronyms, and explicit comments (e.g. door slams, coughs, and laughter). Subsequent efforts by speaker fe008 will be to tighten up boundaries on the time bins. Inter-annotator agreement was reported to be very good. Speaker mn014's multi-channel speech/non-speech segmenter is in use.",
+      "results": {
+        "oracle": {
+          "answer": "For the transcripts, the following were needed:\n\n1. **Spell-checking**: Ensuring all words are spelled correctly.\n2. **Consistent markup**: Making sure the markup is consistent throughout the transcripts.\n3. **Handling numbers systematically**: Converting spoken numbers into a standardized written format.\n4. **Handling acronyms**: Separating letters in acronyms with spaces and potentially adding a gloss to clarify their meaning.\n5. **Channelization**: Organizing the data into a multichannel format.\n6. **Cleaning the data**: This includes checking for inconsistencies and ensuring the data is free of errors.\n7. **Spot checks**: Comparing segments transcribed by different transcribers to ensure consistency.\n8. **Time bin boundaries**: Tightening up the boundaries of the time bins for better accuracy.\n9. **Speech-nonspeech segmentation**: Implementing channel-based speech-nonspeech segmentation.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.05154639175257732,
+            "rougeL": 0.19387755102040818
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              201,
+              275
+            ]
+          ],
+          "evidence_words": 1625
+        }
+      }
+    }
+  ]
+}

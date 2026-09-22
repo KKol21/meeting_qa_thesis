@@ -1,0 +1,224 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "TS3011d.json",
+        "sha256": "a60a8ae6166ca83190ec844de2ab775b9b221c6e20c47859b513ae5b85a2f41a"
+      }
+    },
+    "input_hash": "5c668fa619fa09628986722788df1f4cf96d05f2c50316f0249b351503a26102",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "4c4de1511397f813ed12b306547ce5bd5744930db41de535f7b0806d0a1a960a",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "TS3011d",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about evaluation criteria of remote control.",
+      "reference_answer": "The group thought the remote control should be fancy, innovative, easy to use, easy to find and spongy and evaluated the prototype with these criteria. Although they had brilliant ideas and designed a best remote control within their capacity, they just designed a product of high quality but low acceptance.",
+      "results": {
+        "oracle": {
+          "answer": "The team discussed several evaluation criteria for the remote control:\n\n1. **Fancy Look and Feel**: Marketing suggested that the criteria for evaluation included \"fancy look and feel,\" which was deemed important by the fashion department. The team agreed that while the remote was somewhat fancy due to its colors and soft materials, it could have been fancier with different materials like titanium housing or a double-curved case. However, they settled on giving it a score of 2 out of 3 for being fancy.\n\n2. **Innovation**: The team considered the remote's innovation, particularly mentioning the voice recognition feature and the solar panel. While they acknowledged that the remote was innovative, they noted that it could have been more innovative with a kinetic energy source. They gave it a score of 2 out of 3 for innovation.\n\n3. **Ease of Use**: The team debated whether the remote was easy to use, considering both basic functions (like channel switching) and advanced features (like voice recognition). They concluded that while the basic functions were easy to use, the more advanced features might be challenging for some users. The team ultimately gave it a score of 3 out of 3 for overall ease of use.\n\n4. **Sponginess**: The team evaluated the sponginess of the remote, noting that while it was the most spongy option available, it could still be improved. They gave it a score of 1 out of 3 for sponginess.\n\n5. **Features**: The team assessed whether the remote offered enough features, acknowledging that while it had fewer physical buttons, it was highly programmable and could adapt to various signals. They gave it a score of 1 out of 3 for offering enough features, considering the target market and price point.\n\nOverall, the team provided scores for each criterion, reflecting their assessment of the remote control's performance against these evaluation criteria.",
+          "rouge_f1": {
+            "rouge1": 0.16666666666666666,
+            "rouge2": 0.0446927374301676,
+            "rougeL": 0.11666666666666667
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              48,
+              76
+            ],
+            [
+              153,
+              389
+            ]
+          ],
+          "evidence_words": 2510
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Did the group think the remote control was easy to use when discussing evaluation criteria of the remote control?",
+      "reference_answer": "User Interface believed that voice recognition was hard to learn while Industrial Designer argued that the remote control had two parts and everyone could use the basic part. He also pointed out that an advanced user would like to explore additional functions.",
+      "results": {
+        "oracle": {
+          "answer": "The group had mixed thoughts on the ease of use of the remote control. The User Interface and Project Manager expressed some doubts, with the User Interface specifically mentioning that voice recognition might be difficult for elderly users. However, the Industrial Designer argued that the basic functions were easy for everyone to use, and even advanced functions could be easy for more experienced users who wanted to explore them. Marketing noted that while the primary functions (zapping, channel switching, volume) were easy, more advanced features might be harder. Overall, there wasn't a unanimous agreement on whether the remote control was easy to use across all its functions.",
+          "rouge_f1": {
+            "rouge1": 0.37333333333333335,
+            "rouge2": 0.14864864864864866,
+            "rougeL": 0.22666666666666666
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              224,
+              243
+            ]
+          ],
+          "evidence_words": 298
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Did the group think the remote control was competitive in the discussion of evaluation criteria of the remote control?",
+      "reference_answer": "Marketing thought that the basic layout was mundane but the voice recognition was brilliant. User Interface added that it did not have the digits but had all the features a normal remote control had. Industrial Designer agreed but pointed out that they just design the best product within their capacity. Project agreed and concluded that it was of high quality but low acceptance.",
+      "results": {
+        "oracle": {
+          "answer": "The group did not uniformly think the remote control was competitive based on the evaluation criteria discussed. While some participants noted its advanced features and programmability, others pointed out limitations such as missing digits and questioning if it had all the necessary features of a standard remote. The final ratings given (Project Manager gave it a 1, User Interface gave it a 2, and Industrial Designer and Marketing also gave it a 1) suggest mixed opinions, with the consensus leaning towards it being advanced but perhaps not fully competitive for the intended market due to usability and feature completeness concerns.",
+          "rouge_f1": {
+            "rouge1": 0.34355828220858897,
+            "rouge2": 0.08695652173913042,
+            "rougeL": 0.19631901840490798
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              352,
+              388
+            ]
+          ],
+          "evidence_words": 510
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did the group discuss about production costs of the product?",
+      "reference_answer": "Project Manager revealed that it would cost 22 Euros at current standards so they should leave out some characteristics that could not add much value. Since it could be dull and simple without those characteristics, the group supposed that the selling price could be raised to 50 Euros.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed that the production costs of the product were significantly higher than expected, reaching twenty-two Euros compared to the initial target of twelve Euro fifty. They identified several components contributing to the high costs, including the solar cell and voice recognition feature. To reduce costs, they suggested removing the solar cell and considering less expensive materials for the buttons, such as switching from special materials to plastic. Despite these adjustments, the product remained too expensive for their intended market, leading them to consider simplifying the design further or targeting a different market segment.",
+          "rouge_f1": {
+            "rouge1": 0.1388888888888889,
+            "rouge2": 0.02816901408450704,
+            "rougeL": 0.1111111111111111
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              77,
+              152
+            ],
+            [
+              390,
+              430
+            ]
+          ],
+          "evidence_words": 1244
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the group think about the reduction of production costs?",
+      "reference_answer": "Project Manager revealed that it would be over budget so they had to make some changes. He proposed to reduce costs by leaving out solar cells and not using voice recognition. Then User Interface supposed that the buttons could be made of plastics and Industrial Designer proposed to make the remote control straight and simple.",
+      "results": {
+        "oracle": {
+          "answer": "The group thought that reducing production costs was necessary but would compromise the product's quality and appeal. They considered removing features like solar cells and voice recognition to lower costs from 22 Euros to around 12.50 Euros. However, they acknowledged that such reductions would result in a less luxurious and potentially less attractive product, especially to younger consumers. Despite these concerns, they agreed that cost reduction was essential to fit within their pricing model and maximize profits.",
+          "rouge_f1": {
+            "rouge1": 0.26865671641791045,
+            "rouge2": 0.04545454545454546,
+            "rougeL": 0.1791044776119403
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              77,
+              152
+            ]
+          ],
+          "evidence_words": 824
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did Industrial Designer propose in the discussion of production costs?",
+      "reference_answer": "Since the prototype was over budget, Industrial Designer proposed to raise the selling price to 50 Euros. He thought it was not very expensive for a remote control that had this functionality.",
+      "results": {
+        "oracle": {
+          "answer": "Industrial Designer proposed that the production cost of around fifty Euros for a remote control with advanced functionality, including voice recognition, is justified given its capabilities, even though it is more expensive than standard remote controls.",
+          "rouge_f1": {
+            "rouge1": 0.38235294117647056,
+            "rouge2": 0.1515151515151515,
+            "rougeL": 0.29411764705882354
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              406,
+              421
+            ]
+          ],
+          "evidence_words": 188
+        }
+      }
+    }
+  ]
+}

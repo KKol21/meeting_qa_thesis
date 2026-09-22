@@ -1,0 +1,3701 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "ES2004a.json",
+        "sha256": "306606690af5a0e20323a8c017467ee01d2181b7b5b2971ec3bd9ed3544a1129"
+      },
+      "retrieval": {
+        "file": "ES2004a.json",
+        "sha256": "73ef60cf4311f90b9071e1e901cc396c76824c271b70bcc69b1205855c3899ed"
+      },
+      "segmentation": {
+        "file": "ES2004a.json",
+        "sha256": "d86ef5c73fca0446f346951ca95b0e19edfb39950283c1f18a141af1704f464e"
+      }
+    },
+    "input_hash": "1f0f745d2343e4ffac5e9d77ddcf47790df1776ef45ad8fb8db9173ee8c92fcf",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "e1c7b71f99adebaaad331b4bcfa184256d7df79bb7ef0a52e4997f5a659a5d3f",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "ES2004a",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 146,
+  "cache_hits": 16,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group discuss about remote control style and design optimization?",
+      "reference_answer": "Industrial Designer desired to integrate remote controls for different appliances into one. Marketing pointed out that such integration would lead to too many buttons, which was not user-friendly enough. Instead, Marketing suggested that a menu display should be incorporated. Project Manager and User Interface agreed and added that basic buttons could remain. User Interface and Industrial Designer refused the flip top, however, for it costs a lot. The team temporarily chose lightweight plastic to be the material.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group discussed the idea of integrating a menu display with an LCD screen into the design of a remote control, inspired by mobile phones. This would help simplify the interface and reduce the number of buttons, potentially making it easier for users to navigate. However, there was concern about whether this design would be suitable for older generations who might find such features complex.",
+          "rouge_f1": {
+            "rouge1": 0.3636363636363636,
+            "rouge2": 0.05673758865248227,
+            "rougeL": 0.13986013986013987
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            1
+          ],
+          "retrieval_precision": 0.970703125,
+          "retrieval_recall": 0.3058461538461538
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The group discussed the remote control style and design optimization focusing on several aspects:\n\n- The remote control should be user-friendly, appealing to a wide market including \"grannies to kids.\"\n- It should integrate multiple functionalities into one device, avoiding the need for multiple remote controls.\n- Simplification of symbols and layout was emphasized, suggesting that essential functions should be on the front while secondary functions could be accessed through a section that opens up.\n- Incorporating a menu display system similar to mobile phones, possibly with an LCD screen, was proposed to simplify navigation and reduce the complexity of having numerous buttons.\n- Consideration was given to the usability for older generations, ensuring that the design remains simple and intuitive for them.",
+          "rouge_f1": {
+            "rouge1": 0.3857868020304568,
+            "rouge2": 0.07179487179487179,
+            "rougeL": 0.16243654822335024
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            1,
+            8,
+            13
+          ],
+          "retrieval_precision": 0.7587890625,
+          "retrieval_recall": 0.47815384615384615
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The group discussed optimizing the remote control style and design to ensure it was original, trendy, appealing to a wide market, and user-friendly for various age groups, including children and elderly users. They emphasized simplifying the interface to avoid clutter with numerous tiny buttons and unclear symbols. Suggestions included integrating a menu display with an LCD screen, similar to mobile phones, to provide additional functionality without overwhelming the user. The team also considered designing the remote control to be intuitive, possibly incorporating features like large print options for older users and ensuring it remains affordable and practical, avoiding excessive complexity or high costs.",
+          "rouge_f1": {
+            "rouge1": 0.3846153846153846,
+            "rouge2": 0.07777777777777778,
+            "rougeL": 0.18681318681318684
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            1,
+            8,
+            13,
+            11,
+            10,
+            12,
+            0,
+            6
+          ],
+          "retrieval_precision": 0.77978515625,
+          "retrieval_recall": 0.9827692307692307
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The group discussed incorporating a menu display system similar to mobile phones into the remote control design to avoid having too many buttons and to make it user-friendly. They considered using an LCD display with menus for easier navigation. However, they also acknowledged the need to ensure the design is accessible to older users, possibly limiting the complexity to basic functions and considering a black and white LCD display for simplicity.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.08108108108108107,
+            "rougeL": 0.18666666666666665
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            9,
+            11
+          ],
+          "retrieval_precision": 0.517578125,
+          "retrieval_recall": 0.16307692307692306
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The group discussed the remote control's style and design optimization, focusing on making it user-friendly for a broad audience including older generations. They considered incorporating an LCD display with menu options similar to mobile phones to simplify navigation and control. For older users, they suggested adding features such as large print options and a dual-function design with basic buttons for common functions and a menu for more complex operations. Additionally, they explored the idea of a flip-top remote control to potentially offer a larger screen while maintaining a compact size.",
+          "rouge_f1": {
+            "rouge1": 0.3604651162790698,
+            "rouge2": 0.07058823529411765,
+            "rougeL": 0.18604651162790697
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            9,
+            11,
+            7,
+            8
+          ],
+          "retrieval_precision": 0.7587890625,
+          "retrieval_recall": 0.47815384615384615
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The group discussed optimizing the remote control's style and design to ensure it was user-friendly for a wide range of users, including older individuals and children. They emphasized the importance of simplicity, suggesting that the remote should have clear, understandable symbols and possibly incorporate an LCD display with menus for additional functions. They also considered the possibility of a dual-function design with basic buttons for common tasks and a menu for more complex operations. Additionally, they proposed a feature for larger text display to assist older users and debated whether the remote should be made of plastic or metal, considering both cost and aesthetic factors.",
+          "rouge_f1": {
+            "rouge1": 0.3548387096774194,
+            "rouge2": 0.06521739130434782,
+            "rougeL": 0.18279569892473116
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            9,
+            11,
+            7,
+            8,
+            12,
+            5,
+            13,
+            2
+          ],
+          "retrieval_precision": 0.6611328125,
+          "retrieval_recall": 0.8332307692307692
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The group discussed incorporating a menu display system similar to mobile phones into the remote control design to enhance user-friendliness and appeal to a wide market. They considered using an LCD display with menus to simplify navigation and reduce the number of buttons. However, they also raised concerns about the usability for older generations, such as grandpas who might struggle with more complex features.",
+          "rouge_f1": {
+            "rouge1": 0.3356643356643357,
+            "rouge2": 0.05673758865248227,
+            "rougeL": 0.16783216783216784
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            1,
+            7
+          ],
+          "retrieval_precision": 0.517578125,
+          "retrieval_recall": 0.16307692307692306
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The group discussed the remote control's style and design optimization, focusing on making it user-friendly for a broad audience including older generations. They considered incorporating an LCD display with menu options similar to mobile phones to simplify navigation and control. For older users, they suggested adding features such as large print options and a dual-function design with basic buttons for common functions and a menu for more complex operations. Additionally, they explored the idea of a flip-top remote control to potentially offer a larger screen while maintaining a compact size.",
+          "rouge_f1": {
+            "rouge1": 0.3604651162790698,
+            "rouge2": 0.07058823529411765,
+            "rougeL": 0.18604651162790697
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            1,
+            7,
+            11,
+            8
+          ],
+          "retrieval_precision": 0.7587890625,
+          "retrieval_recall": 0.47815384615384615
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The group discussed several aspects of remote control style and design optimization, including:\n\n- Simplifying the layout to avoid overwhelming users with numerous tiny buttons and unclear symbols.\n- Incorporating a menu display or LCD screen similar to mobile phones to provide additional functionality without cluttering the interface.\n- Designing the remote to be intuitive and user-friendly for a broad audience, from children to grandparents.\n- Considering a dual-function approach where basic controls are readily accessible, while advanced features are accessed through a menu with clear symbols and pictures.\n- Exploring the possibility of a flip-top design to potentially offer a larger screen area without increasing bulkiness.\n- Using lightweight, easily moldable materials like plastic to reduce costs and maintain a modern appearance without necessitating expensive materials like metal.\n- Ensuring the design is accessible to older users, possibly through features like large print options or simplified interfaces.",
+          "rouge_f1": {
+            "rouge1": 0.3063063063063063,
+            "rouge2": 0.07272727272727274,
+            "rougeL": 0.1801801801801802
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            1,
+            7,
+            11,
+            8,
+            13,
+            12,
+            10,
+            5
+          ],
+          "retrieval_precision": 0.77978515625,
+          "retrieval_recall": 0.9827692307692307
+        },
+        "word_packed__dense__w512": {
+          "answer": "The group discussed optimizing the remote control style and design to reduce complexity and improve usability. They aimed to integrate multiple functionalities into a single remote control to avoid having several remotes. The Project Manager emphasized the importance of minimizing the number of small, confusing buttons and suggested placing less frequently used functions in a secondary section that could open upon need. Marketing highlighted the potential usefulness of incorporating a menu display system similar to mobile phones, which could simplify navigation and functionality access. However, concerns were raised about the usability for older generations who might find such advanced features challenging.",
+          "rouge_f1": {
+            "rouge1": 0.33519553072625696,
+            "rouge2": 0.05649717514124294,
+            "rougeL": 0.1787709497206704
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.3150769230769231
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The group discussed optimizing the remote control style and design to ensure it was user-friendly and accessible to all age groups, particularly focusing on simplifying the interface. They considered integrating a menu system with an LCD display, similar to mobile phones, to avoid cluttering the remote with numerous small buttons. Additionally, they explored the possibility of including a feature for larger text display to assist older users. The discussion also touched upon the idea of having a dual-function remote with basic buttons for primary functions and a menu for more complex operations, utilizing clear symbols and pictures.",
+          "rouge_f1": {
+            "rouge1": 0.3163841807909605,
+            "rouge2": 0.04571428571428571,
+            "rougeL": 0.15819209039548024
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7,
+            6,
+            10
+          ],
+          "retrieval_precision": 0.9609375,
+          "retrieval_recall": 0.6055384615384616
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The group discussed several aspects of remote control style and design optimization, including:\n\n- Making the remote control original, trendy, and appealing to a wide market without being overly complex.\n- Ensuring it is user-friendly for all age groups, from grannies to kids.\n- Incorporating a simplified design with fewer buttons and clear symbols to avoid overwhelming users.\n- Considering the integration of an LCD display or menu system similar to mobile phones to handle more complex functions.\n- Designing for accessibility, such as larger print options for older users.\n- Exploring cost-effective materials like plastic over metal to maintain affordability while aiming for a stylish appearance.\n- Implementing a dual-function design with basic buttons for common tasks and a menu for advanced features.\n- Potentially using a flip-top mechanism to provide a larger screen without increasing bulkiness, though acknowledging potential cost implications.",
+          "rouge_f1": {
+            "rouge1": 0.34101382488479265,
+            "rouge2": 0.046511627906976744,
+            "rougeL": 0.1382488479262673
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7,
+            6,
+            10,
+            9,
+            0,
+            12,
+            1,
+            11
+          ],
+          "retrieval_precision": 0.7080078125,
+          "retrieval_recall": 0.8923076923076924
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The group discussed that the remote control should be original, trendy, and appealing to a wide market without being a \"hunk of metal.\" They emphasized the need for it to be user-friendly and accessible to all age groups internationally, excluding the business market focus. The project aims for a profit of fifty million Euros in their first year. There was no specific discussion about the style and design optimization details beyond these general guidelines.",
+          "rouge_f1": {
+            "rouge1": 0.35294117647058826,
+            "rouge2": 0.06622516556291391,
+            "rougeL": 0.1568627450980392
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            0
+          ],
+          "retrieval_precision": 0.421875,
+          "retrieval_recall": 0.13292307692307692
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The group discussed optimizing the remote control style and design to ensure it was original, trendy, appealing to a wide market, and user-friendly. They considered incorporating an LCD display with menu options similar to those found on mobile phones to simplify navigation and reduce the number of buttons. However, concerns were raised about the usability for the older generation, suggesting the inclusion of an extra button for large print display or a dual-function design with basic buttons and a menu for additional features. The group also briefly explored the idea of a flip-top remote control to potentially offer a larger screen area.",
+          "rouge_f1": {
+            "rouge1": 0.34972677595628415,
+            "rouge2": 0.06629834254143648,
+            "rougeL": 0.16393442622950818
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            0,
+            8,
+            10
+          ],
+          "retrieval_precision": 0.7109375,
+          "retrieval_recall": 0.448
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The group discussed several aspects of remote control style and design optimization, including:\n\n- Making the remote control original, trendy, and appealing to a wide market without being overly complex.\n- Ensuring it is user-friendly for all age groups, from grannies to kids.\n- Incorporating a simplified design with fewer buttons and clear symbols to avoid confusion.\n- Considering the integration of an LCD display or menu system similar to mobile phones to handle more complex functions.\n- Designing the remote to be intuitive and self-explanatory, especially for the older generation, possibly with options for larger text or simpler interfaces.\n- Exploring cost-effective materials and designs that are lightweight and easily moldable for production.\n- Potentially including a flip-top feature to provide a larger screen while maintaining a compact size.\n- Balancing fashionability with functionality, considering the company's focus on integrating fashion into electronics.",
+          "rouge_f1": {
+            "rouge1": 0.3378995433789954,
+            "rouge2": 0.036866359447004615,
+            "rougeL": 0.1643835616438356
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            0,
+            8,
+            10,
+            1,
+            9,
+            7,
+            11
+          ],
+          "retrieval_precision": 0.73046875,
+          "retrieval_recall": 0.9206153846153846
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The group discussed the design optimization of a remote control, focusing on usability across all age groups and simplicity in design. The Project Manager mentioned issues with a universal remote control they tested, which frequently lost signals and required reprogramming. They suggested a design where primary functions are on the front, with secondary functions accessible through a section that opens up. Marketing proposed incorporating a menu display similar to mobile phones, possibly with an LCD screen, to simplify navigation and reduce the number of buttons. User Interface agreed and suggested this could make browsing and navigating easier for users. The Project Manager raised concerns about the older generation's ability to use such technology, questioning its accessibility for \"granny and grandads.\"",
+          "rouge_f1": {
+            "rouge1": 0.33165829145728637,
+            "rouge2": 0.07106598984771574,
+            "rougeL": 0.19095477386934673
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8
+          ],
+          "retrieval_precision": 0.921875,
+          "retrieval_recall": 0.29046153846153844
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The group discussed optimizing the remote control style and design to ensure it was original, trendy, appealing to a wide market, and user-friendly. They considered incorporating an LCD display with menu options similar to those found on mobile phones to simplify navigation and reduce the number of buttons. However, concerns were raised about the usability for the older generation, suggesting the inclusion of an extra button for large print display or a dual-function design with basic buttons and a menu for additional features. The group also briefly explored the idea of a flip-top remote control to potentially offer a larger screen area.",
+          "rouge_f1": {
+            "rouge1": 0.34972677595628415,
+            "rouge2": 0.06629834254143648,
+            "rougeL": 0.16393442622950818
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            0,
+            10
+          ],
+          "retrieval_precision": 0.7109375,
+          "retrieval_recall": 0.448
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The group discussed several aspects of remote control style and design optimization, including:\n\n- Making the remote control original, trendy, and appealing to a wide market without being overly complex.\n- Ensuring it is user-friendly for all age groups, from grannies to kids.\n- Incorporating a simplified design with fewer buttons and clear symbols to avoid overwhelming users.\n- Considering the integration of an LCD display or menu system similar to mobile phones to handle more complex functions.\n- Designing for accessibility, such as larger print options for older users.\n- Exploring cost-effective materials like plastic over metal to maintain affordability while aiming for a stylish appearance.\n- Implementing a dual-function design with basic buttons for common tasks and a menu for advanced features.\n- Potentially using a flip-top mechanism to provide a larger screen without increasing bulkiness, though acknowledging potential cost implications.",
+          "rouge_f1": {
+            "rouge1": 0.34101382488479265,
+            "rouge2": 0.046511627906976744,
+            "rougeL": 0.1382488479262673
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            0,
+            10,
+            7,
+            9,
+            1,
+            12,
+            11
+          ],
+          "retrieval_precision": 0.7080078125,
+          "retrieval_recall": 0.8923076923076924
+        },
+        "lumber__dense__w512": {
+          "answer": "The group discussed integrating multiple functionalities into a single remote control to simplify user experience, avoiding the need for multiple remotes. They considered optimizing the design by simplifying symbols and organizing functions, placing primary functions on the front and secondary functions within a section that could open up. Additionally, they explored incorporating a menu system with an LCD display, similar to mobile phones, to help users navigate and access various functions more easily.",
+          "rouge_f1": {
+            "rouge1": 0.31788079470198677,
+            "rouge2": 0.026845637583892617,
+            "rougeL": 0.1456953642384106
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            13,
+            12
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.3150769230769231
+        },
+        "lumber__dense__w1024": {
+          "answer": "The group discussed the need for a simplified remote control design that integrates multiple devices into one unit, reducing the number of buttons and making it more user-friendly. They suggested using an LCD display with menus similar to mobile phones to handle more complex functions while keeping the main interface simple. For older users, they proposed adding features such as large print options and a dual-function layout with basic buttons for common tasks and a menu for advanced functions.",
+          "rouge_f1": {
+            "rouge1": 0.4025157232704403,
+            "rouge2": 0.06369426751592357,
+            "rougeL": 0.18867924528301885
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            13,
+            12,
+            15,
+            14
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.6301538461538462
+        },
+        "lumber__dense__w2048": {
+          "answer": "The group discussed several aspects of remote control style and design optimization, including:\n\n- Simplifying the layout to avoid overwhelming users with numerous small buttons and unclear symbols.\n- Incorporating a menu display or LCD screen similar to mobile phones to provide additional functionality without cluttering the interface.\n- Designing the remote to be intuitive and easy to use for a wide range of ages, from children to grandparents.\n- Considering a dual-function approach where basic buttons handle primary functions while a menu offers advanced options with clear symbols and pictures.\n- Exploring the possibility of a flip-top design to potentially increase screen size without adding bulk, though noting potential cost implications.\n- Using lightweight, easily moldable materials like plastic to balance aesthetics and production costs.\n- Ensuring the design is accessible, such as through large print options for older users.",
+          "rouge_f1": {
+            "rouge1": 0.32710280373831774,
+            "rouge2": 0.0660377358490566,
+            "rougeL": 0.18691588785046728
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            13,
+            12,
+            15,
+            14,
+            16,
+            1,
+            3,
+            0,
+            8
+          ],
+          "retrieval_precision": 0.73583984375,
+          "retrieval_recall": 0.9273846153846154
+        },
+        "lumber__bm25__w512": {
+          "answer": "The group discussed that the remote control should be original, trendy, and appealing to a wide market, including all age groups from children to grandparents. They emphasized the importance of the remote being user-friendly and accessible to everyone, without focusing on a specific business market. The discussion also touched upon the idea of targeting an international market, though they did not consider language differences as a primary concern.",
+          "rouge_f1": {
+            "rouge1": 0.29931972789115646,
+            "rouge2": 0.04137931034482759,
+            "rougeL": 0.1360544217687075
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            14
+          ],
+          "retrieval_precision": 0.294921875,
+          "retrieval_recall": 0.09292307692307693
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The group discussed the remote control's style and design optimization, focusing on making it original, trendy, and appealing to a wide market including all age groups. They considered simplifying symbols, having main functions visible on the front with secondary functions accessible through an opening section, and incorporating an LCD display with menus similar to those found on mobile phones to enhance usability. However, concerns were raised about the older generation potentially finding such designs confusing, emphasizing the need for the remote to be intuitive and easy to use.",
+          "rouge_f1": {
+            "rouge1": 0.2754491017964072,
+            "rouge2": 0.024242424242424246,
+            "rougeL": 0.13173652694610777
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            14,
+            13,
+            15
+          ],
+          "retrieval_precision": 0.6474609375,
+          "retrieval_recall": 0.408
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The group discussed optimizing the remote control's style and design to ensure it was user-friendly, appealing to a wide market including all age groups, and not overly complex. They considered simplifying symbols, incorporating an LCD display with menus, and possibly adding a flip-top feature for a larger screen. They also debated the inclusion of features like large print options for older users and the use of plastic material to balance fashionability and cost-effectiveness.",
+          "rouge_f1": {
+            "rouge1": 0.4129032258064516,
+            "rouge2": 0.0392156862745098,
+            "rougeL": 0.21935483870967745
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            14,
+            13,
+            15,
+            12,
+            16,
+            2,
+            11
+          ],
+          "retrieval_precision": 0.71875,
+          "retrieval_recall": 0.9058461538461539
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The group discussed optimizing the remote control's style and design by focusing on simplicity and user-friendliness. They considered simplifying symbols and organizing functions so that primary controls are visible upfront while secondary functions could be accessed through an opening section. Additionally, they explored incorporating an LCD display and menu system similar to those found on mobile phones to reduce complexity and enhance usability.",
+          "rouge_f1": {
+            "rouge1": 0.25174825174825183,
+            "rouge2": 0.0425531914893617,
+            "rougeL": 0.12587412587412591
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            1
+          ],
+          "retrieval_precision": 0.4921875,
+          "retrieval_recall": 0.15507692307692308
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The group discussed the need for a remote control that is user-friendly, appealing to a wide market including \"grannies to kids,\" and not overly complex. They emphasized avoiding a cluttered interface with too many small buttons and suggested incorporating features such as an LCD display and menu options similar to those found on mobile phones to simplify navigation. However, concerns were raised about the usability for the older generation, suggesting that while advanced features might be intuitive for younger users, simpler functionalities might be more suitable for older individuals.",
+          "rouge_f1": {
+            "rouge1": 0.40476190476190477,
+            "rouge2": 0.04819277108433735,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            1,
+            14,
+            12,
+            15
+          ],
+          "retrieval_precision": 0.650390625,
+          "retrieval_recall": 0.40984615384615386
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The group discussed several aspects of remote control style and design optimization, including:\n\n- Making the remote control user-friendly for all age groups, from children to grandparents.\n- Incorporating a menu display or LCD screen similar to mobile phones to simplify navigation and reduce the number of buttons.\n- Ensuring the design is intuitive and easy to understand, avoiding overly complex interfaces.\n- Considering a dual-function approach where basic buttons handle primary functions while a menu provides access to additional features like recording.\n- Exploring the possibility of a flip-top design to potentially increase screen size without adding bulk.\n- Using lightweight, easily moldable materials like plastic to keep costs down and ensure production feasibility.\n- Avoiding unnecessary complexity and focusing on essential functions to prevent confusion, especially among older users.\n- Implementing features such as large print options for older users to enhance readability.",
+          "rouge_f1": {
+            "rouge1": 0.33027522935779813,
+            "rouge2": 0.06481481481481481,
+            "rougeL": 0.16513761467889906
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            1,
+            14,
+            12,
+            15,
+            11,
+            16,
+            10,
+            2
+          ],
+          "retrieval_precision": 0.79345703125,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did the group decide to incorporate a menu display when discussing remote control style and design optimization?",
+      "reference_answer": "Marketing believed that most of the market would want convenient channel browsing and volume adjustment features instead of any tampering or programming with too many buttons. User Interface agreed with the simplification of symbols. The team came up with a menu display to make the remote more user-friendly.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group decided to incorporate a menu display because they wanted to simplify the remote control's design and functionality, making it more user-friendly and less cluttered with numerous small buttons and symbols. Marketing suggested the idea of a menu display similar to those found on mobile phones, which could help reduce complexity and improve usability for users like themselves who primarily need basic functions such as on/off, volume control, and channel switching. The User Interface agreed, suggesting that an LCD display with menus could make browsing and navigating easier for users, potentially including older generations who might find it simpler to use compared to traditional remote controls.",
+          "rouge_f1": {
+            "rouge1": 0.35220125786163514,
+            "rouge2": 0.10191082802547771,
+            "rougeL": 0.16352201257861637
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            7
+          ],
+          "retrieval_precision": 0.833984375,
+          "retrieval_recall": 0.875
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The group decided to incorporate a menu display because Marketing suggested that a menu display, similar to those found on mobile phones, could simplify the remote control's interface, reducing the need for numerous buttons and making it easier for users to navigate and access various functions without cluttering the main interface. This suggestion was supported by User Interface who agreed that an LCD display with menus could help avoid complications caused by too many buttons and enhance user-friendliness.",
+          "rouge_f1": {
+            "rouge1": 0.3410852713178295,
+            "rouge2": 0.11023622047244094,
+            "rougeL": 0.17054263565891475
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            7,
+            11,
+            1
+          ],
+          "retrieval_precision": 0.4169921875,
+          "retrieval_recall": 0.875
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The group decided to incorporate a menu display when discussing remote control style and design optimization because Marketing suggested that incorporating a menu display, similar to those found on mobile phones, might be useful. This suggestion was aimed at simplifying the interface and making it more user-friendly, especially for a wide range of users including the older generation. User Interface agreed with this idea, suggesting that an LCD display with menus could help reduce the complexity of having too many buttons and make navigation easier for users familiar with mobile phone interfaces.",
+          "rouge_f1": {
+            "rouge1": 0.3802816901408451,
+            "rouge2": 0.1285714285714286,
+            "rougeL": 0.18309859154929578
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            7,
+            11,
+            1,
+            10,
+            13,
+            12,
+            0,
+            6
+          ],
+          "retrieval_precision": 0.23828125,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The group decided to incorporate a menu display because Marketing suggested that pressing a key on a mobile phone brings up a menu with a display, which could be useful on a remote control. User Interface agreed, suggesting an LCD display with menus similar to those on mobile phones to simplify navigation and browsing for users. This idea aimed to reduce complexity by minimizing the number of buttons and making it easier for users to navigate through options.",
+          "rouge_f1": {
+            "rouge1": 0.33070866141732286,
+            "rouge2": 0.08,
+            "rougeL": 0.17322834645669294
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            8
+          ],
+          "retrieval_precision": 0.359375,
+          "retrieval_recall": 0.3770491803278688
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The group decided to incorporate a menu display because Marketing suggested that including a menu display, similar to those found on mobile phones, could simplify the remote control's interface, making it easier for users to navigate without cluttering the front with numerous buttons. This idea was supported by User Interface and Industrial Designer, who agreed that a menu-driven system with an LCD display could enhance usability while maintaining a clean, user-friendly design.",
+          "rouge_f1": {
+            "rouge1": 0.3225806451612903,
+            "rouge2": 0.0819672131147541,
+            "rougeL": 0.20967741935483872
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            8,
+            1,
+            7
+          ],
+          "retrieval_precision": 0.4169921875,
+          "retrieval_recall": 0.875
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The group decided to incorporate a menu display when discussing remote control style and design optimization because Marketing suggested that incorporating a menu display, similar to what is found on mobile phones, might be useful. This suggestion aimed to simplify the remote control interface, reducing the number of buttons and making it easier for users to navigate through various functions without cluttering the main interface. User Interface agreed with this idea, suggesting that an LCD display with menus could help users browse and navigate more easily, potentially making the remote control more user-friendly across different age groups.",
+          "rouge_f1": {
+            "rouge1": 0.326530612244898,
+            "rouge2": 0.13793103448275862,
+            "rougeL": 0.2312925170068027
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            8,
+            1,
+            7,
+            2,
+            6,
+            13,
+            12
+          ],
+          "retrieval_precision": 0.20849609375,
+          "retrieval_recall": 0.875
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The group decided to incorporate a menu display because they wanted to simplify the remote control's design and functionality, making it more user-friendly and less cluttered with numerous small buttons and complex symbols. Marketing suggested the idea of a menu display similar to those found on mobile phones, which could help users navigate through various functions without overwhelming them with too many buttons. This suggestion was supported by User Interface, who agreed that a menu-driven system with an LCD display could make browsing and navigating easier for users.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.14492753623188406,
+            "rougeL": 0.2285714285714286
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            11
+          ],
+          "retrieval_precision": 0.833984375,
+          "retrieval_recall": 0.875
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The group decided to incorporate a menu display because Marketing suggested that a menu display, similar to those found on mobile phones, could simplify the remote control's interface, reducing the need for numerous buttons and making it easier for users to navigate and access various functions without cluttering the main interface. This suggestion was supported by User Interface who agreed that an LCD display with menus could help avoid complications caused by too many buttons and enhance user-friendliness.",
+          "rouge_f1": {
+            "rouge1": 0.3410852713178295,
+            "rouge2": 0.11023622047244094,
+            "rougeL": 0.17054263565891475
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            11,
+            7,
+            1
+          ],
+          "retrieval_precision": 0.4169921875,
+          "retrieval_recall": 0.875
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The group decided to incorporate a menu display when discussing remote control style and design optimization because Marketing suggested that incorporating a menu display, similar to what is found on mobile phones, might be useful. This suggestion aimed to simplify the interface by reducing the number of buttons and making it easier for users to navigate through various functions without cluttering the main face of the remote control. User Interface agreed with this idea, suggesting that a menu display could help avoid complications from too many buttons and potentially make it easier for users to browse and navigate.",
+          "rouge_f1": {
+            "rouge1": 0.326530612244898,
+            "rouge2": 0.13793103448275862,
+            "rougeL": 0.20408163265306123
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            8,
+            11,
+            7,
+            1,
+            13,
+            10,
+            6,
+            12
+          ],
+          "retrieval_precision": 0.23828125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The group decided to incorporate a menu display because Marketing suggested that integrating a menu display, similar to those found on mobile phones, could simplify the remote control's design. This would reduce the need for multiple buttons and make it less cluttered and more user-friendly, especially for users who only require basic functions. The idea was supported by User Interface and Industrial Designer, who agreed that an LCD display with menus could help users navigate and browse more easily.",
+          "rouge_f1": {
+            "rouge1": 0.3538461538461538,
+            "rouge2": 0.09374999999999999,
+            "rougeL": 0.16923076923076924
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7
+          ],
+          "retrieval_precision": 0.833984375,
+          "retrieval_recall": 0.875
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The group decided to incorporate a menu display because they wanted to simplify the remote control's design and functionality. They aimed to avoid having a cluttered interface with numerous small buttons and unclear labels. Marketing suggested incorporating a menu display similar to those found on mobile phones, which could help reduce complexity and improve usability. This idea was supported by User Interface and Industrial Designer, who agreed that a menu-driven approach with clear symbols and options could make the remote control more intuitive and user-friendly.",
+          "rouge_f1": {
+            "rouge1": 0.33576642335766427,
+            "rouge2": 0.08888888888888889,
+            "rougeL": 0.23357664233576642
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7,
+            10,
+            9
+          ],
+          "retrieval_precision": 0.4765625,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The group decided to incorporate a menu display when discussing remote control style and design optimization because Marketing suggested that incorporating a menu display, similar to those found on mobile phones, might be useful. This suggestion was made to simplify the interface and avoid having too many buttons, making it easier for users to navigate and potentially more user-friendly across different age groups. User Interface agreed with this idea, suggesting that a menu display could help reduce complexity and make browsing and navigation easier for users familiar with mobile phone interfaces.",
+          "rouge_f1": {
+            "rouge1": 0.326241134751773,
+            "rouge2": 0.14388489208633096,
+            "rougeL": 0.22695035460992904
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            7,
+            10,
+            9,
+            6,
+            0,
+            1,
+            12,
+            11
+          ],
+          "retrieval_precision": 0.23828125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The group decided to incorporate a menu display because Marketing suggested that pressing a key on a mobile phone to access a menu display could be useful for a remote control, making it less complicated and easier for users to navigate without needing too many buttons. User Interface agreed, suggesting that a similar menu system found on mobile phones might help users browse and navigate more easily. This idea aimed to simplify the remote control's interface while maintaining functionality.",
+          "rouge_f1": {
+            "rouge1": 0.31007751937984496,
+            "rouge2": 0.14173228346456693,
+            "rougeL": 0.21705426356589147
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10
+          ],
+          "retrieval_precision": 0.462890625,
+          "retrieval_recall": 0.48565573770491804
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The group decided to incorporate a menu display when discussing remote control style and design optimization because Marketing suggested that a menu display, similar to those found on mobile phones, might simplify the interface and reduce the number of buttons needed on the remote control. This idea was supported by User Interface who agreed that having an LCD display with menus could make browsing and navigating easier for users. The goal was to create a more user-friendly and accessible remote control for all age groups, addressing concerns about overly complex interfaces with numerous small buttons and unclear symbols.",
+          "rouge_f1": {
+            "rouge1": 0.33783783783783783,
+            "rouge2": 0.0958904109589041,
+            "rougeL": 0.21621621621621623
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            6,
+            7
+          ],
+          "retrieval_precision": 0.4169921875,
+          "retrieval_recall": 0.875
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The group decided to incorporate a menu display when discussing remote control style and design optimization because Marketing suggested that incorporating a menu display, similar to those found on mobile phones, might be useful. User Interface agreed, suggesting that an LCD display with menus could simplify the remote control, making it easier for users to navigate and potentially more user-friendly across different age groups. This idea aimed to address concerns about overly complex interfaces with numerous buttons and unclear symbols.",
+          "rouge_f1": {
+            "rouge1": 0.3230769230769231,
+            "rouge2": 0.109375,
+            "rougeL": 0.1846153846153846
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            6,
+            7,
+            1,
+            9,
+            0,
+            4
+          ],
+          "retrieval_precision": 0.23828125,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The group decided to incorporate a menu display because Marketing suggested that pressing a key on a mobile phone to access a menu display could be useful for a remote control, making it less complicated and easier for users to navigate without needing too many buttons. User Interface agreed, suggesting that a similar menu system found on mobile phones might help users browse and navigate more easily. This idea aimed to simplify the remote control's interface while maintaining functionality.",
+          "rouge_f1": {
+            "rouge1": 0.31007751937984496,
+            "rouge2": 0.14173228346456693,
+            "rougeL": 0.21705426356589147
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10
+          ],
+          "retrieval_precision": 0.462890625,
+          "retrieval_recall": 0.48565573770491804
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The group decided to incorporate a menu display when discussing remote control style and design optimization because Marketing suggested that a menu display, similar to those found on mobile phones, might simplify the interface and reduce the number of buttons needed on the remote control. This idea was supported by User Interface who agreed that having an LCD display with menus could make browsing and navigating easier for users. The goal was to create a more user-friendly and accessible remote control for all age groups, addressing concerns about overly complex interfaces with numerous small buttons and unclear symbols.",
+          "rouge_f1": {
+            "rouge1": 0.33783783783783783,
+            "rouge2": 0.0958904109589041,
+            "rougeL": 0.21621621621621623
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            7,
+            6
+          ],
+          "retrieval_precision": 0.4169921875,
+          "retrieval_recall": 0.875
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The group decided to incorporate a menu display when discussing remote control style and design optimization because Marketing suggested that incorporating a menu display, similar to those found on mobile phones, might be useful. This suggestion was made to simplify the interface and avoid having too many buttons, making it easier for users to navigate and potentially more user-friendly across different age groups. User Interface agreed with this idea, suggesting that a menu display could help reduce complexity and make browsing and navigation easier for users familiar with mobile phone interfaces.",
+          "rouge_f1": {
+            "rouge1": 0.326241134751773,
+            "rouge2": 0.14388489208633096,
+            "rougeL": 0.22695035460992904
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            7,
+            6,
+            9,
+            1,
+            0,
+            12,
+            11
+          ],
+          "retrieval_precision": 0.23828125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The group decided to incorporate a menu display when discussing remote control style and design optimization because Marketing suggested that incorporating a menu display, similar to those found on mobile phones, might simplify the remote control's interface. This would reduce the need for multiple buttons and make it easier for users to navigate and browse through functions, as proposed by User Interface.",
+          "rouge_f1": {
+            "rouge1": 0.3214285714285714,
+            "rouge2": 0.07272727272727274,
+            "rougeL": 0.1607142857142857
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            11,
+            15
+          ],
+          "retrieval_precision": 0.4921875,
+          "retrieval_recall": 0.5163934426229508
+        },
+        "lumber__dense__w1024": {
+          "answer": "The group decided to incorporate a menu display because Marketing suggested that a menu display, similar to those found on mobile phones, could simplify the remote control's interface, reducing the need for numerous small buttons and making it easier for users to navigate through various functions. This suggestion was supported by User Interface, who agreed that an LCD display with menus could help avoid complicating the remote control's appearance while still providing access to additional features.",
+          "rouge_f1": {
+            "rouge1": 0.3149606299212598,
+            "rouge2": 0.064,
+            "rougeL": 0.17322834645669294
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            11,
+            15,
+            12,
+            14
+          ],
+          "retrieval_precision": 0.4169921875,
+          "retrieval_recall": 0.875
+        },
+        "lumber__dense__w2048": {
+          "answer": "The group decided to incorporate a menu display when discussing remote control style and design optimization because Marketing suggested that incorporating a menu display, similar to those found on mobile phones, might be useful. This suggestion aimed to simplify the interface by reducing the number of buttons and making it easier for users to navigate through various functions, potentially addressing issues with overly complex remote controls. User Interface agreed with this idea, suggesting that a menu display could help users browse and navigate more easily, possibly making the remote control more user-friendly across different age groups.",
+          "rouge_f1": {
+            "rouge1": 0.32876712328767127,
+            "rouge2": 0.1388888888888889,
+            "rougeL": 0.24657534246575347
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            11,
+            15,
+            12,
+            14,
+            16,
+            1,
+            3,
+            0,
+            4
+          ],
+          "retrieval_precision": 0.23828125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The group decided to incorporate a menu display because they believed it would simplify the remote control's interface, making it less complicated for users to navigate. Specifically, Marketing suggested that incorporating a menu display similar to those found on mobile phones could be useful, and User Interface agreed, suggesting that an LCD display with menus could help avoid clutter from too many buttons, potentially making browsing and navigation easier for users.",
+          "rouge_f1": {
+            "rouge1": 0.3636363636363636,
+            "rouge2": 0.13445378151260506,
+            "rougeL": 0.1818181818181818
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            15
+          ],
+          "retrieval_precision": 0.4921875,
+          "retrieval_recall": 0.5163934426229508
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The group decided to incorporate a menu display when discussing remote control style and design optimization because Marketing suggested that including a menu display, similar to those found on mobile phones, could simplify the remote control's interface, making it easier for users to navigate and reducing the complexity associated with having too many buttons. This idea was supported by User Interface and Industrial Designer, who agreed that a menu display could enhance usability across different age groups.",
+          "rouge_f1": {
+            "rouge1": 0.3149606299212598,
+            "rouge2": 0.096,
+            "rougeL": 0.2204724409448819
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            15,
+            10,
+            1
+          ],
+          "retrieval_precision": 0.24609375,
+          "retrieval_recall": 0.5163934426229508
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The group decided to incorporate a menu display when discussing remote control style and design optimization because Marketing suggested that incorporating a menu display, similar to those found on mobile phones, might be useful. This suggestion aimed to simplify the remote control interface, reducing the number of buttons and making it easier for users to navigate through various functions without cluttering the main interface. The idea was to provide a clear, intuitive way for users to access additional features via a menu displayed on an LCD screen, addressing concerns about usability across different age groups and maintaining a user-friendly design.",
+          "rouge_f1": {
+            "rouge1": 0.2666666666666667,
+            "rouge2": 0.05405405405405406,
+            "rougeL": 0.17333333333333334
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            15,
+            10,
+            1,
+            14,
+            12,
+            16,
+            2,
+            11
+          ],
+          "retrieval_precision": 0.23828125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The group decided to incorporate a menu display because they believed it would simplify the remote control's interface, making it less complicated for users to navigate. Specifically, Marketing suggested that incorporating a menu display similar to those found on mobile phones could be useful, and User Interface agreed, suggesting that an LCD display with menus could help avoid clutter from too many buttons, potentially making browsing and navigation easier for users.",
+          "rouge_f1": {
+            "rouge1": 0.3636363636363636,
+            "rouge2": 0.13445378151260506,
+            "rougeL": 0.1818181818181818
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            15
+          ],
+          "retrieval_precision": 0.4921875,
+          "retrieval_recall": 0.5163934426229508
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The group decided to incorporate a menu display because Marketing suggested that a menu display, similar to those found on mobile phones, could simplify the remote control's interface, making it more user-friendly and reducing the need for numerous small buttons with unclear labels. This suggestion was met with agreement from User Interface and Industrial Designer, who saw potential in using clear symbols and pictures in the menu to guide users through various functions intuitively.",
+          "rouge_f1": {
+            "rouge1": 0.352,
+            "rouge2": 0.09756097560975609,
+            "rougeL": 0.192
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            15,
+            12,
+            14,
+            11
+          ],
+          "retrieval_precision": 0.4765625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The group decided to incorporate a menu display when discussing remote control style and design optimization because Marketing suggested that incorporating a menu display, similar to those found on mobile phones, might be useful. This suggestion aimed to simplify the interface by reducing the number of buttons and making it easier for users to navigate through various functions without cluttering the remote's appearance. User Interface agreed with this idea, suggesting that a menu display could help avoid complications caused by too many buttons and could potentially make navigation easier for users familiar with mobile phone interfaces.",
+          "rouge_f1": {
+            "rouge1": 0.3150684931506849,
+            "rouge2": 0.1111111111111111,
+            "rougeL": 0.1917808219178082
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            15,
+            12,
+            14,
+            11,
+            1,
+            16,
+            10,
+            2
+          ],
+          "retrieval_precision": 0.23828125,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did Industrial Designer think of the older generation when discussing remote control style and design optimization?",
+      "reference_answer": "Industrial Designer initially worried about the replacement of buttons. Industrial Designer was soon convinced by Marketing that the age gap was a problem regardless of any design modifications and insisted on the incorporation of a menu display, however.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Industrial Designer thought that the older generation might struggle with complex designs but noted that his grandfather was adept at using teletext. He suggested that the design should be self-intuitive, possibly incorporating clear visual cues like pictures in menus to help users understand what each function does.",
+          "rouge_f1": {
+            "rouge1": 0.23255813953488372,
+            "rouge2": 0.047619047619047616,
+            "rougeL": 0.23255813953488372
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            10,
+            8
+          ],
+          "retrieval_precision": 0.373046875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Industrial Designer thought that the remote control should be self-intuitive and easy to understand, acknowledging that the older generation might struggle with more complex designs. They mentioned that their grandfather was better at using teletext than they were, indicating that some older individuals can handle certain functionalities well, but overall, the design needed to be simple and clear to accommodate users who might not be comfortable with advanced features.",
+          "rouge_f1": {
+            "rouge1": 0.18518518518518517,
+            "rouge2": 0.03773584905660377,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            10,
+            8,
+            7,
+            11
+          ],
+          "retrieval_precision": 0.1865234375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Industrial Designer thought that the remote control needed to be self-intuitive and easy to understand for the older generation, mentioning that \"as long as it's sort of self-intuitive and you can work out what everything's doing,\" it would be suitable. Additionally, they acknowledged the challenge of designing for an older audience, agreeing that \"that's gonna be a problem anyway with the older generation perhaps.\"",
+          "rouge_f1": {
+            "rouge1": 0.22429906542056074,
+            "rouge2": 0.05714285714285715,
+            "rougeL": 0.16822429906542055
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            10,
+            8,
+            7,
+            11,
+            13,
+            12,
+            1,
+            4
+          ],
+          "retrieval_precision": 0.09326171875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The evidence from the meeting excerpts indicates that Industrial Designer acknowledged the limitations faced by the older generation in adapting to more complex technology. When Project Manager brought up the concern about the older generation's ability to use advanced features, Industrial Designer agreed with the idea of simplifying the design for them, suggesting a \"black and white LCD thing\" and implying that the design should cater to their simpler needs. This shows that Industrial Designer considered the older generation's technological proficiency to be limited and believed that the design should be optimized for ease of use and simplicity.",
+          "rouge_f1": {
+            "rouge1": 0.21739130434782605,
+            "rouge2": 0.058823529411764705,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            9,
+            8
+          ],
+          "retrieval_precision": 0.140625,
+          "retrieval_recall": 0.3769633507853403
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Industrial Designer thought that the remote control should be self-intuitive and easy to understand, acknowledging that the older generation might struggle with complex designs. They mentioned that their grandfather was better at using teletext than them, indicating that while some older individuals might be adept at certain functionalities, the design still needed to cater to simplicity and intuitiveness for broader usability.",
+          "rouge_f1": {
+            "rouge1": 0.19999999999999998,
+            "rouge2": 0.04081632653061224,
+            "rougeL": 0.18
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            9,
+            8,
+            10,
+            1
+          ],
+          "retrieval_precision": 0.1865234375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Industrial Designer thought that the remote control needed to be self-intuitive and easy to understand for the older generation. They mentioned that as long as the remote control was simple and clear in its functionality, the older generation could work out what each button does. Additionally, they suggested that incorporating obvious pictures and symbols in menus could help make the remote control more user-friendly for everyone, including older users.",
+          "rouge_f1": {
+            "rouge1": 0.20183486238532108,
+            "rouge2": 0.037383177570093455,
+            "rougeL": 0.1834862385321101
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            9,
+            8,
+            10,
+            1,
+            7,
+            6,
+            12,
+            13
+          ],
+          "retrieval_precision": 0.09326171875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The evidence suggests that Industrial Designer thought the older generation could be proficient with certain technologies but might struggle with more complex features. Specifically, Industrial Designer mentioned that their grandfather was \"actually better than me at using teletext,\" indicating some familiarity and comfort with certain technological interfaces among the older generation. However, they also suggested keeping the LCD display \"down to a black and white L_C_D_ thing\" and possibly simplifying the interface for older users, implying a need for a simpler design to accommodate those who might not be as adept with more advanced features.",
+          "rouge_f1": {
+            "rouge1": 0.22222222222222224,
+            "rouge2": 0.030075187969924814,
+            "rougeL": 0.16296296296296298
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            10
+          ],
+          "retrieval_precision": 0.166015625,
+          "retrieval_recall": 0.44502617801047123
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The evidence provided does not contain a direct statement from Industrial Designer specifically about what they thought of the older generation when discussing remote control style and design optimization. However, Industrial Designer did acknowledge the limitations faced by the older generation in understanding complex designs, as seen in their agreement with Project Manager's comments about their grandfather's ability to use teletext better than more advanced features. They suggested that the design should be intuitive and self-explanatory, indicating a consideration for users who might struggle with complex interfaces.",
+          "rouge_f1": {
+            "rouge1": 0.25,
+            "rouge2": 0.04761904761904762,
+            "rougeL": 0.18750000000000003
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            10,
+            8,
+            7
+          ],
+          "retrieval_precision": 0.1865234375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Industrial Designer thought that the remote control needed to be self-intuitive and easy to understand for the older generation, mentioning that as long as the design was simple and clear, it would work well. They also noted that their grandfather was better than them at using teletext, indicating that some older individuals might be adept at certain functionalities. However, they acknowledged the challenge of designing for an age gap, suggesting that the design should cater to intuitive use without overwhelming complexity.",
+          "rouge_f1": {
+            "rouge1": 0.24999999999999994,
+            "rouge2": 0.06779661016949153,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            11,
+            10,
+            8,
+            7,
+            1,
+            13,
+            12,
+            6
+          ],
+          "retrieval_precision": 0.09326171875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "Industrial Designer thought that the design should be self-intuitive and easy to understand, acknowledging that the older generation might struggle with complex designs. They referenced their grandfather being adept at using teletext, suggesting that while older individuals can handle certain technologies, more intuitive designs would be beneficial for them.",
+          "rouge_f1": {
+            "rouge1": 0.1818181818181818,
+            "rouge2": 0.046511627906976744,
+            "rougeL": 0.1590909090909091
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9
+          ],
+          "retrieval_precision": 0.373046875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The Industrial Designer mentioned that the older generation, such as their grandparents, should be able to easily understand the remote control. They agreed that the design should be intuitive and straightforward, noting that even though their grandfather is adept at using teletext, he might struggle with more complex features. The Industrial Designer supported the idea that the remote control should have clear, self-explanatory elements, similar to modern phone interfaces with pictorial guidance, to ensure usability for all generations.",
+          "rouge_f1": {
+            "rouge1": 0.17094017094017094,
+            "rouge2": 0.05217391304347826,
+            "rougeL": 0.13675213675213674
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9,
+            7,
+            10
+          ],
+          "retrieval_precision": 0.1865234375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The Industrial Designer thought that the remote control needed to be intuitive and self-explanatory for the older generation. They mentioned that as long as the remote control was simple and clear in its functionality, the older generation could use it effectively. The Industrial Designer also suggested that incorporating obvious pictures and symbols in menus could help make the remote control more user-friendly for everyone, including older users.",
+          "rouge_f1": {
+            "rouge1": 0.22429906542056074,
+            "rouge2": 0.05714285714285715,
+            "rougeL": 0.18691588785046728
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9,
+            7,
+            10,
+            12,
+            6,
+            11,
+            0,
+            1
+          ],
+          "retrieval_precision": 0.09326171875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The evidence provided does not contain any direct statement from Industrial Designer regarding their thoughts on the older generation when discussing remote control style and design optimization. Therefore, the evidence is insufficient to determine Industrial Designer's specific views on this topic.",
+          "rouge_f1": {
+            "rouge1": 0.2750000000000001,
+            "rouge2": 0.07692307692307691,
+            "rougeL": 0.175
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10
+          ],
+          "retrieval_precision": 0.037109375,
+          "retrieval_recall": 0.09947643979057591
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The Industrial Designer mentioned that the older generation, such as their grandparents, should be able to easily understand the remote control. They agreed that the design should be intuitive and straightforward, noting that even though their grandfather is adept at using teletext, he might struggle with more complex features. The Industrial Designer supported the idea that the remote control should have clear, self-explanatory elements, similar to modern phone interfaces with pictorial guidance, to ensure usability for all generations.",
+          "rouge_f1": {
+            "rouge1": 0.17094017094017094,
+            "rouge2": 0.05217391304347826,
+            "rougeL": 0.13675213675213674
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            9,
+            7
+          ],
+          "retrieval_precision": 0.1865234375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Industrial Designer thought that the remote control needed to be self-intuitive and easy to understand for the older generation. They mentioned that as long as the remote control was intuitive and clear in its functionality, the older generation could manage it, even suggesting that modern phones with picture-based menus were easier to understand. However, they also expressed uncertainty about the feasibility of incorporating advanced features for older users due to cost constraints.",
+          "rouge_f1": {
+            "rouge1": 0.23214285714285715,
+            "rouge2": 0.05454545454545455,
+            "rougeL": 0.17857142857142858
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            9,
+            7,
+            6,
+            1,
+            11,
+            12,
+            4
+          ],
+          "retrieval_precision": 0.09326171875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Industrial Designer thought that the design should be self-intuitive and easy to understand, acknowledging that the older generation might struggle with complex designs. They referenced their grandfather being adept at using teletext, suggesting that while older individuals can handle certain technologies, more intuitive designs would be beneficial for them.",
+          "rouge_f1": {
+            "rouge1": 0.1818181818181818,
+            "rouge2": 0.046511627906976744,
+            "rougeL": 0.1590909090909091
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9
+          ],
+          "retrieval_precision": 0.373046875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The Industrial Designer mentioned that the older generation, such as their grandparents, should be able to easily understand the remote control. They agreed that the design should be intuitive and straightforward, noting that even though their grandfather is adept at using teletext, he might struggle with more complex features. The Industrial Designer supported the idea that the remote control should have clear, self-explanatory elements, similar to modern phone interfaces with pictorial guidance, to ensure usability for all generations.",
+          "rouge_f1": {
+            "rouge1": 0.17094017094017094,
+            "rouge2": 0.05217391304347826,
+            "rougeL": 0.13675213675213674
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9,
+            10,
+            7
+          ],
+          "retrieval_precision": 0.1865234375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Industrial Designer thought that the remote control needed to be self-intuitive and easy to understand for the older generation. They mentioned that as long as the remote control was intuitive and clear in its functionality, the older generation could use it effectively, even suggesting that some older individuals might already be adept at using certain features like teletext. However, they acknowledged that incorporating more complex features such as menus and advanced programming might pose challenges for the older generation.",
+          "rouge_f1": {
+            "rouge1": 0.18644067796610173,
+            "rouge2": 0.034482758620689655,
+            "rougeL": 0.1694915254237288
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            9,
+            10,
+            7,
+            6,
+            12,
+            11,
+            1,
+            0
+          ],
+          "retrieval_precision": 0.09326171875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "Industrial Designer thought that the older generation, such as grandparents, might struggle with more complex features of remote controls but could still manage basic functionalities. The Industrial Designer mentioned that their grandfather was better than them at using teletext, indicating some proficiency with simpler technologies. However, they acknowledged that advanced features and designs might not be intuitive for older users, suggesting a need for simplicity and intuitiveness in design.",
+          "rouge_f1": {
+            "rouge1": 0.24299065420560748,
+            "rouge2": 0.05714285714285715,
+            "rougeL": 0.18691588785046728
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            11,
+            13
+          ],
+          "retrieval_precision": 0.373046875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The evidence provided does not contain a direct statement from the Industrial Designer specifically about their thoughts on the older generation when discussing remote control style and design optimization. However, the closest relevant information is when the Industrial Designer mentions, \"Yeah, my grandad's actually better than me at using teletext, so {vocalsound},\" indicating that they recognize some older individuals can be proficient with certain features of remote controls. Additionally, the Industrial Designer supports the idea that the design should be intuitive and self-explanatory, suggesting an understanding that the design must cater to users of various ages and skill levels, including the older generation.",
+          "rouge_f1": {
+            "rouge1": 0.23776223776223776,
+            "rouge2": 0.05673758865248227,
+            "rougeL": 0.18181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            11,
+            13,
+            12,
+            3,
+            15
+          ],
+          "retrieval_precision": 0.1865234375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "Industrial Designer thought that the remote control needed to be self-intuitive and easy to understand for the older generation, mentioning that \"as long as it's sort of self-intuitive and you can work out what everything's doing,\" it would be suitable. Additionally, they suggested that the design should incorporate clear pictures and symbols to help users navigate the device effectively.",
+          "rouge_f1": {
+            "rouge1": 0.19801980198019803,
+            "rouge2": 0.04040404040404041,
+            "rougeL": 0.1782178217821782
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            11,
+            13,
+            12,
+            3,
+            15,
+            16,
+            4,
+            1,
+            8
+          ],
+          "retrieval_precision": 0.09326171875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "Industrial Designer acknowledged that the older generation, like his grandfather, might be proficient in using certain technologies such as teletext but may struggle with more complex features like programming remote controls or using modern smartphones. He suggested that the design should be simple and self-intuitive, possibly incorporating basic functions with clear symbols and pictures for easier understanding.",
+          "rouge_f1": {
+            "rouge1": 0.16666666666666666,
+            "rouge2": 0.0425531914893617,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            15
+          ],
+          "retrieval_precision": 0.373046875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Industrial Designer thought that the remote control needed to be self-intuitive and easy to understand, acknowledging that the older generation might struggle with complex designs. They agreed that the design should be simple enough for users to figure out what each button does without extensive instructions, similar to how modern phone menus use pictures to make operations clear. However, they were unsure about how affordable advanced features would be, suggesting a limitation to a basic black and white LCD screen.",
+          "rouge_f1": {
+            "rouge1": 0.2521008403361344,
+            "rouge2": 0.03418803418803419,
+            "rougeL": 0.15126050420168066
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            15,
+            13,
+            1
+          ],
+          "retrieval_precision": 0.1865234375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Industrial Designer thought that the remote control needed to be self-intuitive and easy to understand for the older generation, mentioning that \"as long as it's sort of self-intuitive and you can work out what everything's doing,\" it would be suitable. Additionally, they suggested that the remote control should have obvious pictures and symbols to help users navigate through the menu.",
+          "rouge_f1": {
+            "rouge1": 0.17647058823529413,
+            "rouge2": 0.04,
+            "rougeL": 0.17647058823529413
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            15,
+            13,
+            1,
+            12,
+            16,
+            11,
+            2
+          ],
+          "retrieval_precision": 0.09326171875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Industrial Designer acknowledged that the older generation might struggle with complex designs, suggesting that the remote control should be \"self-intuitive\" and easy to understand. They noted that modern phone menus with pictures are more intuitive, implying a preference for simpler, more visual interfaces for the older generation. However, they were unsure about how well such designs would suit older users, indicating some uncertainty about the effectiveness of these approaches for this demographic.",
+          "rouge_f1": {
+            "rouge1": 0.2522522522522523,
+            "rouge2": 0.05504587155963303,
+            "rougeL": 0.18018018018018017
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            13,
+            15
+          ],
+          "retrieval_precision": 0.373046875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Industrial Designer thought that the older generation would likely struggle with complex designs and menus, suggesting that the remote control should be simple and self-intuitive. They mentioned that their grandfather was better at using teletext than expected, indicating some familiarity with technology among the older generation, but still acknowledged the challenge of designing for users who might not be comfortable with advanced features.",
+          "rouge_f1": {
+            "rouge1": 0.23529411764705882,
+            "rouge2": 0.04,
+            "rougeL": 0.17647058823529413
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            13,
+            15,
+            11,
+            12
+          ],
+          "retrieval_precision": 0.1865234375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Industrial Designer thought that the remote control needed to be self-intuitive and easy to understand for the older generation, mentioning that \"as long as it's sort of self-intuitive and you can work out what everything's doing,\" it would be suitable. He also noted that the design should incorporate clear pictures and symbols to help users understand the functions, similar to modern phone interfaces.",
+          "rouge_f1": {
+            "rouge1": 0.19047619047619044,
+            "rouge2": 0.03883495145631068,
+            "rougeL": 0.1714285714285714
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            13,
+            15,
+            11,
+            12,
+            1,
+            16,
+            3,
+            4,
+            6
+          ],
+          "retrieval_precision": 0.09326171875,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did Industrial Designer think of plastic when discussing remote control style and design optimization?",
+      "reference_answer": "Industrial Designer was uncertain about whether the remote could look fashionable with plastic at first. Marketing and Project Manager exemplified other remote controls to make Industrial Designer believe that silver plastic could look smart.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The evidence is insufficient to determine what Industrial Designer specifically thought about plastic when discussing remote control style and design optimization. The Industrial Designer only confirmed agreement (\"Yeah.\") when the topic of using plastic for cost-effectiveness was mentioned, without providing additional thoughts or opinions on plastic itself.",
+          "rouge_f1": {
+            "rouge1": 0.3170731707317073,
+            "rouge2": 0.07499999999999998,
+            "rougeL": 0.21951219512195125
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            9,
+            8
+          ],
+          "retrieval_precision": 0.20703125,
+          "retrieval_recall": 0.31268436578171094
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Industrial Designer thought that plastic could still be used for the remote control design and that it could look good. However, there is no specific mention of their thoughts on plastic beyond this, particularly regarding its use in optimizing the remote control style and design.",
+          "rouge_f1": {
+            "rouge1": 0.35443037974683544,
+            "rouge2": 0.12987012987012989,
+            "rougeL": 0.25316455696202533
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            9,
+            8,
+            12,
+            11
+          ],
+          "retrieval_precision": 0.3310546875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Industrial Designer thought that while the remote control could still be made of plastic, it needed to look good and fit the company's design philosophy of putting fashion into electronics. The designer mentioned that plastic could be used to achieve a good look without necessarily compromising on style.",
+          "rouge_f1": {
+            "rouge1": 0.38554216867469876,
+            "rouge2": 0.09876543209876543,
+            "rougeL": 0.2891566265060241
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            9,
+            8,
+            12,
+            11,
+            10,
+            7,
+            1,
+            3
+          ],
+          "retrieval_precision": 0.16552734375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The evidence is insufficient to determine what Industrial Designer thought of plastic specifically when discussing remote control style and design optimization. The excerpts provided do not contain any statements from Industrial Designer regarding plastic.",
+          "rouge_f1": {
+            "rouge1": 0.3235294117647059,
+            "rouge2": 0.09090909090909091,
+            "rougeL": 0.23529411764705882
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            11
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The excerpts indicate that Industrial Designer agreed with the idea of using plastic for the remote control and thought it could be practical. Specifically, in response to Marketing's comment about making the remote lightweight and easily moldable, the Industrial Designer concurred, saying \"Yeah.\" Additionally, the Project Manager mentioned that using plastic, such as in existing remote controls from Sky and Telewest, could be both cost-effective and visually appealing. There were no explicit negative comments from the Industrial Designer regarding the use of plastic.",
+          "rouge_f1": {
+            "rouge1": 0.35294117647058826,
+            "rouge2": 0.08547008547008547,
+            "rougeL": 0.23529411764705885
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            11,
+            9,
+            13,
+            12
+          ],
+          "retrieval_precision": 0.2119140625,
+          "retrieval_recall": 0.640117994100295
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Industrial Designer thought that plastic could still be used for the remote control and it could look quite good, suggesting that the design could incorporate plastic without compromising on aesthetics. However, the specific thoughts on plastic in relation to the remote control style and design optimization were not extensively detailed beyond this.",
+          "rouge_f1": {
+            "rouge1": 0.3488372093023256,
+            "rouge2": 0.11904761904761904,
+            "rougeL": 0.23255813953488372
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            11,
+            9,
+            13,
+            12,
+            1,
+            7,
+            6,
+            10
+          ],
+          "retrieval_precision": 0.16552734375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The evidence from the meeting excerpts does not contain any specific statements or thoughts from Industrial Designer regarding plastic when discussing remote control style and design optimization. Therefore, the evidence is insufficient to determine what Industrial Designer thought about plastic in this context.",
+          "rouge_f1": {
+            "rouge1": 0.3116883116883117,
+            "rouge2": 0.08,
+            "rougeL": 0.2337662337662338
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            13,
+            9
+          ],
+          "retrieval_precision": 0.20703125,
+          "retrieval_recall": 0.31268436578171094
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The excerpts indicate that Industrial Designer agreed with the idea of using plastic for the remote control and thought it could be practical. Specifically, in response to Marketing's comment about making the remote lightweight and easily moldable, the Industrial Designer concurred, saying \"Yeah.\" Additionally, the Project Manager mentioned that using plastic, such as in existing remote controls from Sky and Telewest, could be both cost-effective and visually appealing. There were no explicit negative comments from the Industrial Designer regarding the use of plastic.",
+          "rouge_f1": {
+            "rouge1": 0.35294117647058826,
+            "rouge2": 0.08547008547008547,
+            "rougeL": 0.23529411764705885
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            13,
+            9,
+            11,
+            12
+          ],
+          "retrieval_precision": 0.2119140625,
+          "retrieval_recall": 0.640117994100295
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Industrial Designer thought that while the remote control could still be made of plastic, it needed to look good and fit the company's design philosophy of putting fashion into electronics. The designer suggested that plastic could be used without compromising the aesthetic appeal, implying that the material choice should align with making the product trendy and appealing to a wide market.",
+          "rouge_f1": {
+            "rouge1": 0.375,
+            "rouge2": 0.08510638297872339,
+            "rougeL": 0.22916666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            13,
+            9,
+            11,
+            12,
+            1,
+            7,
+            10,
+            6
+          ],
+          "retrieval_precision": 0.16552734375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The evidence provided does not contain specific details about what the Industrial Designer thought of plastic when discussing remote control style and design optimization beyond acknowledging its use. The Industrial Designer mentioned \"still have plastic\" and agreed that it could look good, but no further thoughts or opinions on plastic were explicitly stated.",
+          "rouge_f1": {
+            "rouge1": 0.32183908045977005,
+            "rouge2": 0.09411764705882353,
+            "rougeL": 0.2298850574712644
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            7,
+            8
+          ],
+          "retrieval_precision": 0.28515625,
+          "retrieval_recall": 0.4306784660766962
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The evidence provided does not contain specific details about what the Industrial Designer thought of plastic when discussing remote control style and design optimization. The Industrial Designer mentioned keeping the design to a \"black and white LCD thing\" and noted that \"still have plastic\" could make it look \"quite good,\" but there is no detailed opinion or evaluation of plastic beyond these brief mentions.",
+          "rouge_f1": {
+            "rouge1": 0.32653061224489793,
+            "rouge2": 0.08333333333333333,
+            "rougeL": 0.22448979591836735
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            7,
+            8,
+            9,
+            10
+          ],
+          "retrieval_precision": 0.142578125,
+          "retrieval_recall": 0.4306784660766962
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The Industrial Designer mentioned that while the remote control could still be made of plastic, it could also look quite good. There is no explicit statement about the suitability or drawbacks of plastic specifically in terms of style and design optimization, beyond the suggestion that plastic could be used to achieve a fashionable design while potentially keeping costs lower.",
+          "rouge_f1": {
+            "rouge1": 0.3440860215053763,
+            "rouge2": 0.08791208791208792,
+            "rougeL": 0.2580645161290323
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            7,
+            8,
+            9,
+            10,
+            11,
+            6,
+            0,
+            1
+          ],
+          "retrieval_precision": 0.16552734375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The evidence provided does not contain any specific statements from the Industrial Designer regarding their thoughts on plastic when discussing remote control style and design optimization. Therefore, the evidence is insufficient to determine what the Industrial Designer thought about plastic in this context.",
+          "rouge_f1": {
+            "rouge1": 0.3116883116883117,
+            "rouge2": 0.08,
+            "rougeL": 0.2337662337662338
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The Industrial Designer mentioned keeping the remote control made of plastic, suggesting it would look \"quite good\" but also indicating some uncertainty about its appearance with \"{disfmarker}\". There is no explicit positive or negative sentiment expressed towards plastic beyond this, only noting its potential cost-effectiveness and common usage in existing remote controls.",
+          "rouge_f1": {
+            "rouge1": 0.27586206896551724,
+            "rouge2": 0.07058823529411766,
+            "rougeL": 0.2298850574712644
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            12,
+            7,
+            11
+          ],
+          "retrieval_precision": 0.16015625,
+          "retrieval_recall": 0.4837758112094395
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The evidence provided does not contain specific statements from Industrial Designer regarding their thoughts on plastic when discussing remote control style and design optimization. Therefore, the evidence is insufficient to determine Industrial Designer's opinion on plastic.",
+          "rouge_f1": {
+            "rouge1": 0.3098591549295775,
+            "rouge2": 0.08695652173913043,
+            "rougeL": 0.25352112676056343
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            10,
+            12,
+            7,
+            11,
+            9,
+            6,
+            1,
+            4
+          ],
+          "retrieval_precision": 0.16552734375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The evidence provided does not contain any specific statements from the Industrial Designer regarding their thoughts on plastic when discussing remote control style and design optimization. The closest reference is in excerpt [298], where the Industrial Designer mentions \"still have plastic,\" but this does not provide insight into their opinion or thoughts about using plastic in the design. Therefore, the evidence is insufficient to determine what the Industrial Designer thought about plastic in this context.",
+          "rouge_f1": {
+            "rouge1": 0.22018348623853212,
+            "rouge2": 0.056074766355140186,
+            "rougeL": 0.16513761467889906
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            12,
+            7
+          ],
+          "retrieval_precision": 0.28515625,
+          "retrieval_recall": 0.4306784660766962
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The Industrial Designer mentioned keeping the remote control down to a \"black and white LCD thing\" due to cost constraints, implying that plastic would be used for the remote control. However, the specific thoughts of the Industrial Designer regarding the material properties or aesthetics of plastic were not detailed in the provided excerpts. Therefore, the evidence is insufficient to determine what the Industrial Designer specifically thought about plastic beyond its cost-effectiveness and potential appearance.",
+          "rouge_f1": {
+            "rouge1": 0.25688073394495414,
+            "rouge2": 0.07476635514018692,
+            "rougeL": 0.2018348623853211
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            12,
+            7,
+            10,
+            9
+          ],
+          "retrieval_precision": 0.142578125,
+          "retrieval_recall": 0.4306784660766962
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The evidence provided does not contain specific statements from Industrial Designer regarding their thoughts on plastic when discussing remote control style and design optimization. Therefore, the evidence is insufficient to determine Industrial Designer's opinion on plastic.",
+          "rouge_f1": {
+            "rouge1": 0.3098591549295775,
+            "rouge2": 0.08695652173913043,
+            "rougeL": 0.25352112676056343
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            12,
+            7,
+            10,
+            9,
+            11,
+            6,
+            1,
+            0
+          ],
+          "retrieval_precision": 0.16552734375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "Industrial Designer thought that plastic could still be used for the remote control and it could look good, though they didn't explicitly state a strong opinion about plastic beyond acknowledging its potential use and appearance.",
+          "rouge_f1": {
+            "rouge1": 0.3714285714285714,
+            "rouge2": 0.14705882352941174,
+            "rougeL": 0.22857142857142856
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            12
+          ],
+          "retrieval_precision": 0.662109375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "Industrial Designer thought that plastic could still be used for the remote control and it could look quite good, though they did not specifically comment on the material properties or preferences regarding plastic beyond this.",
+          "rouge_f1": {
+            "rouge1": 0.3478260869565218,
+            "rouge2": 0.14925373134328357,
+            "rougeL": 0.20289855072463767
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            12,
+            11,
+            13
+          ],
+          "retrieval_precision": 0.3310546875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "Industrial Designer thought that while the remote control could still be made of plastic, it needed to be designed well to look good. Specifically, they mentioned that plastic could be used and it \"would look quite good\" but emphasized that the design aspect was crucial.",
+          "rouge_f1": {
+            "rouge1": 0.40506329113924056,
+            "rouge2": 0.1038961038961039,
+            "rougeL": 0.3037974683544304
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            12,
+            11,
+            13,
+            15,
+            3,
+            14,
+            8,
+            4,
+            1
+          ],
+          "retrieval_precision": 0.16552734375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The evidence provided does not contain any specific statements from Industrial Designer regarding their thoughts on plastic when discussing remote control style and design optimization. Therefore, the evidence is insufficient to determine Industrial Designer's opinion on plastic in this context.",
+          "rouge_f1": {
+            "rouge1": 0.2933333333333334,
+            "rouge2": 0.08219178082191782,
+            "rougeL": 0.24
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            16
+          ],
+          "retrieval_precision": 0.37109375,
+          "retrieval_recall": 0.56047197640118
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The Industrial Designer mentioned plastic positively in the context of the remote control's design optimization, suggesting that it could still look good and be used to potentially reduce costs. However, the specific thoughts on plastic were not detailed beyond these points.",
+          "rouge_f1": {
+            "rouge1": 0.34210526315789475,
+            "rouge2": 0.08108108108108109,
+            "rougeL": 0.2368421052631579
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            16,
+            15,
+            14
+          ],
+          "retrieval_precision": 0.3310546875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The Industrial Designer mentioned that the remote control could still be made of plastic and look good, indicating a positive view towards using plastic for the design optimization of the remote control. However, the specific thoughts on plastic in relation to the remote control style were not extensively detailed beyond this.",
+          "rouge_f1": {
+            "rouge1": 0.32941176470588235,
+            "rouge2": 0.07228915662650602,
+            "rougeL": 0.23529411764705882
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            16,
+            15,
+            14,
+            1,
+            12,
+            11,
+            2
+          ],
+          "retrieval_precision": 0.16552734375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Industrial Designer thought that plastic could still be used for the remote control and it could look good. However, the specific thoughts on plastic regarding style and design optimization were not detailed beyond acknowledging its potential aesthetic appeal and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.35135135135135137,
+            "rouge2": 0.1388888888888889,
+            "rougeL": 0.24324324324324323
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            13
+          ],
+          "retrieval_precision": 0.662109375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Industrial Designer thought that plastic could be used for the remote control and suggested keeping the screen to a black and white LCD due to cost considerations. There is no explicit mention of their thoughts on plastic beyond these points.",
+          "rouge_f1": {
+            "rouge1": 0.2972972972972973,
+            "rouge2": 0.1111111111111111,
+            "rougeL": 0.18918918918918917
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            13,
+            12,
+            15
+          ],
+          "retrieval_precision": 0.3310546875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Industrial Designer thought that while the remote control could still be made of plastic, it needed to look good. Specifically, they mentioned that plastic could still be used and it \"would look quite good,\" suggesting a preference for plastic that maintains aesthetic appeal.",
+          "rouge_f1": {
+            "rouge1": 0.36363636363636365,
+            "rouge2": 0.10666666666666667,
+            "rougeL": 0.28571428571428575
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            13,
+            12,
+            15,
+            11,
+            14,
+            1,
+            8
+          ],
+          "retrieval_precision": 0.16552734375,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Summarize the discussion about price issues and target groups of remote control.",
+      "reference_answer": "Project Manager proposed to price each remote control at 25 Euros, considering the 12.5-Euro production cost. The profit aim for the team would be 50 million Euros in the first year. The market range would be international and over all age groups.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The discussion about price issues and target groups of the remote control includes:\n\n- The team agreed on targeting a broad audience without focusing specifically on the business market (Excerpts 175-179).\n- Price seems to be indirectly related to functionality and quality, as mentioned through the Project Manager’s experience with a cheaper remote control that frequently lost signals (Excerpts 192-195).\n- There was consideration for integrating multiple functions into one remote control to avoid having multiple remotes (Excerpts 198-200).\n- Marketing suggested incorporating a menu display system similar to mobile phones, which could simplify navigation and potentially reduce the need for numerous buttons (Excerpts 223-232).\n- Concerns were raised about the usability for older generations, such as grandparents, who might struggle with complex features (Excerpts 233-239).",
+          "rouge_f1": {
+            "rouge1": 0.19883040935672516,
+            "rouge2": 0.03550295857988165,
+            "rougeL": 0.10526315789473684
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The discussion about price issues and target groups of the remote control includes considerations for a broad target audience, avoiding complications such as multiple languages and focusing on international markets. The team emphasizes user-friendliness, especially for individuals who only need basic functions. They discuss integrating multiple devices into one remote control and simplifying its interface to avoid overwhelming users with numerous buttons and complex symbols. For the older generation, they suggest incorporating features like large print options and clear, simple symbols. Cost implications are briefly mentioned, particularly regarding the feasibility of adding features like LCD displays and flip-top designs.",
+          "rouge_f1": {
+            "rouge1": 0.2206896551724138,
+            "rouge2": 0.04195804195804195,
+            "rougeL": 0.12413793103448277
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            8,
+            11,
+            13
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The team discussed the pricing of the remote control, noting that the current proposed price of £17 was considered expensive compared to existing products priced around £20. The production cost was mentioned to be £12.50, leaving a significant margin for profit. There was concern about whether setting a lower price would make the product appear cheap. The target group was identified as a broad market ranging from children to elderly users, emphasizing the need for user-friendliness across all age groups. The team explored design ideas such as integrating LCD displays and menu systems to simplify usage, particularly for older users who might struggle with complex interfaces.",
+          "rouge_f1": {
+            "rouge1": 0.34210526315789475,
+            "rouge2": 0.08,
+            "rougeL": 0.21052631578947367
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            8,
+            11,
+            13,
+            10,
+            6,
+            1,
+            12
+          ],
+          "retrieval_precision": 0.1064453125,
+          "retrieval_recall": 0.689873417721519
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The team discussed that the proposed price of seventeen pounds for the remote control is considered expensive. They noted that similar products on the market are priced around twenty pounds. The production cost is twelve and a half pounds, leaving a significant margin. The goal is to achieve a fifty million Euro profit in the first year. The target group is broad, aiming for international accessibility and usability by all age groups without focusing on a specific business market. The remote control should be user-friendly and integrate multiple functions into one device to avoid the inconvenience of managing multiple remotes.",
+          "rouge_f1": {
+            "rouge1": 0.41379310344827586,
+            "rouge2": 0.18181818181818182,
+            "rougeL": 0.2896551724137931
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            9
+          ],
+          "retrieval_precision": 0.42578125,
+          "retrieval_recall": 0.689873417721519
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The team discussed that the proposed price of seventeen pounds for the remote control was considered expensive, especially compared to current market prices around twenty pounds. They debated whether to undercut competitors' prices, considering the risk of appearing cheap. The production cost was noted to be twelve and a half pounds, leaving a significant margin. The target group was identified as international and inclusive of all age groups, with a focus on accessibility and usability. Concerns were raised about designing the remote control to be user-friendly for older generations, potentially including features like large print options and simplified interfaces for basic functions while offering more complex menu options for advanced features.",
+          "rouge_f1": {
+            "rouge1": 0.2948717948717949,
+            "rouge2": 0.1038961038961039,
+            "rougeL": 0.1923076923076923
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            9,
+            11,
+            1
+          ],
+          "retrieval_precision": 0.212890625,
+          "retrieval_recall": 0.689873417721519
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The team discussed the pricing of the remote control, noting that the selling price is 25 Euros (approximately 17 Pounds), which is considered expensive. They acknowledged that existing remote controls on the market are priced similarly. The production cost is 12.50 Euros, leaving a significant profit margin. The target group for the remote control is described as a wide market range, including all age groups from children to grandparents, aiming for international accessibility without focusing on a specific business market. The team emphasized the importance of user-friendliness and simplicity in design, considering features such as LCD displays, menus, and potential adaptations for older users, like large print options.",
+          "rouge_f1": {
+            "rouge1": 0.3766233766233766,
+            "rouge2": 0.13157894736842107,
+            "rougeL": 0.23376623376623376
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            9,
+            11,
+            1,
+            8,
+            5,
+            13,
+            12
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The discussion highlighted that the proposed price of seventeen pounds for the remote control was considered expensive. The target group was identified as a broad audience, aiming for a big and inclusive market including international regions such as Australia and America. There was concern about usability for all users, particularly mentioning the older generation who might struggle with complex features like programming the remote control. The team suggested incorporating a menu display with an LCD screen to simplify navigation and reduce the complexity of multiple buttons, aiming for user-friendliness across different age groups.",
+          "rouge_f1": {
+            "rouge1": 0.28985507246376807,
+            "rouge2": 0.07352941176470588,
+            "rougeL": 0.20289855072463767
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            6
+          ],
+          "retrieval_precision": 0.029296875,
+          "retrieval_recall": 0.04746835443037975
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team discussed the pricing issue of the remote control, noting that the current proposed price of seventeen pounds was considered expensive compared to existing market prices around twenty pounds. They debated whether to undercut competitors' prices or risk appearing cheap. The production cost was mentioned to be twelve and a half pounds, leaving a significant margin. The target group was identified as an international market with a broad age range, emphasizing accessibility and usability for all ages without focusing on a specific business market. Concerns were raised about designing the remote control to be user-friendly for older generations, suggesting options such as large print displays and simplified interfaces.",
+          "rouge_f1": {
+            "rouge1": 0.3116883116883117,
+            "rouge2": 0.052631578947368425,
+            "rougeL": 0.18181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            6,
+            11,
+            8
+          ],
+          "retrieval_precision": 0.212890625,
+          "retrieval_recall": 0.689873417721519
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team discussed pricing issues and target groups for the remote control. Initially, Marketing suggested a price of £17, which Project Manager considered expensive. However, Industrial Designer pointed out that current market prices were around £20, suggesting their proposed price was competitive. The production cost was mentioned to be €12.50, leaving a significant profit margin. The team aimed for a profit of €50 million in their first year. Regarding target groups, the product was intended to be accessible and usable by all age groups, from children to grandparents, aiming for an international market without focusing on a specific business market. The team emphasized the importance of user-friendliness and simplicity in design, considering features such as LCD displays, menus, and potential adaptations for older users, like larger print options.",
+          "rouge_f1": {
+            "rouge1": 0.3793103448275862,
+            "rouge2": 0.11627906976744187,
+            "rougeL": 0.2413793103448276
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            7,
+            6,
+            11,
+            8,
+            1,
+            13,
+            10,
+            5
+          ],
+          "retrieval_precision": 0.11083984375,
+          "retrieval_recall": 0.7183544303797469
+        },
+        "word_packed__dense__w512": {
+          "answer": "The discussion about price issues and target groups of the remote control includes:\n\n- The project aims for a profit of fifty million Euros in the first year.\n- The market range is international, targeting all age groups without focusing on a specific business market.\n- There is a suggestion to incorporate a menu display system similar to mobile phones to simplify the interface, addressing usability concerns across different age groups.\n- Concerns were raised about the older generation's ability to use the remote control, suggesting the need for a user-friendly design that is accessible to everyone.",
+          "rouge_f1": {
+            "rouge1": 0.3597122302158273,
+            "rouge2": 0.1751824817518248,
+            "rougeL": 0.2733812949640288
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8
+          ],
+          "retrieval_precision": 0.072265625,
+          "retrieval_recall": 0.11708860759493671
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The discussion about price issues and target groups of the remote control includes:\n\n- The project aims for a profit of fifty million Euros in the first year.\n- The target market is international, including places like Australia and America.\n- The product should be accessible and usable by all age groups, without focusing on a specific business market.\n- There is a focus on ensuring the remote control is user-friendly, avoiding overly complex designs with numerous buttons and unclear symbols.\n- Suggestions include integrating multiple functionalities into one device, simplifying symbols, and possibly incorporating an LCD display with menu options for easier navigation.\n- Concerns were raised about the older generation's ability to use the remote control, suggesting features such as large print options or a dual-function design with clear symbols for basic operations and more detailed menu options for advanced functions.\n- Cost considerations were mentioned, particularly regarding the feasibility of including features like color LCD screens within a budget constraint.",
+          "rouge_f1": {
+            "rouge1": 0.2660098522167488,
+            "rouge2": 0.09950248756218907,
+            "rougeL": 0.18719211822660098
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            10,
+            7
+          ],
+          "retrieval_precision": 0.0361328125,
+          "retrieval_recall": 0.11708860759493671
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The team discussed that the proposed remote control costs around 17 Pounds, which was considered expensive. They debated whether to undercut the price or risk making the product seem cheap. The target group was identified as a wide market, including all age groups, with a focus on making the remote control user-friendly and accessible internationally. Concerns were raised about the usability for the older generation, suggesting simpler designs and possibly larger print options for ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.3442622950819672,
+            "rouge2": 0.08333333333333333,
+            "rougeL": 0.18032786885245902
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            10,
+            7,
+            9,
+            0,
+            12,
+            5,
+            11
+          ],
+          "retrieval_precision": 0.14306640625,
+          "retrieval_recall": 0.9272151898734177
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The team discussed that the proposed remote control would cost around 17 Pounds, which was considered expensive. They noted that similar products on the market were priced around 20 Pounds. The production cost was 12.50 Pounds, leaving a significant margin. The marketing goal was to achieve a 50 million Euro profit in the first year. The target group was described as an international market with a broad age range, aiming for accessibility and usability by all age groups without focusing on a specific business market. The product was intended to be user-friendly and accessible internationally, including markets like Australia and America.",
+          "rouge_f1": {
+            "rouge1": 0.4489795918367347,
+            "rouge2": 0.17931034482758618,
+            "rougeL": 0.29931972789115646
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            5
+          ],
+          "retrieval_precision": 0.572265625,
+          "retrieval_recall": 0.9272151898734177
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The team discussed the pricing issue of the remote control, initially considering it expensive at around 17 Pounds, but later noting that current market prices were similarly high. They acknowledged a production cost of 12.50 Euros and aimed for a significant profit of 50 million Euros in their first year. The target group was identified as broad, including all age groups and aiming for international accessibility without focusing on a specific business market. Concerns were raised about making the remote user-friendly for older generations, suggesting features such as large print options and dual-function designs to cater to diverse user needs.",
+          "rouge_f1": {
+            "rouge1": 0.4217687074829933,
+            "rouge2": 0.15172413793103448,
+            "rougeL": 0.24489795918367352
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            5,
+            10,
+            8
+          ],
+          "retrieval_precision": 0.2861328125,
+          "retrieval_recall": 0.9272151898734177
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The team discussed that the selling price of the remote control is 25 Euros (approximately 17 Pounds), which is considered expensive compared to current market prices. The production cost is 12.50 Euros, leaving a significant profit margin. The target group is broad, aiming to be accessible and user-friendly for all age groups internationally, excluding a specific focus on the business market. Concerns were raised about making the product appealing without appearing cheap, and ensuring it is easy to use for all users, including the elderly. Suggestions included simplifying the interface, possibly incorporating an LCD display with menus, and considering a dual-function design for basic and advanced features.",
+          "rouge_f1": {
+            "rouge1": 0.36363636363636365,
+            "rouge2": 0.07894736842105264,
+            "rougeL": 0.22077922077922077
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            5,
+            10,
+            8,
+            7,
+            0,
+            4,
+            12,
+            9
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The discussion about price issues and target groups of the remote control includes:\n\n- The project aims for a profit of fifty million Euros in the first year.\n- The market range is international, targeting all age groups without focusing on a specific business market.\n- There is a suggestion to incorporate a menu display system similar to mobile phones to simplify the interface, addressing usability concerns across different age groups.\n- Concerns were raised about the older generation's ability to use the remote control, suggesting the need for a user-friendly design that is accessible to everyone.",
+          "rouge_f1": {
+            "rouge1": 0.3597122302158273,
+            "rouge2": 0.1751824817518248,
+            "rougeL": 0.2733812949640288
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8
+          ],
+          "retrieval_precision": 0.072265625,
+          "retrieval_recall": 0.11708860759493671
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The discussion about price issues and target groups of the remote control includes:\n\n- The project aims for a profit of fifty million Euros in the first year.\n- The target market is international, including places like Australia and America.\n- The product should be accessible and usable by all age groups, without focusing on a specific business market.\n- There is a focus on ensuring the remote control is user-friendly, avoiding overly complex designs with numerous buttons and unclear symbols.\n- Suggestions include integrating multiple functionalities into one device, simplifying symbols, and possibly incorporating an LCD display with menu options for easier navigation.\n- Concerns were raised about the older generation's ability to use the remote control, suggesting features such as large print options or a dual-function design with clear symbols for basic operations and more detailed menu options for advanced functions.\n- Cost considerations were mentioned, particularly regarding the feasibility of including features like color LCD screens within a budget constraint.",
+          "rouge_f1": {
+            "rouge1": 0.2660098522167488,
+            "rouge2": 0.09950248756218907,
+            "rougeL": 0.18719211822660098
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            10,
+            7
+          ],
+          "retrieval_precision": 0.0361328125,
+          "retrieval_recall": 0.11708860759493671
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The team discussed that the proposed remote control costs £17, which was deemed expensive. They considered whether to undercut competitors' prices of around £20 or risk appearing cheap. The production cost is £12.50, leaving a significant profit margin. The target group is broad, aiming for all age groups internationally without focusing on a specific market segment. Concerns were raised about usability for older generations, suggesting simplified interfaces, possibly with large print options or dual-function designs for basic and advanced features.",
+          "rouge_f1": {
+            "rouge1": 0.3809523809523809,
+            "rouge2": 0.0967741935483871,
+            "rougeL": 0.20634920634920637
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            10,
+            7,
+            5,
+            0,
+            9,
+            12,
+            4
+          ],
+          "retrieval_precision": 0.14306640625,
+          "retrieval_recall": 0.9272151898734177
+        },
+        "lumber__dense__w512": {
+          "answer": "The discussion highlighted price issues related to the reliability of cheaper universal remote controls, which were noted to lose signals frequently and require reprogramming. The target group for the remote control was identified as users who prefer simplicity, such as Marketing, who emphasized the need for a remote that is easy to use without extensive programming or understanding complex symbols. Suggestions included integrating multiple devices into one remote, simplifying symbols, and possibly incorporating a menu display or LCD screen to manage more complex functions without cluttering the main interface.",
+          "rouge_f1": {
+            "rouge1": 0.21052631578947367,
+            "rouge2": 0.030534351145038167,
+            "rougeL": 0.12030075187969926
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            12,
+            13
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The discussion highlighted several price issues and considerations regarding target groups for remote controls:\n\nPrice Issues:\n- The project manager mentioned a cheap universal remote control that frequently lost signals and required reprogramming, suggesting that lower-priced remotes may have quality issues (Excerpts 192, 193).\n- There was a mention of cost constraints, particularly in relation to the affordability of features like color LCD screens for older generations, with the industrial designer questioning the feasibility of including such features within a budget of around €12.50 (Excerpts 270, 271).\n\nTarget Groups:\n- The marketing representative emphasized the need for simplicity, stating that the remote should be usable by someone like themselves who only uses basic functions (Excerpts 203, 205).\n- The project manager raised concerns about designing for the older generation, noting that while some older adults can use basic mobile phone functions, more complex operations like texting or programming a remote control are challenging (Excerpts 233, 235).\n- Suggestions were made to include features like large print options and dual-functionality to cater to both basic users and those needing more advanced features (Excerpts 261, 265).",
+          "rouge_f1": {
+            "rouge1": 0.17699115044247787,
+            "rouge2": 0.03571428571428571,
+            "rougeL": 0.1150442477876106
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            12,
+            13,
+            15,
+            14
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team discussed that the current production cost of the remote control is £12.50, and they considered whether to undercut the market price of around £20. There was concern about making the product look cheap if priced lower. The target group for the remote control includes all age groups from children to grandparents, aiming for a wide market appeal and user-friendliness. The team explored design ideas such as integrating multiple functions into one device, simplifying symbols, and incorporating an LCD display with menus for ease of use across different age groups. They also debated the inclusion of features like large print options for older users and the potential cost implications of adding a flip-top design for a larger screen.",
+          "rouge_f1": {
+            "rouge1": 0.26506024096385544,
+            "rouge2": 0.09756097560975609,
+            "rougeL": 0.15662650602409636
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            12,
+            13,
+            15,
+            14,
+            16,
+            8,
+            10,
+            1
+          ],
+          "retrieval_precision": 0.0771484375,
+          "retrieval_recall": 0.5
+        },
+        "lumber__bm25__w512": {
+          "answer": "The discussion about price issues and target groups of the remote control includes concerns over making the product accessible and usable by all age groups, particularly mentioning the challenge of catering to the older generation who may struggle with more complex features. The team acknowledges that the remote should be user-friendly and intuitive, possibly incorporating features like large print options for easier readability. There is also a brief mention of cost considerations, with Industrial Designer questioning the feasibility of including advanced features within a budget, suggesting limitations such as a black and white LCD display might be necessary.",
+          "rouge_f1": {
+            "rouge1": 0.2797202797202797,
+            "rouge2": 0.05673758865248227,
+            "rougeL": 0.15384615384615383
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            14,
+            15
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The discussion about price issues and target groups of the remote control includes considerations for making the product user-friendly across all age groups, from children to grandparents, aiming for an international market without focusing on specific languages. Price concerns were mentioned indirectly through discussions on keeping costs down, such as considering a black and white LCD screen instead of a color one. The team also discussed incorporating features like large print options and intuitive designs with clear symbols and pictures to cater to the older generation while maintaining usability for younger users.",
+          "rouge_f1": {
+            "rouge1": 0.3065693430656934,
+            "rouge2": 0.07407407407407407,
+            "rougeL": 0.14598540145985403
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            14,
+            15,
+            12,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The team discussed that the remote control's selling price is set at 25 Euros (approximately 17 Pounds), which is considered expensive compared to current market prices. The production cost is 12.50 Euros, leaving a significant profit margin. There was concern about whether setting a higher price would make the product seem cheap or if they should undercut competitors' prices. The target group is broad, aiming to appeal to all age groups from children to grandparents, ensuring the remote control is user-friendly and accessible internationally. Suggestions included simplifying symbols, providing a dual-function interface for basic and advanced features, and considering design elements like a flip-top for larger screens, though these may have cost implications.",
+          "rouge_f1": {
+            "rouge1": 0.3580246913580247,
+            "rouge2": 0.0875,
+            "rougeL": 0.19753086419753088
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            14,
+            15,
+            12,
+            1,
+            7,
+            9,
+            16,
+            8,
+            13
+          ],
+          "retrieval_precision": 0.154296875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The discussion highlighted concerns about making the remote control user-friendly for individuals like Marketing, who primarily use basic functions such as on/off, volume control, and channel switching. The group also considered the older generation, noting that they might struggle with more complex features and suggesting that the design should cater to intuitive use. There was a mention of potential price constraints, with Industrial Designer questioning the feasibility of including advanced features within a budget of around 12 Euros and 50 cents, suggesting a simpler black and white LCD display might be necessary.",
+          "rouge_f1": {
+            "rouge1": 0.2608695652173913,
+            "rouge2": 0.029411764705882353,
+            "rougeL": 0.11594202898550723
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            14,
+            15
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The discussion highlighted that the remote control should be accessible and usable by all age groups, with a focus on international markets including Australia and America. Price considerations were mentioned, particularly in relation to the quality of materials and functionality. There was concern about avoiding overly complex designs with numerous buttons and unclear symbols, emphasizing the need for simplicity and intuitiveness. Specific suggestions included integrating multiple device controls into one remote, ensuring basic functions are easily accessible, and potentially offering features like large print options for older users. The team acknowledged challenges in designing for the older generation due to varying technological comfort levels.",
+          "rouge_f1": {
+            "rouge1": 0.25675675675675674,
+            "rouge2": 0.06849315068493152,
+            "rougeL": 0.12162162162162163
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            14,
+            15,
+            10,
+            11,
+            13
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The team discussed the price issues and target groups of the remote control. Price concerns were raised, particularly regarding the inclusion of features such as LCD displays and menu systems, which could increase costs. Marketing suggested keeping the design simple and user-friendly, noting that it should cater to a wide market including all age groups from \"grannies to kids.\" The team acknowledged the challenge of designing for the older generation, emphasizing the importance of intuitive interfaces and possibly incorporating features like large print options. There was also consideration for using materials like plastic to potentially reduce costs while maintaining functionality and accessibility across different user groups.",
+          "rouge_f1": {
+            "rouge1": 0.22516556291390727,
+            "rouge2": 0.06711409395973154,
+            "rougeL": 0.15894039735099336
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            14,
+            15,
+            10,
+            11,
+            13,
+            1,
+            16,
+            8
+          ],
+          "retrieval_precision": 0.0078125,
+          "retrieval_recall": 0.05063291139240506
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did Project Manager think of the market range when discussing price issues and target groups of the remote control?",
+      "reference_answer": "Project Manager hoped to make the market range international, covering all age groups, instead of focusing solely on the business market. Project Manager highlighted that the team should not worry about the language differences and the big target group would be achievable.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The Project Manager thought the market range should be broad, targeting an international market including places like Australia and America, without worrying excessively about different languages. The Project Manager emphasized a big target group and mentioned experiences with remote controls that highlighted the need for simplicity and integration, ensuring the product would be user-friendly for a wide audience, including the older generation.",
+          "rouge_f1": {
+            "rouge1": 0.49523809523809526,
+            "rouge2": 0.13592233009708737,
+            "rougeL": 0.30476190476190473
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            9,
+            8
+          ],
+          "retrieval_precision": 0.17578125,
+          "retrieval_recall": 0.7627118644067796
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Project Manager thought the market range should be wide and international, targeting everyone without focusing on a specific business market. She emphasized the importance of the product being user-friendly, appealing to a broad audience including the older generation, and suggested avoiding overly complex designs with numerous buttons. She also mentioned considering cost factors, such as using plastic over metal to potentially reduce costs while maintaining a modern appearance.",
+          "rouge_f1": {
+            "rouge1": 0.3423423423423423,
+            "rouge2": 0.07339449541284404,
+            "rougeL": 0.23423423423423426
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            9,
+            8,
+            13,
+            1
+          ],
+          "retrieval_precision": 0.087890625,
+          "retrieval_recall": 0.7627118644067796
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Project Manager thought the market range should be wide, targeting all age groups from \"grannies to kids,\" aiming for a product that is user-friendly and accessible internationally without focusing on specific language barriers. Regarding the price issue, Project Manager expressed concern over the proposed price of seventeen pounds, considering it expensive compared to current market prices and discussed the importance of maintaining a significant profit margin while ensuring the product remains affordable and competitive.",
+          "rouge_f1": {
+            "rouge1": 0.4444444444444445,
+            "rouge2": 0.10434782608695652,
+            "rougeL": 0.2735042735042735
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            9,
+            8,
+            13,
+            1,
+            11,
+            6,
+            0,
+            10,
+            12
+          ],
+          "retrieval_precision": 0.0576171875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The Project Manager thought that the proposed price of seventeen pounds for the remote control was expensive compared to current market prices (around twenty pounds). They also noted that the production cost was twelve and a half pounds, indicating a significant portion of the selling price would cover production costs. The Project Manager acknowledged the large target group and the international market range, emphasizing usability across all age groups without focusing on specific business markets or language barriers. However, there were no explicit statements from the Project Manager regarding the exact thoughts on the market range beyond these points.",
+          "rouge_f1": {
+            "rouge1": 0.39716312056737585,
+            "rouge2": 0.15827338129496404,
+            "rougeL": 0.24113475177304963
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            8
+          ],
+          "retrieval_precision": 0.23046875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Project Manager thought that the current market price range for remote controls was relatively high, noting that existing products were around 20 pounds. She also considered the target group to be broad, aiming for accessibility and usability across all age groups internationally without focusing on specific language adaptations.",
+          "rouge_f1": {
+            "rouge1": 0.4222222222222222,
+            "rouge2": 0.11363636363636365,
+            "rougeL": 0.24444444444444444
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            8,
+            11,
+            1
+          ],
+          "retrieval_precision": 0.115234375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Project Manager thought the market range for the remote control should be wide, targeting all age groups from \"grannies to kids,\" aiming for a product that is \"trendy, appealing to a wide market\" and \"user-friendly.\" She mentioned that the product should not be overly complex, suggesting a design with basic functions prominently displayed and additional features accessible through a menu system, possibly with a larger display for the elderly. She also noted that the product should be suitable for the international market, including places like Australia and America, without needing to focus excessively on language differences.",
+          "rouge_f1": {
+            "rouge1": 0.34532374100719426,
+            "rouge2": 0.11678832116788321,
+            "rougeL": 0.2302158273381295
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            7,
+            8,
+            11,
+            1,
+            9,
+            5,
+            13,
+            2
+          ],
+          "retrieval_precision": 0.0576171875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The Project Manager thought the market range should be broad, targeting an international audience including markets like Australia and America, without focusing on specific language barriers. They emphasized the importance of user-friendliness, suggesting that the remote control should be simple and intuitive, avoiding cluttered interfaces with too many small buttons or unclear symbols.",
+          "rouge_f1": {
+            "rouge1": 0.39583333333333337,
+            "rouge2": 0.0851063829787234,
+            "rougeL": 0.2708333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8,
+            6
+          ],
+          "retrieval_precision": 0.17578125,
+          "retrieval_recall": 0.7627118644067796
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The Project Manager thought that the proposed price of seventeen pounds for the remote control was expensive compared to current market prices (around twenty pounds). They also noted that the production cost was twelve and a half pounds, indicating a significant portion of the selling price would cover production costs. The Project Manager acknowledged the large target group, emphasizing the need for the remote control to be accessible and usable by all age groups, highlighting concerns about simplicity and ease of use, especially for older users.",
+          "rouge_f1": {
+            "rouge1": 0.37499999999999994,
+            "rouge2": 0.09523809523809523,
+            "rougeL": 0.203125
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8,
+            6,
+            9,
+            11
+          ],
+          "retrieval_precision": 0.115234375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Project Manager thought the market range for the remote control should be international and accessible to all age groups, aiming for a wide market rather than a specific business market. She emphasized that the product should be user-friendly, intuitive, and avoid overwhelming users with too many buttons or complex functions. She suggested incorporating features such as an LCD display with menus and a dual-function design to cater to both basic and advanced functionalities, ensuring it is suitable for older generations as well.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.11290322580645162,
+            "rougeL": 0.2380952380952381
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            7,
+            8,
+            6,
+            9,
+            11,
+            1,
+            13,
+            5,
+            10
+          ],
+          "retrieval_precision": 0.0576171875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The Project Manager thought the market range should be international, targeting a wide audience across all age groups without focusing on a specific business market. They did not consider language differences to be a primary concern, mentioning places like Australia and America as part of the international market.",
+          "rouge_f1": {
+            "rouge1": 0.5333333333333333,
+            "rouge2": 0.1590909090909091,
+            "rougeL": 0.39999999999999997
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            0
+          ],
+          "retrieval_precision": 0.23046875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The Project Manager thought the market range should be international and appeal to a wide audience across all age groups, emphasizing that it should be user-friendly and not overly complex. They mentioned a profit aim of fifty million Euros in their first year and did not consider language differences to be a primary concern, focusing instead on accessibility and usability in markets like Australia and America.",
+          "rouge_f1": {
+            "rouge1": 0.4220183486238532,
+            "rouge2": 0.11214953271028037,
+            "rougeL": 0.27522935779816515
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            0,
+            7,
+            8
+          ],
+          "retrieval_precision": 0.115234375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Project Manager thought the market range should be wide, targeting all age groups from \"grannies to kids,\" aiming for a product that is user-friendly and accessible internationally without focusing on a specific business market. Regarding the price issue, Project Manager noted that the proposed price of £17 was expensive but justified it by mentioning existing similar products costing around £20. The Project Manager also emphasized the importance of maintaining a significant profit margin while keeping the product affordable and competitive within the market.",
+          "rouge_f1": {
+            "rouge1": 0.41269841269841273,
+            "rouge2": 0.12903225806451613,
+            "rougeL": 0.30158730158730157
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            0,
+            7,
+            8,
+            10,
+            9,
+            12,
+            5,
+            1
+          ],
+          "retrieval_precision": 0.0576171875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The Project Manager thought the market range should be international, targeting all age groups and being accessible in various countries like Australia and America without necessarily focusing on different languages as a key point. The emphasis was on ensuring the remote control was user-friendly and simple to use, even for older generations.",
+          "rouge_f1": {
+            "rouge1": 0.4421052631578948,
+            "rouge2": 0.10752688172043012,
+            "rougeL": 0.29473684210526313
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8
+          ],
+          "retrieval_precision": 0.23046875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Project Manager thought that the proposed price of 17 Pounds for the remote control was expensive. However, when informed that current market prices were around 20 Pounds, he seemed more open to the pricing, acknowledging the high production cost (12.5 Pounds) and aiming for a significant profit margin. Regarding the target group, Project Manager agreed with Marketing that the product should be accessible and usable by all age groups, emphasizing its international market potential without needing to focus excessively on language differences. He also highlighted the importance of simplicity in design, suggesting that the remote control should avoid cluttered interfaces and potentially incorporate features like LCD displays and menus for ease of use across different age groups.",
+          "rouge_f1": {
+            "rouge1": 0.3375,
+            "rouge2": 0.08860759493670886,
+            "rougeL": 0.1875
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            5,
+            7
+          ],
+          "retrieval_precision": 0.115234375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Project Manager thought the market range should be international and accessible to all age groups, aiming for a wide market rather than a specific demographic. She noted that the product should be user-friendly and not overly complex, suggesting features like a simplified interface with main functions on the front and additional options hidden within, possibly utilizing an LCD display with menus for more advanced functions. She also considered the needs of the older generation, proposing a dual-function approach with basic buttons for common tasks and a menu for more detailed operations, ensuring the design is intuitive and easy to understand for users of all ages.",
+          "rouge_f1": {
+            "rouge1": 0.29530201342281875,
+            "rouge2": 0.09523809523809523,
+            "rougeL": 0.22818791946308725
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            5,
+            7,
+            10,
+            0,
+            4,
+            9
+          ],
+          "retrieval_precision": 0.0576171875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The Project Manager thought the market range should be international, targeting all age groups and being accessible in various countries like Australia and America without necessarily focusing on different languages as a key point. The emphasis was on ensuring the remote control was user-friendly and simple to use, even for older generations.",
+          "rouge_f1": {
+            "rouge1": 0.4421052631578948,
+            "rouge2": 0.10752688172043012,
+            "rougeL": 0.29473684210526313
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8
+          ],
+          "retrieval_precision": 0.23046875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The Project Manager thought the market range should be international and appeal to a wide audience across all age groups, emphasizing that it should be user-friendly and not overly complex. They mentioned a profit aim of fifty million Euros in their first year and did not consider language differences to be a primary concern, focusing instead on accessibility and usability in markets like Australia and America.",
+          "rouge_f1": {
+            "rouge1": 0.4220183486238532,
+            "rouge2": 0.11214953271028037,
+            "rougeL": 0.27522935779816515
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            7,
+            0
+          ],
+          "retrieval_precision": 0.115234375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Project Manager thought the proposed price of seventeen Pounds for the remote control was expensive. However, she considered it reasonable given that current market prices for similar products were around twenty Pounds. She aimed for a wide market range, emphasizing that the product should be accessible and usable by all age groups without focusing on a specific business market. She also highlighted the importance of a user-friendly design that avoids overwhelming users with too many buttons or complex interfaces.",
+          "rouge_f1": {
+            "rouge1": 0.34426229508196726,
+            "rouge2": 0.1,
+            "rougeL": 0.22950819672131145
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            8,
+            7,
+            0,
+            10,
+            5,
+            9,
+            12,
+            4
+          ],
+          "retrieval_precision": 0.0576171875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The evidence provided does not contain a direct statement from the Project Manager regarding their thoughts on the market range when discussing price issues and target groups of the remote control. Therefore, the evidence is insufficient to answer the question.",
+          "rouge_f1": {
+            "rouge1": 0.3902439024390244,
+            "rouge2": 0.125,
+            "rougeL": 0.24390243902439024
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            12,
+            13
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The Project Manager thought that the market range should focus on simplicity and usability, avoiding overly complex designs with numerous buttons and unclear symbols. They emphasized the importance of having a clear interface with main functions visible upfront and additional, more specialized functions accessible through a secondary menu or section. The Project Manager also mentioned concerns about cost, suggesting that the design should balance functionality with affordability, possibly using a black and white LCD screen to keep costs down.",
+          "rouge_f1": {
+            "rouge1": 0.2975206611570248,
+            "rouge2": 0.08403361344537814,
+            "rougeL": 0.21487603305785125
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            12,
+            13,
+            15,
+            16
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "Project Manager thought the market range should be wide, targeting from \"grannies to kids,\" and emphasized the importance of the remote control being user-friendly and appealing to a broad audience without being overly complex. Regarding pricing, she expressed concern about costs, particularly noting that adding features like an LCD display might increase expenses, suggesting a balance between functionality and affordability. She also highlighted the need for the design to be intuitive for users, especially the older generation, possibly incorporating simpler interfaces or dual-function designs to cater to different user needs.",
+          "rouge_f1": {
+            "rouge1": 0.2835820895522388,
+            "rouge2": 0.045454545454545456,
+            "rougeL": 0.16417910447761191
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            12,
+            13,
+            15,
+            16,
+            1,
+            14,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The Project Manager thought the market range should be international, targeting all age groups and not focusing on the business market specifically. They mentioned that the product should be accessible and usable by everyone in markets like Australia and America without worrying excessively about different languages.",
+          "rouge_f1": {
+            "rouge1": 0.5909090909090909,
+            "rouge2": 0.20930232558139536,
+            "rougeL": 0.4545454545454545
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            13,
+            15
+          ],
+          "retrieval_precision": 0.23046875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Project Manager thought the market range for the remote control should be international and accessible to all age groups, not focusing on a specific business market. Regarding the price, she noted that the production cost was at twelve fifty and expressed concern about whether setting a higher price than competitors (around twenty pounds) would make their product seem too expensive or if undercutting prices might make it appear cheap. She also considered the need for the remote to be user-friendly and not overly complicated, suggesting a design with basic buttons and a menu for additional functions.",
+          "rouge_f1": {
+            "rouge1": 0.37410071942446044,
+            "rouge2": 0.10218978102189782,
+            "rougeL": 0.2733812949640288
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            13,
+            15,
+            8,
+            1
+          ],
+          "retrieval_precision": 0.115234375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Project Manager thought the market range should be wide, targeting all age groups internationally without focusing on a specific business market. She emphasized the importance of the product being user-friendly and accessible to everyone from \"grannies to kids,\" indicating a broad demographic appeal. Additionally, she highlighted the need for the remote control to be simple and intuitive, avoiding overly complex designs that might confuse users, especially the elderly.",
+          "rouge_f1": {
+            "rouge1": 0.4504504504504505,
+            "rouge2": 0.11009174311926606,
+            "rougeL": 0.30630630630630634
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            13,
+            15,
+            8,
+            1,
+            14,
+            12,
+            11,
+            2,
+            9,
+            16
+          ],
+          "retrieval_precision": 0.0576171875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The evidence provided does not contain any specific statements from the Project Manager regarding thoughts on the market range when discussing price issues and target groups of the remote control. Therefore, the evidence is insufficient to determine the Project Manager's thoughts on this matter.",
+          "rouge_f1": {
+            "rouge1": 0.4137931034482759,
+            "rouge2": 0.14117647058823526,
+            "rougeL": 0.22988505747126436
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            15
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Project Manager thought the market range should be international, including places like Australia and America, and emphasized that the remote control should be accessible and usable by all age groups without focusing on specific language barriers. He highlighted the importance of simplicity in design, suggesting that the remote control should avoid having too many small buttons with tiny labels and instead use a clear layout with main functions on the front and secondary functions hidden behind a section that opens up. Additionally, he suggested incorporating an LCD display with menus for more complex functions while ensuring it remains user-friendly, especially for older users who might need larger text options.",
+          "rouge_f1": {
+            "rouge1": 0.3026315789473684,
+            "rouge2": 0.09333333333333334,
+            "rougeL": 0.2236842105263158
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            15,
+            11,
+            12,
+            10
+          ],
+          "retrieval_precision": 0.1103515625,
+          "retrieval_recall": 0.9576271186440678
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Project Manager thought the market range for the remote control should be international and appeal to all age groups, from \"grannies to kids,\" aiming for a wide market rather than a specific niche. She emphasized the importance of the product being user-friendly and accessible, avoiding complications such as excessive buttons or complex menus that might confuse users, especially the elderly. She suggested incorporating a simple interface with basic functions prominently displayed and a secondary menu for additional features, ensuring the design is intuitive and easy to navigate for all users.",
+          "rouge_f1": {
+            "rouge1": 0.3007518796992481,
+            "rouge2": 0.07633587786259542,
+            "rougeL": 0.22556390977443608
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            15,
+            11,
+            12,
+            10,
+            1,
+            8,
+            14,
+            16
+          ],
+          "retrieval_precision": 0.0576171875,
+          "retrieval_recall": 1.0
+        }
+      }
+    }
+  ]
+}

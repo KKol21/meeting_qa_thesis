@@ -1,0 +1,3616 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "ES2004d.json",
+        "sha256": "0f3b6d62644452cca0bcffbe3228186f154bf82db1d84f594e93859f5ab7c801"
+      },
+      "retrieval": {
+        "file": "ES2004d.json",
+        "sha256": "3d85cec51b20eefa5b8352a69f8733749492632beac6deb087d803ad6db3cd95"
+      },
+      "segmentation": {
+        "file": "ES2004d.json",
+        "sha256": "8f1c2ce24bb684621e331a080f6b39b934d85f9e00d2cce7818b9b50fad06da9"
+      }
+    },
+    "input_hash": "a480cc22222c67ad0f793274da861c30dc686a51d9fb5557d51c73170f39d749",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "a64d1d6ca1ca11215d77834abd71ad14650a4860b7e75d2bf5d31bfd6e5db338",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "ES2004d",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 143,
+  "cache_hits": 19,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group discuss about simulation market evaluation of the new remote control?",
+      "reference_answer": "Marketing summarized the user requirements according to the market reports. Users expected a fancy look, technological innovation, and minimization of repetitive strain injury. The team did a preliminary rating using a seven-point scale. The results were that the remote control's fashion style and location function were most highly rated, but the team was not satisfied enough with the minimization of repetitive strain injury. The team agreed on further modifications to the current prototype.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group discussed that the evaluation of the new remote control's simulation market involved assessing whether the product met the criteria derived from user requirements and market trends. Key criteria included a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends, a spongy texture, and strong design colors inspired by fruits and vegetables. Marketing highlighted that the changes in remote controls are significant and visible, drawing parallels with mobile phone innovations, emphasizing that these innovations should not be forced upon consumers but rather meet genuine needs and desires.",
+          "rouge_f1": {
+            "rouge1": 0.3550295857988166,
+            "rouge2": 0.08383233532934131,
+            "rougeL": 0.22485207100591717
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            28,
+            27
+          ],
+          "retrieval_precision": 0.345703125,
+          "retrieval_recall": 0.08049113233287858
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The group discussed evaluating the new remote control based on criteria derived from market research, focusing on whether the product met user requirements and trends. Key points included assessing if the remote control had a fancy look and feel, incorporated technological innovation, was easy to use, and featured current fashion trends such as a spongy texture and fruit and vegetable-inspired design colors. The discussion also touched upon the broader context of innovation in the market, noting that while companies often prioritize their primary products (like DVD players), the remote control could be an opportunity for differentiation and innovation.",
+          "rouge_f1": {
+            "rouge1": 0.35632183908045983,
+            "rouge2": 0.08139534883720931,
+            "rougeL": 0.20689655172413793
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            28,
+            27,
+            26,
+            25
+          ],
+          "retrieval_precision": 0.1728515625,
+          "retrieval_recall": 0.08049113233287858
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The group did not specifically discuss a simulation market evaluation of the new remote control. The excerpts provided do not contain any relevant information regarding a simulation market evaluation focused on the new remote control. The discussions were centered around various aspects of the remote control design, including its functionality, ease of use, and market trends, but there was no mention of a simulation market evaluation.",
+          "rouge_f1": {
+            "rouge1": 0.3404255319148936,
+            "rouge2": 0.02877697841726619,
+            "rougeL": 0.19858156028368795
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            28,
+            27,
+            26,
+            25,
+            12,
+            19,
+            3,
+            5
+          ],
+          "retrieval_precision": 0.2109375,
+          "retrieval_recall": 0.19645293315143247
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The group discussed the evaluation of the new remote control in terms of whether it met the criteria derived from market research, including a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends, spongy texture, and fruit and vegetable strong design colors. They also touched upon evaluating the materials and methods used for communication and information sharing during the development process. However, there were no specific details provided about a simulation market evaluation of the new remote control within the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.32098765432098764,
+            "rouge2": 0.05,
+            "rougeL": 0.20987654320987656
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            6,
+            27
+          ],
+          "retrieval_precision": 0.345703125,
+          "retrieval_recall": 0.08049113233287858
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The group discussed evaluating the new remote control based on criteria derived from market research, including a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends (such as a spongy texture and fruit/vegetable-inspired colors), and minimizing RSI (Repetitive Strain Injury). They planned to use a seven-point scale to assess how well the prototype met these criteria, aiming for a consensus rating between one and seven. Additionally, there was mention of potentially incorporating features like voice recognition and a beeper function, though decisions on these were not finalized.",
+          "rouge_f1": {
+            "rouge1": 0.4235294117647059,
+            "rouge2": 0.13095238095238096,
+            "rougeL": 0.27058823529411763
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            6,
+            27,
+            7,
+            26
+          ],
+          "retrieval_precision": 0.3984375,
+          "retrieval_recall": 0.1855388813096862
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The group discussed evaluating the new remote control's market potential through a simulation process. They planned to use a seven-point scale to assess if the product met the criteria derived from their market research, including factors like technological innovation, ease of use, and incorporation of current fashion trends. They also considered the feasibility of incorporating voice recognition and a beeper function for locating the remote. However, the discussion did not specifically focus on a detailed simulation market evaluation of the new remote control beyond these general considerations.",
+          "rouge_f1": {
+            "rouge1": 0.426829268292683,
+            "rouge2": 0.09876543209876544,
+            "rougeL": 0.21951219512195122
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            6,
+            27,
+            7,
+            26,
+            12,
+            14,
+            19,
+            3
+          ],
+          "retrieval_precision": 0.443359375,
+          "retrieval_recall": 0.41291496134606637
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The group discussed the evaluation of the new remote control in terms of whether it met the criteria derived from market research, including a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends, spongy texture, and fruit and vegetable strong design colors. They also touched upon evaluating the materials and methods used for communication and information sharing during the development process. However, there were no specific details provided about a simulation market evaluation of the new remote control within the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.32098765432098764,
+            "rouge2": 0.05,
+            "rougeL": 0.20987654320987656
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            25,
+            27
+          ],
+          "retrieval_precision": 0.345703125,
+          "retrieval_recall": 0.08049113233287858
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The group discussed evaluating the new remote control based on criteria derived from market research, focusing on whether the product met user requirements and trends. Key points included ensuring the remote control had a fancy look and feel, incorporated technological innovation, was easy to use, and featured current fashion trends such as a spongy texture and fruit and vegetable-inspired design colors. Additionally, there was consideration given to minimizing repetitive strain injury, although the group felt they hadn't developed feasible solutions for this issue. The discussion also touched upon the potential for branching out into children's toys and fake mobile phones as a sideline.",
+          "rouge_f1": {
+            "rouge1": 0.37569060773480656,
+            "rouge2": 0.0893854748603352,
+            "rougeL": 0.22099447513812157
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            25,
+            27,
+            26,
+            12
+          ],
+          "retrieval_precision": 0.259765625,
+          "retrieval_recall": 0.12096407457935425
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The group discussed evaluating the new remote control's market potential through a simulation based on criteria derived from their market research. These criteria included a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends, and features to minimize repetitive strain injury (R_S_I_) and facilitate easy location. They planned to use a seven-point scale to rate how well the prototype met these criteria, aiming for a consensus among team members.",
+          "rouge_f1": {
+            "rouge1": 0.47058823529411764,
+            "rouge2": 0.1456953642384106,
+            "rougeL": 0.27450980392156865
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            25,
+            27,
+            26,
+            12,
+            7,
+            19,
+            28,
+            3
+          ],
+          "retrieval_precision": 0.32373046875,
+          "retrieval_recall": 0.3015006821282401
+        },
+        "word_packed__dense__w512": {
+          "answer": "The group discussed evaluating the new remote control's market simulation by using a seven-point scale where one indicates truth and seven indicates falsity. Marketing would preliminarily rate criteria such as a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends (specifically spongy texture and fruit/vegetable-inspired colors), minimization of RSI, and potential features like voice recognition and a beeper function. The evaluation would involve feedback from all participants, not just marketing.",
+          "rouge_f1": {
+            "rouge1": 0.37662337662337664,
+            "rouge2": 0.13157894736842105,
+            "rougeL": 0.19480519480519484
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            24
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.11641655297862664
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The group discussed evaluating the simulation market for the new remote control using a seven-point scale to assess various criteria such as its appearance, technological innovation, ease of use, and incorporation of current fashion trends. They also considered minimizing RSI (strain injury) and explored the feasibility of incorporating features like voice recognition and a beeper function. The team planned to rate these criteria collectively, with Marketing leading the preliminary ratings on a whiteboard. They acknowledged the challenge of reducing strain injury on a small device and noted the potential benefits of larger, well-spaced buttons. The group aimed to finalize these evaluations collaboratively, recognizing the value of market research and innovation in their product development process.",
+          "rouge_f1": {
+            "rouge1": 0.4375,
+            "rouge2": 0.10526315789473685,
+            "rougeL": 0.23958333333333334
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            24,
+            26,
+            11
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.2328331059572533
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The group discussed evaluating the new remote control's market appeal through several criteria, including its appearance, technological innovation, ease of use, and incorporation of current fashion trends. They planned to use a seven-point scale to rate these criteria, with one indicating agreement and seven indicating disagreement. Specific points of discussion included the remote's spongy texture and strong design colors inspired by fruits and vegetables, minimizing RSI (likely referring to repetitive strain injury), and incorporating voice recognition technology. They also considered the cost implications of various materials and features, ensuring the project stayed within budget. The team aimed to assess the remote's market potential based on these factors, comparing it to existing products and identifying unique selling points.",
+          "rouge_f1": {
+            "rouge1": 0.35714285714285715,
+            "rouge2": 0.1134020618556701,
+            "rougeL": 0.24489795918367344
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            24,
+            26,
+            11,
+            21,
+            25,
+            16,
+            23
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.2328331059572533
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The group discussed that the new remote control design, which includes innovative features like a flip-top, is market research-based and borrows ideas from other areas such as mobile phones. They noted that while people often seek modifications and new models for mobile phones, similar interest hasn't been observed in remote controls. Marketing highlighted that the new design is a significant and visible change in the remote control market, emphasizing that the innovation is driven by consumer demand rather than unnecessary changes. However, the specific details of a simulation market evaluation were not explicitly covered in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.25,
+            "rouge2": 0.034482758620689655,
+            "rougeL": 0.14772727272727273
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            26
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The group discussed evaluating the new remote control based on criteria derived from market research, including its look and feel, technological innovation, ease of use, incorporation of current fashion trends, and features such as a spongy texture and fruit/vegetable-inspired design colors. They planned to use a seven-point scale to assess if the product met these criteria. The discussion highlighted the importance of aligning the remote control design with user requirements and market trends, emphasizing innovation and user experience.",
+          "rouge_f1": {
+            "rouge1": 0.41025641025641024,
+            "rouge2": 0.11688311688311688,
+            "rougeL": 0.23076923076923075
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            26,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.37109375,
+          "retrieval_recall": 0.17280582082764892
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The group discussed evaluating the new remote control based on predefined criteria derived from market research. These criteria included a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends, and features like a spongy texture and fruit/vegetable-inspired design colors. Marketing proposed using a seven-point scale (one being true, seven being false) to rate how well the prototype met these criteria. The team agreed to provide individual ratings, which would later be averaged to form a consensus. The discussion highlighted the potential for the remote control to stand out in the market due to its innovative design, contrasting with the lack of significant effort typically invested in remote control aesthetics by other companies.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.13471502590673573,
+            "rougeL": 0.23589743589743592
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            26,
+            5,
+            6,
+            28,
+            7,
+            21,
+            25
+          ],
+          "retrieval_precision": 0.310546875,
+          "retrieval_recall": 0.2892223738062756
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The group discussed evaluating the new remote control's market simulation by using a seven-point scale where one indicates truth and seven indicates falsity. Marketing would preliminarily rate criteria such as a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends (specifically spongy texture and fruit/vegetable-inspired colors), minimization of RSI, and potential features like voice recognition and a beeper function. The evaluation would involve feedback from all participants, not just marketing.",
+          "rouge_f1": {
+            "rouge1": 0.37662337662337664,
+            "rouge2": 0.13157894736842105,
+            "rougeL": 0.19480519480519484
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            6
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.11641655297862664
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The group discussed evaluating the simulation market of the new remote control using a seven-point scale, where one indicates truth and seven indicates falsity. They planned to assess criteria such as a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends, spongy texture, and fruit and vegetable strong design colors. Additionally, they considered minimizing RSI (Repetitive Strain Injury), incorporating voice recognition, and possibly adding a beeper function. Marketing would conduct preliminary ratings on these criteria.",
+          "rouge_f1": {
+            "rouge1": 0.4230769230769231,
+            "rouge2": 0.14285714285714288,
+            "rougeL": 0.21794871794871795
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            6,
+            26,
+            21
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.11641655297862664
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The group discussed evaluating the new remote control based on criteria derived from market research, including its look and feel, technological innovation, ease of use, incorporation of current fashion trends, and features to minimize RSI (repetitive strain injury). They planned to use a seven-point scale to assess if the prototype met these criteria. However, there was no specific discussion about a simulation market evaluation of the new remote control in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.44295302013422816,
+            "rouge2": 0.108843537414966,
+            "rougeL": 0.2818791946308725
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            24,
+            6,
+            26,
+            21,
+            11,
+            28,
+            25,
+            5
+          ],
+          "retrieval_precision": 0.310546875,
+          "retrieval_recall": 0.2892223738062756
+        },
+        "lumber__dense__w512": {
+          "answer": "The group discussed that there hasn't been significant thought or innovation put into remote control designs by companies, who typically prioritize the main product over accessories like remotes. They noted that remote controls are often seen as secondary and not given much individual consideration. However, the Project Manager suggested that there could be a market for unique, personalized remote controls if designed properly, drawing inspiration from the customization trends seen in mobile phones. Marketing highlighted that the current project's approach is market research-based and innovative compared to traditional remote control designs.",
+          "rouge_f1": {
+            "rouge1": 0.21301775147928995,
+            "rouge2": 0.03592814371257485,
+            "rougeL": 0.14201183431952663
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The group discussed evaluating the new remote control's design based on criteria derived from market research, including its appearance, technological innovation, ease of use, and incorporation of current fashion trends. They planned to use a seven-point scale to assess if the prototype met these criteria. Specific points of discussion included minimizing repetitive strain injury (RSI) through design choices, the potential use of voice recognition and a beeper function, and the uniqueness of the design compared to existing remote controls. The group noted that while other companies might not prioritize remote control design, focusing on making the remote control a distinctive and fashionable item could differentiate their product in the market.",
+          "rouge_f1": {
+            "rouge1": 0.42780748663101603,
+            "rouge2": 0.11891891891891893,
+            "rougeL": 0.22459893048128343
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33,
+            8,
+            14
+          ],
+          "retrieval_precision": 0.4990234375,
+          "retrieval_recall": 0.23237835379718053
+        },
+        "lumber__dense__w2048": {
+          "answer": "The group discussed the market evaluation of the new remote control in terms of its ability to meet user requirements and market trends identified through their research. They focused on evaluating if the design met criteria such as a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends, and minimizing repetitive strain injury (RSI). They used a seven-point scale to assess these criteria, with one indicating the feature is fully met and seven indicating it is not present at all. For minimizing RSI, the group rated the design neutrally, assigning it a score of 4, acknowledging that while the design considered RSI, significant improvements were needed. Additionally, the group noted that the current market trend for remote controls was not highly innovative, suggesting an opportunity for differentiation with their design.",
+          "rouge_f1": {
+            "rouge1": 0.44549763033175355,
+            "rouge2": 0.15311004784688995,
+            "rougeL": 0.27488151658767773
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33,
+            8,
+            14,
+            6,
+            36
+          ],
+          "retrieval_precision": 0.30322265625,
+          "retrieval_recall": 0.28240109140518416
+        },
+        "lumber__bm25__w512": {
+          "answer": "The group discussed evaluating the new remote control based on criteria derived from market research, including a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends, spongy texture, and fruit and vegetable strong design colors. They also considered minimizing RSI (Repetitive Strain Injury) and ensuring the design was easy to locate. There was some discussion about incorporating voice recognition and a beeper function, though the favored strategy seemed to be voice recognition. The evaluation aimed to determine if the product specification and prototype design met these established criteria.",
+          "rouge_f1": {
+            "rouge1": 0.3928571428571428,
+            "rouge2": 0.07228915662650602,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            32,
+            8
+          ],
+          "retrieval_precision": 0.541015625,
+          "retrieval_recall": 0.1259663483401546
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The group discussed evaluating the new remote control through a simulation market approach, focusing on whether the product met the criteria derived from user requirements and market trends. These criteria included a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends (such as a spongy texture and fruit/vegetable-inspired colors), and minimizing RSI (Repetitive Strain Injury). They planned to use a seven-point scale to assess how well the prototype met these criteria. Additionally, the discussion touched upon the potential use of voice recognition and a beeper function, though the group remained somewhat undecided on these features.",
+          "rouge_f1": {
+            "rouge1": 0.449438202247191,
+            "rouge2": 0.13636363636363635,
+            "rougeL": 0.29213483146067415
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            32,
+            8,
+            33
+          ],
+          "retrieval_precision": 0.3486328125,
+          "retrieval_recall": 0.16234652114597545
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The group did not specifically discuss a simulation market evaluation of the new remote control. The excerpts provided do not contain any details about simulating market evaluations for the remote control. Instead, the discussion focused on evaluating the product against predefined criteria based on market research and user requirements.",
+          "rouge_f1": {
+            "rouge1": 0.2903225806451613,
+            "rouge2": 0.04918032786885246,
+            "rougeL": 0.1935483870967742
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            32,
+            8,
+            33,
+            9,
+            14,
+            31,
+            36,
+            7,
+            4
+          ],
+          "retrieval_precision": 0.328125,
+          "retrieval_recall": 0.30559345156889495
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The group discussed that there hasn't been significant thought or innovation put into remote control designs by companies, who typically prioritize the main product over accessories like remotes. They noted that remote controls are often seen as secondary and not given much individual consideration. However, the Project Manager suggested that there could be a market for unique, personalized remote controls if designed properly, drawing inspiration from the customization trends seen in mobile phones. Marketing highlighted that the current project's approach is market research-based and innovative compared to traditional remote control designs.",
+          "rouge_f1": {
+            "rouge1": 0.21301775147928995,
+            "rouge2": 0.03592814371257485,
+            "rougeL": 0.14201183431952663
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The group discussed evaluating the new remote control based on criteria derived from market research, including a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends (such as spongy texture and fruit/vegetable-inspired colors), and minimizing RSI (Repetitive Strain Injury). They planned to use a seven-point scale to assess how well the prototype met these criteria. Additionally, they touched upon the current lack of significant innovation in remote control designs by competitors and the potential for the new design to stand out in the market.",
+          "rouge_f1": {
+            "rouge1": 0.4191616766467066,
+            "rouge2": 0.15757575757575756,
+            "rougeL": 0.32335329341317365
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33,
+            8,
+            32
+          ],
+          "retrieval_precision": 0.3486328125,
+          "retrieval_recall": 0.16234652114597545
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The group discussed evaluating the new remote control's market potential through a simulation process focusing on several key criteria derived from market research. These criteria included a fancy look and feel, technological innovation, ease of use, incorporation of current fashion trends (specifically spongy texture and fruit/vegetable-inspired colors), minimizing repetitive strain injury (R_S_I_), and ease of locating controls. They planned to use a seven-point scale to assess how well the prototype met these criteria, aiming for a consensus rating between one and seven. The team also briefly touched upon the feasibility of incorporating voice recognition and a beeper function, though no definitive decision was made regarding these features.",
+          "rouge_f1": {
+            "rouge1": 0.425531914893617,
+            "rouge2": 0.12903225806451613,
+            "rougeL": 0.25531914893617025
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            33,
+            8,
+            32,
+            14,
+            36,
+            31,
+            9,
+            28
+          ],
+          "retrieval_precision": 0.328125,
+          "retrieval_recall": 0.30559345156889495
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Marketing think of the incorporation of current fashion trends in the prototype when making a simulation market evaluation of the new remote control?",
+      "reference_answer": "Marketing initially doubted that Industrial Designer was limited in the use of materials for the prototype, which would harm the fashion style. Marketing was soon convinced by Industrial Designer, however, that the changeable faces would allow users to customize their remote controls. Besides, the rubber case would give a spongy feel. Marketing thus rated one point for Industrial Designer's style design.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype during the simulation market evaluation of the new remote control. They highlighted that the evaluation was based on meeting the criteria derived from market research, including incorporating current fashion trends, such as a fancy look and feel, spongy texture, and strong design colors inspired by fruit and vegetables. Marketing also emphasized that the approach was market research-based and noted that the changes in the remote control design were noticeable and borrowed ideas from the evolution seen in mobile phones.",
+          "rouge_f1": {
+            "rouge1": 0.3096774193548387,
+            "rouge2": 0.05228758169934641,
+            "rougeL": 0.1935483870967742
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            27,
+            28
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype during the simulation market evaluation of the new remote control. Marketing highlighted that the changes were market research-based and noted it as \"the first change in remote control devices that [they could] really...say is obvious and visible,\" borrowing ideas seen in mobile phones. Marketing also appreciated that the design focused on what users want rather than unnecessary innovation.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.06015037593984962,
+            "rougeL": 0.19259259259259262
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            27,
+            28,
+            5,
+            26
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype during the simulation market evaluation of the new remote control. According to the evaluation findings, the remote control received the highest rating for incorporating current fashion trends, alongside being easy to locate. Marketing expressed satisfaction with these aspects, indicating that the design met the criteria derived from market research and user requirements.",
+          "rouge_f1": {
+            "rouge1": 0.3149606299212599,
+            "rouge2": 0.064,
+            "rougeL": 0.2362204724409449
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            27,
+            28,
+            5,
+            26,
+            25,
+            14,
+            19,
+            12
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype during the simulation market evaluation of the new remote control. According to the evaluation findings, the prototype received the highest rating for incorporating current fashion trends, indicating that this aspect met the specified criteria well.",
+          "rouge_f1": {
+            "rouge1": 0.3090909090909091,
+            "rouge2": 0.05555555555555555,
+            "rougeL": 0.2363636363636364
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            14,
+            27
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Marketing thought that the prototype incorporated current fashion trends, specifically mentioning the spongy texture and fruit and vegetable design colors as key elements that aligned with market research findings. Marketing rated the incorporation of current fashion trends highly, indicating satisfaction with how well the prototype met this criterion.",
+          "rouge_f1": {
+            "rouge1": 0.2727272727272727,
+            "rouge2": 0.037037037037037035,
+            "rougeL": 0.16363636363636366
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            14,
+            27,
+            10,
+            5
+          ],
+          "retrieval_precision": 0.0341796875,
+          "retrieval_recall": 0.1394422310756972
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype during the simulation market evaluation of the new remote control, giving it a high rating. Specifically, Marketing mentioned that the remote control met the criteria of incorporating current fashion trends, which were based on market research findings about a spongy texture and fruit and vegetable design colors. Marketing rated this criterion highly, indicating satisfaction with how the fashion trends were integrated into the design.",
+          "rouge_f1": {
+            "rouge1": 0.3165467625899281,
+            "rouge2": 0.08759124087591241,
+            "rougeL": 0.2446043165467626
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            14,
+            27,
+            10,
+            5,
+            25,
+            26,
+            12,
+            23
+          ],
+          "retrieval_precision": 0.01708984375,
+          "retrieval_recall": 0.1394422310756972
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype during the simulation market evaluation of the new remote control. According to Marketing's statement at [643], \"Yeah, the focus isn't on to that, yeah,\" it can be inferred that Marketing supports the inclusion of fashionable elements since the discussion around these features was framed within the context of meeting market research criteria, which included incorporating current fashion trends. Additionally, Marketing highlighted at [661] that the design process was \"really good that this has been very market research based,\" indicating approval of aligning the prototype with identified market trends.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.049079754601226995,
+            "rougeL": 0.1575757575757576
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            27,
+            14
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Marketing thought positively about the incorporation of current fashion trends in the prototype during the simulation market evaluation of the new remote control. According to the evaluation findings, the remote control received the highest rating for incorporating current fashion trends, indicating that Marketing felt this aspect was well-executed.",
+          "rouge_f1": {
+            "rouge1": 0.3423423423423424,
+            "rouge2": 0.055045871559633024,
+            "rougeL": 0.25225225225225223
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            27,
+            14,
+            5,
+            26
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype during the simulation market evaluation of the new remote control. Specifically, Marketing rated the prototype highly for incorporating current fashion trends, noting that it met the criteria derived from market research regarding a spongy texture and fruit and vegetable design colors. Marketing expressed satisfaction with the product's alignment with these trends, indicating that the design successfully integrated fashionable elements as per the evaluation criteria.",
+          "rouge_f1": {
+            "rouge1": 0.3285714285714286,
+            "rouge2": 0.07246376811594202,
+            "rougeL": 0.2285714285714286
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            27,
+            14,
+            5,
+            26,
+            25,
+            10,
+            28,
+            12
+          ],
+          "retrieval_precision": 0.01708984375,
+          "retrieval_recall": 0.1394422310756972
+        },
+        "word_packed__dense__w512": {
+          "answer": "Marketing thought positively of incorporating current fashion trends in the prototype, specifically mentioning a \"spongy texture\" and \"fruit and vegetable strong design colours\" as key elements that align with the desired fashionable look and feel of the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.29702970297029707,
+            "rouge2": 0.0808080808080808,
+            "rougeL": 0.1782178217821782
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            26
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "Marketing thought positively of incorporating current fashion trends in the prototype, specifically mentioning a \"spongy texture\" and \"fruit and vegetable strong design colours\" as important aspects that align with the desire for a \"fancy look and feel\" and ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.27184466019417475,
+            "rouge2": 0.0594059405940594,
+            "rougeL": 0.17475728155339806
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            26,
+            24,
+            25
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Marketing thought positively of incorporating current fashion trends in the prototype, specifically mentioning the spongy texture and the fruit and vegetable strong design colors as important aspects. This is evident from their preliminary rating of the criterion \"incorporates current fashion trends\" as a 4 out of 7, indicating a favorable view towards its inclusion in the design.",
+          "rouge_f1": {
+            "rouge1": 0.2689075630252101,
+            "rouge2": 0.03418803418803419,
+            "rougeL": 0.16806722689075632
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            26,
+            24,
+            25,
+            11,
+            13,
+            9,
+            16
+          ],
+          "retrieval_precision": 0.01904296875,
+          "retrieval_recall": 0.1553784860557769
+        },
+        "word_packed__bm25__w512": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype, as indicated by the high rating given for \"incorporates current fashion trends\" during the evaluation. Marketing expressed confidence in moving forward with the prototype based on the evaluation findings, suggesting satisfaction with how the fashion trends were integrated into the design.",
+          "rouge_f1": {
+            "rouge1": 0.25862068965517243,
+            "rouge2": 0.05263157894736842,
+            "rougeL": 0.1896551724137931
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            13
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype during the simulation market evaluation of the new remote control, giving it a high rating as evidenced by the statement \"We've got our our...we've got the highest rating of meeting the specifications that is definitely true for two of the uh six criteria there. That is for um incorporates current fashion trends and is easy to locate.\"",
+          "rouge_f1": {
+            "rouge1": 0.32592592592592595,
+            "rouge2": 0.045112781954887216,
+            "rougeL": 0.2074074074074074
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            13,
+            6,
+            24
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype during the simulation market evaluation of the new remote control. Marketing rated the criterion \"incorporates current fashion trends\" highly, indicating that the prototype met this requirement effectively based on the team's market research findings about the spongy texture and fruit and vegetable design colors.",
+          "rouge_f1": {
+            "rouge1": 0.31666666666666665,
+            "rouge2": 0.06779661016949151,
+            "rougeL": 0.23333333333333334
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            13,
+            6,
+            24,
+            9,
+            26,
+            25,
+            21
+          ],
+          "retrieval_precision": 0.01904296875,
+          "retrieval_recall": 0.1553784860557769
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Marketing thought positively of incorporating current fashion trends in the prototype, specifically mentioning a \"spongy texture\" and \"fruit and vegetable strong design colours\" as key elements that align with the desired \"fancy look and feel\" and ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.25742574257425743,
+            "rouge2": 0.06060606060606061,
+            "rougeL": 0.15841584158415842
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            24
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype, as evidenced by the high rating given to \"incorporates current fashion trends\" during the simulation market evaluation. This indicates that Marketing viewed this aspect favorably, considering it met the specified criteria effectively.",
+          "rouge_f1": {
+            "rouge1": 0.29906542056074764,
+            "rouge2": 0.038095238095238106,
+            "rougeL": 0.1869158878504673
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            24,
+            13,
+            26
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Marketing rated the incorporation of current fashion trends in the prototype highly, giving it a score of 4 out of 7 on the evaluation criteria scale. Marketing highlighted that the prototype met the criteria of incorporating current fashion trends, specifically mentioning the spongy texture and fruit and vegetable design colors as key elements derived from market research findings.",
+          "rouge_f1": {
+            "rouge1": 0.30000000000000004,
+            "rouge2": 0.05084745762711864,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            24,
+            13,
+            26,
+            25,
+            5,
+            9,
+            11
+          ],
+          "retrieval_precision": 0.01904296875,
+          "retrieval_recall": 0.1553784860557769
+        },
+        "lumber__dense__w512": {
+          "answer": "Marketing thought positively of incorporating current fashion trends in the prototype during the simulation market evaluation of the new remote control. They highlighted that the criteria for the remote control included \"incorporating current fashion trends,\" specifically mentioning a \"spongy texture\" and \"fruit and vegetable strong design colors.\"",
+          "rouge_f1": {
+            "rouge1": 0.3302752293577982,
+            "rouge2": 0.11214953271028037,
+            "rougeL": 0.23853211009174313
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            33
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "Marketing thought positively of incorporating current fashion trends in the prototype during the simulation market evaluation of the new remote control. According to Marketing, the criteria for the remote control included \"incorporating current fashion trends,\" specifically mentioning a \"spongy texture\" and \"fruit and vegetable strong design colors.\" Marketing emphasized that the evaluation was based on user requirements and trends identified in the company’s marketing reports and strategy, indicating approval for aligning the product with current fashion trends.",
+          "rouge_f1": {
+            "rouge1": 0.34285714285714286,
+            "rouge2": 0.08695652173913043,
+            "rougeL": 0.2
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            33,
+            6
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "Marketing rated the incorporation of current fashion trends in the prototype positively, giving it a score of one (true) on their seven-point scale. This indicates that Marketing thought the prototype successfully met the criterion of incorporating current fashion trends, specifically noting the potential for customizable colors and a spongy texture.",
+          "rouge_f1": {
+            "rouge1": 0.35398230088495575,
+            "rouge2": 0.05405405405405406,
+            "rougeL": 0.19469026548672566
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            33,
+            6,
+            13,
+            15
+          ],
+          "retrieval_precision": 0.12255859375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "Marketing thought positively of incorporating current fashion trends in the prototype during the simulation market evaluation of the new remote control. They highlighted that the criteria for the remote control included \"incorporating current fashion trends,\" specifically mentioning a \"spongy texture\" and \"fruit and vegetable strong design colors.\"",
+          "rouge_f1": {
+            "rouge1": 0.3302752293577982,
+            "rouge2": 0.11214953271028037,
+            "rougeL": 0.23853211009174313
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            33
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Marketing thought positively of incorporating current fashion trends in the prototype during the simulation market evaluation of the new remote control. They highlighted that the criteria for the remote control included incorporating current fashion trends, specifically mentioning a \"spongy texture\" and \"fruit and vegetable strong design colors.\" Marketing emphasized that the evaluation was based on user requirements and trends identified in their market research, indicating that the inclusion of these trends was aligned with their strategic goals.",
+          "rouge_f1": {
+            "rouge1": 0.34532374100719426,
+            "rouge2": 0.08759124087591241,
+            "rougeL": 0.18705035971223022
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            33,
+            32
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype. Specifically, Marketing rated the prototype highly (a \"one\" on the seven-point scale) for incorporating current fashion trends, noting that the design would allow for customizable colors and a spongy texture, aligning with the market research findings about the desired spongy texture and strong fruit and vegetable design colors.",
+          "rouge_f1": {
+            "rouge1": 0.3870967741935484,
+            "rouge2": 0.08196721311475409,
+            "rougeL": 0.24193548387096775
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            33,
+            32,
+            13,
+            15,
+            6
+          ],
+          "retrieval_precision": 0.12255859375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Marketing thought positively of incorporating current fashion trends in the prototype during the simulation market evaluation of the new remote control. They highlighted that the criteria for the remote control included \"incorporating current fashion trends,\" specifically mentioning a \"spongy texture\" and \"fruit and vegetable strong design colors.\"",
+          "rouge_f1": {
+            "rouge1": 0.3302752293577982,
+            "rouge2": 0.11214953271028037,
+            "rougeL": 0.23853211009174313
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            33
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Marketing thought positively of the incorporation of current fashion trends in the prototype, specifically noting the spongy texture and fruit and vegetable design colors as important criteria derived from market research. Marketing gave a preliminary rating of 1 (true) to the statement \"it incorporates current fashion trends,\" indicating satisfaction with how the prototype met this criterion.",
+          "rouge_f1": {
+            "rouge1": 0.28813559322033894,
+            "rouge2": 0.03448275862068966,
+            "rougeL": 0.15254237288135594
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            33,
+            13
+          ],
+          "retrieval_precision": 0.1484375,
+          "retrieval_recall": 0.6055776892430279
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Marketing rated the incorporation of current fashion trends in the prototype positively, giving it a score of one (true) on their seven-point scale. This indicates that Marketing thought the prototype successfully met the criterion of incorporating current fashion trends, specifically noting the potential for customizable colors and a spongy texture.",
+          "rouge_f1": {
+            "rouge1": 0.35398230088495575,
+            "rouge2": 0.05405405405405406,
+            "rougeL": 0.19469026548672566
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            8,
+            33,
+            13,
+            6,
+            15
+          ],
+          "retrieval_precision": 0.12255859375,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What's the conclusion of the minimization of repetitive strain injury when making simulation market evaluation of the new remote control?",
+      "reference_answer": "Marketing considered the design of pointers unfeasible, for many users were prone to zap. Project Manager recommended the slight and small-sized buttons with more space in between. Regretfully, the team failed to come up with a perfectly feasible solution to the problem. The team thus gave low rate points to the prototype's minimization of repetitive strain injury.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The conclusion from the meeting excerpts is that while the project team discussed the minimization of repetitive strain injury (RSI) and considered factors such as button size and material, they ultimately felt that the design only slightly reduces RSI risk. Marketing gave it a score of 4 out of 5, indicating a neutral stance, suggesting that although improvements were made, the design does not significantly minimize RSI compared to typical remote controls.",
+          "rouge_f1": {
+            "rouge1": 0.366412213740458,
+            "rouge2": 0.07751937984496124,
+            "rougeL": 0.15267175572519084
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            27,
+            28
+          ],
+          "retrieval_precision": 0.498046875,
+          "retrieval_recall": 0.9659090909090909
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The conclusion of the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while the project manager suggests the type of button material and the layout of the buttons may minimize RSI, marketing and the industrial designer remain somewhat skeptical, giving it a score of 4 out of 5, indicating that the solution is not fully satisfactory or feasible given the constraints of a small device used frequently.",
+          "rouge_f1": {
+            "rouge1": 0.32116788321167883,
+            "rouge2": 0.07407407407407407,
+            "rougeL": 0.17518248175182483
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            27,
+            28,
+            6,
+            26
+          ],
+          "retrieval_precision": 0.2490234375,
+          "retrieval_recall": 0.9659090909090909
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while the team believes the design minimizes RSI to some extent—particularly due to the material and size of the buttons—they acknowledge it is not optimally addressed. Marketing gave it a neutral score (four), indicating it is not a strong point of the design. Despite this, the team decides to proceed with the prototype and market it, considering the current technological limitations and their overall positive evaluation of other criteria.",
+          "rouge_f1": {
+            "rouge1": 0.3660130718954248,
+            "rouge2": 0.13245033112582782,
+            "rougeL": 0.20915032679738566
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            27,
+            28,
+            6,
+            26,
+            14,
+            19,
+            5,
+            25
+          ],
+          "retrieval_precision": 0.12451171875,
+          "retrieval_recall": 0.9659090909090909
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while some efforts were made, such as using specific button materials and designs, the team felt that further significant reduction of RSI was unlikely given current technological constraints. They rated the minimization of RSI as neutral to slightly above neutral, which was the lowest among the evaluated criteria. Despite this, the overall positive ratings for other criteria led them to decide to proceed with prototyping and marketing the remote control without additional modifications aimed at reducing RSI.",
+          "rouge_f1": {
+            "rouge1": 0.31446540880503143,
+            "rouge2": 0.06369426751592357,
+            "rougeL": 0.1509433962264151
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            12,
+            27
+          ],
+          "retrieval_precision": 0.498046875,
+          "retrieval_recall": 0.9659090909090909
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while some measures have been taken, such as using specific materials for the buttons, the team feels that further significant reduction of RSI is challenging given current technology and capabilities. The evaluation gave a neutral to slightly positive rating (around 4 out of 5) for minimizing RSI, indicating that while improvements have been made, the issue is not fully resolved. Despite this, the team decided to proceed with producing the prototype and marketing it due to the overall high satisfaction with other criteria.",
+          "rouge_f1": {
+            "rouge1": 0.3272727272727273,
+            "rouge2": 0.09815950920245399,
+            "rougeL": 0.18181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            12,
+            27,
+            6,
+            5
+          ],
+          "retrieval_precision": 0.2490234375,
+          "retrieval_recall": 0.9659090909090909
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while the team believes the design minimizes RSI to some extent—particularly due to the material and size of the buttons—they acknowledge that it is not significantly reduced. Marketing gave it a neutral score of 4 out of 5, indicating that although the design attempts to minimize RSI, it may not be highly effective given the constraints of a small device. The team decided to proceed with the prototype despite this limitation, considering it unlikely to improve further with current technology and capabilities.",
+          "rouge_f1": {
+            "rouge1": 0.3614457831325301,
+            "rouge2": 0.1097560975609756,
+            "rougeL": 0.19277108433734938
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            12,
+            27,
+            6,
+            5,
+            25,
+            26,
+            4,
+            19
+          ],
+          "retrieval_precision": 0.12451171875,
+          "retrieval_recall": 0.9659090909090909
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The conclusion from the meeting excerpts is that while the team discussed the minimization of repetitive strain injury (RSI) and considered factors such as button size and material, they ultimately felt that the design only slightly reduces RSI risk. The Project Manager suggested that the specific button material and layout might help, but Marketing gave it a score of 4 out of 5, indicating a neutral stance on its effectiveness, while the Industrial Designer gave it a 5. The overall assessment is that the design partially addresses RSI concerns but does not fully resolve them.",
+          "rouge_f1": {
+            "rouge1": 0.2987012987012987,
+            "rouge2": 0.09210526315789473,
+            "rougeL": 0.14285714285714288
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            27,
+            14
+          ],
+          "retrieval_precision": 0.498046875,
+          "retrieval_recall": 0.9659090909090909
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The conclusion of the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while some measures have been taken, such as using a specific button material, the team feels that further significant reduction of RSI is challenging due to the constraints of the device's size and functionality. The team gave it a neutral to slightly positive rating (4 out of 5), indicating that while improvements have been made, the issue is not fully resolved but deemed acceptable given current technological limitations. The team decided to proceed with the prototype and market it based on these findings.",
+          "rouge_f1": {
+            "rouge1": 0.32530120481927705,
+            "rouge2": 0.0975609756097561,
+            "rougeL": 0.19277108433734938
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            27,
+            14,
+            6,
+            26
+          ],
+          "retrieval_precision": 0.2490234375,
+          "retrieval_recall": 0.9659090909090909
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while the design team believes the button material and layout may help minimize RSI, the evaluation criteria gave it a neutral score (rating of 4 out of 5). Marketing expressed doubt about significantly improving RSI minimization given current technological constraints, leading the team to decide to proceed with the prototype despite this lower rating.",
+          "rouge_f1": {
+            "rouge1": 0.36764705882352944,
+            "rouge2": 0.1044776119402985,
+            "rougeL": 0.1764705882352941
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            27,
+            14,
+            6,
+            26,
+            5,
+            28,
+            25,
+            19
+          ],
+          "retrieval_precision": 0.12451171875,
+          "retrieval_recall": 0.9659090909090909
+        },
+        "word_packed__dense__w512": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while the project team discussed the issue, they did not find feasible solutions to significantly reduce RSI. They noted that the use of a specific button material and larger, more spaced-out buttons might help, but ultimately, they rated the effectiveness of these measures as neutral to slightly positive, giving it a score of 4 or 5 on a 7-point scale.",
+          "rouge_f1": {
+            "rouge1": 0.3611111111111111,
+            "rouge2": 0.09859154929577464,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            6
+          ],
+          "retrieval_precision": 0.494140625,
+          "retrieval_recall": 0.9583333333333334
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while the project team discussed incorporating materials and designs to minimize RSI, they ultimately rated their efforts as somewhat effective, giving it an average score of 4.25 on a seven-point scale. This indicates a neutral stance, suggesting that the measures taken may help but are not fully satisfactory in addressing RSI concerns.",
+          "rouge_f1": {
+            "rouge1": 0.3235294117647059,
+            "rouge2": 0.05970149253731343,
+            "rougeL": 0.13235294117647056
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            6,
+            26,
+            24
+          ],
+          "retrieval_precision": 0.2470703125,
+          "retrieval_recall": 0.9583333333333334
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while efforts have been made to minimize RSI, such as using specific materials for buttons, the team feels that further significant improvements are unlikely given current technology and capabilities. They rated the minimization of RSI relatively low (around 4 out of 7), indicating a neutral stance on this criterion. Despite this, the overall evaluation findings were deemed satisfactory enough to proceed with producing a prototype and marketing the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.3289473684210526,
+            "rouge2": 0.06666666666666667,
+            "rougeL": 0.14473684210526316
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            6,
+            26,
+            24,
+            13,
+            16,
+            25,
+            18
+          ],
+          "retrieval_precision": 0.12353515625,
+          "retrieval_recall": 0.9583333333333334
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that it received the lowest rating among the criteria, though not extremely low, it was close to neutral. Despite this, the team decided they could proceed with the prototype and market it due to the high ratings in other areas and the doubt about improving RSI much further with current technology and capabilities.",
+          "rouge_f1": {
+            "rouge1": 0.34328358208955223,
+            "rouge2": 0.10606060606060606,
+            "rougeL": 0.1492537313432836
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while efforts have been made, such as using specific button types and materials, the team acknowledges that the reduction of RSI is not significantly improved due to the inherent limitations of a small device used frequently. The evaluation gave a neutral to slightly positive score (around 4 out of 5), indicating that although improvements have been attempted, further significant modifications may not be feasible with current technology and capabilities. The team decided to proceed with the prototype and market it despite this limitation.",
+          "rouge_f1": {
+            "rouge1": 0.3272727272727273,
+            "rouge2": 0.09815950920245399,
+            "rougeL": 0.16969696969696968
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            5,
+            11,
+            26
+          ],
+          "retrieval_precision": 0.2470703125,
+          "retrieval_recall": 0.9583333333333334
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while efforts were made to minimize RSI, such as using a specific button material, the team felt they couldn't do much more with current technology and capabilities. They gave a neutral rating (around 4 on a 7-point scale) to this criterion, indicating it wasn't fully met but was considered sufficient to proceed with the prototype development.",
+          "rouge_f1": {
+            "rouge1": 0.41134751773049644,
+            "rouge2": 0.08633093525179857,
+            "rougeL": 0.19858156028368795
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            5,
+            11,
+            26,
+            24,
+            25,
+            6,
+            28
+          ],
+          "retrieval_precision": 0.12353515625,
+          "retrieval_recall": 0.9583333333333334
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while some efforts were made, such as using a specific button material, the team felt they couldn't significantly reduce RSI due to the constraints of the small device size and the need for numerous functions. The evaluation gave a relatively neutral rating for this criterion, leading the team to decide they could proceed with producing a prototype despite not fully addressing RSI concerns, believing further improvements might not be feasible with current technology.",
+          "rouge_f1": {
+            "rouge1": 0.3846153846153846,
+            "rouge2": 0.09090909090909093,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            13
+          ],
+          "retrieval_precision": 0.494140625,
+          "retrieval_recall": 0.9583333333333334
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while some measures were taken, such as using a spongy texture for the buttons, the team felt that further significant reduction of RSI was not feasible given the constraints of the device's size and current technology. They rated the minimization of RSI at a neutral level (around 4 on a 7-point scale), indicating that while improvements were made, the issue wasn't fully resolved. Despite this, the team decided to proceed with producing a prototype and marketing the remote control due to the overall positive ratings for other criteria.",
+          "rouge_f1": {
+            "rouge1": 0.3352601156069364,
+            "rouge2": 0.08187134502923976,
+            "rougeL": 0.16184971098265896
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            13,
+            26,
+            6
+          ],
+          "retrieval_precision": 0.2470703125,
+          "retrieval_recall": 0.9583333333333334
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that while some measures were considered, such as using a specific button material, the team felt that further significant improvements were unlikely with current technology and capabilities. They gave it a rating of 4 out of 7 on their evaluation scale, indicating a neutral stance, and decided to proceed with the prototype despite not fully addressing RSI concerns.",
+          "rouge_f1": {
+            "rouge1": 0.35971223021582727,
+            "rouge2": 0.08759124087591241,
+            "rougeL": 0.1726618705035971
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            11,
+            13,
+            26,
+            6,
+            24,
+            25,
+            18,
+            28
+          ],
+          "retrieval_precision": 0.12353515625,
+          "retrieval_recall": 0.9583333333333334
+        },
+        "lumber__dense__w512": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is inconclusive. While the Project Manager suggests that the specific button material and layout might minimize RSI, Marketing remains neutral, giving it a score of 4 out of 5, and Industrial Designer agrees with a score of 5. However, User Interface notes that no other remote control manufacturers have significantly addressed this issue, indicating a lack of industry-wide concern or solution for minimizing RSI in remote controls.",
+          "rouge_f1": {
+            "rouge1": 0.3243243243243243,
+            "rouge2": 0.08219178082191782,
+            "rougeL": 0.13513513513513514
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            33
+          ],
+          "retrieval_precision": 0.515625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) in the new remote control design is inconclusive. While the project manager suggests that the type of button material and the layout might minimize RSI due to larger, more spaced-out buttons, marketing remains neutral, giving it a score of 4 out of 5, indicating some uncertainty about its effectiveness. The industrial designer agrees with a slightly higher score of 5, but overall, the team acknowledges that no definitive solution has been reached to significantly reduce RSI given the constraints of a small device frequently used for extended periods.",
+          "rouge_f1": {
+            "rouge1": 0.3670886075949367,
+            "rouge2": 0.10256410256410256,
+            "rougeL": 0.20253164556962028
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            33,
+            8
+          ],
+          "retrieval_precision": 0.2578125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that the design minimizes RSI to a moderate extent, receiving a score of 4 out of 7 on the evaluation scale. The team acknowledged that while the design includes features such as larger buttons made of a material intended to minimize RSI, significant improvements are limited by current technology and capabilities. Therefore, they decided to proceed with the prototype and market it without further modifications aimed specifically at reducing RSI.",
+          "rouge_f1": {
+            "rouge1": 0.304635761589404,
+            "rouge2": 0.09395973154362416,
+            "rougeL": 0.15894039735099338
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            33,
+            8,
+            15,
+            6
+          ],
+          "retrieval_precision": 0.12890625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is inconclusive. While the Project Manager suggests that the specific button material and layout might minimize RSI, Marketing remains neutral, giving it a score of 4 out of 5, and Industrial Designer agrees with a score of 5. However, User Interface notes that no other remote control manufacturers have significantly addressed this issue, indicating a lack of industry-wide concern or solution for minimizing RSI in remote controls.",
+          "rouge_f1": {
+            "rouge1": 0.3243243243243243,
+            "rouge2": 0.08219178082191782,
+            "rougeL": 0.13513513513513514
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            33
+          ],
+          "retrieval_precision": 0.515625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) in the new remote control design is inconclusive. While the project manager suggests that the type of button material and the layout might minimize RSI due to larger, more spaced-out buttons, marketing remains neutral, giving it a score of 4 out of 5, indicating some uncertainty about its effectiveness. The industrial designer agrees with a slightly higher score of 5, but overall, the team acknowledges that no definitive solution has been reached to significantly reduce RSI given the constraints of a small device frequently used for extended periods.",
+          "rouge_f1": {
+            "rouge1": 0.3670886075949367,
+            "rouge2": 0.10256410256410256,
+            "rougeL": 0.20253164556962028
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            33,
+            8
+          ],
+          "retrieval_precision": 0.2578125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The conclusion of the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that the design minimizes RSI to a moderate extent, receiving a score of 4 out of 7 on the evaluation scale. The team acknowledged that while the design includes features intended to minimize RSI, such as specific button materials and larger button sizes, they felt that further significant improvements were limited by current technology and capabilities. Therefore, they decided to proceed with the prototype and market the remote control despite not fully addressing RSI concerns.",
+          "rouge_f1": {
+            "rouge1": 0.3205128205128205,
+            "rouge2": 0.09090909090909093,
+            "rougeL": 0.15384615384615385
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            33,
+            8,
+            32,
+            15,
+            6
+          ],
+          "retrieval_precision": 0.12890625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is inconclusive. While the Project Manager suggests that the specific button material and layout might minimize RSI, Marketing remains neutral, giving it a score of 4 out of 5, and Industrial Designer agrees with a score of 5. However, User Interface notes that no other remote control manufacturers have significantly addressed this issue, indicating a lack of industry-wide concern or solution for minimizing RSI in remote controls.",
+          "rouge_f1": {
+            "rouge1": 0.3243243243243243,
+            "rouge2": 0.08219178082191782,
+            "rougeL": 0.13513513513513514
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            33
+          ],
+          "retrieval_precision": 0.515625,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) in the new remote control design is inconclusive. While the project manager suggests that the type of button material and the layout might minimize RSI due to larger, more spaced-out buttons, marketing remains neutral, giving it a score of 4 out of 5, indicating some uncertainty about its effectiveness. The industrial designer agrees with a slightly higher score of 5, but overall, the team acknowledges that no definitive solution has been reached to significantly reduce RSI given the constraints of a small device frequently used for extended periods.",
+          "rouge_f1": {
+            "rouge1": 0.3670886075949367,
+            "rouge2": 0.10256410256410256,
+            "rougeL": 0.20253164556962028
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            33,
+            8
+          ],
+          "retrieval_precision": 0.2578125,
+          "retrieval_recall": 1.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The conclusion regarding the minimization of repetitive strain injury (RSI) when making the simulation market evaluation of the new remote control is that the design minimizes RSI to a moderate extent, receiving a score of 4 out of 7 on the evaluation scale. The team acknowledged that while the design includes features such as larger buttons made of a material intended to minimize RSI, significant improvements are limited by current technology and capabilities. Therefore, they decided to proceed with the prototype and market it without further modifications aimed specifically at reducing RSI.",
+          "rouge_f1": {
+            "rouge1": 0.304635761589404,
+            "rouge2": 0.09395973154362416,
+            "rougeL": 0.15894039735099338
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            33,
+            8,
+            15,
+            6
+          ],
+          "retrieval_precision": 0.12890625,
+          "retrieval_recall": 1.0
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about cost calculation and budget issues.",
+      "reference_answer": "The team calculated the cost of the remote control in the Euro. The team included one regular chip, one kinetic cell, one double-curved bottom, one push button, one LCD screen, as well as rubber and plastic materials. The team decided to recommend voice recognition to business customers. Once the budget increased, voice recognition would be incorporated. Overall, the present cost was 12.5 Euros and was under the budget.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The participants discussed the cost calculation and budget issues, focusing on the exact cost figures and whether they were under budget. The Project Manager initially stated the cost as twelve point two five, which was later clarified to be twelve point five. This figure was considered less than ten percent over budget. They concluded they were under budget for the electronics and did not require additional funding for this aspect. However, the Project Manager questioned if the current budget accounted for all overheads, suggesting a possible need to increase the budget to cover these costs. Marketing argued that the initial budget was specifically for production costs and any adjustments should be addressed in a separate project.",
+          "rouge_f1": {
+            "rouge1": 0.2688172043010753,
+            "rouge2": 0.021739130434782608,
+            "rougeL": 0.17204301075268816
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            22,
+            30
+          ],
+          "retrieval_precision": 0.384765625,
+          "retrieval_recall": 0.10926234054353855
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The participants discussed adjusting the cost calculation to fit within the budget by removing certain features, such as voice recognition, which reduced the cost to €12.25 per unit. The Project Manager suggested offering voice recognition as an upgrade option for a higher-priced version. Initially, there was concern about staying within the budget, but after adjustments, they concluded that the cost was under the budget. However, the Project Manager noted that the current budget only accounted for production costs and did not include overheads, suggesting a possible need for a budget increase if all costs were to be covered. Marketing emphasized that the team had successfully met the initial requirements and any further considerations regarding budget increases should be addressed in a separate project.",
+          "rouge_f1": {
+            "rouge1": 0.3384615384615385,
+            "rouge2": 0.10362694300518134,
+            "rougeL": 0.17435897435897435
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            22,
+            30,
+            20,
+            19
+          ],
+          "retrieval_precision": 0.4931640625,
+          "retrieval_recall": 0.28008874098724346
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The team discussed cost calculation and budget issues, focusing on adjusting the cost of materials and features to stay within budget. They debated the inclusion of a kinetic battery versus standard batteries, voice recognition feature, and the use of rubber in the casing. The team concluded that they were close to but under the budget after adjustments, with the final cost calculated at €12.25 per unit, totaling €25 for two units. They acknowledged the need to consider overheads and potential profit margins but decided that addressing these aspects was beyond their current scope.",
+          "rouge_f1": {
+            "rouge1": 0.3780487804878049,
+            "rouge2": 0.09876543209876545,
+            "rougeL": 0.23170731707317072
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            22,
+            30,
+            20,
+            19,
+            25,
+            15,
+            17,
+            31
+          ],
+          "retrieval_precision": 0.51953125,
+          "retrieval_recall": 0.5901275651691625
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The participants discussed the cost calculation and budget issues, focusing on the actual cost of materials and whether they were within the budget. Initially, there was confusion over the exact cost figure, which was eventually clarified as twelve point two five. They concluded that this amount was under the budget. However, the Project Manager questioned if the current budget accounted for all costs, including overheads and profits. The team agreed that the budget might need adjustment to cover additional expenses beyond production costs, potentially requiring an increase in the final product price.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333337,
+            "rouge2": 0.09999999999999999,
+            "rougeL": 0.19753086419753085
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            22,
+            17
+          ],
+          "retrieval_precision": 0.47265625,
+          "retrieval_recall": 0.13422074320576816
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The discussion about cost calculation and budget issues included debates over the inclusion of rubber in the cost calculations, adjustments to ensure accuracy in the budget (such as confirming the correct figures), and considerations regarding whether the budget accounted for all costs including overheads. The team concluded they were under budget for production costs but noted that overheads were not included in this budget. They also discussed the possibility of needing to increase the budget to cover additional costs but decided it was outside their current scope.",
+          "rouge_f1": {
+            "rouge1": 0.356687898089172,
+            "rouge2": 0.06451612903225806,
+            "rougeL": 0.20382165605095545
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            22,
+            17,
+            30,
+            13
+          ],
+          "retrieval_precision": 0.4345703125,
+          "retrieval_recall": 0.24681087077093733
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The discussion about cost calculation and budget issues included evaluating the feasibility of incorporating voice recognition software, adjusting the cost for rubber usage in the casing, and ensuring the total cost remained within the budget. Initially, concerns arose over the cost implications of voice recognition, but it was deemed feasible. There was debate over the exact cost of rubber versus plastic, leading to a decision to include it as a half-unit cost. The team concluded that they were close to the budget, with calculations showing they were under the budget of twelve point two five. The Project Manager noted that while their costs were below budget, overheads like salaries and building expenses were not accounted for in the current budget, suggesting potential future adjustments if these were to be included.",
+          "rouge_f1": {
+            "rouge1": 0.3383084577114427,
+            "rouge2": 0.09045226130653267,
+            "rougeL": 0.1990049751243781
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            22,
+            17,
+            30,
+            13,
+            0,
+            21,
+            26,
+            8
+          ],
+          "retrieval_precision": 0.3408203125,
+          "retrieval_recall": 0.38713255684969494
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The participants discussed the cost calculation and budget issues, focusing on the exact cost figures and whether they were under budget. The Project Manager initially stated the cost as twelve point two five, which was later clarified to be twelve point five. This figure was considered less than ten percent over budget. They concluded they were under budget for the electronics and did not require additional funding for this aspect. However, the Project Manager questioned if the current budget accounted for all overheads, suggesting a possible need to increase the budget to cover these costs. Marketing argued that the initial budget was specifically for production costs and any adjustments should be addressed in a separate project.",
+          "rouge_f1": {
+            "rouge1": 0.2688172043010753,
+            "rouge2": 0.021739130434782608,
+            "rougeL": 0.17204301075268816
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            22,
+            30
+          ],
+          "retrieval_precision": 0.384765625,
+          "retrieval_recall": 0.10926234054353855
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team discussed cost calculation and budget issues, focusing on the inclusion of rubber in the casing cost, which was initially considered as a fraction (point five) of the total cost but later adjusted to be fully accounted for. They debated whether to include it as half or whole, eventually settling on a full inclusion due to its necessity in the total cost. The group acknowledged being close to the budget and confirmed they were under budget after adjustments. There was a realization that the initial budget did not cover overheads like salaries and building expenses, suggesting a need for a revised budget if these were to be included. However, the team concluded that their current task was limited to production costs and not broader financial considerations, thus they felt satisfied with staying within the specified budget.",
+          "rouge_f1": {
+            "rouge1": 0.2898550724637681,
+            "rouge2": 0.04878048780487805,
+            "rougeL": 0.1932367149758454
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            22,
+            30,
+            17,
+            19
+          ],
+          "retrieval_precision": 0.4931640625,
+          "retrieval_recall": 0.28008874098724346
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team discussed cost calculation and budget issues, focusing on the inclusion of rubber in the cost, the impact of changing from a kinetic battery to standard batteries, and staying within the budget. They considered putting the cost of rubber as half since it was a low quantity compared to plastic. They also noted that switching to standard batteries would reduce costs significantly without affecting customer preferences. The team concluded that they were under the budget after removing voice recognition, which allowed them to stay within the specified financial constraints. They acknowledged that while overheads were not included in their budget, their primary task was to meet the production cost target, and any additional considerations would require a separate project.",
+          "rouge_f1": {
+            "rouge1": 0.35789473684210527,
+            "rouge2": 0.09574468085106383,
+            "rougeL": 0.22105263157894736
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            22,
+            30,
+            17,
+            19,
+            25,
+            21,
+            8,
+            26
+          ],
+          "retrieval_precision": 0.45556640625,
+          "retrieval_recall": 0.5174708818635607
+        },
+        "word_packed__dense__w512": {
+          "answer": "The participants discussed that the cost calculation for their project was estimated at twelve point five (presumably a monetary value), which is less than their initial budget estimate of ten. They confirmed they were under budget for the electronics component, noting that an additional bought-on extra could be removed if necessary. The conversation later clarified that the initial budget discussion focused solely on the production cost of the product, not including overheads such as salaries and building expenses. The Project Manager suggested that increasing the budget might require adjusting the final selling price to maintain a fifty percent profit margin.",
+          "rouge_f1": {
+            "rouge1": 0.26900584795321636,
+            "rouge2": 0.047337278106508875,
+            "rougeL": 0.16374269005847955
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21
+          ],
+          "retrieval_precision": 0.21484375,
+          "retrieval_recall": 0.06100942872989462
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The team discussed adjusting the cost calculation and budget issues related to their project. Initially, there was confusion over the cost adjustments, with the Project Manager mentioning a potential minus three and then a plus two adjustment. The team considered alternatives to voice recognition to manage costs better. The Industrial Designer suggested selling the product for more than 25 Euros due to customer willingness to pay more for a better product. However, they decided to adhere to the initial specifications set by head office. Later, they determined that the cost was reduced to 12.5 Euros, which was under the budget. The team concluded that they were within budget but acknowledged that additional costs like overheads were not included in their calculations. They agreed that increasing the budget might require raising the selling price accordingly. Despite staying within the specified production cost budget, the team felt that further considerations regarding overheads and profit margins would need to be addressed in a separate project.",
+          "rouge_f1": {
+            "rouge1": 0.31759656652360513,
+            "rouge2": 0.1212121212121212,
+            "rougeL": 0.21459227467811157
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21,
+            28,
+            19
+          ],
+          "retrieval_precision": 0.357421875,
+          "retrieval_recall": 0.20299500831946754
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The team discussed adjusting the design specification to address cost calculation and budget issues. Initially, there was consideration of removing voice recognition to stay within the budget. The team agreed that voice recognition could be offered as an upgrade for business-class customers. They calculated the cost to be €12.25, which aligned closely with their budget. The team concluded that they were under the budget after excluding certain extras and recommended this approach to head office while suggesting potential upgrades for higher pricing tiers.",
+          "rouge_f1": {
+            "rouge1": 0.41290322580645167,
+            "rouge2": 0.1437908496732026,
+            "rougeL": 0.24516129032258063
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21,
+            28,
+            19,
+            29,
+            20,
+            24,
+            23,
+            14
+          ],
+          "retrieval_precision": 0.3037109375,
+          "retrieval_recall": 0.3449805879090405
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The participants discussed that the cost calculation for their project was estimated at twelve point five (presumably a monetary value), which is less than their initial budget estimate of ten. They confirmed they were under budget for the electronics component, noting that an additional bought-on extra could be removed if necessary. The conversation later clarified that the initial budget discussion focused solely on the production cost of the product, not including overheads such as salaries and building expenses. The Project Manager suggested that increasing the budget might require adjusting the final selling price to maintain a fifty percent profit margin.",
+          "rouge_f1": {
+            "rouge1": 0.26900584795321636,
+            "rouge2": 0.047337278106508875,
+            "rougeL": 0.16374269005847955
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21
+          ],
+          "retrieval_precision": 0.21484375,
+          "retrieval_recall": 0.06100942872989462
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The participants discussed the inclusion of rubber in the cost calculation for the remote's casing, deciding to incorporate it as part of the total cost. They debated whether to include it as half or fully in the cost, eventually agreeing to include it fully since plastic usage was negligible. The team was concerned about staying within the budget while considering additional features like voice recognition, which was deemed too costly for the initial product release. They concluded that without voice recognition, the cost was $12.25, which was under the budget. The Project Manager noted that the current budget only covered production costs and not overheads, suggesting a potential need for a budget increase to accommodate all expenses.",
+          "rouge_f1": {
+            "rouge1": 0.3915343915343915,
+            "rouge2": 0.16042780748663102,
+            "rougeL": 0.25396825396825395
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21,
+            20,
+            16
+          ],
+          "retrieval_precision": 0.607421875,
+          "retrieval_recall": 0.3449805879090405
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The discussion about cost calculation and budget issues included evaluating the feasibility of incorporating voice recognition software, adjusting the volume settings for a beeper, and accounting for the cost of rubber used in the casing. Initially, there was concern about whether the cost of rubber should be included in the budget since it was considered an extra. The team decided to include it as one unit cost since the plastic component was already zero. They concluded that without voice recognition, the cost was $12.25, which was under the budget. The team acknowledged that while their production costs were below budget, additional overheads like staff salaries and building expenses were not accounted for in the current budget.",
+          "rouge_f1": {
+            "rouge1": 0.3957219251336898,
+            "rouge2": 0.16216216216216217,
+            "rougeL": 0.2566844919786096
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21,
+            20,
+            16,
+            12,
+            28,
+            0,
+            24
+          ],
+          "retrieval_precision": 0.3037109375,
+          "retrieval_recall": 0.3449805879090405
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The participants discussed that the cost calculation for their project was estimated at twelve point five (presumably a monetary value), which is less than their initial budget estimate of ten. They confirmed they were under budget for the electronics component, noting that an additional bought-on extra could be removed if necessary. The conversation later clarified that the initial budget discussion focused solely on the production cost of the product, not including overheads such as salaries and building expenses. The Project Manager suggested that increasing the budget might require adjusting the final selling price to maintain a fifty percent profit margin.",
+          "rouge_f1": {
+            "rouge1": 0.26900584795321636,
+            "rouge2": 0.047337278106508875,
+            "rougeL": 0.16374269005847955
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21
+          ],
+          "retrieval_precision": 0.21484375,
+          "retrieval_recall": 0.06100942872989462
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The discussion about cost calculation and budget issues centered around ensuring the product stayed within its budget while considering the inclusion of voice recognition technology primarily for business class customers. The team calculated the cost multiple times, eventually concluding that the cost without voice recognition was $12.25, which was under the budget. They acknowledged that voice recognition was an additional feature that could be offered later if desired. The Project Manager noted that even though they were under budget, the budget likely only covered production costs and not overheads, suggesting potential future adjustments might be necessary to account for all expenses. However, the team felt they had successfully completed their assigned task within the specified budget constraints.",
+          "rouge_f1": {
+            "rouge1": 0.3297872340425532,
+            "rouge2": 0.12903225806451615,
+            "rougeL": 0.2021276595744681
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21,
+            20,
+            28
+          ],
+          "retrieval_precision": 0.357421875,
+          "retrieval_recall": 0.20299500831946754
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The meeting participants discussed cost calculation and budget issues primarily focusing on the inclusion of additional materials and features in the cost of the product. Initially, there was confusion regarding the inclusion of rubber in the casing cost, with the decision to include it as either half or full cost. The group agreed to exclude voice recognition to stay within the budget, which was determined to be £12.25 per unit. They concluded that they were under the budget and satisfied with their cost calculations. However, there was uncertainty about whether the budget included all overhead costs, leading to a suggestion that the budget might need adjustment to cover additional expenses beyond production costs.",
+          "rouge_f1": {
+            "rouge1": 0.3369565217391305,
+            "rouge2": 0.0989010989010989,
+            "rougeL": 0.2608695652173913
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            27,
+            21,
+            20,
+            28,
+            24,
+            16,
+            29,
+            7,
+            17
+          ],
+          "retrieval_precision": 0.33154296875,
+          "retrieval_recall": 0.37659456461453134
+        },
+        "lumber__dense__w512": {
+          "answer": "The discussion centered around adjusting the design specification to manage costs and stay within the budget. The team considered removing voice recognition features initially to reduce costs, aiming to keep the product distinctive without this feature. They noted that the current budget might not cover all overheads, suggesting a potential need to increase the budget or adjust the selling price to ensure profitability. The exact figures discussed included a target cost of $12.25, with considerations for achieving a 50% profit margin after accounting for additional expenses.",
+          "rouge_f1": {
+            "rouge1": 0.29299363057324845,
+            "rouge2": 0.06451612903225806,
+            "rougeL": 0.1910828025477707
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            26
+          ],
+          "retrieval_precision": 0.634765625,
+          "retrieval_recall": 0.18025513033832502
+        },
+        "lumber__dense__w1024": {
+          "answer": "The team discussed adjusting the design specification to fit within the budget, considering removing voice recognition features initially to reduce costs. They aimed to keep the product distinctive and innovative while ensuring the price fits within the budget constraints. The team concluded that their current costs were below the budget, specifically mentioning a figure of £12.25, and acknowledged that any additional overheads would need to be factored into future pricing considerations. Despite staying within the budget, there was acknowledgment that the project might not proceed due to external factors beyond their control.",
+          "rouge_f1": {
+            "rouge1": 0.3312883435582822,
+            "rouge2": 0.06211180124223602,
+            "rougeL": 0.19631901840490795
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            26,
+            36
+          ],
+          "retrieval_precision": 0.455078125,
+          "retrieval_recall": 0.2584581253466445
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team discussed cost calculation and budget issues, focusing on the total cost of the project and whether it fit within the allocated budget. Initially, there was confusion over the currency used for calculations (Euros vs. Dollars), leading to adjustments. The team considered removing voice recognition features to reduce costs and stay within the budget. After recalculations, they concluded that the project cost was approximately twelve point two five Euros, which was under the budget. However, there was a suggestion that the budget might need to be adjusted to cover additional overheads and ensure a fifty percent profit margin. Despite this, the team felt they had successfully managed to keep costs within the specified budget limits.",
+          "rouge_f1": {
+            "rouge1": 0.3225806451612903,
+            "rouge2": 0.11956521739130434,
+            "rougeL": 0.2580645161290323
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            26,
+            36,
+            22,
+            25,
+            31,
+            7,
+            21,
+            16,
+            32,
+            29,
+            28
+          ],
+          "retrieval_precision": 0.3505859375,
+          "retrieval_recall": 0.3982251802551303
+        },
+        "lumber__bm25__w512": {
+          "answer": "The discussion centered around adjusting the design specification to manage costs and stay within the budget. The team considered removing voice recognition features initially to reduce costs, aiming to keep the product distinctive without this feature. They noted that the current budget might not cover all overheads, suggesting a potential need to increase the budget or adjust the selling price to ensure profitability. The exact figures discussed included a target cost of $12.25, with considerations for achieving a 50% profit margin after accounting for additional expenses.",
+          "rouge_f1": {
+            "rouge1": 0.29299363057324845,
+            "rouge2": 0.06451612903225806,
+            "rougeL": 0.1910828025477707
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            26
+          ],
+          "retrieval_precision": 0.634765625,
+          "retrieval_recall": 0.18025513033832502
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The team discussed the cost calculation and budget issues related to the design and materials of a new product. Initially, they considered incorporating voice recognition software but decided against it due to potential cost implications. They settled on using plastic and rubber as case materials, with rubber comprising only 50% of the material usage. This decision helped keep the costs within the budget. However, there was uncertainty about whether the initial budget accounted for all costs, including overheads. The Project Manager suggested that increasing the budget might require raising the selling price to maintain a 50% profit margin. The team concluded that they were under the current budget but recommended adjustments based on further analysis.",
+          "rouge_f1": {
+            "rouge1": 0.3675675675675676,
+            "rouge2": 0.08743169398907102,
+            "rougeL": 0.1837837837837838
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            26,
+            1,
+            18
+          ],
+          "retrieval_precision": 0.666015625,
+          "retrieval_recall": 0.37825845812534664
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The team discussed incorporating voice recognition software into their design but was uncertain about its cost feasibility. They decided to keep the feature for business-class customers initially to avoid exceeding the budget. The group adjusted the cost calculations, particularly regarding the materials (plastic and rubber) and special color options, to stay within the budget. They concluded that their costs were below the budget, though they recommended increasing the budget to cover additional features like voice recognition in future iterations. The team acknowledged that their current budget likely only covered production costs and not overheads, suggesting potential profit margins would need adjustment if the budget were increased.",
+          "rouge_f1": {
+            "rouge1": 0.40677966101694907,
+            "rouge2": 0.10285714285714284,
+            "rougeL": 0.21468926553672316
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            26,
+            1,
+            18,
+            36,
+            15
+          ],
+          "retrieval_precision": 0.4248046875,
+          "retrieval_recall": 0.4825291181364393
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The discussion centered around adjusting the design specification to manage costs and stay within the budget. The team considered removing voice recognition features initially to reduce costs, aiming to keep the product distinctive without this feature. They noted that the current budget might not cover all overheads, suggesting a potential need to increase the budget or adjust the selling price to ensure profitability. The exact figures discussed included a target cost of $12.25, with considerations for achieving a 50% profit margin after accounting for additional expenses.",
+          "rouge_f1": {
+            "rouge1": 0.29299363057324845,
+            "rouge2": 0.06451612903225806,
+            "rougeL": 0.1910828025477707
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            26
+          ],
+          "retrieval_precision": 0.634765625,
+          "retrieval_recall": 0.18025513033832502
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The team discussed adjusting the design specification to fit within the budget, considering removing voice recognition features initially to reduce costs. They aimed to keep the product distinctive and innovative while ensuring the price fits within the budget constraints. The team concluded that their current costs were below the budget, specifically mentioning a figure of £12.25, and acknowledged that any additional overheads would need to be factored into future pricing considerations. Despite staying within the budget, there was acknowledgment that the project might not proceed due to external factors beyond their control.",
+          "rouge_f1": {
+            "rouge1": 0.3312883435582822,
+            "rouge2": 0.06211180124223602,
+            "rougeL": 0.19631901840490795
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            26,
+            36
+          ],
+          "retrieval_precision": 0.455078125,
+          "retrieval_recall": 0.2584581253466445
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The team discussed cost calculation and budget issues primarily focusing on the materials and features of their prototype. They debated the inclusion of voice recognition software due to its potential cost implications. Initially, concerns arose about the cost of rubber used in the casing and whether it should be included in the overall cost. They agreed to include it as half a unit cost. The team aimed to stay within the budget and considered removing voice recognition to ensure they met the financial constraints. After adjustments, they concluded that their costs were below the budget, achieving a total of twelve point two five (likely referring to a monetary value), which was deemed acceptable despite minor discrepancies in the exact figure. The team celebrated staying under budget while acknowledging that additional overheads and profit margins would need to be considered separately.",
+          "rouge_f1": {
+            "rouge1": 0.3428571428571428,
+            "rouge2": 0.10576923076923075,
+            "rougeL": 0.21904761904761905
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            26,
+            36,
+            22,
+            1,
+            11,
+            18,
+            32
+          ],
+          "retrieval_precision": 0.4736328125,
+          "retrieval_recall": 0.5379922351636162
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did User Interface think of the replacement of the kinetic batteries when discussing cost calculation and budget issues?",
+      "reference_answer": "User Interface recommended the standard batteries to replace the kinetic batteries and lower the cost. Marketing was promised by User Interface that the change in battery type would not make any big difference in shape and colours. However, Marketing was still uncertain about the replacement. User Interface further explained that users were used to paying little attention to batteries which were installed internally.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "User Interface thought that replacing the kinetic batteries with regular batteries wouldn't significantly impact customer perception since the battery is internal and customers never mentioned anything about it. However, User Interface emphasized that aspects like shape and colors should not be compromised.",
+          "rouge_f1": {
+            "rouge1": 0.3773584905660377,
+            "rouge2": 0.11538461538461538,
+            "rougeL": 0.24528301886792447
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            0,
+            18
+          ],
+          "retrieval_precision": 0.20703125,
+          "retrieval_recall": 0.381294964028777
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "User Interface suggested changing the kinetic batteries to standard batteries, indicating a preference for a simpler solution that customers are more familiar with. They noted that customers had not expressed any concerns about the battery type and emphasized that the internal battery is not visible to users. User Interface also pointed out that the focus should remain on external features like shape and colors, implying that the battery type is less critical to customer satisfaction. When discussing cost implications, User Interface seemed open to the idea of switching to standard batteries if it helped reduce costs without significantly impacting other aspects of the product.",
+          "rouge_f1": {
+            "rouge1": 0.3952095808383233,
+            "rouge2": 0.13333333333333333,
+            "rougeL": 0.25149700598802394
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            0,
+            18,
+            2,
+            15
+          ],
+          "retrieval_precision": 0.271484375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "User Interface suggested changing from kinetic batteries to standard batteries due to cost concerns and the fact that customers didn't prioritize the battery type. They mentioned that the battery being internal meant users wouldn't notice the change, and that people are generally accustomed to buying batteries for remote controls. When discussing the budget, User Interface noted that they were close to the budget limit and that switching to standard batteries would help manage costs without compromising the external design or functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3972602739726027,
+            "rouge2": 0.1111111111111111,
+            "rougeL": 0.273972602739726
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            0,
+            18,
+            2,
+            15,
+            5,
+            22,
+            25,
+            28
+          ],
+          "retrieval_precision": 0.1357421875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "User Interface thought that replacing the kinetic batteries with standard batteries would not cause significant customer concern since the battery is internal and customers are accustomed to purchasing batteries separately. However, regarding the cost calculation and budget issues, User Interface mentioned being close to the budget but did not explicitly state an opinion on whether the replacement of the kinetic batteries would affect the budget positively or negatively.",
+          "rouge_f1": {
+            "rouge1": 0.41221374045801523,
+            "rouge2": 0.13953488372093023,
+            "rougeL": 0.25954198473282447
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            19,
+            22
+          ],
+          "retrieval_precision": 0.20703125,
+          "retrieval_recall": 0.381294964028777
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "User Interface did not explicitly express a clear opinion on the replacement of the kinetic batteries when discussing cost calculation and budget issues. However, User Interface mentioned that customers never said anything about the battery and that it's internal, suggesting that changing to regular batteries might not significantly impact customer perception. Additionally, User Interface agreed that the project was close to or under budget, indicating a pragmatic stance towards cost management.",
+          "rouge_f1": {
+            "rouge1": 0.4148148148148148,
+            "rouge2": 0.13533834586466165,
+            "rougeL": 0.2814814814814815
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            19,
+            22,
+            2,
+            0
+          ],
+          "retrieval_precision": 0.103515625,
+          "retrieval_recall": 0.381294964028777
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "User Interface did not explicitly express a detailed opinion on the replacement of the kinetic batteries specifically in relation to cost calculation and budget issues. However, User Interface did mention that \"customers never said anything about the battery\" and that \"It's internal, nobody looks into the battery,\" suggesting a preference for focusing on visible aspects like shape and colors. Additionally, User Interface agreed that switching to regular batteries could be considered if it helped stay within budget constraints, indicating a pragmatic approach towards cost management.",
+          "rouge_f1": {
+            "rouge1": 0.38926174496644295,
+            "rouge2": 0.12244897959183675,
+            "rougeL": 0.2684563758389262
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            29,
+            19,
+            22,
+            2,
+            0,
+            17,
+            4,
+            15,
+            25
+          ],
+          "retrieval_precision": 0.0517578125,
+          "retrieval_recall": 0.381294964028777
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "User Interface thought that replacing the kinetic batteries with regular batteries wouldn't significantly impact customer perception since customers had never mentioned anything about the battery and it was internal, unseen by users. However, User Interface emphasized that aspects like shape and colors should not be compromised.",
+          "rouge_f1": {
+            "rouge1": 0.41818181818181815,
+            "rouge2": 0.16666666666666669,
+            "rougeL": 0.2545454545454546
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            0,
+            2
+          ],
+          "retrieval_precision": 0.20703125,
+          "retrieval_recall": 0.381294964028777
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "User Interface did not explicitly express a detailed opinion on the replacement of the kinetic batteries specifically in relation to cost calculation and budget issues. However, User Interface did mention that \"customers never said anything about the battery\" and that it is \"internal, nobody looks into the battery,\" suggesting a lack of customer concern over the type of battery used. Additionally, User Interface agreed that switching to regular batteries would not significantly impact the product's appeal or functionality, focusing instead on maintaining the product's shape and colors. When discussing the budget, User Interface confirmed that they were close to the budget and that they were under it, indicating satisfaction with the current cost calculations.",
+          "rouge_f1": {
+            "rouge1": 0.41340782122905034,
+            "rouge2": 0.11299435028248588,
+            "rougeL": 0.27932960893854747
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            0,
+            2,
+            22,
+            29
+          ],
+          "retrieval_precision": 0.103515625,
+          "retrieval_recall": 0.381294964028777
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "User Interface thought that replacing the kinetic batteries with standard batteries would not significantly impact the overall cost calculation and budget issues. They suggested that customers never mentioned the battery specifically and that its internal nature meant it wouldn't affect user perception. Additionally, User Interface believed that focusing on external factors like shape and colors was more important and shouldn't be compromised.",
+          "rouge_f1": {
+            "rouge1": 0.3779527559055118,
+            "rouge2": 0.128,
+            "rougeL": 0.23622047244094488
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            0,
+            2,
+            22,
+            29,
+            15,
+            25,
+            18,
+            5
+          ],
+          "retrieval_precision": 0.1357421875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "User Interface thought that replacing the kinetic batteries with regular batteries wouldn't significantly impact customer perception since the battery is internal and customers never mentioned preferences regarding the battery type. However, User Interface emphasized that aspects such as shape and colors should not be compromised.",
+          "rouge_f1": {
+            "rouge1": 0.40366972477064217,
+            "rouge2": 0.13084112149532712,
+            "rougeL": 0.2568807339449541
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            0
+          ],
+          "retrieval_precision": 0.20703125,
+          "retrieval_recall": 0.381294964028777
+        },
+        "word_packed__dense__w1024": {
+          "answer": "User Interface suggested changing the kinetic battery to a standard battery, indicating that customers had not expressed any preference for the type of battery and that the internal battery was not visible to users. User Interface also mentioned that the focus should remain on external features such as shape and colors rather than the battery type. When discussing the cost implications, User Interface agreed with the idea of removing the kinetic battery to reduce costs but emphasized that the design should not compromise on visible aspects that attract customers.",
+          "rouge_f1": {
+            "rouge1": 0.4342105263157895,
+            "rouge2": 0.16,
+            "rougeL": 0.2631578947368421
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            0,
+            17,
+            19
+          ],
+          "retrieval_precision": 0.271484375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "User Interface suggested changing from kinetic batteries to standard batteries, indicating a preference for regular batteries based on customer indifference towards battery type and the ease of purchasing standard batteries. User Interface stated, \"I think we could change the battery also. Instead of going for kinetic how about going for a standard battery.\" Additionally, User Interface noted, \"What I feel is, customers never said anything about the battery,\" and \"It's internal, nobody looks into the battery.\" These statements suggest User Interface viewed the replacement of kinetic batteries with standard ones as a feasible and potentially beneficial change without significant impact on customer satisfaction.",
+          "rouge_f1": {
+            "rouge1": 0.31137724550898205,
+            "rouge2": 0.1212121212121212,
+            "rougeL": 0.20359281437125745
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            0,
+            17,
+            19,
+            14,
+            2,
+            27,
+            16
+          ],
+          "retrieval_precision": 0.1357421875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "User Interface thought that replacing the kinetic batteries with standard batteries would not significantly impact customer perception since the battery is internal and customers never mentioned concerns about it. They also noted that the change could reduce costs, bringing the project under the budget.",
+          "rouge_f1": {
+            "rouge1": 0.411214953271028,
+            "rouge2": 0.15238095238095237,
+            "rougeL": 0.22429906542056074
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            18
+          ],
+          "retrieval_precision": 0.20703125,
+          "retrieval_recall": 0.381294964028777
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "User Interface thought that replacing the kinetic batteries with regular batteries would simplify the product since customers never mentioned concerns about the battery and it is internal, unseen by users. However, User Interface also noted that the special form factor of the kinetic battery was important and should not be compromised. When discussing cost calculation and budget issues, User Interface acknowledged that switching to regular batteries could reduce costs by approximately 50%, bringing the project under budget.",
+          "rouge_f1": {
+            "rouge1": 0.44285714285714284,
+            "rouge2": 0.14492753623188406,
+            "rougeL": 0.2857142857142857
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            18,
+            27,
+            2
+          ],
+          "retrieval_precision": 0.103515625,
+          "retrieval_recall": 0.381294964028777
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "User Interface thought that replacing the kinetic batteries with regular batteries would not significantly impact customer perception since the battery is internal and customers do not look into it. However, User Interface emphasized that aspects like shape and colors should not be compromised. Regarding the cost calculation and budget issues, User Interface noted that removing the voice recognition feature would reduce the cost to approximately twelve point five, which is under the budget.",
+          "rouge_f1": {
+            "rouge1": 0.4117647058823529,
+            "rouge2": 0.13432835820895525,
+            "rougeL": 0.2647058823529412
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            18,
+            27,
+            2,
+            0,
+            5,
+            28,
+            4
+          ],
+          "retrieval_precision": 0.0517578125,
+          "retrieval_recall": 0.381294964028777
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "User Interface thought that replacing the kinetic batteries with regular batteries wouldn't significantly impact customer perception since the battery is internal and customers never mentioned preferences regarding the battery type. However, User Interface emphasized that aspects such as shape and colors should not be compromised.",
+          "rouge_f1": {
+            "rouge1": 0.40366972477064217,
+            "rouge2": 0.13084112149532712,
+            "rougeL": 0.2568807339449541
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            0
+          ],
+          "retrieval_precision": 0.20703125,
+          "retrieval_recall": 0.381294964028777
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "User Interface thought that replacing the kinetic batteries with regular batteries wouldn't significantly impact customer perception since the battery is internal and customers never mentioned preferences regarding the battery. However, User Interface emphasized that aspects such as shape and colors should not be compromised. Regarding the cost calculation and budget issues, User Interface noted that the cost reduction from switching to regular batteries brought the project under the budget.",
+          "rouge_f1": {
+            "rouge1": 0.406015037593985,
+            "rouge2": 0.13740458015267176,
+            "rougeL": 0.2857142857142857
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            0,
+            21,
+            27
+          ],
+          "retrieval_precision": 0.103515625,
+          "retrieval_recall": 0.381294964028777
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "User Interface thought that replacing the kinetic batteries with regular batteries would not significantly impact customer perception since the battery is internal and customers do not look into it. However, User Interface emphasized that aspects like shape and colors should not be compromised. When discussing cost calculation and budget issues, User Interface agreed that switching to regular batteries would reduce costs, noting that the absence of kinetic batteries would lower the cost by three units. Additionally, User Interface confirmed that after adjustments, the project was under budget.",
+          "rouge_f1": {
+            "rouge1": 0.42666666666666664,
+            "rouge2": 0.14864864864864866,
+            "rougeL": 0.24000000000000002
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            0,
+            21,
+            27,
+            2,
+            14,
+            19,
+            16
+          ],
+          "retrieval_precision": 0.0517578125,
+          "retrieval_recall": 0.381294964028777
+        },
+        "lumber__dense__w512": {
+          "answer": "User Interface suggested changing the kinetic battery to a standard battery, indicating a preference for a simpler solution that customers might not notice or care about internally. They noted that customers had never mentioned the battery, implying that the complexity and cost associated with a kinetic battery might not be justified.",
+          "rouge_f1": {
+            "rouge1": 0.3508771929824562,
+            "rouge2": 0.10714285714285714,
+            "rougeL": 0.21052631578947367
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            23,
+            1,
+            3
+          ],
+          "retrieval_precision": 0.337890625,
+          "retrieval_recall": 0.6223021582733813
+        },
+        "lumber__dense__w1024": {
+          "answer": "User Interface suggested changing the kinetic batteries to standard batteries during the discussion about cost calculation and budget issues. User Interface mentioned that customers had never expressed any preference for the type of battery and that the internal battery is not visible to users, implying that the change would not negatively impact customer perception. However, User Interface did not explicitly state a clear opinion on whether the replacement was positive or negative, only suggesting the change and highlighting that the battery type is not a visible feature to customers.",
+          "rouge_f1": {
+            "rouge1": 0.47368421052631576,
+            "rouge2": 0.17333333333333334,
+            "rougeL": 0.2631578947368421
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            23,
+            1,
+            3,
+            24,
+            17
+          ],
+          "retrieval_precision": 0.1787109375,
+          "retrieval_recall": 0.658273381294964
+        },
+        "lumber__dense__w2048": {
+          "answer": "User Interface suggested changing the kinetic batteries to standard batteries, indicating a preference for a simpler solution that customers are more familiar with. User Interface believed that customers had not expressed any particular interest in the type of battery used, emphasizing that the battery is internal and not visible to users. Additionally, User Interface pointed out that the focus should remain on external aspects like shape and colors, which are more noticeable to customers. When discussing the cost implications, User Interface acknowledged that switching to standard batteries could reduce costs but did not explicitly state a strong opinion on the financial impact beyond noting that customers' preferences had not been a factor in their decision-making process regarding battery type.",
+          "rouge_f1": {
+            "rouge1": 0.40437158469945356,
+            "rouge2": 0.12154696132596685,
+            "rougeL": 0.21857923497267762
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            19,
+            23,
+            1,
+            3,
+            24,
+            17,
+            31,
+            36,
+            22,
+            18
+          ],
+          "retrieval_precision": 0.08935546875,
+          "retrieval_recall": 0.658273381294964
+        },
+        "lumber__bm25__w512": {
+          "answer": "User Interface thought that replacing the kinetic batteries with standard batteries would make the product costlier. This is evident from User Interface's statement at [486]: \"Make it costly.\" Additionally, User Interface mentioned that customers never complained about the battery and that it is internal and not visible to users ([455], [457]).",
+          "rouge_f1": {
+            "rouge1": 0.45217391304347826,
+            "rouge2": 0.1592920353982301,
+            "rougeL": 0.2608695652173913
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            23,
+            26
+          ],
+          "retrieval_precision": 0.1875,
+          "retrieval_recall": 0.34532374100719426
+        },
+        "lumber__bm25__w1024": {
+          "answer": "User Interface thought that replacing the kinetic batteries with standard batteries would make the product less costly. When discussing cost calculation and budget issues, User Interface stated, \"Make it costly\" in response to the suggestion of changing the design specification, indicating concern about increasing costs. Additionally, User Interface mentioned, \"What I feel is, customers never said anything about the battery,\" suggesting that the internal battery type is not a significant concern for customers, implying that the replacement might not negatively impact sales.",
+          "rouge_f1": {
+            "rouge1": 0.4413793103448276,
+            "rouge2": 0.15384615384615383,
+            "rougeL": 0.24827586206896554
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            23,
+            26,
+            1,
+            3
+          ],
+          "retrieval_precision": 0.09375,
+          "retrieval_recall": 0.34532374100719426
+        },
+        "lumber__bm25__w2048": {
+          "answer": "User Interface thought that replacing the kinetic batteries with standard batteries would make the product costlier. When discussing cost calculation and budget issues, User Interface stated, \"Make it costly,\" indicating a concern about the financial impact of switching to regular batteries. Additionally, User Interface mentioned, \"customers never said anything about the battery,\" suggesting that the choice of battery type might not significantly affect customer perception since the battery is internal and not visible to users.",
+          "rouge_f1": {
+            "rouge1": 0.463768115942029,
+            "rouge2": 0.14705882352941174,
+            "rougeL": 0.2608695652173913
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            23,
+            26,
+            1,
+            3,
+            36,
+            6
+          ],
+          "retrieval_precision": 0.046875,
+          "retrieval_recall": 0.34532374100719426
+        },
+        "lumber__hybrid__w512": {
+          "answer": "User Interface thought that replacing the kinetic batteries with standard batteries wouldn't significantly impact customer perception since the battery is internal and customers never mentioned anything about it. They also agreed with the idea of going to a regular battery.",
+          "rouge_f1": {
+            "rouge1": 0.3269230769230769,
+            "rouge2": 0.09803921568627451,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            1,
+            3
+          ],
+          "retrieval_precision": 0.1875,
+          "retrieval_recall": 0.34532374100719426
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "User Interface did not explicitly express a detailed opinion on the replacement of the kinetic batteries specifically in relation to cost calculation and budget issues. However, User Interface did mention that changing to regular batteries \"makes it costly\" when discussing potential changes to the design specification. Additionally, User Interface noted that customers never mentioned the battery and that it is internal and unseen by users. Therefore, while User Interface recognized the cost implications of such a change, there was no clear stance provided on whether the kinetic batteries should be replaced based on cost considerations alone.",
+          "rouge_f1": {
+            "rouge1": 0.4402515723270441,
+            "rouge2": 0.11464968152866244,
+            "rougeL": 0.25157232704402516
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            1,
+            3,
+            35,
+            26
+          ],
+          "retrieval_precision": 0.09375,
+          "retrieval_recall": 0.34532374100719426
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "User Interface expressed concern that replacing the kinetic batteries with standard batteries would make the product costlier. When discussing cost calculation and budget issues, User Interface suggested changing the battery to a regular one and stated, \"Make it costly,\" indicating a negative view towards the replacement due to potential increases in cost.",
+          "rouge_f1": {
+            "rouge1": 0.43478260869565216,
+            "rouge2": 0.1415929203539823,
+            "rougeL": 0.2782608695652174
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            1,
+            3,
+            35,
+            26,
+            19,
+            36,
+            24,
+            17
+          ],
+          "retrieval_precision": 0.08935546875,
+          "retrieval_recall": 0.658273381294964
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What's the conclusion of the incorporation of voice recognition when discussing cost calculation and budget issues?",
+      "reference_answer": "Industrial Designer implicated that if the kinetic batteries were replaced by the standard batteries, the voice recognition would have to be taken away as well. Project Manager, therefore, made a compromise that the team might provide the voice recognition in an upgraded version for the business class who expected high office specifications.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the team finds the idea of voice recognition appealing, they decide to exclude it from the initial product due to budget constraints. Instead, they suggest offering voice recognition as an additional feature for business-class customers, positioning it as a premium option that distinguishes their product from competitors.",
+          "rouge_f1": {
+            "rouge1": 0.3220338983050848,
+            "rouge2": 0.06896551724137931,
+            "rougeL": 0.23728813559322037
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            3,
+            13
+          ],
+          "retrieval_precision": 0.4609375,
+          "retrieval_recall": 0.48459958932238195
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the team initially considered it feasible due to its presumed low cost, they ultimately decided to exclude it from the basic model to stay within the budget constraints. The voice recognition feature will instead be offered as an option for higher-tier models or business-class customers.",
+          "rouge_f1": {
+            "rouge1": 0.32478632478632474,
+            "rouge2": 0.08695652173913043,
+            "rougeL": 0.23931623931623933
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            3,
+            13,
+            20,
+            29
+          ],
+          "retrieval_precision": 0.4755859375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the voice recognition feature was initially considered feasible due to its perceived low cost, the team ultimately decided to exclude it from the basic product to stay within the budget constraints. They agreed that voice recognition could be offered as an optional feature for a higher-tier product or as an upgrade for business-class customers. This decision allowed them to meet their budget requirements without compromising on other essential features.",
+          "rouge_f1": {
+            "rouge1": 0.3262411347517731,
+            "rouge2": 0.08633093525179855,
+            "rougeL": 0.22695035460992907
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            3,
+            13,
+            20,
+            29,
+            7,
+            24,
+            22,
+            23
+          ],
+          "retrieval_precision": 0.23779296875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the marketing team finds the voice recognition feature \"wonderful,\" they suggest offering it initially to business class customers due to its higher willingness to pay for such features. The team acknowledges that the current budget constraints may not fully accommodate the inclusion of voice recognition in the standard product, implying that it might be recommended as an optional feature or for a premium version if the budget allows for it. The final decision seems to lean towards excluding voice recognition from the base model to stay within the specified budget, with the possibility of recommending it as an additional feature based on customer feedback and willingness to pay more.",
+          "rouge_f1": {
+            "rouge1": 0.2905027932960894,
+            "rouge2": 0.10169491525423728,
+            "rougeL": 0.17877094972067037
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            29,
+            13
+          ],
+          "retrieval_precision": 0.4609375,
+          "retrieval_recall": 0.48459958932238195
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the team finds voice recognition desirable, they decide to initially offer it only to business class customers due to budget constraints. This decision allows them to stay within the specified budget while still providing an option for premium customers who value unique features.",
+          "rouge_f1": {
+            "rouge1": 0.30088495575221236,
+            "rouge2": 0.07207207207207207,
+            "rougeL": 0.21238938053097348
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            29,
+            13,
+            22,
+            20
+          ],
+          "retrieval_precision": 0.2783203125,
+          "retrieval_recall": 0.5852156057494866
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that voice recognition will be removed from the initial design to stay within the budget constraints. However, it will be offered as an optional feature for business-class customers or as an upgrade for future versions of the product. This decision ensures the project remains within its budget while still allowing for potential future enhancements based on customer demand and willingness to pay more for advanced features.",
+          "rouge_f1": {
+            "rouge1": 0.32592592592592595,
+            "rouge2": 0.060150375939849635,
+            "rougeL": 0.16296296296296298
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            29,
+            13,
+            22,
+            20,
+            0,
+            17,
+            7,
+            4
+          ],
+          "retrieval_precision": 0.23779296875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the team finds the voice recognition feature feasible and desirable, due to budget constraints, they decide to initially offer it only to business class customers. This approach allows them to maintain their product's distinctiveness and appeal to gadget enthusiasts, positioning it uniquely in the market. The full feature set including voice recognition will be recommended based on customer demand and budget availability.",
+          "rouge_f1": {
+            "rouge1": 0.2556390977443609,
+            "rouge2": 0.07633587786259542,
+            "rougeL": 0.1804511278195489
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            13,
+            29
+          ],
+          "retrieval_precision": 0.4609375,
+          "retrieval_recall": 0.48459958932238195
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the team initially considered voice recognition as a feature, they decided to exclude it due to cost constraints. The removal of voice recognition reduced the cost to €12.25, bringing them closer to their budget. The team agreed to offer voice recognition as an optional feature for a higher-tier product or business class customers, thereby maintaining the base product within budget constraints.",
+          "rouge_f1": {
+            "rouge1": 0.2857142857142857,
+            "rouge2": 0.06106870229007634,
+            "rougeL": 0.22556390977443608
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            13,
+            29,
+            20,
+            22
+          ],
+          "retrieval_precision": 0.4755859375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the team initially favored voice recognition, they decided to exclude it from the final product due to budget constraints. They concluded that removing voice recognition brought the total cost to within the budget, making the product feasible financially. The team agreed to recommend voice recognition as an optional feature for a higher-priced, business-class version of the product.",
+          "rouge_f1": {
+            "rouge1": 0.3255813953488372,
+            "rouge2": 0.06299212598425197,
+            "rougeL": 0.23255813953488372
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            13,
+            29,
+            20,
+            22,
+            3,
+            7,
+            24,
+            0
+          ],
+          "retrieval_precision": 0.23779296875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the team acknowledges the feasibility and desirability of voice recognition, they decide to consider offering it initially to business class customers due to budget constraints. The exact cost adjustments are discussed, with the team concluding they are close to their budget limit, suggesting a careful approach to adding features like voice recognition to stay within financial limits.",
+          "rouge_f1": {
+            "rouge1": 0.2519685039370079,
+            "rouge2": 0.064,
+            "rougeL": 0.18897637795275593
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            12
+          ],
+          "retrieval_precision": 0.296875,
+          "retrieval_recall": 0.31211498973305957
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the voice recognition system was deemed feasible and cost-effective, it was ultimately decided to exclude it from the final product to stay within the budget constraints. The team acknowledged that the voice recognition feature could be offered initially to business-class customers as a premium option if desired.",
+          "rouge_f1": {
+            "rouge1": 0.33613445378151263,
+            "rouge2": 0.11965811965811966,
+            "rougeL": 0.2184873949579832
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            12,
+            21,
+            2
+          ],
+          "retrieval_precision": 0.1484375,
+          "retrieval_recall": 0.31211498973305957
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that the voice recognition feature will be omitted from the initial product to stay within the budget constraints. However, it will be offered as an optional feature for a higher-tier product or business class customers. This decision was reached after determining that removing the voice recognition system would reduce costs sufficiently to meet the budget requirements.",
+          "rouge_f1": {
+            "rouge1": 0.336,
+            "rouge2": 0.09756097560975609,
+            "rougeL": 0.22399999999999998
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            12,
+            21,
+            2,
+            19,
+            18,
+            22,
+            29,
+            27
+          ],
+          "retrieval_precision": 0.23779296875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that it will be offered initially to business class customers due to its distinctive nature and appeal to gadget enthusiasts. The team is close to their budget, and after some discussion on exact figures, they confirm they are under the budget even with the inclusion of voice recognition. However, voice recognition is identified as an additional, bought-on extra that could be removed if necessary without impacting the core product functionality.",
+          "rouge_f1": {
+            "rouge1": 0.28776978417266186,
+            "rouge2": 0.058394160583941604,
+            "rougeL": 0.17266187050359713
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20
+          ],
+          "retrieval_precision": 0.296875,
+          "retrieval_recall": 0.31211498973305957
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the team acknowledges the feasibility and desirability of voice recognition, they decide to exclude it from the initial product offering due to budget constraints. The project manager suggests offering voice recognition initially to business class customers, implying that it will be reintroduced based on customer demand and willingness to pay a premium. This decision brings the overall costs within the budget.",
+          "rouge_f1": {
+            "rouge1": 0.30534351145038174,
+            "rouge2": 0.07751937984496124,
+            "rougeL": 0.1984732824427481
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            27,
+            12
+          ],
+          "retrieval_precision": 0.1484375,
+          "retrieval_recall": 0.31211498973305957
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that the team decided to remove voice recognition to stay within the budget constraints. They suggested offering voice recognition as an optional feature for business-class customers or as an upgraded version, thereby making the base product more affordable and fitting within the specified budget.",
+          "rouge_f1": {
+            "rouge1": 0.35398230088495575,
+            "rouge2": 0.12612612612612614,
+            "rougeL": 0.24778761061946905
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            20,
+            27,
+            12,
+            18,
+            19,
+            0,
+            4
+          ],
+          "retrieval_precision": 0.23779296875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that it will be offered initially to business class customers due to its distinctive nature and appeal to gadget enthusiasts. The team is close to their budget, and after some discussion on exact figures, they confirm they are under the budget even with the inclusion of voice recognition. However, voice recognition is identified as an additional, bought-on extra that could be removed if necessary without impacting the core product functionality.",
+          "rouge_f1": {
+            "rouge1": 0.28776978417266186,
+            "rouge2": 0.058394160583941604,
+            "rougeL": 0.17266187050359713
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            21
+          ],
+          "retrieval_precision": 0.296875,
+          "retrieval_recall": 0.31211498973305957
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the voice recognition feature is seen as wonderful and distinctive, it is considered an optional extra for business-class customers due to budget constraints. Removing it reduces the cost to €12.25, bringing the project within the budget. Therefore, the voice recognition feature is deemed feasible but not essential for all customers based on cost considerations.",
+          "rouge_f1": {
+            "rouge1": 0.30158730158730157,
+            "rouge2": 0.08064516129032258,
+            "rougeL": 0.19047619047619047
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            21,
+            12,
+            18
+          ],
+          "retrieval_precision": 0.2255859375,
+          "retrieval_recall": 0.47433264887063653
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that the team decided to remove voice recognition to stay within the budget constraints. They considered offering voice recognition as an optional feature for a higher-priced business-class model or an upgraded version. This adjustment allowed them to meet their budget target of €12.25 per unit, staying under the specified budget limit.",
+          "rouge_f1": {
+            "rouge1": 0.32786885245901637,
+            "rouge2": 0.11666666666666668,
+            "rougeL": 0.22950819672131148
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            21,
+            12,
+            18,
+            19,
+            27,
+            2,
+            0
+          ],
+          "retrieval_precision": 0.23779296875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that voice recognition will not be included in the initial product offering due to budget constraints. However, it will be offered as an upgrade or \"business class\" feature later, if desired by the company or customers, to set the product apart from competitors and appeal to tech-savvy business users. The team agreed to stay within the specified budget and will recommend voice recognition as an additional feature based on their findings and consensus.",
+          "rouge_f1": {
+            "rouge1": 0.30985915492957744,
+            "rouge2": 0.08571428571428572,
+            "rougeL": 0.18309859154929575
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            25
+          ],
+          "retrieval_precision": 0.58203125,
+          "retrieval_recall": 0.6119096509240246
+        },
+        "lumber__dense__w1024": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the team initially considered voice recognition feasible and beneficial, they decided to exclude it from the initial product to stay within the budget constraints. They plan to offer voice recognition as an upgrade or in a business-class version later.",
+          "rouge_f1": {
+            "rouge1": 0.3636363636363637,
+            "rouge2": 0.0925925925925926,
+            "rougeL": 0.2545454545454545
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            25,
+            27,
+            15
+          ],
+          "retrieval_precision": 0.3447265625,
+          "retrieval_recall": 0.7248459958932238
+        },
+        "lumber__dense__w2048": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that the voice recognition feature, while desirable, was deemed too costly and was removed to stay within the budget constraints. The team decided to offer voice recognition as an optional feature for a higher-end or business-class model. This adjustment allowed them to meet the budget requirements while still considering the potential value of voice recognition for future product iterations.",
+          "rouge_f1": {
+            "rouge1": 0.29457364341085274,
+            "rouge2": 0.09448818897637795,
+            "rougeL": 0.21705426356589147
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            25,
+            27,
+            15,
+            29,
+            4,
+            35,
+            24,
+            36
+          ],
+          "retrieval_precision": 0.23779296875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while voice recognition is seen as a desirable feature (\"it sounds wonderful\"), it is initially proposed for business class customers due to cost constraints. The team aims to stay within the budget, acknowledging that including voice recognition would exceed the current budget. However, they suggest recommending an increased budget to accommodate this feature, which would set the product apart from competitors. The final decision hinges on whether the recommendation for an increased budget will cover additional costs, including overheads.",
+          "rouge_f1": {
+            "rouge1": 0.28378378378378377,
+            "rouge2": 0.06849315068493152,
+            "rougeL": 0.17567567567567569
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            35
+          ],
+          "retrieval_precision": 0.4921875,
+          "retrieval_recall": 0.5174537987679672
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the team initially considered incorporating voice recognition, they ultimately decided to exclude it from the final design due to budget constraints. However, they recommended offering voice recognition as an option initially to business-class customers if the budget allows, setting it apart from competitors and appealing to tech-savvy customers. This decision ensured they stayed within their budget of twelve point two five (likely referring to a monetary value per unit), though discussions indicated some flexibility around minor adjustments.",
+          "rouge_f1": {
+            "rouge1": 0.25503355704697983,
+            "rouge2": 0.06802721088435375,
+            "rougeL": 0.174496644295302
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            35,
+            1,
+            15
+          ],
+          "retrieval_precision": 0.24609375,
+          "retrieval_recall": 0.5174537987679672
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the team initially considered incorporating voice recognition, they ultimately decided to remove it due to cost concerns. They determined that removing voice recognition would bring them closer to their budget, and they recommended offering it initially to business-class customers if the budget allows, positioning it as a premium feature to set their product apart from competitors.",
+          "rouge_f1": {
+            "rouge1": 0.28346456692913385,
+            "rouge2": 0.09600000000000002,
+            "rougeL": 0.17322834645669294
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            35,
+            1,
+            15,
+            24,
+            6
+          ],
+          "retrieval_precision": 0.1884765625,
+          "retrieval_recall": 0.7926078028747433
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that voice recognition will initially be offered to business class customers. The team acknowledges its value but decides to exclude it from the initial design to stay within the budget, suggesting they can recommend it later if the budget allows, highlighting its potential to set the product apart from competitors.",
+          "rouge_f1": {
+            "rouge1": 0.3050847457627119,
+            "rouge2": 0.08620689655172414,
+            "rougeL": 0.15254237288135594
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            15
+          ],
+          "retrieval_precision": 0.4921875,
+          "retrieval_recall": 0.5174537987679672
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the team finds the voice recognition feature desirable and innovative, it is decided to exclude it from the initial design due to budget constraints. The team suggests offering voice recognition as an additional feature for business-class customers later, implying that the current budget does not accommodate it. This adjustment allows them to stay within their financial limits while still considering the possibility of integrating advanced features in future versions or premium offerings.",
+          "rouge_f1": {
+            "rouge1": 0.3076923076923077,
+            "rouge2": 0.0851063829787234,
+            "rougeL": 0.19580419580419584
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            15,
+            35
+          ],
+          "retrieval_precision": 0.24609375,
+          "retrieval_recall": 0.5174537987679672
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The conclusion regarding the incorporation of voice recognition when discussing cost calculation and budget issues is that while the team initially considered incorporating voice recognition due to its perceived low cost, they ultimately decided to exclude it from the final product to stay within the budget constraints. The team agreed that voice recognition could be offered as an upgrade for business-class customers or future versions of the product.",
+          "rouge_f1": {
+            "rouge1": 0.36363636363636365,
+            "rouge2": 0.08403361344537814,
+            "rougeL": 0.24793388429752064
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            26,
+            15,
+            35,
+            25,
+            24,
+            1,
+            27,
+            4,
+            29,
+            8
+          ],
+          "retrieval_precision": 0.23779296875,
+          "retrieval_recall": 1.0
+        }
+      }
+    }
+  ]
+}

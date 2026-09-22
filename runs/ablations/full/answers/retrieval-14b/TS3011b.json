@@ -1,0 +1,3642 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "TS3011b.json",
+        "sha256": "cdafb0032b35be25cf414d1adc3c5c96f7489faeb2980108f0823808d5e3b966"
+      },
+      "retrieval": {
+        "file": "TS3011b.json",
+        "sha256": "8932bbac834bf9e24f697deafee9495ffa54c435f173b19a75b259c52e802dd8"
+      },
+      "segmentation": {
+        "file": "TS3011b.json",
+        "sha256": "3afe172574e236975d5c22db74d98049824a9b94b3178571a7bb98a602487144"
+      }
+    },
+    "input_hash": "18aa637c89047294f9e791460d6a3237cd3c973f7330f319cf935a29c9e549ab",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "4f12cc0e99120a018aaa5e21d313384fe64ba58d475b5b6f65457beee282cb3e",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "TS3011b",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 149,
+  "cache_hits": 13,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about user interface design of remote control.",
+      "reference_answer": "User Interface introduced a remote control easy to use and a multi-functional one and preferred the former as it was more user-friendly. Industrial Designer agreed and proposed that a stick or round button for volume control and channel selection could be used and also suggested that the ten digits could be substituted by voice recognition.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The discussion focused on designing a user-friendly remote control that balances functionality and ease of use. The User Interface suggested two types of remote controls: one with multiple functions but potentially less tactile satisfaction, and another with fewer options but better button feel. They preferred the latter for its user-friendliness and trendiness, especially targeting users under 40. However, they acknowledged that incorporating multi-functionality could make the design more complex and expensive. The team decided to prioritize sound feedback over LED lighting for visibility issues. The Project Manager noted that while extra features are available, they are not frequently used, suggesting a balanced approach might be necessary.",
+          "rouge_f1": {
+            "rouge1": 0.3734939759036145,
+            "rouge2": 0.06097560975609756,
+            "rougeL": 0.1927710843373494
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            4
+          ],
+          "retrieval_precision": 0.65234375,
+          "retrieval_recall": 0.12044716913090515
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The discussion focused on designing a user-friendly remote control that primarily sends messages to a TV set via infrared light pulses. Two types of remote controls were considered: a multi-function remote with many possibilities but potentially less user-friendly, and an ease-of-use remote with fewer options but better tactile feedback. The preference was for the ease-of-use remote due to its user-friendliness and potential trendiness. However, the team considered incorporating multi-functionality while removing unnecessary buttons like teletext. There was also a suggestion to include a base station for remote location functionality, though this was noted as potentially costly. The group agreed on the importance of distinguishing the product in the market through unique features, possibly prioritizing sound over LED lighting for visibility issues. The final decision on design choice between an easy and advanced remote control was deferred based on Ruud's insight that users rarely utilize all extra features.",
+          "rouge_f1": {
+            "rouge1": 0.2897196261682243,
+            "rouge2": 0.03773584905660377,
+            "rougeL": 0.1588785046728972
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            4,
+            13,
+            5
+          ],
+          "retrieval_precision": 0.439453125,
+          "retrieval_recall": 0.16227912008654885
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The discussion about the user interface design of the remote control focused on balancing functionality and ease of use. User Interface suggested two types of remote controls: a multi-function remote with many possibilities but potentially lacking in tactile feedback, and an ease-of-use remote with fewer options but better button feel. Given the target audience being under 40 years old, User Interface leaned towards the ease-of-use remote but acknowledged that a combination might be necessary. The team agreed that the remote should primarily focus on basic television functions, excluding teletext. They also considered innovative features like a \"find my remote\" function, which would involve additional costs and complexity. The team decided to explore this further, with Industrial Designer tasked to investigate its feasibility. Additionally, there was consensus on including numeric digits for channel selection despite some debate over their necessity.",
+          "rouge_f1": {
+            "rouge1": 0.33830845771144274,
+            "rouge2": 0.08040201005025126,
+            "rougeL": 0.16915422885572137
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            4,
+            13,
+            5,
+            11,
+            1,
+            21,
+            17
+          ],
+          "retrieval_precision": 0.40869140625,
+          "retrieval_recall": 0.3018391633609809
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The discussion focused on designing a user-friendly remote control that balances functionality and ease of use. The User Interface suggested two types of remote controls: one with multiple functions but potentially less tactile satisfaction, and another with fewer options but better button feel. They preferred the latter for its user-friendliness and trendiness, especially targeting users under 40. However, they acknowledged that incorporating multi-functionality could make the design more complex and expensive. The team decided to prioritize sound feedback over LED lighting for visibility issues. The Project Manager noted that while extra features are available, they are not frequently used, suggesting a balanced approach might be necessary.",
+          "rouge_f1": {
+            "rouge1": 0.3734939759036145,
+            "rouge2": 0.06097560975609756,
+            "rougeL": 0.1927710843373494
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            4
+          ],
+          "retrieval_precision": 0.65234375,
+          "retrieval_recall": 0.12044716913090515
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The discussion about the user interface design of the remote control focused on balancing functionality and user-friendliness. The User Interface suggested two types of remote controls: a multi-function remote with many possibilities but potentially lacking tactile feedback, and an ease-of-use remote with fewer options but better button feel. The preference was inclined towards the ease-of-use remote due to its user-friendliness and trendiness, especially considering the target audience under 40 years old. Additionally, the team decided against including teletext buttons and considered adding unique features such as sound over LED functions and speech recognition capabilities, acknowledging potential increases in complexity and cost.",
+          "rouge_f1": {
+            "rouge1": 0.32727272727272727,
+            "rouge2": 0.06134969325153374,
+            "rougeL": 0.2181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            4,
+            1,
+            23
+          ],
+          "retrieval_precision": 0.53125,
+          "retrieval_recall": 0.19617742517129463
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The discussion about the user interface design of the remote control focused on balancing functionality and ease of use. The User Interface suggested two types of remote controls: a multi-function remote with many possibilities but potentially lacking in tactile feedback, and an ease-of-use remote with fewer options but better button feel. The preference was inclined towards the ease-of-use remote due to its user-friendliness and trendiness, especially considering the target audience of people under 40 years old. Additionally, the team considered incorporating a \"find the remote\" feature, possibly through sound technology rather than visual indicators like LEDs, to distinguish their product in the market. However, concerns were raised about the complexity and cost implications of adding such features. The team also briefly explored the idea of integrating speech recognition, though this was deemed more suitable for younger users and potentially costly.",
+          "rouge_f1": {
+            "rouge1": 0.29556650246305416,
+            "rouge2": 0.04975124378109453,
+            "rougeL": 0.18719211822660098
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            4,
+            1,
+            23,
+            13,
+            24,
+            12,
+            11
+          ],
+          "retrieval_precision": 0.390625,
+          "retrieval_recall": 0.288496213487198
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The discussion focused on designing a user-friendly remote control that balances functionality and ease of use. The User Interface suggested two types of remote controls: one with multiple functions but potentially less tactile satisfaction, and another with fewer options but better button feel. They preferred the latter for its user-friendliness and trendiness, especially targeting users under 40. However, they acknowledged that incorporating multi-functionality could make the design more complex and expensive. The team decided to prioritize sound feedback over LED lighting for visibility issues. The Project Manager noted that while extra features are available, they are not frequently used, suggesting a balanced approach might be necessary.",
+          "rouge_f1": {
+            "rouge1": 0.3734939759036145,
+            "rouge2": 0.06097560975609756,
+            "rougeL": 0.1927710843373494
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            4
+          ],
+          "retrieval_precision": 0.65234375,
+          "retrieval_recall": 0.12044716913090515
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The discussion about the user interface design of the remote control focused on balancing functionality and user-friendliness. The User Interface suggested two types of remote controls: a multi-function remote with many possibilities but potentially lacking tactile feedback, and an ease-of-use remote with fewer options but better tactile response. The preference was inclined towards the ease-of-use remote due to its user-friendliness and potential trendiness. However, the team considered incorporating multi-functionality for users under 40 years old. Additionally, there was a suggestion to include a base station for the remote control to report its location, though this was noted to increase complexity and cost. The team also discussed the possibility of adding a sound function over LED indicators for visibility issues. The final decision on the design choice between an easy-to-use and advanced remote control was deferred based on Ruud's insights and marketing data.",
+          "rouge_f1": {
+            "rouge1": 0.2761904761904762,
+            "rouge2": 0.07692307692307693,
+            "rougeL": 0.1904761904761905
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            4,
+            13,
+            1
+          ],
+          "retrieval_precision": 0.439453125,
+          "retrieval_recall": 0.16227912008654885
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The discussion about user interface design of the remote control focused on deciding between an easy-to-use remote control and a multi-functional one. User Interface preferred the easy-to-use remote control due to its user-friendliness and trendiness, suggesting it aligns better with the target audience under 40 years old. However, they agreed that the remote should still have essential functions like changing channels and adjusting volume. There was also consideration given to incorporating a \"find remote\" feature, possibly through sound rather than light, to help locate misplaced remotes. Additionally, the team debated including speech recognition as an alternative or supplementary feature, though concerns about cost and preference among older users were raised. The final decision hinged on whether to include the ten-digit number pad or opt for voice recognition capabilities.",
+          "rouge_f1": {
+            "rouge1": 0.40625,
+            "rouge2": 0.16842105263157894,
+            "rougeL": 0.27083333333333337
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            4,
+            13,
+            1,
+            11,
+            23,
+            21,
+            9
+          ],
+          "retrieval_precision": 0.4609375,
+          "retrieval_recall": 0.3404255319148936
+        },
+        "word_packed__dense__w512": {
+          "answer": "User Interface discussed two types of remote controls: a multi-function remote with many possibilities but lacking tactile feedback, and an ease-of-use remote with fewer options but better tactile response. They preferred the ease-of-use remote due to its user-friendliness and trendiness, especially for the target audience under 40 years old. However, they suggested combining features from both designs while excluding teletext buttons, aiming for a balance between functionality and user experience. The team agreed to finalize the functions and target audience during the meeting, focusing on essential features like volume control, program selection, and digit keys.",
+          "rouge_f1": {
+            "rouge1": 0.379746835443038,
+            "rouge2": 0.08974358974358974,
+            "rougeL": 0.25316455696202533
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            18
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.18463757663180672
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The discussion about the user interface design of the remote control focused on balancing functionality and ease of use, targeting a younger demographic. User Interface suggested a preference for an \"easy-to-use\" remote control due to its user-friendliness and potential trendiness among younger users. However, Marketing pointed out that young people prefer new features, suggesting a possible inclusion of multi-functionality. There was consideration for incorporating innovative functions while maintaining a simple, trendy design with minimal buttons and potentially including lighting effects and sounds. The team agreed to remove teletext buttons and decided to focus on essential functions such as volume control, channel selection, and digit input. The exact method for reporting the remote's state to the user remained undecided, pending further research.",
+          "rouge_f1": {
+            "rouge1": 0.39344262295081966,
+            "rouge2": 0.08839779005524862,
+            "rougeL": 0.22950819672131145
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            18,
+            15,
+            2
+          ],
+          "retrieval_precision": 0.8544921875,
+          "retrieval_recall": 0.3155427335016228
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The discussion about the user interface design of the remote control focused on creating a product appealing to customers under 40 years old. User Interface suggested a balance between a multi-function and an easy-to-use remote control, leaning towards the latter due to its user-friendliness and trendiness. They proposed removing teletext buttons and reducing the number of buttons to enhance usability. Industrial Designer emphasized the simplicity of the technical design, involving a chip, buttons, and an infrared diode. The team considered adding unique features like sound feedback instead of LED lights for locating the remote. Marketing highlighted the importance of incorporating innovative functions to attract younger consumers. The group agreed on designing a remote with fewer buttons, a trendy appearance, and unique features, aiming to make it appear simple and user-friendly despite potentially having many functions.",
+          "rouge_f1": {
+            "rouge1": 0.3045685279187817,
+            "rouge2": 0.0923076923076923,
+            "rougeL": 0.1928934010152284
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            18,
+            15,
+            2,
+            13,
+            12,
+            4,
+            5
+          ],
+          "retrieval_precision": 0.49755859375,
+          "retrieval_recall": 0.3674720519293184
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The discussion about the user interface design of the remote control focused on balancing functionality and ease-of-use, particularly targeting customers under 40 years old. The User Interface suggested a preference for an \"ease-of-use\" remote control due to its user-friendliness and potential trendiness among younger users. However, they also proposed that a multi-function remote could be integrated into the design, suggesting a combination approach might be necessary. The key points included removing teletext buttons to reduce the number of buttons by about eight, emphasizing a design that prioritizes user-friendliness while still offering some advanced features.",
+          "rouge_f1": {
+            "rouge1": 0.40506329113924044,
+            "rouge2": 0.10256410256410256,
+            "rougeL": 0.22784810126582278
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2
+          ],
+          "retrieval_precision": 0.708984375,
+          "retrieval_recall": 0.13090515686981608
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The discussion about the user interface design of the remote control focused on balancing functionality and ease of use for a younger target audience (under 40 years old). User Interface suggested two types of remote controls: a multi-function remote with many possibilities but potentially lacking in tactile satisfaction, and an ease-of-use remote with fewer options but better button feel. They favored the latter due to its user-friendliness and trendiness among younger users. However, they proposed combining both designs, removing teletext buttons to reduce complexity and cost. The team also considered adding unique features like sound feedback instead of LED lights and explored the possibility of incorporating speech recognition technology, though this was seen as potentially expensive. The overall design approach emphasized simplicity and user-friendly interfaces while maintaining a distinctive corporate image.",
+          "rouge_f1": {
+            "rouge1": 0.3212435233160622,
+            "rouge2": 0.05235602094240837,
+            "rougeL": 0.19689119170984457
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            13,
+            21
+          ],
+          "retrieval_precision": 0.697265625,
+          "retrieval_recall": 0.2574828705373242
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The discussion about the user interface design of the remote control focused on creating a simpler, more user-friendly design targeted at users under 40 years old. Key points included:\n\n- Eliminating teletext functionality due to its outdated nature.\n- Focusing on essential functions such as channel and volume control.\n- Considering the addition of a feature to help locate lost remotes, possibly through sound signals rather than LED lights.\n- Prioritizing a sleek, modern design over numerous features to appeal to the target demographic.\n- Exploring the potential integration of speech recognition technology, though acknowledging it may be costly and complex to implement.",
+          "rouge_f1": {
+            "rouge1": 0.3076923076923077,
+            "rouge2": 0.06493506493506493,
+            "rougeL": 0.17948717948717946
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            13,
+            21,
+            1,
+            4,
+            14,
+            8
+          ],
+          "retrieval_precision": 0.49755859375,
+          "retrieval_recall": 0.3674720519293184
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The discussion about the user interface design of the remote control focused on balancing functionality and ease-of-use, particularly targeting customers under 40 years old. The User Interface suggested a preference for an \"ease-of-use\" remote control due to its user-friendliness and potential trendiness among younger users. However, they also proposed that a multi-function remote could be integrated into the design, suggesting a combination approach might be necessary. The key points included removing teletext buttons to reduce the number of buttons by about eight, emphasizing a design that prioritizes user-friendliness while still offering some advanced features.",
+          "rouge_f1": {
+            "rouge1": 0.40506329113924044,
+            "rouge2": 0.10256410256410256,
+            "rougeL": 0.22784810126582278
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2
+          ],
+          "retrieval_precision": 0.708984375,
+          "retrieval_recall": 0.13090515686981608
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The discussion about the user interface design of the remote control focused on balancing functionality and user-friendliness, particularly targeting a younger demographic under 40 years old. User Interface suggested two types of remote controls: a multifunctional one with many possibilities but potentially lacking in tactile satisfaction, and an ease-of-use remote control with fewer options but better button feel. They preferred the latter for its user-friendliness and trendiness among younger users. However, they proposed combining both designs, removing teletext buttons to reduce complexity and cost. The team considered adding unique features like sound feedback instead of LED lights for better visibility, especially when the remote is covered. The final decision leaned towards designing an easy-to-use remote control based on the observation that users rarely utilize all extra features.",
+          "rouge_f1": {
+            "rouge1": 0.29473684210526313,
+            "rouge2": 0.06382978723404255,
+            "rougeL": 0.18947368421052632
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            13,
+            4
+          ],
+          "retrieval_precision": 0.4951171875,
+          "retrieval_recall": 0.18283447529751173
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The discussion about the user interface design of the remote control focused on creating a product that appeals to users under 40 years old. Key points included:\n\n- The remote control should primarily serve television functions without supporting teletext.\n- There was consideration between designing a simple, user-friendly remote versus a multifunctional one.\n- The team agreed on incorporating unique features like sound feedback over LED lighting for visibility.\n- Suggestions were made for innovative functions such as speech recognition, though concerns about cost and complexity were raised.\n- Design elements like shape, size, and color were emphasized to ensure a trendy and recognizable corporate image.\n- The idea of a base station for locating the remote was discussed but deemed potentially too costly.",
+          "rouge_f1": {
+            "rouge1": 0.29545454545454547,
+            "rouge2": 0.03448275862068966,
+            "rougeL": 0.1590909090909091
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            13,
+            4,
+            21,
+            15,
+            12,
+            1
+          ],
+          "retrieval_precision": 0.49755859375,
+          "retrieval_recall": 0.3674720519293184
+        },
+        "lumber__dense__w512": {
+          "answer": "The discussion centered around designing a user-friendly remote control. The User Interface suggested two types of remote controls: one with multiple functions but lacking tactile feedback, and another with fewer functions but better tactile feedback and ease of use. They preferred the latter for its user-friendliness and trendiness, especially for users under 40. However, they also proposed combining features from both designs while excluding teletext buttons. The Industrial Designer emphasized the importance of having a central location for the remote control, suggesting a base station next to the TV, though they noted this could be costly. The Project Manager agreed on the concept, pending cost feasibility.",
+          "rouge_f1": {
+            "rouge1": 0.36363636363636365,
+            "rouge2": 0.07361963190184048,
+            "rougeL": 0.24242424242424246
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15
+          ],
+          "retrieval_precision": 0.58984375,
+          "retrieval_recall": 0.10890732059141724
+        },
+        "lumber__dense__w1024": {
+          "answer": "The discussion about the user interface design of the remote control focused on balancing functionality and ease of use. The User Interface suggested two types of remote controls: a multi-function one with many possibilities but lacking tactile feedback, and an easy-to-use remote with fewer options but better tactile response. They preferred the latter due to its user-friendliness and trendiness, though acknowledged that a multi-function remote could be integrated into the design. The team also considered adding a base station for the remote control, which would report its location, but noted this would increase complexity and cost. Additionally, they debated the inclusion of sound feedback over LED lighting, deciding sound might be preferable as it remains functional even when the remote is covered. The group agreed to focus on essential features like channel selection while considering the addition of unique features like sound feedback to distinguish their product in the market.",
+          "rouge_f1": {
+            "rouge1": 0.3490566037735849,
+            "rouge2": 0.1238095238095238,
+            "rougeL": 0.21698113207547168
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15,
+            16,
+            20
+          ],
+          "retrieval_precision": 0.5849609375,
+          "retrieval_recall": 0.2160115398485395
+        },
+        "lumber__dense__w2048": {
+          "answer": "The discussion about the user interface design of the remote control focused on balancing functionality and ease of use. User Interface suggested a preference for an easy-to-use remote control due to its user-friendliness and potential trendiness, especially appealing to users under 40. However, the team considered incorporating multi-functionality while maintaining simplicity. They discussed the inclusion of a \"find remote\" feature, which would involve a base station near the TV, though this was deemed costly. The team agreed on the importance of user-friendliness and decided against including teletext buttons. They explored the idea of combining volume control and channel selection into a single round button for simplicity and attractiveness, aiming to balance advanced features with usability.",
+          "rouge_f1": {
+            "rouge1": 0.38418079096045193,
+            "rouge2": 0.13714285714285712,
+            "rougeL": 0.2485875706214689
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15,
+            16,
+            20,
+            13,
+            7,
+            5,
+            21
+          ],
+          "retrieval_precision": 0.58056640625,
+          "retrieval_recall": 0.428777497295348
+        },
+        "lumber__bm25__w512": {
+          "answer": "The discussion centered on designing a user-friendly remote control for a television set. The User Interface suggested two types of remote controls: a multi-function remote with many possibilities but lacking tactile feedback, and an ease-of-use remote with fewer options but better tactile feedback. They preferred the ease-of-use remote due to its user-friendliness and trendiness, especially for users under 40 years old. However, they also proposed combining functionalities while removing less frequently used buttons like teletext. The Project Manager agreed, noting that users rarely utilize all extra features. Marketing confirmed that channel selection is the most important function, followed by other less-used options like teletext, which would not be included in the design.",
+          "rouge_f1": {
+            "rouge1": 0.37288135593220345,
+            "rouge2": 0.07999999999999999,
+            "rougeL": 0.21468926553672316
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            16,
+            15
+          ],
+          "retrieval_precision": 0.86328125,
+          "retrieval_recall": 0.15939415795167688
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The discussion about the user interface design of the remote control focused on creating a balance between functionality and ease of use. The team decided against supporting teletext due to its perceived obsolescence. User Interface suggested two types of remote controls: a multi-function one with many possibilities and an ease-of-use remote with fewer options but better tactile feedback. They favored the latter for its user-friendliness and trendiness, especially for users under 40. However, they acknowledged that a combination approach might be necessary, excluding teletext buttons. There was consideration for adding a base station for remote location but concerns about cost and complexity were raised. Additionally, the team discussed the preference for sound over LED lighting as a unique feature, emphasizing its practicality over visibility issues. The final decision leaned towards designing an easy-to-use remote control, aligning with user behavior data indicating infrequent use of extra features.",
+          "rouge_f1": {
+            "rouge1": 0.3062200956937799,
+            "rouge2": 0.08695652173913043,
+            "rougeL": 0.19138755980861244
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            16,
+            15,
+            3
+          ],
+          "retrieval_precision": 0.431640625,
+          "retrieval_recall": 0.15939415795167688
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The discussion about the user interface design of the remote control focused on creating a product that appeals to users under 40 years old. Key points included:\n\n- Eliminating teletext functionality.\n- Considering a balance between multi-functionality and ease-of-use, with a preference for ease-of-use.\n- Incorporating a \"find my remote\" feature using sound rather than LED lights due to its effectiveness and uniqueness.\n- Exploring the addition of speech recognition for easier channel changes and finding the remote, though noting potential cost implications.\n- Deciding between retaining ten-digit functionality or opting for voice recognition, leaning towards voice recognition for its advantages in implementing the \"find my remote\" feature despite concerns about battery life.",
+          "rouge_f1": {
+            "rouge1": 0.32748538011695905,
+            "rouge2": 0.0591715976331361,
+            "rougeL": 0.2222222222222222
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            16,
+            15,
+            3,
+            26,
+            13,
+            28,
+            9,
+            14
+          ],
+          "retrieval_precision": 0.36279296875,
+          "retrieval_recall": 0.26794085827623515
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The discussion centered around designing a user-friendly remote control. The User Interface suggested two types of remote controls: one with multiple functions but lacking tactile feedback, and another with fewer functions but better tactile feedback and ease of use. They preferred the latter for its user-friendliness and trendiness, especially for users under 40. However, they also proposed combining features from both designs while excluding teletext buttons. The Industrial Designer emphasized the importance of having a central location for the remote control, suggesting a base station next to the TV, though they noted this could be costly. The Project Manager agreed on the concept, pending cost feasibility.",
+          "rouge_f1": {
+            "rouge1": 0.36363636363636365,
+            "rouge2": 0.07361963190184048,
+            "rougeL": 0.24242424242424246
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15
+          ],
+          "retrieval_precision": 0.58984375,
+          "retrieval_recall": 0.10890732059141724
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The discussion about the user interface design of the remote control focused on balancing functionality and ease of use. The User Interface suggested two types of remote controls: a multi-function one with many possibilities but lacking tactile feedback, and an easy-to-use remote with fewer options but better tactile feedback. They preferred the easy-to-use remote due to its user-friendliness and trendiness, especially considering the target audience under 40 years old. However, they acknowledged that multi-functionality could still be integrated into the design. There was also consideration for incorporating a \"find remote\" feature, potentially through sound rather than light, to help locate misplaced remotes. This feature was seen as a unique selling point but would increase complexity and cost. The team agreed to explore this further while prioritizing essential functions based on usage data, excluding less-used options like teletext.",
+          "rouge_f1": {
+            "rouge1": 0.3366336633663366,
+            "rouge2": 0.09,
+            "rougeL": 0.198019801980198
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15,
+            16,
+            13
+          ],
+          "retrieval_precision": 0.431640625,
+          "retrieval_recall": 0.15939415795167688
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The discussion about the user interface design of the remote control focused on creating a product that appeals to users under 40 years old while maintaining user-friendliness and incorporating the company's recognizable corporate image. User Interface suggested a balance between a multi-function and an easy-to-use remote control, favoring the latter for its trendiness and user-friendliness. They proposed removing teletext buttons and reducing the number of buttons to enhance usability. Additionally, the team considered implementing a feature where the remote control could locate itself through sound rather than light, as it was deemed more practical. The design included a round button for directional inputs instead of a stick to ensure durability and ease of use. This approach aimed to create a unique and appealing product for the target market.",
+          "rouge_f1": {
+            "rouge1": 0.3769633507853403,
+            "rouge2": 0.12698412698412695,
+            "rougeL": 0.2513089005235602
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15,
+            16,
+            13,
+            3,
+            5,
+            20,
+            7
+          ],
+          "retrieval_precision": 0.50634765625,
+          "retrieval_recall": 0.3739632167327804
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did Industrial Designer think about the ten digits when discussing interface design of remote control?",
+      "reference_answer": "Industrial Designer thought the ten buttons looked a bit dull so speech recognition could be added to solve this problem. But he was concerned that power saving could be difficult when implementing speech recognition.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "Industrial Designer was unsure about including the ten digits on the remote control. They questioned its necessity, suggesting it could complicate the design and doubted its relevance given the availability of other features like channel buttons. However, they acknowledged that for those with many channels (e.g., satellite decoders), having the ten digits might be desirable. Ultimately, they agreed that the inclusion of ten digits should be reconsidered based on the target audience and potential alternatives like voice recognition.",
+          "rouge_f1": {
+            "rouge1": 0.19469026548672566,
+            "rouge2": 0.036036036036036036,
+            "rougeL": 0.1592920353982301
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            23,
+            5
+          ],
+          "retrieval_precision": 0.80078125,
+          "retrieval_recall": 0.5352480417754569
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The Industrial Designer was unsure about including the ten digits on the remote control. They questioned its necessity, suggesting it could complicate the design and was not always relevant, especially considering the availability of other features like voice recognition for channel selection. They acknowledged that while some users, particularly those with many channels (e.g., satellite decoders), might prefer having the ten digits, they were not convinced it was essential for most users.",
+          "rouge_f1": {
+            "rouge1": 0.14953271028037382,
+            "rouge2": 0.03809523809523809,
+            "rougeL": 0.1308411214953271
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            23,
+            5,
+            14,
+            3
+          ],
+          "retrieval_precision": 0.400390625,
+          "retrieval_recall": 0.5352480417754569
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "Industrial Designer expressed uncertainty about the necessity of including the ten digits on the remote control. They questioned its relevance, suggesting that for regular TV users, fewer buttons might suffice. However, they acknowledged that excluding the ten digits could be a drawback, especially for those who watch a wide range of channels or have satellite decoders. Ultimately, they agreed that including the ten digits would cater to a broader audience and maintain user-friendliness, particularly for those watching multiple channels.",
+          "rouge_f1": {
+            "rouge1": 0.17543859649122806,
+            "rouge2": 0.05357142857142857,
+            "rougeL": 0.14035087719298245
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            23,
+            5,
+            14,
+            3,
+            13,
+            9,
+            20,
+            22
+          ],
+          "retrieval_precision": 0.26025390625,
+          "retrieval_recall": 0.695822454308094
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "Industrial Designer was unsure about including the ten digits, finding it complicated and questioning its relevance. They acknowledged that some users might need it, particularly those with many channels, but ultimately seemed to lean towards managing without them, possibly focusing more on voice recognition as an alternative solution, albeit noting it could be costly.",
+          "rouge_f1": {
+            "rouge1": 0.25,
+            "rouge2": 0.06976744186046512,
+            "rougeL": 0.1590909090909091
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            23,
+            4
+          ],
+          "retrieval_precision": 0.80078125,
+          "retrieval_recall": 0.5352480417754569
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "Industrial Designer was unsure about including the ten digits in the remote control design. They expressed doubt about the necessity of having all ten digits, suggesting it could complicate the design and possibly reduce the product's appeal, especially if users do not frequently utilize all the extra features.",
+          "rouge_f1": {
+            "rouge1": 0.14457831325301204,
+            "rouge2": 0.04938271604938271,
+            "rougeL": 0.12048192771084339
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            23,
+            4,
+            14,
+            20
+          ],
+          "retrieval_precision": 0.400390625,
+          "retrieval_recall": 0.5352480417754569
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "Industrial Designer thought that including the ten digits on the remote control was unnecessary and could complicate the design, especially if the target audience primarily watches a limited number of channels. However, they acknowledged that excluding the ten digits might be seen as a drawback by potential buyers, particularly those who watch a wide range of channels. They suggested that if the ten digits were included, the design should be innovative to avoid making the remote look dull.",
+          "rouge_f1": {
+            "rouge1": 0.25,
+            "rouge2": 0.05454545454545455,
+            "rougeL": 0.16071428571428573
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            23,
+            4,
+            14,
+            20,
+            22,
+            3,
+            9,
+            24
+          ],
+          "retrieval_precision": 0.3740234375,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Industrial Designer was unsure about including the ten digits on the remote control. They questioned its necessity, suggesting it could be complicated and not very relevant, especially considering alternatives like speech recognition for channel changes. However, they acknowledged that for those with many channels (e.g., satellite decoders), having the ten digits might be desirable.",
+          "rouge_f1": {
+            "rouge1": 0.24719101123595508,
+            "rouge2": 0.09195402298850573,
+            "rougeL": 0.17977528089887643
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            23,
+            14
+          ],
+          "retrieval_precision": 0.80078125,
+          "retrieval_recall": 0.5352480417754569
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "Industrial Designer was unsure about including the ten digits on the remote control, questioning its relevance and complexity. They stated, \"Well, are you sure?\" and later said, \"I'm not so sure,\" indicating doubt about the necessity of the ten digits. They also noted that having ten digits could complicate the design and potentially reduce the product's appeal to the targeted younger demographic.",
+          "rouge_f1": {
+            "rouge1": 0.1836734693877551,
+            "rouge2": 0.041666666666666664,
+            "rougeL": 0.14285714285714285
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            23,
+            14,
+            3,
+            20
+          ],
+          "retrieval_precision": 0.400390625,
+          "retrieval_recall": 0.5352480417754569
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "Industrial Designer thought that including the ten digits on the remote control was unnecessary and complicated, especially for regular TV users who might not need them. However, they acknowledged that excluding the ten digits could be a deterrent for potential buyers, particularly those who watch a variety of channels. They suggested that if the ten digits were included, they should be designed in a distinctive way to enhance the overall aesthetics of the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.22018348623853212,
+            "rouge2": 0.07476635514018692,
+            "rougeL": 0.16513761467889906
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            23,
+            14,
+            3,
+            20,
+            4,
+            22,
+            9,
+            13
+          ],
+          "retrieval_precision": 0.3251953125,
+          "retrieval_recall": 0.8694516971279374
+        },
+        "word_packed__dense__w512": {
+          "answer": "The Industrial Designer was uncertain about the relevance of including ten digits on the remote control, suggesting it might be unnecessary for regular TV users who only need around ten buttons. They acknowledged that for those with many channels (e.g., from a satellite decoder), having more buttons could be useful, but overall, they seemed to think that ten buttons would suffice for typical usage.",
+          "rouge_f1": {
+            "rouge1": 0.26262626262626265,
+            "rouge2": 0.06185567010309278,
+            "rougeL": 0.20202020202020204
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            5
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.3342036553524804
+        },
+        "word_packed__dense__w1024": {
+          "answer": "Industrial Designer thought that having ten digit buttons on the remote control looked a bit dull but acknowledged that it was necessary for users who had a satellite decoder with many channels. They suggested experimenting with the design elements such as shape, size, or color to make the ten-digit buttons look more appealing.",
+          "rouge_f1": {
+            "rouge1": 0.3181818181818182,
+            "rouge2": 0.1627906976744186,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            5,
+            21,
+            10
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.6684073107049608
+        },
+        "word_packed__dense__w2048": {
+          "answer": "Industrial Designer thought that including ten digits on the remote control was unnecessary and complicated for regular TV users, as they typically use fewer channels. However, he acknowledged that for users with satellite decoders and access to hundreds of channels, having ten digit buttons could be desirable. He also expressed concern that the ten digits might look \"dull\" on the design but suggested experimenting with shapes, sizes, or colors to improve aesthetics. Ultimately, he was open to the idea of incorporating speech recognition instead of the ten digits, considering it could simplify channel changes and help locate the remote control, though he noted it might be costly.",
+          "rouge_f1": {
+            "rouge1": 0.2836879432624113,
+            "rouge2": 0.10071942446043164,
+            "rougeL": 0.18439716312056736
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            5,
+            21,
+            10,
+            12,
+            8,
+            19,
+            22
+          ],
+          "retrieval_precision": 0.3740234375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The Industrial Designer thought that the ten digits could be designed specifically to look fancy, experimenting with shape, size, or color. However, they were more inclined towards incorporating speech recognition, acknowledging its costliness but highlighting its advantages in ease of use and integration with a \"find the remote control\" feature. They noted the primary disadvantage as being related to power consumption.",
+          "rouge_f1": {
+            "rouge1": 0.33684210526315794,
+            "rouge2": 0.1075268817204301,
+            "rougeL": 0.23157894736842105
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21
+          ],
+          "retrieval_precision": 0.92578125,
+          "retrieval_recall": 0.618798955613577
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "Industrial Designer thought that including the ten digits on the remote control was not particularly relevant and that the buttons could look dull. However, they acknowledged that the design could be made fancier through experimentation with shape, size, or color. They also suggested that if the team decided to drop the ten digits, they should keep the program and volume controls.",
+          "rouge_f1": {
+            "rouge1": 0.2947368421052632,
+            "rouge2": 0.08602150537634409,
+            "rougeL": 0.23157894736842105
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21,
+            20,
+            3
+          ],
+          "retrieval_precision": 0.712890625,
+          "retrieval_recall": 0.9530026109660574
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "Industrial Designer thought that including the ten digits on the remote control was unnecessary and could complicate the design, making it more costly. However, they acknowledged that excluding the ten digits might be unappealing to potential buyers, especially those who watch a variety of channels. They suggested that if the ten digits were included, designers should focus on making them visually distinctive through shape, size, or color to maintain an appealing design.",
+          "rouge_f1": {
+            "rouge1": 0.20754716981132076,
+            "rouge2": 0.05769230769230769,
+            "rougeL": 0.16981132075471697
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            22,
+            21,
+            20,
+            3,
+            18,
+            13,
+            8,
+            19
+          ],
+          "retrieval_precision": 0.3740234375,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "Industrial Designer was uncertain about the relevance of having ten digit buttons on the remote control, suggesting that for regular TV users who only watch a few channels, fewer buttons might suffice. However, they acknowledged that for those with access to many channels (e.g., satellite decoders), the ten-digit interface could be necessary. They also expressed that ten buttons might look \"dull\" but agreed that through design experimentation with shape, size, or color, the appearance could be improved.",
+          "rouge_f1": {
+            "rouge1": 0.2831858407079646,
+            "rouge2": 0.09009009009009009,
+            "rougeL": 0.21238938053097348
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            21
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.6684073107049608
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "Industrial Designer thought that including the ten digits on the remote control was not particularly relevant and that the buttons could look dull. However, they acknowledged that the design could be made fancier through experimentation with shape, size, or color. They also suggested that if the team decided to drop the ten digits, they should keep the program and volume controls.",
+          "rouge_f1": {
+            "rouge1": 0.2947368421052632,
+            "rouge2": 0.08602150537634409,
+            "rougeL": 0.23157894736842105
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            21,
+            22,
+            3
+          ],
+          "retrieval_precision": 0.712890625,
+          "retrieval_recall": 0.9530026109660574
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "Industrial Designer thought that including the ten digits on the remote control was unnecessary and could complicate the design, especially for regular TV users who may not need them. However, they acknowledged that excluding the ten digits might deter potential buyers, particularly those with satellite decoders needing access to numerous channels. They suggested that if the ten digits were included, they should be designed in a way that enhances the overall aesthetics of the remote control, possibly through experimentation with shape, size, or color.",
+          "rouge_f1": {
+            "rouge1": 0.18644067796610167,
+            "rouge2": 0.051724137931034475,
+            "rougeL": 0.15254237288135591
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            20,
+            21,
+            22,
+            3,
+            8,
+            19,
+            18,
+            5
+          ],
+          "retrieval_precision": 0.3740234375,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "Industrial Designer was unsure about including the ten digits on the remote control, questioning its relevance and complexity. However, they did not strongly oppose the idea, acknowledging that omitting the ten digits might deter potential buyers.",
+          "rouge_f1": {
+            "rouge1": 0.17142857142857143,
+            "rouge2": 0.05882352941176471,
+            "rougeL": 0.14285714285714288
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            4,
+            7
+          ],
+          "retrieval_precision": 0.216796875,
+          "retrieval_recall": 0.14490861618798956
+        },
+        "lumber__dense__w1024": {
+          "answer": "Industrial Designer expressed uncertainty and concern about including the ten digits on the remote control. They questioned its relevance and complexity, suggesting it might not be necessary. However, they acknowledged that omitting the ten digits could potentially deter buyers, as User Interface stated they personally wouldn't purchase a remote control without them.",
+          "rouge_f1": {
+            "rouge1": 0.20689655172413793,
+            "rouge2": 0.047058823529411764,
+            "rougeL": 0.16091954022988503
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            4,
+            7,
+            13,
+            20
+          ],
+          "retrieval_precision": 0.1083984375,
+          "retrieval_recall": 0.14490861618798956
+        },
+        "lumber__dense__w2048": {
+          "answer": "Industrial Designer expressed uncertainty and concern about including the ten digits on the remote control, suggesting it could complicate the design. However, they acknowledged that omitting the ten digits might be seen as a significant drawback by potential buyers, agreeing with User Interface that a remote control without the ten digits might not be desirable.",
+          "rouge_f1": {
+            "rouge1": 0.22471910112359553,
+            "rouge2": 0.045977011494252866,
+            "rougeL": 0.17977528089887643
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            4,
+            7,
+            13,
+            20,
+            6,
+            12,
+            15
+          ],
+          "retrieval_precision": 0.05419921875,
+          "retrieval_recall": 0.14490861618798956
+        },
+        "lumber__bm25__w512": {
+          "answer": "The Industrial Designer expressed uncertainty about including the ten digits on the remote control. They questioned its relevance and complexity, stating \"I'm not so sure\" and describing it as \"complicated.\" However, they acknowledged that if the ten digits were considered essential, one should be aware of this requirement.",
+          "rouge_f1": {
+            "rouge1": 0.19277108433734938,
+            "rouge2": 0.04938271604938271,
+            "rougeL": 0.1686746987951807
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            4,
+            26
+          ],
+          "retrieval_precision": 0.333984375,
+          "retrieval_recall": 0.22323759791122716
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The Industrial Designer expressed uncertainty and concern about including the ten digits on the remote control. They questioned the necessity of having all ten digits, suggesting it could complicate the design. When asked directly if they were sure about including the ten digits, they responded, \"I'm not so sure,\" indicating a preference for possibly excluding them due to perceived irrelevance. However, they acknowledged that a remote control without the ten digits might not be desirable from a consumer perspective.",
+          "rouge_f1": {
+            "rouge1": 0.21052631578947367,
+            "rouge2": 0.03571428571428571,
+            "rougeL": 0.14035087719298245
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            4,
+            26,
+            28,
+            9
+          ],
+          "retrieval_precision": 0.3916015625,
+          "retrieval_recall": 0.5234986945169713
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The Industrial Designer expressed uncertainty about the necessity of including ten digits on the remote control. They acknowledged that while it could be useful for accessing a large number of channels, for regular TV users who primarily watch a few channels, fewer buttons might suffice. They also noted that having ten digits might look \"dull\" and suggested that the design should be distinctive if these buttons were included.",
+          "rouge_f1": {
+            "rouge1": 0.23529411764705885,
+            "rouge2": 0.04,
+            "rougeL": 0.17647058823529413
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            4,
+            26,
+            28,
+            9,
+            21,
+            24,
+            15
+          ],
+          "retrieval_precision": 0.30712890625,
+          "retrieval_recall": 0.8211488250652742
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The Industrial Designer expressed uncertainty and some skepticism about including the ten digits on the remote control. They questioned its relevance and complexity, stating \"I'm not so sure\" and describing it as \"complicated.\" However, they did not strongly oppose the idea, acknowledging that if the ten digits were considered essential, users should be aware of this feature.",
+          "rouge_f1": {
+            "rouge1": 0.17391304347826086,
+            "rouge2": 0.04444444444444444,
+            "rougeL": 0.15217391304347824
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            4,
+            9
+          ],
+          "retrieval_precision": 0.216796875,
+          "retrieval_recall": 0.14490861618798956
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Industrial Designer expressed uncertainty and some skepticism about including the ten digits on the remote control. They questioned its relevance and complexity, suggesting that it might not be necessary. However, they did not strongly oppose the idea outright, indicating a need for further consideration.",
+          "rouge_f1": {
+            "rouge1": 0.1794871794871795,
+            "rouge2": 0.052631578947368425,
+            "rougeL": 0.15384615384615383
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            4,
+            9,
+            20
+          ],
+          "retrieval_precision": 0.1083984375,
+          "retrieval_recall": 0.14490861618798956
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "Industrial Designer expressed uncertainty about the necessity of including the ten digits on the remote control. They acknowledged that having the ten digits would be complicated and questioned its relevance, suggesting that users might not need them if alternative methods (like speech recognition) were available. However, they conceded that omitting the ten digits might deter potential buyers, as User Interface stated they wouldn't purchase a remote control without them.",
+          "rouge_f1": {
+            "rouge1": 0.17307692307692307,
+            "rouge2": 0.0588235294117647,
+            "rougeL": 0.15384615384615385
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            4,
+            9,
+            20,
+            26,
+            15,
+            7,
+            13
+          ],
+          "retrieval_precision": 0.13671875,
+          "retrieval_recall": 0.36553524804177545
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did User Interface think about user interface design of remote control?",
+      "reference_answer": "User Interface found two kinds of remote controls: the multi-functional one and the one easy to use. He emphasized on user-friendliness, but considering that the target people were less than forty years old, multi-function should also be taken into account.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one due to its user-friendliness and potential trendiness. They believed that users, especially those under 40, would value simplicity and ease of use more than numerous features. Additionally, User Interface suggested considering a unique feature like sound feedback over LED lighting, as the latter might be obscured. When deciding between an easy and an advanced remote control design, User Interface asked for guidance on which to prioritize based on user preferences.",
+          "rouge_f1": {
+            "rouge1": 0.31007751937984496,
+            "rouge2": 0.12598425196850394,
+            "rougeL": 0.20155038759689922
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            13
+          ],
+          "retrieval_precision": 0.3671875,
+          "retrieval_recall": 0.4563106796116505
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one due to its user-friendliness and potential trendiness. They suggested that while multi-functionality could be considered, the primary focus should be on ease of use, possibly combining functionalities but reducing the number of buttons to around eight. User Interface emphasized that the design should prioritize user-friendliness and noted that the market's specific wants were uncertain but that a central base station near the TV could be beneficial, though costly.",
+          "rouge_f1": {
+            "rouge1": 0.4153846153846154,
+            "rouge2": 0.14062500000000003,
+            "rougeL": 0.26153846153846155
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            13,
+            4,
+            5
+          ],
+          "retrieval_precision": 0.3642578125,
+          "retrieval_recall": 0.9053398058252428
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one, emphasizing user-friendliness and trendiness in user design. They suggested that while multi-functionality could be considered, it should be balanced with ease of use and exclude outdated features like teletext buttons. User Interface believed that simplicity and user-friendliness were crucial, advocating for a design that prioritizes basic functionality and ease of use, possibly incorporating unique features like sound feedback for finding the remote.",
+          "rouge_f1": {
+            "rouge1": 0.3739837398373983,
+            "rouge2": 0.1322314049586777,
+            "rougeL": 0.2439024390243903
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            13,
+            4,
+            5,
+            11,
+            1,
+            21,
+            17
+          ],
+          "retrieval_precision": 0.18212890625,
+          "retrieval_recall": 0.9053398058252428
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "User Interface thought that the best possibility for the remote control design was one that was easy to use, suggesting that simplicity and user-friendliness were prioritized over complex functionalities like teletext buttons. They proposed a design that would remove around eight buttons to achieve this ease of use. Additionally, they considered the market's preferences and the potential uniqueness of certain features, such as sound over LED functions, while leaning towards an easy-to-use design rather than an advanced one, based on the observation that users do not frequently utilize all extra features.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.10294117647058823,
+            "rougeL": 0.18840579710144928
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            14,
+            3
+          ],
+          "retrieval_precision": 0.41015625,
+          "retrieval_recall": 0.5097087378640777
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "User Interface preferred a simpler, easier-to-use remote control design over a multi-functional one. They believed that the primary function of a remote control is to send messages to the television set and emphasized the importance of user-friendliness. User Interface suggested that the design should focus on commonly used buttons like volume and zap buttons and considered incorporating a sound signal as a unique feature. However, they were unsure whether to prioritize the sound signal over LED lighting functions. When deciding between an easy-to-use and an advanced remote control, User Interface leaned towards the former based on the assumption that users do not frequently utilize all the extra features.",
+          "rouge_f1": {
+            "rouge1": 0.3057324840764331,
+            "rouge2": 0.1032258064516129,
+            "rougeL": 0.2038216560509554
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            14,
+            3,
+            10,
+            1
+          ],
+          "retrieval_precision": 0.3642578125,
+          "retrieval_recall": 0.9053398058252428
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "User Interface preferred a simple and user-friendly design for the remote control, emphasizing ease of use over multiple functions. They suggested removing unnecessary buttons, focusing on essential functions like volume and zap buttons, and incorporating a sound signal for finding the remote. User Interface also proposed a combination of an easy-to-use and a multi-functional remote control but favored the easy-to-use version due to its user-friendliness and potential trendiness. They expressed uncertainty about implementing voice recognition, leaning towards a simpler interface with fewer buttons.",
+          "rouge_f1": {
+            "rouge1": 0.3157894736842105,
+            "rouge2": 0.0916030534351145,
+            "rougeL": 0.19548872180451127
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            14,
+            3,
+            10,
+            1,
+            12,
+            23,
+            13,
+            29
+          ],
+          "retrieval_precision": 0.18212890625,
+          "retrieval_recall": 0.9053398058252428
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "User Interface preferred an easy-to-use remote control design due to its user-friendliness and potential trendiness. However, they acknowledged the possibility of incorporating multi-functionality into the design, suggesting a combination approach might be suitable, though they emphasized removing teletext buttons to reduce complexity. They also expressed interest in prioritizing sound feedback over LED lighting functions for usability reasons.",
+          "rouge_f1": {
+            "rouge1": 0.3846153846153846,
+            "rouge2": 0.11764705882352941,
+            "rougeL": 0.21153846153846154
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            4
+          ],
+          "retrieval_precision": 0.501953125,
+          "retrieval_recall": 0.6237864077669902
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one due to its user-friendliness and potential trendiness. However, considering the target audience (people under 40), they suggested that multi-functionality could be incorporated into the design, though it should be a balanced combination. They emphasized removing unnecessary buttons like teletext buttons to maintain simplicity and ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.48598130841121495,
+            "rouge2": 0.17142857142857143,
+            "rougeL": 0.3364485981308411
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            4,
+            13,
+            1
+          ],
+          "retrieval_precision": 0.3642578125,
+          "retrieval_recall": 0.9053398058252428
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one, emphasizing user-friendliness and trendiness in user design. They suggested removing teletext buttons and reducing the number of buttons to enhance usability. User Interface also expressed interest in incorporating unique features like sound feedback for finding lost remotes, considering it a potential distinguishing factor in the market. However, they acknowledged the need to balance functionality with user preference and cost constraints.",
+          "rouge_f1": {
+            "rouge1": 0.35294117647058826,
+            "rouge2": 0.11965811965811965,
+            "rougeL": 0.2352941176470588
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            14,
+            4,
+            13,
+            1,
+            5,
+            11,
+            23,
+            20
+          ],
+          "retrieval_precision": 0.18212890625,
+          "retrieval_recall": 0.9053398058252428
+        },
+        "word_packed__dense__w512": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-function one, emphasizing user-friendliness and trendiness among younger users. They suggested a combination approach could be considered but believed the easy-to-use remote control was the best option, recommending the removal of teletext buttons to reduce complexity.",
+          "rouge_f1": {
+            "rouge1": 0.4421052631578947,
+            "rouge2": 0.15053763440860216,
+            "rougeL": 0.2736842105263158
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2
+          ],
+          "retrieval_precision": 0.708984375,
+          "retrieval_recall": 0.8810679611650486
+        },
+        "word_packed__dense__w1024": {
+          "answer": "User Interface preferred a remote control design that focuses on ease-of-use and user-friendliness, suggesting a design with fewer buttons and a trendy appearance. They acknowledged the potential inclusion of multi-functionality but emphasized that the primary design should cater to younger users and maintain simplicity, possibly combining both approaches while excluding teletext buttons.",
+          "rouge_f1": {
+            "rouge1": 0.3838383838383838,
+            "rouge2": 0.10309278350515463,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            15,
+            18
+          ],
+          "retrieval_precision": 0.3544921875,
+          "retrieval_recall": 0.8810679611650486
+        },
+        "word_packed__dense__w2048": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one, emphasizing user-friendliness and trendiness. They suggested that while multi-functionality could be considered, it should be balanced with ease of use, possibly combining fewer buttons with innovative features like sound feedback for finding the remote, rather than relying solely on visual indicators. This aligns with the project's focus on appealing to a younger demographic.",
+          "rouge_f1": {
+            "rouge1": 0.4385964912280702,
+            "rouge2": 0.14285714285714285,
+            "rougeL": 0.2631578947368421
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            2,
+            15,
+            18,
+            13,
+            4,
+            5,
+            10
+          ],
+          "retrieval_precision": 0.201171875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "User Interface preferred the ease-of-use remote control design due to its user-friendliness and potential trendiness. However, they acknowledged the need for a combination design to cater to the project's target audience under forty years old, suggesting the inclusion of multi-function capabilities while maintaining simplicity. They emphasized removing non-essential buttons like teletext to keep the design user-friendly.",
+          "rouge_f1": {
+            "rouge1": 0.3773584905660377,
+            "rouge2": 0.11538461538461538,
+            "rougeL": 0.2830188679245283
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.6213592233009708
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "User Interface preferred the ease-of-use remote control design over the multi-function remote control due to its user-friendliness and trendiness. They suggested that while multi-functionality could be beneficial, it should be a balanced combination focusing on essential buttons like volume and zap, removing unnecessary ones such as teletext. User Interface also favored incorporating a sound signal over LED functions for its uniqueness and usability advantages.",
+          "rouge_f1": {
+            "rouge1": 0.3928571428571428,
+            "rouge2": 0.10909090909090909,
+            "rougeL": 0.2857142857142857
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            21,
+            9
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.6213592233009708
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "User Interface preferred a simpler design for the remote control, focusing on user-friendliness and ease of use, particularly for younger users. They suggested removing teletext buttons and reducing the number of buttons to prioritize commonly used ones like volume and zap buttons. User Interface also expressed interest in incorporating a sound signal feature, considering it a unique selling point, though they acknowledged potential complications and costs associated with such a feature.",
+          "rouge_f1": {
+            "rouge1": 0.27826086956521734,
+            "rouge2": 0.07079646017699115,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            21,
+            9,
+            1,
+            11,
+            2,
+            4
+          ],
+          "retrieval_precision": 0.201171875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "User Interface preferred the ease-of-use remote control design due to its user-friendliness and potential trendiness. However, they acknowledged the need for a combination design to cater to the project's target audience under forty years old, suggesting the inclusion of multi-function capabilities while maintaining simplicity. They emphasized removing non-essential buttons like teletext to keep the design user-friendly.",
+          "rouge_f1": {
+            "rouge1": 0.3773584905660377,
+            "rouge2": 0.11538461538461538,
+            "rougeL": 0.2830188679245283
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.6213592233009708
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one, emphasizing user-friendliness and trendiness. They suggested that while multi-functionality could be considered, it should be balanced with ease of use, especially considering the target audience of people under 40 years old. User Interface believed that simplifying the design by removing unnecessary buttons (like teletext) would result in a better user experience.",
+          "rouge_f1": {
+            "rouge1": 0.48648648648648646,
+            "rouge2": 0.18348623853211007,
+            "rougeL": 0.2882882882882883
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            2,
+            21
+          ],
+          "retrieval_precision": 0.3544921875,
+          "retrieval_recall": 0.8810679611650486
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "User Interface preferred a remote control design that focuses on ease of use and user-friendliness, suggesting a combination of both an easy-to-use and multi-functional remote control. They believed that the easy-to-use remote control could be more trendy and user-friendly, aligning with the target audience of people under 40 years old. However, they also acknowledged the potential value of incorporating multi-functionality, provided it doesn't compromise user-friendliness. User Interface expressed uncertainty about specific user preferences and suggested that further investigation into what the market wants is needed before finalizing the design.",
+          "rouge_f1": {
+            "rouge1": 0.38028169014084506,
+            "rouge2": 0.14285714285714285,
+            "rougeL": 0.2816901408450704
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            2,
+            21,
+            4,
+            15,
+            1,
+            18
+          ],
+          "retrieval_precision": 0.201171875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one due to its user-friendliness and potential trendiness. They suggested a combination approach could be considered but emphasized that the primary focus should remain on ease of use. User Interface also noted that people would likely avoid manually pressing buttons on the TV if they lost their remote, reinforcing the importance of a reliable remote control design.",
+          "rouge_f1": {
+            "rouge1": 0.4521739130434782,
+            "rouge2": 0.1415929203539823,
+            "rougeL": 0.2608695652173913
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15
+          ],
+          "retrieval_precision": 0.58984375,
+          "retrieval_recall": 0.7330097087378641
+        },
+        "lumber__dense__w1024": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one, emphasizing user-friendliness and trendiness in user design. They suggested that while multi-functionality could be beneficial, especially for users under 40, the primary focus should be on ease of use. User Interface also highlighted the importance of having a base station next to the TV and expressed uncertainty about additional features like teletext buttons, suggesting that simpler designs might be more preferable based on usage patterns.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.13008130081300812,
+            "rougeL": 0.25600000000000006
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15,
+            16,
+            20
+          ],
+          "retrieval_precision": 0.294921875,
+          "retrieval_recall": 0.7330097087378641
+        },
+        "lumber__dense__w2048": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one due to its user-friendliness and potential trendiness. They suggested removing teletext buttons and reducing the number of buttons to around eight. User Interface believed that the market might favor simplicity and ease of use, especially considering the target audience being under 40 years old. They also supported the inclusion of a base station for locating lost remotes and considered the importance of essential functions like channel selection and volume control, while expressing uncertainty about excluding digit buttons.",
+          "rouge_f1": {
+            "rouge1": 0.3676470588235294,
+            "rouge2": 0.1492537313432836,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15,
+            16,
+            20,
+            13,
+            7,
+            5,
+            23,
+            21
+          ],
+          "retrieval_precision": 0.19580078125,
+          "retrieval_recall": 0.9733009708737864
+        },
+        "lumber__bm25__w512": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one due to its user-friendliness and potential trendiness. However, considering the target audience (people under 40), they suggested a combination approach where multi-functionality could be included but simplified to remove unnecessary buttons like teletext, aiming for a balance between functionality and ease of use.",
+          "rouge_f1": {
+            "rouge1": 0.4271844660194174,
+            "rouge2": 0.17821782178217824,
+            "rougeL": 0.3300970873786408
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            16,
+            15
+          ],
+          "retrieval_precision": 0.58984375,
+          "retrieval_recall": 0.7330097087378641
+        },
+        "lumber__bm25__w1024": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one due to its user-friendliness and potential trendiness. They suggested that while multi-functionality could be considered, the primary focus should be on ease of use, especially considering the target audience of less than forty years old. User Interface also emphasized the importance of having a base station next to the TV for locating the remote, though they acknowledged that this might increase costs.",
+          "rouge_f1": {
+            "rouge1": 0.5245901639344263,
+            "rouge2": 0.21666666666666667,
+            "rougeL": 0.3114754098360656
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            16,
+            15,
+            5,
+            13
+          ],
+          "retrieval_precision": 0.3916015625,
+          "retrieval_recall": 0.9733009708737864
+        },
+        "lumber__bm25__w2048": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one due to its user-friendliness and potential trendiness. They suggested removing teletext buttons and reducing the number of buttons to around eight to achieve a balance. User Interface also favored incorporating a \"find the remote\" feature, possibly through sound rather than LED lights, considering practicality and uniqueness in the market. Additionally, they proposed using a round button for directional control instead of a stick to enhance durability and user experience.",
+          "rouge_f1": {
+            "rouge1": 0.3125,
+            "rouge2": 0.1111111111111111,
+            "rougeL": 0.203125
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            16,
+            15,
+            5,
+            13,
+            28,
+            7,
+            20
+          ],
+          "retrieval_precision": 0.19580078125,
+          "retrieval_recall": 0.9733009708737864
+        },
+        "lumber__hybrid__w512": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one due to its user-friendliness and potential trendiness. They suggested a combination approach could be considered but emphasized that the primary focus should remain on ease of use. User Interface also noted that people would likely avoid manually pressing buttons on the TV if they lost their remote, reinforcing the importance of a reliable remote control design.",
+          "rouge_f1": {
+            "rouge1": 0.4521739130434782,
+            "rouge2": 0.1415929203539823,
+            "rougeL": 0.2608695652173913
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15
+          ],
+          "retrieval_precision": 0.58984375,
+          "retrieval_recall": 0.7330097087378641
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one due to user-friendliness and trendiness in user design. However, considering the project goal aimed at people under 40 years old, User Interface suggested implementing multi-functionality but recommended combining it with ease-of-use, removing unnecessary buttons like teletext, and keeping the design simple and user-friendly.",
+          "rouge_f1": {
+            "rouge1": 0.4339622641509434,
+            "rouge2": 0.17307692307692307,
+            "rougeL": 0.32075471698113206
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15,
+            16,
+            13
+          ],
+          "retrieval_precision": 0.294921875,
+          "retrieval_recall": 0.7330097087378641
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "User Interface preferred an easy-to-use remote control design over a multi-functional one due to its user-friendliness and potential trendiness. They suggested removing teletext buttons and keeping around eight fewer buttons to maintain simplicity. User Interface believed that the market might favor a simpler, easier-to-use remote control despite the project's initial goal targeting users under 40 years old. They also supported the inclusion of a \"find remote\" feature through sound rather than light, considering it more practical.",
+          "rouge_f1": {
+            "rouge1": 0.380952380952381,
+            "rouge2": 0.14516129032258063,
+            "rougeL": 0.253968253968254
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15,
+            16,
+            13,
+            5,
+            20,
+            7,
+            9
+          ],
+          "retrieval_precision": 0.19580078125,
+          "retrieval_recall": 0.9733009708737864
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did the group discuss about technical issues of the project?",
+      "reference_answer": "Industrial Designer introduced how the remote control worked and supposed that they should use infrared so that the remote control could communicate with most TV sets. He also proposed to use energy-friendly components and save the cost of circuit boards to develop elaborate lighting techniques. In order to prevent people from losing the remote control, the team decided to implement an audio signal. In terms of energy source, the team preferred to have a cradle so that the remote control could be recharged.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The group discussed a technical issue related to the User Interface accidentally opening the CD-ROM box. No other specific technical issues were mentioned in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.125,
+            "rouge2": 0.0,
+            "rougeL": 0.10714285714285714
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            0,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The group discussed a technical issue related to uploading presentations wirelessly during the meeting. Specifically, User Interface mentioned that they couldn't upload their presentation from where they were, and the team briefly explored whether the setup was wireless or not. Additionally, there was a mention of a problem with opening the CD-ROM box accidentally. However, these were minor technical issues and not the main focus of the meeting. The primary discussion centered around project requirements, target groups, and product functions rather than extensive technical issues.",
+          "rouge_f1": {
+            "rouge1": 0.21052631578947367,
+            "rouge2": 0.02366863905325444,
+            "rougeL": 0.1286549707602339
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            0,
+            1,
+            25,
+            3
+          ],
+          "retrieval_precision": 0.0625,
+          "retrieval_recall": 0.0243161094224924
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The group discussed several technical issues related to the project:\n\n1. **Technical Requirements**: The project manager mentioned that the remote control should only be used for television due to feasibility constraints and time-to-market pressures. Additionally, the team agreed not to support teletext functionality as it is considered outdated compared to internet services.\n\n2. **Remote Control Design**:\n   - **Functionality**: The team discussed the inclusion of essential functions such as volume control, program selection, and dual-channel viewing capabilities.\n   - **User Interface**: There was a preference for a user-friendly design with fewer buttons for ease of use and a trendy appearance.\n   - **Infrared Communication**: The industrial designer suggested using infrared technology for communication with TV sets, emphasizing its compatibility with existing devices.\n\n3. **Cost Considerations**: The industrial designer noted that certain components, like a simple case with metal contacts, would be inexpensive due to mass production, potentially reducing overall costs.\n\n4. **Voice Recognition**: While initially considered, the team decided not to integrate voice recognition into the initial design but acknowledged the possibility of revisiting this feature in future meetings based on updated information and trends.",
+          "rouge_f1": {
+            "rouge1": 0.3220973782771535,
+            "rouge2": 0.0830188679245283,
+            "rougeL": 0.14981273408239698
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            28,
+            0,
+            1,
+            25,
+            3,
+            6,
+            2,
+            29,
+            20
+          ],
+          "retrieval_precision": 0.13525390625,
+          "retrieval_recall": 0.10524316109422492
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The group discussed that there were no significant technical difficulties with the project as the equipment did not require elaborate techniques. However, there was a noted issue regarding the execution of the sound signal. The Industrial Designer acknowledged this as a problem, but overall, the technical aspects were deemed manageable, allowing the team to focus on market needs and user-friendliness. The Project Manager emphasized the importance of balancing advanced techniques with simplicity to manage costs effectively.",
+          "rouge_f1": {
+            "rouge1": 0.28571428571428575,
+            "rouge2": 0.025157232704402517,
+            "rougeL": 0.16149068322981366
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            19,
+            4
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.0972644376899696
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The group discussed that there were initially no significant technical difficulties anticipated for the project, as indicated by the Industrial Designer stating, \"there are no technical difficulties. There's no um elaborate technique uh used in this uh kind of equipment.\" However, later in the discussion, the Industrial Designer mentioned that adding certain features like a sound signal would complicate the technical design and increase costs due to additional components. This was seen as a potential issue that needed careful consideration.",
+          "rouge_f1": {
+            "rouge1": 0.27878787878787875,
+            "rouge2": 0.012269938650306749,
+            "rougeL": 0.1696969696969697
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            19,
+            4,
+            14,
+            1
+          ],
+          "retrieval_precision": 0.4697265625,
+          "retrieval_recall": 0.18275075987841946
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The group discussed several technical issues related to the project, including:\n\n- The decision not to support teletext in the remote control due to its obsolescence and the preference for internet-based services.\n- The feasibility of incorporating multi-functions into the design while ensuring user-friendliness, particularly noting that teletext buttons would be excluded.\n- The consideration of lighting techniques for the remote control, with a discussion on whether to use individual LEDs for each button or a single light source.\n- The inclusion of a sound signal feature, which was seen as a potential unique selling point but raised concerns about implementation complexity and cost.\n- The debate over advanced features versus simplicity, focusing on balancing user-friendliness with cost-effectiveness.\n- The necessity of deciding on key functions such as volume control, channel switching, and dual-channel viewing, while considering the overall design and user interface.\n- The postponement of a decision on integrating voice recognition until further information was available.",
+          "rouge_f1": {
+            "rouge1": 0.2987551867219917,
+            "rouge2": 0.058577405857740586,
+            "rougeL": 0.15767634854771784
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            10,
+            19,
+            4,
+            14,
+            1,
+            29,
+            8,
+            20,
+            12
+          ],
+          "retrieval_precision": 0.39208984375,
+          "retrieval_recall": 0.30509118541033436
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The group discussed that there were no significant technical difficulties expected for the project, as the remote control would primarily function for television and wouldn't require complex technology. However, there was some concern raised about implementing a sound signal feature, which was noted as a potential issue.",
+          "rouge_f1": {
+            "rouge1": 0.15151515151515152,
+            "rouge2": 0.030769230769230767,
+            "rougeL": 0.13636363636363635
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            19
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.0972644376899696
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The group discussed several technical issues related to the project:\n\n1. **Teletext Support**: The board decided not to support teletext in the remote control, considering it outdated and replaced by the internet.\n   \n2. **Functionality of Remote Control**: They focused on essential functions like volume and zap buttons, aiming for a design that prioritizes these commonly used features.\n\n3. **Sound Signal Execution**: There was concern about how to execute the sound signal, which was identified as a potential problem.\n\n4. **Voice Recognition**: While voice recognition was considered, it was decided not to integrate it into the current design, though further discussion would be held in the next meeting based on updated information.\n\n5. **Advanced Techniques vs. Simplicity**: Balancing advanced techniques with simplicity and cost-effectiveness was discussed, emphasizing the importance of a user-friendly interface.",
+          "rouge_f1": {
+            "rouge1": 0.3211009174311926,
+            "rouge2": 0.027777777777777776,
+            "rougeL": 0.13761467889908258
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            19,
+            29,
+            3
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.0972644376899696
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The group discussed that there were no significant technical difficulties with the basic functionality of the remote control, as it did not require complex technology. However, adding features like a sound signal introduced complications and increased costs due to additional components. The team acknowledged the need to balance advanced features with user-friendliness and cost-effectiveness. They decided to focus on essential functions such as volume control and channel switching while considering the potential inclusion of dual-channel viewing. The group agreed to revisit the decision regarding voice recognition at the next meeting.",
+          "rouge_f1": {
+            "rouge1": 0.327683615819209,
+            "rouge2": 0.045714285714285714,
+            "rougeL": 0.1807909604519774
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            19,
+            29,
+            3,
+            20,
+            0,
+            25,
+            14
+          ],
+          "retrieval_precision": 0.21435546875,
+          "retrieval_recall": 0.16679331306990883
+        },
+        "word_packed__dense__w512": {
+          "answer": "The group discussed a technical issue related to uploading presentations wirelessly. User Interface mentioned that they couldn't upload their presentation from where they were, and there was confusion about whether the setup supported wireless uploads. Eventually, it was confirmed that wireless capability was available. Additionally, the Project Manager noted that the board had decided against supporting teletext in the remote control due to its outdated nature compared to the internet.",
+          "rouge_f1": {
+            "rouge1": 0.27096774193548384,
+            "rouge2": 0.05228758169934641,
+            "rougeL": 0.18064516129032257
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            1
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The group discussed technical issues related to uploading presentations and implementing features in the remote control. Specifically, they encountered an issue with uploading presentations due to connectivity problems, noting that the system might not be wireless. Additionally, they addressed the decision to exclude teletext support from the remote control based on the board's view that teletext is outdated. They also considered the feasibility and cost implications of including a self-charging feature for the remote control, concluding that a cradle for recharging could be inexpensive and practical.",
+          "rouge_f1": {
+            "rouge1": 0.4186046511627907,
+            "rouge2": 0.10588235294117647,
+            "rougeL": 0.24418604651162792
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            1,
+            27,
+            23
+          ],
+          "retrieval_precision": 0.173828125,
+          "retrieval_recall": 0.067629179331307
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The group discussed several technical issues related to the project, including:\n\n- **Teletext Support:** The project manager mentioned that teletext support would not be included due to its obsolescence and the preference for internet-based solutions.\n  \n- **Remote Control Functionality:** The team focused on the core functionality of the remote control, emphasizing that it should primarily send messages to the television set via infrared light. Specific functions such as volume control and channel selection were highlighted as priorities.\n\n- **Design Requirements:** Changes in design requirements were noted, affecting the method of implementation.\n\n- **Energy Source:** There was a discussion about the energy source for the remote control, with ideas involving self-charging in light rooms and the possibility of including a cradle for recharging. The feasibility and cost implications of these options were considered.\n\n- **Voice Recognition:** The inclusion of voice recognition was debated, with concerns raised about potential costs and integration challenges. The decision was deferred until the next meeting.\n\n- **User Interface Design:** The project manager requested a simplified user interface with fewer buttons and emphasized the importance of ease of use and a clean design.",
+          "rouge_f1": {
+            "rouge1": 0.32330827067669166,
+            "rouge2": 0.0606060606060606,
+            "rougeL": 0.15037593984962405
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            0,
+            1,
+            27,
+            23,
+            26,
+            2,
+            4,
+            18
+          ],
+          "retrieval_precision": 0.18798828125,
+          "retrieval_recall": 0.14627659574468085
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The group discussed that there were no significant technical difficulties with the project, as mentioned by the Industrial Designer who stated, \"there are no technical difficulties. There's no um elaborate technique uh used in this uh kind of equipment.\" They also briefly touched upon the implementation details of the sound signal, with User Interface questioning where the sound signal would be executed from, but concluded that they lacked sufficient information to discuss it further during the meeting.",
+          "rouge_f1": {
+            "rouge1": 0.308641975308642,
+            "rouge2": 0.025,
+            "rougeL": 0.16049382716049385
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            9
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.0972644376899696
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The group discussed that there were no significant technical difficulties with the project, particularly regarding the remote control. The Industrial Designer stated that there are no elaborate techniques used in such equipment, implying that the technical aspects are straightforward. They suggested focusing on designing a product that meets market needs, specifically mentioning the importance of including commonly used buttons like volume and zap buttons, along with a sound signal feature. However, there was some uncertainty about the implementation details of the sound signal, as noted by User Interface, who felt that they lacked sufficient information to discuss it further at that time.",
+          "rouge_f1": {
+            "rouge1": 0.3010752688172043,
+            "rouge2": 0.06521739130434781,
+            "rougeL": 0.17204301075268816
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            9,
+            3,
+            1
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.0972644376899696
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The group discussed several technical issues related to the project, including:\n\n- **Teletext Implementation**: The board decided against supporting teletext in the remote control due to its outdated nature and the prevalence of the internet.\n- **Remote Control Design**: There was a debate between designing a multi-function remote control versus an easy-to-use remote control. The consensus leaned towards focusing on essential functions such as volume and zap buttons, while excluding teletext buttons.\n- **Sound Signal Functionality**: The team explored the feasibility of incorporating a sound signal feature, discussing potential complications like distinguishing clapping sounds from other noises and the cost implications of adding such functionality.\n- **User Interface and Shift Functions**: Concerns were raised about how the remote control would communicate its state to the user, especially if designed with fewer buttons and no display. The team considered using shift functions and alternative control methods like sticks.\n- **Voice Recognition**: While not extensively detailed, there was mention of considering voice recognition but deciding not to integrate it into the current design phase.\n\nThese points reflect the technical considerations and challenges faced during the project's development phase.",
+          "rouge_f1": {
+            "rouge1": 0.31226765799256506,
+            "rouge2": 0.0898876404494382,
+            "rougeL": 0.16356877323420074
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            18,
+            9,
+            3,
+            1,
+            13,
+            27,
+            11,
+            15
+          ],
+          "retrieval_precision": 0.32861328125,
+          "retrieval_recall": 0.25569908814589665
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The group discussed technical issues related to uploading a presentation and whether the setup was wireless or not. They also addressed the decision to not support teletext in the remote control due to its outdated nature compared to the internet. The primary focus shifted towards deciding the essential functions of the remote control, such as volume control and program selection, rather than debating less critical features like teletext.",
+          "rouge_f1": {
+            "rouge1": 0.31578947368421056,
+            "rouge2": 0.05333333333333334,
+            "rougeL": 0.21052631578947367
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            18
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The group discussed that the remote control should primarily focus on essential functions such as volume and zap (programme selection) buttons due to their frequent usage. They noted that implementing these features does not present significant technical challenges. Additionally, the inclusion of a sound signal was suggested but left somewhat unresolved due to lack of specific details on its execution. Voice recognition was mentioned but decided not to be integrated into the initial design phase.",
+          "rouge_f1": {
+            "rouge1": 0.2767295597484276,
+            "rouge2": 0.03821656050955414,
+            "rougeL": 0.15094339622641512
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            18,
+            27,
+            9
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.0972644376899696
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The group discussed that there were no significant technical difficulties expected for the project, focusing instead on designing a product that meets market needs. Specifically, Industrial Designer mentioned that there are no elaborate techniques used in such equipment, implying that technical hiccups are unlikely. Additionally, there was a brief discussion about the feasibility of including voice recognition features, noting potential advantages (like implementing fancy techniques) and disadvantages (such as concerns over costs and battery lifetime). The team also touched upon the idea of incorporating a self-charging feature through a cradle, which was deemed relatively inexpensive and feasible.",
+          "rouge_f1": {
+            "rouge1": 0.26373626373626374,
+            "rouge2": 0.03333333333333333,
+            "rougeL": 0.14285714285714285
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            18,
+            27,
+            9,
+            0,
+            23,
+            2,
+            25
+          ],
+          "retrieval_precision": 0.2119140625,
+          "retrieval_recall": 0.16489361702127658
+        },
+        "lumber__dense__w512": {
+          "answer": "The group did not specifically discuss technical issues of the project in the provided meeting excerpts. The discussion primarily revolved around new project requirements, such as not supporting teletext, focusing on a younger target audience, and maintaining corporate image elements in the product. There were mentions of uploading presentations and scheduling, but no detailed technical issues were addressed.",
+          "rouge_f1": {
+            "rouge1": 0.16901408450704225,
+            "rouge2": 0.0,
+            "rougeL": 0.09859154929577464
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            1,
+            33
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The group discussed that there were no significant technical difficulties expected for the project, as indicated by the Industrial Designer stating, \"Well, the technical uh... I think there are no technical difficulties. There's no um elaborate technique uh used in this uh kind of equipment.\" Additionally, they mentioned that the remote control should have an easy interface with minimal buttons and some fancy lights, as per the Project Manager's statement, \"It should be an easy interface with not so much buttons. Just a volume and a programme one. And um yeah, some fancy lights.\" The discussion also touched upon the potential inclusion of voice recognition, which was suggested but not integrated into the immediate design plans.",
+          "rouge_f1": {
+            "rouge1": 0.306930693069307,
+            "rouge2": 0.04,
+            "rougeL": 0.15841584158415842
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            1,
+            33,
+            12
+          ],
+          "retrieval_precision": 0.0791015625,
+          "retrieval_recall": 0.030775075987841946
+        },
+        "lumber__dense__w2048": {
+          "answer": "The group discussed that there were no significant technical difficulties expected for the project, as the equipment did not require elaborate techniques. However, they identified a problem with implementing a sound signal, as it was unclear where to execute it. They considered alternatives such as integrating it directly into the device rather than using an external device. Additionally, they debated the inclusion of advanced features versus maintaining simplicity and user-friendliness, ultimately deciding to focus on essential functions like volume and channel selection while considering dual-channel watch functionality.",
+          "rouge_f1": {
+            "rouge1": 0.2543352601156069,
+            "rouge2": 0.011695906432748539,
+            "rougeL": 0.12716763005780346
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            1,
+            33,
+            12,
+            30,
+            21,
+            0,
+            17,
+            22
+          ],
+          "retrieval_precision": 0.1025390625,
+          "retrieval_recall": 0.0797872340425532
+        },
+        "lumber__bm25__w512": {
+          "answer": "The group discussed that there were no significant technical difficulties with the project as the equipment did not require elaborate techniques. They acknowledged the interest in incorporating advanced options but emphasized the importance of balancing these with user-friendliness and cost considerations. The User Interface suggested they lacked sufficient information to discuss advanced techniques further at that moment. The Project Manager highlighted the need to decide on key functions such as volume control, program selection, and digit input during the meeting, while also considering the design of the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.32183908045977017,
+            "rouge2": 0.023255813953488375,
+            "rougeL": 0.19540229885057472
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            12
+          ],
+          "retrieval_precision": 0.23046875,
+          "retrieval_recall": 0.044832826747720364
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The group discussed that there were no significant technical difficulties expected for the project, as indicated by the Industrial Designer stating, \"I think there are no technical difficulties. There's no um elaborate technique uh used in this uh kind of equipment.\" However, they did encounter a specific issue regarding the implementation of a sound signal, with concerns raised over where to execute the sound and whether it would require an additional device. The group acknowledged this as a problem but did not delve into detailed solutions during the meeting.",
+          "rouge_f1": {
+            "rouge1": 0.2758620689655172,
+            "rouge2": 0.011627906976744188,
+            "rougeL": 0.14942528735632182
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            12,
+            4,
+            3
+          ],
+          "retrieval_precision": 0.1962890625,
+          "retrieval_recall": 0.07636778115501519
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The group discussed that the remote control should primarily function for television without supporting teletext due to its outdated nature. They considered adding features like a sound signal to help locate the remote, acknowledging potential technical complications and increased costs associated with such additions. The industrial designer warned that implementing advanced features would make the technical design more complex and costly. However, they agreed that a sound signal could be a unique selling point and worth pursuing if feasible within budget constraints.",
+          "rouge_f1": {
+            "rouge1": 0.3132530120481927,
+            "rouge2": 0.07317073170731707,
+            "rougeL": 0.1807228915662651
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            21,
+            12,
+            4,
+            3,
+            9,
+            15,
+            14
+          ],
+          "retrieval_precision": 0.50634765625,
+          "retrieval_recall": 0.3939969604863222
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The group discussed that there were no significant technical difficulties expected for the project since the equipment did not require elaborate techniques. However, they identified an issue with implementing a sound signal, noting that executing the sound from another device was not a viable solution. The exact implementation details for the sound signal were not resolved during the meeting.",
+          "rouge_f1": {
+            "rouge1": 0.2517482517482518,
+            "rouge2": 0.0,
+            "rougeL": 0.15384615384615383
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            12
+          ],
+          "retrieval_precision": 0.384765625,
+          "retrieval_recall": 0.07484802431610943
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The group discussed that there were no significant technical difficulties expected for the project, as the equipment did not require elaborate techniques. However, they identified an issue with implementing a sound signal feature, noting that executing the sound from another device was not a viable solution. They also briefly touched upon the challenge of balancing advanced techniques with user-friendliness and cost considerations, though they deferred detailed discussion of this until more information was available.",
+          "rouge_f1": {
+            "rouge1": 0.2767295597484276,
+            "rouge2": 0.0,
+            "rougeL": 0.1383647798742138
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            12,
+            21,
+            33
+          ],
+          "retrieval_precision": 0.1962890625,
+          "retrieval_recall": 0.07636778115501519
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The group discussed that there were no significant technical difficulties anticipated for the project, as indicated by the Industrial Designer stating, \"Well, the technical... there... I think there are no technical difficulties. There's no um elaborate technique uh used in this uh kind of equipment. So um I don't think we have any hiccups there.\" However, they did face a minor issue regarding the implementation of a sound signal, with the Industrial Designer acknowledging, \"Yeah, that's uh {disfmarker} a problem. Yeah.\" Additionally, the Project Manager highlighted the importance of balancing advanced features with user-friendliness and cost considerations, noting that \"keeping it simple is important for the costs and all all those kind of things.\"",
+          "rouge_f1": {
+            "rouge1": 0.2871287128712871,
+            "rouge2": 0.02,
+            "rougeL": 0.1386138613861386
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            12,
+            21,
+            33,
+            1,
+            30,
+            4
+          ],
+          "retrieval_precision": 0.1025390625,
+          "retrieval_recall": 0.0797872340425532
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the team come up with to prevent customers from losing their remote controls in the discussion of technical issues of the project?",
+      "reference_answer": "User Interface proposed that a base station next to the TV could be a solution, but Industrial Designer pointed out that this could be technically complicated and would cost a lot. So the team eventually adopted Marketing's advice to implement an audio signal.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The team proposed incorporating a feature where the remote control could report its location to a central base station near the TV. However, they acknowledged that this solution would increase both complexity and cost. The implementation details were left to Sebastian, who was advised to examine the feasibility considering these constraints.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.08602150537634408,
+            "rougeL": 0.2526315789473684
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            14
+          ],
+          "retrieval_precision": 0.6328125,
+          "retrieval_recall": 0.24360902255639097
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The team proposed incorporating a base station next to the TV that would allow the remote control to report its location. However, they noted that implementing this feature would increase technical complexity and cost. The specific implementation details were suggested to be further investigated by Sebastian, given his expertise in the area.",
+          "rouge_f1": {
+            "rouge1": 0.41666666666666663,
+            "rouge2": 0.14893617021276598,
+            "rougeL": 0.31249999999999994
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            14,
+            1,
+            11
+          ],
+          "retrieval_precision": 0.4921875,
+          "retrieval_recall": 0.37894736842105264
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The team proposed incorporating a \"find the remote control\" feature, similar to existing technology where pressing a specific button on the TV causes the remote to emit a sound or signal, allowing users to locate it. However, they noted that implementing this feature would complicate the technical design and increase costs. They agreed that a base station near the TV could potentially serve this purpose but acknowledged that this might be too expensive. The final decision was deferred to Sebastian, who would investigate further and propose a cost-effective solution.",
+          "rouge_f1": {
+            "rouge1": 0.417910447761194,
+            "rouge2": 0.10606060606060606,
+            "rougeL": 0.208955223880597
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            14,
+            1,
+            11,
+            21,
+            5,
+            20,
+            4
+          ],
+          "retrieval_precision": 0.32275390625,
+          "retrieval_recall": 0.49699248120300754
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The team proposed incorporating a feature where the remote control could report its location to a central base station near the TV. However, they acknowledged that this solution would increase both complexity and cost. The implementation details were left to Sebastian, who was advised to examine the feasibility considering these constraints.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.08602150537634408,
+            "rougeL": 0.2526315789473684
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            14
+          ],
+          "retrieval_precision": 0.6328125,
+          "retrieval_recall": 0.24360902255639097
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The team considered implementing a base station next to the TV that would serve as a central point for locating lost remote controls. However, they acknowledged that adding such functionality could complicate the technical design and increase costs. They decided that Sebastian, who has expertise in this area, should investigate further and potentially develop a solution.",
+          "rouge_f1": {
+            "rouge1": 0.4799999999999999,
+            "rouge2": 0.16326530612244897,
+            "rougeL": 0.3
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            14,
+            12,
+            10
+          ],
+          "retrieval_precision": 0.7412109375,
+          "retrieval_recall": 0.5706766917293233
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "To prevent customers from losing their remote controls, the team considered implementing a feature that would emit a sound signal. This feature was inspired by the observation that customers frequently complain about not being able to find their remote controls. Marketing suggested a sound signal similar to those found in home phones, and the Industrial Designer agreed that this could be a distinguishing feature for their product. However, concerns were raised about potential complications with the sound signal, such as interference during movie watching. As a result, the team tentatively decided to explore this feature further, with the Industrial Designer tasked to investigate its feasibility and cost implications.",
+          "rouge_f1": {
+            "rouge1": 0.3026315789473684,
+            "rouge2": 0.08,
+            "rougeL": 0.21052631578947367
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            14,
+            12,
+            10,
+            4,
+            5,
+            9,
+            17
+          ],
+          "retrieval_precision": 0.5341796875,
+          "retrieval_recall": 0.8225563909774436
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The team proposed incorporating a feature where the remote control could report its location to a central base station near the TV. However, they acknowledged that this solution would increase both complexity and cost. The implementation details were left to Sebastian, who was advised to examine the feasibility considering these constraints.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.08602150537634408,
+            "rougeL": 0.2526315789473684
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            14
+          ],
+          "retrieval_precision": 0.6328125,
+          "retrieval_recall": 0.24360902255639097
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team proposed incorporating a function where the remote control could report itself to a central point, likely a base station next to the TV. However, they acknowledged that implementing this feature would increase technical complexity and cost. They agreed that further investigation by Sebastian, who specializes in this area, would be necessary to determine if the feature is feasible within budget constraints.",
+          "rouge_f1": {
+            "rouge1": 0.4485981308411215,
+            "rouge2": 0.13333333333333333,
+            "rougeL": 0.2616822429906542
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            14,
+            5,
+            1
+          ],
+          "retrieval_precision": 0.4150390625,
+          "retrieval_recall": 0.31954887218045114
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team proposed incorporating a \"find the remote control\" feature into the TV set and remote control, where pressing a specific button on the TV set would cause the remote to emit a sound signal to help locate it. However, they acknowledged that adding another device in the house to perform this function would be impractical. Instead, they suggested having a base station next to the TV as the best possibility, though they noted this could increase costs. They agreed that Sebastian should investigate further to develop a cost-effective solution.",
+          "rouge_f1": {
+            "rouge1": 0.34074074074074073,
+            "rouge2": 0.12030075187969926,
+            "rougeL": 0.1925925925925926
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            13,
+            14,
+            5,
+            1,
+            4,
+            11,
+            10,
+            9
+          ],
+          "retrieval_precision": 0.47509765625,
+          "retrieval_recall": 0.7315789473684211
+        },
+        "word_packed__dense__w512": {
+          "answer": "The team came up with the idea of incorporating a \"find the remote control\" feature into the remote itself, where pressing a specific button on the TV set would cause the remote to emit a beeping sound, similar to how mobile phones operate. This solution was suggested by the Industrial Designer as a way to help locate lost remote controls.",
+          "rouge_f1": {
+            "rouge1": 0.2692307692307693,
+            "rouge2": 0.058823529411764705,
+            "rougeL": 0.17307692307692307
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.1924812030075188
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The team proposed incorporating a feature where pressing a specific button on the TV set would cause the remote control to emit a beeping sound, helping users locate it. However, they dismissed this idea due to the inconvenience of requiring users to walk to the TV to activate it. Instead, they suggested using a base station next to the TV that could help locate the remote, though they noted this might be costly.",
+          "rouge_f1": {
+            "rouge1": 0.32478632478632474,
+            "rouge2": 0.12173913043478263,
+            "rougeL": 0.18803418803418803
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            12,
+            2
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.3849624060150376
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The team proposed incorporating a \"find the remote control\" feature where pressing a specific button on the TV would cause the remote to emit a beep, similar to how mobile phones work. However, they acknowledged that this might not be practical since users may not always be near the TV when they lose their remote. They concluded that a better approach would be to have a base station next to the TV that could help locate the remote, though they noted this solution would likely increase costs.",
+          "rouge_f1": {
+            "rouge1": 0.3511450381679389,
+            "rouge2": 0.13953488372093023,
+            "rougeL": 0.19847328244274812
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            10,
+            12,
+            2,
+            5,
+            3,
+            13,
+            4
+          ],
+          "retrieval_precision": 0.32861328125,
+          "retrieval_recall": 0.5060150375939849
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The team proposed implementing a base station next to the TV where the remote could report its location. However, they noted this solution might be costly. They agreed that if feasible within budget constraints, further investigation by Sebastian, who has expertise in this area, would be necessary to develop a concrete solution.",
+          "rouge_f1": {
+            "rouge1": 0.41666666666666663,
+            "rouge2": 0.14893617021276598,
+            "rougeL": 0.2916666666666667
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            12
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.1924812030075188
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The team proposed incorporating a function where the remote control could report its location to a base station near the TV. However, they acknowledged that this solution would increase complexity and cost. They agreed that further investigation into the feasibility and cost implications would be necessary, with Sebastian being tasked to look into it due to his expertise.",
+          "rouge_f1": {
+            "rouge1": 0.411764705882353,
+            "rouge2": 0.1,
+            "rougeL": 0.23529411764705882
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            12,
+            2,
+            13
+          ],
+          "retrieval_precision": 0.4072265625,
+          "retrieval_recall": 0.31353383458646616
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The team proposed incorporating a sound signal feature into the remote control to help customers locate it. This suggestion arose from the observation that customers frequently complain about not being able to find their remote controls. The sound signal would work similarly to how home phones operate, emitting an audio signal to assist in locating the remote. However, the feasibility of a clapping technique to activate the sound signal was deemed too complex due to potential interference from other sounds. Instead, the team favored a simpler approach, possibly involving a base station near the TV to facilitate the location function.",
+          "rouge_f1": {
+            "rouge1": 0.2638888888888889,
+            "rouge2": 0.08450704225352113,
+            "rougeL": 0.1527777777777778
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            12,
+            2,
+            13,
+            11,
+            9,
+            5,
+            8
+          ],
+          "retrieval_precision": 0.5244140625,
+          "retrieval_recall": 0.8075187969924812
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The team proposed implementing a base station next to the TV where the remote could report its location. However, they noted this solution might be costly. They agreed that if feasible within budget constraints, further investigation by Sebastian, who has expertise in this area, would be necessary to develop a concrete solution.",
+          "rouge_f1": {
+            "rouge1": 0.41666666666666663,
+            "rouge2": 0.14893617021276598,
+            "rougeL": 0.2916666666666667
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            3
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.1924812030075188
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The team proposed incorporating a feature where the remote control could report its location to a central base station near the TV. However, they acknowledged that implementing this feature might be costly. They agreed that further investigation into whether this feature could be included within budget constraints was necessary, with Sebastian being tasked to look into it due to his expertise.",
+          "rouge_f1": {
+            "rouge1": 0.3619047619047619,
+            "rouge2": 0.07766990291262137,
+            "rougeL": 0.22857142857142856
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            3,
+            2,
+            1
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.1924812030075188
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The team proposed incorporating a \"find\" function into the remote control, which would emit an audio signal similar to home phones, allowing users to locate their remote controls when misplaced. This feature would involve pressing a specific button on the TV set, causing the remote to beep in response, thereby helping customers find their remote controls without needing an additional device. However, the implementation details and cost implications were noted as potential challenges.",
+          "rouge_f1": {
+            "rouge1": 0.3076923076923077,
+            "rouge2": 0.06956521739130433,
+            "rougeL": 0.15384615384615385
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            3,
+            2,
+            1,
+            13,
+            5,
+            10,
+            8
+          ],
+          "retrieval_precision": 0.3994140625,
+          "retrieval_recall": 0.6150375939849624
+        },
+        "lumber__dense__w512": {
+          "answer": "The team proposed using a base station next to the TV as a solution to help locate lost remote controls. However, they acknowledged that implementing such a feature would increase the complexity and cost of the design. The final decision was deferred to Sebastian, who was advised to investigate further and provide a detailed solution considering the feasibility within budget constraints.",
+          "rouge_f1": {
+            "rouge1": 0.380952380952381,
+            "rouge2": 0.15533980582524273,
+            "rougeL": 0.2857142857142857
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            4
+          ],
+          "retrieval_precision": 0.830078125,
+          "retrieval_recall": 0.31954887218045114
+        },
+        "lumber__dense__w1024": {
+          "answer": "The team proposed incorporating a function where the remote control could report its location to a base station near the TV. However, they acknowledged that this solution would increase complexity and cost. They agreed that further investigation by Sebastian, who has expertise in this area, was necessary to determine if the implementation was feasible within budget constraints.",
+          "rouge_f1": {
+            "rouge1": 0.396039603960396,
+            "rouge2": 0.10101010101010101,
+            "rougeL": 0.2376237623762376
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            4,
+            3
+          ],
+          "retrieval_precision": 0.4150390625,
+          "retrieval_recall": 0.31954887218045114
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team proposed incorporating an audio signal feature into the remote control, similar to home phones, where pressing a specific button on the TV set would cause the remote control to emit a beeping sound to help locate it. However, due to the complexity and cost concerns, they decided that Sebastian should investigate further to develop a practical solution, possibly involving a base station near the TV.",
+          "rouge_f1": {
+            "rouge1": 0.36036036036036034,
+            "rouge2": 0.12844036697247704,
+            "rougeL": 0.16216216216216217
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            15,
+            4,
+            3,
+            7,
+            13,
+            9,
+            20
+          ],
+          "retrieval_precision": 0.369140625,
+          "retrieval_recall": 0.5684210526315789
+        },
+        "lumber__bm25__w512": {
+          "answer": "The team proposed implementing a base station next to the TV that would allow the remote control to report its location. However, they noted that this solution could be costly.",
+          "rouge_f1": {
+            "rouge1": 0.5135135135135135,
+            "rouge2": 0.25,
+            "rougeL": 0.3243243243243243
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15
+          ],
+          "retrieval_precision": 0.41015625,
+          "retrieval_recall": 0.15789473684210525
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The team proposed incorporating a base station next to the TV that would allow the remote control to report its location. However, they acknowledged that implementing this feature would increase both the complexity of the technical design and the cost. They agreed that further investigation into the feasibility and cost implications would be necessary before proceeding.",
+          "rouge_f1": {
+            "rouge1": 0.42,
+            "rouge2": 0.14285714285714285,
+            "rougeL": 0.28
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15,
+            12,
+            7
+          ],
+          "retrieval_precision": 0.611328125,
+          "retrieval_recall": 0.4706766917293233
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The team proposed incorporating a \"find the remote control\" button into the TV set, which would make the remote control emit a beeping sound to help locate it. This solution was suggested by the Industrial Designer, who referenced existing technology in some TVs and phones that already uses a similar technique.",
+          "rouge_f1": {
+            "rouge1": 0.3368421052631579,
+            "rouge2": 0.06451612903225805,
+            "rougeL": 0.2105263157894737
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15,
+            12,
+            7,
+            14,
+            3,
+            13,
+            16,
+            20
+          ],
+          "retrieval_precision": 0.517578125,
+          "retrieval_recall": 0.7969924812030075
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The team proposed implementing a base station next to the TV that would allow the remote control to report its location. However, they noted that this solution could be costly.",
+          "rouge_f1": {
+            "rouge1": 0.5135135135135135,
+            "rouge2": 0.25,
+            "rougeL": 0.3243243243243243
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15
+          ],
+          "retrieval_precision": 0.41015625,
+          "retrieval_recall": 0.15789473684210525
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The team proposed incorporating a base station next to the TV that would allow the remote control to report its location. However, they noted that implementing this feature would increase the complexity and cost of the design. They agreed that further investigation into the feasibility and cost implications would be necessary, with Sebastian being tasked to look into it due to his expertise.",
+          "rouge_f1": {
+            "rouge1": 0.39252336448598135,
+            "rouge2": 0.13333333333333333,
+            "rougeL": 0.2616822429906542
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15,
+            7,
+            3
+          ],
+          "retrieval_precision": 0.4150390625,
+          "retrieval_recall": 0.31954887218045114
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The team proposed incorporating an audio signal feature into the remote control, similar to home phones, where pressing a specific button on the TV set would cause the remote control to emit a beeping sound to help locate it. However, due to the complexity and cost concerns, they decided that Sebastian should investigate further to develop a practical solution, possibly involving a base station near the TV.",
+          "rouge_f1": {
+            "rouge1": 0.36036036036036034,
+            "rouge2": 0.12844036697247704,
+            "rougeL": 0.16216216216216217
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            15,
+            7,
+            3,
+            13,
+            9,
+            20
+          ],
+          "retrieval_precision": 0.369140625,
+          "retrieval_recall": 0.5684210526315789
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the team think about the energy source when discussing technical issues of the project?",
+      "reference_answer": "Industrial Designer proposed to incorporate a solar panel and rechargeable batteries, but Project Manager agreed more with Marketing's proposal to include a cradle.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The meeting excerpts do not contain any specific discussion or thoughts from the team members regarding the energy source of the project. Therefore, the evidence is insufficient to determine what the team thought about the energy source when discussing technical issues of the project.",
+          "rouge_f1": {
+            "rouge1": 0.05882352941176471,
+            "rouge2": 0.0,
+            "rougeL": 0.05882352941176471
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            28,
+            25
+          ],
+          "retrieval_precision": 0.087890625,
+          "retrieval_recall": 0.20833333333333334
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The evidence provided does not contain any specific discussion about the energy source of the project. Therefore, the team's thoughts on the energy source when discussing technical issues are insufficiently addressed in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.06666666666666667,
+            "rouge2": 0.0,
+            "rougeL": 0.06666666666666667
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            28,
+            25,
+            1,
+            24
+          ],
+          "retrieval_precision": 0.0625,
+          "retrieval_recall": 0.2962962962962963
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The team discussed the possibility of using a hybrid energy source that incorporates a solar panel and rechargeable batteries. Industrial Designer suggested this approach, noting that such devices could charge themselves when left in a light room. However, there were concerns about the cost-effectiveness of this solution. Marketing pointed out that including a cradle for recharging could mitigate the issue, and Industrial Designer confirmed that both the solar panel and cradle solutions would be inexpensive.",
+          "rouge_f1": {
+            "rouge1": 0.26,
+            "rouge2": 0.18367346938775508,
+            "rougeL": 0.21999999999999997
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            28,
+            25,
+            1,
+            24,
+            26,
+            0,
+            2,
+            29
+          ],
+          "retrieval_precision": 0.10546875,
+          "retrieval_recall": 1.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The team did not explicitly express detailed thoughts about the energy source during the discussion of technical issues. However, the Industrial Designer mentioned that typically such devices consist of a battery, infrared diode, buttons, chips, and a circuit board. This indicates that while the energy source (battery) was acknowledged as part of the device's components, it wasn't a focal point of concern or detailed discussion regarding technical issues.",
+          "rouge_f1": {
+            "rouge1": 0.14893617021276595,
+            "rouge2": 0.021739130434782608,
+            "rougeL": 0.14893617021276595
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            10,
+            14
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The team thought positively about the energy source, focusing on using energy-efficient components to ensure cost-effectiveness and sustainability. They discussed the possibility of using rechargeable designs or energy-saving components, emphasizing the importance of sparsely consuming power-friendly components. Additionally, they considered the integration of power-friendly LEDs without significant increases in cost, aiming to balance functionality and energy consumption.",
+          "rouge_f1": {
+            "rouge1": 0.11627906976744184,
+            "rouge2": 0.0,
+            "rougeL": 0.09302325581395349
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            10,
+            14,
+            7,
+            4
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The team discussed the importance of using energy-efficient components to ensure cost-effectiveness and to allow savings for more elaborate features such as fancy lighting techniques. They emphasized the need for energy-sparse, friendly components that consume less power than conventional ones, suggesting a preference for a rechargeable or energy-saving design.",
+          "rouge_f1": {
+            "rouge1": 0.20779220779220778,
+            "rouge2": 0.0,
+            "rougeL": 0.10389610389610389
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            5,
+            10,
+            14,
+            7,
+            4,
+            26,
+            6,
+            20,
+            18
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The team expressed concerns about the battery lifetime and energy saving when discussing the technical issues of the project. These concerns were mentioned by the Industrial Designer during the summary of decisions and considerations. No specific thoughts about the type of energy source were detailed beyond noting these general concerns.",
+          "rouge_f1": {
+            "rouge1": 0.13513513513513514,
+            "rouge2": 0.02777777777777778,
+            "rougeL": 0.08108108108108109
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            26,
+            10
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team thought that the energy source should be efficient and cost-effective. They emphasized using energy-friendly components that consume less power and suggested implementing a rechargeable or energy-saving design. The Industrial Designer specifically mentioned the importance of using low-cost circuit boards and power-friendly LEDs to achieve cost-effectiveness while maintaining an attractive design.",
+          "rouge_f1": {
+            "rouge1": 0.14634146341463414,
+            "rouge2": 0.024999999999999998,
+            "rougeL": 0.0975609756097561
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            26,
+            10,
+            7,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team emphasized the importance of using energy-efficient components to ensure cost-effectiveness and extend battery life. They discussed the possibility of incorporating rechargeable designs or energy-saving features, such as hybrid devices with solar panels and rechargeable batteries, to address potential issues with battery longevity due to added functionalities like voice recognition. However, they were concerned about the cost implications of these solutions. The team also considered using power-friendly LEDs for lighting effects, acknowledging that while they might be slightly more expensive, the savings from a low-cost circuit board could offset this expense.",
+          "rouge_f1": {
+            "rouge1": 0.19834710743801653,
+            "rouge2": 0.06722689075630252,
+            "rougeL": 0.16528925619834708
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            6,
+            26,
+            10,
+            7,
+            5,
+            24,
+            14,
+            25,
+            29
+          ],
+          "retrieval_precision": 0.10546875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "The team discussed the energy source in the context of its functionality and cost implications. The Industrial Designer mentioned that the device charges itself in a lit room, suggesting it uses solar power or similar light-based charging. When questioned about costs, the Industrial Designer assured the team that adding a cradle for recharging would be inexpensive due to mass production, indicating that the team was concerned about both the practicality and cost-effectiveness of the energy solution.",
+          "rouge_f1": {
+            "rouge1": 0.1764705882352941,
+            "rouge2": 0.04,
+            "rougeL": 0.11764705882352941
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            23
+          ],
+          "retrieval_precision": 0.34765625,
+          "retrieval_recall": 0.8240740740740741
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The team discussed the importance of using energy-efficient components to ensure cost-effectiveness and to allow for additional features such as fancy lighting techniques. The Industrial Designer specifically mentioned the use of energy-friendly components that consume less power and suggested incorporating rechargeable designs or energy-saving methods. There was also consideration given to including a cradle for recharging, which was deemed to be inexpensive and practical.",
+          "rouge_f1": {
+            "rouge1": 0.2173913043478261,
+            "rouge2": 0.08888888888888888,
+            "rougeL": 0.1739130434782609
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            23,
+            6,
+            1
+          ],
+          "retrieval_precision": 0.173828125,
+          "retrieval_recall": 0.8240740740740741
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The team discussed the importance of using energy-efficient components to ensure cost-effectiveness and extend battery life. Industrial Designer emphasized the need for \"energy-sparse, friendly components\" and suggested incorporating specially designed energy-friendly components that consume less power. Additionally, there was consideration for using rechargeable designs or energy-saving designs to further enhance efficiency. However, the inclusion of voice recognition was noted to potentially complicate power-saving efforts, leading to a shorter battery life. To address this, Industrial Designer proposed integrating a solar panel and rechargeable batteries or including a cradle for recharging, which was deemed relatively inexpensive.",
+          "rouge_f1": {
+            "rouge1": 0.24193548387096772,
+            "rouge2": 0.1475409836065574,
+            "rougeL": 0.1935483870967742
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            23,
+            6,
+            1,
+            0,
+            26,
+            22,
+            27
+          ],
+          "retrieval_precision": 0.10546875,
+          "retrieval_recall": 1.0
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The evidence provided does not contain any specific statements or discussions from the team members about their thoughts on the energy source when discussing technical issues of the project. Therefore, the evidence is insufficient to determine what the team thought about the energy source.",
+          "rouge_f1": {
+            "rouge1": 0.05882352941176471,
+            "rouge2": 0.0,
+            "rougeL": 0.05882352941176471
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            4
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The team thought that the energy source should be efficient and use energy-friendly components to ensure cost-effectiveness and potentially implement a rechargeable design. Industrial Designer specifically emphasized the importance of using components that consume less power than conventional ones.",
+          "rouge_f1": {
+            "rouge1": 0.1846153846153846,
+            "rouge2": 0.03174603174603175,
+            "rougeL": 0.0923076923076923
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            4,
+            13,
+            6
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The team discussed the importance of using energy-efficient components to ensure cost-effectiveness and to allow for savings that could be reinvested into more elaborate features like fancy lighting techniques. They emphasized the use of energy-sparse, friendly components that consume less power than conventional ones, suggesting a commitment to an energy-saving design.",
+          "rouge_f1": {
+            "rouge1": 0.1518987341772152,
+            "rouge2": 0.0,
+            "rougeL": 0.10126582278481011
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            9,
+            4,
+            13,
+            6,
+            3,
+            5,
+            25,
+            18
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The team discussed the importance of using energy-efficient components to ensure cost-effectiveness and to support a potentially rechargeable or energy-saving design. Industrial Designer emphasized the need for energy-friendly components that consume less power than conventional ones, suggesting that this approach would allow savings in other areas such as implementing elaborate lighting techniques without increasing overall costs significantly.",
+          "rouge_f1": {
+            "rouge1": 0.16470588235294117,
+            "rouge2": 0.024096385542168676,
+            "rougeL": 0.09411764705882354
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            6
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The team thought that the energy source should be energy-efficient and friendly components that consume less power. They considered using rechargeable designs or energy-saving features, emphasizing the importance of cost-effectiveness. Additionally, they discussed the possibility of including a cradle for recharging, which was deemed inexpensive and practical.",
+          "rouge_f1": {
+            "rouge1": 0.16216216216216217,
+            "rouge2": 0.05555555555555556,
+            "rougeL": 0.13513513513513514
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            6,
+            23,
+            5
+          ],
+          "retrieval_precision": 0.173828125,
+          "retrieval_recall": 0.8240740740740741
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The team discussed the energy source in the context of ensuring the device uses energy-efficient components. Industrial Designer emphasized the importance of using energy-friendly components that consume less power than conventional ones. They suggested considering a rechargeable design or an energy-saving design to achieve cost-effectiveness. Additionally, Industrial Designer mentioned the possibility of incorporating a solar panel and rechargeable batteries or including a cradle for recharging, though the feasibility of these options was questioned due to potential cost concerns.",
+          "rouge_f1": {
+            "rouge1": 0.2641509433962264,
+            "rouge2": 0.17307692307692307,
+            "rougeL": 0.2452830188679245
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            6,
+            23,
+            5,
+            9,
+            22,
+            13,
+            27
+          ],
+          "retrieval_precision": 0.10546875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__dense__w512": {
+          "answer": "The evidence provided does not contain any statements or discussions specifically about what the team thought regarding the energy source of the project when discussing technical issues. The excerpts focus mainly on project requirements, decisions about features such as not supporting teletext, target customer age group, and the communication method (infrared) for the remote control. There is no mention of thoughts or opinions related to the energy source.",
+          "rouge_f1": {
+            "rouge1": 0.06521739130434782,
+            "rouge2": 0.0,
+            "rougeL": 0.04347826086956522
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            3,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The team discussed the importance of using energy-efficient components to ensure cost-effectiveness and to allow for the implementation of additional features like fancy lighting techniques without significantly increasing costs. The Industrial Designer specifically suggested using energy-friendly components that consume less power than conventional ones, emphasizing the feasibility of incorporating a rechargeable or energy-saving design. The User Interface expressed concern about the energy usage of LEDs but was assured that power-friendly LEDs could be used within the budget constraints.",
+          "rouge_f1": {
+            "rouge1": 0.16822429906542055,
+            "rouge2": 0.0380952380952381,
+            "rougeL": 0.11214953271028036
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            3,
+            8,
+            12
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team thought that the energy source should be energy-efficient and focused on using components that consume less power. They considered using rechargeable designs or energy-saving components to achieve this. Additionally, they discussed incorporating solar panels and rechargeable batteries as a potential solution for extending battery life, though they were concerned about the cost implications. They also explored the possibility of including a cradle for recharging, which was deemed relatively inexpensive and feasible.",
+          "rouge_f1": {
+            "rouge1": 0.24242424242424243,
+            "rouge2": 0.12371134020618557,
+            "rougeL": 0.22222222222222224
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            1,
+            3,
+            8,
+            12,
+            28,
+            6,
+            30,
+            29,
+            7
+          ],
+          "retrieval_precision": 0.10546875,
+          "retrieval_recall": 1.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The team thought positively about the energy source, considering it to be straightforward and compatible with existing technology. The Industrial Designer emphasized the importance of using an energy-efficient source and noted that the device typically consists of a battery, infrared diode, buttons, chips, and a circuit board. The Project Manager agreed, stating there were no significant technical difficulties with the approach.",
+          "rouge_f1": {
+            "rouge1": 0.2558139534883721,
+            "rouge2": 0.07142857142857142,
+            "rougeL": 0.18604651162790697
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            6,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The team thought that the energy source should be energy-efficient and use components that consume less power. They discussed using specially designed energy-friendly components and considered a rechargeable or energy-saving design. The Industrial Designer emphasized the importance of using low-cost circuit boards to reduce production costs, suggesting that savings could be allocated towards adding fancy lighting techniques without significantly increasing costs.",
+          "rouge_f1": {
+            "rouge1": 0.1348314606741573,
+            "rouge2": 0.022988505747126436,
+            "rougeL": 0.0898876404494382
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            6,
+            8,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The team discussed the importance of using energy-efficient components to ensure cost-effectiveness and to allow savings for more elaborate features like fancy lighting techniques. They emphasized the use of energy-sparse, friendly components that consume less power than conventional ones, suggesting a commitment to both functionality and sustainability in the design of the remote control.",
+          "rouge_f1": {
+            "rouge1": 0.14814814814814814,
+            "rouge2": 0.0,
+            "rougeL": 0.09876543209876543
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            6,
+            8,
+            7,
+            4,
+            15,
+            21
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The team emphasized the importance of using energy-efficient components to ensure cost-effectiveness and sustainability. The Industrial Designer specifically highlighted the need for \"energy sparse, friendly components\" and suggested implementing a rechargeable or energy-saving design. They also mentioned using power-friendly LEDs, indicating that these would not significantly increase energy consumption. Overall, the team aimed to balance functionality and user appeal with energy efficiency.",
+          "rouge_f1": {
+            "rouge1": 0.17777777777777776,
+            "rouge2": 0.022727272727272728,
+            "rougeL": 0.1111111111111111
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The team thought that the energy source should be energy-efficient and use components that consume less power. They discussed using specially designed energy-friendly components and considered a rechargeable or energy-saving design. The Industrial Designer emphasized the importance of using low-cost circuit boards to reduce production costs, suggesting that savings could be allocated towards adding fancy lighting techniques without significantly increasing costs.",
+          "rouge_f1": {
+            "rouge1": 0.1348314606741573,
+            "rouge2": 0.022988505747126436,
+            "rougeL": 0.0898876404494382
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            8,
+            6,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The team thought that the energy source should be energy-efficient and use components that consume less power. They discussed using specially designed energy-friendly components and considered a rechargeable design or an energy-saving design. Additionally, they mentioned the possibility of incorporating a solar panel and rechargeable batteries to charge the device in a light room, though they were concerned about the cost implications of this approach.",
+          "rouge_f1": {
+            "rouge1": 0.2173913043478261,
+            "rouge2": 0.13333333333333333,
+            "rougeL": 0.2173913043478261
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            12,
+            8,
+            6,
+            7,
+            1,
+            21,
+            28,
+            15
+          ],
+          "retrieval_precision": 0.03662109375,
+          "retrieval_recall": 0.3472222222222222
+        }
+      }
+    }
+  ]
+}

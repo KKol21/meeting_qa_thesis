@@ -1,7 +1,7 @@
 # Experiment pipeline
 
-This is the offline orientation guide for the active QMSum development
-experiment. Start here when returning to the code after a break. The short
+This is the offline orientation guide for the QMSum validation and held-out
+test experiments. Start here when returning to the code after a break. The short
 version is:
 
 ```text
@@ -17,13 +17,15 @@ QMSum JSON
 ```
 
 The experiment asks whether semantic chunks improve retrieval and downstream
-meeting-question answering compared with three non-semantic baselines.
+meeting-question answering compared with deterministic packed baselines. The
+single-turn chunker is retained in validation artifacts but omitted from the
+final test grid.
 
 This is a LumberChunker **adaptation**, not an exact reproduction: speaker turns
 replace paragraphs, Qwen2.5-14B replaces Gemini 1.0 Pro, and decoding is greedy.
-The checked-in results come from 20 QMSum validation meetings, not a final
-held-out evaluation. They were generated with the previous 7B segmenter and
-must be rerun before they represent the current 14B preset.
+The checked-in `validation-full` results come from 20 QMSum validation
+meetings. The final `full` preset uses all 35 held-out test meetings and the
+frozen 14B, 1,000-target segmentation configuration.
 
 ## Where things live
 
@@ -33,7 +35,7 @@ src/
   tools/                  reporting and manual-inspection commands
   meeting_qa_chunking/    reusable data, chunking, retrieval, and model code
     prompts/              version-controlled prompts, separate from Python
-  configs/                smoke/full presets and the 20-meeting manifest
+  configs/                smoke, validation, and held-out test presets
   wormulon/               Slurm jobs and their Python environment wrapper
 docs/vendor/              selected third-party documentation for offline use
 data/raw/qmsum/            local QMSum JSON (not uploaded wholesale)
@@ -42,8 +44,10 @@ runs/                      generated/fetched artifacts
 ```
 
 The four files in `src/stages/` are entry points. Most logic that is worth
-testing or reusing lives in `src/meeting_qa_chunking/`. The three files in
-`src/tools/` consume saved JSON and do not run the experimental models.
+testing or reusing lives in `src/meeting_qa_chunking/`. Files in `src/tools/`
+provide reporting, sensitivity analyses, and manual-review exports; some
+retrieval sweeps load the embedding model, while report-only tools consume
+saved JSON.
 
 The TOML file is the executable experiment definition. It selects meetings,
 models, chunkers, retrieval parameters, generation settings, evaluation
@@ -61,7 +65,7 @@ Entry point: `src/stages/ablation_segment.py`
 2. `lumber.lumber_chunks` builds a **local** window beginning at the next
    unprocessed turn. It never sends the whole transcript to the model.
 3. `lumber_prompt.build_window` adds complete turns until the window exceeds
-   the 550-token target. The token count uses the LumberChunker
+   the 1,000-pseudo-token target. The count uses the LumberChunker
    approximation: `round(1.2 * number_of_words)`.
 4. The prompt in `prompts/lumberchunker.txt` asks Qwen2.5-14B-Instruct for the
    first turn whose content changes relative to the preceding turns.
@@ -76,14 +80,14 @@ most 12 new tokens. Existing files are fingerprinted, validated, and reused,
 so rerunning is resumable at meeting level. Model responses are also cached in
 `.cache/lumber/` by model, revision, generation settings, and full prompt.
 
-Important distinction: 550 is a local **segmentation-window target**, not the
+Important distinction: 1,000 is a local **segmentation-window target**, not the
 size of the final semantic chunks and not the retrieval evidence budget.
 
 ## Stage 2: chunk retrieval
 
 Entry point: `src/stages/ablation_retrieval.py`
 
-For every meeting it constructs four complete, non-overlapping views:
+The implementation supports four complete, non-overlapping views:
 
 - `single_turn`: creates one chunk for each complete speaker turn;
 - `turn_packed`: greedily packs complete turns under a soft 256-word limit;
@@ -112,8 +116,9 @@ For each question, every chunk view is ranked three ways:
 Ranked chunks are selected under 512-, 1024-, and 2048-word budgets. The chosen content
 is then rendered in chronological transcript order for dialogue coherence.
 Selection may clip the last fragment, including a complete turn from a
-turn-preserving chunker. This gives 4 chunkers x 3 retrievers x 3 budgets = 36
-conditions.
+turn-preserving chunker. The validation grid contains all four chunkers (36
+conditions). The final test grid omits `single_turn`, giving 3 chunkers x 3
+retrievers x 3 budgets = 27 conditions.
 
 The primary retrieval metrics are evidence precision and recall at equal word
 budgets. First-overlap reciprocal rank is retained as a diagnostic but not
@@ -140,9 +145,9 @@ There are two evidence sources:
 - `retrieval`: reconstructed stage-2 evidence. This measures the end-to-end
   pipeline.
 
-The Slurm ablation currently runs oracle evidence with Qwen2.5 7B, 14B, and a
-prequantized 4-bit 32B checkpoint. Qwen2.5-14B answers all 36 retrieved-evidence
-conditions. Every model revision is pinned in `config.py`; the preset chooses
+The Slurm ablation runs oracle evidence with Qwen2.5 7B, 14B, and a
+prequantized 4-bit 32B checkpoint. Qwen2.5-14B answers every retrieved-evidence
+condition. Every model revision is pinned in `config.py`; the preset chooses
 model tags.
 
 `evidence_preparation.py` prepares evidence, `answering.py` combines it with the question,
@@ -208,7 +213,7 @@ $env:PYTHONPATH = "src"
 python -m unittest discover -s tests -v
 python -m meeting_qa_chunking.run_preset --preset src/configs/ablation-smoke.toml --dry-run
 python src/tools/report_ablations.py --preset src/configs/ablation-smoke.toml
-python src/tools/export_review.py --run full --condition lumber__dense__w512
+python src/tools/export_review.py --run validation-full --condition lumber__dense__w512
 python src/tools/inspect_retrieval_failure.py --preset src/configs/ablation-smoke.toml --question-index 3
 ```
 
@@ -221,6 +226,7 @@ The normal Windows entry point is:
 
 ```powershell
 .\run_on_wormulon.ps1 ablation-smoke
+.\run_on_wormulon.ps1 ablation-validation-full
 .\run_on_wormulon.ps1 ablation-full
 ```
 
@@ -258,10 +264,10 @@ creates/reuses `.venv-wormulon`, installs only the exact dependencies needed by
 the current stage, exports `PYTHONPATH=.../src`, prints `nvidia-smi`, and fails
 early if PyTorch cannot see CUDA.
 
-The smoke job is `Bed002` with a four-hour limit. The full job uses 20 meetings
-and 142 questions
-from QMSum's validation/development split, excluding `Bed002` and adding the
-next seed-42 candidate, `education_18`. It has the cluster's ten-hour limit. Segmentation,
+The smoke job is `Bed002` with a four-hour limit. `ablation-validation-full`
+uses the fixed 20-meeting, 142-question validation subset.
+`ablation-full` uses all 35 test meetings and 244 specific questions, with no
+single-turn condition. Both full jobs have the cluster's ten-hour limit. Segmentation,
 retrieval, and answering resume per meeting. Evaluation is not meeting-resumable:
 it writes per answer stage, but cached judgments preserve the expensive model
 work after an interrupted run. If the full job reaches the time limit, submit

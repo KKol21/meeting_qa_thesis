@@ -1,0 +1,3626 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "retrieval",
+      "conditions": {
+        "turn_packed__dense__w512": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "turn_packed__dense__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "turn_packed__dense__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "turn_packed__bm25__w512": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "turn_packed__bm25__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "turn_packed__bm25__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "turn_packed__hybrid__w512": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "turn_packed__hybrid__w1024": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "turn_packed__hybrid__w2048": {
+          "chunker": "turn_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "word_packed__dense__w512": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "word_packed__dense__w1024": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "word_packed__dense__w2048": {
+          "chunker": "word_packed",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "word_packed__bm25__w512": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "word_packed__bm25__w1024": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "word_packed__bm25__w2048": {
+          "chunker": "word_packed",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "word_packed__hybrid__w512": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "word_packed__hybrid__w1024": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "word_packed__hybrid__w2048": {
+          "chunker": "word_packed",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        },
+        "lumber__dense__w512": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 512
+        },
+        "lumber__dense__w1024": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 1024
+        },
+        "lumber__dense__w2048": {
+          "chunker": "lumber",
+          "retriever": "dense",
+          "evidence_words": 2048
+        },
+        "lumber__bm25__w512": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 512
+        },
+        "lumber__bm25__w1024": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 1024
+        },
+        "lumber__bm25__w2048": {
+          "chunker": "lumber",
+          "retriever": "bm25",
+          "evidence_words": 2048
+        },
+        "lumber__hybrid__w512": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 512
+        },
+        "lumber__hybrid__w1024": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 1024
+        },
+        "lumber__hybrid__w2048": {
+          "chunker": "lumber",
+          "retriever": "hybrid",
+          "evidence_words": 2048
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "117e80dcf96dc3ae314d7f59148aa7dbd138af109ef58bd8f5971165a88cc4ca",
+    "inputs": {
+      "meeting": {
+        "file": "Bro027.json",
+        "sha256": "4b2b777f0e22d9cb0553cd4489c22aeb1802b98e7cbfff356ad37904e76942b5"
+      },
+      "retrieval": {
+        "file": "Bro027.json",
+        "sha256": "7993138cf76e63f66f8e739ed658d11e80a548a91361cc26a27eb2ff19b21090"
+      },
+      "segmentation": {
+        "file": "Bro027.json",
+        "sha256": "172494aa6479934be84aaa1d92b9e73476561daccd33c8c0003374515e5df339"
+      }
+    },
+    "input_hash": "8db856178b3e1a4946543b45dc7cbd0ff4f08f2a1a8de3c77732b94a0e43b6c5",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "17845cf1c7542a0774aae4eb471b327f6fc1ae060f302fdcf9324a433357222c",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bro027",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "turn_packed__dense__w512": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "turn_packed__dense__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "turn_packed__dense__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "turn_packed__bm25__w512": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "turn_packed__bm25__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "turn_packed__bm25__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "turn_packed__hybrid__w512": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "turn_packed__hybrid__w1024": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "turn_packed__hybrid__w2048": {
+      "chunker": "turn_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "word_packed__dense__w512": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "word_packed__dense__w1024": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "word_packed__dense__w2048": {
+      "chunker": "word_packed",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "word_packed__bm25__w512": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "word_packed__bm25__w1024": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "word_packed__bm25__w2048": {
+      "chunker": "word_packed",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "word_packed__hybrid__w512": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "word_packed__hybrid__w1024": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "word_packed__hybrid__w2048": {
+      "chunker": "word_packed",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w2048": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 2048
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w2048": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 2048
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w2048": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 2048
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 153,
+  "cache_hits": 9,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion on deletions and improving the net",
+      "reference_answer": "Adding the neural net was doubling the number of deletions. The model did not improve significantly, however, thought it became better at some tasks. The results were a mixed basket and it was decided that further experimentation was necessary.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The discussion focused on addressing an increase in deletions observed in the system. Professor B suggested that if the neural network (net) is currently causing issues, the focus should be on improving the net. There was concern over the higher number of deletions, which PhD C attributed to the probability of silence being too high at the output of the network. PhD D agreed, noting that the flat probability distribution might prevent the model from distinguishing between speech and non-speech effectively. The group considered adjusting the probability by multiplying it with another factor but acknowledged that the Voice Activity Detection (VAD) had a high rate of energy, complicating the integration of such adjustments into the tandem net.",
+          "rouge_f1": {
+            "rouge1": 0.21656050955414013,
+            "rouge2": 0.05161290322580646,
+            "rougeL": 0.178343949044586
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            62,
+            64
+          ],
+          "retrieval_precision": 0.400390625,
+          "retrieval_recall": 0.09184587813620072
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The discussion focused on addressing issues related to deletions and improving the neural network's performance. Specifically, participants noted problems with balancing deletions and insertions when adjusting thresholds, suggesting that the high probability of silence at the network's output could be causing more deletions. They proposed lowering the silence probability or incorporating additional features from the network to help distinguish between speech and non-speech, aiming to improve the overall accuracy and reduce deletions.",
+          "rouge_f1": {
+            "rouge1": 0.19298245614035087,
+            "rouge2": 0.01785714285714286,
+            "rougeL": 0.15789473684210525
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            62,
+            64,
+            52,
+            56
+          ],
+          "retrieval_precision": 0.2001953125,
+          "retrieval_recall": 0.09184587813620072
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The discussion on deletions and improving the net includes observations that adding a neural network increases the number of deletions, particularly in highly mismatched conditions. Participants considered adjusting the probability of silence at the output of the network and incorporating additional features such as \"before and after clean\" into the neural net to address these issues. They also explored modifying the tandem net's input to potentially reduce deletions.",
+          "rouge_f1": {
+            "rouge1": 0.27777777777777773,
+            "rouge2": 0.09433962264150943,
+            "rougeL": 0.18518518518518517
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            62,
+            64,
+            52,
+            56,
+            63,
+            41,
+            28,
+            35
+          ],
+          "retrieval_precision": 0.2236328125,
+          "retrieval_recall": 0.20519713261648745
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The discussion focused on improving the neural network's performance by enhancing the training dataset and optimizing the network size. They considered adding Macrophone data to the existing TIMIT dataset with noise for training. The current network has 500 hidden units, which was determined to be near optimal after previous experiments showed diminishing returns with larger sizes. There was concern about the network potentially worsening performance under certain conditions, suggesting a need to improve the network itself. The overall impact of these changes was uncertain, with mixed results observed across different conditions. Additionally, the network faced challenges when applied to datasets like TI-digits, particularly with languages such as Finnish.",
+          "rouge_f1": {
+            "rouge1": 0.20134228187919462,
+            "rouge2": 0.013605442176870748,
+            "rougeL": 0.09395973154362415
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            35,
+            56
+          ],
+          "retrieval_precision": 0.400390625,
+          "retrieval_recall": 0.09184587813620072
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The discussion on deletions and improving the net includes addressing issues with the current neural network's performance, particularly focusing on balancing deletions and insertions. PhD D mentions problems with balancing deletions and insertions when applying different thresholds. There is a suggestion to improve the Voice Activity Detection (VAD) by incorporating additional features such as auto-correlation or other supplementary features post-cleanup. Additionally, there is consideration for integrating these features directly into the neural net to avoid threshold-related concerns. The team also discusses the possibility of feeding the same features into both the VAD and the neural net to potentially enhance learning and address mismatches causing excessive deletions due to high silence probabilities.",
+          "rouge_f1": {
+            "rouge1": 0.14285714285714285,
+            "rouge2": 0.02631578947368421,
+            "rougeL": 0.1038961038961039
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            35,
+            56,
+            64,
+            62
+          ],
+          "retrieval_precision": 0.2001953125,
+          "retrieval_recall": 0.09184587813620072
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The discussion on deletions and improving the net includes observations that adding a neural network doubled the number of deletions while keeping insertion and substitution rates roughly the same. This increase in deletions was noted particularly in highly mismatched conditions, such as clean training and distant microphone testing. Suggestions to address this issue included improving the training set, adjusting the neural network's handling of silence probabilities, and potentially integrating new features like \"before and after clean\" into the neural net to enhance its performance in distinguishing speech from non-speech.",
+          "rouge_f1": {
+            "rouge1": 0.24615384615384617,
+            "rouge2": 0.09375000000000001,
+            "rougeL": 0.16923076923076924
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            35,
+            56,
+            64,
+            62,
+            41,
+            34,
+            40,
+            61
+          ],
+          "retrieval_precision": 0.23974609375,
+          "retrieval_recall": 0.2199820788530466
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The discussion focused on addressing an increase in deletions observed in the system. Professor B suggested that if the neural network (net) is currently causing issues, the focus should be on improving the net. There was concern over the higher number of deletions, which PhD C attributed to the probability of silence being too high at the output of the network. PhD D agreed, noting that the flat probability distribution might prevent the model from distinguishing between speech and non-speech effectively. The group considered adjusting the probability by multiplying it with another factor but acknowledged that the Voice Activity Detection (VAD) had a high rate of energy, complicating the integration of such adjustments into the tandem net.",
+          "rouge_f1": {
+            "rouge1": 0.21656050955414013,
+            "rouge2": 0.05161290322580646,
+            "rougeL": 0.178343949044586
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            62,
+            64
+          ],
+          "retrieval_precision": 0.400390625,
+          "retrieval_recall": 0.09184587813620072
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The discussion focused on addressing issues related to deletions and improving the neural network's performance. Specifically, participants noted problems with balancing deletions and insertions when adjusting thresholds. They considered adding new features, such as \"before and after clean\" information, to the neural net to improve Voice Activity Detection (VAD). There was concern about high silence probabilities leading to more deletions, suggesting adjustments to these probabilities or incorporating VAD features directly into the neural net as potential solutions.",
+          "rouge_f1": {
+            "rouge1": 0.18803418803418803,
+            "rouge2": 0.034782608695652174,
+            "rougeL": 0.11965811965811966
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            62,
+            64,
+            56,
+            35
+          ],
+          "retrieval_precision": 0.2001953125,
+          "retrieval_recall": 0.09184587813620072
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The discussion focused on addressing increased deletions and improving the neural network's performance. PhD C noted that adding a neural network doubled the number of deletions, particularly in highly mismatched conditions, while insertion and substitution errors remained relatively unchanged or slightly improved. Professor B suggested investigating whether the neural network's output had a higher probability of silence, leading to more deletions. They proposed analyzing the output distribution and entropy for highly mismatched cases to understand the issue better. Additionally, incorporating VAD (Voice Activity Detection) features into the neural network was considered to potentially mitigate the problem.",
+          "rouge_f1": {
+            "rouge1": 0.23357664233576642,
+            "rouge2": 0.07407407407407407,
+            "rougeL": 0.17518248175182483
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            44,
+            62,
+            64,
+            56,
+            35,
+            41,
+            40,
+            63,
+            65
+          ],
+          "retrieval_precision": 0.23974609375,
+          "retrieval_recall": 0.2199820788530466
+        },
+        "word_packed__dense__w512": {
+          "answer": "The discussion focused on the impact of adding a neural network to the system, which doubled the number of deletions while keeping insertions and substitutions roughly the same or slightly better. The participants noted that the increase in deletions occurred even for cases that otherwise improved. They suggested that the neural network might be causing issues, and Professor B proposed focusing on improving the neural network to address this problem.",
+          "rouge_f1": {
+            "rouge1": 0.27522935779816515,
+            "rouge2": 0.09345794392523364,
+            "rougeL": 0.20183486238532108
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            40,
+            37
+          ],
+          "retrieval_precision": 0.81640625,
+          "retrieval_recall": 0.18727598566308243
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The discussion focused on the impact of adding a neural network to the system, which led to a doubling of deletions while keeping insertion and substitution rates roughly the same or slightly lower. Professor B suggested focusing on improving the neural network if it was found to be detrimental. PhD C agreed and proposed experimenting with the neural network alone to understand its standalone effect compared to combined features. PhD D mentioned challenges in balancing deletions and insertions across different databases and explored using additional features to improve the Voice Activity Detection (VAD).",
+          "rouge_f1": {
+            "rouge1": 0.21212121212121213,
+            "rouge2": 0.04615384615384615,
+            "rougeL": 0.1515151515151515
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            40,
+            37,
+            51,
+            47
+          ],
+          "retrieval_precision": 0.408203125,
+          "retrieval_recall": 0.18727598566308243
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The discussion on deletions and improving the net includes observations that adding a neural network doubled the number of deletions while keeping insertions and substitutions roughly the same. Participants considered the possibility that the neural network might be causing deletions by increasing the probability of silence. They suggested investigating the output distribution and entropy of the network, particularly in high-mismatch cases, to understand why deletions are increasing. Additionally, they proposed adjusting the neural network's parameters or incorporating additional features to improve its performance and reduce deletions.",
+          "rouge_f1": {
+            "rouge1": 0.23622047244094488,
+            "rouge2": 0.08,
+            "rougeL": 0.1574803149606299
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            40,
+            37,
+            51,
+            47,
+            57,
+            26,
+            59,
+            58
+          ],
+          "retrieval_precision": 0.2041015625,
+          "retrieval_recall": 0.18727598566308243
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The discussion focused on improving the neural network's performance by enhancing the training set with Macrophone data and considering the removal of certain components like the \"side thing\" (possibly referring to additional processing steps) to evaluate their impact. There was no specific mention of deletions in the context of removing parts of the net or data. The participants noted that adding LDA online normalization improved results, and Professor B suggested experimenting with the neural net alone to assess its standalone performance. The goal was to determine whether the neural net itself was causing issues and to focus on improving it if necessary.",
+          "rouge_f1": {
+            "rouge1": 0.2535211267605634,
+            "rouge2": 0.04285714285714286,
+            "rougeL": 0.16901408450704228
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            32,
+            40
+          ],
+          "retrieval_precision": 0.5,
+          "retrieval_recall": 0.11469534050179211
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The discussion on deletions and improving the net includes observations that adding a neural network doubled the number of deletions while keeping insertion and substitution rates roughly the same or slightly lower. Professor B suggested focusing on improving the neural net if it was indeed causing issues, proposing experiments to determine if the neural net alone worsens performance compared to pure features. Additionally, there was a mention of using features like \"before and after clean\" to improve Voice Activity Detection (VAD) and potentially enhance the neural net's performance.",
+          "rouge_f1": {
+            "rouge1": 0.28125,
+            "rouge2": 0.11111111111111109,
+            "rougeL": 0.203125
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            32,
+            40,
+            37,
+            51
+          ],
+          "retrieval_precision": 0.408203125,
+          "retrieval_recall": 0.18727598566308243
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The discussion on deletions and improving the net includes observations that adding a neural network to the tandem net doubled the number of deletions while keeping insertion and substitution rates roughly the same. Participants considered modifying the output probabilities of the neural net based on an independent silence probability estimator or feeding additional discriminating information directly into the neural net. They also explored the possibility of adjusting the silence probability threshold to reduce excessive deletions.",
+          "rouge_f1": {
+            "rouge1": 0.2631578947368421,
+            "rouge2": 0.10714285714285714,
+            "rougeL": 0.1754385964912281
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            32,
+            40,
+            37,
+            51,
+            59,
+            57,
+            56,
+            55
+          ],
+          "retrieval_precision": 0.2041015625,
+          "retrieval_recall": 0.18727598566308243
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The discussion focused on the impact of adding a neural network to the system, which doubled the number of deletions while keeping insertions and substitutions roughly the same or slightly better. The participants noted that the increase in deletions occurred even for cases that otherwise improved. They suggested that the neural network might be causing issues, and Professor B proposed focusing on improving the neural network to address this problem.",
+          "rouge_f1": {
+            "rouge1": 0.27522935779816515,
+            "rouge2": 0.09345794392523364,
+            "rougeL": 0.20183486238532108
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            40,
+            37
+          ],
+          "retrieval_precision": 0.81640625,
+          "retrieval_recall": 0.18727598566308243
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The discussion focused on the increase in deletions observed when adding a neural network, which doubled the number of deletions while keeping insertion and substitution rates roughly the same or slightly lower. Participants noted that the neural network's impact varied across different datasets, suggesting issues with consistency and possibly the network's output probabilities being too high, leading to more silence detections. To address this, the team considered improving the neural network itself and exploring additional features to enhance Voice Activity Detection (VAD).",
+          "rouge_f1": {
+            "rouge1": 0.2276422764227642,
+            "rouge2": 0.08264462809917354,
+            "rougeL": 0.17886178861788618
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            40,
+            37,
+            51,
+            57
+          ],
+          "retrieval_precision": 0.408203125,
+          "retrieval_recall": 0.18727598566308243
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The discussion focused on the impact of adding a neural network to the system, which led to a significant increase in deletions while keeping insertions and substitutions relatively stable. Participants considered improving the neural network's training set by incorporating Macrophone data and explored adjusting the network's output to reduce false silence detections, which were believed to contribute to the increased deletions. They also discussed refining the Voice Activity Detection (VAD) process and possibly integrating additional features to enhance the network's performance under high mismatch conditions.",
+          "rouge_f1": {
+            "rouge1": 0.1889763779527559,
+            "rouge2": 0.016,
+            "rougeL": 0.12598425196850396
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            40,
+            37,
+            51,
+            57,
+            59,
+            56,
+            33,
+            32
+          ],
+          "retrieval_precision": 0.2041015625,
+          "retrieval_recall": 0.18727598566308243
+        },
+        "lumber__dense__w512": {
+          "answer": "Professor B and PhD C discussed the performance of a neural network in comparison to using pure features alone. Initially, the neural net without additional paths (side paths) did not improve performance and sometimes made it worse. However, when poor quality features were used, the neural net helped. After implementing improvements like LDA online normalization, the neural net's contribution became less clear. Professor B suggested experimenting with just the neural net to understand its impact better. If the neural net is currently detrimental, the focus should be on improving it. Additionally, Professor B noted an increase in deletions which was concerning.",
+          "rouge_f1": {
+            "rouge1": 0.28368794326241137,
+            "rouge2": 0.05755395683453237,
+            "rougeL": 0.1702127659574468
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            61,
+            47
+          ],
+          "retrieval_precision": 0.873046875,
+          "retrieval_recall": 0.20026881720430106
+        },
+        "lumber__dense__w1024": {
+          "answer": "The discussion on deletions and improving the net focused on the performance impact of including a neural network in their model compared to using pure features alone. Initially, the neural net without additional paths (side paths) did not improve performance and sometimes worsened it, especially when the pure features were good. Adding the neural net seemed beneficial only when the pure features were poor. There was a suggestion to investigate further by running experiments solely with the neural net to understand its standalone contribution. Concerns were raised about increased deletions when adding the final MLP (Multi-Layer Perceptron), indicating potential issues with the VAD (Voice Activity Detection) network's frame dropping behavior. The group considered analyzing the output distribution and entropy of the neural net in high-mismatch cases to gain insights into why deletions might be increasing.",
+          "rouge_f1": {
+            "rouge1": 0.21468926553672316,
+            "rouge2": 0.05714285714285714,
+            "rougeL": 0.14689265536723164
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            61,
+            47,
+            63
+          ],
+          "retrieval_precision": 0.6435546875,
+          "retrieval_recall": 0.29525089605734767
+        },
+        "lumber__dense__w2048": {
+          "answer": "The discussion focused on addressing increased deletions and improving the neural network's performance. PhD C noted that adding a neural network doubled the number of deletions, which was puzzling. Professor B suggested experimenting with removing the side path to see if the neural net alone worsens performance. They considered improving the neural net itself as a solution, possibly by incorporating new features like \"before and after clean\" states, aiming to reduce the reliance on manual threshold adjustments. The group also discussed potential issues with high silence probabilities leading to deletions and proposed feeding VAD features into the main network to mitigate this.",
+          "rouge_f1": {
+            "rouge1": 0.2253521126760563,
+            "rouge2": 0.08571428571428572,
+            "rougeL": 0.16901408450704228
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            61,
+            47,
+            63,
+            43,
+            55,
+            37,
+            58
+          ],
+          "retrieval_precision": 0.3564453125,
+          "retrieval_recall": 0.3270609318996416
+        },
+        "lumber__bm25__w512": {
+          "answer": "The discussion focused on improving the neural network's performance by enhancing the training set with Macrophone data instead of increasing the number of Gaussians. The current training dataset includes TIMIT with noise and is limited to 500 hidden units, beyond which improvements are marginal. Initially, using only the neural net without a side path for pure features resulted in slightly worse performance compared to using just the features. The concern raised was about an increase in deletions, though specific details on how deletions were addressed or improved were not provided in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.23880597014925373,
+            "rouge2": 0.06060606060606061,
+            "rougeL": 0.14925373134328357
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            37,
+            61,
+            47
+          ],
+          "retrieval_precision": 0.236328125,
+          "retrieval_recall": 0.05421146953405018
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The discussion focused on improving the neural network's performance by enhancing the training set with Macrophone data instead of increasing the number of Gaussians. There was a mention of the current training dataset being TIMIT with noise and the network size being 500 hidden units. The participants noted that expanding the network beyond this size did not significantly improve performance. Additionally, they discussed the impact of removing the side path (pure features) from the neural network, observing that it initially performed worse but improved with additional processing steps like LDA online normalization. Concern was raised about an increase in deletions, which was seen as problematic.",
+          "rouge_f1": {
+            "rouge1": 0.26206896551724135,
+            "rouge2": 0.055944055944055944,
+            "rougeL": 0.1793103448275862
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            37,
+            61,
+            47
+          ],
+          "retrieval_precision": 0.6181640625,
+          "retrieval_recall": 0.28360215053763443
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The discussion focused on addressing increased deletions and improving the neural network's performance. PhD C noted that adding a neural network doubled the number of deletions, while other metrics remained relatively stable. Professor B suggested experimenting with removing the side path to see if the neural net alone worsens performance. To improve the net, they considered incorporating additional features like \"before and after clean\" data directly into the neural network to avoid threshold issues and potentially reduce deletions. They also discussed analyzing the output distribution and entropy of the network under high mismatch conditions to understand the cause of increased deletions.",
+          "rouge_f1": {
+            "rouge1": 0.21276595744680854,
+            "rouge2": 0.08633093525179857,
+            "rougeL": 0.15602836879432624
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            37,
+            61,
+            47,
+            55,
+            43,
+            63,
+            44
+          ],
+          "retrieval_precision": 0.36279296875,
+          "retrieval_recall": 0.3328853046594982
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Professor B and PhD C discussed the performance of a neural network in comparison to using pure features alone. Initially, the neural net without additional paths (side paths) did not improve performance and sometimes made it worse. However, when poor quality features were used, the neural net helped. After implementing improvements like LDA online normalization, the neural net's contribution became less clear. Professor B suggested experimenting with just the neural net to understand its impact better. If the neural net is currently detrimental, the focus should be on improving it. Additionally, Professor B noted an increase in deletions which was concerning.",
+          "rouge_f1": {
+            "rouge1": 0.28368794326241137,
+            "rouge2": 0.05755395683453237,
+            "rougeL": 0.1702127659574468
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            61,
+            47
+          ],
+          "retrieval_precision": 0.873046875,
+          "retrieval_recall": 0.20026881720430106
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The discussion focused on improving the neural network's performance by adding Macrophone data to the training set, which was previously found to enhance recognition rates. However, increasing the number of Gaussians or expanding the network size was not feasible. The team considered the impact of removing the side path (pure features) and running solely with the neural net, noting that initially, the neural net alone performed worse compared to using pure features. Improvements in feature processing techniques later showed that the neural net could contribute positively, especially when features were poor. Concerns were raised about an increase in deletions, suggesting that further investigation into the net's impact and potential improvements is necessary.",
+          "rouge_f1": {
+            "rouge1": 0.26143790849673204,
+            "rouge2": 0.06622516556291391,
+            "rougeL": 0.1830065359477124
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            61,
+            47,
+            37
+          ],
+          "retrieval_precision": 0.6435546875,
+          "retrieval_recall": 0.29525089605734767
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The discussion focused on addressing increased deletions and improving the neural network's performance. PhD C noted that adding a neural network doubled the number of deletions, which was puzzling. Professor B suggested experimenting with removing the side path to see if the neural net alone worsens performance. They considered improving the neural net itself as a solution, possibly by incorporating new features like \"before and after clean\" states, aiming to reduce the reliance on manual threshold adjustments. The group also discussed potential issues with high silence probabilities leading to deletions and proposed feeding VAD features into the main network to mitigate this.",
+          "rouge_f1": {
+            "rouge1": 0.2253521126760563,
+            "rouge2": 0.08571428571428572,
+            "rougeL": 0.16901408450704228
+          },
+          "cache_hit": true,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            61,
+            47,
+            37,
+            63,
+            43,
+            55,
+            58
+          ],
+          "retrieval_precision": 0.3564453125,
+          "retrieval_recall": 0.3270609318996416
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the professor think about the neural net?",
+      "reference_answer": "The professor was interested in knowing what impact the neural net had in the older models which did not have pure features. The professor believed it was worthwhile to improve the net, though he also expressed that nets were occasionally over used.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The professor thought positively about the neural net, noting it improved recognition significantly compared to previous methods. However, he also expressed concerns about the ease with which neural nets were adopted without sufficient consideration of their underlying principles, suggesting a nuanced appreciation for both its capabilities and potential misuse. He supported the idea of further training and experimenting with neural nets, particularly in the context of adding Macrophone data to the training set.",
+          "rouge_f1": {
+            "rouge1": 0.33043478260869563,
+            "rouge2": 0.1238938053097345,
+            "rougeL": 0.20869565217391303
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            52,
+            43
+          ],
+          "retrieval_precision": 0.21484375,
+          "retrieval_recall": 0.051594746716697934
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The professor thought that the neural net was improving recognition but noted that its effectiveness depended on the quality of the initial features. He expressed interest in experimenting further with the neural net alone, without the side path of pure features, to understand its standalone impact better. Additionally, the professor mentioned some reservations about the overuse of neural nets without considering simpler linear models, indicating a nuanced view of their utility.",
+          "rouge_f1": {
+            "rouge1": 0.40707964601769914,
+            "rouge2": 0.10810810810810811,
+            "rougeL": 0.2654867256637168
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            52,
+            43,
+            24,
+            14
+          ],
+          "retrieval_precision": 0.3544921875,
+          "retrieval_recall": 0.1702626641651032
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The professor thought that the neural net showed promise but also presented challenges. Initially, the professor expressed interest in the improvements seen with the neural net, noting better recognition rates. However, the professor also highlighted issues such as the neural net doubling the number of deletions in certain cases and sometimes performing worse than just using features alone, especially without a side path for pure features. The professor suggested that further experiments might reveal whether the neural net's performance is due to its interaction with other components or if it needs improvement itself. Additionally, the professor mentioned a historical concern about the indiscriminate use of neural nets without considering simpler linear alternatives, suggesting a balanced approach to their implementation.",
+          "rouge_f1": {
+            "rouge1": 0.28395061728395066,
+            "rouge2": 0.1,
+            "rougeL": 0.19753086419753085
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            35,
+            52,
+            43,
+            24,
+            14,
+            60,
+            50,
+            44,
+            41
+          ],
+          "retrieval_precision": 0.3916015625,
+          "retrieval_recall": 0.37617260787992496
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The professor thought that the neural net alone did not improve performance compared to using pure features (like PLPs or MFCCs) with additional processing like LDA online normalization. The professor also suggested that ideally, the neural net should perform better at discriminant tasks than LDA but expressed uncertainty about this, indicating a need for further investigation.",
+          "rouge_f1": {
+            "rouge1": 0.3877551020408163,
+            "rouge2": 0.125,
+            "rougeL": 0.28571428571428575
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            50,
+            43,
+            56
+          ],
+          "retrieval_precision": 0.953125,
+          "retrieval_recall": 0.22889305816135083
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The professor thought that the neural net potentially had the capability to perform better at the discriminant part than Linear Discriminant Analysis (LDA), though he acknowledged uncertainty about its actual performance. He expressed interest in seeing how the neural net would fare without the side path and suggested that it might not just be a little bit worse but possibly significantly worse. He also agreed with the idea of testing the neural net against LDA to clearly demonstrate the neural net's effectiveness.",
+          "rouge_f1": {
+            "rouge1": 0.33599999999999997,
+            "rouge2": 0.09756097560975609,
+            "rougeL": 0.22399999999999995
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            50,
+            43,
+            56,
+            51,
+            26
+          ],
+          "retrieval_precision": 0.6318359375,
+          "retrieval_recall": 0.30347091932457787
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The professor thought that the neural net had potential but needed further testing. Specifically, the professor noted that initially, the neural net alone did not improve performance compared to using pure features, but combining both paths showed marginal improvements. The professor suggested experimenting with the neural net alone to see its standalone effectiveness and expressed interest in seeing how the neural net performs in comparison to LDA for discriminative tasks.",
+          "rouge_f1": {
+            "rouge1": 0.42857142857142855,
+            "rouge2": 0.16363636363636364,
+            "rougeL": 0.30357142857142855
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            50,
+            43,
+            56,
+            51,
+            26,
+            61,
+            31,
+            35,
+            14
+          ],
+          "retrieval_precision": 0.31591796875,
+          "retrieval_recall": 0.30347091932457787
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "Professor B thought that the neural net alone was not effective until the side path with pure features was added. Initially, the neural net performed worse or similarly to just using features. However, Professor B also suggested that the neural net could potentially perform better than Linear Discriminant Analysis (LDA) in terms of discriminant functions, though he acknowledged uncertainty about its actual performance compared to LDA.",
+          "rouge_f1": {
+            "rouge1": 0.40740740740740733,
+            "rouge2": 0.07547169811320756,
+            "rougeL": 0.24074074074074073
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            43,
+            50,
+            35
+          ],
+          "retrieval_precision": 0.953125,
+          "retrieval_recall": 0.22889305816135083
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The professor thought that the neural net could potentially do better at the discriminant part than Linear Discriminant Analysis (LDA), though there was uncertainty about its performance, especially when compared to using pure features or LDA. The professor also noted that in previous experiments, the neural net alone did not improve performance until a second path with pure features was added. Additionally, the professor suggested experimenting with the neural net without the side path to see if it performs significantly worse.",
+          "rouge_f1": {
+            "rouge1": 0.4065040650406504,
+            "rouge2": 0.09917355371900827,
+            "rougeL": 0.24390243902439024
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            43,
+            50,
+            35,
+            14,
+            51
+          ],
+          "retrieval_precision": 0.5517578125,
+          "retrieval_recall": 0.2650093808630394
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The professor thought that neural nets were somewhat overused without sufficient consideration of simpler linear models. He expressed concern that during the resurgence of neural nets in the 1980s, many people used them for various tasks without exploring their linear counterparts adequately. Additionally, he suggested that while a neural net could handle certain tasks, sometimes a more direct approach, such as explicitly telling the system to ignore silence, might be more effective.",
+          "rouge_f1": {
+            "rouge1": 0.29824561403508776,
+            "rouge2": 0.07142857142857142,
+            "rougeL": 0.17543859649122806
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            43,
+            50,
+            35,
+            14,
+            51,
+            26,
+            61,
+            60,
+            52
+          ],
+          "retrieval_precision": 0.369140625,
+          "retrieval_recall": 0.3545966228893058
+        },
+        "word_packed__dense__w512": {
+          "answer": "The professor thought that the neural net alone did not improve performance compared to using pure features, and it was even slightly worse until a second path with pure features was added. The professor also expressed concern about the ease of use of neural nets leading to their application without considering simpler alternatives like linear versions or IIR filters.",
+          "rouge_f1": {
+            "rouge1": 0.43564356435643564,
+            "rouge2": 0.16161616161616163,
+            "rougeL": 0.297029702970297
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            39
+          ],
+          "retrieval_precision": 0.6640625,
+          "retrieval_recall": 0.15947467166979362
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The professor thought that the neural net alone, without the side path that included pure features, was not helping much and possibly making things worse. He suggested that it would be interesting to see if removing the side path would result in significantly worse performance, indicating a belief that the neural net's effectiveness might depend on its interaction with other components. The professor also expressed skepticism about the assumption that neural nets inherently perform better than linear methods like LDA, advocating for thorough comparisons to validate such assumptions.",
+          "rouge_f1": {
+            "rouge1": 0.35114503816793896,
+            "rouge2": 0.09302325581395347,
+            "rougeL": 0.24427480916030533
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            39,
+            40,
+            46
+          ],
+          "retrieval_precision": 0.83203125,
+          "retrieval_recall": 0.399624765478424
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The professor thought that the neural net was beneficial, showing improvements in recognition rates, though he noted that its effectiveness depended on the quality of the features and the presence of a side path with pure features. He expressed interest in further exploring the neural net's performance, suggesting experiments to compare its effectiveness against linear methods like LDA.",
+          "rouge_f1": {
+            "rouge1": 0.4158415841584159,
+            "rouge2": 0.12121212121212119,
+            "rougeL": 0.23762376237623764
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            47,
+            39,
+            40,
+            46,
+            32,
+            50,
+            22,
+            56
+          ],
+          "retrieval_precision": 0.416015625,
+          "retrieval_recall": 0.399624765478424
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The professor thought that the neural net alone did not improve performance compared to using pure features (LDA) initially, but incorporating both paths (neural net and pure features) showed promise. The professor also expressed interest in testing the neural net against LDA to clearly demonstrate its effectiveness.",
+          "rouge_f1": {
+            "rouge1": 0.49438202247191015,
+            "rouge2": 0.18390804597701152,
+            "rougeL": 0.3146067415730337
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            46,
+            39
+          ],
+          "retrieval_precision": 0.80859375,
+          "retrieval_recall": 0.19418386491557224
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The professor thought that the neural net alone did not improve performance compared to using just the features, but it helped when the features were poor. The professor also suggested that the neural net should theoretically perform better at discriminative tasks than Linear Discriminant Analysis (LDA) and recommended including both methods in their experiments for comparison.",
+          "rouge_f1": {
+            "rouge1": 0.42857142857142855,
+            "rouge2": 0.10416666666666667,
+            "rougeL": 0.2653061224489796
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            46,
+            39,
+            24,
+            56
+          ],
+          "retrieval_precision": 0.404296875,
+          "retrieval_recall": 0.19418386491557224
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The professor thought that the neural net alone did not improve performance compared to using just the features, and it was even slightly worse until the second path with pure features was added. The professor also suggested that the neural net should theoretically perform better at discriminative tasks than LDA but acknowledged that empirical evidence was needed to confirm this hypothesis.",
+          "rouge_f1": {
+            "rouge1": 0.42718446601941745,
+            "rouge2": 0.13861386138613863,
+            "rougeL": 0.2718446601941748
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            46,
+            39,
+            24,
+            56,
+            13,
+            29,
+            53,
+            52
+          ],
+          "retrieval_precision": 0.2021484375,
+          "retrieval_recall": 0.19418386491557224
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The professor thought that the neural net alone did not improve performance compared to using pure features (LDA) initially, but incorporating both paths (neural net and pure features) showed promise. The professor also expressed interest in testing the neural net against LDA to clearly demonstrate its effectiveness.",
+          "rouge_f1": {
+            "rouge1": 0.49438202247191015,
+            "rouge2": 0.18390804597701152,
+            "rougeL": 0.3146067415730337
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            39,
+            46
+          ],
+          "retrieval_precision": 0.80859375,
+          "retrieval_recall": 0.19418386491557224
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The professor thought that the neural net alone did not improve performance compared to using just the features, but it helped when the features were poor. The professor also suggested that the neural net should theoretically perform better at discriminative tasks than Linear Discriminant Analysis (LDA) and recommended including both methods in their experiments for comparison.",
+          "rouge_f1": {
+            "rouge1": 0.42857142857142855,
+            "rouge2": 0.10416666666666667,
+            "rougeL": 0.2653061224489796
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            39,
+            46,
+            56,
+            24
+          ],
+          "retrieval_precision": 0.404296875,
+          "retrieval_recall": 0.19418386491557224
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The professor thought that the neural net alone was not significantly improving performance compared to using just the features, especially before adding a side path with pure features. He suggested that the neural net might even perform worse in some cases, indicating a need to improve the neural net's design or consider its integration carefully. He also expressed skepticism about the assumption that neural nets inherently outperform simpler methods like LDA without thorough testing.",
+          "rouge_f1": {
+            "rouge1": 0.37606837606837606,
+            "rouge2": 0.1391304347826087,
+            "rougeL": 0.30769230769230765
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            39,
+            46,
+            56,
+            24,
+            40,
+            13,
+            47,
+            55
+          ],
+          "retrieval_precision": 0.416015625,
+          "retrieval_recall": 0.399624765478424
+        },
+        "lumber__dense__w512": {
+          "answer": "The professor thought that using Macrophone data to improve the training set of the neural net led to better recognition results. However, they noted limitations such as not being able to increase the number of Gaussians or significantly alter the training parameters beyond the feature set improvement. The professor also mentioned that increasing the size of the neural net beyond 500 hidden units did not yield much better performance.",
+          "rouge_f1": {
+            "rouge1": 0.3243243243243243,
+            "rouge2": 0.12844036697247704,
+            "rougeL": 0.2162162162162162
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            54,
+            57,
+            37,
+            51
+          ],
+          "retrieval_precision": 0.04296875,
+          "retrieval_recall": 0.010318949343339587
+        },
+        "lumber__dense__w1024": {
+          "answer": "The professor thought that the neural net showed potential improvements when combined with other methods like adding Macrophone data to the training set and using a tandem net structure. However, the professor also noted that the neural net alone did not significantly improve performance compared to using features like LDA, especially before incorporating a side path with pure features. The professor suggested experimenting further with the neural net alone to understand its standalone effectiveness better.",
+          "rouge_f1": {
+            "rouge1": 0.34188034188034183,
+            "rouge2": 0.12173913043478261,
+            "rougeL": 0.2393162393162393
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            54,
+            57,
+            37,
+            51,
+            47
+          ],
+          "retrieval_precision": 0.521484375,
+          "retrieval_recall": 0.25046904315197
+        },
+        "lumber__dense__w2048": {
+          "answer": "The professor thought that the neural net's performance was mixed. Initially, the neural net was not helping at all until a second path with pure features was added. The professor suggested that the neural net might be causing worse performance and proposed focusing on improving the neural net. However, the professor also acknowledged that the overall effect might be minimal, with the neural net providing only slight improvements or minor detriments. The professor expressed interest in comparing the neural net's performance against simpler methods like Linear Discriminant Analysis (LDA) to ensure its effectiveness.",
+          "rouge_f1": {
+            "rouge1": 0.3357664233576642,
+            "rouge2": 0.1037037037037037,
+            "rougeL": 0.24817518248175185
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            54,
+            57,
+            37,
+            51,
+            47,
+            39,
+            52,
+            45
+          ],
+          "retrieval_precision": 0.50732421875,
+          "retrieval_recall": 0.4873358348968105
+        },
+        "lumber__bm25__w512": {
+          "answer": "The professor thought that incorporating both LDA and the neural net into their experiments was a good idea, suggesting an openness to comparing the two methods. Additionally, the professor expressed skepticism about the assumption that the neural net would definitely perform better, indicating a need for empirical validation rather than accepting it as a given.",
+          "rouge_f1": {
+            "rouge1": 0.3092783505154639,
+            "rouge2": 0.08421052631578947,
+            "rougeL": 0.22680412371134023
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            55
+          ],
+          "retrieval_precision": 0.529296875,
+          "retrieval_recall": 0.12711069418386492
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The professor thought that the neural net alone did not improve performance compared to using pure features, and it might even worsen results. However, the professor acknowledged that the neural net could help when the features are poor. The professor suggested conducting further tests to understand the impact of the neural net more clearly and expressed interest in seeing how the system performs with just the neural net without the side path.",
+          "rouge_f1": {
+            "rouge1": 0.4210526315789474,
+            "rouge2": 0.125,
+            "rougeL": 0.2807017543859649
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            55,
+            47
+          ],
+          "retrieval_precision": 0.6474609375,
+          "retrieval_recall": 0.31097560975609756
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The professor thought that the neural net showed mixed results. Initially, the neural net alone did not improve performance and sometimes made performance worse compared to using just the pure features. However, once a second path with pure features was added, the neural net began to help, especially when the features were poor. The professor suggested further experiments to understand the exact impact of the neural net and proposed focusing on improving the neural net if it was found to be detrimental.",
+          "rouge_f1": {
+            "rouge1": 0.3870967741935484,
+            "rouge2": 0.13114754098360656,
+            "rougeL": 0.2580645161290323
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            55,
+            47,
+            60,
+            24,
+            22
+          ],
+          "retrieval_precision": 0.4541015625,
+          "retrieval_recall": 0.43621013133208253
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The professor thought that the neural net alone did not improve performance compared to using pure features (like PLPs or MFCCs) in earlier experiments, and it may have been slightly worse. However, the professor found it interesting and suggested exploring further whether the neural net could help when the quality of the features was poor. The professor also agreed with the idea of conducting experiments to compare systems with and without the neural net to clearly demonstrate its impact.",
+          "rouge_f1": {
+            "rouge1": 0.4297520661157025,
+            "rouge2": 0.10084033613445378,
+            "rougeL": 0.2644628099173554
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            47
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.2401500938086304
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The professor thought that the neural net alone did not improve performance and might even worsen results compared to using pure features. However, he acknowledged that combining the neural net with the pure features could potentially offer benefits, especially if the features were poor. He suggested conducting further experiments to understand the impact better.",
+          "rouge_f1": {
+            "rouge1": 0.4166666666666667,
+            "rouge2": 0.10638297872340426,
+            "rougeL": 0.2708333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            47,
+            57,
+            37
+          ],
+          "retrieval_precision": 0.908203125,
+          "retrieval_recall": 0.43621013133208253
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The professor thought that the neural net showed mixed results. Initially, the neural net alone did not improve performance compared to just using features like PLPs or MFCCs. However, adding a side path with pure features improved performance slightly (about 5% better for some conditions). The professor suggested further experiments to understand the impact of the neural net alone versus combined methods, indicating an interest in refining the neural net's role and effectiveness in their system.",
+          "rouge_f1": {
+            "rouge1": 0.3865546218487395,
+            "rouge2": 0.11965811965811966,
+            "rougeL": 0.2689075630252101
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            51,
+            47,
+            57,
+            37,
+            24,
+            52,
+            60
+          ],
+          "retrieval_precision": 0.50732421875,
+          "retrieval_recall": 0.4873358348968105
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did the team discuss about the most noisy cases?",
+      "reference_answer": "The team thought that the most noisy cases were the distant microphone testing. That is when there were non-stationary noises in the background, like from a car, a babble or subway. These presented a unique challenge for the model that could potentially be best solved with a neural net.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The team discussed that the most noisy cases involved significant reverberation, with a signal-to-noise ratio of about 9 dB. They noted that a high-pass filter could improve the signal-to-noise ratio in their room, though the environment was still considered quite noisy, especially below 100 Hz. They also mentioned comparing their noise conditions to those in the SpeechDat-Car dataset, which has more stationary noise compared to TI-digits. The professor highlighted that the noise in their recordings was natural rather than artificially added, making it varied and challenging.",
+          "rouge_f1": {
+            "rouge1": 0.2937062937062937,
+            "rouge2": 0.1276595744680851,
+            "rougeL": 0.19580419580419584
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            40
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The team discussed the most noisy cases in relation to reverberation and signal-to-noise ratios. They noted that when dealing with pure reverberation, the technique being used worked very well, achieving a signal-to-noise ratio of about 9 dB. However, they also mentioned that the presence of additional noise could be affecting performance. They explored filtering techniques, such as high-pass filtering from 64 Hz to higher values like 100 Hz, and considered the impact of noise below 100 Hz. The discussion highlighted the variability in acoustic conditions and the potential need to improve the training set to address the noise issues effectively.",
+          "rouge_f1": {
+            "rouge1": 0.2709677419354839,
+            "rouge2": 0.06535947712418301,
+            "rougeL": 0.16774193548387098
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            40,
+            3,
+            62
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The team discussed the most noisy cases in the context of reverberation and signal-to-noise ratios (SNRs). They noted that reverberation techniques worked well in pure reverberation scenarios but faced challenges with noise. The discussion included experimenting with filters, such as high-pass filtering from 64 Hz to 100 Hz, and the impact of noise compensation on SNRs. They also mentioned the variability in noise conditions across datasets like SpeechDat-Car and TI-digits, noting that noise compensation might not cover the entire range of SNRs present in the SpeechDat-Car dataset. Additionally, they explored the idea of improving the training set to address acoustic conditions and considered the effectiveness of speaker adaptation versus acoustic processing for noisy environments.",
+          "rouge_f1": {
+            "rouge1": 0.23529411764705882,
+            "rouge2": 0.05952380952380952,
+            "rougeL": 0.16470588235294117
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            40,
+            3,
+            62,
+            37,
+            8,
+            59,
+            36
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The team discussed that the most noisy cases were those tested with a distant microphone, which led to an increase in deletions when a neural network was added. They also considered that noise subtraction might be removing speech along with the noise.",
+          "rouge_f1": {
+            "rouge1": 0.4565217391304348,
+            "rouge2": 0.2,
+            "rougeL": 0.32608695652173914
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            14,
+            36
+          ],
+          "retrieval_precision": 0.1328125,
+          "retrieval_recall": 0.10074074074074074
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The team discussed that the most noisy cases were those tested with a distant microphone, which were significantly noisier compared to clean training data (close microphone training). They also noted that the signal-to-noise ratio remained poor even after filtering out frequencies below 100 Hz. Additionally, the discussion touched upon the idea that noise subtraction might be removing parts of the speech signal, particularly when neural networks were added to the process, leading to an increase in deletions for highly mismatched cases.",
+          "rouge_f1": {
+            "rouge1": 0.3759398496240602,
+            "rouge2": 0.12213740458015267,
+            "rougeL": 0.25563909774436094
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            14,
+            36,
+            4,
+            66
+          ],
+          "retrieval_precision": 0.06640625,
+          "retrieval_recall": 0.10074074074074074
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The team discussed that the most noisy cases were those tested with a distant microphone, which were significantly noisier compared to clean training data recorded with a close microphone. They noted that even after high-pass filtering, the signal-to-noise ratio remained poor, indicating that the noise levels were still quite high. Additionally, they observed an increase in deletions when applying neural networks to these highly mismatched cases, suggesting that the noise subtraction might be affecting speech signals adversely.",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.125,
+            "rougeL": 0.24615384615384614
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            41,
+            14,
+            36,
+            4,
+            66,
+            40,
+            26,
+            56,
+            51
+          ],
+          "retrieval_precision": 0.033203125,
+          "retrieval_recall": 0.10074074074074074
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The team discussed that the most noisy cases had a significant portion of noise below 100 Hz and that even after high-pass filtering, the signal-to-noise ratio remained poor. They also noted that the noise was not artificially added and varied naturally, suggesting improvements might come from enhancing the training set rather than adjusting the current conditions.",
+          "rouge_f1": {
+            "rouge1": 0.2752293577981651,
+            "rouge2": 0.09345794392523366,
+            "rougeL": 0.22018348623853212
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            40,
+            41
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The team discussed that the most noisy cases involved distant microphone recordings for testing, which led to an increase in deletions when adding a neural network, even though insertions and substitutions remained relatively unchanged or slightly improved. They also noted that the noise subtraction technique might be removing parts of the speech signal, contributing to the increased deletions in highly mismatched cases.",
+          "rouge_f1": {
+            "rouge1": 0.3928571428571428,
+            "rouge2": 0.1272727272727273,
+            "rougeL": 0.26785714285714285
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            40,
+            41,
+            36,
+            14
+          ],
+          "retrieval_precision": 0.06640625,
+          "retrieval_recall": 0.10074074074074074
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The team discussed that the most noisy cases involved distant microphone testing, where the noise subtraction technique might be removing speech along with noise. Additionally, they noted that after noise compensation, the neural network was encountering a different set of Signal-to-Noise Ratios (SNRs) compared to the original training set, potentially leading to performance issues due to high mismatch.",
+          "rouge_f1": {
+            "rouge1": 0.3636363636363636,
+            "rouge2": 0.12962962962962962,
+            "rougeL": 0.2909090909090909
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            40,
+            41,
+            36,
+            14,
+            59,
+            37,
+            0,
+            8
+          ],
+          "retrieval_precision": 0.033203125,
+          "retrieval_recall": 0.10074074074074074
+        },
+        "word_packed__dense__w512": {
+          "answer": "The team discussed that the most noisy cases involved a poor signal-to-noise ratio, particularly in far-field recordings where it was around 9 dB. They noted that while reverberation techniques worked well in general, the presence of noise below 100 Hz contributed significantly to the issue. High-pass filtering helped improve the signal-to-noise ratio, but the recordings remained noisy. The noise was attributed partly to a video projector kept on during recording sessions.",
+          "rouge_f1": {
+            "rouge1": 0.23622047244094488,
+            "rouge2": 0.08,
+            "rougeL": 0.1889763779527559
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The team discussed the most noisy cases in relation to reverberation and signal-to-noise ratios (SNRs). They noted that while techniques worked well for pure reverberation, the presence of noise sources such as a video projector and air conditioning made the signal-to-noise ratio poor, especially below 100 Hz. The team acknowledged the necessity of accounting for noise and possibly synthesizing speech from it after a preliminary study.",
+          "rouge_f1": {
+            "rouge1": 0.26666666666666666,
+            "rouge2": 0.06779661016949153,
+            "rougeL": 0.18333333333333335
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            5,
+            35
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The team discussed that the most noisy cases involved distant microphone testing. They noted that the noise subtraction process might be removing speech along with noise, particularly when neural networks were added. Additionally, they mentioned that the noise compensation process could be imperfect, potentially treating the test set differently from the training set, leading to mismatches.",
+          "rouge_f1": {
+            "rouge1": 0.4528301886792452,
+            "rouge2": 0.13461538461538458,
+            "rougeL": 0.32075471698113206
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            0,
+            5,
+            35,
+            3,
+            14,
+            36,
+            38
+          ],
+          "retrieval_precision": 0.09765625,
+          "retrieval_recall": 0.2962962962962963
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The team discussed that the most noisy cases were those tested with a distant microphone, contrasting with clean training data from a close microphone. They noted that adding neural networks to the feature set improved performance but also introduced issues where noise subtraction might affect speech signals.",
+          "rouge_f1": {
+            "rouge1": 0.3917525773195877,
+            "rouge2": 0.18947368421052632,
+            "rougeL": 0.288659793814433
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            38,
+            13
+          ],
+          "retrieval_precision": 0.390625,
+          "retrieval_recall": 0.2962962962962963
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The team discussed that the most noisy cases involved distant microphone recordings during testing, which led to an increase in deletions when a neural network was added. They noted that noise subtraction might be removing speech along with noise, particularly in these highly mismatched conditions where the training was done with clean or close microphone data.",
+          "rouge_f1": {
+            "rouge1": 0.39622641509433965,
+            "rouge2": 0.13461538461538458,
+            "rougeL": 0.30188679245283023
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            38,
+            13,
+            34,
+            37
+          ],
+          "retrieval_precision": 0.1953125,
+          "retrieval_recall": 0.2962962962962963
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The team discussed that the most noisy cases were associated with distant microphone recordings for testing, following clean microphone training. They noted that adding a neural network increased the number of deletions, particularly in highly mismatched conditions, suggesting that noise subtraction might be removing speech components. Additionally, they mentioned that the TIMIT dataset contained a range of noises, which were different from the stationary driving noises typically encountered.",
+          "rouge_f1": {
+            "rouge1": 0.45762711864406785,
+            "rouge2": 0.13793103448275862,
+            "rougeL": 0.288135593220339
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            38,
+            13,
+            34,
+            37,
+            4,
+            36,
+            46,
+            24
+          ],
+          "retrieval_precision": 0.09765625,
+          "retrieval_recall": 0.2962962962962963
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The team discussed that the most noisy cases were associated with distant microphone recordings for testing. They noted that the signal-to-noise ratio was still poor even after high-pass filtering, especially for frequencies above 100 Hz. Additionally, they speculated that the noise subtraction might be removing speech instead of background noise when neural networks were added to the model.",
+          "rouge_f1": {
+            "rouge1": 0.45045045045045046,
+            "rouge2": 0.14678899082568808,
+            "rougeL": 0.30630630630630634
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            38
+          ],
+          "retrieval_precision": 0.390625,
+          "retrieval_recall": 0.2962962962962963
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The team discussed that the most noisy cases were associated with distant microphone recordings for testing, following clean microphone training. They noted that even after noise compensation, these cases remained quite noisy. Additionally, the team observed an increase in deletions when using neural networks, particularly in highly mismatched cases where the training was done with close microphone recordings and testing was conducted with distant microphone recordings.",
+          "rouge_f1": {
+            "rouge1": 0.3620689655172414,
+            "rouge2": 0.12280701754385966,
+            "rougeL": 0.2758620689655172
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            38,
+            34,
+            37
+          ],
+          "retrieval_precision": 0.1953125,
+          "retrieval_recall": 0.2962962962962963
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The team discussed that the most noisy cases were those involving distant microphone recordings for testing, following noise compensation. They noted that even after noise compensation, these cases remained quite noisy, leading to issues such as increased deletions in the recognition process. Additionally, there was concern about the mismatch between the training set (which included noise-compensated data) and the actual test conditions, particularly with the distant microphone recordings.",
+          "rouge_f1": {
+            "rouge1": 0.3529411764705883,
+            "rouge2": 0.15384615384615385,
+            "rougeL": 0.28571428571428575
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            4,
+            38,
+            34,
+            37,
+            36,
+            13,
+            61,
+            14
+          ],
+          "retrieval_precision": 0.09765625,
+          "retrieval_recall": 0.2962962962962963
+        },
+        "lumber__dense__w512": {
+          "answer": "The team discussed the most noisy cases in relation to filtering techniques, specifically focusing on the effectiveness of different filter settings such as starting the filter bank at 64 Hz versus higher frequencies like 100 Hz. They experimented with including the full filter bank from 0 to 4K Hz and found it performed worse compared to using 64 Hz. They also considered the impact of noise below 100 Hz and mentioned that high-pass filtering improves the signal-to-noise ratio in their environment.",
+          "rouge_f1": {
+            "rouge1": 0.22388059701492538,
+            "rouge2": 0.06060606060606061,
+            "rougeL": 0.1791044776119403
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The team discussed the most noisy cases in relation to reverberation and signal-to-noise ratios. They noted that when dealing with pure reverberation, the technique being used worked well, achieving a signal-to-noise ratio of about 9 dB. However, they observed that the noise below 100 Hz contributed significantly to the noise level, making the environment still quite noisy even after applying a high-pass filter starting from 100 Hz. They also explored adjusting the filter bank settings, considering options such as setting the FFT to zero and experimenting with different frequency ranges (e.g., starting from 64 Hz versus 100 Hz), but found that using 64 Hz generally performed better than higher frequencies. Additionally, they considered improving the training set to account for various acoustic conditions, suggesting that varied acoustic conditions could lead to significant improvements in performance.",
+          "rouge_f1": {
+            "rouge1": 0.23036649214659688,
+            "rouge2": 0.052910052910052914,
+            "rougeL": 0.14659685863874347
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            1,
+            42,
+            39
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The team discussed that the most noisy cases involved dealing with reverberation and a poor signal-to-noise ratio, particularly noting that noise below 100 Hz contributed significantly to the issue. They explored filtering techniques, such as high-pass filtering from 64 Hz onwards, and considered the impact of noise compensation on the neural network's performance. They noted that even after noise compensation, the remaining noise levels were still quite high, especially in the SpeechDat-Car dataset, suggesting potential issues with the training set's noise conditions not fully representing the test set's noise conditions.",
+          "rouge_f1": {
+            "rouge1": 0.29931972789115646,
+            "rouge2": 0.08275862068965517,
+            "rougeL": 0.20408163265306123
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            3,
+            1,
+            42,
+            39,
+            40,
+            46,
+            6,
+            17,
+            62
+          ],
+          "retrieval_precision": 0.08203125,
+          "retrieval_recall": 0.24888888888888888
+        },
+        "lumber__bm25__w512": {
+          "answer": "The team discussed that the most noisy cases were those tested with a distant microphone, contrasting with clean or close microphone training conditions. They noted that adding neural networks seemed to negatively impact performance in these highly mismatched scenarios, suggesting issues possibly related to noise subtraction affecting speech.",
+          "rouge_f1": {
+            "rouge1": 0.3877551020408163,
+            "rouge2": 0.16666666666666666,
+            "rougeL": 0.2653061224489796
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            45,
+            44,
+            14
+          ],
+          "retrieval_precision": 0.25390625,
+          "retrieval_recall": 0.1925925925925926
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The team discussed that the most noisy cases involved distant microphone testing after clean training with close microphones. They noted that noise subtraction might be removing speech along with noise, particularly when the neural networks were added. Additionally, they observed that the mismatch between training and testing conditions, especially regarding Signal-to-Noise Ratio (SNR), could contribute to performance issues in highly noisy scenarios.",
+          "rouge_f1": {
+            "rouge1": 0.3859649122807018,
+            "rouge2": 0.125,
+            "rougeL": 0.2631578947368421
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            45,
+            44,
+            14,
+            38,
+            42
+          ],
+          "retrieval_precision": 0.126953125,
+          "retrieval_recall": 0.1925925925925926
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The team discussed that the most noisy cases involved distant microphone testing after clean training with close microphones. They noted that noise subtraction might be removing speech along with noise, particularly when neural networks were added. Additionally, they considered the possibility that the noise compensation process might introduce mismatches, leading to higher noise levels in the SpeechDat-Car dataset compared to its original state.",
+          "rouge_f1": {
+            "rouge1": 0.4035087719298246,
+            "rouge2": 0.14285714285714285,
+            "rougeL": 0.2982456140350877
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            45,
+            44,
+            14,
+            38,
+            42,
+            24,
+            51,
+            8,
+            3
+          ],
+          "retrieval_precision": 0.0634765625,
+          "retrieval_recall": 0.1925925925925926
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The team discussed the most noisy cases in relation to the filter bank settings and their impact on noise levels. They considered adjusting the filter bank starting point from 64 Hz to higher values like 100 Hz but found that increasing the threshold did not significantly improve performance and sometimes worsened it. They also mentioned experimenting with excluding parts of the filter bank, such as the initial filters, to reduce noise but noted that using the full filter bank from 0 to 4K Hz always resulted in worse outcomes compared to using 64 Hz. The discussion highlighted the variability in acoustic conditions across datasets like SpeechDat-Car and Aurora, suggesting that improving the training set might be necessary to handle the most noisy cases effectively.",
+          "rouge_f1": {
+            "rouge1": 0.21714285714285714,
+            "rouge2": 0.046242774566473986,
+            "rougeL": 0.17142857142857143
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            3
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The team discussed that the most noisy cases involved distant microphone testing. They noted that noise subtraction might be removing speech along with noise, particularly when adding neural networks, which affects performance negatively compared to when neural networks are not used.",
+          "rouge_f1": {
+            "rouge1": 0.35164835164835173,
+            "rouge2": 0.15730337078651685,
+            "rougeL": 0.3296703296703297
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            3,
+            45,
+            39,
+            44
+          ],
+          "retrieval_precision": 0.126953125,
+          "retrieval_recall": 0.1925925925925926
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The team discussed that the most noisy cases involved distant microphone testing conditions after noise compensation. These cases remained quite noisy, even after applying noise compensation techniques, indicating that the noise subtraction might be affecting speech signals. Additionally, the team considered the idea of improving the training set to account for a wider range of acoustic conditions, suggesting that the current training set might not sufficiently cover the variability seen in real-world scenarios.",
+          "rouge_f1": {
+            "rouge1": 0.33870967741935487,
+            "rouge2": 0.11475409836065574,
+            "rougeL": 0.24193548387096778
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            42,
+            3,
+            45,
+            39,
+            44,
+            1,
+            38,
+            14,
+            58
+          ],
+          "retrieval_precision": 0.0634765625,
+          "retrieval_recall": 0.1925925925925926
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion on VAD results",
+      "reference_answer": "The VAD neural net had twelve times nine inputs and two outputs. The system had improved significantly. It added some latency but the team could potentially run it in parallel.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The discussion on VAD results focused on the current setup's timing and performance improvements. Initially, the VAD network used three frames of static features. Now, it uses 70 milliseconds of data (forty for noise, twenty for delta, and ten for LDA). Participants noted that while there's room for experimentation by reducing some components, the current setup is not in \"terrible shape.\" The latest evaluation score improved to 57.02 from the previous best of 54.5, showing a relative improvement of over one percent when using a non-neural network approach based on SNR and energy ratios, achieving a score of 54.8.",
+          "rouge_f1": {
+            "rouge1": 0.16296296296296298,
+            "rouge2": 0.015037593984962407,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            54,
+            26
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The discussion on VAD results focused on comparing current performance metrics with previous evaluations. The team noted that the current VAD system uses 70 milliseconds of data (forty for noise, twenty for delta, and ten for LDA), which is an improvement over the initial setup that used only three frames. They observed that the current VAD performance is better than previous versions, achieving a 57.02 score compared to the best previous score of 54.5. This represents a significant improvement, nearly matching the 62% error rate reduction seen with an ideal VAD operating on clean speech. The team also explored alternative configurations, such as using tandem neural networks and simpler feature-based methods, to further enhance performance while reducing latency.",
+          "rouge_f1": {
+            "rouge1": 0.13245033112582782,
+            "rouge2": 0.013422818791946308,
+            "rougeL": 0.09271523178807947
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            54,
+            26,
+            25,
+            63
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The discussion on VAD results included comparisons between different VAD methods and their performance metrics. Initially, the VAD network used three frames of static features. The current setup uses 40 milliseconds for noise, 20 for delta, and 10 for LDA, totaling 70 milliseconds. This setup showed a 57.02% error rate reduction, which is better than previous evaluations. The team experimented with configurations that achieved up to 62% error rate reduction, which was considered optimal. They also discussed reducing latency by using simpler VAD methods like SNR and energy-based approaches, achieving slight improvements but maintaining delays. The group explored feeding VAD flags into neural networks to improve discrimination and reduce errors in mismatched conditions.",
+          "rouge_f1": {
+            "rouge1": 0.1517241379310345,
+            "rouge2": 0.02797202797202797,
+            "rougeL": 0.1103448275862069
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            54,
+            26,
+            25,
+            63,
+            55,
+            58,
+            64,
+            65
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "PhD C discussed the results of using a VAD (Voice Activity Detection) neural network with MFCC (Mel-frequency cepstral coefficients) after noise compensation. The new approach showed a 60% error rate reduction compared to the previous VAD method that used noisy features without compensation. This performance was noted to be nearly as effective as the 62% improvement achieved by Sunil's IDL VAD. The group acknowledged these results as promising but recognized that further work was needed, especially concerning the use of more context-dependent units or HMM state targets for the tandem network.",
+          "rouge_f1": {
+            "rouge1": 0.11290322580645162,
+            "rouge2": 0.0,
+            "rougeL": 0.11290322580645162
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            65,
+            14,
+            25
+          ],
+          "retrieval_precision": 0.20703125,
+          "retrieval_recall": 0.07725947521865889
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "PhD C discussed the Voice Activity Detection (VAD) results, noting improvements from using cleaned features over noisy ones, achieving a 53.66% improvement. This method reduced the error rate by 60%, surpassing the previous VAD's 52% improvement and nearing the 62% improvement achieved by an IDL VAD. The group considered enhancing the neural network by incorporating VAD flags as additional input information to improve discrimination under unseen noise conditions.",
+          "rouge_f1": {
+            "rouge1": 0.16,
+            "rouge2": 0.0,
+            "rougeL": 0.12000000000000001
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            65,
+            14,
+            25,
+            58,
+            16
+          ],
+          "retrieval_precision": 0.193359375,
+          "retrieval_recall": 0.14431486880466474
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "PhD C discussed the Voice Activity Detection (VAD) results, noting improvements in performance due to changes in feature usage from noisy to cleaned features, achieving a 53.66% improvement over the previous system. However, the latency issue remains significant at 220 milliseconds initially, reduced to 270 milliseconds after incorporating additional components. The team explored further optimizations, such as adjusting the timing of delta computations and considering the inclusion of VAD flags as input features to enhance discrimination. Despite these efforts, challenges persist, particularly in highly mismatched conditions where the VAD's silence probability might lead to excessive frame deletions.",
+          "rouge_f1": {
+            "rouge1": 0.186046511627907,
+            "rouge2": 0.031496062992125984,
+            "rougeL": 0.12403100775193798
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            65,
+            14,
+            25,
+            58,
+            16,
+            64,
+            19,
+            29,
+            63
+          ],
+          "retrieval_precision": 0.2841796875,
+          "retrieval_recall": 0.42419825072886297
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The discussion on VAD (Voice Activity Detection) results focused on comparing current performance with previous methods. PhD C mentioned achieving a 60% error rate reduction with a well-matched case, noting this was between the results of their previous VAD and Sunil's IDL VAD, which showed a 62% improvement. The group agreed that using a VAD on a clean version of utterances could potentially reduce the error rate to 62%. They acknowledged that while these are promising results, they are not yet at the optimal level and further improvements, particularly in neural networks, are needed.",
+          "rouge_f1": {
+            "rouge1": 0.15873015873015875,
+            "rouge2": 0.016129032258064516,
+            "rougeL": 0.12698412698412698
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            65,
+            58
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "PhD C discussed the results of using a VAD (Voice Activity Detection) neural network with MFCC (Mel-frequency cepstral coefficients) after noise compensation, achieving a 60% error rate reduction compared to the previous VAD that used noisy features without compensation. This performance was noted to be between the previous VAD's 53% error rate and the \"cheating\" VAD's 62% error rate, which estimated silence probabilities on clean versions of utterances. The group also considered incorporating VAD flags into the neural network inputs to provide additional discriminating information.",
+          "rouge_f1": {
+            "rouge1": 0.11864406779661019,
+            "rouge2": 0.0,
+            "rougeL": 0.10169491525423728
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            65,
+            58,
+            14,
+            26
+          ],
+          "retrieval_precision": 0.103515625,
+          "retrieval_recall": 0.07725947521865889
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "PhD C discussed the Voice Activity Detection (VAD) results, noting improvements from a 53.66% improvement rate with the old VAD to a 62% improvement rate with a \"cheating\" VAD that estimates silence probabilities on clean speech versions of utterances. The new VAD, however, still faces latency issues, with a delay of 220 milliseconds. The team explored using VAD flags as additional input features for neural networks to improve performance, especially under high mismatch conditions.",
+          "rouge_f1": {
+            "rouge1": 0.17142857142857143,
+            "rouge2": 0.01941747572815534,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            25,
+            65,
+            58,
+            14,
+            26,
+            63,
+            64,
+            16,
+            54
+          ],
+          "retrieval_precision": 0.16650390625,
+          "retrieval_recall": 0.24854227405247814
+        },
+        "word_packed__dense__w512": {
+          "answer": "The discussion on VAD (Voice Activity Detection) results focused on comparing current performance metrics with previous benchmarks. The team noted a 60% error rate reduction, which is considered reasonable but not optimal. They referenced a previous VAD method that achieved a 62% improvement, suggesting that the current VAD performance is close to but slightly below this benchmark. There was also mention of potential improvements by using a VAD that operates on clean speech, which could theoretically reduce the error rate further to 62%. However, concerns were raised about the practical implementation, particularly regarding latency issues if waiting for VAD output before processing through another system.",
+          "rouge_f1": {
+            "rouge1": 0.17777777777777776,
+            "rouge2": 0.015037593984962407,
+            "rougeL": 0.08888888888888888
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            58,
+            23
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The discussion on VAD (Voice Activity Detection) results highlighted several key points:\n\n- The current VAD shows a 60% error rate reduction, which is considered reasonable but not optimal.\n- Comparatively, an IDL VAD previously achieved a 62% improvement, indicating the current VAD is close but slightly less effective.\n- Adding a high-quality VAD that performs as well on clean speech could potentially reduce the error rate to 62%, similar to the IDL VAD performance.\n- There's a slight improvement (more than 1%) noted with the new VAD, moving from 53.6% to 54.8%, suggesting a marginal enhancement over the previous VAD.\n- The VAD introduces minimal delay, primarily due to noise cleaning and smoothing processes.\n- The team discussed incorporating VAD information into the backend system to assist in classifying speech and non-speech segments, especially under unseen noise conditions.\n- Concerns were raised about the latency introduced by waiting for VAD outputs before processing through the tandem network, though it was acknowledged that VAD information might be available by the time the tandem network processes the data.",
+          "rouge_f1": {
+            "rouge1": 0.16585365853658535,
+            "rouge2": 0.02955665024630542,
+            "rougeL": 0.07804878048780488
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            58,
+            23,
+            54,
+            50
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The discussion on VAD results focused on the performance improvements and delays associated with different approaches. The team discussed using LDA-filtered features and delta computations for VAD, noting a delay of 70 milliseconds (40 for noise, 20 for delta, and 10 for LDA). They compared current VAD results (57.02% error rate reduction) favorably against previous VAD (53%) and a hypothetical \"cheating\" VAD (62%). Additionally, they explored a parallel VAD approach with SNR and energy-based features, achieving a slight improvement (from 53.6% to 54.8%) with reduced latency but retaining some delay due to median filtering. The group also considered incorporating VAD information into the backend to assist in classifying speech and silence, especially under unseen noise conditions.",
+          "rouge_f1": {
+            "rouge1": 0.15894039735099338,
+            "rouge2": 0.026845637583892617,
+            "rougeL": 0.11920529801324502
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            58,
+            23,
+            54,
+            50,
+            21,
+            49,
+            17,
+            24
+          ],
+          "retrieval_precision": 0.125,
+          "retrieval_recall": 0.18658892128279883
+        },
+        "word_packed__bm25__w512": {
+          "answer": "PhD C discussed the Voice Activity Detection (VAD) results, noting improvements after using noise-compensated Mel Frequency Cepstral Coefficients (MFCC) features and applying a Linear Discriminant Analysis (LDA) filter. The new approach resulted in a 60% error rate reduction, which is close to the 62% improvement achieved by an Independent Data Labeling (IDL) VAD method. The group acknowledged these results as significant progress, though they noted that achieving further reductions might require using a high-quality VAD that performs similarly to one operating on clean speech.",
+          "rouge_f1": {
+            "rouge1": 0.12068965517241383,
+            "rouge2": 0.0,
+            "rougeL": 0.10344827586206895
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            23
+          ],
+          "retrieval_precision": 0.34375,
+          "retrieval_recall": 0.1282798833819242
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "PhD C discussed the Voice Activity Detection (VAD) results, noting improvements after using noise-compensated Mel Frequency Cepstral Coefficients (MFCC) and an LDA filter. The new approach reduced the error rate by 60%, compared to a previous VAD that used only PL features without noise compensation. This performance was close to, but slightly lower than, the 62% error rate reduction achieved by an IDL VAD. The group considered further improvements, such as using a VAD that performs as well on clean speech or integrating the VAD into a tandem network setup.",
+          "rouge_f1": {
+            "rouge1": 0.11570247933884299,
+            "rouge2": 0.01680672268907563,
+            "rougeL": 0.09917355371900828
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            23,
+            61,
+            59
+          ],
+          "retrieval_precision": 0.171875,
+          "retrieval_recall": 0.1282798833819242
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "PhD C discussed the results of using a VAD (Voice Activity Detection) neural network with noise-compensated MFCC features and an LDA filter, noting a 60% error rate reduction compared to previous VAD methods. The team observed that adding a good VAD could improve performance similarly to using a VAD on clean speech, achieving up to a 62% error rate reduction. However, under highly mismatched conditions, the VAD's performance worsened, leading to speculation about the impact of feature correlation and the need to improve the neural network. The group considered integrating VAD information into the backend processing to enhance classification accuracy in noisy conditions.",
+          "rouge_f1": {
+            "rouge1": 0.16296296296296298,
+            "rouge2": 0.030075187969924814,
+            "rougeL": 0.11851851851851852
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            13,
+            23,
+            61,
+            59,
+            40,
+            60,
+            27,
+            54
+          ],
+          "retrieval_precision": 0.0859375,
+          "retrieval_recall": 0.1282798833819242
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "PhD C discussed the Voice Activity Detection (VAD) results, noting improvements after using noise-compensated Mel Frequency Cepstral Coefficients (MFCC) features and applying a Linear Discriminant Analysis (LDA) filter. The new approach resulted in a 60% error rate reduction, which is close to the 62% improvement achieved by an Independent Data Labeling (IDL) VAD method. The group acknowledged these results as significant progress, though they noted that achieving further reductions might require using a high-quality VAD that performs similarly to one operating on clean speech.",
+          "rouge_f1": {
+            "rouge1": 0.12068965517241383,
+            "rouge2": 0.0,
+            "rougeL": 0.10344827586206895
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            13
+          ],
+          "retrieval_precision": 0.34375,
+          "retrieval_recall": 0.1282798833819242
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "PhD C discussed the results of using a VAD (Voice Activity Detection) neural network with noise-compensated Mel Frequency Cepstral Coefficients (MFCC) features and an LDA filter. The new approach showed a 60% error rate reduction compared to the previous VAD method, which had a 62% improvement. The team considered integrating VAD information at the backend to help classify speech and silence, especially under unseen noise conditions, though they noted concerns about latency if waiting for VAD output before processing.",
+          "rouge_f1": {
+            "rouge1": 0.2,
+            "rouge2": 0.018518518518518517,
+            "rougeL": 0.16363636363636366
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            13,
+            54,
+            58
+          ],
+          "retrieval_precision": 0.171875,
+          "retrieval_recall": 0.1282798833819242
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "PhD C discussed the results of using a VAD (Voice Activity Detection) neural network with noise-compensated Mel Frequency Cepstral Coefficients (MFCC) features and Linear Discriminant Analysis (LDA) filtering. The new VAD achieved a 57% error rate reduction compared to the previous VAD's 53%, nearly matching the 62% improvement obtained by using an ideal VAD on clean speech. The new VAD also introduced a tandem neural network configuration, achieving a slight improvement of over 1% relative to the previous VAD, while maintaining a lower delay. The team considered incorporating VAD information as an additional feature in the backend to improve performance under unseen noise conditions.",
+          "rouge_f1": {
+            "rouge1": 0.1323529411764706,
+            "rouge2": 0.014925373134328358,
+            "rougeL": 0.1323529411764706
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            13,
+            54,
+            58,
+            59,
+            17,
+            24,
+            50
+          ],
+          "retrieval_precision": 0.2109375,
+          "retrieval_recall": 0.31486880466472306
+        },
+        "lumber__dense__w512": {
+          "answer": "The discussion focused on Voice Activity Detection (VAD) results. PhD C mentioned achieving a 62% error rate reduction by estimating silence probability on a clean version of utterances. This method represents the best possible outcome. Professor B noted that previously, they had a 53% error rate with an old VAD, improved to 57% with a real VAD, and hypothetically to 62% with a \"cheating\" VAD. PhD D explored a non-neural network VAD approach, achieving a slight improvement of over 1% relative to the previous VAD, reducing the error rate from 53.6% to 54.8%, but with lower latency.",
+          "rouge_f1": {
+            "rouge1": 0.15384615384615383,
+            "rouge2": 0.0,
+            "rougeL": 0.09230769230769231
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            53
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The discussion on VAD (Voice Activity Detection) results focused on comparing different VAD methods and their impact on error rate reduction. PhD C mentioned achieving a 62% error rate reduction by estimating the silence probability on a clean version of the utterances. This method was referred to as \"cheating\" since it used clean speech for estimation. Additionally, PhD D explored a parallel VAD approach without neural networks, achieving a slight improvement of over 1% relative improvement from 53.6% to 54.8%, with reduced latency but retaining significant delay due to the median filter. The group also discussed potential improvements by analyzing the output distribution of the VAD network in high mismatch cases and integrating VAD features into the tandem network to potentially reduce errors further.",
+          "rouge_f1": {
+            "rouge1": 0.1794871794871795,
+            "rouge2": 0.025974025974025976,
+            "rougeL": 0.1282051282051282
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            53,
+            63
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w2048": {
+          "answer": "The discussion on VAD results includes the following points:\n\n- PhD C introduced a new approach to VAD using noise-compensated MFCC features and an LDA filter, resulting in a significant improvement over the previous VAD method (from 54.5% to 57.02%).\n- The new VAD uses a small neural network with 100 hidden units, processing 12 features across 9 frames, leading to a reduction in error rates.\n- PhD D explored a parallel VAD without a neural network, achieving a slight improvement (from 53.6% to 54.8%) with lower latency.\n- The team discussed potential improvements, including using the output of the VAD as a feature in tandem networks and analyzing the distribution of VAD outputs in highly mismatched cases.\n- There was a mention of the importance of reducing latency while maintaining accuracy, especially in real-time applications.",
+          "rouge_f1": {
+            "rouge1": 0.16766467065868262,
+            "rouge2": 0.024242424242424242,
+            "rougeL": 0.11976047904191617
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            53,
+            63,
+            22,
+            14,
+            21
+          ],
+          "retrieval_precision": 0.15380859375,
+          "retrieval_recall": 0.22959183673469388
+        },
+        "lumber__bm25__w512": {
+          "answer": "The discussion on VAD results focused on improvements made by using noise-compensated MFCC features instead of noisy features. The new approach involved a small neural network with 100 hidden units, processing nine frames of twelve features (including first derivatives), leading to an estimated 11,000 parameters. This resulted in a significant reduction in error rates, achieving up to a 62% error rate reduction compared to the previous VAD's 53%. The improvement was attributed to estimating the silence probability on the clean version of utterances.",
+          "rouge_f1": {
+            "rouge1": 0.15517241379310345,
+            "rouge2": 0.0,
+            "rougeL": 0.12068965517241383
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            23
+          ],
+          "retrieval_precision": 0.615234375,
+          "retrieval_recall": 0.22959183673469388
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The discussion on VAD results focused on improvements made by using noise-compensated Mel Frequency Cepstral Coefficients (MFCC) as features for the VAD neural network, compared to previous noisy features. The new model uses a small neural network with 100 hidden units, taking in twelve features (including first derivatives) over nine frames, resulting in a total of 108 inputs. This setup achieved a 57% error rate reduction, compared to 53% with the old VAD. An ideal scenario, using a VAD on clean speech, could reduce errors to 62%. Participants also discussed potential enhancements such as incorporating VAD flags into the neural network's input and analyzing the network's performance under unseen noise conditions.",
+          "rouge_f1": {
+            "rouge1": 0.18055555555555555,
+            "rouge2": 0.04225352112676056,
+            "rougeL": 0.125
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            23,
+            58,
+            63
+          ],
+          "retrieval_precision": 0.3076171875,
+          "retrieval_recall": 0.22959183673469388
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The discussion on VAD results included several key points:\n\n- **Feature Changes**: The VAD neural network now uses MFCC features after noise compensation, compared to previously using noisy features without compensation.\n- **Network Architecture**: The network uses 108 input features (12 features per frame × 9 frames) and has 100 hidden units with two outputs.\n- **Latency Issues**: The latency of the VAD is 220 milliseconds, which is considered too large. Adding delta computation increases the latency further.\n- **Error Rate Reduction**: Using a VAD on clean speech can reduce the error rate by up to 62%, but the actual VAD achieved a 57% reduction.\n- **VAD Flag Usage**: There was consideration of whether to feed the VAD flag as additional input to the neural network to improve discrimination.\n- **High Mismatch Cases**: The team observed higher deletion rates in high mismatch conditions, possibly due to the VAD incorrectly identifying speech as silence.",
+          "rouge_f1": {
+            "rouge1": 0.17045454545454544,
+            "rouge2": 0.05747126436781609,
+            "rougeL": 0.15909090909090906
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            23,
+            58,
+            63,
+            16,
+            65,
+            64
+          ],
+          "retrieval_precision": 0.2392578125,
+          "retrieval_recall": 0.35714285714285715
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The discussion on VAD results focused on comparing different approaches to Voice Activity Detection (VAD). Initially, the VAD used noisy features without noise compensation. The new approach uses MFCC features after noise compensation and includes an LDA filter. The neural network model used nine frames of twelve features (six cepstral coefficients from C0 to C5 plus their first derivatives) and has 100 hidden units, resulting in approximately 11,000 parameters. Using a VAD on a clean version of the utterances led to a 62% error rate reduction, which is considered optimal performance. The actual VAD achieved a 57% error rate reduction, improving from the previous 53%.",
+          "rouge_f1": {
+            "rouge1": 0.14705882352941177,
+            "rouge2": 0.014925373134328358,
+            "rougeL": 0.11764705882352941
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            14
+          ],
+          "retrieval_precision": 0.548828125,
+          "retrieval_recall": 0.20481049562682216
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The discussion on VAD results focused on comparing the performance of a new VAD approach using noise-compensated MFCC features against the previous method using noisy features without compensation. The new VAD uses a small neural network with 100 hidden units, taking in twelve features (including first derivatives) over nine frames, resulting in a total of 108 input features. This setup achieved a 57% error rate reduction compared to the previous VAD's 53%. Additionally, using an ideal VAD based on clean speech could theoretically reduce the error rate to 62%, indicating potential improvements. However, concerns were raised about the latency introduced by waiting for VAD output before processing through the tandem network, suggesting possible adjustments to integrate VAD features directly into the system for real-time processing.",
+          "rouge_f1": {
+            "rouge1": 0.20253164556962025,
+            "rouge2": 0.01282051282051282,
+            "rougeL": 0.12658227848101264
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            14,
+            63
+          ],
+          "retrieval_precision": 0.3076171875,
+          "retrieval_recall": 0.22959183673469388
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The discussion on VAD results included several key points:\n\n- PhD C introduced new VAD results using noise-compensated MFCC features and an LDA filter, compared to the previous method which used noisy features without compensation.\n- The new VAD model uses a small neural network with 100 hidden units, taking 9 frames (12 features per frame) as input, resulting in approximately 11,000 parameters.\n- The performance improved significantly from 49% to 57%, surpassing the previous best of 54.5%.\n- PhD D explored a parallel VAD approach with less latency using SNR and energy ratios, achieving a slight improvement to 54.8%.\n- There was consideration of incorporating VAD flags as additional input features to the neural network to improve discrimination under unseen noise conditions.\n- Concerns were raised about latency issues when integrating VAD outputs into the main system, suggesting potential adjustments to feature inputs or parallel processing methods.",
+          "rouge_f1": {
+            "rouge1": 0.17045454545454544,
+            "rouge2": 0.011494252873563218,
+            "rougeL": 0.12499999999999999
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            14,
+            63,
+            53,
+            58,
+            22
+          ],
+          "retrieval_precision": 0.15380859375,
+          "retrieval_recall": 0.22959183673469388
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the professor think about VAD latency?",
+      "reference_answer": "The professor wanted to know how much latency the VAD was adding to the model. The professor thought that the process could work in parallel. The professor informed the team that the max latency was unknown.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "The professor expressed concern about the VAD latency being too large, noting that the current latency is 220 milliseconds for the VAD alone, which increases to 270 milliseconds when additional components are factored in. However, the professor also indicated that they are \"not in terrible shape\" given the context, suggesting a somewhat positive outlook despite the latency issue.",
+          "rouge_f1": {
+            "rouge1": 0.3404255319148936,
+            "rouge2": 0.08695652173913045,
+            "rougeL": 0.2765957446808511
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            16,
+            54
+          ],
+          "retrieval_precision": 0.23828125,
+          "retrieval_recall": 0.11131386861313869
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "The professor expressed concern about the VAD latency, noting that the current latency of 220 milliseconds is too large. He acknowledged that reducing latency could improve the system's performance, as evidenced by PhD D's suggestion of a parallel VAD with less latency achieving a slight improvement while lowering delay. However, the professor also indicated that they are \"not in terrible shape\" with the current setup, suggesting a balanced view towards the issue.",
+          "rouge_f1": {
+            "rouge1": 0.3090909090909091,
+            "rouge2": 0.07407407407407407,
+            "rougeL": 0.2181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            16,
+            54,
+            55,
+            63
+          ],
+          "retrieval_precision": 0.119140625,
+          "retrieval_recall": 0.11131386861313869
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "The professor expressed concern about the VAD latency, noting that the current latency of 220 milliseconds is too high and discussing ways to reduce it. However, the professor also acknowledged that they are \"not in terrible shape\" given the improvements made and suggested experimenting with reducing various components to decrease the overall latency.",
+          "rouge_f1": {
+            "rouge1": 0.3595505617977528,
+            "rouge2": 0.09195402298850576,
+            "rougeL": 0.2696629213483146
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            23,
+            16,
+            54,
+            55,
+            63,
+            26,
+            14,
+            22,
+            65
+          ],
+          "retrieval_precision": 0.0595703125,
+          "retrieval_recall": 0.11131386861313869
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "The professor expressed concern about the VAD latency, asking for clarification on the latency duration and showing confusion about the calculation process. However, the professor did not explicitly state an opinion or thought about the VAD latency beyond seeking more information. Therefore, the evidence is insufficient to determine the professor's thoughts on VAD latency beyond noting the professor's inquiry and confusion regarding the specifics of the latency.",
+          "rouge_f1": {
+            "rouge1": 0.3428571428571428,
+            "rouge2": 0.07766990291262135,
+            "rougeL": 0.2666666666666667
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            26,
+            56
+          ],
+          "retrieval_precision": 0.23828125,
+          "retrieval_recall": 0.11131386861313869
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "The professor expressed confusion about the latency calculation but acknowledged that the VAD latency was 220 milliseconds, finding it to be too large. When informed that the total latency increased to 270 milliseconds after including the delta computation, the professor confirmed this new latency figure. The professor did not explicitly state a personal opinion on the VAD latency beyond acknowledging its size and the impact on performance improvements.",
+          "rouge_f1": {
+            "rouge1": 0.3846153846153846,
+            "rouge2": 0.1372549019607843,
+            "rougeL": 0.2692307692307692
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            26,
+            56,
+            14,
+            54
+          ],
+          "retrieval_precision": 0.119140625,
+          "retrieval_recall": 0.11131386861313869
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "The professor expressed concern about the VAD latency, indicating that waiting for the VAD output before processing could significantly increase latency. Specifically, the professor stated, \"But I guess wait for the output of the VAD before you can put something into the other system, cuz that'll shoot up the latency a lot, right?\"",
+          "rouge_f1": {
+            "rouge1": 0.3777777777777778,
+            "rouge2": 0.0909090909090909,
+            "rougeL": 0.3111111111111111
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            26,
+            56,
+            14,
+            54,
+            63,
+            25,
+            65,
+            50
+          ],
+          "retrieval_precision": 0.0595703125,
+          "retrieval_recall": 0.11131386861313869
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "The professor expressed confusion about the latency figures initially but acknowledged the VAD latency of 220 milliseconds after clarification. The professor did not explicitly state a personal opinion about the VAD latency being good or bad, only showing interest in understanding the details provided by PhD C.",
+          "rouge_f1": {
+            "rouge1": 0.2891566265060241,
+            "rouge2": 0.07407407407407408,
+            "rougeL": 0.24096385542168677
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            26,
+            54
+          ],
+          "retrieval_precision": 0.23828125,
+          "retrieval_recall": 0.11131386861313869
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "The professor expressed concern about the VAD latency, indicating that it was too large. Specifically, when informed that the VAD latency was 220 milliseconds, the professor responded positively to improvements but noted the issue of latency remaining significant. The professor asked about the exact latency and seemed confused about the calculations related to it, showing interest in understanding the impact of the VAD's latency on the overall system performance.",
+          "rouge_f1": {
+            "rouge1": 0.41509433962264153,
+            "rouge2": 0.11538461538461538,
+            "rougeL": 0.2830188679245283
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            26,
+            54,
+            14,
+            63
+          ],
+          "retrieval_precision": 0.119140625,
+          "retrieval_recall": 0.11131386861313869
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "The professor expressed concern about the VAD latency, noting that while the current latency of 220 milliseconds is not catastrophic (as it's not adding up to 400 milliseconds), it is still considered too large. The professor suggested experimenting with reducing various components to decrease the latency.",
+          "rouge_f1": {
+            "rouge1": 0.3373493975903615,
+            "rouge2": 0.07407407407407408,
+            "rougeL": 0.24096385542168677
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            26,
+            54,
+            14,
+            63,
+            23,
+            65,
+            25,
+            56
+          ],
+          "retrieval_precision": 0.0595703125,
+          "retrieval_recall": 0.11131386861313869
+        },
+        "word_packed__dense__w512": {
+          "answer": "The professor thought that the VAD latency was manageable but could be improved. He noted that the current setup adds up to 70 milliseconds of processing time, which is not excessive (\"we're not in terrible shape\"), but suggested experimenting with reducing parts of it. He also acknowledged a slight improvement in performance at a lower delay compared to the previous VAD, though he expressed some concern that the median filter still contributes to significant delay.",
+          "rouge_f1": {
+            "rouge1": 0.3035714285714286,
+            "rouge2": 0.14545454545454548,
+            "rougeL": 0.21428571428571427
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            50,
+            21
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "The professor thought that the VAD latency of 220 milliseconds was manageable but expressed concern about additional delays caused by the delta computation and other processing steps. He acknowledged that while the current setup added some latency, it wasn't excessively long (not \"four hundred milliseconds or something\"). The professor suggested experimenting with reducing certain components to minimize the delay further.",
+          "rouge_f1": {
+            "rouge1": 0.3711340206185567,
+            "rouge2": 0.1263157894736842,
+            "rougeL": 0.22680412371134023
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            50,
+            21,
+            58,
+            15
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.23357664233576642
+        },
+        "word_packed__dense__w2048": {
+          "answer": "The professor expressed concern about the VAD latency, noting that while the current latency of 220 milliseconds is not ideal, it is manageable. He suggested experimenting with reducing certain components to decrease the latency but acknowledged that they are \"not in terrible shape\" given the current situation.",
+          "rouge_f1": {
+            "rouge1": 0.3132530120481928,
+            "rouge2": 0.04938271604938271,
+            "rougeL": 0.21686746987951808
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            50,
+            21,
+            58,
+            15,
+            17,
+            49,
+            14,
+            24
+          ],
+          "retrieval_precision": 0.251953125,
+          "retrieval_recall": 0.4708029197080292
+        },
+        "word_packed__bm25__w512": {
+          "answer": "The evidence is insufficient to determine what the professor thought about VAD latency specifically. While there is discussion around VAD performance and configurations, the professor's comments do not explicitly address thoughts or opinions regarding VAD latency.",
+          "rouge_f1": {
+            "rouge1": 0.273972602739726,
+            "rouge2": 0.08450704225352113,
+            "rougeL": 0.2191780821917808
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            24
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "The professor expressed concern about VAD latency, indicating that waiting for the VAD output before processing could significantly increase latency. The professor specifically stated, \"Now the only problem is you don't want to wait for the output of the VAD before you can put something into the other system, cuz that'll shoot up the latency a lot.\"",
+          "rouge_f1": {
+            "rouge1": 0.4,
+            "rouge2": 0.12903225806451615,
+            "rougeL": 0.27368421052631575
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            24,
+            13,
+            58
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "The professor expressed concern about the VAD latency, noting that waiting for the VAD output before processing could significantly increase latency. He acknowledged that this was a problem and suggested that if they could manage or reduce latency elsewhere, it would be beneficial.",
+          "rouge_f1": {
+            "rouge1": 0.3037974683544304,
+            "rouge2": 0.07792207792207792,
+            "rougeL": 0.25316455696202533
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            24,
+            13,
+            58,
+            52,
+            46,
+            23,
+            14
+          ],
+          "retrieval_precision": 0.001953125,
+          "retrieval_recall": 0.0036496350364963502
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "The professor expressed concern about VAD (Voice Activity Detection) latency, specifically noting that waiting for the VAD output before processing could significantly increase latency. The professor stated, \"Now the only problem is you don't want to wait for the output of the VAD before you can put something into the other system, cuz that'll shoot up the latency a lot.\"",
+          "rouge_f1": {
+            "rouge1": 0.3877551020408163,
+            "rouge2": 0.125,
+            "rougeL": 0.2653061224489796
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            58
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "The professor expressed confusion about the initial latency calculation provided by PhD C, clarifying that the VAD latency was 220 milliseconds. The professor acknowledged the complexity of the calculations involving various components contributing to the overall latency. Later, the professor recognized the concern over latency, stating that waiting for the VAD output before processing could significantly increase latency, indicating that the professor views VAD latency as a critical issue affecting system performance.",
+          "rouge_f1": {
+            "rouge1": 0.3703703703703704,
+            "rouge2": 0.16981132075471697,
+            "rougeL": 0.3148148148148148
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            58,
+            24,
+            15
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.23357664233576642
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "The professor expressed concern about the VAD latency, noting that the current latency of 220 milliseconds (with additional delays from other processes) is too large. However, the professor also indicated that they are not in a \"terrible shape\" regarding the overall latency, suggesting that while the latency is significant, it is manageable and improvements could be made. The professor acknowledged that reducing latency could involve experimenting with cutting certain components of the process.",
+          "rouge_f1": {
+            "rouge1": 0.3486238532110092,
+            "rouge2": 0.11214953271028037,
+            "rougeL": 0.2568807339449541
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            49,
+            58,
+            24,
+            15,
+            14,
+            13,
+            21,
+            23
+          ],
+          "retrieval_precision": 0.126953125,
+          "retrieval_recall": 0.23722627737226276
+        },
+        "lumber__dense__w512": {
+          "answer": "The professor expressed confusion about the initial latency figures provided by PhD C but acknowledged the latency issues associated with the VAD. When PhD D proposed a method to reduce latency, the professor responded with \"Mm-hmm,\" indicating some level of interest or acknowledgment. However, when informed that the new method still retained significant delays due to other components (like the median filter), the professor noted, \"So it still has most of the delay,\" suggesting dissatisfaction with the current level of latency reduction.",
+          "rouge_f1": {
+            "rouge1": 0.3025210084033613,
+            "rouge2": 0.10256410256410256,
+            "rougeL": 0.2521008403361345
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            53,
+            16
+          ],
+          "retrieval_precision": 0.240234375,
+          "retrieval_recall": 0.11222627737226278
+        },
+        "lumber__dense__w1024": {
+          "answer": "The professor expressed confusion about the initial latency figures but acknowledged the VAD latency of 220 milliseconds. The professor seemed concerned about the impact of this latency on the overall system performance, particularly noting the components contributing to the total latency (e.g., delta computation). The professor also showed interest in reducing latency while maintaining performance, as seen in the discussion about alternative VAD methods with lower latency.",
+          "rouge_f1": {
+            "rouge1": 0.30769230769230765,
+            "rouge2": 0.0980392156862745,
+            "rougeL": 0.23076923076923078
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            53,
+            16,
+            23,
+            21
+          ],
+          "retrieval_precision": 0.1484375,
+          "retrieval_recall": 0.1386861313868613
+        },
+        "lumber__dense__w2048": {
+          "answer": "The professor thought that the VAD latency of 220 milliseconds was problematic and needed attention, though he also noted that they were not in a dire situation as the total additional latency was manageable (around 70 milliseconds). He expressed concern about potential future reductions in allowable latency and suggested experimenting with reducing certain components to manage the delay better.",
+          "rouge_f1": {
+            "rouge1": 0.3157894736842105,
+            "rouge2": 0.12903225806451615,
+            "rougeL": 0.21052631578947367
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            53,
+            16,
+            23,
+            21,
+            54,
+            63,
+            20
+          ],
+          "retrieval_precision": 0.08056640625,
+          "retrieval_recall": 0.15054744525547445
+        },
+        "lumber__bm25__w512": {
+          "answer": "The professor expressed confusion about the initial latency figure provided by PhD C but later acknowledged the VAD latency of 220 milliseconds. The professor suggested that if they could live with the latency or reduce it elsewhere, incorporating additional features like \"before and after clean\" into the neural net would be beneficial. Therefore, while the professor did not explicitly state a clear opinion on the VAD latency, the implication is that the latency is a concern that needs addressing or managing.",
+          "rouge_f1": {
+            "rouge1": 0.2905982905982906,
+            "rouge2": 0.10434782608695652,
+            "rougeL": 0.2564102564102564
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            55,
+            16
+          ],
+          "retrieval_precision": 0.25,
+          "retrieval_recall": 0.11678832116788321
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The professor expressed confusion about the initial latency figure provided by PhD C but acknowledged the VAD latency of 220 milliseconds. When presented with an alternative VAD method by PhD D that aimed to reduce latency, the professor seemed interested but noted that the new method still retained significant delays due to the median filter and input processing. The professor concluded by suggesting that if they could manage or reduce latency elsewhere, incorporating beneficial features into the neural net could be a positive approach.",
+          "rouge_f1": {
+            "rouge1": 0.33333333333333326,
+            "rouge2": 0.11864406779661017,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            55,
+            16,
+            53,
+            63
+          ],
+          "retrieval_precision": 0.1484375,
+          "retrieval_recall": 0.1386861313868613
+        },
+        "lumber__bm25__w2048": {
+          "answer": "The professor expressed concern about the VAD latency, noting that a latency of 220 milliseconds was problematic for real-time processing, especially when combined with other components that contribute to overall latency. The professor acknowledged that reducing latency was important, particularly in the context of online normalization and delta computation, and suggested that finding ways to manage or reduce latency would be beneficial.",
+          "rouge_f1": {
+            "rouge1": 0.34343434343434337,
+            "rouge2": 0.10309278350515463,
+            "rougeL": 0.2626262626262626
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            55,
+            16,
+            53,
+            63,
+            8,
+            51,
+            14
+          ],
+          "retrieval_precision": 0.07421875,
+          "retrieval_recall": 0.1386861313868613
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The professor expressed confusion about the initial latency figures provided by PhD C but acknowledged the latency issues associated with the VAD. When PhD D proposed a method to reduce latency, the professor responded with \"Mm-hmm,\" indicating some level of interest or acknowledgment. However, when informed that the new method still retained significant delays due to other components (like the median filter), the professor noted, \"So it still has most of the delay,\" suggesting dissatisfaction with the current level of latency reduction.",
+          "rouge_f1": {
+            "rouge1": 0.3025210084033613,
+            "rouge2": 0.10256410256410256,
+            "rougeL": 0.2521008403361345
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            53,
+            16
+          ],
+          "retrieval_precision": 0.240234375,
+          "retrieval_recall": 0.11222627737226278
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The professor expressed concern about the VAD latency, indicating that a significant latency (two hundred and twenty milliseconds) could cause issues, particularly when additional components like delta computation are added, increasing the overall delay. The professor also noted that waiting for the VAD output before processing could substantially increase latency, suggesting this as a potential problem.",
+          "rouge_f1": {
+            "rouge1": 0.32608695652173914,
+            "rouge2": 0.08888888888888889,
+            "rougeL": 0.28260869565217395
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            53,
+            16,
+            63
+          ],
+          "retrieval_precision": 0.1484375,
+          "retrieval_recall": 0.1386861313868613
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "The professor expressed concern about the VAD latency, noting that a latency of 220 milliseconds was considered too large. He acknowledged that reducing latency while maintaining performance was challenging, as seen in his discussion with PhD D about a parallel VAD with less latency but still significant delay. Additionally, he highlighted the issue of waiting for the VAD output before processing, which could increase latency significantly.",
+          "rouge_f1": {
+            "rouge1": 0.3137254901960784,
+            "rouge2": 0.04,
+            "rougeL": 0.21568627450980393
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            53,
+            16,
+            63,
+            23,
+            14,
+            22,
+            55
+          ],
+          "retrieval_precision": 0.07421875,
+          "retrieval_recall": 0.1386861313868613
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did PhD C say about the breakdown of the latency?",
+      "reference_answer": "PhD C explained that the silence probabilities had a 100ms delay, the delta at the input had a 40ms delay, and a 10ms delay was created by LDA filters.",
+      "results": {
+        "turn_packed__dense__w512": {
+          "answer": "PhD C mentioned that the latency issue stems from the Voice Activity Detection (VAD) process, which has a latency of 220 milliseconds. Additionally, the delta computation adds another component to the latency. PhD C also noted that cleaning the speech introduces an additional 40 milliseconds of latency. Combining these elements results in a total latency of around 270 milliseconds.",
+          "rouge_f1": {
+            "rouge1": 0.20454545454545459,
+            "rouge2": 0.0697674418604651,
+            "rougeL": 0.20454545454545459
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            22,
+            23
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w1024": {
+          "answer": "PhD C stated that the latency issue stems from the Voice Activity Detection (VAD) system, which has a latency of 220 milliseconds. This latency is exacerbated by additional components such as online normalization and delta computation, contributing to a total latency of 270 milliseconds. PhD C also mentioned that cleaning the speech takes approximately 40 milliseconds, which adds to the overall latency.",
+          "rouge_f1": {
+            "rouge1": 0.24175824175824176,
+            "rouge2": 0.0449438202247191,
+            "rougeL": 0.17582417582417584
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            22,
+            23,
+            21,
+            55
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__dense__w2048": {
+          "answer": "PhD C said that the latency issue stems from the VAD (Voice Activity Detection) having a latency of 220 milliseconds, which is used for online normalization and precedes the delta computation. Adding these components results in a total latency of 170 milliseconds. PhD C also mentioned that the cleaning of the speech takes approximately 40 milliseconds, contributing to the overall latency.",
+          "rouge_f1": {
+            "rouge1": 0.22222222222222224,
+            "rouge2": 0.06818181818181819,
+            "rougeL": 0.17777777777777778
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            22,
+            23,
+            21,
+            55,
+            63,
+            39,
+            57,
+            0,
+            4
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w512": {
+          "answer": "PhD C mentioned that the latency issue stems from the Voice Activity Detection (VAD) component, which has a latency of 220 milliseconds. This VAD is used for online normalization and precedes the delta computation, contributing to the overall latency. When combined with the delta computation's latency, the total latency becomes 270 milliseconds.",
+          "rouge_f1": {
+            "rouge1": 0.2195121951219512,
+            "rouge2": 0.075,
+            "rougeL": 0.1951219512195122
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            54,
+            32
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w1024": {
+          "answer": "PhD C mentioned that the latency issue stems from the Voice Activity Detection (VAD) system, which has a latency of 220 milliseconds. This latency is further compounded by the delta computation performed afterward, contributing to a total latency of 270 milliseconds. PhD C noted that this high latency remains a significant problem despite improvements in other aspects of the system.",
+          "rouge_f1": {
+            "rouge1": 0.24719101123595505,
+            "rouge2": 0.06896551724137932,
+            "rougeL": 0.20224719101123598
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            54,
+            32,
+            25,
+            26
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__bm25__w2048": {
+          "answer": "PhD C mentioned that the latency issue stems from the Voice Activity Detection (VAD) system, which has a latency of 220 milliseconds. This latency is further compounded by additional processing steps such as online normalization and delta computation, contributing to a total latency of 170 milliseconds. PhD C noted that this latency is problematic and suggested waiting for the committee's decision before addressing it further.",
+          "rouge_f1": {
+            "rouge1": 0.23157894736842105,
+            "rouge2": 0.043010752688172046,
+            "rougeL": 0.16842105263157897
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            54,
+            32,
+            25,
+            26,
+            41,
+            44,
+            61,
+            33
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w512": {
+          "answer": "PhD C mentioned that the latency issue stems from the Voice Activity Detection (VAD) component, which has a latency of 220 milliseconds. This VAD is used for online normalization and precedes the delta computation, contributing to the overall latency. When combining these components, the total latency becomes 270 milliseconds.",
+          "rouge_f1": {
+            "rouge1": 0.23076923076923075,
+            "rouge2": 0.07894736842105263,
+            "rougeL": 0.20512820512820512
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            54,
+            63
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w1024": {
+          "answer": "PhD C stated that the latency issue stems from the VAD (Voice Activity Detection) having a latency of 220 milliseconds, which is used for online normalization and precedes the delta computation. Adding the delta computation component increases the latency to around 170 milliseconds. Additionally, PhD C mentioned that the cleaning of speech contributes approximately 40 milliseconds to the latency.",
+          "rouge_f1": {
+            "rouge1": 0.20454545454545459,
+            "rouge2": 0.0697674418604651,
+            "rougeL": 0.18181818181818182
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            54,
+            63,
+            22,
+            0
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "turn_packed__hybrid__w2048": {
+          "answer": "PhD C mentioned that the latency issue stems from the VAD (Voice Activity Detection) process, which has a latency of 220 milliseconds. This latency is further compounded by the delta computation, bringing the total latency to around 270 milliseconds. PhD C noted that the problem with the current setup is that the latency is too large.",
+          "rouge_f1": {
+            "rouge1": 0.21176470588235297,
+            "rouge2": 0.07228915662650602,
+            "rougeL": 0.18823529411764706
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            54,
+            63,
+            22,
+            0,
+            57,
+            33,
+            44,
+            14
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w512": {
+          "answer": "PhD C mentioned that the main issue contributing to the large latency is the cleaning of the speech, which takes approximately forty milliseconds. Additionally, they noted that the Latent Discriminant Analysis (LDA) process also contributes some delay, though it is shorter.",
+          "rouge_f1": {
+            "rouge1": 0.2285714285714286,
+            "rouge2": 0.058823529411764705,
+            "rougeL": 0.20000000000000004
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            20
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__dense__w1024": {
+          "answer": "PhD C stated that the latency issue stems from several components: the VAD (Voice Activity Detection) introduces a 220-millisecond latency, which includes 100 milliseconds for speech cleaning and 40 milliseconds for the neural network processing nine frames. Additionally, there's a 100-millisecond delay due to the filtering of silence probabilities. The delta computation also contributes to the overall latency. PhD C noted that the main contributor to the latency is the cleaning of the speech, which takes approximately 40 milliseconds.",
+          "rouge_f1": {
+            "rouge1": 0.2522522522522523,
+            "rouge2": 0.07339449541284404,
+            "rougeL": 0.18018018018018017
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            20,
+            15,
+            21
+          ],
+          "retrieval_precision": 0.0498046875,
+          "retrieval_recall": 0.16346153846153846
+        },
+        "word_packed__dense__w2048": {
+          "answer": "PhD C explained that the latency issue stems from several components: the VAD introduces a 220-millisecond latency, which includes 100 milliseconds for speech cleaning and 40 milliseconds for the neural network processing nine frames. Additionally, there's a 100-millisecond delay due to the filtering of silence probabilities. PhD C noted that the overall latency is problematic and suggested that the cleaning of speech, taking 40 milliseconds, might be a significant contributor.",
+          "rouge_f1": {
+            "rouge1": 0.2941176470588235,
+            "rouge2": 0.1,
+            "rougeL": 0.2156862745098039
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            20,
+            15,
+            21,
+            50,
+            52,
+            58,
+            33
+          ],
+          "retrieval_precision": 0.02490234375,
+          "retrieval_recall": 0.16346153846153846
+        },
+        "word_packed__bm25__w512": {
+          "answer": "PhD C mentioned that the problem with their current system is that the latency is too large. However, there are no specific details provided by PhD C about the breakdown of the latency itself in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.208955223880597,
+            "rouge2": 0.06153846153846154,
+            "rougeL": 0.17910447761194026
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            52
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w1024": {
+          "answer": "PhD C mentioned that the problem with their system is still the large latency. However, there are no specific details provided by PhD C about the breakdown of the latency itself in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.21875000000000003,
+            "rouge2": 0.06451612903225808,
+            "rougeL": 0.1875
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            52,
+            37,
+            30
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__bm25__w2048": {
+          "answer": "PhD C mentioned that the problem with their current system is still that the latency is too large. However, the exact details or specific breakdown of the latency were not provided by PhD C in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.208955223880597,
+            "rouge2": 0.06153846153846154,
+            "rougeL": 0.208955223880597
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            52,
+            37,
+            30,
+            49,
+            23,
+            24,
+            46
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w512": {
+          "answer": "PhD C mentioned that the problem with their current system is that the latency is too large. However, there are no specific details provided by PhD C about the breakdown of the latency itself in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.208955223880597,
+            "rouge2": 0.06153846153846154,
+            "rougeL": 0.17910447761194026
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            52
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "word_packed__hybrid__w1024": {
+          "answer": "PhD C mentioned that the latency issue stems from several components: the VAD (Voice Activity Detection) contributing 220 milliseconds, the cleaning of speech taking 40 milliseconds, and the filtering of silence probabilities adding another 100 milliseconds. Additionally, the delta computation contributes to the overall latency, though the exact contribution was clarified as 40 milliseconds by PhD C. Thus, the total latency breakdown includes contributions from VAD, speech cleaning, silence probability filtering, and delta computation.",
+          "rouge_f1": {
+            "rouge1": 0.25242718446601947,
+            "rouge2": 0.07920792079207921,
+            "rougeL": 0.23300970873786403
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            52,
+            20,
+            15
+          ],
+          "retrieval_precision": 0.0498046875,
+          "retrieval_recall": 0.16346153846153846
+        },
+        "word_packed__hybrid__w2048": {
+          "answer": "PhD C mentioned that the latency issue stems from several components: the VAD latency is 220 milliseconds, used for online normalization and before delta computation, adding 40 milliseconds for cleaning the speech, and another 100 milliseconds for filtering silence probabilities. These components together contribute to a significant delay in the system's processing.",
+          "rouge_f1": {
+            "rouge1": 0.3170731707317073,
+            "rouge2": 0.075,
+            "rougeL": 0.2439024390243903
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            14,
+            52,
+            20,
+            15,
+            58,
+            40,
+            0,
+            24
+          ],
+          "retrieval_precision": 0.02490234375,
+          "retrieval_recall": 0.16346153846153846
+        },
+        "lumber__dense__w512": {
+          "answer": "PhD C stated that the latency issue stems from the Voice Activity Detection (VAD) process, which has a latency of 220 milliseconds. This latency is further compounded by the delta computation, bringing the total latency to 270 milliseconds. PhD C explained that the VAD is used for online normalization and precedes the delta computation.",
+          "rouge_f1": {
+            "rouge1": 0.2650602409638554,
+            "rouge2": 0.1234567901234568,
+            "rougeL": 0.21686746987951805
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            20,
+            54
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "PhD C stated that the latency issue stems from several components: the VAD latency is 220 milliseconds, used for online normalization before delta computation. Additionally, there's a 40-millisecond latency for cleaning the speech and another 40 milliseconds due to the neural network using nine frames. PhD C also mentioned that the delta computation adds further latency. The total latency breakdown includes 40 milliseconds for speech cleaning, 40 milliseconds for the neural network processing nine frames, and additional latencies from delta computation and possibly the LDA process.",
+          "rouge_f1": {
+            "rouge1": 0.17094017094017094,
+            "rouge2": 0.05217391304347826,
+            "rougeL": 0.17094017094017094
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            20,
+            54,
+            21,
+            17
+          ],
+          "retrieval_precision": 0.0283203125,
+          "retrieval_recall": 0.09294871794871795
+        },
+        "lumber__dense__w2048": {
+          "answer": "PhD C said that the latency is too large, specifically mentioning that the latency of the VAD (Voice Activity Detection) is 220 milliseconds. This latency is used for online normalization and occurs before the delta computation. PhD C also detailed that the total latency includes 40 milliseconds for the cleaning of the speech, 100 milliseconds for the filtering of silence probabilities, and additional components contributing to the overall latency.",
+          "rouge_f1": {
+            "rouge1": 0.22448979591836737,
+            "rouge2": 0.08333333333333333,
+            "rougeL": 0.16326530612244897
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            20,
+            54,
+            21,
+            17,
+            53,
+            62,
+            1,
+            66
+          ],
+          "retrieval_precision": 0.03857421875,
+          "retrieval_recall": 0.2532051282051282
+        },
+        "lumber__bm25__w512": {
+          "answer": "PhD C stated that the latency issue stems from the Voice Activity Detection (VAD) process, which has a latency of 220 milliseconds. This latency increases further due to subsequent delta computation, bringing the total latency to 270 milliseconds.",
+          "rouge_f1": {
+            "rouge1": 0.23880597014925373,
+            "rouge2": 0.06153846153846154,
+            "rougeL": 0.208955223880597
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            55,
+            16
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "PhD C stated that the latency issue stems from the Voice Activity Detection (VAD) process, which has a latency of 220 milliseconds. This latency is further compounded by the delta computation, bringing the total latency to around 270 milliseconds. PhD C mentioned that the VAD is used for online normalization and precedes the delta computation.",
+          "rouge_f1": {
+            "rouge1": 0.23809523809523808,
+            "rouge2": 0.07317073170731708,
+            "rougeL": 0.21428571428571427
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            55,
+            16,
+            44,
+            24,
+            47
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w2048": {
+          "answer": "PhD C stated that the latency of the VAD (Voice Activity Detection) is 220 milliseconds and that this latency increases to 170 milliseconds when adding the delta computation component, which occurs afterward. However, the total latency mentioned later is 270 milliseconds, indicating that the initial 220 milliseconds plus additional components sum up to this figure.",
+          "rouge_f1": {
+            "rouge1": 0.19047619047619047,
+            "rouge2": 0.07317073170731708,
+            "rougeL": 0.16666666666666669
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            55,
+            16,
+            44,
+            24,
+            47,
+            51,
+            35
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "PhD C stated that the latency issue stems from the Voice Activity Detection (VAD) process, which has a latency of 220 milliseconds. This VAD is utilized for online normalization and precedes the delta computation, contributing to an overall latency of 270 milliseconds when combined with the subsequent delta computation component. PhD C also noted that other metrics such as insertion and substitution rates remained relatively unchanged or slightly improved, while deletion rates increased for mismatched cases.",
+          "rouge_f1": {
+            "rouge1": 0.17142857142857143,
+            "rouge2": 0.05825242718446603,
+            "rougeL": 0.17142857142857143
+          },
+          "cache_hit": false,
+          "evidence_words": 512,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            44,
+            53
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "PhD C said that the latency issue is significant, noting that the VAD latency is 220 milliseconds and that when combined with the delta computation, it totals around 270 milliseconds. He mentioned that while the performance metrics such as insertion and substitution rates may be slightly better, the latency remains too large.",
+          "rouge_f1": {
+            "rouge1": 0.19753086419753088,
+            "rouge2": 0.07594936708860758,
+            "rougeL": 0.19753086419753088
+          },
+          "cache_hit": false,
+          "evidence_words": 1024,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            44,
+            53,
+            1,
+            55
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w2048": {
+          "answer": "PhD C said that the latency is too large, specifically mentioning that the latency of the VAD (Voice Activity Detection) is 220 milliseconds. This latency is used for online normalization and occurs before the delta computation. Adding other components results in a total latency of 170 milliseconds. PhD C noted that the main issue is the cleaning of the speech, which takes approximately 40 milliseconds.",
+          "rouge_f1": {
+            "rouge1": 0.19148936170212766,
+            "rouge2": 0.06521739130434781,
+            "rougeL": 0.17021276595744683
+          },
+          "cache_hit": false,
+          "evidence_words": 2048,
+          "evidence_order": "chronological",
+          "selected_chunk_indices": [
+            16,
+            44,
+            53,
+            1,
+            55,
+            21,
+            20,
+            24
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        }
+      }
+    }
+  ]
+}

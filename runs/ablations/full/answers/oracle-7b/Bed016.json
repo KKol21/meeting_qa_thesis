@@ -1,0 +1,147 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "Bed016.json",
+        "sha256": "2335aef6346d1dd9309cfc0d0784c99f1c7c98dedd06aed34cbb035e776a7a94"
+      }
+    },
+    "input_hash": "f01d9275ddca41ea9ddae41bd654595875f276933542cd2bdaf2d329bb2b24ac",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "b2fc8cddee1f601c7d0fcf44c8a621dfcbc9c9aa4c1f4eedca8e2fa0e0794f96",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bed016",
+  "question_count": 3,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 3,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What’s the thesis about?",
+      "reference_answer": "The thesis proposal presents the idea of \"construal\" and makes claims as to how inferences are drawn in a probabilistic relational model by using information from the ontology, situation, user and discourse models. It was advised that more emphasis should be put on the role of construal in the understanding of metaphor and metonymy.",
+      "results": {
+        "oracle": {
+          "answer": "The thesis is about building a probabilistic relational model with general, domain-general rules for construal in the tourism domain. The model aims to use ontology, situation, user, and discourse models to instantiate elements in the probabilistic relational model for making inferences about what is being construed as what.",
+          "rouge_f1": {
+            "rouge1": 0.46601941747572817,
+            "rouge2": 0.21782178217821782,
+            "rougeL": 0.29126213592233013
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              77,
+              112
+            ]
+          ],
+          "evidence_words": 435
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What was said about EML talk?",
+      "reference_answer": "The talk will present the work that is currently being done at ICSI including examples of inference of user intentions and of the recordings of the on-going data collection. The talk will also outline the theoretical (X-schemas, image schemas, Bayes-nets) and neural background.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the EML (Embodied Mind Language) talk centered around the professor's outline of the presentation. Grad C mentioned that the talk would cover problems with rephrasing, preliminary observations comparing human-computer conversations to human-human conversations, and the NTL (Natural Language Technology) story. Grad C also planned to discuss different approaches to language understanding, mentioning two camps with contrasting views, and intended to include a discussion on mirror neurons and related brain imaging studies, such as FMRI, as future activities.",
+          "rouge_f1": {
+            "rouge1": 0.2790697674418605,
+            "rouge2": 0.031496062992125984,
+            "rougeL": 0.13953488372093026
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              176,
+              210
+            ]
+          ],
+          "evidence_words": 697
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What was said about the talk and neurons?",
+      "reference_answer": "As the talk at EML will also refer to a theoretical framework, it was suggested that along with presenting NTL and the piece on mirror neurons, it also alludes to relevant fMRI work. The neural side of the research could be of interest to various groups. The language analysis itself will be introduced in terms of image schemas. On the other hand, it was arranged for more feedback on the thesis proposal to be sent by email. The latest version of the construction formalism will also be needed to complete the presentation.",
+      "results": {
+        "oracle": {
+          "answer": "In the meeting, Grad C mentioned talking about mirror neurons and related activities, specifically mentioning plans to see if the same phenomena occur with stories about kicking. Professor E suggested mentioning this when discussing mirror neurons, indicating that they are planning to conduct experiments to observe the phenomena with stories involving kicking.",
+          "rouge_f1": {
+            "rouge1": 0.19444444444444445,
+            "rouge2": 0.014084507042253521,
+            "rougeL": 0.125
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              190,
+              223
+            ]
+          ],
+          "evidence_words": 803
+        }
+      }
+    }
+  ]
+}

@@ -1,16 +1,22 @@
 param(
     [ValidateSet(
         "ablation-smoke",
+        "ablation-validation-full",
         "ablation-full",
         "lumber-sweep",
         "lumber-model-check",
         "baseline-sweep",
-        "boundary-control"
+        "boundary-control",
+        "grounded-judge-check",
+        "grounded-judge-sample"
     )]
     [string]$Task = "ablation-smoke",
     [switch]$NoWait,
     [switch]$DryRun,
-    [string]$ExistingJobId
+    [string]$ExistingJobId,
+    [string]$Meeting,
+    [int]$QuestionIndex = -1,
+    [string]$Condition
 )
 
 $ErrorActionPreference = "Stop"
@@ -26,8 +32,12 @@ $jobs = @{
         Preset = "src/configs/ablation-full.toml"
         WallTime = "10:00:00"
     }
+    "ablation-validation-full" = @{
+        Preset = "src/configs/ablation-validation-full.toml"
+        WallTime = "10:00:00"
+    }
     "lumber-sweep" = @{
-        Preset = "src/configs/ablation-full.toml"
+        Preset = "src/configs/ablation-validation-full.toml"
         WallTime = "10:00:00"
         Slurm = "src/wormulon/lumber_sweep.slurm"
         JobName = "lumber-sweep"
@@ -35,7 +45,7 @@ $jobs = @{
         Result = "runs/ablations/lumber-sweep"
     }
     "lumber-model-check" = @{
-        Preset = "src/configs/ablation-full.toml"
+        Preset = "src/configs/ablation-validation-full.toml"
         WallTime = "10:00:00"
         Slurm = "src/wormulon/lumber_model_check.slurm"
         JobName = "lumber-model-check"
@@ -43,7 +53,7 @@ $jobs = @{
         Result = "runs/ablations/lumber-model-check"
     }
     "baseline-sweep" = @{
-        Preset = "src/configs/ablation-full.toml"
+        Preset = "src/configs/ablation-validation-full.toml"
         WallTime = "04:00:00"
         Slurm = "src/wormulon/baseline_sweep.slurm"
         JobName = "baseline-sweep"
@@ -51,13 +61,35 @@ $jobs = @{
         Result = "runs/ablations/baseline-sweep"
     }
     "boundary-control" = @{
-        Preset = "src/configs/ablation-full.toml"
+        Preset = "src/configs/ablation-validation-full.toml"
         WallTime = "06:00:00"
         Slurm = "src/wormulon/boundary_control.slurm"
         JobName = "boundary-control"
         LogPrefix = "slurm-boundary-control"
         Result = "runs/ablations/boundary-control"
         SegmentationInput = "runs/ablations/lumber-sweep/segmentation/1000"
+    }
+    "grounded-judge-check" = @{
+        Preset = "src/configs/ablation-full.toml"
+        WallTime = "02:00:00"
+        Slurm = "src/wormulon/grounded_judge.slurm"
+        JobName = "grounded-judge-check"
+        LogPrefix = "slurm-grounded-judge-check"
+        Result = "runs/ablations/full/grounded-judge"
+        MeetingIds = @("education_4")
+        Arguments = @(
+            "--meeting", "education_4",
+            "--question-index", "3",
+            "--condition", "lumber__dense__w2048"
+        )
+    }
+    "grounded-judge-sample" = @{
+        Preset = "src/configs/ablation-full.toml"
+        WallTime = "04:00:00"
+        Slurm = "src/wormulon/grounded_judge_sample.slurm"
+        JobName = "grounded-judge-sample"
+        LogPrefix = "slurm-grounded-judge-sample"
+        Result = "runs/ablations/full/grounded-judge"
     }
 }
 
@@ -125,6 +157,21 @@ function Receive-RemoteDirectory {
 Push-Location $PSScriptRoot
 try {
     $job = $jobs[$Task]
+    if ($Task -eq "grounded-judge-check") {
+        $targetMeeting = if ($Meeting) { $Meeting } else { "education_4" }
+        $targetQuestion = if ($QuestionIndex -ge 0) { $QuestionIndex } else { 3 }
+        $targetCondition = if ($Condition) {
+            $Condition
+        } else {
+            "lumber__dense__w2048"
+        }
+        $job.MeetingIds = @($targetMeeting)
+        $job.Arguments = @(
+            "--meeting", $targetMeeting,
+            "--question-index", "$targetQuestion",
+            "--condition", $targetCondition
+        )
+    }
     $previousPythonPath = $env:PYTHONPATH
     $env:PYTHONPATH = Join-Path $PSScriptRoot "src"
     $descriptionJson = python -m meeting_qa_chunking.run_preset `
@@ -154,7 +201,12 @@ try {
         if ($job.SegmentationInput) {
             Write-Host "Segmentation input: $($job.SegmentationInput)"
         }
-        Write-Host "Data: $($description.meeting_ids -join ', ')"
+        $meetingIds = if ($job.MeetingIds) {
+            $job.MeetingIds
+        } else {
+            $description.meeting_ids
+        }
+        Write-Host "Data: $($meetingIds -join ', ')"
         return
     }
 
@@ -174,6 +226,22 @@ try {
         }
         $remoteSourcePath = "$remotePath/src"
 
+        if ($Task -eq "ablation-full") {
+            # The former validation run used this path. Move it once before the
+            # held-out test run so old meeting files cannot contaminate it.
+            $oldMarker = "$remotePath/runs/ablations/full/retrieval/ES2006a.json"
+            $validationResult = "$remotePath/runs/ablations/validation-full"
+            $migration = "if [ -f '$oldMarker' ]; then " +
+                "if [ -e '$validationResult' ]; then " +
+                "echo 'Both legacy full and validation-full exist' >&2; exit 3; " +
+                "fi; mv -- '$remotePath/runs/ablations/full' " +
+                "'$validationResult'; fi"
+            ssh -o BatchMode=yes $remote $migration
+            if ($LASTEXITCODE -ne 0) {
+                throw "Could not archive the remote validation run"
+            }
+        }
+
         Write-Host "Replacing remote source snapshot..."
         ssh -o BatchMode=yes $remote "rm -rf -- $remoteSourcePath"
         if ($LASTEXITCODE -ne 0) {
@@ -191,8 +259,13 @@ try {
         if ($LASTEXITCODE -ne 0) {
             throw "Could not create the remote data directory"
         }
-        Write-Host "Uploading $($description.meeting_ids.Count) selected QMSum meetings..."
-        foreach ($meetingId in $description.meeting_ids) {
+        $meetingIds = if ($job.MeetingIds) {
+            $job.MeetingIds
+        } else {
+            $description.meeting_ids
+        }
+        Write-Host "Uploading $($meetingIds.Count) selected QMSum meetings..."
+        foreach ($meetingId in $meetingIds) {
             $localMeeting = Join-Path $PSScriptRoot `
                 "$($description.data_dir)\$meetingId.json"
             if (-not (Test-Path -LiteralPath $localMeeting)) {
@@ -226,8 +299,13 @@ try {
         }
 
         Write-Host "Submitting $Task job..."
+        $arguments = if ($job.Arguments) {
+            " " + ($job.Arguments -join " ")
+        } else {
+            ""
+        }
         $submission = ssh -o BatchMode=yes $remote `
-            "cd $remoteDirectory && sbatch --job-name=$jobName --time=$($job.WallTime) --output=$logPrefix-%j.out $slurm $($job.Preset)"
+            "cd $remoteDirectory && sbatch --job-name=$jobName --time=$($job.WallTime) --output=$logPrefix-%j.out $slurm $($job.Preset)$arguments"
         if ($LASTEXITCODE -ne 0) {
             throw "Job submission failed"
         }
@@ -338,7 +416,11 @@ try {
         $jobId
     Write-Host "Result: $localResult"
 
-    if ($Task -in @("ablation-smoke", "ablation-full")) {
+    if ($Task -in @(
+        "ablation-smoke",
+        "ablation-validation-full",
+        "ablation-full"
+    )) {
         $previousPythonPath = $env:PYTHONPATH
         $env:PYTHONPATH = Join-Path $PSScriptRoot "src"
         python src/tools/report_ablations.py --preset $job.Preset

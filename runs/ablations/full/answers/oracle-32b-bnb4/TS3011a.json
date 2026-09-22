@@ -1,0 +1,224 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "TS3011a.json",
+        "sha256": "05e4b8e3849f91786bf72293a1f2d066f6d2c3ddc92f31373781f061794cb963"
+      }
+    },
+    "input_hash": "1509ec7147020fdb6f511a5b8e7270cc5863937efb5749632e37ff25d1128a35",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "9659ac568376508a4f5dd57aa7c9a968e440641fd8227832408f81f691d519c2",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "TS3011a",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about remote control functions.",
+      "reference_answer": "Industrial Designer proposed that a modern remote control should control a diverse subset of equipment. User Interface agreed and revealed that the function of the remote control is to change the state of the TV, which could be realized by pressing the button.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about remote control functions centered around creating a universal remote control capable of operating various devices such as TVs, DVD players, cell phones, and other audio and video equipment. The Industrial Designer emphasized the importance of interoperability, suggesting that one remote control should be able to manage multiple devices. The User Interface agreed, adding that the remote should be designed for consumer use, not for specific vendors, making it a versatile product for a broad audience. The basic technical function discussed was the ability to change the state of a TV or other devices through buttons or potentially a touch screen.",
+          "rouge_f1": {
+            "rouge1": 0.4383561643835616,
+            "rouge2": 0.16666666666666666,
+            "rougeL": 0.27397260273972607
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              107,
+              118
+            ],
+            [
+              137,
+              186
+            ]
+          ],
+          "evidence_words": 885
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did User Interface think about remote control functions?",
+      "reference_answer": "User Interface agreed with Industrial Designer and supposed that the remote control could be interoperable. That is to say, it could be a universal remote control that fits every device. He also revealed that the function of the remote control was to change the state of the TV and this could be realized by pressing the button.",
+      "results": {
+        "oracle": {
+          "answer": "User Interface thought that the remote control should be a universal device capable of working with different TVs and other devices, rather than being specific to one brand like Philips. They emphasized that the primary technical function of the remote control is to change the state of the TV through buttons or possibly a touch screen. The focus was on creating a product for consumers to purchase, not for a specific vendor.",
+          "rouge_f1": {
+            "rouge1": 0.49612403100775193,
+            "rouge2": 0.28346456692913385,
+            "rougeL": 0.3875968992248062
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              152,
+              186
+            ]
+          ],
+          "evidence_words": 402
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did Industrial Designer think about remote control functions?",
+      "reference_answer": "Industrial Designer believed that a modern remote control should control a diverse subset of equipment. That means, one remote control should control one or more pieces of equipment.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence provided does not contain any specific details about what the Industrial Designer thought about remote control functions beyond mentioning interoperability. The Industrial Designer suggested that a modern remote control should be able to control a diverse subset of equipment such as DVD players, cell phones, and video and audio equipment, implying a focus on the ability of a single remote control to operate multiple devices. There are no other explicit comments on specific remote control functions.",
+          "rouge_f1": {
+            "rouge1": 0.3584905660377358,
+            "rouge2": 0.23076923076923075,
+            "rougeL": 0.3207547169811321
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              107,
+              118
+            ]
+          ],
+          "evidence_words": 273
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did the group discuss about the connection of remote control and TV?",
+      "reference_answer": "Industrial Designer pointed out that infrared connection is old-fashioned so they should choose a novel one, such as Bluetooth. Project Manager added that the device should be rechargeable and not consume too much power.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed the connection between remote control and TV, specifically focusing on communication methods such as infrared and Bluetooth. The Industrial Designer noted that infrared is outdated but still cost-effective and widely used, while suggesting that Bluetooth should be considered for modern connectivity. The User Interface suggested equipping the remote with both infrared and Bluetooth to ensure compatibility with most TVs. However, there were concerns about power consumption, particularly with Bluetooth, as it was mentioned that continuous use of Bluetooth could drain battery life quickly. The group agreed that these aspects should be taken into consideration during further discussions about the product design.",
+          "rouge_f1": {
+            "rouge1": 0.22857142857142854,
+            "rouge2": 0.05797101449275363,
+            "rougeL": 0.15714285714285714
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              119,
+              136
+            ],
+            [
+              278,
+              297
+            ]
+          ],
+          "evidence_words": 451
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did Industrial Designer suggest when discussing the connection of remote control and TV?",
+      "reference_answer": "Industrial Designer proposed to change the way how the remote control and the TV communicate with each other as the infrared connection was not hot technical and suggested using Bluetooth.",
+      "results": {
+        "oracle": {
+          "answer": "Industrial Designer suggested considering modern communication methods such as Bluetooth instead of infrared for the connection between the remote control and TV. They noted that infrared is outdated and not considered advanced technology anymore. The Industrial Designer also emphasized that this was an important aspect to discuss further, taking into account the cost-effectiveness and prevalence of infrared in existing TVs, while suggesting that both technologies could potentially coexist in the new remote control design.",
+          "rouge_f1": {
+            "rouge1": 0.3809523809523809,
+            "rouge2": 0.07766990291262137,
+            "rougeL": 0.22857142857142856
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              119,
+              136
+            ]
+          ],
+          "evidence_words": 237
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "Why did User Interface disagree to use Bluetooth in the discussion of connection of remote control and TV?",
+      "reference_answer": "Project Manager believed that remote control should not consume too much power. Therefore, as the cellphone would consume power very quickly when the Bluetooth was on, User Interface was concerned that it might be a problem.",
+      "results": {
+        "oracle": {
+          "answer": "User Interface disagreed to use Bluetooth in the discussion of connecting the remote control and TV because they believed Bluetooth consumes a lot of power, similar to its usage in cell phones. User Interface pointed out that Bluetooth cannot be used continuously for long periods (twenty-four hours a day) without significant power consumption, which would make battery management an issue.",
+          "rouge_f1": {
+            "rouge1": 0.32989690721649484,
+            "rouge2": 0.042105263157894736,
+            "rougeL": 0.18556701030927836
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              278,
+              297
+            ]
+          ],
+          "evidence_words": 214
+        }
+      }
+    }
+  ]
+}

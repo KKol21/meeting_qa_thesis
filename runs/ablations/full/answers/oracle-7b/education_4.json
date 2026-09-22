@@ -1,0 +1,370 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-7b",
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "24cbb780bd1d7b2883a50dd1df388cbed66e5354e2056587d70275667c003d82",
+    "inputs": {
+      "meeting": {
+        "file": "education_4.json",
+        "sha256": "53c724e79532251fa902c2f5095408777d059bd82a341083cd8b405a98378936"
+      }
+    },
+    "input_hash": "21465937d6ea73d005b3d829eec091456671c522324baec6909033bf329159f8",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "2badf655783499816d2ea33c5b79125b549977f7b6d02e6b6c3a1f96ac54fc09",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "education_4",
+  "question_count": 12,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-7b",
+    "name": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 12,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the meeting discuss about the funding issues?",
+      "reference_answer": "The committee admitted that the funding issues brought more pressure on schools, especially after the new Act, for they would have to spend more in the light of it. It was pointed out that the government had not noticed the staff in the PRU, who required training. The committee was trying to communicate with Estyn and the Welsh Government for a broader range of measures to provide opportunities for schools and local authorities.",
+      "results": {
+        "oracle": {
+          "answer": "The meeting discussed several aspects of funding issues related to schools and additional learning needs (ALN):\n\n1. **Potential for More Exclusions**: There is concern that funding challenges could lead to more exclusions, especially for students with additional learning needs. This is due to the increased pressure on schools to manage resources effectively, potentially resulting in harder decisions regarding student placements.\n\n2. **Impact of New Legislation**: The new Act is expected to place additional pressure on the education system, affecting both schools and local authorities. This could exacerbate existing funding issues and contribute to more exclusions.\n\n3. **Variation in Provision**: The fluctuating nature of funding from term to term and week to week poses a challenge for schools in planning and retaining pupils in mainstream settings. This variability can create pressure and may lead to more exclusions if schools struggle to adapt quickly.\n\n4. **Need for Increased Funding**: There is a consensus that more funding is needed, particularly in light of the new Act and the pressures it brings. This includes addressing the needs of staff in pupil referral units and ensuring adequate support for additional learning needs.\n\n5. **Diagnosis vs. Support**: There is a discussion about the balance between funding for diagnosis and support. While diagnosis can help identify and understand students' needs, effective support must be in place for the benefits of diagnosis to be realized. The Samaritans report suggests that funding often leans towards diagnosis rather than support, which is a concern.\n\n6. **Cultural Shift Needed**: There is a call for a cultural shift in how schools and local authorities approach exclusions and additional learning needs. A broader range of measures should be considered to reduce pressure and promote more constructive approaches.\n\nIn summary, the meeting highlighted the complex interplay between funding challenges, new legislation, and the need for balanced support for students with additional learning needs, all of which could contribute to more exclusions if not adequately addressed.",
+          "rouge_f1": {
+            "rouge1": 0.22842639593908629,
+            "rouge2": 0.08673469387755102,
+            "rougeL": 0.16243654822335024
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              20,
+              38
+            ],
+            [
+              177,
+              179
+            ]
+          ],
+          "evidence_words": 1227
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did David Hopkins think of the new Act?",
+      "reference_answer": "David Hopkins agreed with Sharon Davies that the new Act would exert more pressure on schools. However, he denied that the levels of the delegation would have any impact. Meanwhile, he suggested that it would be better for the schools' headmasters and local authorities to look at the new Act more constructively, for it would be beneficial for the post-16 sector.",
+      "results": {
+        "oracle": {
+          "answer": "David Hopkins thought that the new Act could potentially lead to more expulsions, although he believes it shouldn't. He noted that headteachers and governing bodies might react differently based on financial pressures or performance measures. He suggested focusing on a broader range of measures rather than narrow ones and emphasized the need to consider the pressures on the ALN legislation, affecting local authorities, schools, and the post-16 sector.",
+          "rouge_f1": {
+            "rouge1": 0.4090909090909091,
+            "rouge2": 0.15384615384615385,
+            "rougeL": 0.27272727272727276
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              31,
+              33
+            ]
+          ],
+          "evidence_words": 385
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What was considered by David Hopkins as the factor that affected exclusions?",
+      "reference_answer": "David Hopkins did not think that the delegation levels were not high enough in most authority areas. Instead, he thought they had got agreements with the government to make sure that enough money was devolved to school. The true decisive factor was the narrow measure at the end of Stage 4 that drove the headmasters to exclude students or put them into another school.",
+      "results": {
+        "oracle": {
+          "answer": "According to David Hopkins, the factors that affect exclusions are the very narrow measure at the end of key stage 4 attainment, which has put pressure on some schools, and financial pressures on additional learning needs (ALN) funding, particularly issues around tribunals leading to local authorities giving up on going to tribunals due to repeated losses.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.11864406779661016,
+            "rougeL": 0.25
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              31,
+              31
+            ]
+          ],
+          "evidence_words": 208
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did the meeting discuss about the networking within the PRU and the transition arrangements?",
+      "reference_answer": "There had been improvements in the networking within the PRU, for they had national meetings on a regular basis, which could lead to a better sharing of practice. The PRU was planning to provide teachers with professional training. On the transition arrangement, the PRU was building a brand new provision in Swansea. The PRU would support students through a part-time timetable back into school. Besides, the support would not stop as soon as the students returned to school; the reduction of support would be managed.",
+      "results": {
+        "oracle": {
+          "answer": "The meeting discussed the networking within the PRU sector and transition arrangements for students moving between PRUs and mainstream education. Networking within the PRU sector has improved, with regular meetings at both national and regional levels, and the sharing of best practices through conferences and informal visits. The new curriculum presents an opportunity for closer collaboration between PRUs and schools, provided there is adequate funding and support.\n\nRegarding transition arrangements, the focus is on ensuring a smooth reintegration of students into mainstream education. This involves a part-time timetable back into school, ongoing support, and a gradual reduction in that support. However, the process becomes more challenging for older students (key stage 4) due to their more complex needs. Authorities are exploring various models, including retaining all pupils in the school setting, which requires careful consideration of funding and other logistical issues. An example of such a model is being implemented in Oxfordshire, where a PRU partnered with secondary schools to distribute funds more effectively, though the long-term success of this approach is uncertain.",
+          "rouge_f1": {
+            "rouge1": 0.421455938697318,
+            "rouge2": 0.11583011583011585,
+            "rougeL": 0.24521072796934867
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              39,
+              56
+            ]
+          ],
+          "evidence_words": 1014
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What was the major challenge of the transition of the excluded students?",
+      "reference_answer": "The students coming to the end of their statutory education were facing the biggest challenge, for it would be far more difficult for them to go back into the mainstream education process when they turned 15 or 16, not to mention the transition into further education, such as colleges.",
+      "results": {
+        "oracle": {
+          "answer": "The major challenge of the transition of excluded students, particularly those at the end of their statutory education (key stage 4), is getting them back into mainstream education after they turn 15 or 16. This challenge involves working with a team around the family to ensure all necessary support is in place, including looking at the whole package of support for both the learner and the family, such as transport arrangements.",
+          "rouge_f1": {
+            "rouge1": 0.45,
+            "rouge2": 0.22033898305084748,
+            "rougeL": 0.36666666666666664
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              44,
+              47
+            ]
+          ],
+          "evidence_words": 190
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What was the solution to the major challenge for the transition of the excluded students?",
+      "reference_answer": "Sharon Davies recommended the team-around-the-family approach to ensure what was needed for learners to go back into school, as well as what the school could provide. She pointed out the importance of the whole package of support, which not only surrounded the learners but also their families. In addition, she gave an example of the PRU in Oxford who built the partnership between the school and the PRU student to demonstrate the responsibility of schools and the significance of school participation.",
+      "results": {
+        "oracle": {
+          "answer": "The solution to the major challenge for the transition of excluded students involved creating a partnership between schools within the local authority. Specifically, the PRU (Pupil Referral Unit) funds were redirected into schools under certain conditions. Schools were required to work together as a partnership, ensuring they did not continue to move learners around. This approach aimed to keep responsibility for these students within the schools rather than offloading them elsewhere.",
+          "rouge_f1": {
+            "rouge1": 0.34838709677419355,
+            "rouge2": 0.05228758169934641,
+            "rougeL": 0.18064516129032257
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              47,
+              47
+            ],
+            [
+              53,
+              53
+            ]
+          ],
+          "evidence_words": 261
+        }
+      }
+    },
+    {
+      "question_index": 6,
+      "question": "What did the meeting discuss about the pros and cons of local authoritative frameworks?",
+      "reference_answer": "One of the advantages was that youngsters' voice could be heard in time if they showed the willingness to go back into school; the framework offered the excluded learners a cooling-off period. The disadvantage was mainly some individual schools' lack of capacity to organize and offer additional training. Monitor and evaluation systems of the EOTAS provision were supposed to be set up to ensure the education quality.",
+      "results": {
+        "oracle": {
+          "answer": "The meeting did not discuss the pros and cons of local authoritative frameworks directly. However, some related points were mentioned:\n\n- Nick Williams discussed the challenges of balancing safeguarding with the need for additional provision and training for staff (excerpts [60], [62]).\n- Sharon Davies mentioned that local authorities monitor the provision through curriculum panels and reviews (excerpts [71], [72]).\n- There was a concern about the difficulty of quality assuring home tuition due to limited access to homes (excerpts [78], [79], [82], [83]).\n- Nick Williams indicated that local authorities use their own staff for home tuition when schools cannot meet the needs of learners (excerpts [82], [83]).\n- The WLGA paper raised concerns about the potential impact of changes to the registration of EOTAS pupils, including data management and funding (excerpts [90], [91], [93], [94]).\n\nGiven the lack of direct discussion on the pros and cons of local authoritative frameworks, the evidence is insufficient to provide a detailed analysis of this topic based solely on the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.26609442060085836,
+            "rouge2": 0.008658008658008658,
+            "rougeL": 0.1459227467811159
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              57,
+              94
+            ]
+          ],
+          "evidence_words": 1335
+        }
+      }
+    },
+    {
+      "question_index": 7,
+      "question": "What did Sharon Davies think of the role that local authorities should take in the quality assurance of individual intuition?",
+      "reference_answer": "Sharon Davies expressed her strong objection to the exclusions caused by tuition or safeguarding. She pointed out that the difficulty with home tuition was the limited access the local authority could get into the families. The quality of home tuition was difficult to assure, unless the families invited them there, which was a really rare situation. All in all, the role of local authorities was restricted in this aspect.",
+      "results": {
+        "oracle": {
+          "answer": "Sharon Davies thought that local authorities would find it difficult to quality assure individual tuition, particularly home tuition, due to restrictions on accessing homes. She noted that without family consent, local authorities have limited ability to ensure the quality of such tuition.",
+          "rouge_f1": {
+            "rouge1": 0.4324324324324324,
+            "rouge2": 0.12844036697247704,
+            "rougeL": 0.23423423423423426
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              72,
+              81
+            ]
+          ],
+          "evidence_words": 144
+        }
+      }
+    },
+    {
+      "question_index": 8,
+      "question": "Summarize the conclusion of the discussion about the intuition in a private setting.",
+      "reference_answer": "The intuition in a private setting was supposed to follow a restricted timetable, for no matter for what reason the students' need cannot be met at school, the PRU staff ought to provide them with some education. Besides, the education provided should be different from the education provided by agency staff, who merely offered a few hours' provision or the service offered by local libraries.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion concluded that in a private setting, if a student's needs cannot be met in a school or approved provision due to factors such as school anxiety or medical reasons, the local authority employs its own staff to provide education. However, there is insufficient evidence to determine if this practice is widespread across Wales. The conversation also touched upon the quality assurance of various educational provisions, noting that it can be challenging to ensure consistent standards across different types of private settings.",
+          "rouge_f1": {
+            "rouge1": 0.37583892617449666,
+            "rouge2": 0.108843537414966,
+            "rougeL": 0.2818791946308725
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              82,
+              89
+            ]
+          ],
+          "evidence_words": 183
+        }
+      }
+    },
+    {
+      "question_index": 9,
+      "question": "What did the meeting discuss about issues on the special education and recruitment of professional staff?",
+      "reference_answer": "PRU was supposed to collaborate with schools to arrange special curriculums to meet the students' special needs. This not only had something to do with finance but was also related to the recruitment of professional staff. The training for special education ought to be included in the professional training system.",
+      "results": {
+        "oracle": {
+          "answer": "The meeting discussed several issues related to special education and the recruitment of professional staff:\n\n1. **Curriculum and Access to Broad and Balanced Curriculum:**\n   - The WLGA (David Hopkins) expressed satisfaction with PRUs (specialized units) and local authority-managed home tuition, noting that while there are challenges, particularly with third-party providers, the overall curriculum is broad and balanced.\n   - There is a concern about inconsistency in provision, especially for learners in non-PRU settings, such as those in homes or private provision.\n\n2. **ALN Support:**\n   - There is a recognition that ALN (Additional Learning Needs) support is challenging, particularly in EOTAS settings. While PRUs are generally satisfied with the support, there are concerns about the availability and adequacy of support for learners in other settings.\n   - The issue of capacity and funding was highlighted as a significant barrier to providing adequate ALN support.\n\n3. **Mental Health Support:**\n   - There is a general concern about the availability and quality of mental health support for EOTAS learners. The committee heard that there is variability in support across different regions and that some learners may not receive the necessary support.\n   - The committee also discussed the potential for off-rolling of pupils with mental health problems, particularly in key stages 4, and the need for better training and support for teachers to address these issues.\n   - There is a suggestion that the new curriculum should include a focus on mental health and well-being, and that this should be statutory to ensure consistent implementation across Wales.\n\n4. **Professional Development and Staff Training:**\n   - The committee emphasized the need for better training for teachers, particularly in areas such as addressing challenging behavior, understanding the link between inequality and mental health, and recognizing adverse childhood experiences.\n   - There is a call for embedding mental health awareness in initial teacher training and ensuring that all teachers are equipped to deal with the emotional and mental health needs of their students.\n\n5. **Recruitment of Professional Staff:**\n   - The committee discussed the challenges in recruiting and retaining staff, particularly in specialized settings like PRUs and EOTAS units. Issues such as capacity, funding, and the need for specific expertise were raised.\n   - There is a suggestion that teacher training programs should include placements in these specialized settings to prepare teachers for the unique challenges they may face.\n\nOverall, the meeting highlighted the need for better coordination, consistent support, and comprehensive training to improve the educational and mental health outcomes for EOTAS learners.",
+          "rouge_f1": {
+            "rouge1": 0.16335540838852097,
+            "rouge2": 0.03547671840354767,
+            "rougeL": 0.09713024282560707
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              95,
+              157
+            ],
+            [
+              173,
+              176
+            ],
+            [
+              189,
+              223
+            ]
+          ],
+          "evidence_words": 7352
+        }
+      }
+    },
+    {
+      "question_index": 10,
+      "question": "What was the major challenge of training professional staff for special education?",
+      "reference_answer": "Dawn Bowden pointed out that there were a very small number of staff members working in the provision area, and the capacity for them to access professional training was limited. Sharon Davies agreed and added that though the situation had been bettered by the Internet technology, there was still not much opportunity for the ones who desired to specialize in the area.",
+      "results": {
+        "oracle": {
+          "answer": "The major challenge of training professional staff for special education, according to the meeting excerpts, is the limited capacity for staff to access professional training due to small numbers of staff working in the provision. This is highlighted by Sharon Davies stating that while there are improvements, the situation is still limited. Additionally, Nick Williams mentions a capacity issue, where taking specialist teachers and educational psychologists out of the provision to share expertise would be difficult because it could leave the class managed by a supply teacher who may not have the necessary skills.",
+          "rouge_f1": {
+            "rouge1": 0.44871794871794873,
+            "rouge2": 0.15584415584415584,
+            "rougeL": 0.24358974358974358
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              126,
+              131
+            ]
+          ],
+          "evidence_words": 229
+        }
+      }
+    },
+    {
+      "question_index": 11,
+      "question": "Summarize the conclusion of the discussion about the transport for EOTAS learners in rural areas.",
+      "reference_answer": "There were more issues related to transport for EOTAS learners in the rural areas of Wales. The distance that the learners had to cover was huge, for they had to get a provision in Powys. However, WLGA (Welsh Local Government Association) admitted that this issue had not been investigated yet would be in investigation very soon.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion concluded that there are transport issues for EOTAS (Education Otherwise Than At School) learners in rural parts of Wales, particularly in Powys. Nick Williams mentioned that there is provision in both the north and south of Powys, but the distances these learners have to travel are significant. Lynne Neagle asked for the Welsh Local Government Association's (WLGA) comment on the transport issue, but David Hopkins stated he was not aware of any specific issues and offered to investigate further.",
+          "rouge_f1": {
+            "rouge1": 0.4782608695652174,
+            "rouge2": 0.1323529411764706,
+            "rougeL": 0.30434782608695654
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              146,
+              157
+            ]
+          ],
+          "evidence_words": 192
+        }
+      }
+    }
+  ]
+}

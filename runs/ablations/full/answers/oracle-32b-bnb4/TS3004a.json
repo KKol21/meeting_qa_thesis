@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "TS3004a.json",
+        "sha256": "adcf272944bf302db387ff69584f060575046135c2df3a72e28350fff55a1b4a"
+      }
+    },
+    "input_hash": "731c507adfe17648f67156b1ca731a677cf0ebcc21c8881da18b98e415197085",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "d66801736adf01001d6af2b7f05214bbe4175b52c87d13d7ed44dce1e8f28b2b",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "TS3004a",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What did the group talk about the conceptual design of the remote control, including the functions and some possible advanced techniques?",
+      "reference_answer": "In order to make a satisfying profit, the group had to set their price at 25 euros, which was relatively high. For fear that the higher price would lead to fewer consumers, they decided to make it a universal remote control, being able to function on different TVs. The group also planned to add a touchscreen onto the remote control and even include some games for children. What’s more, they paid some attention to the energy source, whether it should be a rechargeable one or just use normal batteries.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed the conceptual design of the remote control, focusing on its functions and potential advanced techniques. They agreed that the remote control should be universal, controlling not just TVs but also VCRs and DVD players. The remote needed to be user-friendly, especially for children and the elderly, with clear functionality and high-quality infrared capabilities for use throughout a room. Size considerations were made, with the consensus being that it shouldn't be too small due to the need for multiple functions but also not excessively large. One suggestion was to design it similarly to foldable mobile phones to accommodate more options without increasing size significantly. \n\nAdvanced techniques considered included incorporating a touchscreen, though this was ultimately deemed too expensive and fragile for practical use. Another idea was a rechargeable remote control, possibly with a home station for charging, which was seen as a good concept but potentially too costly. The group suggested offering the rechargeable option as a separate purchase to address cost concerns.",
+          "rouge_f1": {
+            "rouge1": 0.36434108527131787,
+            "rouge2": 0.09374999999999999,
+            "rougeL": 0.14728682170542637
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              201,
+              343
+            ]
+          ],
+          "evidence_words": 1378
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did the Project Manager think of the remote control when talking about the conceptual design of the remote control?",
+      "reference_answer": "When discussing the remote control, the group tried to set the price at 25 euros, which was relatively high, at least compared to the existing ones. For fear that such a high price would lose their potential consumers, the Project Manager decided to aim their product at a universal one. According to the Project Manager, only by making it a universal remote control and adding other unique characters could it attract more consumers, then eventually reaching their profit expectation.",
+      "results": {
+        "oracle": {
+          "answer": "The Project Manager was uncertain about whether the remote control should be universal, given the price point of twenty-five Euros. They expressed doubt about being able to sell a universal remote control at that price, saying, \"I don't think you can buy a universal uh remote control for twenty five Euros, so not sure.\" However, they eventually agreed to proceed with the concept of a universal remote control, stating, \"Okay, so we just say we just say that's universal remote control. Okay, perfect.\"",
+          "rouge_f1": {
+            "rouge1": 0.30303030303030304,
+            "rouge2": 0.11042944785276074,
+            "rougeL": 0.20606060606060608
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              201,
+              221
+            ]
+          ],
+          "evidence_words": 300
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Why did the Marketing disagree with the Industrial Design when discussing the possible advanced techniques on the remote control?",
+      "reference_answer": "When discussing adding several advanced techniques onto the remote control to make it more unique, the Industrial Design put forward to using the touchscreen. Notwithstanding the merits of the touchscreen, for instance, a touch screen would make the remote control easier and smaller, the Marketing did not agree to do so just because in that case they would be beyond the budget.",
+      "results": {
+        "oracle": {
+          "answer": "Marketing disagreed with the Industrial Design when discussing the possible advanced techniques on the remote control because they believed that a touchscreen would not be reachable or practical for users. Additionally, Marketing suggested that incorporating a touchscreen might be too expensive, aligning with the User Interface's concern about cost.",
+          "rouge_f1": {
+            "rouge1": 0.4107142857142857,
+            "rouge2": 0.10909090909090909,
+            "rougeL": 0.23214285714285712
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              274,
+              290
+            ]
+          ],
+          "evidence_words": 141
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did Industrial Design suggest to do when discussing the conceptual design of the remote control?",
+      "reference_answer": "When discussing the conceptual design of the remote control, the group noticed that the energy source was also a problem worth concern. The Industrial Design proposed to make it rechargeable at first, but because of their limited budget, he had to change his idea. The Industrial Design then put forward to setting a station at home or perhaps just using normal batteries to run the remote control, both of which would be feasible.",
+      "results": {
+        "oracle": {
+          "answer": "Industrial Design suggested the idea of having a home station for the remote control where it could be recharged, similar to a television setup, so that batteries would not be needed. They also considered the cost implications, noting that standalone chargers might be expensive. Additionally, they mentioned the possibility of having rechargeable batteries that could be used in the remote control, which could be placed in a charging station or changed if necessary.",
+          "rouge_f1": {
+            "rouge1": 0.410958904109589,
+            "rouge2": 0.06944444444444445,
+            "rougeL": 0.2054794520547945
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              304,
+              340
+            ]
+          ],
+          "evidence_words": 333
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "Summarize the button layout, the shape and the appearance of the remote control.",
+      "reference_answer": "The User Interface drew a draft for the group to get a more direct idea about the button layout. Through a brief discussion, they agreed that as long as they made the button clear enough to be recognized, it would not matter much where the exact button was. The group also thought about a remote control which was able to be folded, in order to test if it would be strong enough to stand hit.",
+      "results": {
+        "oracle": {
+          "answer": "The remote control should have a standard square shape rather than a folding design. The on/off button is positioned on top, along with the TV channel buttons (1, 2, 3, 4) grouped together, and the volume controls are also placed prominently for easy visibility and access. Less frequently used buttons can be placed elsewhere, provided they have clear icons. The remote should feel comfortable in the hand and can incorporate unique design elements while maintaining usability.",
+          "rouge_f1": {
+            "rouge1": 0.27631578947368424,
+            "rouge2": 0.013333333333333334,
+            "rougeL": 0.15789473684210528
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              344,
+              434
+            ]
+          ],
+          "evidence_words": 870
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did the User Interface suggest to do when discussing the button layout?",
+      "reference_answer": "When discussing the button layout, the User Interface drew a draft to show how to make the remote control more unique and attractive. He suggested to put several essential and useful buttons together in the same place, and others might be scattered on the remote control, on all of which there would be clear logos. As long as the button layout was user-friendly enough, the User Interface thought it did not really matter much where the buttons would be.",
+      "results": {
+        "oracle": {
+          "answer": "The User Interface suggested placing the basic functions such as the on/off button on top and the TV channel buttons (one, two, three, four) as a block. The volume controls should also be on top for visibility. For less frequently used buttons, they should have clear icons but their placement is less critical.",
+          "rouge_f1": {
+            "rouge1": 0.32835820895522394,
+            "rouge2": 0.0606060606060606,
+            "rougeL": 0.1791044776119403
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              344,
+              364
+            ]
+          ],
+          "evidence_words": 269
+        }
+      }
+    }
+  ]
+}

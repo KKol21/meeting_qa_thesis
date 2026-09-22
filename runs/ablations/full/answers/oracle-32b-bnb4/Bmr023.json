@@ -1,0 +1,216 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-32b-bnb4",
+        "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+        "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+        "prequantized": true,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "06a9651cfbe511357a2cae2384fd485fcde1e41afc60e9401bb3755f6d1a7040",
+    "inputs": {
+      "meeting": {
+        "file": "Bmr023.json",
+        "sha256": "70d0d99d63ccfb98e55b4f6421eb657bda18e1295ef7c03f885c8e8ba23c25a8"
+      }
+    },
+    "input_hash": "828056aafbedceae535fcec54b320a5af7af32d6285fd0c31514f1d56b14b92f",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "a9addfeb370a00daeffc5ae664081a86dad954f48cb00f40717915e17fc8120c",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "Bmr023",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-32b-bnb4",
+    "name": "unsloth/Qwen2.5-32B-Instruct-bnb-4bit",
+    "revision": "aa79e3472818bdec779075d80928602591d9f2a0",
+    "prequantized": true,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "What was decided on DARPA?",
+      "reference_answer": "A pressing concern for the group is the DARPA meeting in July, which is only a short time away, and for which they would like to have some progress. ",
+      "results": {
+        "oracle": {
+          "answer": "The meeting excerpts provided do not contain sufficient information to determine any specific decisions made regarding DARPA. The discussion indicates that there was an upcoming DARPA meeting in mid-July, and there was some consideration of what would be presented, particularly related to a transcriber interface. However, no concrete decisions are stated in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.2588235294117647,
+            "rouge2": 0.048192771084337345,
+            "rougeL": 0.21176470588235297
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              32,
+              35
+            ]
+          ],
+          "evidence_words": 106
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What was said on transcripts?",
+      "reference_answer": "For the DARPA meeting in July, the group proposed that they should have the question answering mock-up and transcriber interface ready for then, and also have data available.",
+      "results": {
+        "oracle": {
+          "answer": "The transcripts mentioned a discussion about preparing for a demo at an upcoming DARPA meeting in mid-July. Professor F and PhD G recalled that they planned to work on two things: the transcriber interface and a mock-up for a question-answering feature that would retrieve pre-stored answers. They noted that they had about a month left to sort these out.",
+          "rouge_f1": {
+            "rouge1": 0.391304347826087,
+            "rouge2": 0.13333333333333333,
+            "rougeL": 0.23913043478260873
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              32,
+              47
+            ]
+          ],
+          "evidence_words": 285
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What was the status of transcription?",
+      "reference_answer": "The final english SmartKom demo will be presented to the whole institute once the system is de-bugged and stabilised.",
+      "results": {
+        "oracle": {
+          "answer": "The status of transcription was that some meetings had been transcribed, but final-pass editing was still ongoing. Postdoc A mentioned they were converting the transcriptions to a master file and cleaning up uncertainties and spots where the transcriber was unsure. They aimed to complete this process before July for a DARPA meeting, ensuring that a subset of transcriptions would be legally approved and available for distribution. Additionally, there was discussion about obtaining participant approval for the transcriptions, though it was noted that the approval process could be challenging due to potential subtleties in word choices and the need for confidence in the transcription's accuracy.",
+          "rouge_f1": {
+            "rouge1": 0.11111111111111112,
+            "rouge2": 0.0,
+            "rougeL": 0.09523809523809525
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              229,
+              323
+            ]
+          ],
+          "evidence_words": 2642
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What change has occurred to the segmenter?",
+      "reference_answer": "Segmentation for the recogniser has been done by hand which the group consider \"cheating\", instead now they want to use Thilo's automatic segmenter.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence provided does not contain any specific information regarding a change to the segmenter. The discussion revolves around moving towards automatic segmentations for meeting recognition rather than using hand-segmentations, but there is no mention of a change to the segmenter itself.",
+          "rouge_f1": {
+            "rouge1": 0.26865671641791045,
+            "rouge2": 0.061538461538461535,
+            "rougeL": 0.14925373134328357
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              101,
+              108
+            ]
+          ],
+          "evidence_words": 124
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What is the status of the segmenter",
+      "reference_answer": "The classifier segmentation work is going well, but needs more data to improve results since non-native speaker data cannot be used.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence provided does not contain any specific details about the current status of the segmenter. The only mention related to the segmenter is from PhD C, who states that \"Thilo's segmenter working so well,\" suggesting that it is functioning effectively. However, there are no further details or explicit statements about its status beyond this brief comment.",
+          "rouge_f1": {
+            "rouge1": 0.15,
+            "rouge2": 0.02564102564102564,
+            "rougeL": 0.1
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              101,
+              114
+            ]
+          ],
+          "evidence_words": 173
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What change has occurred to the segmenter?",
+      "reference_answer": "To improve the performance of Thilo's automatic segmenter, this is going to be retrained and adapted to run with Thilo's posteriors and speaker background models.",
+      "results": {
+        "oracle": {
+          "answer": "The evidence provided does not contain any specific information regarding a change to the segmenter. Therefore, based on the given excerpts, there is insufficient evidence to determine any changes to the segmenter.",
+          "rouge_f1": {
+            "rouge1": 0.20338983050847456,
+            "rouge2": 0.0,
+            "rougeL": 0.20338983050847456
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              133,
+              140
+            ]
+          ],
+          "evidence_words": 88
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1375 @@
+{
+  "experiment_version": 1,
+  "meeting_id": "Bed002",
+  "question_count": 6,
+  "source": "retrieval",
+  "conditions": {
+    "fixed__dense__w512": {
+      "chunker": "fixed",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "fixed__dense__w1024": {
+      "chunker": "fixed",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "fixed__bm25__w512": {
+      "chunker": "fixed",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "fixed__bm25__w1024": {
+      "chunker": "fixed",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "fixed__hybrid__w512": {
+      "chunker": "fixed",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "fixed__hybrid__w1024": {
+      "chunker": "fixed",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    },
+    "lumber__dense__w512": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 512
+    },
+    "lumber__dense__w1024": {
+      "chunker": "lumber",
+      "retriever": "dense",
+      "evidence_words": 1024
+    },
+    "lumber__bm25__w512": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 512
+    },
+    "lumber__bm25__w1024": {
+      "chunker": "lumber",
+      "retriever": "bm25",
+      "evidence_words": 1024
+    },
+    "lumber__hybrid__w512": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 512
+    },
+    "lumber__hybrid__w1024": {
+      "chunker": "lumber",
+      "retriever": "hybrid",
+      "evidence_words": 1024
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "model": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "instruction": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nInclude every relevant detail supported by the excerpts. Say that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer."
+  },
+  "model_calls": 0,
+  "cache_hits": 72,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about setting up the recording equipment",
+      "reference_answer": "One of the graduate students is working on building the PDA of the future. The idea is to be able to record meetings for personal use and then query them for pertinent information. The data collection will be anonymized to a large extent, but not so much that the meeting does not represent a real scenario. This meeting will be one of the recorded meetings.",
+      "results": {
+        "fixed__dense__w512": {
+          "answer": "The discussion about setting up the recording equipment focused on collecting high-quality audio data for a project called \"Meeting Recorder.\" The setup includes both tabletop microphones (far-field) and close-talking microphones (near-field). The close-talking microphones provide high-quality audio for language analysis and serve as a control for speech recognition tasks, where far-field microphones are expected to yield lower recognition results. All channels are recorded simultaneously and framed synchronously to allow for advanced research techniques such as beam-forming. The goal is to release this data publicly through bodies like the Linguistic Data Consortium (LDC).",
+          "rouge_f1": {
+            "rouge1": 0.2666666666666667,
+            "rouge2": 0.024539877300613498,
+            "rougeL": 0.14545454545454548
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            5
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.25819465456379226
+        },
+        "fixed__dense__w1024": {
+          "answer": "The discussion about setting up the recording equipment included plans to use both tabletop microphones (far-field) and close-talking microphones to capture high-quality audio for different research purposes. The close-talking microphones provide clearer audio for language analysis, while the far-field microphones are used to simulate real-world challenges for speech recognition tasks. The recordings would be done simultaneously and framed synchronously to allow for advanced research techniques such as beam-forming. Additionally, the team planned to record digit strings as a simpler task to compare against more complex meeting recordings. Participants were instructed on microphone placement and the necessity of filling out consent forms.",
+          "rouge_f1": {
+            "rouge1": 0.2543352601156069,
+            "rouge2": 0.023391812865497075,
+            "rougeL": 0.16184971098265893
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            5,
+            31,
+            2
+          ],
+          "retrieval_precision": 0.779296875,
+          "retrieval_recall": 0.40242057488653554
+        },
+        "fixed__bm25__w512": {
+          "answer": "The discussion about setting up the recording equipment included Professor C mentioning that they would start recording subjects within a month and that the meetings were being recorded to gather help when they begin recording subjects. There was also a mention of a student who is a candidate for the role of a \"wizard\" in the recordings, who would be in touch with Professor C. The participants discussed the nature of the interactions and tasks during the recordings, considering whether to limit them to simple question-and-answer formats or make them more complex with multiple steps. However, the exact setup details of the recording equipment were not explicitly covered in the provided excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.3016759776536313,
+            "rouge2": 0.05649717514124294,
+            "rougeL": 0.16759776536312848
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            31,
+            40,
+            14
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "fixed__bm25__w1024": {
+          "answer": "The discussion about setting up the recording equipment focused on preparing a room equipped with both tabletop microphones and close-talking microphones to ensure high-quality audio recordings for various research purposes. The group acknowledged the need for detailed planning regarding the type of data to be collected and the instructions given to participants during the recording sessions. They also mentioned involving a \"wizard\" (likely a person who interacts with participants to guide the recording process) and discussed the possibility of expanding the complexity of tasks to gather richer data. The timeline suggested starting the recording of subjects within a month.",
+          "rouge_f1": {
+            "rouge1": 0.30120481927710846,
+            "rouge2": 0.024390243902439022,
+            "rougeL": 0.1927710843373494
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            31,
+            40,
+            14,
+            5
+          ],
+          "retrieval_precision": 0.240234375,
+          "retrieval_recall": 0.12405446293494705
+        },
+        "fixed__hybrid__w512": {
+          "answer": "The discussion about setting up the recording equipment focused on preparing a room equipped with both tabletop microphones and close-talking microphones to ensure high-quality audio recordings for various research interests. The goal was to create a dataset that would not penalize those less concerned with acoustic aspects by providing clear audio, particularly useful for language-focused researchers. The setup was intended to facilitate the collection of data for the \"Meeting Recorder\" project, aiming to enable querying and retrieval of meeting information later on.",
+          "rouge_f1": {
+            "rouge1": 0.3733333333333334,
+            "rouge2": 0.027027027027027025,
+            "rougeL": 0.1866666666666667
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            31,
+            5
+          ],
+          "retrieval_precision": 0.55859375,
+          "retrieval_recall": 0.1442259203227433
+        },
+        "fixed__hybrid__w1024": {
+          "answer": "The discussion about setting up the recording equipment included plans to use a room equipped with both tabletop microphones (high-quality pressure zone microphones) and close-talking microphones to ensure high-quality audio for participants less concerned with acoustic aspects. The close-talking microphones would provide \"ground truth\" data, while the far-field microphones would capture a more challenging environment for speech recognition tasks. All channels were to be recorded simultaneously and framed synchronously to allow for beam-forming research. Additionally, participants were instructed to have latecomers wear wireless microphones and complete necessary forms, particularly the consent form.",
+          "rouge_f1": {
+            "rouge1": 0.2208588957055215,
+            "rouge2": 0.02484472049689441,
+            "rougeL": 0.14723926380368096
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            31,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.779296875,
+          "retrieval_recall": 0.40242057488653554
+        },
+        "lumber__dense__w512": {
+          "answer": "The discussion about setting up the recording equipment focused on collecting high-quality audio data for a project called \"Meeting Recorder.\" The setup includes both tabletop microphones (far-field) and close-talking microphones (near-field). The close-talking microphones provide high-quality audio for language analysis and serve as a control for speech recognition tasks, where far-field microphones are expected to yield lower recognition results. All channels are recorded simultaneously and framed synchronously to allow for advanced research techniques such as beam-forming. The goal is to release this data publicly through bodies like the Linguistic Data Consortium (LDC).",
+          "rouge_f1": {
+            "rouge1": 0.2666666666666667,
+            "rouge2": 0.024539877300613498,
+            "rougeL": 0.14545454545454548
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            8
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.25819465456379226
+        },
+        "lumber__dense__w1024": {
+          "answer": "The discussion about setting up the recording equipment included plans to use a room equipped with both tabletop microphones (high-quality pressure zone microphones) and close-talking microphones to capture high-quality audio for participants not interested in the acoustic aspects of the recordings. The close-talking microphones would provide \"ground truth\" audio, while the far-field microphones would capture more challenging audio environments for speech recognition tasks. Both types of microphones would record simultaneously and synchronously to allow for beam-forming research and comparisons. Additionally, the team planned to record digit strings as a simpler task to compare against more complex meeting recordings. The setup process was expected to begin within a month, with specific instructions given for handling latecomers and ensuring consent forms were signed.",
+          "rouge_f1": {
+            "rouge1": 0.22916666666666666,
+            "rouge2": 0.031578947368421054,
+            "rougeL": 0.13541666666666666
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            8,
+            38,
+            9,
+            3
+          ],
+          "retrieval_precision": 0.8203125,
+          "retrieval_recall": 0.4236006051437216
+        },
+        "lumber__bm25__w512": {
+          "answer": "The discussion about setting up the recording equipment focused on the need for a room equipped with both tabletop microphones (high-quality pressure zone microphones) and close-talking microphones. The close-talking microphones were deemed necessary to provide high-quality audio for those less concerned with acoustic aspects and to isolate differences in speech recognition accuracy compared to the lower-quality audio expected from far-field microphones.",
+          "rouge_f1": {
+            "rouge1": 0.21212121212121213,
+            "rouge2": 0.015384615384615385,
+            "rougeL": 0.13636363636363635
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            38,
+            46,
+            8
+          ],
+          "retrieval_precision": 0.60546875,
+          "retrieval_recall": 0.15632879475542108
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The discussion about setting up the recording equipment focused on equipping a room with both tabletop microphones (far-field) and close-talking microphones to ensure high-quality audio recordings for various research purposes. The close-talking microphones provide ground truth and better audio quality for linguistic analysis, while the far-field microphones are used for challenging speech recognition tasks. All channels are recorded simultaneously and framed synchronously to allow for advanced research techniques such as beam-forming. The goal is to create a comprehensive dataset that will be released publicly through bodies like the Linguistic Data Consortium (LDC).",
+          "rouge_f1": {
+            "rouge1": 0.28220858895705525,
+            "rouge2": 0.037267080745341616,
+            "rougeL": 0.18404907975460122
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            38,
+            46,
+            8,
+            16
+          ],
+          "retrieval_precision": 0.5478515625,
+          "retrieval_recall": 0.28290468986384265
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The discussion focused on setting up a room equipped with both tabletop microphones (far-field) and close-talking microphones (near-field) to record meetings. The close-talking microphones provide high-quality audio for language analysis, while the tabletop microphones capture the acoustic environment, including challenging conditions for speech recognition. The goal is to gather data for various aspects of the \"Meeting Recorder\" project, which includes developing a portable device for querying and retrieving information from recorded meetings.",
+          "rouge_f1": {
+            "rouge1": 0.3380281690140845,
+            "rouge2": 0.08571428571428572,
+            "rougeL": 0.1971830985915493
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            38,
+            8
+          ],
+          "retrieval_precision": 0.640625,
+          "retrieval_recall": 0.1654059505799294
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The discussion about setting up the recording equipment focused on equipping a room with both tabletop microphones (high-quality pressure zone microphones) and close-talking microphones to capture high-quality audio for participants interested in language aspects rather than acoustics. The close-talking microphones would provide \"ground truth\" audio, while the far-field microphones would be used to compare audio quality and aid in challenging tasks such as speech recognition. The setup aimed to record simultaneously and frame synchronously to enable further research like beam-forming. Additionally, the plan included having latecomers wear wireless microphones and ensuring all participants sign consent forms.",
+          "rouge_f1": {
+            "rouge1": 0.20359281437125745,
+            "rouge2": 0.024242424242424242,
+            "rougeL": 0.11976047904191617
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            38,
+            8,
+            9,
+            3
+          ],
+          "retrieval_precision": 0.8203125,
+          "retrieval_recall": 0.4236006051437216
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What did C think about setting up the recording equipment?",
+      "reference_answer": "C began by asking some questions about the recording procedure and wanted to know what excising utterances from the transcript would look like. C asked several questions to that end but clarified that the source of inquiry was curiosity and nothing more. Additionally, C wanted A to explain to the meeting participants what the experiment was for.",
+      "results": {
+        "fixed__dense__w512": {
+          "answer": "Professor C thought positively about setting up the recording equipment, indicating that it was part of the plan to start recording subjects within a month and that the meeting was being recorded to gather help for the data collection process.",
+          "rouge_f1": {
+            "rouge1": 0.37113402061855666,
+            "rouge2": 0.06315789473684211,
+            "rougeL": 0.2268041237113402
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            31,
+            11,
+            63
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "fixed__dense__w1024": {
+          "answer": "Professor C thought positively about setting up the recording equipment, indicating support for the project's goals and the necessity of collecting specific types of data. He acknowledged the setup process and its importance, suggesting that getting the recording equipment ready was part of the necessary steps towards achieving the research objectives.",
+          "rouge_f1": {
+            "rouge1": 0.2568807339449541,
+            "rouge2": 0.018691588785046728,
+            "rougeL": 0.2018348623853211
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            31,
+            11,
+            63,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "fixed__bm25__w512": {
+          "answer": "Based on the provided meeting excerpts, Professor C did not explicitly state thoughts about setting up the recording equipment. However, Professor C mentioned that they plan to start recording subjects within a month and that the meeting is being recorded to gather help when they begin recording subjects. This implies that Professor C sees value in the setup and process of recording as part of their research efforts. There is no direct statement from Professor C expressing personal opinions or concerns about setting up the recording equipment itself.",
+          "rouge_f1": {
+            "rouge1": 0.2758620689655172,
+            "rouge2": 0.04195804195804196,
+            "rougeL": 0.16551724137931034
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            31,
+            7,
+            48,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "fixed__bm25__w1024": {
+          "answer": "Professor C did not explicitly state his thoughts on setting up the recording equipment. However, he supported the idea of recording meetings and collecting data, indicating approval towards the overall setup and its purpose. He mentioned the importance of getting help from participants to solve problems related to data collection, suggesting he views the setup as a necessary step for the project's success.",
+          "rouge_f1": {
+            "rouge1": 0.28099173553719003,
+            "rouge2": 0.01680672268907563,
+            "rougeL": 0.18181818181818182
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            31,
+            7,
+            48,
+            5,
+            57
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "fixed__hybrid__w512": {
+          "answer": "Professor C did not explicitly state thoughts about setting up the recording equipment. However, given Professor C's agreement (\"Yeah.\") with other participants' points and the context provided, it can be inferred that Professor C supports the idea of recording meetings to gather necessary data for the project. There is no direct statement from Professor C regarding the specifics of setting up the equipment itself.",
+          "rouge_f1": {
+            "rouge1": 0.29508196721311475,
+            "rouge2": 0.016666666666666666,
+            "rougeL": 0.19672131147540983
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            31,
+            5
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "fixed__hybrid__w1024": {
+          "answer": "Professor C did not explicitly state thoughts about setting up the recording equipment. However, Professor C agreed with the plan and showed support for the project's direction, indicating approval of the setup process mentioned by Grad A.",
+          "rouge_f1": {
+            "rouge1": 0.2736842105263158,
+            "rouge2": 0.021505376344086023,
+            "rougeL": 0.1894736842105263
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            31,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w512": {
+          "answer": "Professor C did not explicitly state thoughts about setting up the recording equipment. However, it can be inferred from his comments that he views the setup as part of the necessary preparations for recording subjects in the future. He mentioned that they would start recording subjects within a month and that they needed to solve problems related to data collection. Additionally, he acknowledged the importance of recording meetings to seek help when they begin recording subjects. Therefore, while not directly addressing the setup process, Professor C seems supportive of the overall effort to prepare for recording.",
+          "rouge_f1": {
+            "rouge1": 0.30065359477124187,
+            "rouge2": 0.013245033112582781,
+            "rougeL": 0.19607843137254902
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            38,
+            3,
+            14
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "Professor C thought positively about setting up the recording equipment, indicating it's necessary for collecting needed data and involving participants in the process. He mentioned starting recordings within a month and emphasized the importance of having both close-talking and far-field microphones to gather high-quality audio and distinguish between different recording methods.",
+          "rouge_f1": {
+            "rouge1": 0.23214285714285712,
+            "rouge2": 0.01818181818181818,
+            "rougeL": 0.17857142857142855
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            38,
+            3,
+            14,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w512": {
+          "answer": "The evidence provided does not contain specific details about what Professor C thought about setting up the recording equipment. The excerpts mention recording meetings and recording subjects but do not provide Professor C's thoughts on the setup process itself.",
+          "rouge_f1": {
+            "rouge1": 0.24742268041237106,
+            "rouge2": 0.021052631578947368,
+            "rougeL": 0.16494845360824742
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            38,
+            10,
+            54,
+            64
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Professor C thought positively about setting up the recording equipment, viewing it as necessary for collecting the required data and involving participants in the process. He mentioned that the setup would involve recording meetings to gather data and that the team's role was to figure out how to solve the ensuing problems, indicating support for the initiative.",
+          "rouge_f1": {
+            "rouge1": 0.34782608695652173,
+            "rouge2": 0.035398230088495575,
+            "rougeL": 0.2608695652173913
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            38,
+            10,
+            54,
+            64,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Professor C did not explicitly state thoughts on setting up the recording equipment. However, they acknowledged the necessity of collecting specific types of data and mentioned that the meeting recordings would help when starting to record subjects, implying support for the setup process. The exact details of C's thoughts on the setup itself are not provided in the given excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.2542372881355932,
+            "rouge2": 0.05172413793103449,
+            "rougeL": 0.20338983050847456
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            38,
+            8
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Professor C did not explicitly state thoughts about setting up the recording equipment. However, his comments suggest he supports the project's direction, indicating that setting up the recording equipment is necessary for collecting the required data. He reassures the team that their efforts are valuable and that their input will be sought when recording actual subjects.",
+          "rouge_f1": {
+            "rouge1": 0.21052631578947367,
+            "rouge2": 0.017857142857142856,
+            "rougeL": 0.15789473684210525
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            38,
+            8,
+            10,
+            9
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "What did A think about setting up the recording equipment?",
+      "reference_answer": "A noted that all participants will have to sign a consent form and read out digits and requested that microphones be kept away from the mouth to minimize breathing sounds. A also mentioned that people will be anonymized in the transcript. A explained that the goal was to eventually be able to query meetings for information.",
+      "results": {
+        "fixed__dense__w512": {
+          "answer": "Based on the provided excerpts, A thought positively about setting up the recording equipment. A emphasized the importance of collecting high-quality data through the use of both tabletop microphones and close-talking microphones. A believed that having both types of microphones would provide \"ground truth\" and ensure high-quality audio, particularly beneficial for those interested in language aspects rather than acoustics. Additionally, A noted that the dual setup (close talking and far field) would help isolate differences between the two types of recordings, aiding in research tasks such as beam-forming.",
+          "rouge_f1": {
+            "rouge1": 0.22972972972972971,
+            "rouge2": 0.0410958904109589,
+            "rougeL": 0.13513513513513511
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            5
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.2952710495963091
+        },
+        "fixed__dense__w1024": {
+          "answer": "Based on the provided excerpts, A thought positively about setting up the recording equipment. A emphasized the importance of having both tabletop microphones and close-talking microphones to ensure high-quality audio recordings for various research purposes, including speech recognition and information retrieval. A also ensured that participants were wearing the microphones correctly to minimize breath sounds.",
+          "rouge_f1": {
+            "rouge1": 0.3539823008849557,
+            "rouge2": 0.07207207207207206,
+            "rougeL": 0.17699115044247785
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            5,
+            31,
+            11,
+            2
+          ],
+          "retrieval_precision": 0.6376953125,
+          "retrieval_recall": 0.37658592848904265
+        },
+        "fixed__bm25__w512": {
+          "answer": "The evidence is insufficient to determine what A thought about setting up the recording equipment based on the provided meeting excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.1558441558441558,
+            "rouge2": 0.0,
+            "rougeL": 0.1558441558441558
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            31,
+            7,
+            5
+          ],
+          "retrieval_precision": 0.3984375,
+          "retrieval_recall": 0.11764705882352941
+        },
+        "fixed__bm25__w1024": {
+          "answer": "The evidence provided does not contain any direct statements or opinions from Grad A regarding the setup of the recording equipment. Therefore, the evidence is insufficient to determine what A thought about setting up the recording equipment.",
+          "rouge_f1": {
+            "rouge1": 0.15053763440860216,
+            "rouge2": 0.0,
+            "rougeL": 0.1075268817204301
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            31,
+            7,
+            5,
+            48,
+            37
+          ],
+          "retrieval_precision": 0.5478515625,
+          "retrieval_recall": 0.3235294117647059
+        },
+        "fixed__hybrid__w512": {
+          "answer": "Based on the provided excerpts, Grad A expressed interest in the Meeting Recorder project, specifically focusing on developing a portable device for information retrieval from recorded meetings. Grad A mentioned the importance of collecting data using both tabletop microphones and close-talking microphones to ensure high-quality audio for various research interests. Therefore, it can be inferred that Grad A thought positively about setting up the recording equipment, seeing it as crucial for achieving the project's goals.",
+          "rouge_f1": {
+            "rouge1": 0.2835820895522388,
+            "rouge2": 0.030303030303030304,
+            "rougeL": 0.13432835820895525
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            31,
+            5
+          ],
+          "retrieval_precision": 0.55859375,
+          "retrieval_recall": 0.16493656286043828
+        },
+        "fixed__hybrid__w1024": {
+          "answer": "Grad A thought positively about setting up the recording equipment. They provided detailed information about the setup, emphasizing the importance of having both tabletop microphones and close-talking microphones to ensure high-quality audio recordings for various research purposes. Grad A also gave specific instructions on how to handle latecomers and the use of wireless microphones, indicating a thorough understanding and support for the recording process.",
+          "rouge_f1": {
+            "rouge1": 0.24590163934426232,
+            "rouge2": 0.016666666666666666,
+            "rougeL": 0.16393442622950818
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            31,
+            5,
+            6
+          ],
+          "retrieval_precision": 0.6240234375,
+          "retrieval_recall": 0.3685121107266436
+        },
+        "lumber__dense__w512": {
+          "answer": "Grad A thought that setting up the recording equipment was necessary for collecting high-quality audio data, which would be crucial for various aspects of the project, including providing ground truth for those less interested in acoustic data and isolating differences between close-talking and far-field microphone recordings for speech recognition tasks.",
+          "rouge_f1": {
+            "rouge1": 0.2018348623853211,
+            "rouge2": 0.0,
+            "rougeL": 0.11009174311926606
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            38,
+            8
+          ],
+          "retrieval_precision": 0.640625,
+          "retrieval_recall": 0.18915801614763553
+        },
+        "lumber__dense__w1024": {
+          "answer": "Grad A thought positively about setting up the recording equipment, emphasizing its importance for collecting high-quality audio data for both acoustic and linguistic research purposes. He explained the setup included both tabletop microphones and close-talking microphones to provide ground truth and high-quality audio, especially beneficial for those less concerned with acoustic aspects of the recordings. Additionally, he noted the simultaneous recording of close-talking and far-field microphones would allow for comparative analysis and tasks such as beam-forming research.",
+          "rouge_f1": {
+            "rouge1": 0.1726618705035971,
+            "rouge2": 0.0,
+            "rougeL": 0.11510791366906475
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            38,
+            8,
+            3
+          ],
+          "retrieval_precision": 0.8203125,
+          "retrieval_recall": 0.4844290657439446
+        },
+        "lumber__bm25__w512": {
+          "answer": "The provided meeting excerpts do not contain any statements, questions, or suggestions from Grad A regarding the setup of the recording equipment. Therefore, the evidence is insufficient to determine what A thought about setting up the recording equipment.",
+          "rouge_f1": {
+            "rouge1": 0.1702127659574468,
+            "rouge2": 0.0,
+            "rougeL": 0.10638297872340426
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            38,
+            10,
+            54,
+            64
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__bm25__w1024": {
+          "answer": "Based on the provided excerpts, A (Grad A) thought positively about setting up the recording equipment. They explained the necessity of having both table-top microphones and close-talking microphones to ensure high-quality audio for different research interests and to compare speech recognition results from far-field and near-field recordings. Grad A emphasized the importance of collecting such data to facilitate further research and intended to make this data publicly available.",
+          "rouge_f1": {
+            "rouge1": 0.2635658914728682,
+            "rouge2": 0.0,
+            "rougeL": 0.1395348837209302
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            38,
+            10,
+            54,
+            64,
+            8
+          ],
+          "retrieval_precision": 0.3798828125,
+          "retrieval_recall": 0.2243367935409458
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Grad A thought that setting up the recording equipment was necessary for collecting high-quality audio data, which would be crucial for various aspects of the project, including providing ground truth for those less interested in acoustic data and isolating differences between close-talking and far-field microphone recordings for speech recognition tasks.",
+          "rouge_f1": {
+            "rouge1": 0.2018348623853211,
+            "rouge2": 0.0,
+            "rougeL": 0.11009174311926606
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            38,
+            8
+          ],
+          "retrieval_precision": 0.640625,
+          "retrieval_recall": 0.18915801614763553
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Grad A thought positively about setting up the recording equipment, viewing it as essential for collecting high-quality audio data necessary for the project. He emphasized the importance of using both tabletop microphones and close-talking microphones to provide ground truth and ensure high-quality audio, particularly for those less concerned with acoustic aspects of the recordings. Additionally, he ensured that the setup would allow for simultaneous recording of close-talking and far-field audio to facilitate comparative analysis and research tasks such as beam-forming.",
+          "rouge_f1": {
+            "rouge1": 0.16901408450704225,
+            "rouge2": 0.014285714285714285,
+            "rougeL": 0.11267605633802816
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            38,
+            8,
+            9,
+            3
+          ],
+          "retrieval_precision": 0.6572265625,
+          "retrieval_recall": 0.3881199538638985
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about the experimental setup of the computer navigation system",
+      "reference_answer": "The computer navigation system will work as follows. The subject of the experiment will familiarize themselves with information about a city. Then, they will be introduced to an advanced navigation system through which they can navigate the city, and they will be given several tasks, like buying stamps. The navigation system will crash, and the subject will be connected to a human operator. Then, the human operator will control the system based on the subject's requests as the subject tries to complete their tasks. Both sides, the assistant and the subject, will be recorded for data collection purposes.",
+      "results": {
+        "fixed__dense__w512": {
+          "answer": "The discussion focused on issues with current navigation systems, particularly regarding the accuracy of directions to specific locations such as entrances versus postal addresses. Participants noted problems where navigation systems directed users to the wrong location, such as directing someone to a mailbox instead of the main entrance. The goal for their experimental setup was to improve the system's ability to accurately guide users to desired destinations, such as entrances or specific points of interest, rather than just generic addresses.",
+          "rouge_f1": {
+            "rouge1": 0.2555555555555556,
+            "rouge2": 0.056179775280898875,
+            "rougeL": 0.17777777777777778
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            61,
+            60
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "fixed__dense__w1024": {
+          "answer": "The discussion about the experimental setup of the computer navigation system focused on addressing issues related to precision and practicality. Participants noted problems with current navigation systems leading users to incorrect locations, such as directing them to a mailbox instead of the actual entrance of a building. They aimed for an improved system that could accurately guide users to specific points of interest, such as entrances or landmarks, rather than just the general vicinity or geometric center of a location. Additionally, the setup involved tasks where participants interacted with a computer navigation system to perform various navigation-related activities, followed by scenarios involving a human operator when the system failed, to gather data on user interactions and system effectiveness.",
+          "rouge_f1": {
+            "rouge1": 0.33944954128440374,
+            "rouge2": 0.09259259259259259,
+            "rougeL": 0.2110091743119266
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            61,
+            60,
+            37,
+            35,
+            57
+          ],
+          "retrieval_precision": 0.4892578125,
+          "retrieval_recall": 0.3285245901639344
+        },
+        "fixed__bm25__w512": {
+          "answer": "The discussion focused on refining the experimental setup for a computer navigation system. Key points included:\n\n- The role of a \"wizard\" (human operator) who could interact with participants, potentially affecting the expressiveness and talkativeness during the experiment.\n- Concerns about limiting the task to a simple question-and-answer format, suggesting a preference for a more complex, multi-step process.\n- Participants' unfamiliarity with interacting with the system, implying a need for clear instructions or guidance.\n- Introduction of a scenario where the system crashes, requiring a human operator to take over, with the added complexity of the GPS also failing, necessitating participants to verbally communicate their location.\n- The inclusion of a student as a potential \"wizard\" for the experiment.\n\nThese elements were discussed to ensure comprehensive data collection and to explore various aspects of user interaction with the navigation system under different conditions.",
+          "rouge_f1": {
+            "rouge1": 0.35833333333333334,
+            "rouge2": 0.10084033613445378,
+            "rougeL": 0.20833333333333334
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            40,
+            37,
+            35
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.3357377049180328
+        },
+        "fixed__bm25__w1024": {
+          "answer": "The discussion about the experimental setup of the computer navigation system included several key points:\n\n- Participants considered the expressiveness and talkativeness of the wizard (human operator simulating the computer) during interactions.\n- They debated whether tasks should be limited to simple question-answer formats or include more steps.\n- The setup involved subjects interacting with a simulated advanced computer system in a virtual environment (either a 3D model or QuickTime animation of Heidelberg).\n- Subjects were given tasks such as finding locations, taking pictures, and gathering historical information.\n- After completing four tasks, the system was made to crash, introducing a human operator who lacked the system's knowledge, requiring subjects to describe their location based on visual cues.\n- Both sides of the dialogue (subject and wizard/operator) would be recorded.\n- The goal was to observe natural user behavior without strict instructions on what to say, focusing on how users interacted under these conditions.",
+          "rouge_f1": {
+            "rouge1": 0.4497991967871486,
+            "rouge2": 0.08906882591093117,
+            "rougeL": 0.25702811244979923
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            40,
+            37,
+            35,
+            39,
+            31
+          ],
+          "retrieval_precision": 0.96875,
+          "retrieval_recall": 0.6504918032786885
+        },
+        "fixed__hybrid__w512": {
+          "answer": "The discussion about the experimental setup of the computer navigation system includes several key points:\n\n- The experiment involves a scenario where a computer navigation system crashes, requiring a human operator to step in.\n- Initially, participants are informed that the computer system knows their location via GPS.\n- When the human operator介入，他们必须先询问参与者的位置，因为GPS也“崩溃”了。\n- Participants must describe their surroundings to help the human operator determine their location.\n- The setup also involved removing certain elements like roadwork to prevent issues such as directing participants to walls or incorrect locations.\n- There's a mention of common problems with current car navigation systems, such as directing users to a street address rather than the actual entrance point of a destination.\n\nThis summary captures the main aspects of the experimental setup discussed, focusing on the interaction between the computer system, human operator, and participants.",
+          "rouge_f1": {
+            "rouge1": 0.364406779661017,
+            "rouge2": 0.11111111111111112,
+            "rougeL": 0.20338983050847456
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            37,
+            61,
+            35
+          ],
+          "retrieval_precision": 0.513671875,
+          "retrieval_recall": 0.17245901639344263
+        },
+        "fixed__hybrid__w1024": {
+          "answer": "The discussion about the experimental setup of the computer navigation system includes several key points:\n\n- Participants are presented with a 3D model or QuickTime animation of a square in Heidelberg.\n- They must read a text about Heidelberg to familiarize themselves with street names.\n- They are informed about a sophisticated computer system that can understand and respond to their queries.\n- Tasks include navigating to specific locations (e.g., to buy stamps, take pictures), and obtaining historical information about objects.\n- After completing these tasks, the system crashes, simulating a failure scenario.\n- In the failure scenario, a human operator takes over, who initially lacks knowledge of the participant's location due to a simulated GPS crash.\n- The participant must then communicate their location to the human operator based on visual cues.\n- The setup aims to gather data on how participants navigate and interact under both automated and manual assistance conditions.\n\nThis summary captures the essence of the experimental setup as described in the meeting excerpts.",
+          "rouge_f1": {
+            "rouge1": 0.42911877394636017,
+            "rouge2": 0.12355212355212354,
+            "rougeL": 0.268199233716475
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            37,
+            61,
+            35,
+            60,
+            57
+          ],
+          "retrieval_precision": 0.4892578125,
+          "retrieval_recall": 0.3285245901639344
+        },
+        "lumber__dense__w512": {
+          "answer": "The discussion centered around the limitations of current car navigation systems, particularly their inability to accurately direct users to specific entrances or points of interest within large complexes like SAP in Waldorf. Grad B highlighted that these systems often lead users to the general location based on the postal address rather than the actual entrance, causing inconvenience. The group agreed that an improved system should ideally provide more precise directions, such as guiding users directly to the desired entrance or specific points (e.g., Vista point, Tango point) instead of just the geometric center of a building.",
+          "rouge_f1": {
+            "rouge1": 0.2346938775510204,
+            "rouge2": 0.030927835051546393,
+            "rougeL": 0.16326530612244897
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            69,
+            68
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "The discussion about the experimental setup of the computer navigation system focused on its limitations and desired improvements. Participants noted that current systems often lead users far from the actual entrance of destinations, such as large companies, due to inaccurate postal addresses. They aimed for a more precise system capable of guiding users directly to specific points of interest, like entrances or landmarks, rather than just the general location. Additionally, the setup involved participants interacting with a simulated 3D environment or QuickTime animations, reading about locations, and then using a hypothetical advanced computer system to navigate and complete various tasks, such as finding places to buy stamps or taking pictures. The experiment included scenarios where the system would crash after several tasks, transitioning to human operators who lacked GPS information, requiring participants to verbally describe their locations.",
+          "rouge_f1": {
+            "rouge1": 0.38983050847457623,
+            "rouge2": 0.07692307692307693,
+            "rougeL": 0.21186440677966104
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            69,
+            68,
+            42,
+            43
+          ],
+          "retrieval_precision": 0.490234375,
+          "retrieval_recall": 0.3291803278688525
+        },
+        "lumber__bm25__w512": {
+          "answer": "The discussion about the experimental setup of the computer navigation system includes several key points:\n\n- Participants are presented with a 3D model or QuickTime animation of a square in Heidelberg.\n- They read a text from a tourist guide to familiarize themselves with the area.\n- They are informed about a sophisticated computer system that can assist them with various tasks.\n- Tasks include finding directions, taking pictures, and gathering historical information.\n- Initially, the system operates normally, guiding participants through these tasks.\n- After a simulated crash, a human operator takes over, unaware of the participant's location due to a simulated GPS failure.\n- Participants must verbally communicate their location based on visual cues.\n\nThis setup aims to collect data on how participants interact with both automated systems and human operators under different conditions.",
+          "rouge_f1": {
+            "rouge1": 0.39301310043668125,
+            "rouge2": 0.12334801762114536,
+            "rougeL": 0.22707423580786026
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            43,
+            42
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.3357377049180328
+        },
+        "lumber__bm25__w1024": {
+          "answer": "The experimental setup involves participants completing tasks in a simulated environment (either a 3D model or QuickTime animation of Heidelberg) guided by a computer navigation system. Participants start by reading about Heidelberg to familiarize themselves with the area. They are then instructed to use a phone to interact with the computer system to complete tasks such as finding locations, taking pictures, and gathering historical information. After the third task, the system crashes, and a human operator takes over, who initially lacks knowledge of the participant's location due to a simulated GPS crash. The operator must ask the participant for their location before continuing with similar tasks using different objects. The interactions are recorded to gather data on how participants communicate their intentions and actions during these tasks.",
+          "rouge_f1": {
+            "rouge1": 0.3876651982378854,
+            "rouge2": 0.10666666666666666,
+            "rougeL": 0.23788546255506607
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            43,
+            42,
+            45,
+            37
+          ],
+          "retrieval_precision": 0.8837890625,
+          "retrieval_recall": 0.5934426229508196
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The discussion about the experimental setup of the computer navigation system includes several key points:\n\n- Participants are presented with a 3D model or QuickTime animation of a square in Heidelberg.\n- They read a text from a tourist guide to familiarize themselves with the area.\n- They are informed about a sophisticated computer system that can assist them with various tasks.\n- Tasks include finding directions, taking pictures, and gathering historical information.\n- Initially, the system operates normally, guiding participants through these tasks.\n- After a simulated crash, a human operator takes over, unaware of the participant's location due to a simulated GPS failure.\n- Participants must verbally communicate their location based on visual cues.\n\nThis setup aims to collect data on how participants interact with both automated systems and human operators under different conditions.",
+          "rouge_f1": {
+            "rouge1": 0.39301310043668125,
+            "rouge2": 0.12334801762114536,
+            "rougeL": 0.22707423580786026
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            43,
+            42
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.3357377049180328
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The experimental setup involves participants completing navigation tasks in a simulated environment (either a 3D model or QuickTime animation of Heidelberg) using a computer navigation system. Participants start by reading a text about Heidelberg to familiarize themselves with the area. They are then instructed that the computer system can understand and assist them fully. Tasks include finding locations, taking pictures, and gathering historical information. After the third task, the system crashes, simulating a GPS failure, requiring participants to communicate their location to a human operator who must then guide them to complete the remaining tasks. This setup aims to gather data on user interaction and system effectiveness under normal and degraded conditions.",
+          "rouge_f1": {
+            "rouge1": 0.38862559241706157,
+            "rouge2": 0.0956937799043062,
+            "rougeL": 0.22748815165876773
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            43,
+            42,
+            69,
+            68
+          ],
+          "retrieval_precision": 0.5283203125,
+          "retrieval_recall": 0.35475409836065575
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did B think about the experimental setup of the computer navigation system?",
+      "reference_answer": "B explained that the subject of the experiment will first be given texts about a city, so they can familiarize themselves with foreign terms. Then, they will be introduced to a computer navigation system with which they can navigate the city and provided with a set of tasks to complete. Then, the computer system will crash, including the GPS, so the person will not even know where they are, and the human operator will assist them. To find their location, the subject will have to provide visual information to the human operator. B also thought that creating movies of walking would require a lot of technical effort but later claimed that it may be worth it. B clarified that the goal was to see how people communicate in such a scenario.",
+      "results": {
+        "fixed__dense__w512": {
+          "answer": "B thought that the experimental setup of the computer navigation system had issues, particularly with accuracy and practicality. B mentioned that the system often directs users to the wrong location, such as taking them to a mailbox instead of the actual entrance, making it problematic for users who are not mail persons. B also highlighted that the system sometimes directs users to locations far from their intended destination, indicating dissatisfaction with its current setup and functionality.",
+          "rouge_f1": {
+            "rouge1": 0.3478260869565218,
+            "rouge2": 0.1073170731707317,
+            "rougeL": 0.21256038647342995
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            61,
+            60
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "fixed__dense__w1024": {
+          "answer": "B thought that the experimental setup of the computer navigation system had issues, particularly with the accuracy of directions. B mentioned that the current setup often directs users to the wrong location, such as the geometric center of a building rather than the actual entrance, and highlighted problems with postal addresses directing users to mailboxes instead of entrances. B also suggested improvements, including a more harmonious integration of features and a system capable of providing precise directions to specific points of interest, such as entrances or landmarks, rather than generic locations.",
+          "rouge_f1": {
+            "rouge1": 0.32432432432432434,
+            "rouge2": 0.08181818181818183,
+            "rougeL": 0.2162162162162162
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            61,
+            60,
+            38,
+            37,
+            9
+          ],
+          "retrieval_precision": 0.390625,
+          "retrieval_recall": 0.3875968992248062
+        },
+        "fixed__bm25__w512": {
+          "answer": "Grad B thought the experimental setup involving the computer navigation system was complex and included several stages. Initially, participants were told that the computer system knew their location via GPS and could understand them completely. However, when a human operator took over due to a simulated system crash, the operator had to ask the participant's location, indicating a shift from automated to manual guidance. Grad B seemed to view this setup as providing \"very interesting data\" for analysis.",
+          "rouge_f1": {
+            "rouge1": 0.3333333333333333,
+            "rouge2": 0.07692307692307693,
+            "rougeL": 0.19999999999999998
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            37,
+            7,
+            35
+          ],
+          "retrieval_precision": 0.83984375,
+          "retrieval_recall": 0.4166666666666667
+        },
+        "fixed__bm25__w1024": {
+          "answer": "Grad B thought the experimental setup involved participants performing tasks guided by a computer navigation system that claimed to understand them completely and knew their location via GPS. However, the system would crash after the fourth task, requiring a human operator to take over without knowledge of the participant's location, necessitating additional communication from the participant to the operator about their whereabouts. Grad B seemed to view this setup as providing \"very interesting data\" for analysis.",
+          "rouge_f1": {
+            "rouge1": 0.3653846153846154,
+            "rouge2": 0.07766990291262135,
+            "rougeL": 0.21153846153846154
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            37,
+            7,
+            35,
+            39,
+            31
+          ],
+          "retrieval_precision": 0.720703125,
+          "retrieval_recall": 0.7151162790697675
+        },
+        "fixed__hybrid__w512": {
+          "answer": "B thought the experimental setup involving the computer navigation system was complex and included several unique features such as simulating a system crash and introducing a human operator who lacked GPS information. B also mentioned that they had to modify the setup to avoid leading participants to dead ends or incorrect locations, highlighting issues with current navigation systems that often direct users to addresses rather than entrances. B seemed to view these modifications as necessary for obtaining meaningful data and addressing real-world problems with navigation systems.",
+          "rouge_f1": {
+            "rouge1": 0.3394495412844037,
+            "rouge2": 0.046296296296296294,
+            "rougeL": 0.1834862385321101
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            37,
+            61,
+            35
+          ],
+          "retrieval_precision": 0.513671875,
+          "retrieval_recall": 0.2548449612403101
+        },
+        "fixed__hybrid__w1024": {
+          "answer": "B thought the experimental setup of the computer navigation system involved initially presenting participants with a fully functional system that supposedly knew their exact location via GPS. However, the system would crash after the fourth task, requiring a human operator to step in who would need to ask the participant's location since the GPS was also down. B also mentioned that they had to remove a part of the roadwork to prevent the system from leading participants to a wall. Additionally, B highlighted issues with current car navigation systems, noting that they often lead users far from the actual entrance of destinations, suggesting that the experimental setup aimed to address such problems.",
+          "rouge_f1": {
+            "rouge1": 0.43442622950819676,
+            "rouge2": 0.0909090909090909,
+            "rougeL": 0.22950819672131148
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            37,
+            61,
+            35,
+            60,
+            7
+          ],
+          "retrieval_precision": 0.4892578125,
+          "retrieval_recall": 0.48546511627906974
+        },
+        "lumber__dense__w512": {
+          "answer": "B thought that the current experimental setup of the computer navigation system was problematic because it often directs users to the geometric center of a building or a mailbox's location rather than the actual entrance or desired destination. B suggested that the system should ideally provide more accurate directions, such as guiding users directly to specific points of interest (e.g., \"Vista point\" or \"Tango point\") or the door, instead of just the general location.",
+          "rouge_f1": {
+            "rouge1": 0.28019323671497587,
+            "rouge2": 0.07804878048780488,
+            "rougeL": 0.16425120772946858
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            69,
+            68
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "B thought that the current experimental setup of the computer navigation system was problematic because it often directs users to the geometric center of a building or a mailbox's location rather than the actual entrance where they want to go. B suggested that the ideal system should be able to provide more accurate directions, such as showing a path directly to the desired destination (e.g., \"the door\"), instead of just the general vicinity or address.",
+          "rouge_f1": {
+            "rouge1": 0.33653846153846156,
+            "rouge2": 0.0970873786407767,
+            "rougeL": 0.2019230769230769
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            69,
+            68,
+            22,
+            44,
+            43
+          ],
+          "retrieval_precision": 0.2041015625,
+          "retrieval_recall": 0.20251937984496124
+        },
+        "lumber__bm25__w512": {
+          "answer": "B thought the experimental setup involving a crashed computer navigation system followed by a human operator asking participants for their location was interesting and could provide valuable data. However, B was unsure if this specific aspect had been formally discussed and suggested leaving room for flexibility in how the human operator (wizard) interacts with participants to gather richer data.",
+          "rouge_f1": {
+            "rouge1": 0.26315789473684215,
+            "rouge2": 0.06382978723404256,
+            "rougeL": 0.16842105263157894
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            43,
+            45
+          ],
+          "retrieval_precision": 1.0,
+          "retrieval_recall": 0.49612403100775193
+        },
+        "lumber__bm25__w1024": {
+          "answer": "B thought the experimental setup involved participants performing tasks guided by a computer navigation system that claimed to understand their needs and location perfectly. However, after the third task, the system would crash, requiring a human operator to step in who had no knowledge of the participant's location, necessitating additional communication from the participant to navigate. B seemed to view this setup as providing interesting data but did not explicitly express a positive or negative opinion about the setup itself beyond noting its potential for generating useful insights.",
+          "rouge_f1": {
+            "rouge1": 0.35454545454545455,
+            "rouge2": 0.055045871559633024,
+            "rougeL": 0.1818181818181818
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            43,
+            45,
+            10,
+            42,
+            37
+          ],
+          "retrieval_precision": 0.828125,
+          "retrieval_recall": 0.8217054263565892
+        },
+        "lumber__hybrid__w512": {
+          "answer": "Based on the provided excerpts, B expressed concerns about the experimental setup of the computer navigation system, particularly regarding the system's reliability and its ability to accurately determine the user's location. B mentioned that the system crashes and loses GPS functionality, requiring a human operator to ask the user for their location. This indicates that B views these aspects as potential issues or problems within the experimental setup.",
+          "rouge_f1": {
+            "rouge1": 0.31840796019900497,
+            "rouge2": 0.08040201005025124,
+            "rougeL": 0.21890547263681592
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            43,
+            22,
+            69
+          ],
+          "retrieval_precision": 0.4765625,
+          "retrieval_recall": 0.2364341085271318
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "Based on the provided excerpts, B expressed concerns about the accuracy and practicality of the experimental setup of the computer navigation system. Specifically, B noted issues related to the system's reliance on GPS and its tendency to direct users to the geometric center of buildings rather than specific entry points, which B found problematic and not reflective of real-world navigation systems' behavior. B also suggested that the system should ideally provide more precise directions, such as guiding users directly to entrances rather than just to addresses.",
+          "rouge_f1": {
+            "rouge1": 0.31963470319634707,
+            "rouge2": 0.06451612903225808,
+            "rougeL": 0.19178082191780824
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            43,
+            22,
+            69,
+            68,
+            42
+          ],
+          "retrieval_precision": 0.28515625,
+          "retrieval_recall": 0.28294573643410853
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What did D think about the experimental setup of the computer navigation system?",
+      "reference_answer": "D wanted to know if the videos for the navigation system would be recorded from a first person perspective. D was also trying to understand how ambitious the system was. D learned that the goal was to understand how people reacted and talked in such a scenario. D provided some information about potential candidates for the human operator and wizard roles as well.",
+      "results": {
+        "fixed__dense__w512": {
+          "answer": "Based on the meeting excerpts provided, D's thoughts about the experimental setup of the computer navigation system are limited to acknowledgment and agreement with the issues presented by Grad B. D used responses such as \"Oh, really?\" [487], \"Hmm.\" [490], \"Mm-hmm.\" [495], and \"Right, yeah.\" [497] to indicate understanding and agreement with the problems discussed regarding the current limitations of navigation systems, such as being directed to the wrong location based on postal addresses rather than entrances. However, D did not provide any specific opinions or critiques about the experimental setup itself.",
+          "rouge_f1": {
+            "rouge1": 0.2802547770700637,
+            "rouge2": 0.012903225806451613,
+            "rougeL": 0.2038216560509554
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            61,
+            60
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "fixed__dense__w1024": {
+          "answer": "Based on the meeting excerpts provided, D's thoughts about the experimental setup of the computer navigation system are limited to brief acknowledgments and inquiries. D expressed mild interest and agreement with Grad B's points regarding the limitations and ambitions of the system, as indicated by responses such as \"Oh, really?\" and \"Mm-hmm.\" However, D did not provide detailed opinions or critiques of the experimental setup itself. Therefore, the evidence is insufficient to determine D's comprehensive thoughts on the experimental setup of the computer navigation system beyond these brief interactions.",
+          "rouge_f1": {
+            "rouge1": 0.2564102564102564,
+            "rouge2": 0.025974025974025976,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            61,
+            60,
+            38,
+            35,
+            37
+          ],
+          "retrieval_precision": 0.1875,
+          "retrieval_recall": 0.4682926829268293
+        },
+        "fixed__bm25__w512": {
+          "answer": "The meeting excerpts provided do not contain any statements, questions, or suggestions from Grad D regarding the experimental setup of the computer navigation system. Therefore, the evidence is insufficient to determine what D thought about the experimental setup.",
+          "rouge_f1": {
+            "rouge1": 0.25742574257425743,
+            "rouge2": 0.020202020202020204,
+            "rougeL": 0.19801980198019803
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            37,
+            35,
+            7
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "fixed__bm25__w1024": {
+          "answer": "Grad D did not explicitly state an opinion about the experimental setup of the computer navigation system. However, Grad D's engagement in questioning Grad B about the specifics of the tasks and the nature of the dialogue indicates interest and consideration of the setup. Specifically, Grad D inquired about whether participants had to respond to the system and what kind of information they were expected to convey, suggesting a focus on understanding the interaction dynamics within the experimental setup.",
+          "rouge_f1": {
+            "rouge1": 0.2937062937062937,
+            "rouge2": 0.028368794326241134,
+            "rougeL": 0.1818181818181818
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            37,
+            35,
+            7,
+            39,
+            31
+          ],
+          "retrieval_precision": 0.14453125,
+          "retrieval_recall": 0.36097560975609755
+        },
+        "fixed__hybrid__w512": {
+          "answer": "The meeting excerpts do not contain any statements from Grad D regarding thoughts on the experimental setup of the computer navigation system. Therefore, the evidence is insufficient to determine what D thought about the experimental setup.",
+          "rouge_f1": {
+            "rouge1": 0.24242424242424246,
+            "rouge2": 0.02061855670103093,
+            "rougeL": 0.20202020202020202
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            37,
+            35,
+            61
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "fixed__hybrid__w1024": {
+          "answer": "The evidence provided does not contain any direct statements or opinions from Grad D regarding the experimental setup of the computer navigation system. Therefore, the evidence is insufficient to determine what D thought about the experimental setup.",
+          "rouge_f1": {
+            "rouge1": 0.26,
+            "rouge2": 0.02040816326530612,
+            "rougeL": 0.2
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            37,
+            35,
+            61,
+            60,
+            38
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w512": {
+          "answer": "Based on the meeting excerpts provided, Grad D's thoughts about the experimental setup of the computer navigation system are limited to agreement and acknowledgment. Grad D used responses such as \"Hmm,\" \"Mm-hmm,\" and \"Right, yeah\" (Excerpts [489], [491], [495], [497]), indicating passive agreement with Grad B's points regarding the limitations and issues with current navigation systems. There are no explicit statements from Grad D that provide detailed opinions or critiques of the experimental setup itself. Therefore, the evidence is insufficient to determine Grad D's specific thoughts about the experimental setup beyond general agreement with the discussed problems.",
+          "rouge_f1": {
+            "rouge1": 0.2682926829268293,
+            "rouge2": 0.012345679012345678,
+            "rougeL": 0.1829268292682927
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            69,
+            68
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__dense__w1024": {
+          "answer": "Based on the meeting excerpts provided, Grad D's thoughts about the experimental setup of the computer navigation system are limited to a few brief acknowledgments and questions. Grad D seems to be considering the ambition and functionality of the system, particularly noting the issue of accurately guiding users to specific points within buildings rather than just to the general vicinity. Grad D acknowledges the problems with current navigation systems, such as being directed to the wrong entrance or the geometric center of a building instead of the desired destination. However, the evidence is insufficient to provide a detailed opinion or comprehensive view of Grad D's thoughts on the experimental setup.",
+          "rouge_f1": {
+            "rouge1": 0.27428571428571424,
+            "rouge2": 0.023121387283236997,
+            "rougeL": 0.18285714285714283
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            69,
+            68,
+            44,
+            29,
+            43
+          ],
+          "retrieval_precision": 0.21484375,
+          "retrieval_recall": 0.5365853658536586
+        },
+        "lumber__bm25__w512": {
+          "answer": "D seemed to understand and accept the experimental setup, showing curiosity about the specifics of the tasks and the interactions required. D's responses (\"Mm-hmm,\" \"Uh-huh,\" \"Yep\") indicate agreement and engagement with the described setup involving a human operator and a simulated computer system. However, D's primary focus appeared to be clarifying the nature of the tasks and the expected interactions rather than explicitly evaluating the setup itself. The evidence provided does not contain explicit approval or disapproval from D regarding the experimental setup.",
+          "rouge_f1": {
+            "rouge1": 0.30666666666666664,
+            "rouge2": 0.04054054054054054,
+            "rougeL": 0.16
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            43,
+            45
+          ],
+          "retrieval_precision": 0.234375,
+          "retrieval_recall": 0.2926829268292683
+        },
+        "lumber__bm25__w1024": {
+          "answer": "D seemed unsure about the specifics of the experimental setup, focusing on questioning how participants would interact with the system and what directions they would be given. D's comments suggest a concern for understanding how participants would naturally communicate their intentions and actions within the experimental conditions, indicating a desire for clarity on the instructions given to subjects and the expected interactions with the computer navigation system.",
+          "rouge_f1": {
+            "rouge1": 0.35114503816793896,
+            "rouge2": 0.06201550387596899,
+            "rougeL": 0.21374045801526717
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            43,
+            45,
+            42,
+            37
+          ],
+          "retrieval_precision": 0.1171875,
+          "retrieval_recall": 0.2926829268292683
+        },
+        "lumber__hybrid__w512": {
+          "answer": "The evidence provided does not contain any direct statements or opinions from Grad D regarding their thoughts on the experimental setup of the computer navigation system. Grad D's responses (e.g., \"Oh, really?\", \"Hmm.\", \"Mm-hmm.\", \"Right, yeah.\") indicate passive engagement but do not express specific thoughts about the experimental setup. Therefore, the evidence is insufficient to determine what D thought about the experimental setup.",
+          "rouge_f1": {
+            "rouge1": 0.21705426356589147,
+            "rouge2": 0.015748031496062992,
+            "rougeL": 0.18604651162790697
+          },
+          "cache_hit": true,
+          "evidence_words": 512,
+          "selected_chunk_indices": [
+            43,
+            69,
+            42
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        },
+        "lumber__hybrid__w1024": {
+          "answer": "The evidence provided does not contain any direct statements or opinions from Grad D regarding their thoughts on the experimental setup of the computer navigation system. Grad D's responses (e.g., \"Oh, really?\", \"Hmm.\", \"Mm-hmm.\", \"Right, yeah.\") indicate passive engagement but do not express specific thoughts or critiques about the experimental setup itself. Therefore, the evidence is insufficient to determine what D thought about the experimental setup.",
+          "rouge_f1": {
+            "rouge1": 0.21212121212121213,
+            "rouge2": 0.015384615384615384,
+            "rougeL": 0.1818181818181818
+          },
+          "cache_hit": true,
+          "evidence_words": 1024,
+          "selected_chunk_indices": [
+            43,
+            69,
+            42,
+            68
+          ],
+          "retrieval_precision": 0.0,
+          "retrieval_recall": 0.0
+        }
+      }
+    }
+  ]
+}

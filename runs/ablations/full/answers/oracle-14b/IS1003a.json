@@ -1,0 +1,232 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "IS1003a.json",
+        "sha256": "81414199f88de17cef5f27e2cc832f333428386ba6b83e64a54561b76725f018"
+      }
+    },
+    "input_hash": "6e86e383f80815aa30a0d11943860ada0a8ec62114448dfd00605a6c39be80ed",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "129670677f2d25ff3db262f9fb454db046f111a00922d6750c145a5c486ff0bc",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "IS1003a",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about the product features.",
+      "reference_answer": "The remote control had to be original, trendy, easy to use, international and not too expensive.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about the product features focused on creating an original, trendy, and user-friendly remote control designed for international use. The team emphasized keeping the product cost under €12.50 and ensuring it was simple, easy to use, and had new functionalities that would attract buyers. The remote control should cater to a global audience without being too specific to any particular region, similar to how different keyboard layouts (Qwerty, Azerty, etc.) accommodate various users.",
+          "rouge_f1": {
+            "rouge1": 0.30434782608695654,
+            "rouge2": 0.1111111111111111,
+            "rougeL": 0.17391304347826086
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              4,
+              4
+            ],
+            [
+              28,
+              34
+            ],
+            [
+              113,
+              140
+            ]
+          ],
+          "evidence_words": 484
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "Why did Project Manager propose that the product should be international when discussing the product features?",
+      "reference_answer": "Because it would be sold in the entire world and everyone would use it.",
+      "results": {
+        "oracle": {
+          "answer": "Project Manager proposed that the product should be international because they wanted to sell it globally without making it too specific to any one region, similar to how different types of keyboards (Qwerty, Azerty) cater to various markets but still need to be usable by everyone.",
+          "rouge_f1": {
+            "rouge1": 0.2,
+            "rouge2": 0.0,
+            "rougeL": 0.13333333333333333
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              28,
+              30
+            ],
+            [
+              113,
+              121
+            ]
+          ],
+          "evidence_words": 158
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Summarize the conclusion of the discussion about the product price and cost as a part of the product features.",
+      "reference_answer": "The remote control would be priced at 25 Euros and the product cost would be no more than 12.5 Euros.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion concluded that the product price of twenty-five Euros is reasonable and not too expensive, maximizing customer benefit while keeping in mind that the product cost should not exceed twelve Euros and fifty cents.",
+          "rouge_f1": {
+            "rouge1": 0.2807017543859649,
+            "rouge2": 0.10909090909090909,
+            "rougeL": 0.2807017543859649
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              19,
+              25
+            ],
+            [
+              122,
+              132
+            ]
+          ],
+          "evidence_words": 128
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "Summarize the discussion about the work division of the project.",
+      "reference_answer": "Project manager would manage the whole group. Industrial Designer would think of the functions of the product. User interface designer would concentrate on the users' requirement and the relation between the users and the remote control. Marketing would give interface designer and industrial designer some trends about what should be done and what the users would like to have.",
+      "results": {
+        "oracle": {
+          "answer": "The project division of labor discussed includes:\n\n- **Project Manager**: Managing the entire group.\n- **Industrial Designer (I_D_)**: Handling the industrial design, focusing on the physical appearance and material aspects of the remote control.\n- **User Interface Designer (U_I_D_)**: Focusing on the user interface design, including the layout and interaction design of the remote control.\n- **Marketing Expert**: Providing insights on market trends and user preferences to guide the design process.\n\nThere was some confusion initially about the specific roles, particularly between the User Interface Designer and the Industrial Designer, but they clarified their responsibilities by the end of the discussion.",
+          "rouge_f1": {
+            "rouge1": 0.49056603773584895,
+            "rouge2": 0.24203821656050956,
+            "rougeL": 0.3522012578616352
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              35,
+              112
+            ]
+          ],
+          "evidence_words": 565
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What was the industrial designer's opinion about the job of user interface designer when discussing the work division?",
+      "reference_answer": "Industrial designer thought user interface designer's job was to focus on the relation between the users and the remote control and decide how the object looks – for example, where the button would be.",
+      "results": {
+        "oracle": {
+          "answer": "The industrial designer thought that the user interface designer would focus on designing how the user interacts with the product, such as determining the placement of buttons.",
+          "rouge_f1": {
+            "rouge1": 0.5573770491803278,
+            "rouge2": 0.23728813559322037,
+            "rougeL": 0.4262295081967213
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              89,
+              100
+            ]
+          ],
+          "evidence_words": 141
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "What was the conclusion of the discussion about the difference between the industrial designer and user interface designer?",
+      "reference_answer": "Industrial Designer would design the functions and figure out the industrial way to implement it while the user interface designer's job was to decide how the object looked. In short, the two were like the inside and the outside.",
+      "results": {
+        "oracle": {
+          "answer": "The conclusion of the discussion was that the user interface designer focuses on designing how users interact with a product (e.g., layout, navigation), while the industrial designer focuses on the physical appearance and functionality of the product itself. There was some confusion and overlap in understanding roles, but they agreed that the user interface designer deals more with the interaction aspects and the industrial designer with the physical design and overall look of the product.",
+          "rouge_f1": {
+            "rouge1": 0.37931034482758624,
+            "rouge2": 0.12280701754385964,
+            "rougeL": 0.24137931034482757
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              71,
+              104
+            ]
+          ],
+          "evidence_words": 295
+        }
+      }
+    }
+  ]
+}

@@ -23,7 +23,7 @@ In parallel: annotated gold turns -> 7B/14B/32B oracle answers -> same metrics
 
 The full preset fixes four chunkers, three retrievers, three evidence
 budgets, generation settings, and evaluation models in
-[`ablation-full.toml:10-61`](../src/configs/ablation-full.toml#L10-L61).
+[`ablation-validation-full.toml`](../src/configs/ablation-validation-full.toml).
 Consequently, one question produces 36 retrieved-evidence answers. The
 `oracle-14b` result is the fairest answer-model control because it uses the
 same Qwen2.5-14B model and prompt; only its evidence source differs.
@@ -74,15 +74,15 @@ budget; numeric IDs are omitted from the retrieval representation.
 Lumber segmentation is performed once per meeting, before questions are
 ranked. [`build_window()`](../src/meeting_qa_chunking/lumber_prompt.py#L29-L47)
 starts at the next unprocessed turn and adds complete turns until the original
-Lumber estimate, `round(1.2 * whitespace words)`, exceeds 550 tokens
+Lumber estimate, `round(1.2 * whitespace words)`, exceeds 1,000 pseudo-tokens
 ([`estimate_tokens()`](../src/meeting_qa_chunking/lumber_prompt.py#L23-L26)).
 The full transcript is never sent in one prompt.
 
 [`lumber_chunks()`](../src/meeting_qa_chunking/lumber.py#L43-L82) asks the
 configured segmenter for the first turn that begins a new topic. The active
-preset uses Qwen2.5-14B and requests only the boundary ID; the checked-in
-full-run artifacts still record the previous Qwen2.5-7B segmenter. The returned
-boundary starts the next chunk; the preceding turns close the current chunk.
+preset and checked-in artifacts use Qwen2.5-14B and request only the boundary
+ID. The returned boundary starts the next chunk; the preceding turns close the
+current chunk.
 One constrained retry follows an invalid response. During retrieval,
 [`load_lumber_chunks()`](../src/meeting_qa_chunking/lumber.py#L23-L40)
 reconstructs the complete-turn chunks and verifies exact transcript coverage.

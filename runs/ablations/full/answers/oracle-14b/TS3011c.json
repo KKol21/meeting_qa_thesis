@@ -1,0 +1,232 @@
+{
+  "experiment_version": 2,
+  "provenance": {
+    "stage": "answers",
+    "config": {
+      "experiment_version": 2,
+      "source": "oracle",
+      "conditions": {
+        "oracle": {
+          "source": "annotated evidence"
+        }
+      },
+      "model": {
+        "tag": "qwen2.5-14b",
+        "name": "Qwen/Qwen2.5-14B-Instruct",
+        "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+        "prequantized": false,
+        "max_new_tokens": 512,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "prompt": "Answer the question using only the meeting excerpts below.\nA shortened participant identifier matches a speaker label ending in that identifier; for example, A matches Grad A.\nFor questions about what a participant thought, use their relevant statements, questions, and suggestions.\nMake sure to include every relevant detail supported by the excerpts - every missed detail is penalized.\nSay that the evidence is insufficient only when it contains no relevant information.\nGive a concise, direct answer.",
+      "rouge_types": [
+        "rouge1",
+        "rouge2",
+        "rougeL"
+      ],
+      "rouge_stemmer": true
+    },
+    "config_hash": "d0bb46b6001454bab334bd28c3ac658988cd1bf9d24750b82b4a7c7618aa0df5",
+    "inputs": {
+      "meeting": {
+        "file": "TS3011c.json",
+        "sha256": "5ae47a3cc5d9773c2157d68798a3f14667f3099a51d0799560b68b2611269a15"
+      }
+    },
+    "input_hash": "bbc859f0c338908a69dc400130f561eed43a2bf90e45e4ff0356a3e8ed916813",
+    "execution": {
+      "source_hash": "97133b70eba4548077fd1d6abf369024d9db3a46db1c5baac140dec39dd97c55",
+      "python": "3.11.2",
+      "packages": {
+        "accelerate": "1.14.0",
+        "bitsandbytes": "0.50.2",
+        "rouge-score": "0.1.2",
+        "torch": "2.10.0",
+        "transformers": "5.15.1"
+      },
+      "entrypoint_hash": "ed997b6444718175672e8406d81173f4bc93bd68ebb20ec821fa15f5771dc504"
+    },
+    "execution_hash": "abc6d675e7697f12cd6d58618cfd866cbdef4486f7ceb41cb1fe674c3d86248d",
+    "fingerprint": "01eab0aac8863863441e78e25d1c658c32badc6337fb22757e4958aa62608fba",
+    "preset": {
+      "file": "ablation-full.toml",
+      "sha256": "b352d144e46f27089b4a913fa34f2ee43cc6ab1620b2f9a147c22b3400267697"
+    }
+  },
+  "meeting_id": "TS3011c",
+  "question_count": 6,
+  "source": "oracle",
+  "conditions": {
+    "oracle": {
+      "source": "annotated evidence"
+    }
+  },
+  "answer_model": {
+    "tag": "qwen2.5-14b",
+    "name": "Qwen/Qwen2.5-14B-Instruct",
+    "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+    "prequantized": false,
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "seed": 42
+  },
+  "model_calls": 6,
+  "cache_hits": 0,
+  "questions": [
+    {
+      "question_index": 0,
+      "question": "Summarize the discussion about remote control style.",
+      "reference_answer": "Marketing revealed that the younger target group preferred colourful objects and soft material. Project Manager agreed and added that the remote control should be light and not too slippery. Then Industrial Designer introduced three casing possibilities: uncurved, single-curved and double-curved. Considering that uncurved design could be too dull and double-curved design would make it difficult to use scroll-wheels, the team chose the single-curved design.",
+      "results": {
+        "oracle": {
+          "answer": "The discussion about remote control style focused on making it innovative, colorful, and soft to the touch. The team aimed to cater to the younger target group's preferences for vibrant colors and soft materials, while ensuring the design was not too dull. They considered using rubber-like materials for a spongy feel and discussed incorporating elements such as voice recognition and scroll wheels. The design was also intended to be ergonomic, with a good grip for easy handling. The team decided against using wood or titanium, opting instead for rubber with various colors to appeal to both younger and older groups.",
+          "rouge_f1": {
+            "rouge1": 0.3625730994152046,
+            "rouge2": 0.1420118343195266,
+            "rougeL": 0.19883040935672516
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              58,
+              188
+            ],
+            [
+              341,
+              381
+            ]
+          ],
+          "evidence_words": 1957
+        }
+      }
+    },
+    {
+      "question_index": 1,
+      "question": "What material did the team decide to use in the discussion of remote control style?",
+      "reference_answer": "Industrial Designer supposed that natural feeling could be a factor. Marketing agreed and revealed that the younger target group preferred soft material but not necessarily a real sponge. Then User Interface proposed to use rubber, which was agreed by the whole team.",
+      "results": {
+        "oracle": {
+          "answer": "The team decided to use soft materials, similar to rubber, for the remote control style, aiming for a spongy yet not actual sponge-like feel, to cater to both younger and older groups by making it colorful and potentially exchangeable.",
+          "rouge_f1": {
+            "rouge1": 0.3902439024390244,
+            "rouge2": 0.05,
+            "rougeL": 0.17073170731707316
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              85,
+              108
+            ]
+          ],
+          "evidence_words": 274
+        }
+      }
+    },
+    {
+      "question_index": 2,
+      "question": "Why did the team choose single-curved design when discussing remote control style?",
+      "reference_answer": "Industrial Designer introduced uncurved, single-curved and double-curved design at first. User Interface and Project Manager thought that uncurved design was too dull and Industrial Designer pointed out that double-curved design would make it impossible to use scroll-wheels, so the team selected single-curved design eventually.",
+      "results": {
+        "oracle": {
+          "answer": "The team chose the single-curved design because they believed it struck a balance between being visually appealing (not \"too dull\") and functional (retaining the ability to use scroll-wheels unlike the double-curved design).",
+          "rouge_f1": {
+            "rouge1": 0.3809523809523809,
+            "rouge2": 0.24390243902439027,
+            "rougeL": 0.30952380952380953
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              185,
+              188
+            ],
+            [
+              372,
+              381
+            ]
+          ],
+          "evidence_words": 324
+        }
+      }
+    },
+    {
+      "question_index": 3,
+      "question": "What did the group discuss about user interface controls of the remote control?",
+      "reference_answer": "Industrial Designer proposed to use scroll-wheels, which could be integrated with buttons. User Interface doubted its practicability and then Project Manager proposed to integrate a scroll-bar on the side to mute the device. As they would not use an LCD display, a regular chip was enough.",
+      "results": {
+        "oracle": {
+          "answer": "The group discussed that the remote control would include push-buttons and scroll-wheels, which could be integrated with buttons similar to a mouse. However, User Interface expressed doubt about the practicality of integrating buttons with scroll-wheels, suggesting scenarios where scroll-wheels alone would suffice. The group considered placing a scroll-bar on one side of the remote for channel selection and debated the feasibility of incorporating scroll-wheels due to design limitations, such as the curvature of the remote control case. They decided against using LCD displays and opted for a regular chip to support voice recognition and scroll-wheels, aiming to balance functionality with cost and market appeal.",
+          "rouge_f1": {
+            "rouge1": 0.42767295597484273,
+            "rouge2": 0.17834394904458598,
+            "rougeL": 0.339622641509434
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              236,
+              325
+            ],
+            [
+              382,
+              433
+            ]
+          ],
+          "evidence_words": 2019
+        }
+      }
+    },
+    {
+      "question_index": 4,
+      "question": "What did the team think about scroll-wheels in the discussion of interface controls?",
+      "reference_answer": "Industrial Designer proposed to use scroll-wheels integrated with buttons. User Interface doubted its practicability and supposed that a round button with four directions could be better. But Project Manager liked the idea of scroll-wheels as it might attract young customers and suggested that they could be used to mute the device.",
+      "results": {
+        "oracle": {
+          "answer": "The team expressed skepticism about using scroll-wheels. User Interface specifically stated, \"I don't think there's any possibility for us to use scroll-wheels\" and elaborated that they couldn't envision a scenario where a scroll-wheel with a button would be used. Industrial Designer agreed, saying, \"There's no scenario where you use uh the button in the scroll-wheel. You just use the wheel.\" However, Marketing suggested that a scroll-wheel could attract younger customers due to its novelty. Despite this, the overall sentiment was negative towards incorporating scroll-wheels into the design.",
+          "rouge_f1": {
+            "rouge1": 0.37333333333333335,
+            "rouge2": 0.13513513513513514,
+            "rougeL": 0.24000000000000002
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              236,
+              286
+            ]
+          ],
+          "evidence_words": 734
+        }
+      }
+    },
+    {
+      "question_index": 5,
+      "question": "Why did the team decide not to use LCD displays when discussing interface controls?",
+      "reference_answer": "Industrial Manager revealed that if LCD was used, they had to choose advanced chips. Project Manager thought it was within the budget and LCD displays could add extra high-tech feeling. User Interface then pointed out that they already had too many high-tech substances including scroll-wheels, voice recognition and a fancy look so they didn't need to use LCD displays.",
+      "results": {
+        "oracle": {
+          "answer": "The team decided not to use LCD displays when discussing interface controls due to cost considerations and the belief that such features were not necessary given the presence of other advanced functionalities like scroll-wheels and voice recognition. The Industrial Designer mentioned that using an LCD display would require a more expensive advanced chip. Additionally, User Interface suggested that basic information could be displayed on any TV screen, making an LCD display redundant. Cost constraints and the desire to avoid overloading the product with too many high-tech features also influenced this decision.",
+          "rouge_f1": {
+            "rouge1": 0.37179487179487175,
+            "rouge2": 0.14285714285714285,
+            "rougeL": 0.16666666666666666
+          },
+          "cache_hit": false,
+          "gold_turn_ranges": [
+            [
+              310,
+              325
+            ],
+            [
+              413,
+              427
+            ]
+          ],
+          "evidence_words": 400
+        }
+      }
+    }
+  ]
+}
