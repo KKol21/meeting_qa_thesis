@@ -157,7 +157,9 @@ python src/tools/plot_results.py
 ```
 
 The figure index and suggested placement are documented in
-[`docs/RESULT_VISUALIZATIONS.md`](docs/RESULT_VISUALIZATIONS.md).
+[`docs/RESULT_VISUALIZATIONS.md`](docs/RESULT_VISUALIZATIONS.md); the underlying
+calculations and artifact provenance are explained in
+[`docs/PLOT_GENERATION.md`](docs/PLOT_GENERATION.md).
 
 For the complete data flow, caches, commands, failure recovery, and Slurm
 explanation, read [`docs/PIPELINE.md`](docs/PIPELINE.md).

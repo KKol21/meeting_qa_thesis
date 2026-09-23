@@ -54,7 +54,11 @@ def errorbar(axis, x, values, **kwargs) -> None:
 
 def finish(figure, output_dir: Path, name: str) -> None:
     figure.savefig(output_dir / f"{name}.png", dpi=220, bbox_inches="tight")
-    figure.savefig(output_dir / f"{name}.pdf", bbox_inches="tight")
+    figure.savefig(
+        output_dir / f"{name}.pdf",
+        bbox_inches="tight",
+        metadata={"CreationDate": None, "ModDate": None},
+    )
     plt.close(figure)
 
 
@@ -342,56 +346,6 @@ def plot_oracle_models(uncertainty: dict, output_dir: Path) -> None:
     finish(figure, output_dir, "05-test-oracle-models")
 
 
-def plot_lumber_target_sweep(data: dict, output_dir: Path) -> None:
-    targets = data["targets"]
-    diagnostics = [data["selection"]["diagnostics"][str(target)] for target in targets]
-    selected = data["selection"]["recommended_target"]
-    figure, axes = plt.subplots(1, 3, figsize=(11, 3.5))
-
-    recall = [row["mean_recall_across_conditions"] for row in diagnostics]
-    f1 = [row["mean_f1_across_conditions"] for row in diagnostics]
-    axes[0].plot(targets, recall, "o-", label="Recall", color="#0072B2")
-    axes[0].plot(targets, f1, "s-", label="F1", color="#D55E00")
-    axes[0].axhspan(max(recall) - 0.01, max(recall), color="0.85", zorder=0)
-    axes[0].set_ylabel("Mean across 9 environments")
-    axes[0].legend(frameon=False)
-
-    axes[1].plot(
-        targets,
-        [row["mean_zero_hit_across_conditions"] for row in diagnostics],
-        "o-",
-        color="#CC79A7",
-    )
-    axes[1].set_ylabel("Zero-hit rate")
-    axes[1].yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1))
-
-    axes[2].plot(
-        targets,
-        [row["median_chunk_words"] for row in diagnostics],
-        "o-",
-        color="#009E73",
-        label="Lumber median",
-    )
-    for chunker in ("turn_packed", "word_packed"):
-        median_words = data["baselines"][chunker]["words_per_chunk"]["median"]
-        axes[2].axhline(
-            median_words,
-            color=COLORS[chunker],
-            linestyle="--",
-            label=f"{LABELS[chunker]} median",
-        )
-    axes[2].set_ylabel("Median chunk length (words)")
-    axes[2].legend(frameon=False, fontsize=8)
-
-    for axis in axes:
-        axis.axvline(selected, color="0.25", linestyle=":")
-        axis.set_xlabel("Lumber target (pseudo-tokens)")
-        axis.grid(alpha=0.2)
-    figure.suptitle("Validation selection of the Lumber target")
-    figure.tight_layout()
-    finish(figure, output_dir, "06-validation-lumber-target")
-
-
 def plot_baseline_sizes(data: dict, output_dir: Path) -> None:
     chunkers = ("turn_packed", "word_packed")
     metrics = (("recall", "Recall"), ("f1", "F1"))
@@ -434,7 +388,7 @@ def plot_baseline_sizes(data: dict, output_dir: Path) -> None:
             axis.set_title(f"{LABELS[chunker]}: Δ {label}")
     figure.colorbar(image, ax=axes, shrink=0.8, label="Difference from the 256-word condition")
     figure.suptitle("Validation sensitivity of deterministic chunk size")
-    finish(figure, output_dir, "07-validation-baseline-size")
+    finish(figure, output_dir, "06-validation-baseline-size")
 
 
 def plot_boundary_control(data: dict, output_dir: Path) -> None:
@@ -459,7 +413,7 @@ def plot_boundary_control(data: dict, output_dir: Path) -> None:
     axes[0].invert_yaxis()
     figure.suptitle("Validation boundary-shuffled Lumber control")
     figure.tight_layout()
-    finish(figure, output_dir, "08-validation-boundary-control")
+    finish(figure, output_dir, "07-validation-boundary-control")
 
 
 def plot_clipping_sensitivity(data: dict, output_dir: Path) -> None:
@@ -517,40 +471,7 @@ def plot_clipping_sensitivity(data: dict, output_dir: Path) -> None:
                 environment_labels if column == 0 else [],
             )
     figure.suptitle("Validation sensitivity to final-chunk budget handling")
-    finish(figure, output_dir, "09-validation-clipping-policy")
-
-
-def plot_boundary_models(data: dict, output_dir: Path) -> None:
-    models = data["models"]
-    labels = [model.replace("qwen2.5-", "") for model in models]
-    figure, axes = plt.subplots(1, 3, figsize=(10.5, 3.5))
-
-    values = [interval(data["headline"][model], "recall") for model in models]
-    errorbar(axes[0], np.arange(len(models)), values, fmt="o", color="#009E73")
-    axes[0].set_xticks(np.arange(len(models)), labels, rotation=20)
-    axes[0].set_ylabel("Mean recall across 9 environments")
-
-    medians = [data["chunking"][model]["words_per_chunk"]["median"] for model in models]
-    axes[1].bar(np.arange(len(models)), medians, color="#56B4E9")
-    axes[1].set_xticks(np.arange(len(models)), labels, rotation=20)
-    axes[1].set_ylabel("Median chunk length (words)")
-
-    matrix = np.eye(len(models))
-    for row in data["boundary_overlap"]:
-        left, right = models.index(row["left"]), models.index(row["right"])
-        matrix[left, right] = matrix[right, left] = row["jaccard"]
-    image = axes[2].imshow(matrix, vmin=0, vmax=1, cmap="Blues")
-    for row, column in np.ndindex(matrix.shape):
-        axes[2].text(column, row, f"{matrix[row, column]:.0%}", ha="center", va="center", fontsize=8)
-    axes[2].set_xticks(np.arange(len(models)), labels, rotation=20)
-    axes[2].set_yticks(np.arange(len(models)), labels)
-    axes[2].set_title("Boundary Jaccard")
-    figure.colorbar(image, ax=axes[2], shrink=0.75)
-    for axis in axes[:2]:
-        axis.grid(axis="y", alpha=0.2)
-    figure.suptitle("Five-meeting Lumber boundary-model diagnostic")
-    figure.tight_layout()
-    finish(figure, output_dir, "10-validation-boundary-model")
+    finish(figure, output_dir, "08-validation-clipping-policy")
 
 
 def main() -> None:
@@ -560,20 +481,12 @@ def main() -> None:
         "--validation", type=Path, default=Path("runs/ablations/validation-full")
     )
     parser.add_argument(
-        "--lumber-sweep", type=Path,
-        default=Path("runs/ablations/lumber-sweep/sweep.json"),
-    )
-    parser.add_argument(
         "--baseline-sweep", type=Path,
         default=Path("runs/ablations/baseline-sweep/sweep.json"),
     )
     parser.add_argument(
         "--boundary-control", type=Path,
         default=Path("runs/ablations/boundary-control/control.json"),
-    )
-    parser.add_argument(
-        "--model-check", type=Path,
-        default=Path("runs/ablations/lumber-model-check/check.json"),
     )
     parser.add_argument(
         "--output", type=Path, default=Path("docs/figures/results")
@@ -600,13 +513,11 @@ def main() -> None:
     plot_lumber_effects(uncertainty, args.output)
     plot_budget_proportionality(budget_data, args.output)
     plot_oracle_models(uncertainty, args.output)
-    plot_lumber_target_sweep(read(args.lumber_sweep), args.output)
     plot_baseline_sizes(read(args.baseline_sweep), args.output)
     plot_boundary_control(read(args.boundary_control), args.output)
     plot_clipping_sensitivity(
         read(args.validation / "clipping-sensitivity.json"), args.output
     )
-    plot_boundary_models(read(args.model_check), args.output)
     print(f"Result figures: {args.output}")
 
 

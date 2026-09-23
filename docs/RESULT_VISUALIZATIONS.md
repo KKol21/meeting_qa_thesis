@@ -2,7 +2,8 @@
 
 Run `python src/tools/plot_results.py` to recreate every figure as both PNG and
 vector PDF under `docs/figures/results`. The script reads saved JSON artifacts;
-it does not recompute experimental results.
+it does not recompute experimental results. The complete calculation and
+provenance guide is in [`PLOT_GENERATION.md`](PLOT_GENERATION.md).
 
 ## Main results
 
@@ -38,30 +39,20 @@ it does not recompute experimental results.
 
 ## Validation and secondary analyses
 
-6. **Lumber target selection** ([PNG](figures/results/06-validation-lumber-target.png) · [PDF](figures/results/06-validation-lumber-target.pdf)). Shows the
-   retrieval criterion, zero-hit rate, and chunk geometry that motivated the
-   1,000 pseudo-token target. The shaded recall band marks values within 0.01 of
-   the best validation mean; dashed lines show deterministic-baseline medians.
-
-7. **Deterministic chunk-size sensitivity**
-   ([PNG](figures/results/07-validation-baseline-size.png) · [PDF](figures/results/07-validation-baseline-size.pdf)). Cell-level heatmaps show recall and F1
+6. **Deterministic chunk-size sensitivity**
+   ([PNG](figures/results/06-validation-baseline-size.png) · [PDF](figures/results/06-validation-baseline-size.pdf)). Cell-level heatmaps show recall and F1
    changes from the 256-word reference without averaging over the correlated
    retriever-by-budget environments.
 
-8. **Boundary-shuffled control** ([PNG](figures/results/08-validation-boundary-control.png) · [PDF](figures/results/08-validation-boundary-control.pdf)). Paired
+7. **Boundary-shuffled control** ([PNG](figures/results/07-validation-boundary-control.png) · [PDF](figures/results/07-validation-boundary-control.pdf)). Paired
    recall and F1 effects compare actual Lumber boundaries with geometry-matched,
    semantically meaningless boundaries. Use this as the direct test of whether
    boundary placement itself matters.
 
-9. **Clipping-policy sensitivity** ([PNG](figures/results/09-validation-clipping-policy.png) · [PDF](figures/results/09-validation-clipping-policy.pdf)). Heatmaps
+8. **Clipping-policy sensitivity** ([PNG](figures/results/08-validation-clipping-policy.png) · [PDF](figures/results/08-validation-clipping-policy.pdf)). Heatmaps
    show retrieval changes from dropping or expanding the final partial chunk,
    relative to the main clipping policy. This is retrieval-only and belongs in
    the secondary analysis or appendix.
-
-10. **Boundary-model diagnostic** ([PNG](figures/results/10-validation-boundary-model.png) · [PDF](figures/results/10-validation-boundary-model.pdf)). Mean recall,
-    chunk geometry, and boundary agreement for the three boundary models. It is
-    based on only five meetings and should be reported as a failure check, not
-    evidence of model equivalence.
 
 First-overlap MRR is intentionally not promoted to a main figure because chunk
 size mechanically changes overlap probability. Its values remain in the result
