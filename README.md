@@ -163,11 +163,3 @@ calculations and artifact provenance are explained in
 
 For the complete data flow, caches, commands, failure recovery, and Slurm
 explanation, read [`docs/PIPELINE.md`](docs/PIPELINE.md).
-
-For supervisor review, start with
-[`docs/QUESTION_PIPELINE_REVIEW.md`](docs/QUESTION_PIPELINE_REVIEW.md) and
-[`docs/QUALITATIVE_RECALL_ANALYSIS.md`](docs/QUALITATIVE_RECALL_ANALYSIS.md).
-The thesis-facing design and reporting rationale is summarized in
-[`docs/THESIS_METHODOLOGY.md`](docs/THESIS_METHODOLOGY.md).
-The chunk-size rationale is in
-[`docs/QMSUM_CHUNKING_PARAMETER_ANALYSIS.md`](docs/QMSUM_CHUNKING_PARAMETER_ANALYSIS.md).
